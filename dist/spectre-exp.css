@@ -1,4 +1,4 @@
-/*! Spectre.css Experimentals v0.5.9 | MIT License | github.com/picturepan2/spectre */
+/*! Spectre.css Experimentals v0.5.10 | MIT License | github.com/picturepan2/spectre */
 .form-autocomplete {
   position: relative;
 }
@@ -707,7 +707,7 @@
 }
 
 .parallax .parallax-content {
-  box-shadow: 0 1rem 2.1rem rgba(48, 55, 66, .3);
+  box-shadow: 0 1rem 2.1rem rgba(48, 55, 66, .15);
   height: auto;
   transform: perspective(1000px);
   transform-style: preserve-3d;

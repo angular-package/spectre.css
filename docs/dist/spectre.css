@@ -1,4 +1,4 @@
-/*! Spectre.css v0.5.9 | MIT License | github.com/picturepan2/spectre */
+/*! Spectre.css v0.5.10 | MIT License | github.com/picturepan2/spectre */
 /* Manually forked from Normalize.css */
 /* normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /** 1. Change the default font family in all browsers (opinionated). 2. Correct the line height in all browsers. 3. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS. */
@@ -576,6 +576,10 @@ html:lang(ko),
   white-space: nowrap;
 }
 
+.btn:visited {
+  color: #4b48d6;
+}
+
 .btn:focus {
   box-shadow: 0 0 0 .1rem rgba(87, 85, 217, .2);
 }
@@ -615,6 +619,10 @@ html:lang(ko),
   color: #fff;
 }
 
+.btn.btn-primary:visited {
+  color: #fff;
+}
+
 .btn.btn-primary:focus,
 .btn.btn-primary:hover {
   background: #4240d4;
@@ -637,6 +645,10 @@ html:lang(ko),
 .btn.btn-success {
   background: #32b643;
   border-color: #2faa3f;
+  color: #fff;
+}
+
+.btn.btn-success:visited {
   color: #fff;
 }
 
@@ -669,6 +681,10 @@ html:lang(ko),
   color: #fff;
 }
 
+.btn.btn-error:visited {
+  color: #fff;
+}
+
 .btn.btn-error:focus {
   box-shadow: 0 0 0 .1rem rgba(232, 86, 0, .2);
 }
@@ -698,6 +714,7 @@ html:lang(ko),
   color: #5755d9;
 }
 
+.btn.btn-link:visited,
 .btn.btn-link:focus,
 .btn.btn-link:hover,
 .btn.btn-link:active,
@@ -2387,6 +2404,11 @@ summary.accordion-header::-webkit-details-marker {
   border-bottom-right-radius: .1rem;
 }
 
+.card.card-shadow {
+  border: 0; 
+  box-shadow: 0 .1rem .3rem rgba(48, 55, 66, .15);
+}
+
 .chip {
   align-items: center;
   background: #eef0f3;
@@ -2477,7 +2499,7 @@ summary.accordion-header::-webkit-details-marker {
 .menu {
   background: #fff;
   border-radius: .1rem;
-  box-shadow: 0 .05rem .2rem rgba(48, 55, 66, .3);
+  box-shadow: 0 .05rem .2rem rgba(48, 55, 66, .15);
   list-style: none;
   margin: 0;
   min-width: 180px;
@@ -2603,7 +2625,7 @@ summary.accordion-header::-webkit-details-marker {
 .modal-container {
   background: #fff;
   border-radius: .1rem;
-  box-shadow: 0 .2rem .5rem rgba(48, 55, 66, .3);
+  box-shadow: 0 .2rem .5rem rgba(48, 55, 66, .15);
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -2812,7 +2834,7 @@ summary.accordion-header::-webkit-details-marker {
 
 .popover .card {
   border: 0; 
-  box-shadow: 0 .2rem .5rem rgba(48, 55, 66, .3);
+  box-shadow: 0 .2rem .5rem rgba(48, 55, 66, .15);
 }
 
 .step {
