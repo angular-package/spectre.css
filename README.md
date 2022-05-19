@@ -1,8 +1,12 @@
+# angular-package
+
 <a href="https://picturepan2.github.io/spectre">
   <img src="https://picturepan2.github.io/spectre/img/spectre-logo.svg" width="72" height="72">
 </a>
 
 ## Spectre.css
+
+**Spectre.css hosted under the angular-package.**
 
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 
@@ -22,23 +26,28 @@ Spectre.css is completely free to use. If you enjoy it, please consider [donatin
 There are 5 ways to get started with Spectre CSS framework in your projects. You can either manually install or use NPM, Yarn and Bower.
 
 ### Install manually
+
 Download the compiled and minified [Spectre CSS files](https://github.com/picturepan2/spectre/tree/master/docs/dist). And include `spectre.css` located in `/docs/dist` in your website or Web app &lt;head&gt; part.
 
 `<link rel="stylesheet" href="spectre.min.css">`
 
 ### Install from CDN
+
 Alternatively, you can use the [unpkg](https://unpkg.com/) or [cdnjs](https://cdnjs.com/libraries/spectre.css) CDN to load compiled Spectre.css.
 
 `<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">`
 
 ### Install with NPM
-`$ npm install spectre.css --save`
+
+`$ npm install @angular-package/spectre.css --save`
 
 ### Install with Yarn
-`$ yarn add spectre.css`
+
+`$ yarn add @angular-package/spectre.css`
 
 ### Install with Bower
-`$ bower install spectre.css --save`
+
+`$ bower install @angular-package/spectre.css --save`
 
 ## Compiling custom version
 
@@ -58,12 +67,14 @@ You can compile your custom version of Spectre.css. Read [the documentation](htt
 - [Media](https://picturepan2.github.io/spectre/elements/media.html)
 
 ### Layout
+
 - [Flexbox grid](https://picturepan2.github.io/spectre/layout/grid.html) 
 - [Responsive](https://picturepan2.github.io/spectre/layout/responsive.html)
 - [Hero](https://picturepan2.github.io/spectre/layout/hero.html)
 - [Navbar](https://picturepan2.github.io/spectre/layout/navbar.html)
 
 ### Components
+
 - [Accordions](https://picturepan2.github.io/spectre/components/accordions.html)
 - [Avatars](https://picturepan2.github.io/spectre/components/avatars.html)
 - [Badges](https://picturepan2.github.io/spectre/components/badges.html)
@@ -89,6 +100,7 @@ You can compile your custom version of Spectre.css. Read [the documentation](htt
 - [Utilities](https://picturepan2.github.io/spectre/utilities.html) - colors, display, divider, loading, position, shapes and text utilities
 
 ### Experimentals
+
 - [360-Degree Viewer](https://picturepan2.github.io/spectre/experimentals/viewer-360.html) - CSS ONLY
 - [Autocomplete](https://picturepan2.github.io/spectre/experimentals/autocomplete.html)
 - [Calendars](https://picturepan2.github.io/spectre/experimentals/calendars.html)
@@ -103,6 +115,7 @@ You can compile your custom version of Spectre.css. Read [the documentation](htt
 - [Timelines](https://picturepan2.github.io/spectre/experimentals/timelines.html)
 
 ## Browser support
+
 Spectre uses [Autoprefixer](https://github.com/postcss/autoprefixer) to make most styles compatible with earlier browsers and [Normalize.css](https://necolas.github.io/normalize.css/) for CSS resets. Spectre is designed for modern browsers. For best compatibility, these browsers are recommended:
 
 - Chrome (LAST 4)
