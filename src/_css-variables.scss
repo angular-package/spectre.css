@@ -1,0 +1,51 @@
+@use 'mixins/css-variable-color' as *;
+@use 'variables' as *;
+
+/*
+  Color scheme in :root.
+*/
+:root {
+  color-scheme: normal; // light, dark, light dark
+  // Core colors.
+  @include define-color('primary-color', $primary-color); // #5755d9
+  @include define-color('primary-dark-color', $primary-color-dark); // darken($primary-color, 3%)
+  @include define-color('primary-light-color', $primary-color-light); // lighten($primary-color, 3%)
+
+  // @include define-color('secondary-color', $primary-color, 37.5%);
+  @include define-color('secondary-color', $secondary-color); // lighten($primary-color, 37.5%)
+  @include define-color('secondary-dark-color', $secondary-color-dark); // darken($secondary-color, 3%)
+  @include define-color('secondary-light-color', $secondary-color-light); // lighten($secondary-color, 3%)
+
+  @include define-color('accent-color', $accent-color); // #9932CC
+
+  // Gray colors.
+  @include define-color('dark-color', $dark-color); // #303742
+  @include define-color('light-color', $light-color); // #ffffff
+  @include define-color('gray-color', $gray-color); // lighten($dark-color, 55%)
+  @include define-color('gray-dark-color', $gray-color-dark); // darken($gray-color, 30%)
+  @include define-color('gray-light-color', $gray-color-light); // lighten($gray-color, 20%)
+
+  @include define-color('border-color', $border-color); // lighten($dark-color, 65%)
+  @include define-color('border-dark-color', $border-color-dark); // darken($border-color, 10%)
+  @include define-color('border-light-color', $border-color-light); // lighten($border-color, 8%)
+
+  @include define-color('bg-color', $bg-color); // lighten($dark-color, 75%)
+  @include define-color('bg-dark-color', $bg-color-dark); // darken($bg-color, 3%)
+  @include define-color('bg-light-color', $bg-color-light); // $light-color
+
+  // Control colors
+  @include define-color('info-color', $info-color); // #d9edf7
+  @include define-color('success-color', $success-color); // #32b643
+  @include define-color('error-color', $error-color); // #e85600
+  @include define-color('warning-color', $warning-color); // #ffb700
+
+  // Other colors
+  @include define-color('code-color', $code-color); // #d73e48
+  @include define-color('highlight-color', $highlight-color); // #ffe9b3
+
+  @include define-color('body-bg-color', $body-bg); // $bg-color-light
+  @include define-color('body-font-color', $body-font-color); // lighten($dark-color, 5%)
+  @include define-color('link-color', $link-color); // $primary-color
+  @include define-color('link-dark-color', $link-color-dark); // darken($link-color, 10%)
+  @include define-color('link-light-color', $link-color-light); // lighten($link-color, 10%)
+}
