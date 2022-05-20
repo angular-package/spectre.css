@@ -1,4 +1,7 @@
+<img width="92" height="92" src="https://avatars.githubusercontent.com/u/31412194?s=400&u=c9929aa36826318ccac8f7b84516e1ce3af7e21c&v=4" />
+
 # angular-package
+
 
 <a href="https://picturepan2.github.io/spectre">
   <img src="https://picturepan2.github.io/spectre/img/spectre-logo.svg" width="72" height="72">
