@@ -1,7 +1,13 @@
-<img width="92" height="92" src="https://avatars.githubusercontent.com/u/31412194?s=400&u=c9929aa36826318ccac8f7b84516e1ce3af7e21c&v=4" />
-
 # angular-package
 
+<img align="left"  width="92" height="92" src="https://avatars.githubusercontent.com/u/31412194?s=400&u=c9929aa36826318ccac8f7b84516e1ce3af7e21c&v=4" />
+
+The angular-package supports the development process of [angular](https://angular.io)-based applications in varied ways through the thoughtful, reusable, easy-to-use small pieces of code called packages.
+
+[**docs.angular-package.dev**](https://docs.angular-package.dev)
+
+<br>
+<br>
 
 <a href="https://picturepan2.github.io/spectre">
   <img src="https://picturepan2.github.io/spectre/img/spectre-logo.svg" width="72" height="72">
