@@ -1,3 +1,7 @@
+@use 'mixins/button' as *;
+@use 'mixins/shadow' as *;
+@use 'variables' as *;
+
 // Buttons
 .btn {
   appearance: none;

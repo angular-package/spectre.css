@@ -1,14 +1,16 @@
+@use 'variables' as *;
+
 // Carousels
 // The number of carousel images
 $carousel-number: 8;
 
-%carousel-image-checked { 
+%carousel-image-checked {
   animation: carousel-slidein .75s ease-in-out 1;
   opacity: 1;
   z-index: $zindex-1;
 }
 
-%carousel-nav-checked { 
+%carousel-nav-checked {
   color: $gray-color-light;
 }
 

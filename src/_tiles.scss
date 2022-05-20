@@ -1,3 +1,6 @@
+@use 'mixins/text.scss' as *;
+@use 'variables' as *;
+
 // Tiles
 .tile {
   align-content: space-between;

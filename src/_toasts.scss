@@ -1,3 +1,6 @@
+@use 'mixins/toast' as *;
+@use 'variables' as *;
+
 // Toasts
 .toast {
   @include toast-variant($dark-color);
@@ -27,7 +30,7 @@
   a {
     color: $light-color;
     text-decoration: underline;
-    
+
     &:focus,
     &:hover,
     &:active,

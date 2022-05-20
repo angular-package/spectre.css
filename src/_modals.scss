@@ -1,3 +1,6 @@
+@use 'mixins/shadow' as *;
+@use 'variables' as *;
+
 // Modals
 .modal {
   align-items: center;

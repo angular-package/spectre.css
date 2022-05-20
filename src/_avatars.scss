@@ -1,3 +1,6 @@
+@use 'mixins/avatar' as *;
+@use 'variables' as *;
+
 // Avatars
 .avatar {
   @include avatar-base();

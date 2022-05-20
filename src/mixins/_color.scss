@@ -1,3 +1,5 @@
+@use '../variables' as *;
+
 // Background color utility mixin
 @mixin bg-color-variant($name: ".bg-primary", $color: $primary-color) {
   #{$name} {

@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 // Off canvas menus
 $off-canvas-breakpoint: $size-lg !default;
 
@@ -80,7 +82,7 @@ $off-canvas-breakpoint: $size-lg !default;
       .off-canvas-toggle {
         display: none;
       }
-  
+
       .off-canvas-sidebar {
         flex: 0 0 auto;
         position: relative;

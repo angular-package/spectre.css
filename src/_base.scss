@@ -1,3 +1,6 @@
+@use 'variables' as *;
+@use 'mixins/shadow' as *;
+
 // Base
 *,
 *::before,

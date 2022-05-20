@@ -1,3 +1,6 @@
+@use 'mixins/shadow' as *;
+@use 'variables' as *;
+
 // Sliders
 // Credit: https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
 .slider {

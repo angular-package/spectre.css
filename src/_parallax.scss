@@ -1,3 +1,6 @@
+@use './mixins/shadow' as *;
+@use 'variables' as *;
+
 // Parallax
 $parallax-deg: 3deg !default;
 $parallax-offset: 4.5px !default;

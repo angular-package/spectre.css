@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 // Tooltips
 .tooltip {
   position: relative;
@@ -61,7 +63,7 @@
       }
     }
   }
-  
+
   &.tooltip-left {
     &::after {
       bottom: 50%;

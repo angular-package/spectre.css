@@ -1,3 +1,6 @@
+@use '../variables' as *;
+@use 'shadow' as *;
+
 // Button variant mixin
 @mixin button-variant($color: $primary-color) {
   background: $color;

@@ -1,3 +1,6 @@
+@use '../mixins/color.scss' as *;
+@use '../variables.scss' as *;
+
 // Text colors
 @include text-color-variant(".text-primary", $primary-color);
 

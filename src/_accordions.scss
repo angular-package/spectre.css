@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 // Accordions
 .accordion {
   input:checked ~,

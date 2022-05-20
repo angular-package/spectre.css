@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 // Panels
 .panel {
   border: $border-width solid $border-color;

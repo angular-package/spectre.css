@@ -1,3 +1,6 @@
+@use 'mixins/shadow' as *;
+@use 'variables' as *;
+
 // Forms
 .form-group {
   &:not(:last-child) {
@@ -122,7 +125,7 @@ textarea.form-input {
   padding: $control-padding-y $control-padding-x;
   vertical-align: middle;
   width: 100%;
-  background: $bg-color-light; 
+  background: $bg-color-light;
   &:focus {
     @include control-shadow();
     border-color: $primary-color;

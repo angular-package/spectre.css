@@ -1,3 +1,6 @@
+@use 'mixins/shadow' as *;
+@use 'variables' as *;
+
 // Menus
 .menu {
   @include shadow-variant(.05rem);

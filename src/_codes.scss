@@ -1,3 +1,6 @@
+@use 'mixins/label' as *;
+@use 'variables' as *;
+
 // Codes
 code {
   @include label-base();
