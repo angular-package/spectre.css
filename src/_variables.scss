@@ -11,6 +11,7 @@ $primary-color-light: lighten($primary-color, 3%) !default;
 $secondary-color: lighten($primary-color, 37.5%) !default;
 $secondary-color-dark: darken($secondary-color, 3%) !default;
 $secondary-color-light: lighten($secondary-color, 3%) !default;
+$accent-color: #9932CC !default;
 
 // Gray colors
 $dark-color: #303742 !default;
@@ -27,6 +28,7 @@ $bg-color-dark: darken($bg-color, 3%) !default;
 $bg-color-light: $light-color !default;
 
 // Control colors
+$info-color: #d9edf7 !default;
 $success-color: #32b643 !default;
 $warning-color: #ffb700 !default;
 $error-color: #e85600 !default;
