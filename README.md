@@ -6,7 +6,7 @@
 
 ## Spectre.css
 
-**Spectre.css hosted under the angular-package.**
+**This Spectre.css is maintained by the angular-package.**
 
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 
@@ -20,22 +20,9 @@ Spectre is a side project based on years of CSS development work on a large web 
 
 Spectre.css is completely free to use. If you enjoy it, please consider [donating via Paypal](https://www.paypal.me/picturepan2) or [via Patreon](https://www.patreon.com/spectrecss) for the further development. ♥ 
 
-
 ## Getting started
 
-There are 5 ways to get started with Spectre CSS framework in your projects. You can either manually install or use NPM, Yarn and Bower.
-
-### Install manually
-
-Download the compiled and minified [Spectre CSS files](https://github.com/picturepan2/spectre/tree/master/docs/dist). And include `spectre.css` located in `/docs/dist` in your website or Web app &lt;head&gt; part.
-
-`<link rel="stylesheet" href="spectre.min.css">`
-
-### Install from CDN
-
-Alternatively, you can use the [unpkg](https://unpkg.com/) or [cdnjs](https://cdnjs.com/libraries/spectre.css) CDN to load compiled Spectre.css.
-
-`<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">`
+There are 2 ways to get started with Spectre CSS framework in your projects. You can use NPM or Yarn.
 
 ### Install with NPM
 
@@ -45,13 +32,13 @@ Alternatively, you can use the [unpkg](https://unpkg.com/) or [cdnjs](https://cd
 
 `$ yarn add @angular-package/spectre.css`
 
-### Install with Bower
+## Usage
 
-`$ bower install @angular-package/spectre.css --save`
-
-## Compiling custom version
-
-You can compile your custom version of Spectre.css. Read [the documentation](https://picturepan2.github.io/spectre/getting-started/custom.html).
+```scss
+@import '@angular-package/spectre.css/spectre.scss';
+@import '@angular-package/spectre.css/spectre-exp.scss';
+@import '@angular-package/spectre.css/spectre-icons.scss';
+```
 
 ## Documentation and examples
 
