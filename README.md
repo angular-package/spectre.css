@@ -44,9 +44,9 @@ There are 2 ways to get started with Spectre CSS framework in your projects. You
 ## Usage
 
 ```scss
-@import '@angular-package/spectre.css/spectre.scss';
-@import '@angular-package/spectre.css/spectre-exp.scss';
-@import '@angular-package/spectre.css/spectre-icons.scss';
+@import 'node_modules/@angular-package/spectre.css/spectre.scss';
+@import 'node_modules/@angular-package/spectre.css/spectre-exp.scss';
+@import 'node_modules/@angular-package/spectre.css/spectre-icons.scss';
 ```
 
 ## Documentation and examples
