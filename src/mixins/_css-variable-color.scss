@@ -6,12 +6,20 @@
   --s-#{$name}-a: #{alpha($color)};
 }
 
+// Defines a color based on the specified CSS variable and its lightness.
+@mixin define-color-based-on($name, $color, $lightness: 0%) {
+  --s-#{$name}-h: var(--s-#{$color}-h);
+  --s-#{$name}-l: calc(var(--s-#{$color}-l) + #{$lightness});
+  --s-#{$name}-s: var(--s-#{$color}-s);
+  --s-#{$name}-a: var(--s-#{$color}-a);
+}
+
 // Color variable.
-@function color($name, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 0) {
+@function color($name, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 1) {
   @return hsla(
     calc(var(--s-#{$name}-h) + #{$hue}),
     calc(var(--s-#{$name}-s) + #{$saturation}),
     calc(var(--s-#{$name}-l) + #{$lightness}),
-    calc(var(--s-#{$name}-a) + #{$alpha})
+    calc(var(--s-#{$name}-a) * #{$alpha})
   );
 }
