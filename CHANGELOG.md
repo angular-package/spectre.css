@@ -1,5 +1,43 @@
 #### Spectre.css Changelog
 
+##### v1.0.0-alpha
+
+- Add helpers. [a3fac35]
+- Update from #688.
+- Update the mixins to use string parameters. [5cf16fa]
+- Change the spectre.css variables and mixins to use `color()` function. [759feb] [978a9ba] [a89d3f7] [b8dd9c4] [4b5e065]
+- Define CSS variables in HSL. [4ead2ca]
+- Add `$accent-color` and `$info-color`. [5aebf31]
+- Add function and mixins to handle CSS variables. [9d6c62a] [214c17e]
+- Change `@import` in favor of `@use` and `@forward`. [4110d67] [6ad8904]
+
+[a3fac35]: https://github.com/angular-package/spectre.css/commit/a3fac3576d32bcf518f4727aac1903364c27863c
+[5cf16fa]: https://github.com/angular-package/spectre.css/commit/5cf16fa90bd93ea10c93f1e0d932e4bb7fe9351b
+
+[4b5e065]: https://github.com/angular-package/spectre.css/commit/4b5e0659934abecb2024ec01c381a6654fa758d6
+[b8dd9c4]: https://github.com/angular-package/spectre.css/commit/b8dd9c414c378ee49fa7e2d3823f7da88b9cb0e1
+[a89d3f7]: https://github.com/angular-package/spectre.css/commit/a89d3f7eed3913f71096bb0c0443ee66a736d9ac
+[978a9ba]: https://github.com/angular-package/spectre.css/commit/978a9baa33c6557d0c493c9768d1c4899d057ac9
+[759feb]: https://github.com/angular-package/spectre.css/commit/759feb7fc7ad180f8b0aa325b4b87c056a904adb
+
+[4ead2ca]: https://github.com/angular-package/spectre.css/commit/4ead2caea86e6fbbb7ce7818f38df01e71e803b8
+[5aebf31]: https://github.com/angular-package/spectre.css/commit/5aebf31192dbec68c727b834b643dd0e98a5aaec
+
+[214c17e]: https://github.com/angular-package/spectre.css/commit/214c17e49f8d6dca342b69b1c1af75ea8eb80ab3
+[9d6c62a]: https://github.com/angular-package/spectre.css/commit/9d6c62a9f162456d77cf7bcff20806465ab87f81
+
+[6ad8904]: https://github.com/angular-package/spectre.css/commit/6ad89043b1b172697bdbb0d33a10a8b9e7f332b0
+[4110d67]: https://github.com/angular-package/spectre.css/commit/4110d67227cb05e1c43b30a98cc8385f5a821b85
+
+
+##### v0.5.10 [#](https://github.com/angular-package/spectre.css/releases/tag/v0.5.10)
+
+- Add columns order #632.
+- Add icons #535.
+- Fix buttons visited style for `a` tag #572.
+- Change box-shadow in the mixins.
+- Add class `card-shadow` in the `_cards.scss`.
+
 ##### v0.5.9 [#](https://github.com/picturepan2/spectre/releases/tag/v0.5.9)
 
 - Update gulp and dependencies
