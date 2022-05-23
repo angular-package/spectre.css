@@ -3,7 +3,7 @@
 // Variables and mixins
 @forward 'src/variables';
 @forward 'src/mixins';
-@use 'src/css-variables';
+@forward 'src/css-variables';
 
 /*! Spectre.css v#{$version} | MIT License | github.com/picturepan2/spectre */
 // Reset and dependencies
