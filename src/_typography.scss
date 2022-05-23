@@ -1,3 +1,4 @@
+@use 'function/css-variable-color' as *;
 @use 'mixins/label' as *;
 @use 'variables' as *;
 
@@ -68,20 +69,24 @@ abbr[title] {
 
 kbd {
   @include label-base();
-  @include label-variant($light-color, $dark-color);
+  // @include label-variant($light-color, $dark-color); // old spectre.css
+  @include label-variant('light-color', 'dark-color');
   font-size: $font-size-sm;
 }
 
 mark {
-  @include label-variant($body-font-color, $highlight-color);
-  border-bottom: $unit-o solid darken($highlight-color, 15%);
+  // @include label-variant($body-font-color, $highlight-color); // old spectre.css
+  @include label-variant('body-font-color', 'highlight-color');
+  // border-bottom: $unit-o solid darken($highlight-color, 15%); // old spectre.css
+  border-bottom: $unit-o solid color('highlight-color', $lightness: -15%);
   border-radius: $border-radius;
   padding: $unit-o $unit-h 0;
 }
 
 // Blockquote
 blockquote {
-  border-left: $border-width-lg solid $border-color;
+  // border-left: $border-width-lg solid $border-color; // old spectre.css
+  border-left: $border-width-lg solid color('border-color');
   margin-left: 0;
   padding: $unit-2 $unit-4;
 

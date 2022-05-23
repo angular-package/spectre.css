@@ -1,34 +1,43 @@
+@use 'function/css-variable-color' as *;
 @use 'mixins/toast' as *;
 @use 'variables' as *;
 
 // Toasts
 .toast {
-  @include toast-variant($dark-color);
-  border: $border-width solid $dark-color;
+  // @include toast-variant($dark-color); // old spectre.css
+  @include toast-variant('dark-color');
+  // border: $border-width solid $dark-color; // old spectre.css
+  border: $border-width solid color('dark-color');
   border-radius: $border-radius;
-  color: $light-color;
+  // color: $light-color; // old spectre.css
+  color: color('light-color');
   display: block;
   padding: $layout-spacing;
   width: 100%;
 
   &.toast-primary {
-    @include toast-variant($primary-color);
+    // @include toast-variant($primary-color); // old spectre.css
+    @include toast-variant('primary-color');
   }
 
   &.toast-success {
-    @include toast-variant($success-color);
+    // @include toast-variant($success-color); // old spectre.css
+    @include toast-variant('success-color');
   }
 
   &.toast-warning {
-    @include toast-variant($warning-color);
+    // @include toast-variant($warning-color); // old spectre.css
+    @include toast-variant('warning-color');
   }
 
   &.toast-error {
-    @include toast-variant($error-color);
+    // @include toast-variant($error-color); // old spectre.css
+    @include toast-variant('error-color');
   }
 
   a {
-    color: $light-color;
+    // color: $light-color; // old spectre.css
+    color: color('light-color');
     text-decoration: underline;
 
     &:focus,

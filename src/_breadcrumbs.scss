@@ -1,3 +1,4 @@
+@use 'function/css-variable-color' as *;
 @use 'variables' as *;
 
 // Breadcrumbs
@@ -7,7 +8,8 @@
   padding: $unit-1 0;
 
   .breadcrumb-item {
-    color: $gray-color-dark;
+    // color: $gray-color-dark; // old spectre.css
+    color: color('gray-color-dark');
     display: inline-block;
     margin: 0;
     padding: $unit-1 0;
@@ -16,13 +18,15 @@
       margin-right: $unit-1;
 
       a {
-        color: $gray-color-dark;
+        // color: $gray-color-dark; // old spectre.css
+        color: color('gray-color-dark');
       }
     }
 
     &:not(:first-child) {
       &::before {
-        color: $gray-color-dark;
+        // color: $gray-color-dark; // old spectre.css
+        color: color('gray-color-dark');
         content: "/";
         padding-right: $unit-2;
       }

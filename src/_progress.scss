@@ -1,13 +1,16 @@
+@use 'function/css-variable-color' as *;
 @use 'variables' as *;
 
 // Progress
 // Credit: https://css-tricks.com/html5-progress-element/
 .progress {
   appearance: none;
-  background: $bg-color-dark;
+  // background: $bg-color-dark; // old spectre.css
+  background: color('bg-color-dark');
   border: 0;
   border-radius: $border-radius;
-  color: $primary-color;
+  // color: $primary-color; // old spectre.css
+  color: color('primary-color');
   height: $unit-1;
   position: relative;
   width: 100%;
@@ -18,18 +21,20 @@
   }
 
   &::-webkit-progress-value {
-    background: $primary-color;
+    // background: $primary-color; // old spectre.css
+    background: color('primary-color');
     border-radius: $border-radius;
   }
 
   &::-moz-progress-bar {
-    background: $primary-color;
+    // background: $primary-color; // old spectre.css
+    background: color('primary-color');
     border-radius: $border-radius;
   }
 
   &:indeterminate {
     animation: progress-indeterminate 1.5s linear infinite;
-    background: $bg-color-dark linear-gradient(to right, $primary-color 30%, $bg-color-dark 30%) top left / 150% 150% no-repeat;
+    background: color('bg-color-dark') linear-gradient(to right, $primary-color 30%, $bg-color-dark 30%) top left / 150% 150% no-repeat; // TODO: Update colors
 
     &::-moz-progress-bar {
       background: transparent;

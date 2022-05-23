@@ -1,3 +1,4 @@
+@use 'function/css-variable-color' as *;
 @use 'variables' as *;
 
 // Pagination
@@ -22,7 +23,8 @@
       text-decoration: none;
       &:focus,
       &:hover {
-        color: $primary-color;
+        // color: $primary-color; // old spectre.css
+        color: color('primary-color');
       }
     }
 
@@ -36,8 +38,10 @@
 
     &.active {
       a {
-        background: $primary-color;
-        color: $light-color;
+        // background: $primary-color; // old spectre.css
+        background: color('primary-color');
+        // color: $light-color; // old spectre.css
+        color: color('light-color');
       }
     }
 

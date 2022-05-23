@@ -1,10 +1,13 @@
+@use 'function/css-variable-color' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
 
 // Cards
 .card {
-  background: $bg-color-light;
-  border: $border-width solid $border-color;
+  // background: $bg-color-light; // old spectre.css
+  background: color('bg-color-light');
+  // border: $border-width solid $border-color; // old spectre.css
+  border: $border-width solid color('border-color');
   border-radius: $border-radius;
   display: flex;
   flex-direction: column;

@@ -1,8 +1,10 @@
+@use 'function/css-variable-color' as *;
 @use 'variables' as *;
 
 // Panels
 .panel {
-  border: $border-width solid $border-color;
+  // border: $border-width solid $border-color; // old spectre.css
+  border: $border-width solid color('border-color');
   border-radius: $border-radius;
   display: flex;
   flex-direction: column;

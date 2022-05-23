@@ -1,3 +1,4 @@
+@use 'function/css-variable-color' as *;
 @use 'variables' as *;
 
 // Filters
@@ -5,8 +6,10 @@
 $filter-number: 8 !default;
 
 %filter-checked-nav {
-  background: $primary-color;
-  color: $light-color;
+  // background: $primary-color; // old spectre.css
+  background: color('primary-color');
+  // color: $light-color; // old spectre.css
+  color: color('light-color');
 }
 
 %filter-checked-body {

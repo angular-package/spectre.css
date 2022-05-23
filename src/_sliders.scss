@@ -1,3 +1,4 @@
+@use 'function/css-variable-color' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
 
@@ -24,7 +25,8 @@
   // Slider Thumb
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
-    background: $primary-color;
+    // background: $primary-color; // old spectre.css
+    background: color('primary-color');
     border: 0;
     border-radius: 50%;
     height: $unit-3;
@@ -33,7 +35,8 @@
     width: $unit-3;
   }
   &::-moz-range-thumb {
-    background: $primary-color;
+    // background: $primary-color; // old spectre.css
+    background: color('primary-color');
     border: 0;
     border-radius: 50%;
     height: $unit-3;
@@ -41,7 +44,8 @@
     width: $unit-3;
   }
   &::-ms-thumb {
-    background: $primary-color;
+    // background: $primary-color; // old spectre.css
+    background: color('primary-color');
     border: 0;
     border-radius: 50%;
     height: $unit-3;
@@ -64,39 +68,46 @@
   &:disabled,
   &.disabled {
     &::-webkit-slider-thumb {
-      background: $gray-color-light;
+      // background: $gray-color-light; // old spectre.css
+      background: color('gray-color-light');
       transform: scale(1);
     }
     &::-moz-range-thumb {
-      background: $gray-color-light;
+      // background: $gray-color-light; // old spectre.css
+      background: color('gray-color-light');
       transform: scale(1);
     }
     &::-ms-thumb {
-      background: $gray-color-light;
+      // background: $gray-color-light; // old spectre.css
+      background: color('gray-color-light');
       transform: scale(1);
     }
   }
 
   // Slider Track
   &::-webkit-slider-runnable-track {
-    background: $bg-color-dark;
+    // background: $bg-color-dark; // old spectre.css
+    background: color('bg-color-dark');
     border-radius: $border-radius;
     height: $unit-h;
     width: 100%;
   }
   &::-moz-range-track {
-    background: $bg-color-dark;
+    // background: $bg-color-dark; // old spectre.css
+    background: color('bg-color-dark');
     border-radius: $border-radius;
     height: $unit-h;
     width: 100%;
   }
   &::-ms-track {
-    background: $bg-color-dark;
+    // background: $bg-color-dark; // old spectre.css
+    background: color('bg-color-dark');
     border-radius: $border-radius;
     height: $unit-h;
     width: 100%;
   }
   &::-ms-fill-lower {
-    background: $primary-color;
+    // background: $primary-color; // old spectre.css
+    background: color('primary-color');
   }
 }

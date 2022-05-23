@@ -1,16 +1,19 @@
+@use 'function/css-variable-color' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
 
 // Calendars
 .calendar {
-  border: $border-width solid $border-color;
+  // border: $border-width solid $border-color; // old spectre.css
+  border: $border-width solid color('border-color');
   border-radius: $border-radius;
   display: block;
   min-width: 280px;
 
   .calendar-nav {
     align-items: center;
-    background: $bg-color;
+    // background: $bg-color; // old spectre.css
+    background: color('bg-color');
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
     display: flex;
@@ -32,15 +35,19 @@
   }
 
   .calendar-header {
-    background: $bg-color;
-    border-bottom: $border-width solid $border-color;
-    color: $gray-color;
+    // background: $bg-color; // old spectre.css
+    background: color('bg-color');
+    // border-bottom: $border-width solid $border-color; // old spectre.css
+    border-bottom: $border-width solid color('border-color');
+    // color: $gray-color; // old spectre.css
+    color: color('gray-color');
     font-size: $font-size-sm;
     text-align: center;
   }
 
   .calendar-body {
-    color: $gray-color-dark;
+    // color: $gray-color-dark; // old spectre.css
+    color: color('gray-color-dark');
   }
 
   .calendar-date {
@@ -52,7 +59,8 @@
       background: transparent;
       border: $border-width solid transparent;
       border-radius: 50%;
-      color: $gray-color-dark;
+      // color: $gray-color-dark; // old spectre.css
+      color: color('gray-color-dark');
       cursor: pointer;
       font-size: $font-size-sm;
       height: $unit-7;
@@ -68,8 +76,10 @@
       width: $unit-7;
 
       &.date-today {
-        border-color: $secondary-color-dark;
-        color: $primary-color;
+        // border-color: $secondary-color-dark; // old spectre.css
+        border-color: color('secondary-color-dark');
+        // color: $primary-color; // old spectre.css
+        color: color('primary-color');
       }
 
       &:focus {
@@ -78,16 +88,22 @@
 
       &:focus,
       &:hover {
-        background: $secondary-color-light;
-        border-color: $secondary-color-dark;
-        color: $primary-color;
+        // background: $secondary-color-light; // old spectre.css
+        background: color('secondary-color-light');
+        // border-color: $secondary-color-dark; // old spectre.css
+        border-color: color('secondary-color-dark');
+        // color: $primary-color; // old spectre.css
+        color: color('primary-color');
         text-decoration: none;
       }
       &:active,
       &.active {
-        background: $primary-color-dark;
-        border-color: darken($primary-color-dark, 5%);
-        color: $light-color;
+        // background: $primary-color-dark; // old spectre.css
+        background: color('primary-color-dark');
+        // border-color: darken($primary-color-dark, 5%); // old spectre.css
+        border-color: color('primary-color-dark', $lightness: -5%);
+        // color: $light-color; // old spectre.css
+        color: color('light-color');
       }
 
       // Calendar badge support
@@ -124,7 +140,8 @@
     position: relative;
 
     &::before {
-      background: $secondary-color;
+      // background: $secondary-color; // old spectre.css
+      background: color('secondary-color');
       content: "";
       height: $unit-7;
       left: 0;
@@ -147,14 +164,18 @@
     &.range-start,
     &.range-end {
       .date-item {
-        background: $primary-color-dark;
-        border-color: darken($primary-color-dark, 5%);
-        color: $light-color;
+        // background: $primary-color-dark; // old spectre.css
+        background: color('primary-color-dark');
+        // border-color: darken($primary-color-dark, 5%); // old spectre.css
+        border-color: color('primary-color-dark', $lightness: -5%);
+        // color: $light-color; // old spectre.css
+        color: color('light-color');
       }
     }
 
     .date-item {
-      color: $primary-color;
+      // color: $primary-color; // old spectre.css
+      color: color('primary-color');
     }
   }
 
@@ -164,8 +185,10 @@
       padding: 0;
 
       .calendar-date {
-        border-bottom: $border-width solid $border-color;
-        border-right: $border-width solid $border-color;
+        // border-bottom: $border-width solid $border-color; // old spectre.css
+        border-bottom: $border-width solid color('border-color');
+        // border-right: $border-width solid $border-color; // old spectre.css
+        border-right: $border-width solid color('border-color');
         display: flex;
         flex-direction: column;
         height: 5.5rem;

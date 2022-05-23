@@ -1,5 +1,6 @@
-@use 'variables' as *;
+@use 'function/css-variable-color' as *;
 @use 'mixins/shadow' as *;
+@use 'variables' as *;
 
 // Base
 *,
@@ -16,8 +17,10 @@ html {
 }
 
 body {
-  background: $body-bg;
-  color: $body-font-color;
+  // background: $body-bg; // old spectre.css
+  background: color('body-bg-color');
+  // color: $body-font-color; // old spectre.css
+  color: color('body-font-color');
   font-family: $body-font-family;
   font-size: $font-size;
   overflow-x: hidden;
@@ -25,7 +28,8 @@ body {
 }
 
 a {
-  color: $link-color;
+  // color: $link-color; // old spectre.css
+  color: color('link-color');
   outline: none;
   text-decoration: none;
 
@@ -37,11 +41,13 @@ a {
   &:hover,
   &:active,
   &.active {
-    color: $link-color-dark;
+    // color: $link-color-dark; // old spectre.css
+    color: color('link-color-dark');
     text-decoration: underline;
   }
 
   &:visited {
-    color: $link-color-light;
+    // color: $link-color-light; // old spectre.css
+    color: color('link-color-light');
   }
 }

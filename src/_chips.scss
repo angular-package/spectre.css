@@ -1,9 +1,11 @@
+@use 'function/css-variable-color' as *;
 @use 'variables' as *;
 
 // Chips
 .chip {
   align-items: center;
-  background: $bg-color-dark;
+  // background: $bg-color-dark; // old spectre.css
+  background: color('bg-color-dark');
   border-radius: 5rem;
   display: inline-flex;
   font-size: 90%;
@@ -19,8 +21,10 @@
   white-space: nowrap;
 
   &.active {
-    background: $primary-color;
-    color: $light-color;
+    // background: $primary-color; // old spectre.css
+    background: color('primary-color');
+    // color: $light-color; // old spectre.css
+    color: color('light-color');
   }
 
   .avatar {

@@ -1,3 +1,4 @@
+@use 'function/css-variable-color' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
 
@@ -22,7 +23,8 @@
     z-index: $zindex-4;
 
     .modal-overlay {
-      background: rgba($bg-color, .75);
+      // background: rgba($bg-color, .75); // old spectre.css
+      background: color('bg-color', $alpha: .75);
       bottom: 0;
       cursor: default;
       display: block;
@@ -47,7 +49,8 @@
 
   &.modal-lg {
     .modal-overlay {
-      background: $bg-color-light;
+      // background: $bg-color-light; // old spectre.css
+      background: color('bg-color-light');
     }
 
     .modal-container {
@@ -73,7 +76,8 @@
   }
 
   .modal-header {
-    color: $dark-color;
+    // color: $dark-color; // old spectre.css
+    color: color('dark-color');
     padding: $unit-4;
   }
 

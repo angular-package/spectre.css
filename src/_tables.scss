@@ -1,3 +1,4 @@
+@use 'function/css-variable-color' as *;
 @use 'variables' as *;
 
 // Tables
@@ -14,7 +15,8 @@
   &.table-striped {
     tbody {
       tr:nth-of-type(odd) {
-        background: $bg-color;
+        // background: $bg-color; // old spectre.css
+        background: color('bg-color');
       }
     }
   }
@@ -24,7 +26,8 @@
     tbody {
       tr {
         &.active {
-          background: $bg-color-dark;
+          // background: $bg-color-dark; // old spectre.css
+          background: color('bg-color-dark');
         }
       }
     }
@@ -34,7 +37,8 @@
     tbody {
       tr {
         &:hover {
-          background: $bg-color-dark;
+          // background: $bg-color-dark; // old spectre.css
+          background: color('bg-color-dark');
         }
       }
     }
@@ -50,7 +54,8 @@
 
   td,
   th {
-    border-bottom: $border-width solid $border-color;
+    // border-bottom: $border-width solid $border-color; // old spectre.css
+    border-bottom: $border-width solid color('border-color');
     padding: $unit-3 $unit-2;
   }
   th {
