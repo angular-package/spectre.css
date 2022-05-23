@@ -2,7 +2,7 @@
 
 // Avatar mixin
 @mixin avatar-base($size: $unit-8) {
-  font-size: $size / 2;
+  font-size: $size * 0.5;
   height: $size;
   width: $size;
 }
