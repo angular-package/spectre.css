@@ -1,3 +1,4 @@
+@use '../function/css-variable-color' as *;
 @use '../variables' as *;
 
 // Divider
@@ -7,8 +8,10 @@
   position: relative;
 
   &[data-content]::after {
-    background: $bg-color-light;
-    color: $gray-color;
+    // background: $bg-color-light; // old spectre.css
+    background: color('bg-color-light');
+    // color: $gray-color; // old spectre.css
+    color: color('gray-color');
     content: attr(data-content);
     display: inline-block;
     font-size: $font-size-sm;
@@ -18,7 +21,8 @@
 }
 
 .divider {
-  border-top: $border-width solid $border-color-light;
+  // border-top: $border-width solid $border-color-light; // old spectre.css
+  border-top: $border-width solid color('border-color-light');
   height: $border-width;
   margin: $unit-2 0;
 
@@ -32,7 +36,8 @@
   padding: $unit-4;
 
   &::before {
-    border-left: $border-width solid $border-color;
+    // border-left: $border-width solid $border-color; // old spectre.css
+    border-left: $border-width solid color('border-color');
     bottom: $unit-2;
     content: "";
     display: block;
