@@ -1,0 +1,9 @@
+// Color variable.
+@function color($name, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 1) {
+  @return hsla(
+    calc(var(--s-#{$name}-h) + #{$hue}),
+    calc(var(--s-#{$name}-s) + #{$saturation}),
+    calc(var(--s-#{$name}-l) + #{$lightness}),
+    calc(var(--s-#{$name}-a) * #{$alpha})
+  );
+}
