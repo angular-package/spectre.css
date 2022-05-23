@@ -247,21 +247,80 @@ For example `primary-color` or `primary-color-dark`:
 
 ## Helper class
 
-There is temporary function to help handle css variables `CssPropertyColor` and here is example usage of it:
+There is temporary class to help handle css variables `CssPropertyColor` and here is example usage of it:
+
+First, you need to initialize the color you want to handle.
 
 ```typescript
 import { CssPropertyColor } from '@angular-package/spectre.css';
 
-const primary = new CssPropertyColor('primary', 's');
+const primary = new CssPropertyColor(
+  'primary', // Name of the color in the CSS variable --s-primary, `color` is added automatically.
+  's' // Prefix s in the CSS variable --s
+);
+```
+
+Get the hex of the `primary` color:
+
+```typescript
+import { CssPropertyColor } from '@angular-package/spectre.css';
+
+const primary = new CssPropertyColor(
+  'primary', // Name of the color in the CSS variable --s-primary, `color` is added automatically.
+  's' // Prefix s in the CSS variable --s
+);
 
 console.log(primary.getHex()); // #5755d9
+
+// Get the shade `light` of the `primary` color.
 console.log(primary.getHex('light')); // #6362dc
+
+// Get the shade `dark` of the `primary` color.
 console.log(primary.getHex('dark')); // #4b48d6
+```
+
+Set the color dynamically in the spectre.css:
+
+```typescript
+import { CssPropertyColor } from '@angular-package/spectre.css';
+
+const primary = new CssPropertyColor(
+  'primary', // Name of the color in the CSS variable --s-primary, `color` is added automatically.
+  's' // Prefix s in the CSS variable --s
+);
 
 primary.setHex('#aaaaaa');
+
 console.log(primary.getHex()); // #aaaaaa
+
+// Get the shade `light` of the `primary` color.
 console.log(primary.getHex('light')); // #b2b2b2
+
+// Get the shade `dark` of the `primary` color.
 console.log(primary.getHex('dark')); // #a2a2a2
+```
+
+It's possible to change the shade of the color:
+
+```typescript
+import { CssPropertyColor } from '@angular-package/spectre.css';
+
+const primary = new CssPropertyColor(
+  'primary', // Name of the color in the CSS variable --s-primary, `color` is added automatically.
+  's' // Prefix s in the CSS variable --s
+);
+
+primary.setHex('#aaaaaa', 'light');
+console.log(primary.getHex('light')); // #aaaaaa
+```
+
+with the CSS variable result:
+
+```css
+// style.attribute
+--s-primary-color-light-h: 0deg;
+--s-primary-color-light-l: 66.6667%;
+--s-primary-color-light-s: 0%;
 ```
 
 ## Documentation and examples
