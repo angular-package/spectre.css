@@ -1,3 +1,6 @@
+@use 'function/css-variable-color' as *;
+@use 'variables' as *;
+
 // Media
 // Image responsive
 .img-responsive {
@@ -69,7 +72,8 @@ video.video-responsive {
   margin: 0 0 $layout-spacing 0;
 
   .figure-caption {
-    color: $gray-color-dark;
+    // color: $gray-color-dark; // old spectre.css
+    color: color('gray-color-dark');
     margin-top: $layout-spacing;
   }
 }

@@ -1,3 +1,6 @@
+@use 'icons-core' as *;
+@use '../variables' as *;
+
 // Icon time
 .icon-time {
   border: $icon-border-width solid currentColor;

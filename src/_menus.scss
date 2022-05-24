@@ -1,7 +1,12 @@
+@use 'function/css-variable-color' as *;
+@use 'mixins/shadow' as *;
+@use 'variables' as *;
+
 // Menus
 .menu {
   @include shadow-variant(.05rem);
-  background: $bg-color-light;
+  // background: $bg-color-light; // old spectre.css
+  background: color('bg-color-light');
   border-radius: $border-radius;
   list-style: none;
   margin: 0;
@@ -30,13 +35,17 @@
       text-decoration: none;
       &:focus,
       &:hover {
-        background: $secondary-color;
-        color: $primary-color;
+        // background: $secondary-color; // old spectre.css
+        background: color('secondary-color');
+        // color: $primary-color; // old spectre.css
+        color: color('primary-color');
       }
       &:active,
       &.active {
-        background: $secondary-color;
-        color: $primary-color;
+        // background: $secondary-color; // old spectre.css
+        background: color('secondary-color');
+        // color: $primary-color; // old spectre.css
+        color: color('primary-color');
       }
     }
 

@@ -41,12 +41,290 @@ There are 2 ways to get started with Spectre CSS framework in your projects. You
 
 `$ yarn add @angular-package/spectre.css`
 
+## Demonstration
+
+Demonstration will be available soon here http://angular-package.dev/ui-kit/component/theme
+
 ## Usage
 
 ```scss
-@import '@angular-package/spectre.css/spectre.scss';
-@import '@angular-package/spectre.css/spectre-exp.scss';
-@import '@angular-package/spectre.css/spectre-icons.scss';
+@import 'node_modules/@angular-package/spectre.css/spectre.scss';
+@import 'node_modules/@angular-package/spectre.css/spectre-exp.scss';
+@import 'node_modules/@angular-package/spectre.css/spectre-icons.scss';
+```
+
+## SCSS Variables
+
+Colors with a specific **hex** on which others are based.
+
+```scss
+// _variables.scss
+// Core colors
+$primary-color: #5755d9 !default;
+$accent-color: #9932CC !default; // New.
+$dark-color: #303742 !default;
+$light-color: #fff !default;
+
+// Control colors
+$info-color: #d9edf7 !default; // New.
+$success-color: #32b643 !default;
+$warning-color: #ffb700 !default;
+$error-color: #e85600 !default;
+
+// Other colors
+$code-color: #d73e48 !default;
+$highlight-color: #ffe9b3 !default;
+```
+
+Colors that are based on the **hex** colors above.
+
+```scss
+// Core colors
+$primary-color-dark: darken($primary-color, 3%) !default;
+$primary-color-light: lighten($primary-color, 3%) !default;
+$secondary-color: lighten($primary-color, 37.5%) !default;
+$secondary-color-dark: darken($secondary-color, 3%) !default;
+$secondary-color-light: lighten($secondary-color, 3%) !default;
+
+// Gray colors
+$gray-color: lighten($dark-color, 55%) !default;
+$gray-color-dark: darken($gray-color, 30%) !default;
+$gray-color-light: lighten($gray-color, 20%) !default;
+
+$border-color: lighten($dark-color, 65%) !default;
+$border-color-dark: darken($border-color, 10%) !default;
+$border-color-light: lighten($border-color, 8%) !default;
+$bg-color: lighten($dark-color, 75%) !default;
+$bg-color-dark: darken($bg-color, 3%) !default;
+$bg-color-light: $light-color !default;
+
+// Other colors
+$body-bg: $bg-color-light !default;
+$body-font-color: lighten($dark-color, 5%) !default;
+$link-color: $primary-color !default;
+$link-color-dark: darken($link-color, 10%) !default;
+$link-color-light: lighten($link-color, 10%) !default;
+```
+
+## CSS properties/variables
+
+The `color-scheme` variable is set to `normal`.
+
+```scss
+:root, :host {
+  color-scheme: normal;
+}
+```
+
+Each **hex** color has **four** CSS variables defined by the mixin `define-color($name, $color)`, split into hsl form, where suffix `h` indicates `hue`, `l` lightness, `s` saturation and `a` - alpha.
+
+```scss
+// mixins/_css-variable-color.scss
+// Define color.
+@mixin define-color($name, $color) {
+  --s-#{$name}-h: #{hue($color)};
+  --s-#{$name}-l: #{lightness($color)};
+  --s-#{$name}-s: #{saturation($color)};
+  --s-#{$name}-a: #{alpha($color)};
+}
+```
+
+For example `primary-color` is built from the CSS variables.
+
+```css
+  --s-primary-color-h: 240.9090909091deg; // Hue.
+  --s-primary-color-l: 59.2156862745%; // Lightness.
+  --s-primary-color-s: 63.4615384615%; // Saturation.
+  --s-primary-color-a: 1; // Alpha.
+```
+
+CSS variables are defined in the `:root` and `:host`.
+
+```scss
+// _css-variables.scss
+
+:root, :host {
+  // Core colors.
+  @include define-color('primary-color', $primary-color); // #5755d9
+  @include define-color('accent-color', $accent-color); // #9932CC
+  @include define-color('dark-color', $dark-color); // #303742
+  @include define-color('light-color', $light-color); // #ffffff
+
+  // Control colors
+  @include define-color('info-color', $info-color); // #d9edf7
+  @include define-color('success-color', $success-color); // #32b643
+  @include define-color('error-color', $error-color); // #e85600
+  @include define-color('warning-color', $warning-color); // #ffb700
+
+  // Other colors
+  @include define-color('code-color', $code-color); // #d73e48
+  @include define-color('highlight-color', $highlight-color); // #ffe9b3
+}
+```
+
+Each color that is based on **hex** color has **four** CSS variables defined by the mixin `define-color-based-on($name, $color, $lightness: 0%)`, split into hsl form, where suffix `h` indicates `hue`, `l` lightness, `s` saturation and `a` - alpha.
+
+```scss
+// mixins/_css-variable-color.scss
+@mixin define-color-based-on($name, $color, $lightness: 0%) {
+  --s-#{$name}-h: var(--s-#{$color}-h);
+  --s-#{$name}-l: calc(var(--s-#{$color}-l) + #{$lightness});
+  --s-#{$name}-s: var(--s-#{$color}-s);
+  --s-#{$name}-a: var(--s-#{$color}-a);
+}
+```
+
+Color that based on `primary-color` for example `secondary-color` is built from the css variables:
+
+```css
+  --s-secondary-color-h: var(--s-primary-color-h);
+  --s-secondary-color-l: calc(var(--s-primary-color-l) + 37.5%);
+  --s-secondary-color-s: var(--s-primary-color-s);
+  --s-secondary-color-a: var(--s-primary-color-a);
+```
+
+CSS variables that are based on others are also defined in the `:root` and `:host`.
+
+```scss
+// _css-variables.scss
+:root, :host {
+  // Core colors.
+  @include define-color-based-on('primary-color-dark', 'primary-color', $lightness: -3%); // darken($primary-color, 3%)
+  @include define-color-based-on('primary-color-light', 'primary-color', $lightness: +3%); // lighten($primary-color, 3%)
+
+  @include define-color-based-on('secondary-color', 'primary-color', $lightness: +37.5%); // lighten($primary-color, 37.5%) !default;
+  @include define-color-based-on('secondary-color-dark', 'secondary-color', $lightness: -3%); // darken($secondary-color, 3%) !default;
+  @include define-color-based-on('secondary-color-light', 'secondary-color', $lightness: +3%); // lighten($secondary-color, 3%) !default;
+
+  // gray-color
+  @include define-color-based-on('gray-color', 'dark-color', $lightness: +55%); // lighten($dark-color, 55%)
+  @include define-color-based-on('gray-color-dark', 'gray-color', $lightness: -30%); // darken($gray-color, 30%)
+  @include define-color-based-on('gray-color-light', 'gray-color', $lightness: +20%); // lighten($gray-color, 20%)
+
+  // border-color
+  @include define-color-based-on('border-color', 'dark-color', $lightness: +65%); // lighten($dark-color, 65%)
+  @include define-color-based-on('border-color-dark', 'border-color', $lightness: -10%); // darken($border-color, 10%)
+  @include define-color-based-on('border-color-light', 'border-color', $lightness: +8%); // lighten($border-color, 8%)
+
+  // bg-color
+  @include define-color-based-on('bg-color', 'dark-color', $lightness: +75%); // lighten($dark-color, 75%)
+  @include define-color-based-on('bg-color-dark', 'bg-color', $lightness: -3%); // darken($bg-color, 3%)
+  @include define-color-based-on('bg-color-light', 'light-color'); // $light-color
+
+  @include define-color-based-on('body-bg-color', 'bg-color-light'); // $bg-color-light
+  @include define-color-based-on('body-font-color', 'dark-color', $lightness: +5%); // lighten($dark-color, 5%)
+
+  @include define-color-based-on('link-color', 'primary-color'); // $primary-color
+  @include define-color-based-on('link-color-dark', 'link-color', $lightness: -10%); // darken($link-color, 10%)
+  @include define-color-based-on('link-color-light', 'link-color', $lightness: +10%); // lighten($link-color, 10%)
+}
+```
+
+Colors are read by the function `color($name, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 1)`.
+
+```scss
+// function/_css-variable-color.scss
+// Color variable.
+@function color($name, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 1) {
+  @return hsla(
+    calc(var(--s-#{$name}-h) + #{$hue}),
+    calc(var(--s-#{$name}-s) + #{$saturation}),
+    calc(var(--s-#{$name}-l) + #{$lightness}),
+    calc(var(--s-#{$name}-a) * #{$alpha})
+  );
+}
+```
+
+For example `primary-color` or `primary-color-dark`:
+
+```scss
+@use 'function/css-variable-color';
+
+.primary-color {
+  background: color('primary-color');
+}
+
+.primary-color-dark {
+  background: color('primary-color-dark');
+}
+```
+
+## Helper class
+
+There is temporary class to help handle css variables `CssPropertyColor` and here is example usage of it:
+
+First, you need to initialize the color you want to handle.
+
+```typescript
+import { CssPropertyColor } from '@angular-package/spectre.css';
+
+const primary = new CssPropertyColor(
+  'primary', // Name of the color in the CSS variable --s-primary, `color` is added automatically.
+  's' // Prefix s in the CSS variable --s
+);
+```
+
+Get the hex of the `primary` color:
+
+```typescript
+import { CssPropertyColor } from '@angular-package/spectre.css';
+
+const primary = new CssPropertyColor(
+  'primary', // Name of the color in the CSS variable --s-primary, `color` is added automatically.
+  's' // Prefix s in the CSS variable --s
+);
+
+console.log(primary.getHex()); // #5755d9
+
+// Get the shade `light` of the `primary` color.
+console.log(primary.getHex('light')); // #6362dc
+
+// Get the shade `dark` of the `primary` color.
+console.log(primary.getHex('dark')); // #4b48d6
+```
+
+Set the color dynamically in the spectre.css:
+
+```typescript
+import { CssPropertyColor } from '@angular-package/spectre.css';
+
+const primary = new CssPropertyColor(
+  'primary', // Name of the color in the CSS variable --s-primary, `color` is added automatically.
+  's' // Prefix s in the CSS variable --s
+);
+
+primary.setHex('#aaaaaa');
+
+console.log(primary.getHex()); // #aaaaaa
+
+// Get the shade `light` of the `primary` color.
+console.log(primary.getHex('light')); // #b2b2b2
+
+// Get the shade `dark` of the `primary` color.
+console.log(primary.getHex('dark')); // #a2a2a2
+```
+
+It's possible to change the shade of the color:
+
+```typescript
+import { CssPropertyColor } from '@angular-package/spectre.css';
+
+const primary = new CssPropertyColor(
+  'primary', // Name of the color in the CSS variable --s-primary, `color` is added automatically.
+  's' // Prefix s in the CSS variable --s
+);
+
+primary.setHex('#aaaaaa', 'light');
+console.log(primary.getHex('light')); // #aaaaaa
+```
+
+with the CSS variable result:
+
+```css
+// style.attribute
+--s-primary-color-light-h: 0deg;
+--s-primary-color-light-l: 66.6667%;
+--s-primary-color-light-s: 0%;
 ```
 
 ## Documentation and examples

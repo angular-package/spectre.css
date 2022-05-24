@@ -1,49 +1,52 @@
 // Variables and mixins
-@import 'src/variables';
-@import 'src/mixins';
+@forward 'src/variables';
+@forward 'src/mixins';
+@forward 'src/css-variables';
+@use 'src/variables' as *;
 
 /*! Spectre.css v#{$version} | MIT License | github.com/picturepan2/spectre */
 // Reset and dependencies
-@import 'src/normalize';
-@import 'src/base';
+@forward 'src/normalize';
+@forward 'src/base';
 
 // Elements
-@import 'src/typography';
-@import 'src/asian';
-@import 'src/tables';
-@import 'src/buttons';
-@import 'src/forms';
-@import 'src/labels';
-@import 'src/codes';
-@import 'src/media';
+@forward 'src/typography';
+@forward 'src/asian';
+@forward 'src/tables';
+@forward 'src/buttons';
+@forward 'src/forms';
+@forward 'src/labels';
+@forward 'src/codes';
+@forward 'src/media';
 
 // Layout
-@import 'src/layout';
-@import 'src/hero';
-@import 'src/navbar';
+@forward 'src/hero';
+@forward 'src/layout';
+@forward 'src/columns-order';
+@forward 'src/navbar';
 
 // Components
-@import 'src/accordions';
-@import 'src/avatars';
-@import 'src/badges';
-@import 'src/breadcrumbs';
-@import 'src/bars';
-@import 'src/cards';
-@import 'src/chips';
-@import 'src/dropdowns';
-@import 'src/empty';
-@import 'src/menus';
-@import 'src/modals';
-@import 'src/navs';
-@import 'src/pagination';
-@import 'src/panels';
-@import 'src/popovers';
-@import 'src/steps';
-@import 'src/tabs';
-@import 'src/tiles';
-@import 'src/toasts';
-@import 'src/tooltips';
+@forward 'src/accordions';
+@forward 'src/avatars';
+@forward 'src/badges';
+@forward 'src/bars';
+@forward 'src/breadcrumbs';
+@forward 'src/cards';
+@forward 'src/chips';
+@forward 'src/dropdowns';
+@forward 'src/empty';
+@forward 'src/menus';
+@forward 'src/modals';
+@forward 'src/navs';
+@forward 'src/pagination';
+@forward 'src/panels';
+@forward 'src/popovers';
+@forward 'src/steps';
+@forward 'src/tabs';
+@forward 'src/tiles';
+@forward 'src/toasts';
+@forward 'src/tooltips';
 
 // Utility classes
-@import 'src/animations';
-@import 'src/utilities';
+@forward 'src/animations';
+@forward 'src/utilities';

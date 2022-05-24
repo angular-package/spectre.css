@@ -1,19 +1,24 @@
+@use 'function/css-variable-color' as *;
+@use 'variables' as *;
+
 // Carousels
 // The number of carousel images
 $carousel-number: 8;
 
-%carousel-image-checked { 
+%carousel-image-checked {
   animation: carousel-slidein .75s ease-in-out 1;
   opacity: 1;
   z-index: $zindex-1;
 }
 
-%carousel-nav-checked { 
-  color: $gray-color-light;
+%carousel-nav-checked {
+  // color: $gray-color-light; // old spectre.css
+  color: color('gray-color-light');
 }
 
 .carousel {
-  background: $bg-color;
+  // background: $bg-color; // old spectre.css
+  background: color('bg-color');
   display: block;
   overflow: hidden;
   position: relative;
@@ -51,9 +56,12 @@ $carousel-number: 8;
 
     .item-prev,
     .item-next {
-      background: rgba($gray-color-light, .25);
-      border-color: rgba($gray-color-light, .5);
-      color: $gray-color-light;
+      // background: rgba($gray-color-light, .25); // old spectre.css
+      background: color('gray-color-light', $alpha: .25);
+      // border-color: rgba($gray-color-light, .5); // old spectre.css
+      border-color: color('gray-color-light', $alpha: .5);
+      // color: $gray-color-light; // old spectre.css
+      color: color('gray-color-light');
       opacity: 0;
       position: absolute;
       top: 50%;

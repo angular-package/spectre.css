@@ -1,0 +1,15 @@
+// Define color.
+@mixin define-color($name, $color) {
+  --s-#{$name}-h: #{hue($color)};
+  --s-#{$name}-l: #{lightness($color)};
+  --s-#{$name}-s: #{saturation($color)};
+  --s-#{$name}-a: #{alpha($color)};
+}
+
+// Defines a color based on the specified CSS variable and its lightness.
+@mixin define-color-based-on($name, $color, $lightness: 0%) {
+  --s-#{$name}-h: var(--s-#{$color}-h);
+  --s-#{$name}-l: calc(var(--s-#{$color}-l) + #{$lightness});
+  --s-#{$name}-s: var(--s-#{$color}-s);
+  --s-#{$name}-a: var(--s-#{$color}-a);
+}

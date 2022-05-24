@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 // Columns order
 @for $i from 1 through $columns-count {
   .order-#{$i} { -ms-flex-order: $i; order: $i; }

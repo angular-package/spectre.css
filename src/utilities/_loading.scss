@@ -1,3 +1,6 @@
+@use '../function/css-variable-color' as *;
+@use '../variables' as *;
+
 // Loading
 .loading {
   color: transparent !important;
@@ -7,7 +10,8 @@
   &::after {
     animation: loading 500ms infinite linear;
     background: transparent;
-    border: $border-width-lg solid $primary-color;
+    // border: $border-width-lg solid $primary-color; // old spectre.css
+    border: $border-width-lg solid color('primary-color');
     border-radius: 50%;
     border-right-color: transparent;
     border-top-color: transparent;

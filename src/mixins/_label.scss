@@ -1,3 +1,6 @@
+@use '../function/css-variable-color' as *;
+@use '../variables' as *;
+
 // Label base style
 @mixin label-base() {
   border-radius: $border-radius;
@@ -5,7 +8,15 @@
   padding: .1rem .2rem;
 }
 
-@mixin label-variant($color: $light-color, $bg-color: $primary-color) {
-  background: $bg-color;
+// @mixin label-variant($color: $light-color, $bg-color: $primary-color) { // old spectre.css
+@mixin label-variant($color: 'light-color', $bg-color: 'primary-color') {
+  // background: $bg-color; // old spectre.css
+  background: color($bg-color);
+  // color: $color; // old spectre.css
+  color: color($color);
+}
+
+@mixin label--variant($color: color('light-color'), $bg-color: color('primary-color')) {
   color: $color;
+  background: $bg-color;
 }

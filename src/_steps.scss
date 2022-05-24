@@ -1,3 +1,6 @@
+@use 'function/css-variable-color' as *;
+@use 'variables' as *;
+
 // Steps
 .step {
   display: flex;
@@ -14,7 +17,8 @@
     position: relative;
 
     &:not(:first-child)::before {
-      background: $primary-color;
+      // background: $primary-color; // old spectre.css
+      background: color('primary-color');
       content: "";
       height: 2px;
       left: -50%;
@@ -24,14 +28,17 @@
     }
 
     a {
-      color: $primary-color;
+      // color: $primary-color; // old spectre.css
+      color: color('primary-color');
       display: inline-block;
       padding: 20px 10px 0;
       text-decoration: none;
 
       &::before {
-        background: $primary-color;
-        border: $border-width-lg solid $light-color;
+        // background: $primary-color; // old spectre.css
+        background: color('primary-color');
+        // border: $border-width-lg solid $light-color; // old spectre.css
+        border: $border-width-lg solid color('light-color');
         border-radius: 50%;
         content: "";
         display: block;
@@ -48,21 +55,26 @@
     &.active {
       a {
         &::before {
-          background: $light-color;
-          border: $border-width-lg solid $primary-color;
+          // background: $light-color; // old spectre.css
+          background: color('light-color');
+          // border: $border-width-lg solid $primary-color; // old spectre.css
+          border: $border-width-lg solid color('primary-color');
         }
       }
 
       & ~ .step-item {
         &::before {
-          background: $border-color;
+          // background: $border-color; // old spectre.css
+          background: color('border-color');
         }
 
         a {
-          color: $gray-color;
+          // color: $gray-color; // old spectre.css
+          color: color('gray-color');
 
           &::before {
-            background: $border-color;
+            // background: $border-color; // old spectre.css
+            background: color('border-color');
           }
         }
       }

@@ -1,3 +1,6 @@
+@use 'function/css-variable-color' as *;
+@use 'variables' as *;
+
 // Badges
 .badge {
   position: relative;
@@ -6,11 +9,14 @@
   &[data-badge],
   &:not([data-badge]) {
     &::after {
-      background: $primary-color;
+      // background: $primary-color; // old spectre.css
+      background: color('primary-color');
       background-clip: padding-box;
       border-radius: .5rem;
-      box-shadow: 0 0 0 .1rem $bg-color-light;
-      color: $light-color;
+      // box-shadow: 0 0 0 .1rem $bg-color-light; // old spectre.css
+      box-shadow: 0 0 0 .1rem color('bg-color-light');
+      // color: $light-color; // old spectre.css
+      color: color('light-color');
       content: attr(data-badge);
       display: inline-block;
       transform: translate(-.05rem, -.5rem);

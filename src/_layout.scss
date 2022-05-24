@@ -1,3 +1,6 @@
+@use 'sass:math';
+@use 'variables' as *;
+
 // Layout
 .container {
   margin-left: auto;
@@ -6,7 +9,8 @@
   padding-right: $layout-spacing;
   width: 100%;
 
-  $grid-spacing: ($layout-spacing / ($layout-spacing * 0 + 1)) * $html-font-size;
+  // $grid-spacing: ($layout-spacing / ($layout-spacing * 0 + 1)) * $html-font-size; // old spectre.css
+  $grid-spacing: math.div($layout-spacing, $layout-spacing * 0 + 1) * $html-font-size;
 
   &.grid-xl {
     max-width: $grid-spacing * 2 + $size-xl;

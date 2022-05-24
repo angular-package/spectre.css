@@ -1,3 +1,5 @@
+@use '../variables' as *;
+
 // Shapes
 .s-rounded {
   border-radius: $border-radius;

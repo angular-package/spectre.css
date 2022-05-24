@@ -1,27 +1,42 @@
-// Background color utility mixin
-@mixin bg-color-variant($name: ".bg-primary", $color: $primary-color) {
-  #{$name} {
-    background: $color !important;
+@use '../function/css-variable-color' as *;
+@use '../variables' as *;
 
-    @if (lightness($color) < 60) {
-      color: $light-color;
+// Background color utility mixin
+@mixin bg-color-variant(
+  $name: '.bg-primary',
+  $color: 'primary-color',
+  $hexColor: $primary-color
+) {
+  #{$name} {
+    // background: $color !important; // old spectre.
+    background: color($color) !important;
+
+    // old spectre.
+    // @if (lightness($color) < 60) {
+    // color: $light-color;
+    // }
+    @if (lightness($hexColor) < 60) {
+      color: color('light-color');
     }
   }
 }
 
 // Text color utility mixin
-@mixin text-color-variant($name: ".text-primary", $color: $primary-color) {
+@mixin text-color-variant($name: '.text-primary', $color: 'primary-color') {
   #{$name} {
-    color: $color !important;
+    // color: $color !important; // old spectre.
+    color: color($color);
   }
 
   a#{$name} {
     &:focus,
     &:hover {
-      color: darken($color, 5%);
+      // color: darken($color, 5%); // old spectre.
+      color: color($color, $lightness: -5%);
     }
     &:visited {
-      color: lighten($color, 5%);
+      // color: lighten($color, 5%);
+      color: color($color, $lightness: +5%);
     }
   }
 }

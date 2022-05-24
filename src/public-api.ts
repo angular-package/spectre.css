@@ -3,3 +3,4 @@
  */
 export const SPECTRE_CSS = true;
 
+export { CssPropertyColor } from './helper/color';

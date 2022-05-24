@@ -1,8 +1,12 @@
+@use 'function/css-variable-color' as *;
+@use 'variables' as *;
+
 // Meters
 // Credit: https://css-tricks.com/html5-meter-element/
 .meter {
   appearance: none;
-  background: $bg-color;
+  // background: $bg-color; // old spectre.css
+  background: color('bg-color');
   border: 0;
   border-radius: $border-radius;
   display: block;
@@ -21,19 +25,23 @@
   }
 
   &::-webkit-meter-bar {
-    background: $bg-color;
+    // background: $bg-color; // old spectre.css
+    background: color('bg-color');
   }
 
   &::-webkit-meter-optimum-value {
-    background: $success-color;
+    // background: $success-color; // old spectre.css
+    background: color('success-color');
   }
 
   &::-webkit-meter-suboptimum-value {
-    background: $warning-color;
+    // background: $warning-color; // old spectre.css
+    background: color('warning-color');
   }
 
   &::-webkit-meter-even-less-good-value {
-    background: $error-color;
+    // background: $error-color; // old spectre.css
+    background: color('error-color');
   }
 
   &::-moz-meter-bar,
@@ -44,14 +52,17 @@
   }
 
   &:-moz-meter-optimum::-moz-meter-bar {
-    background: $success-color;
+    // background: $success-color; // old spectre.css
+    background: color('success-color');
   }
 
   &:-moz-meter-sub-optimum::-moz-meter-bar {
-    background: $warning-color;
+    // background: $warning-color; // old spectre.css
+    background: color('warning-color');
   }
 
   &:-moz-meter-sub-sub-optimum::-moz-meter-bar {
-    background: $error-color;
+    // background: $error-color; // old spectre.css
+    background: color('error-color');
   }
 }

@@ -1,3 +1,7 @@
+@use '../mixins/clearfix' as *;
+@use '../mixins/position' as *;
+@use '../variables' as *;
+
 // Position
 .clearfix {
   @include clearfix();

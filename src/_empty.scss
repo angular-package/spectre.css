@@ -1,8 +1,13 @@
+@use 'function/css-variable-color' as *;
+@use 'variables' as *;
+
 // Empty states (or Blank slates)
 .empty {
-  background: $bg-color;
+  // background: $bg-color; // old spectre.css
+  background: color('bg-color');
   border-radius: $border-radius;
-  color: $gray-color-dark;
+  // color: $gray-color-dark; // old spectre.css
+  color: color('gray-color-dark');
   text-align: center;
   padding: $unit-16 $unit-8;
 

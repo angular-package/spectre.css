@@ -1,18 +1,19 @@
 // Variables and mixins
-@import 'src/variables';
-@import 'src/mixins';
+@forward 'src/variables';
+@forward 'src/mixins';
+@use 'src/variables' as *;
 
 /*! Spectre.css Experimentals v#{$version} | MIT License | github.com/picturepan2/spectre */
 // Experimentals
-@import 'src/autocomplete';
-@import 'src/calendars';
-@import 'src/carousels';
-@import 'src/comparison-sliders';
-@import 'src/filters';
-@import 'src/meters';
-@import 'src/off-canvas';
-@import 'src/parallax';
-@import 'src/progress';
-@import 'src/sliders';
-@import 'src/timelines';
-@import 'src/viewer-360';
+@forward 'src/autocomplete';
+@forward 'src/calendars';
+@forward 'src/carousels';
+@forward 'src/comparison-sliders';
+@forward 'src/filters';
+@forward 'src/meters';
+@forward 'src/off-canvas';
+@forward 'src/parallax';
+@forward 'src/progress';
+@forward 'src/sliders';
+@forward 'src/timelines';
+@forward 'src/viewer-360';

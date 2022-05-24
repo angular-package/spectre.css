@@ -1,3 +1,7 @@
+@use 'function/css-variable-color' as *;
+@use 'mixins/shadow' as *;
+@use 'variables' as *;
+
 // Autocomplete
 .form-autocomplete {
   position: relative;
@@ -12,7 +16,8 @@
 
     &.is-focused {
       @include control-shadow();
-      border-color: $primary-color;
+      // border-color: $primary-color; // old spectre.css
+      border-color: color('primary-color');
     }
 
     .form-input {

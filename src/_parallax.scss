@@ -1,10 +1,14 @@
+@use 'function/css-variable-color' as *;
+@use 'mixins/shadow' as *;
+@use 'variables' as *;
+
 // Parallax
 $parallax-deg: 3deg !default;
 $parallax-offset: 4.5px !default;
 $parallax-offset-z: 50px !default;
 $parallax-perspective: 1000px !default;
 $parallax-scale: .95 !default;
-$parallax-fade-color: rgba(255, 255, 255, .35) !default;
+$parallax-fade-color: rgba(255, 255, 255, .35) !default; // TODO: Add color.
 
 // Mixin: Parallax direction
 @mixin parallax-dir() {
@@ -42,14 +46,16 @@ $parallax-fade-color: rgba(255, 255, 255, .35) !default;
 
   .parallax-front {
     align-items: center;
-    color: $light-color;
+    // color: $light-color; // old spectre.css
+    color: color('light-color');
     display: flex;
     height: 100%;
     justify-content: center;
     left: 0;
     position: absolute;
     text-align: center;
-    text-shadow: 0 0 20px rgba($dark-color, .75);
+    // text-shadow: 0 0 20px rgba($dark-color, .75); // old spectre.css
+    text-shadow: 0 0 20px color('dark-color', $alpha: 0.75);
     top: 0;
     transform: translateZ($parallax-offset-z) scale($parallax-scale);
     transition: transform .4s;

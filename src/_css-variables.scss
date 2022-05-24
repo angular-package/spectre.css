@@ -1,0 +1,55 @@
+@use 'mixins/css-variable-color' as *;
+@use 'variables' as *;
+
+/*
+  Color scheme in :root.
+*/
+:root, :host {
+  color-scheme: normal; // light, dark, light dark
+  // Core colors.
+  @include define-color('primary-color', $primary-color); // #5755d9
+  @include define-color-based-on('primary-color-dark', 'primary-color', $lightness: -3%); // darken($primary-color, 3%)
+  @include define-color-based-on('primary-color-light', 'primary-color', $lightness: +3%); // lighten($primary-color, 3%)
+
+  @include define-color-based-on('secondary-color', 'primary-color', $lightness: +37.5%); // lighten($primary-color, 37.5%) !default;
+  @include define-color-based-on('secondary-color-dark', 'secondary-color', $lightness: -3%); // darken($secondary-color, 3%) !default;
+  @include define-color-based-on('secondary-color-light', 'secondary-color', $lightness: +3%); // lighten($secondary-color, 3%) !default;
+
+  @include define-color('accent-color', $accent-color); // #9932CC
+
+  // Gray colors.
+  @include define-color('dark-color', $dark-color); // #303742
+  @include define-color('light-color', $light-color); // #ffffff
+
+  // gray-color
+  @include define-color-based-on('gray-color', 'dark-color', $lightness: +55%); // lighten($dark-color, 55%)
+  @include define-color-based-on('gray-color-dark', 'gray-color', $lightness: -30%); // darken($gray-color, 30%)
+  @include define-color-based-on('gray-color-light', 'gray-color', $lightness: +20%); // lighten($gray-color, 20%)
+
+  // border-color
+  @include define-color-based-on('border-color', 'dark-color', $lightness: +65%); // lighten($dark-color, 65%)
+  @include define-color-based-on('border-color-dark', 'border-color', $lightness: -10%); // darken($border-color, 10%)
+  @include define-color-based-on('border-color-light', 'border-color', $lightness: +8%); // lighten($border-color, 8%)
+
+  // bg-color
+  @include define-color-based-on('bg-color', 'dark-color', $lightness: +75%); // lighten($dark-color, 75%)
+  @include define-color-based-on('bg-color-dark', 'bg-color', $lightness: -3%); // darken($bg-color, 3%)
+  @include define-color-based-on('bg-color-light', 'light-color'); // $light-color
+
+  // Control colors
+  @include define-color('info-color', $info-color); // #d9edf7
+  @include define-color('success-color', $success-color); // #32b643
+  @include define-color('error-color', $error-color); // #e85600
+  @include define-color('warning-color', $warning-color); // #ffb700
+
+  // Other colors
+  @include define-color('code-color', $code-color); // #d73e48
+  @include define-color('highlight-color', $highlight-color); // #ffe9b3
+
+  @include define-color-based-on('body-bg-color', 'bg-color-light'); // $bg-color-light
+  @include define-color-based-on('body-font-color', 'dark-color', $lightness: +5%); // lighten($dark-color, 5%)
+
+  @include define-color-based-on('link-color', 'primary-color'); // $primary-color
+  @include define-color-based-on('link-color-dark', 'link-color', $lightness: -10%); // darken($link-color, 10%)
+  @include define-color-based-on('link-color-light', 'link-color', $lightness: +10%); // lighten($link-color, 10%)
+}

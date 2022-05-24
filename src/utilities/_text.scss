@@ -1,3 +1,6 @@
+@use '../mixins/text' as *;
+@use '../variables' as *;
+
 // Text
 // Text alignment utilities
 .text-left {

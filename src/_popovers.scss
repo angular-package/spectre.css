@@ -1,3 +1,6 @@
+@use 'mixins/shadow' as *;
+@use 'variables' as *;
+
 // Popovers
 .popover {
   display: inline-block;
