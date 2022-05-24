@@ -1,6 +1,7 @@
 // Variables and mixins
 @forward 'src/variables';
 @forward 'src/mixins';
+@use 'src/variables' as *;
 
 /*! Spectre.css Experimentals v#{$version} | MIT License | github.com/picturepan2/spectre */
 // Experimentals
