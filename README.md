@@ -41,6 +41,10 @@ There are 2 ways to get started with Spectre CSS framework in your projects. You
 
 `$ yarn add @angular-package/spectre.css`
 
+## Demonstration
+
+Demonstration will be available soon here http://angular-package.dev/ui-kit/component/theme
+
 ## Usage
 
 ```scss
