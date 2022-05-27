@@ -1,11 +1,11 @@
-@use '../function/css-variable-color' as *;
+@use '../functions' as *;
 @use '../variables' as *;
 
 // Background color utility mixin
 @mixin bg-color-variant(
   $name: '.bg-primary',
   $color: 'primary-color',
-  $hexColor: $primary-color
+  $hex-color: $primary-color
 ) {
   #{$name} {
     // background: $color !important; // old spectre.
@@ -15,7 +15,7 @@
     // @if (lightness($color) < 60) {
     // color: $light-color;
     // }
-    @if (lightness($hexColor) < 60) {
+    @if (lightness($hex-color) < 60) {
       color: color('light-color');
     }
   }
@@ -25,7 +25,7 @@
 @mixin text-color-variant($name: '.text-primary', $color: 'primary-color') {
   #{$name} {
     // color: $color !important; // old spectre.
-    color: color($color);
+    color: color($color) !important;
   }
 
   a#{$name} {
