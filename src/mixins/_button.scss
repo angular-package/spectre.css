@@ -1,4 +1,4 @@
-@use '../function/css-variable-color' as *;
+@use '../functions' as *;
 @use 'shadow' as *;
 @use '../variables' as *;
 
@@ -35,7 +35,6 @@
     border-color: color($color, $lightness: -10%);
     // color: $light-color; // old spectre.css
     color: color('light-color');
-
   }
   &.loading {
     &::after {

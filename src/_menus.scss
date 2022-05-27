@@ -1,10 +1,10 @@
-@use 'function/css-variable-color' as *;
+@use 'functions' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
 
 // Menus
 .menu {
-  @include shadow-variant(.05rem);
+  @include shadow-variant(0.05rem);
   // background: $bg-color-light; // old spectre.css
   background: color('bg-color-light');
   border-radius: $border-radius;
