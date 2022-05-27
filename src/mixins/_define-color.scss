@@ -1,0 +1,7 @@
+// Defines CSS variable color in hsl form.
+@mixin define-color($name, $color) {
+  --s-#{$name}-h: #{hue($color)};
+  --s-#{$name}-l: #{lightness($color)};
+  --s-#{$name}-s: #{saturation($color)};
+  --s-#{$name}-a: #{alpha($color)};
+}
