@@ -1,4 +1,4 @@
-// Color variable.
+// Get color from css variable.
 @function color($name, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 1) {
   @return hsla(
     calc(var(--s-#{$name}-h) + #{$hue}),
