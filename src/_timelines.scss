@@ -1,4 +1,4 @@
-@use 'function/css-variable-color' as *;
+@use 'functions' as *;
 @use 'variables' as *;
 
 // Timelines
@@ -10,7 +10,7 @@
     &::before {
       // background: $border-color; // old spectre.css
       background: color('border-color');
-      content: "";
+      content: '';
       height: 100%;
       left: 11px;
       position: absolute;
@@ -41,7 +41,7 @@
         // border: $border-width-lg solid $primary-color; // old spectre.css
         border: $border-width-lg solid color('primary-color');
         border-radius: 50%;
-        content: "";
+        content: '';
         display: block;
         height: $unit-2;
         left: $unit-2;

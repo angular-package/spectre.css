@@ -1,4 +1,4 @@
-@use 'function/css-variable-color' as *;
+@use 'functions' as *;
 @use 'variables' as *;
 
 // Steps
@@ -19,7 +19,7 @@
     &:not(:first-child)::before {
       // background: $primary-color; // old spectre.css
       background: color('primary-color');
-      content: "";
+      content: '';
       height: 2px;
       left: -50%;
       position: absolute;
@@ -40,7 +40,7 @@
         // border: $border-width-lg solid $light-color; // old spectre.css
         border: $border-width-lg solid color('light-color');
         border-radius: 50%;
-        content: "";
+        content: '';
         display: block;
         height: $unit-3;
         left: 50%;

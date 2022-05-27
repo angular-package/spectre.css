@@ -1,4 +1,4 @@
-@use 'function/css-variable-color' as *;
+@use 'functions' as *;
 @use 'mixins/button' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
@@ -22,7 +22,7 @@
   padding: $control-padding-y $control-padding-x;
   text-align: center;
   text-decoration: none;
-  transition: background .2s, border .2s, box-shadow .2s, color .2s;
+  transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -63,7 +63,7 @@
   &:disabled,
   &.disabled {
     cursor: default;
-    opacity: .5;
+    opacity: 0.5;
     pointer-events: none;
   }
 
@@ -185,12 +185,12 @@
     &:focus,
     &:hover {
       // background: rgba($bg-color, .5); // old spectre.css
-      background: color('bg-color', $alpha: .5);
-      opacity: .95;
+      background: color('bg-color', $alpha: 0.5);
+      opacity: 0.95;
     }
 
     &::before {
-      content: "\2715";
+      content: '\2715';
     }
   }
 }

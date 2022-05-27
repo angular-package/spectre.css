@@ -1,4 +1,4 @@
-@use 'function/css-variable-color' as *;
+@use 'functions' as *;
 @use 'variables' as *;
 
 // Tables
@@ -48,7 +48,7 @@
   &.table-scroll {
     display: block;
     overflow-x: auto;
-    padding-bottom: .75rem;
+    padding-bottom: 0.75rem;
     white-space: nowrap;
   }
 

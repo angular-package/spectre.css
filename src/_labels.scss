@@ -1,4 +1,4 @@
-@use 'function/css-variable-color' as *;
+@use 'functions' as *;
 @use 'mixins/label' as *;
 @use 'variables' as *;
 
@@ -12,8 +12,8 @@
   // Label rounded
   &.label-rounded {
     border-radius: 5rem;
-    padding-left: .4rem;
-    padding-right: .4rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
   }
 
   // Label colors

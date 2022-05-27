@@ -1,5 +1,5 @@
+@use 'functions' as *;
 @use 'mixins/avatar' as *;
-@use 'function/css-variable-color' as *;
 @use 'variables' as *;
 
 // Avatars
@@ -9,7 +9,7 @@
   background: color('primary-color');
   border-radius: 50%;
   // color: rgba($light-color, .85); // old spectre.css
-  color: color('light-color', $alpha: .85);
+  color: color('light-color', $alpha: 0.85);
   display: inline-block;
   font-weight: 300;
   line-height: 1.25;
@@ -58,8 +58,8 @@
     // box-shadow: 0 0 0 $border-width-lg $light-color; // old spectre.css
     box-shadow: 0 0 0 $border-width-lg color('light-color');
     border-radius: 50%;
-    height: .5em;
-    width: .5em;
+    height: 0.5em;
+    width: 0.5em;
 
     &.online {
       // background: $success-color; // old spectre.css

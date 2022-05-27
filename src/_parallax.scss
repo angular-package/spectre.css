@@ -1,4 +1,4 @@
-@use 'function/css-variable-color' as *;
+@use 'functions' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
 
@@ -7,8 +7,8 @@ $parallax-deg: 3deg !default;
 $parallax-offset: 4.5px !default;
 $parallax-offset-z: 50px !default;
 $parallax-perspective: 1000px !default;
-$parallax-scale: .95 !default;
-$parallax-fade-color: rgba(255, 255, 255, .35) !default; // TODO: Add color.
+$parallax-scale: 0.95 !default;
+$parallax-fade-color: rgba(255, 255, 255, 0.35) !default; // TODO: Add color.
 
 // Mixin: Parallax direction
 @mixin parallax-dir() {
@@ -30,11 +30,11 @@ $parallax-fade-color: rgba(255, 255, 255, .35) !default; // TODO: Add color.
     height: auto;
     transform: perspective($parallax-perspective);
     transform-style: preserve-3d;
-    transition: all .4s ease;
+    transition: all 0.4s ease;
     width: 100%;
 
     &::before {
-      content: "";
+      content: '';
       display: block;
       height: 100%;
       left: 0;
@@ -58,7 +58,7 @@ $parallax-fade-color: rgba(255, 255, 255, .35) !default; // TODO: Add color.
     text-shadow: 0 0 20px color('dark-color', $alpha: 0.75);
     top: 0;
     transform: translateZ($parallax-offset-z) scale($parallax-scale);
-    transition: transform .4s;
+    transition: transform 0.4s;
     width: 100%;
     z-index: $zindex-0;
   }

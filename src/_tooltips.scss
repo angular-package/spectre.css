@@ -1,4 +1,4 @@
-@use 'function/css-variable-color' as *;
+@use 'functions' as *;
 @use 'variables' as *;
 
 // Tooltips
@@ -6,7 +6,7 @@
   position: relative;
   &::after {
     // background: rgba($dark-color, .95);
-    background: color('dark-color', $alpha: .95);
+    background: color('dark-color', $alpha: 0.95);
     border-radius: $border-radius;
     bottom: 100%;
     // color: $light-color; // old spectre.css
@@ -23,7 +23,7 @@
     position: absolute;
     text-overflow: ellipsis;
     transform: translate(-50%, $unit-2);
-    transition: opacity .2s, transform .2s;
+    transition: opacity 0.2s, transform 0.2s;
     white-space: pre;
     z-index: $zindex-3;
   }

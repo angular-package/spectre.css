@@ -1,4 +1,4 @@
-@use 'function/css-variable-color' as *;
+@use 'functions' as *;
 @use 'variables' as *;
 
 // Image comparison slider
@@ -44,7 +44,7 @@
 
     &::before {
       background: transparent;
-      content: "";
+      content: '';
       cursor: default;
       height: 100%;
       left: 0;
@@ -60,7 +60,7 @@
       box-shadow: 0 -5px, 0 5px;
       // color: $light-color; // old spectre.css
       color: color('light-color');
-      content: "";
+      content: '';
       height: 3px;
       pointer-events: none;
       position: absolute;
@@ -93,7 +93,7 @@
 
   .comparison-label {
     // background: rgba($dark-color, .5); // old spectre.css
-    background: color('dark-color', $alpha: .5);
+    background: color('dark-color', $alpha: 0.5);
     bottom: $unit-4;
     // color: $light-color; // old spectre.css
     color: color('light-color');

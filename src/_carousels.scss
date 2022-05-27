@@ -1,4 +1,4 @@
-@use 'function/css-variable-color' as *;
+@use 'functions' as *;
 @use 'variables' as *;
 
 // Carousels
@@ -6,7 +6,7 @@
 $carousel-number: 8;
 
 %carousel-image-checked {
-  animation: carousel-slidein .75s ease-in-out 1;
+  animation: carousel-slidein 0.75s ease-in-out 1;
   opacity: 1;
   z-index: $zindex-1;
 }
@@ -31,7 +31,7 @@ $carousel-number: 8;
     left: 0;
     position: relative;
     &::before {
-      content: "";
+      content: '';
       display: block;
       padding-bottom: 56.25%;
     }
@@ -57,15 +57,15 @@ $carousel-number: 8;
     .item-prev,
     .item-next {
       // background: rgba($gray-color-light, .25); // old spectre.css
-      background: color('gray-color-light', $alpha: .25);
+      background: color('gray-color-light', $alpha: 0.25);
       // border-color: rgba($gray-color-light, .5); // old spectre.css
-      border-color: color('gray-color-light', $alpha: .5);
+      border-color: color('gray-color-light', $alpha: 0.5);
       // color: $gray-color-light; // old spectre.css
       color: color('gray-color-light');
       opacity: 0;
       position: absolute;
       top: 50%;
-      transition: all .4s;
+      transition: all 0.4s;
       transform: translateY(-50%);
       z-index: $zindex-1;
     }
@@ -112,11 +112,11 @@ $carousel-number: 8;
 
       &::before {
         background: currentColor;
-        content: "";
+        content: '';
         display: block;
         height: $unit-h;
         position: absolute;
-        top: .5rem;
+        top: 0.5rem;
         width: 100%;
       }
     }
