@@ -43,14 +43,27 @@ There are 2 ways to get started with Spectre CSS framework in your projects. You
 
 ## Demonstration
 
-Demonstration will be available soon here http://angular-package.dev/ui-kit/component/theme
+Demonstration will be available soon here https://angular-package.dev/ui-kit/component/theme
 
 ## Usage
 
 ```scss
-@import 'node_modules/@angular-package/spectre.css/spectre.scss';
-@import 'node_modules/@angular-package/spectre.css/spectre-exp.scss';
-@import 'node_modules/@angular-package/spectre.css/spectre-icons.scss';
+// Main spectre.
+@use 'node_modules/@angular-package/spectre.css/spectre' as *;
+@use 'node_modules/@angular-package/spectre.css/spectre-exp' as *;
+@use 'node_modules/@angular-package/spectre.css/spectre-icons' as *;
+
+// Define variables.
+@use 'node_modules/@angular-package/spectre.css/css-variables' as *;
+
+// Get functions.
+@use 'node_modules/@angular-package/spectre.css/functions' as *;
+
+// Get mixins.
+@use 'node_modules/@angular-package/spectre.css/mixins' as *;
+
+// Get variables.
+@use 'node_modules/@angular-package/spectre.css/variables' as *;
 ```
 
 ## SCSS Variables
@@ -58,18 +71,18 @@ Demonstration will be available soon here http://angular-package.dev/ui-kit/comp
 Colors with a specific **hex** on which others are based.
 
 ```scss
-// _variables.scss
+// src/_variables.scss
 // Core colors
-$primary-color: #5755d9 !default;
 $accent-color: #9932CC !default; // New.
 $dark-color: #303742 !default;
 $light-color: #fff !default;
+$primary-color: #5755d9 !default;
 
 // Control colors
+$error-color: #e85600 !default;
 $info-color: #d9edf7 !default; // New.
 $success-color: #32b643 !default;
 $warning-color: #ffb700 !default;
-$error-color: #e85600 !default;
 
 // Other colors
 $code-color: #d73e48 !default;
@@ -119,8 +132,8 @@ The `color-scheme` variable is set to `normal`.
 Each **hex** color has **four** CSS variables defined by the mixin `define-color($name, $color)`, split into hsl form, where suffix `h` indicates `hue`, `l` lightness, `s` saturation and `a` - alpha.
 
 ```scss
-// mixins/_css-variable-color.scss
-// Define color.
+// src/mixins/_define-color.scss
+// Defines CSS variable color in hsl form.
 @mixin define-color($name, $color) {
   --s-#{$name}-h: #{hue($color)};
   --s-#{$name}-l: #{lightness($color)};
@@ -132,17 +145,16 @@ Each **hex** color has **four** CSS variables defined by the mixin `define-color
 For example `primary-color` is built from the CSS variables.
 
 ```css
-  --s-primary-color-h: 240.9090909091deg; // Hue.
-  --s-primary-color-l: 59.2156862745%; // Lightness.
-  --s-primary-color-s: 63.4615384615%; // Saturation.
-  --s-primary-color-a: 1; // Alpha.
+--s-primary-color-h: 240.9090909091deg; // Hue.
+--s-primary-color-l: 59.2156862745%; // Lightness.
+--s-primary-color-s: 63.4615384615%; // Saturation.
+--s-primary-color-a: 1; // Alpha.
 ```
 
-CSS variables are defined in the `:root` and `:host`.
+CSS variables are defined in both `:root` and `:host`.
 
 ```scss
-// _css-variables.scss
-
+// src/_css-variables.scss
 :root, :host {
   // Core colors.
   @include define-color('primary-color', $primary-color); // #5755d9
@@ -165,7 +177,7 @@ CSS variables are defined in the `:root` and `:host`.
 Each color that is based on **hex** color has **four** CSS variables defined by the mixin `define-color-based-on($name, $color, $lightness: 0%)`, split into hsl form, where suffix `h` indicates `hue`, `l` lightness, `s` saturation and `a` - alpha.
 
 ```scss
-// mixins/_css-variable-color.scss
+// src/mixins/_define-color-based-on.scss
 @mixin define-color-based-on($name, $color, $lightness: 0%) {
   --s-#{$name}-h: var(--s-#{$color}-h);
   --s-#{$name}-l: calc(var(--s-#{$color}-l) + #{$lightness});
@@ -177,16 +189,18 @@ Each color that is based on **hex** color has **four** CSS variables defined by 
 Color that based on `primary-color` for example `secondary-color` is built from the css variables:
 
 ```css
+:root, :host {
   --s-secondary-color-h: var(--s-primary-color-h);
   --s-secondary-color-l: calc(var(--s-primary-color-l) + 37.5%);
   --s-secondary-color-s: var(--s-primary-color-s);
   --s-secondary-color-a: var(--s-primary-color-a);
+}
 ```
 
-CSS variables that are based on others are also defined in the `:root` and `:host`.
+CSS variables that are based on others are also defined in both `:root` and `:host`.
 
 ```scss
-// _css-variables.scss
+// src/_css-variables.scss
 :root, :host {
   // Core colors.
   @include define-color-based-on('primary-color-dark', 'primary-color', $lightness: -3%); // darken($primary-color, 3%)
@@ -223,7 +237,7 @@ CSS variables that are based on others are also defined in the `:root` and `:hos
 Colors are read by the function `color($name, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 1)`.
 
 ```scss
-// function/_css-variable-color.scss
+// src/functions/_color.scss
 // Color variable.
 @function color($name, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 1) {
   @return hsla(
@@ -238,7 +252,7 @@ Colors are read by the function `color($name, $hue: 0deg, $lightness: 0%, $satur
 For example `primary-color` or `primary-color-dark`:
 
 ```scss
-@use 'function/css-variable-color';
+@use 'node_modules/@angular-package/spectre.css/functions' as *;
 
 .primary-color {
   background: color('primary-color');
