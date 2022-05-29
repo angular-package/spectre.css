@@ -540,7 +540,7 @@ textarea.form-input {
         // @include control-shadow($error-color); // old spectre.css
         @include control-shadow('error-color');
         // background: lighten($error-color, 53%); // old spectre.css
-        background: color('error-color', $lighten: +53%);
+        background: color('error-color', $lightness: +53%);
       }
 
       & + .form-input-hint {
