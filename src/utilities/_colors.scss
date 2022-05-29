@@ -50,6 +50,6 @@
   Gray colors.
 */
 // @include bg-color-variant('.bg-gray', $bg-color); // old.spectre.css
-@include bg-color-variant('.bg-gray', 'bg-gray', $gray-color); // ? .bg-gray is not $bg-color but directly $gray-color.
+@include bg-color-variant('.bg-gray', 'gray-color', $gray-color); // ? .bg-gray is not $bg-color but directly $gray-color.
 @include bg-color-variant('.bg-gray-dark', 'gray-color-dark', $gray-color-dark); // ! New color.
 @include bg-color-variant('.bg-gray-light', 'gray-color-light', $gray-color-light); // ! New color.
