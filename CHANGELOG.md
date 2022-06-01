@@ -1,5 +1,20 @@
 #### Spectre.css Changelog
 
+##### v1.0.0-alpha-1
+
+- New background class colors `.bg-color-dark` and `.bg-color-light`. [fb1224c]
+- Fix variable name from `$lighten` to `$lightness` in `textarea.form-input`. [54790ae]
+- Update missing `color()` function in styles and use prettier on files. [aed7fe0]
+- Fix includes mixin `bg-color-variant()` by adding missing sass variables. [ebd492c]
+- Update sass variable name to css style and add `!important` to `text-color-variant` mixin. [03713ee]
+
+[fb1224c]: https://github.com/angular-package/spectre.css/commit/fb1224c6799f0d6abdf992396e09b6d547f27e75
+[95648b3]: https://github.com/angular-package/spectre.css/commit/95648b379eb18437dbd15bd07ce6d6daf0c5c3fa
+[54790ae]: https://github.com/angular-package/spectre.css/commit/54790aef0bdf578d7aa2e6aeb01f1da905a00189
+[aed7fe0]: https://github.com/angular-package/spectre.css/commit/aed7fe0be311f9101a9c92767d244a2caca24d82
+[ebd492c]: https://github.com/angular-package/spectre.css/commit/ebd492c0cc835cde005e3fac371404461bec1b77
+[03713ee]: https://github.com/angular-package/spectre.css/commit/03713ee038121d9b8a14c346c1dc08f4cf80f35a
+
 ##### v1.0.0-alpha
 
 - Add helpers. [a3fac35]
@@ -18,7 +33,7 @@
 [b8dd9c4]: https://github.com/angular-package/spectre.css/commit/b8dd9c414c378ee49fa7e2d3823f7da88b9cb0e1
 [a89d3f7]: https://github.com/angular-package/spectre.css/commit/a89d3f7eed3913f71096bb0c0443ee66a736d9ac
 [978a9ba]: https://github.com/angular-package/spectre.css/commit/978a9baa33c6557d0c493c9768d1c4899d057ac9
-[759feb]: https://github.com/angular-package/spectre.css/commit/759feb7fc7ad180f8b0aa325b4b87c056a904adb
+[759feb7]: https://github.com/angular-package/spectre.css/commit/759feb7fc7ad180f8b0aa325b4b87c056a904adb
 
 [4ead2ca]: https://github.com/angular-package/spectre.css/commit/4ead2caea86e6fbbb7ce7818f38df01e71e803b8
 [5aebf31]: https://github.com/angular-package/spectre.css/commit/5aebf31192dbec68c727b834b643dd0e98a5aaec
@@ -28,7 +43,6 @@
 
 [6ad8904]: https://github.com/angular-package/spectre.css/commit/6ad89043b1b172697bdbb0d33a10a8b9e7f332b0
 [4110d67]: https://github.com/angular-package/spectre.css/commit/4110d67227cb05e1c43b30a98cc8385f5a821b85
-
 
 ##### v0.5.10 [#](https://github.com/angular-package/spectre.css/releases/tag/v0.5.10)
 
