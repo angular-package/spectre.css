@@ -1,4 +1,5 @@
-@use 'mixins/css-variable-color' as *;
+@use 'mixins/define-color-based-on' as *;
+@use 'mixins/define-color' as *;
 @use 'variables' as *;
 
 /*

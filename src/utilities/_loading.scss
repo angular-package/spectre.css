@@ -1,4 +1,4 @@
-@use '../function/css-variable-color' as *;
+@use '../functions' as *;
 @use '../variables' as *;
 
 // Loading
@@ -15,7 +15,7 @@
     border-radius: 50%;
     border-right-color: transparent;
     border-top-color: transparent;
-    content: "";
+    content: '';
     display: block;
     height: $unit-4;
     left: 50%;

@@ -1,4 +1,4 @@
-@use 'function/css-variable-color' as *;
+@use 'functions' as *;
 @use 'variables' as *;
 
 // Off canvas menus
@@ -32,7 +32,7 @@ $off-canvas-breakpoint: $size-lg !default;
     overflow-y: auto;
     position: fixed;
     top: 0;
-    transition: transform .25s;
+    transition: transform 0.25s;
     z-index: $zindex-2;
     @if $rtl == true {
       right: 0;
@@ -51,7 +51,7 @@ $off-canvas-breakpoint: $size-lg !default;
 
   .off-canvas-overlay {
     // background: rgba($dark-color, .1); // old spectre.css
-    background: color('dark-color', $alpha: .1);
+    background: color('dark-color', $alpha: 0.1);
     border-color: transparent;
     border-radius: 0;
     bottom: 0;

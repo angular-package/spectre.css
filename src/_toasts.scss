@@ -1,4 +1,4 @@
-@use 'function/css-variable-color' as *;
+@use 'functions' as *;
 @use 'mixins/toast' as *;
 @use 'variables' as *;
 
@@ -44,7 +44,7 @@
     &:hover,
     &:active,
     &.active {
-      opacity: .75;
+      opacity: 0.75;
     }
   }
 

@@ -1,4 +1,4 @@
-@use 'function/css-variable-color' as *;
+@use 'functions' as *;
 @use 'variables' as *;
 
 // Media
@@ -27,7 +27,7 @@
   position: relative;
   width: 100%;
   &::before {
-    content: "";
+    content: '';
     display: block;
     padding-bottom: 56.25%; // Default ratio 16:9, you can calculate this value by dividing 9 by 16
   }

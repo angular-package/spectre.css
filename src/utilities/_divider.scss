@@ -1,4 +1,4 @@
-@use '../function/css-variable-color' as *;
+@use '../functions' as *;
 @use '../variables' as *;
 
 // Divider
@@ -39,7 +39,7 @@
     // border-left: $border-width solid $border-color; // old spectre.css
     border-left: $border-width solid color('border-color');
     bottom: $unit-2;
-    content: "";
+    content: '';
     display: block;
     left: 50%;
     position: absolute;

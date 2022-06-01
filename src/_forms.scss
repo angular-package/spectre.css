@@ -1,5 +1,8 @@
+@use 'functions' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
+
+// $transition: .2s;
 
 // Forms
 .form-group {
@@ -38,11 +41,14 @@ legend {
 // Form element: Input
 .form-input {
   appearance: none;
-  background: $bg-color-light;
+  // background: $bg-color-light; // old spectre.css
+  background: color('bg-color-light');
   background-image: none;
-  border: $border-width solid $border-color-dark;
+  // border: $border-width solid $border-color-dark; // old spectre.css
+  border: $border-width solid color('border-color-dark');
   border-radius: $border-radius;
-  color: $body-font-color;
+  // color: $body-font-color; // old spectre.css
+  color: color('body-font-color');
   display: block;
   font-size: $font-size;
   height: $control-size;
@@ -51,14 +57,16 @@ legend {
   outline: none;
   padding: $control-padding-y $control-padding-x;
   position: relative;
-  transition: background .2s, border .2s, box-shadow .2s, color .2s;
+  transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s;
   width: 100%;
   &:focus {
     @include control-shadow();
-    border-color: $primary-color;
+    // border-color: $primary-color; // old spectre.css
+    border-color: color('primary-color');
   }
   &::placeholder {
-    color: $gray-color;
+    // color: $gray-color; // old spectre.css
+    color: color('gray-color');
   }
 
   // Input sizes
@@ -97,25 +105,29 @@ textarea.form-input {
 
 // Form element: Input hint
 .form-input-hint {
-  color: $gray-color;
+  // color: $gray-color; // old spectre.css
+  color: color('gray-color');
   font-size: $font-size-sm;
   margin-top: $unit-1;
 
   .has-success &,
   .is-success + & {
-    color: $success-color;
+    // color: $success-color; // old spectre.css
+    color: color('success-color');
   }
 
   .has-error &,
   .is-error + & {
-    color: $error-color;
+    // color: $error-color; // old spectre.css
+    color: color('error-color');
   }
 }
 
 // Form element: Select
 .form-select {
   appearance: none;
-  border: $border-width solid $border-color-dark;
+  // border: $border-width solid $border-color-dark; // old spectre.css
+  border: $border-width solid color('border-color-dark');
   border-radius: $border-radius;
   color: inherit;
   font-size: $font-size;
@@ -125,10 +137,12 @@ textarea.form-input {
   padding: $control-padding-y $control-padding-x;
   vertical-align: middle;
   width: 100%;
-  background: $bg-color-light;
+  // background: $bg-color-light; // old spectre.css
+  background: color('bg-color-light');
   &:focus {
     @include control-shadow();
-    border-color: $primary-color;
+    // border-color: $primary-color; // old spectre.css
+    border-color: color('primary-color');
   }
   &::-ms-expand {
     display: none;
@@ -158,7 +172,8 @@ textarea.form-input {
     }
   }
   &:not([multiple]):not([size]) {
-    background: $bg-color-light url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23667189'%20d='M2%200L0%202h4zm0%205L0%203h4z'/%3E%3C/svg%3E") no-repeat right .35rem center / .4rem .5rem;
+    // background: $bg-color-light url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23667189'%20d='M2%200L0%202h4zm0%205L0%203h4z'/%3E%3C/svg%3E") no-repeat right .35rem center / .4rem .5rem; // old spectre.css
+    background: color('bg-color-light') url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23667189'%20d='M2%200L0%202h4zm0%205L0%203h4z'/%3E%3C/svg%3E") no-repeat right 0.35rem center / 0.4rem 0.5rem;
     padding-right: $control-icon-size + $control-padding-x;
   }
 }
@@ -219,20 +234,24 @@ textarea.form-input {
     width: 1px;
     &:focus + .form-icon {
       @include control-shadow();
-      border-color: $primary-color;
+      // border-color: $primary-color; // old spectre.css
+      border-color: color('primary-color');
     }
     &:checked + .form-icon {
-      background: $primary-color;
-      border-color: $primary-color;
+      // background: $primary-color; // old spectre.css
+      background: color('primary-color');
+      // border-color: $primary-color; // old spectre.css
+      border-color: color('primary-color');
     }
   }
 
   .form-icon {
-    border: $border-width solid $border-color-dark;
+    // border: $border-width solid $border-color-dark; // old spectre.css
+    border: $border-width solid color('border-color-dark');
     cursor: pointer;
     display: inline-block;
     position: absolute;
-    transition: background .2s, border .2s, box-shadow .2s, color .2s;
+    transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s;
   }
 
   // Input checkbox, radio and switch sizes
@@ -250,7 +269,8 @@ textarea.form-input {
 .form-checkbox,
 .form-radio {
   .form-icon {
-    background: $bg-color-light;
+    // background: $bg-color-light; // old spectre.css
+    background: color('bg-color-light');
     height: $control-icon-size;
     left: 0;
     top: ($control-size-sm - $control-icon-size) / 2;
@@ -259,7 +279,8 @@ textarea.form-input {
 
   input {
     &:active + .form-icon {
-      background: $bg-color-dark;
+      // background: $bg-color-dark; // old spectre.css
+      background: color('bg-color-dark');
     }
   }
 }
@@ -272,7 +293,8 @@ textarea.form-input {
     &:checked + .form-icon {
       &::before {
         background-clip: padding-box;
-        border: $border-width-lg solid $light-color;
+        // border: $border-width-lg solid $light-color; // old spectre.css
+        border: $border-width-lg solid color('light-color');
         border-left-width: 0;
         border-top-width: 0;
         content: "";
@@ -287,10 +309,13 @@ textarea.form-input {
       }
     }
     &:indeterminate + .form-icon {
-      background: $primary-color;
-      border-color: $primary-color;
+      // background: $primary-color; // old spectre.css
+      background: color('primary-color');
+      // border-color: $primary-color; // old spectre.css
+      border-color: color('primary-color');
       &::before {
-        background: $bg-color-light;
+        // background: $bg-color-light; // old spectre.css
+        background: color('bg-color-light');
         content: "";
         height: 2px;
         left: 50%;
@@ -311,7 +336,8 @@ textarea.form-input {
   input {
     &:checked + .form-icon {
       &::before {
-        background: $bg-color-light;
+        // background: $bg-color-light; // old spectre.css
+        background: color('bg-color-light');
         border-radius: 50%;
         content: "";
         height: 6px;
@@ -330,7 +356,8 @@ textarea.form-input {
   padding-left: ($unit-8 + $control-padding-x);
 
   .form-icon {
-    background: $gray-color;
+    // background: $gray-color; // old spectre.css
+    background: color('gray-color');
     background-clip: padding-box;
     border-radius: $unit-2 + $border-width;
     height: $unit-4 + $border-width * 2;
@@ -338,7 +365,8 @@ textarea.form-input {
     top: ($control-size-sm - $unit-4) / 2 - $border-width;
     width: $unit-8;
     &::before {
-      background: $bg-color-light;
+      // background: $bg-color-light; // old spectre.css
+      background: color('bg-color-light');
       border-radius: 50%;
       content: "";
       display: block;
@@ -346,7 +374,7 @@ textarea.form-input {
       left: 0;
       position: absolute;
       top: 0;
-      transition: background .2s, border .2s, box-shadow .2s, color .2s, left .2s;
+      transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s, left 0.2s;
       width: $unit-4;
     }
   }
@@ -359,7 +387,8 @@ textarea.form-input {
     }
     &:active + .form-icon {
       &::before {
-        background: $bg-color;
+        // background: $bg-color; // old spectre.css
+        background: color('bg-color');
       }
     }
   }
@@ -370,8 +399,10 @@ textarea.form-input {
   display: flex;
 
   .input-group-addon {
-    background: $bg-color;
-    border: $border-width solid $border-color-dark;
+    // background: $bg-color; // old spectre.css
+    background: color('bg-color');
+    border: $border-width solid $border-color-dark; // old spectre.css
+    border: $border-width solid color('border-color-dark');
     border-radius: $border-radius;
     line-height: $line-height;
     padding: $control-padding-y $control-padding-x;
@@ -434,8 +465,10 @@ textarea.form-input {
 .form-select {
   .has-success &,
   &.is-success {
-    background: lighten($success-color, 53%);
-    border-color: $success-color;
+    // background: lighten($success-color, 53%); // old spectre.css
+    background: color('success-color', $lightness: +53%);
+    // border-color: $success-color; // old spectre.css
+    border-color: color('success-color');
     &:focus {
       // @include control-shadow($success-color); // old spectre.css
       @include control-shadow('success-color');
@@ -444,8 +477,10 @@ textarea.form-input {
 
   .has-error &,
   &.is-error {
-    background: lighten($error-color, 53%);
-    border-color: $error-color;
+    // background: lighten($error-color, 53%); // old spectre.css
+    background: color('error-color', $lightness: +53%);
+    // border-color: $error-color; // old spectre.css
+    border-color: color('error-color');
     &:focus {
       // @include control-shadow($error-color); // old spectre.css
       @include control-shadow('error-color');
@@ -459,19 +494,23 @@ textarea.form-input {
   .has-error &,
   &.is-error {
     .form-icon {
-      border-color: $error-color;
+      // border-color: $error-color; // old spectre.css
+      border-color: color('error-color');
     }
 
     input {
       &:checked + .form-icon {
-        background: $error-color;
-        border-color: $error-color;
+        // background: $error-color; // old spectre.css
+        background: color('error-color');
+        // border-color: $error-color; // old spectre.css
+        border-color: color('error-color');
       }
 
       &:focus + .form-icon {
         // @include control-shadow($error-color); // old spectre.css
         @include control-shadow('error-color');
-        border-color: $error-color;
+        // border-color: $error-color; // old spectre.css
+        border-color: color('error-color');
       }
     }
   }
@@ -482,8 +521,10 @@ textarea.form-input {
   &.is-error {
     input {
       &:indeterminate + .form-icon {
-        background: $error-color;
-        border-color: $error-color;
+        // background: $error-color; // old spectre.css
+        background: color('error-color');
+        // border-color: $error-color; // old spectre.css
+        border-color: color('error-color');
       }
     }
   }
@@ -493,15 +534,18 @@ textarea.form-input {
 .form-input {
   &:not(:placeholder-shown) {
     &:invalid {
-      border-color: $error-color;
+      // border-color: $error-color; // old spectre.css
+      border-color: color('error-color');
       &:focus {
         // @include control-shadow($error-color); // old spectre.css
         @include control-shadow('error-color');
-        background: lighten($error-color, 53%);
+        // background: lighten($error-color, 53%); // old spectre.css
+        background: color('error-color', $lightness: +53%);
       }
 
       & + .form-input-hint {
-        color: $error-color;
+        // color: $error-color; // old spectre.css
+        color: color('error-color');
       }
     }
   }
@@ -512,7 +556,8 @@ textarea.form-input {
 .form-select {
   &:disabled,
   &.disabled {
-    background-color: $bg-color-dark;
+    // background-color: $bg-color-dark; // old spectre.css
+    background-color: color('bg-color-dark');
     cursor: not-allowed;
     opacity: .5;
   }
@@ -520,7 +565,8 @@ textarea.form-input {
 
 .form-input {
   &[readonly] {
-    background-color: $bg-color;
+    // background-color: $bg-color; // old spectre.css
+    background-color: color('bg-color');
   }
 }
 
@@ -528,7 +574,8 @@ input {
   &:disabled,
   &.disabled {
     & + .form-icon {
-      background: $bg-color-dark;
+      // background: $bg-color-dark; // old spectre.css
+      background: color('bg-color-dark');
       cursor: not-allowed;
       opacity: .5;
     }
@@ -540,7 +587,8 @@ input {
     &:disabled,
     &.disabled {
       & + .form-icon::before {
-        background: $bg-color-light;
+        // background: $bg-color-light; // old spectre.css
+        background: color('bg-color-light');
       }
     }
   }

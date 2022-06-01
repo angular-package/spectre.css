@@ -1,4 +1,4 @@
-@use 'function/css-variable-color' as *;
+@use 'functions' as *;
 @use 'variables' as *;
 
 // Bars
@@ -74,7 +74,7 @@
 
     &:active {
       // box-shadow: 0 0 0 .1rem $primary-color; // old spectre.css
-      box-shadow: 0 0 0 .1rem color('primary-color');
+      box-shadow: 0 0 0 0.1rem color('primary-color');
     }
   }
 }

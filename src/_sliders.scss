@@ -1,4 +1,4 @@
-@use 'function/css-variable-color' as *;
+@use 'functions' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
 
@@ -33,7 +33,7 @@
     // margin-top: -($unit-3 - $unit-h) / 2; // old spectre.css
     margin-top: -($unit-3 - $unit-h) * 0.5;
 
-    transition: transform .2s;
+    transition: transform 0.2s;
     width: $unit-3;
   }
   &::-moz-range-thumb {
@@ -42,7 +42,7 @@
     border: 0;
     border-radius: 50%;
     height: $unit-3;
-    transition: transform .2s;
+    transition: transform 0.2s;
     width: $unit-3;
   }
   &::-ms-thumb {
@@ -51,7 +51,7 @@
     border: 0;
     border-radius: 50%;
     height: $unit-3;
-    transition: transform .2s;
+    transition: transform 0.2s;
     width: $unit-3;
   }
 

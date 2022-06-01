@@ -13,7 +13,7 @@
     position: absolute;
     top: 0;
     transform: translate(-50%, -50%) scale(0);
-    transition: transform .2s;
+    transition: transform 0.2s;
     width: $control-width-sm;
     z-index: $zindex-3;
   }
@@ -62,7 +62,7 @@
   }
 
   .card {
-    @include shadow-variant(.2rem);
+    @include shadow-variant(0.2rem);
     border: 0;
   }
 }

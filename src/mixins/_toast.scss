@@ -1,11 +1,11 @@
-@use '../function/css-variable-color' as *;
+@use '../functions' as *;
 @use '../variables' as *;
 
 // Toast variant mixin
 // @mixin toast-variant($color: $dark-color) { // old spectre.css
 @mixin toast-variant($color: 'dark-color') {
   // background: rgba($color, .95); // old spectre.css
-  background: color($color, $alpha: .95);
+  background: color($color, $alpha: 0.95);
   // border-color: $color; // old spectre.css
   border-color: color($color);
 }
