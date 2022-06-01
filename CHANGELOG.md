@@ -1,13 +1,20 @@
 #### Spectre.css Changelog
 
-##### v1.0.0-alpha-1
+##### v1.0.0-alpha.1
 
+- Change file name from general `function/_css-variable-color.scss` to just `functions/_color.scss`. [a8b14ac]
+- Move mixins from `mixins/_css-variable-color.scss` to separate files `_define-color.scss` and `_define-color-based-on.scss`. [e9bb18b]
+- Change folder name from `function` to `functions` for Spectre.css naming consistency. [4582370]
+- Change `.bg-gray` to use `$bg-gray` SCSS variable instead of `$bg-color`. [ebd492c]
+- Fix includes mixin `bg-color-variant()` by adding missing sass variables. [ebd492c]
 - New background class colors `.bg-color-dark` and `.bg-color-light`. [fb1224c]
 - Fix variable name from `$lighten` to `$lightness` in `textarea.form-input`. [54790ae]
 - Update missing `color()` function in styles and use prettier on files. [aed7fe0]
-- Fix includes mixin `bg-color-variant()` by adding missing sass variables. [ebd492c]
 - Update sass variable name to css style and add `!important` to `text-color-variant` mixin. [03713ee]
 
+[a8b14ac]: https://github.com/angular-package/spectre.css/commit/a8b14acd49be4e82eb387dfde0b964e7a41bd664
+[e9bb18b]: https://github.com/angular-package/spectre.css/commit/e9bb18b9ac4c47b40368f2d8a09e82476e08390b
+[4582370]: https://github.com/angular-package/spectre.css/commit/4582370757b32c2af3e2e138974485e7f35144de
 [fb1224c]: https://github.com/angular-package/spectre.css/commit/fb1224c6799f0d6abdf992396e09b6d547f27e75
 [95648b3]: https://github.com/angular-package/spectre.css/commit/95648b379eb18437dbd15bd07ce6d6daf0c5c3fa
 [54790ae]: https://github.com/angular-package/spectre.css/commit/54790aef0bdf578d7aa2e6aeb01f1da905a00189
