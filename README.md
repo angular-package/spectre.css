@@ -1,10 +1,10 @@
 # angular-package
 
-<img align="right"  width="92" height="92" src="https://avatars.githubusercontent.com/u/31412194?s=400&u=c9929aa36826318ccac8f7b84516e1ce3af7e21c&v=4" />
+<a href='https://angular-package.dev' target='_blank'>
+  <img align="right"  width="92" height="92" src="https://avatars.githubusercontent.com/u/31412194?s=400&u=c9929aa36826318ccac8f7b84516e1ce3af7e21c&v=4" />
+</a>
 
 The angular-package supports the development process of [angular](https://angular.io)-based applications in varied ways through the thoughtful, reusable, easy-to-use small pieces of code called packages.
-
-[**angular-package.dev**](https://angular-package.dev) | [**docs.angular-package.dev**](https://docs.angular-package.dev)
 
 <br>
 
