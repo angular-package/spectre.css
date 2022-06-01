@@ -29,7 +29,9 @@
 @include bg-color-variant('.bg-accent', 'accent-color', $accent-color); // ! New color.
 // @include bg-color-variant('.bg-dark', $dark-color); // old.spectre.css
 @include bg-color-variant('.bg-dark', 'dark-color', $dark-color);
+@include bg-color-variant('.bg-color-dark', 'bg-color-dark', $bg-color-dark); // ! New color that uses $bg-color-dark
 @include bg-color-variant('.bg-light', 'light-color', $light-color);
+@include bg-color-variant('.bg-color-light', 'bg-color-light', $bg-color-light); // ! New color that uses $bg-color-light
 // @include bg-color-variant('.bg-primary', $primary-color); // old spectre.css
 @include bg-color-variant('.bg-primary', 'primary-color', $primary-color);
 // @include bg-color-variant('.bg-secondary', $secondary-color); // old.spectre.css
