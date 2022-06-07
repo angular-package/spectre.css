@@ -1,25 +1,31 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
+@use 'functions/var-negative' as *;
 @use 'variables' as *;
 
 // Tabs
 .tab {
   align-items: center;
   // border-bottom: $border-width solid $border-color; // old spectre.css
-  border-bottom: $border-width solid color('border-color');
+  border-bottom: get-var('border-width') solid color('border-color');
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  margin: $unit-1 0 ($unit-1 - $border-width) 0;
+  // margin: $unit-1 0 ($unit-1 - $border-width) 0; // old spectre.css
+  margin: get-var('unit-1') 0 calc(get-var('unit-1') - get-var('border-width')) 0;
 
   .tab-item {
     margin-top: 0;
 
     a {
-      border-bottom: $border-width-lg solid transparent;
+      // border-bottom: $border-width-lg solid transparent; // old spectre.css
+      border-bottom: get-var('border-width', $suffix: 'lg') solid transparent;
       color: inherit;
       display: block;
-      margin: 0 $unit-2 0 0;
-      padding: $unit-2 $unit-1 $unit-2 - $border-width-lg $unit-1;
+      // margin: 0 $unit-2 0 0; // old spectre.css
+      margin: 0 get-var('unit-2') 0 0;
+      // padding: $unit-2 $unit-1 $unit-2 - $border-width-lg $unit-1; // old spectre.css
+      padding: get-var('unit-2') get-var('unit-1') calc(get-var('unit-2') - get-var('border-width', $suffix: 'lg')) $unit-1;
       text-decoration: none;
       &:focus,
       &:hover {
@@ -41,7 +47,8 @@
     }
 
     .btn-clear {
-      margin-top: -$unit-1;
+      // margin-top: -$unit-1; // old spectre.css
+      margin-top: var-negative(get-var('unit-1'));
     }
   }
 
@@ -57,8 +64,10 @@
       .badge {
         &[data-badge]::after {
           position: absolute;
-          right: $unit-h;
-          top: $unit-h;
+          // right: $unit-h; // old spectre.css
+          right: get-var('unit-h');
+          // top: $unit-h; // old spectre.css
+          top: get-var('unit-h');
           transform: translate(0, 0);
         }
       }

@@ -1,4 +1,5 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
 
@@ -11,7 +12,8 @@
   left: 0;
   opacity: 0;
   overflow: hidden;
-  padding: $layout-spacing;
+  // padding: $layout-spacing; // old spectre.css
+  padding: get-var('layout-spacing', $unit: 1);
   position: fixed;
   right: 0;
   top: 0;
@@ -42,8 +44,10 @@
 
   &.modal-sm {
     .modal-container {
-      max-width: $control-width-sm;
-      padding: 0 $unit-2;
+      // max-width: $control-width-sm; // old spectre.css
+      max-width: get-var('control-width', $suffix: 'sm');
+      // padding: 0 $unit-2; // old spectre.css
+      padding: 0 get-var('unit-2');
     }
   }
 
@@ -55,20 +59,25 @@
 
     .modal-container {
       box-shadow: none;
-      max-width: $control-width-lg;
+      // max-width: $control-width-lg; // old spectre.css
+      max-width: get-var('control-width', $suffix: 'lg');
     }
   }
 }
 
 .modal-container {
   @include shadow-variant(0.2rem);
-  background: $bg-color-light;
-  border-radius: $border-radius;
+  // background: $bg-color-light; // old spectre.css
+  background: color('bg-color-light');
+  // border-radius: $border-radius; // old spectre.css
+  border-radius: get-var('border-radius');
   display: flex;
   flex-direction: column;
   max-height: 75vh;
-  max-width: $control-width-md;
-  padding: 0 $unit-4;
+  // max-width: $control-width-md; // old spectre.css
+  max-width: get-var('control-width', $suffix: 'md');
+  // padding: 0 $unit-4; // old spectre.css
+  padding: 0 get-var('unit-4');
   width: 100%;
 
   &.modal-fullheight {
@@ -78,17 +87,20 @@
   .modal-header {
     // color: $dark-color; // old spectre.css
     color: color('dark-color');
-    padding: $unit-4;
+    // padding: $unit-4; // old spectre.css
+    padding: get-var('unit-4');
   }
 
   .modal-body {
     overflow-y: auto;
-    padding: $unit-4;
+    // padding: $unit-4; // old spectre.css
+    padding: get-var('unit-4');
     position: relative;
   }
 
   .modal-footer {
-    padding: $unit-4;
+    // padding: $unit-4; // old spectre.css
+    padding: get-var('unit-4');
     text-align: right;
   }
 }

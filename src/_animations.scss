@@ -1,3 +1,5 @@
+@use 'functions/get-var' as *;
+@use 'functions/var-negative' as *;
 @use 'variables' as *;
 
 // Animations
@@ -13,7 +15,8 @@
 @keyframes slide-down {
   0% {
     opacity: 0;
-    transform: translateY(-$unit-8);
+    // transform: translateY(-$unit-8); // old spectre.css
+    transform: translateY(var-negative(get-var('unit-8')));
   }
   100% {
     opacity: 1;

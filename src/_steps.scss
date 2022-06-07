@@ -1,4 +1,5 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
 @use 'variables' as *;
 
 // Steps
@@ -6,7 +7,8 @@
   display: flex;
   flex-wrap: nowrap;
   list-style: none;
-  margin: $unit-1 0;
+  // margin: $unit-1 0; // old spectre.css
+  margin: get-var('unit-1') 0;
   width: 100%;
 
   .step-item {
@@ -38,16 +40,19 @@
         // background: $primary-color; // old spectre.css
         background: color('primary-color');
         // border: $border-width-lg solid $light-color; // old spectre.css
-        border: $border-width-lg solid color('light-color');
+        border: get-var('border-width', $suffix: 'lg') solid color('light-color');
         border-radius: 50%;
         content: '';
         display: block;
-        height: $unit-3;
+        // height: $unit-3; // old spectre.css
+        height: get-var('unit-3');
         left: 50%;
         position: absolute;
-        top: $unit-1;
+        // top: $unit-1; // old spectre.css
+        top: get-var('unit-1');
         transform: translateX(-50%);
-        width: $unit-3;
+        // width: $unit-3; // old spectre.css
+        width: get-var('unit-3');
         z-index: $zindex-0;
       }
     }
@@ -58,7 +63,7 @@
           // background: $light-color; // old spectre.css
           background: color('light-color');
           // border: $border-width-lg solid $primary-color; // old spectre.css
-          border: $border-width-lg solid color('primary-color');
+          border: get-var('border-width', $suffix: 'lg') solid color('primary-color');
         }
       }
 

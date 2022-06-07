@@ -1,21 +1,26 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
 @use 'variables' as *;
 
 // Breadcrumbs
 .breadcrumb {
   list-style: none;
-  margin: $unit-1 0;
-  padding: $unit-1 0;
+  // margin: $unit-1 0; // old spectre.css
+  margin: get-var('unit-1') 0;
+  // padding: $unit-1 0; // old spectre.css
+  padding: get-var('unit-1') 0;
 
   .breadcrumb-item {
     // color: $gray-color-dark; // old spectre.css
     color: color('gray-color-dark');
     display: inline-block;
     margin: 0;
-    padding: $unit-1 0;
+    // padding: $unit-1 0; // old spectre.css
+    padding: get-var('unit-1') 0;
 
     &:not(:last-child) {
-      margin-right: $unit-1;
+      // margin-right: $unit-1; // old spectre.css
+      margin-right: get-var('unit-1');
 
       a {
         // color: $gray-color-dark; // old spectre.css
@@ -28,7 +33,8 @@
         // color: $gray-color-dark; // old spectre.css
         color: color('gray-color-dark');
         content: '/';
-        padding-right: $unit-2;
+        // padding-right: $unit-2; // old spectre.css
+        padding-right: get-var('unit-2');
       }
     }
   }

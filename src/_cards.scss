@@ -1,4 +1,5 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
 
@@ -7,19 +8,22 @@
   // background: $bg-color-light; // old spectre.css
   background: color('bg-color-light');
   // border: $border-width solid $border-color; // old spectre.css
-  border: $border-width solid color('border-color');
-  border-radius: $border-radius;
+  border: get-var('border-width') solid color('border-color');
+  // border-radius: $border-radius; // old spectre.css
+  border-radius: get-var('border-radius');
   display: flex;
   flex-direction: column;
 
   .card-header,
   .card-body,
   .card-footer {
-    padding: $layout-spacing-lg;
+    // padding: $layout-spacing-lg; // old spectre.css
+    padding: get-var('layout-spacing', $suffix: 'lg', $unit: 1);
     padding-bottom: 0;
 
     &:last-child {
-      padding-bottom: $layout-spacing-lg;
+      // padding-bottom: $layout-spacing-lg; // old spectre.css
+      padding-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: 1);
     }
   }
 
@@ -28,21 +32,26 @@
   }
 
   .card-image {
-    padding-top: $layout-spacing-lg;
+    // padding-top: $layout-spacing-lg; // old spectre.css
+    padding-top: get-var('layout-spacing', $suffix: 'lg', $unit: 1);
 
     &:first-child {
       padding-top: 0;
 
       img {
-        border-top-left-radius: $border-radius;
-        border-top-right-radius: $border-radius;
+        // border-top-left-radius: $border-radius; // old spectre.css
+        border-top-left-radius: get-var('border-radius');
+        // border-top-right-radius: $border-radius; // old spectre.css
+        border-top-right-radius: get-var('border-radius');
       }
     }
 
     &:last-child {
       img {
-        border-bottom-left-radius: $border-radius;
-        border-bottom-right-radius: $border-radius;
+        // border-bottom-left-radius: $border-radius; // old spectre.css
+        border-bottom-left-radius: get-var('border-radius');
+        // border-bottom-right-radius: $border-radius; // old spectre.css
+        border-bottom-right-radius: get-var('border-radius');
       }
     }
   }

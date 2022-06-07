@@ -1,4 +1,5 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
 @use 'variables' as *;
 
 // Filters
@@ -18,7 +19,8 @@ $filter-number: 8 !default;
 
 .filter {
   .filter-nav {
-    margin: $layout-spacing 0;
+    // margin: $layout-spacing 0; // old spectre.css
+    margin: get-var('layout-spacing', $unit: 1) 0;
   }
 
   .filter-body {

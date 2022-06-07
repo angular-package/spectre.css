@@ -1,4 +1,5 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
 @use 'variables' as *;
 
 // Badges
@@ -24,7 +25,8 @@
   }
   &[data-badge] {
     &::after {
-      font-size: $font-size-sm;
+      // font-size: $font-size-sm; // old spectre.css
+      font-size: get-var('font-size', $suffix: 'sm');
       height: 0.9rem;
       line-height: 1;
       min-width: 0.9rem;

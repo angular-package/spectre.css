@@ -8,33 +8,39 @@
   // background: $bg-color-dark; // old spectre.css
   background: color('bg-color-dark');
   border: 0;
-  border-radius: $border-radius;
+  // border-radius: $border-radius; // old spectre.css
+  border-radius: get-var('border-radius');
   // color: $primary-color; // old spectre.css
   color: color('primary-color');
-  height: $unit-1;
+  // height: $unit-1; // old spectre.css
+  height: get-var('unit-1');
   position: relative;
   width: 100%;
 
   &::-webkit-progress-bar {
     background: transparent;
-    border-radius: $border-radius;
+    // border-radius: $border-radius; // old spectre.css
+    border-radius: get-var('border-radius');
   }
 
   &::-webkit-progress-value {
     // background: $primary-color; // old spectre.css
     background: color('primary-color');
-    border-radius: $border-radius;
+    // border-radius: $border-radius; // old spectre.css
+    border-radius: get-var('border-radius');
   }
 
   &::-moz-progress-bar {
     // background: $primary-color; // old spectre.css
     background: color('primary-color');
-    border-radius: $border-radius;
+    // border-radius: $border-radius; // old spectre.css
+    border-radius: get-var('border-radius');
   }
 
   &:indeterminate {
     animation: progress-indeterminate 1.5s linear infinite;
-    background: color('bg-color-dark') linear-gradient(to right, $primary-color 30%, $bg-color-dark 30%) top left / 150% 150% no-repeat; // TODO: Update colors
+    // TODO: Gradient.
+    background: color('bg-color-dark') linear-gradient(to right, $primary-color 30%, $bg-color-dark 30%) top left / 150% 150% no-repeat;
 
     &::-moz-progress-bar {
       background: transparent;

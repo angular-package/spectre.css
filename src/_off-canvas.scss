@@ -1,7 +1,9 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
 @use 'variables' as *;
 
 // Off canvas menus
+// TODO: canvas
 $off-canvas-breakpoint: $size-lg !default;
 
 .off-canvas {
@@ -14,13 +16,16 @@ $off-canvas-breakpoint: $size-lg !default;
   .off-canvas-toggle {
     display: block;
     position: absolute;
-    top: $layout-spacing;
+    // top: $layout-spacing; // old spectre.css
+    top: get-var('layout-spacing', $unit: 1);
     transition: none;
     z-index: $zindex-0;
     @if $rtl == true {
-      right: $layout-spacing;
+      // right: $layout-spacing; // old spectre.css
+      right: get-var('layout-spacing', $unit: 1);
     } @else {
-      left: $layout-spacing;
+      // left: $layout-spacing; // old spectre.css
+      left: get-var('layout-spacing', $unit: 1);
     }
   }
 
@@ -46,7 +51,8 @@ $off-canvas-breakpoint: $size-lg !default;
   .off-canvas-content {
     flex: 1 1 auto;
     height: 100%;
-    padding: $layout-spacing $layout-spacing $layout-spacing 4rem;
+    // padding: $layout-spacing $layout-spacing $layout-spacing 4rem; // old spectre.css
+    padding: get-var('layout-spacing', $unit: 1) get-var('layout-spacing', $unit: 1) get-var('layout-spacing', $unit: 1) 4rem;
   }
 
   .off-canvas-overlay {

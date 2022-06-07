@@ -1,3 +1,4 @@
+@use 'functions/get-var' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
 
@@ -9,12 +10,14 @@
   .popover-container {
     left: 50%;
     opacity: 0;
-    padding: $layout-spacing;
+    // padding: $layout-spacing; // old spectre.css
+    padding: get-var('layout-spacing', $unit: 1);
     position: absolute;
     top: 0;
     transform: translate(-50%, -50%) scale(0);
     transition: transform 0.2s;
-    width: $control-width-sm;
+    // width: $control-width-sm; // old spectre.css
+    width: get-var('control-width', $suffix: 'sm');
     z-index: $zindex-3;
   }
 
