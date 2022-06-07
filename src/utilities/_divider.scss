@@ -14,42 +14,52 @@
     color: color('gray-color');
     content: attr(data-content);
     display: inline-block;
-    font-size: $font-size-sm;
-    padding: 0 $unit-2;
-    transform: translateY(-$font-size-sm + $border-width);
+    // font-size: $font-size-sm; // old spectre.css
+    font-size: get-var('font-size', $suffix: 'sm');
+    // padding: 0 $unit-2; // old spectre.css
+    padding: 0 get-var('unit-2');
+    // transform: translateY(-$font-size-sm + $border-width); // old spectre.css
+    transform: translateY(var-negative(get-var('font-size', $suffix: 'sm') + get-var('border-width')));
   }
 }
 
 .divider {
   // border-top: $border-width solid $border-color-light; // old spectre.css
-  border-top: $border-width solid color('border-color-light');
-  height: $border-width;
-  margin: $unit-2 0;
+  border-top: get-var('border-width') solid color('border-color-light');
+  // height: $border-width; // old spectre.css
+  height: get-var('border-width');
+  // margin: $unit-2 0; // old spectre.css
+  margin: get-var('unit-2') 0;
 
   &[data-content] {
-    margin: $unit-4 0;
+    // margin: $unit-4 0; // old spectre.css
+    margin: get-var('unit-4') 0;
   }
 }
 
 .divider-vert {
   display: block;
-  padding: $unit-4;
+  // padding: $unit-4; // old spectre.css
+  padding: get-var('unit-4');
 
   &::before {
     // border-left: $border-width solid $border-color; // old spectre.css
-    border-left: $border-width solid color('border-color');
-    bottom: $unit-2;
+    border-left: get-var('border-width') solid color('border-color');
+    // bottom: $unit-2; // old spectre.css
+    bottom: get-var('unit-2');
     content: '';
     display: block;
     left: 50%;
     position: absolute;
-    top: $unit-2;
+    // top: $unit-2; // old spectre.css
+    top: get-var('unit-2');
     transform: translateX(-50%);
   }
 
   &[data-content]::after {
     left: 50%;
-    padding: $unit-1 0;
+    // padding: $unit-1 0; // old spectre.css
+    padding: get-var('unit-1') 0;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
