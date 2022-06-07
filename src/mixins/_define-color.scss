@@ -1,7 +1,16 @@
-// Defines CSS variable color in hsl form.
-@mixin define-color($name, $color) {
-  --s-#{$name}-h: #{hue($color)};
-  --s-#{$name}-l: #{lightness($color)};
-  --s-#{$name}-s: #{saturation($color)};
-  --s-#{$name}-a: #{alpha($color)};
+@use '../variables' as *;
+@use 'set-var' as *;
+
+// The mixin defines CSS variable color in hsl form.
+@mixin define-color($name, $color, $prefix: $var-prefix) {
+  @include set-var($name, hue($color), $prefix, 'h');
+  @include set-var($name, saturation($color), $prefix, 's');
+  @include set-var($name, lightness($color), $prefix, 'l');
+  @include set-var($name, alpha($color), $prefix, 'a');
 }
+
+// Old @angular-package/spectre.css
+// --s-#{$name}-h: #{hue($color)};
+// --s-#{$name}-l: #{lightness($color)};
+// --s-#{$name}-s: #{saturation($color)};
+// --s-#{$name}-a: #{alpha($color)};
