@@ -1,6 +1,7 @@
 @use 'sass:string';
 @use '../variables' as *;
 
+// Returns css calc function that multiplies given $value by negative 1.
 @function var-negative($value) {
   @return calc((#{$value}) * -1);
 }
