@@ -21,27 +21,27 @@
 
   &.grid-xl {
     // max-width: $grid-spacing * 2 + $size-xl; // old spectre.css
-    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + $size-xl);
+    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + get-var('size-xl'));
   }
 
   &.grid-lg {
     // max-width: $grid-spacing * 2 + $size-lg; // old spectre.css
-    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + $size-lg);
+    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + get-var('size-lg'));
   }
 
   &.grid-md {
     // max-width: $grid-spacing * 2 + $size-md; // old spectre.css
-    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + $size-md);
+    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + get-var('size-md'));
   }
 
   &.grid-sm {
     // max-width: $grid-spacing * 2 + $size-sm; // old spectre.css
-    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + $size-sm);
+    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + get-var('size-sm'));
   }
 
   &.grid-xs {
     // max-width: $grid-spacing * 2 + $size-xs; // old spectre.css
-    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + $size-xs);
+    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + get-var('size-xs'));
   }
 }
 
