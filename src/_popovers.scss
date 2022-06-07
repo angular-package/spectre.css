@@ -18,7 +18,8 @@
     transition: transform 0.2s;
     // width: $control-width-sm; // old spectre.css
     width: get-var('control-width', $suffix: 'sm');
-    z-index: $zindex-3;
+    // z-index: $zindex-3; // old spectre.css
+    z-index: get-var('z-index-3');
   }
 
   *:focus + .popover-container,

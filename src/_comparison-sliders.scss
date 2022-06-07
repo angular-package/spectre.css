@@ -54,7 +54,8 @@
       // right: $unit-4; // old spectre.css
       right: get-var('unit-4');
       top: 0;
-      z-index: $zindex-0;
+      // z-index: $zindex-0; // old spectre.css
+      z-index: get-var('z-index-0');
     }
 
     &::after {

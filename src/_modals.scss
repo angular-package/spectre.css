@@ -22,7 +22,8 @@
   &.active {
     display: flex;
     opacity: 1;
-    z-index: $zindex-4;
+    // z-index: $zindex-4; // old spectre.css
+    z-index: get-var('z-index-4');
 
     .modal-overlay {
       // background: rgba($bg-color, .75); // old spectre.css
@@ -38,7 +39,8 @@
 
     .modal-container {
       animation: slide-down 0.2s ease 1;
-      z-index: $zindex-0;
+      // z-index: $zindex-0; // old spectre.css
+      z-index: get-var('z-index-0');
     }
   }
 

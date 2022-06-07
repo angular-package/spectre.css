@@ -67,7 +67,9 @@
     &:not(:last-child):first-child {
       // background: $bg-color-dark; // old spectre.css
       background: color('bg-color-dark');
-      z-index: $zindex-0;
+      // z-index: $zindex-0; // old spectre.css
+      z-index: get-var('z-index-0');
+
     }
   }
 

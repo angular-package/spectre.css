@@ -31,7 +31,8 @@
     top: 50%;
     // width: $unit-4; // old spectre.css
     width: get-var('unit-4');
-    z-index: $zindex-0;
+    // z-index: $zindex-0; // old spectre.css
+    z-index: get-var('z-index-0');
   }
 
   &.loading-lg {

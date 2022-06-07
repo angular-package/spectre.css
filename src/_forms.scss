@@ -231,7 +231,8 @@ textarea.form-input {
     top: 50%;
     transform: translateY(-50%);
     width: get-var('control-icon-size');
-    z-index: $zindex-0 + 1;
+    // z-index: $zindex-0 + 1; // old spectre.css
+    z-index: calc(get-var('z-index-0') + 1);
   }
 }
 
@@ -496,7 +497,8 @@ textarea.form-input {
   }
 
   .input-group-btn {
-    z-index: $zindex-0;
+    // z-index: $zindex-0; // old spectre.css
+    z-index: get-var('z-index-0');
   }
 
   .form-input,
@@ -519,7 +521,8 @@ textarea.form-input {
       margin-left: var-negative(get-var('border-width'));
     }
     &:focus {
-      z-index: $zindex-0 + 1;
+      // z-index: $zindex-0 + 1; // old spectre.css
+      z-index: calc(get-var('z-index-0') + 1);
     }
   }
 

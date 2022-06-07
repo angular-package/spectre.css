@@ -19,7 +19,8 @@ $off-canvas-breakpoint: $size-lg !default;
     // top: $layout-spacing; // old spectre.css
     top: get-var('layout-spacing', $unit: 1);
     transition: none;
-    z-index: $zindex-0;
+    // z-index: $zindex-0; // old spectre.css
+    z-index: get-var('z-index-0');
     @if $rtl == true {
       // right: $layout-spacing; // old spectre.css
       right: get-var('layout-spacing', $unit: 1);
@@ -38,7 +39,8 @@ $off-canvas-breakpoint: $size-lg !default;
     position: fixed;
     top: 0;
     transition: transform 0.25s;
-    z-index: $zindex-2;
+    // z-index: $zindex-2; // old spectre.css
+    z-index: get-var('z-index-2');
     @if $rtl == true {
       right: 0;
       transform: translateX(100%);
@@ -79,7 +81,8 @@ $off-canvas-breakpoint: $size-lg !default;
     &:target ~ .off-canvas-overlay,
     &.active ~ .off-canvas-overlay {
       display: block;
-      z-index: $zindex-1;
+      // z-index: $zindex-1; // old spectre.css
+      z-index: get-var('z-index-1');
     }
   }
 }

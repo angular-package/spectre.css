@@ -32,7 +32,8 @@
     transform: translate(-50%, get-var('unit-2'));
     transition: opacity 0.2s, transform 0.2s;
     white-space: pre;
-    z-index: $zindex-3;
+    // z-index: $zindex-3; // old spectre.css
+    z-index: get-var('z-index-3');
   }
   &:focus,
   &:hover {

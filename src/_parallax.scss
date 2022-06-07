@@ -16,7 +16,8 @@ $parallax-fade-color: rgba(255, 255, 255, 0.35) !default; // TODO: Add color.
   outline: none;
   position: absolute;
   width: 50%;
-  z-index: $zindex-1;
+  // z-index: $zindex-1; // old spectre.css
+  z-index: get-var('z-index-1');
 }
 
 .parallax {
@@ -60,7 +61,8 @@ $parallax-fade-color: rgba(255, 255, 255, 0.35) !default; // TODO: Add color.
     transform: translateZ($parallax-offset-z) scale($parallax-scale);
     transition: transform 0.4s;
     width: 100%;
-    z-index: $zindex-0;
+    // z-index: $zindex-0; // old spectre.css
+    z-index: get-var('z-index-0');
   }
 
   .parallax-top-left {

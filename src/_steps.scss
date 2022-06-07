@@ -53,7 +53,8 @@
         transform: translateX(-50%);
         // width: $unit-3; // old spectre.css
         width: get-var('unit-3');
-        z-index: $zindex-0;
+        // z-index: $zindex-0; // old spectre.css
+        z-index: get-var('z-index-0');
       }
     }
 
