@@ -1,0 +1,6 @@
+@use 'sass:string';
+@use '../variables' as *;
+
+@function var-negative($value) {
+  @return calc((#{$value}) * -1);
+}
