@@ -1,0 +1,13 @@
+@use '../functions/strip-unit' as *;
+@use '../mixins/set-var' as *;
+@use '../variables' as *;
+
+/*
+  Layout spacing. Alphabetical order.
+*/
+:root, :host {
+  @include set-var('layout-spacing', strip-unit($layout-spacing)); // $unit-2
+  @include set-var('layout-spacing', strip-unit($layout-spacing-lg), $suffix: 'lg'); // $unit-4
+  @include set-var('layout-spacing', strip-unit($layout-spacing-sm), $suffix: 'sm'); // $unit-1
+  @include set-var('layout-spacing', 1rem, $suffix: 'unit'); // rem
+}

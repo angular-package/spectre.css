@@ -1,0 +1,12 @@
+@use '../mixins/set-var' as *;
+@use '../variables' as *;
+
+/*
+  Control size. Alphabetical order.
+*/
+:root, :host {
+  @include set-var('control-icon-size', $control-icon-size); // 0.8rem
+  @include set-var('control-size', $control-size); // $unit-9
+  @include set-var('control-size', $control-size-lg, $suffix: 'lg'); // $unit-10
+  @include set-var('control-size', $control-size-sm, $suffix: 'sm'); // $unit-7
+}
