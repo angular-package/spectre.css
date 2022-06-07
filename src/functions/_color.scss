@@ -1,9 +1,18 @@
+@use '../variables' as *;
+
 // Get color from css variable.
-@function color($name, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 1) {
+@function color(
+  $name,
+  $hue: 0deg,
+  $lightness: 0%,
+  $saturation: 0%,
+  $alpha: 1,
+  $prefix: $var-prefix
+) {
   @return hsla(
-    calc(var(--s-#{$name}-h) + #{$hue}),
-    calc(var(--s-#{$name}-s) + #{$saturation}),
-    calc(var(--s-#{$name}-l) + #{$lightness}),
-    calc(var(--s-#{$name}-a) * #{$alpha})
+    calc(var(--#{$prefix}-#{$name}-h) + #{$hue}),
+    calc(var(--#{$prefix}-#{$name}-s) + #{$saturation}),
+    calc(var(--#{$prefix}-#{$name}-l) + #{$lightness}),
+    calc(var(--#{$prefix}-#{$name}-a) * #{$alpha})
   );
 }
