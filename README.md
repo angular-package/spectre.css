@@ -16,7 +16,7 @@ The angular-package supports the development process of [angular](https://angula
 
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 
-**This Spectre.css is maintained by the `@angular-package`.**
+**This Spectre.css is maintained by the `@angular-package`.** Feel free to submit a pull request. Help is always appreciated.
 
 Spectre.css is a lightweight, responsive and modern CSS framework.
 
@@ -162,6 +162,182 @@ $link-color-light: lighten($link-color, 10%) !default; // CSS variable.
 // Body colors.
 $body-font-color: lighten($dark-color, 5%) !default; // CSS variable.
 ```
+
+## CSS properties/variables
+
+### Scheme
+
+The `color-scheme` variable is set to `normal`.
+
+```scss
+:root, :host {
+  color-scheme: normal;
+}
+```
+
+### CSS variable color structure
+
+Each **hex** color has **four** CSS variables defined by the mixin `define-color($name, $color)`, split into hsl form, where suffix `h` indicates `hue`, `l` lightness, `s` saturation and `a` - alpha.
+
+> By default, argument `$prefix` is equal to `$var-prefix`.
+
+```scss
+// src/mixins/_define-color.scss
+// Defines CSS variable color in hsl form.
+@mixin define-color($name, $color) {
+  --s-#{$name}-h: #{hue($color)};
+  --s-#{$name}-l: #{lightness($color)};
+  --s-#{$name}-s: #{saturation($color)};
+  --s-#{$name}-a: #{alpha($color)};
+}
+```
+
+For example `primary-color` is built from the CSS variables.
+
+```css
+--s-primary-color-h: 240.9090909091deg; // Hue.
+--s-primary-color-s: 63.4615384615%; // Saturation.
+--s-primary-color-l: 59.2156862745%; // Lightness.
+--s-primary-color-a: 1; // Alpha.
+```
+
+CSS variables are defined in both `:root` and `:host`. For example core colors.
+
+```scss
+// src/css-variables/_core-colors.scss
+:root, :host {
+  // Accent.
+  @include define-color('accent-color', $accent-color); // #9932CC
+
+  // Dark.
+  @include define-color('dark-color', $dark-color); // #303742
+
+  // Light.
+  @include define-color('light-color', $light-color); // #ffffff
+
+  // Primary.
+  @include define-color('primary-color', $primary-color); // #5755d9
+}
+```
+
+Each color that is based on **hex** color has **four** CSS variables defined by the mixin `define-color-based-on($name, $color, $lightness: 0%, $prefix)`, split into hsl form, where suffix `h` indicates `hue`, `l` lightness, `s` saturation and `a` - alpha.
+> By default, argument `$prefix` is equal to `$var-prefix`.
+
+```scss
+// src/mixins/_define-color-based-on.scss
+@mixin define-color-based-on($name, $color, $lightness: 0%, $prefix: $var-prefix) {
+  @include set-var($name, get-var($color, $suffix: 'h'), $prefix, 'h');
+  @include set-var($name, get-var($color, $suffix: 's'), $prefix, 's');
+  @include set-var($name, calc(var(--#{$prefix}-#{$color}-l) + #{$lightness}), $prefix, 'l');
+  @include set-var($name, get-var($color, $suffix: 'a'), $prefix, 'a');
+}
+```
+
+Color that based on `primary-color` for example `secondary-color` is built from the css variables:
+
+```css
+:root, :host {
+  --s-secondary-color-h: var(--s-primary-color-h);
+  --s-secondary-color-l: calc(var(--s-primary-color-l) + 37.5%);
+  --s-secondary-color-s: var(--s-primary-color-s);
+  --s-secondary-color-a: var(--s-primary-color-a);
+}
+```
+
+CSS variables that are based on others are also defined in both `:root` and `:host`. For example core colors.
+
+```scss
+// src/css-variables/_core-colors.scss
+:root, :host {
+  // Primary.
+  @include define-color-based-on('primary-color-dark', 'primary-color', $lightness: -3%); // darken($primary-color, 3%)
+  @include define-color-based-on('primary-color-light', 'primary-color', $lightness: +3%); // lighten($primary-color, 3%)
+
+  // Secondary.
+  @include define-color-based-on('secondary-color', 'primary-color', $lightness: +37.5%); // lighten($primary-color, 37.5%) !default;
+  @include define-color-based-on('secondary-color-dark', 'secondary-color', $lightness: -3%); // darken($secondary-color, 3%) !default;
+  @include define-color-based-on('secondary-color-light', 'secondary-color', $lightness: +3%); // lighten($secondary-color, 3%) !default;
+}
+```
+
+Colors are read by the function `color($name, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 1, $prefix: $var-prefix)`.
+
+```scss
+// src/functions/_color.scss
+// Get color from css variable.
+@function color(
+  $name,
+  $hue: 0deg,
+  $lightness: 0%,
+  $saturation: 0%,
+  $alpha: 1,
+  $prefix: $var-prefix
+) {
+  @return hsla(
+    calc(var(--#{$prefix}-#{$name}-h) + #{$hue}),
+    calc(var(--#{$prefix}-#{$name}-s) + #{$saturation}),
+    calc(var(--#{$prefix}-#{$name}-l) + #{$lightness}),
+    calc(var(--#{$prefix}-#{$name}-a) * #{$alpha})
+  );
+}
+```
+
+For example `primary-color` or `primary-color-dark`:
+
+```scss
+@use 'node_modules/@angular-package/spectre.css/functions' as *;
+
+.primary-color {
+  background: color('primary-color');
+}
+
+.primary-color-dark {
+  background: color('primary-color-dark');
+}
+```
+
+## Background colors
+
+In the original Spectre.css, background colors are based on SCSS variables, but in `@angular-package` Spectre.css they are based on CSS variables.
+They are set the same way, by the `bg-color-variant()` mixin, but using respective SCSS variables to initialize and change the lightness of the background font color.
+
+Original Spectre.css backgrounds are using the same SCSS variable name as the class name except one `.bg-gray`, which uses `$bg-color`.
+This version, `$bg-color` SASS variable is used in the new background `.bg` class, and `.bg-gray` uses `$gray-color` to have consistent naming.
+
+There are also new background `.bg-accent` (`$accent-color`), `.bg-gray-dark` (`$gray-color-dark`), `.bg-gray-light` (`$gray-color-light`), `.bg-info` (`$info-color`) classes that are consistent in Spectre.css naming convention, but
+they are also `.bg-color-dark` (`$bg-color-dark`), `.bg-color-light` (`$bg-color-light`) that aren't.
+
+```scss
+/*
+  Background colors
+*/
+// BG core colors
+@include bg-color-variant('.bg', 'bg-color', $bg-color); // ! New color, it's an old .bg-gray
+@include bg-color-variant('.bg-accent', 'accent-color', $accent-color); // ! New color.
+@include bg-color-variant('.bg-dark', 'dark-color', $dark-color);
+@include bg-color-variant('.bg-color-dark', 'bg-color-dark', $bg-color-dark); // ! New color that uses $bg-color-dark
+@include bg-color-variant('.bg-light', 'light-color', $light-color);
+@include bg-color-variant('.bg-color-light', 'bg-color-light', $bg-color-light); // ! New color that uses $bg-color-light
+@include bg-color-variant('.bg-primary', 'primary-color', $primary-color);
+@include bg-color-variant('.bg-secondary', 'secondary-color', $secondary-color);
+
+/*
+  Control colors.
+*/
+@include bg-color-variant('.bg-error', 'error-color', $error-color);
+@include bg-color-variant('.bg-info', 'info-color', $info-color); // ! New color.
+@include bg-color-variant('.bg-success', 'success-color', $success-color);
+@include bg-color-variant('.bg-warning', 'warning-color', $warning-color);
+
+/*
+  Gray colors.
+*/
+@include bg-color-variant('.bg-gray', 'gray-color', $gray-color); // ? .bg-gray is not $bg-color but directly $gray-color.
+@include bg-color-variant('.bg-gray-dark', 'gray-color-dark', $gray-color-dark); // ! New color.
+@include bg-color-variant('.bg-gray-light', 'gray-color-light', $gray-color-light); // ! New color.
+```
+
+## Other variables
 
 ### Units
 
@@ -395,180 +571,6 @@ Equivalent CSS variables with default prefix `s`.
   --s-z-index-3: 300;
   --s-z-index-4: 400;
 }
-```
-
-## CSS properties/variables
-
-### Scheme
-
-The `color-scheme` variable is set to `normal`.
-
-```scss
-:root, :host {
-  color-scheme: normal;
-}
-```
-
-### CSS variable color structure
-
-Each **hex** color has **four** CSS variables defined by the mixin `define-color($name, $color)`, split into hsl form, where suffix `h` indicates `hue`, `l` lightness, `s` saturation and `a` - alpha.
-
-> By default, argument `$prefix` is equal to `$var-prefix`.
-
-```scss
-// src/mixins/_define-color.scss
-// Defines CSS variable color in hsl form.
-@mixin define-color($name, $color) {
-  --s-#{$name}-h: #{hue($color)};
-  --s-#{$name}-l: #{lightness($color)};
-  --s-#{$name}-s: #{saturation($color)};
-  --s-#{$name}-a: #{alpha($color)};
-}
-```
-
-For example `primary-color` is built from the CSS variables.
-
-```css
---s-primary-color-h: 240.9090909091deg; // Hue.
---s-primary-color-s: 63.4615384615%; // Saturation.
---s-primary-color-l: 59.2156862745%; // Lightness.
---s-primary-color-a: 1; // Alpha.
-```
-
-CSS variables are defined in both `:root` and `:host`. For example core colors.
-
-```scss
-// src/css-variables/_core-colors.scss
-:root, :host {
-  // Accent.
-  @include define-color('accent-color', $accent-color); // #9932CC
-
-  // Dark.
-  @include define-color('dark-color', $dark-color); // #303742
-
-  // Light.
-  @include define-color('light-color', $light-color); // #ffffff
-
-  // Primary.
-  @include define-color('primary-color', $primary-color); // #5755d9
-}
-```
-
-Each color that is based on **hex** color has **four** CSS variables defined by the mixin `define-color-based-on($name, $color, $lightness: 0%, $prefix)`, split into hsl form, where suffix `h` indicates `hue`, `l` lightness, `s` saturation and `a` - alpha.
-> By default, argument `$prefix` is equal to `$var-prefix`.
-
-```scss
-// src/mixins/_define-color-based-on.scss
-@mixin define-color-based-on($name, $color, $lightness: 0%, $prefix: $var-prefix) {
-  @include set-var($name, get-var($color, $suffix: 'h'), $prefix, 'h');
-  @include set-var($name, get-var($color, $suffix: 's'), $prefix, 's');
-  @include set-var($name, calc(var(--#{$prefix}-#{$color}-l) + #{$lightness}), $prefix, 'l');
-  @include set-var($name, get-var($color, $suffix: 'a'), $prefix, 'a');
-}
-```
-
-Color that based on `primary-color` for example `secondary-color` is built from the css variables:
-
-```css
-:root, :host {
-  --s-secondary-color-h: var(--s-primary-color-h);
-  --s-secondary-color-l: calc(var(--s-primary-color-l) + 37.5%);
-  --s-secondary-color-s: var(--s-primary-color-s);
-  --s-secondary-color-a: var(--s-primary-color-a);
-}
-```
-
-CSS variables that are based on others are also defined in both `:root` and `:host`. For example core colors.
-
-```scss
-// src/css-variables/_core-colors.scss
-:root, :host {
-  // Primary.
-  @include define-color-based-on('primary-color-dark', 'primary-color', $lightness: -3%); // darken($primary-color, 3%)
-  @include define-color-based-on('primary-color-light', 'primary-color', $lightness: +3%); // lighten($primary-color, 3%)
-
-  // Secondary.
-  @include define-color-based-on('secondary-color', 'primary-color', $lightness: +37.5%); // lighten($primary-color, 37.5%) !default;
-  @include define-color-based-on('secondary-color-dark', 'secondary-color', $lightness: -3%); // darken($secondary-color, 3%) !default;
-  @include define-color-based-on('secondary-color-light', 'secondary-color', $lightness: +3%); // lighten($secondary-color, 3%) !default;
-}
-```
-
-Colors are read by the function `color($name, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 1, $prefix: $var-prefix)`.
-
-```scss
-// src/functions/_color.scss
-// Get color from css variable.
-@function color(
-  $name,
-  $hue: 0deg,
-  $lightness: 0%,
-  $saturation: 0%,
-  $alpha: 1,
-  $prefix: $var-prefix
-) {
-  @return hsla(
-    calc(var(--#{$prefix}-#{$name}-h) + #{$hue}),
-    calc(var(--#{$prefix}-#{$name}-s) + #{$saturation}),
-    calc(var(--#{$prefix}-#{$name}-l) + #{$lightness}),
-    calc(var(--#{$prefix}-#{$name}-a) * #{$alpha})
-  );
-}
-```
-
-For example `primary-color` or `primary-color-dark`:
-
-```scss
-@use 'node_modules/@angular-package/spectre.css/functions' as *;
-
-.primary-color {
-  background: color('primary-color');
-}
-
-.primary-color-dark {
-  background: color('primary-color-dark');
-}
-```
-
-## Background colors
-
-In the original Spectre.css, background colors are based on SCSS variables, but in `@angular-package` Spectre.css they are based on CSS variables.
-They are set the same way, by the `bg-color-variant()` mixin, but using respective SCSS variables to initialize and change the lightness of the background font color.
-
-Original Spectre.css backgrounds are using the same SCSS variable name as the class name except one `.bg-gray`, which uses `$bg-color`.
-This version, `$bg-color` SASS variable is used in the new background `.bg` class, and `.bg-gray` uses `$gray-color` to have consistent naming.
-
-There are also new background `.bg-accent` (`$accent-color`), `.bg-gray-dark` (`$gray-color-dark`), `.bg-gray-light` (`$gray-color-light`), `.bg-info` (`$info-color`) classes that are consistent in Spectre.css naming convention, but
-they are also `.bg-color-dark` (`$bg-color-dark`), `.bg-color-light` (`$bg-color-light`) that aren't.
-
-```scss
-/*
-  Background colors
-*/
-// BG core colors
-@include bg-color-variant('.bg', 'bg-color', $bg-color); // ! New color, it's an old .bg-gray
-@include bg-color-variant('.bg-accent', 'accent-color', $accent-color); // ! New color.
-@include bg-color-variant('.bg-dark', 'dark-color', $dark-color);
-@include bg-color-variant('.bg-color-dark', 'bg-color-dark', $bg-color-dark); // ! New color that uses $bg-color-dark
-@include bg-color-variant('.bg-light', 'light-color', $light-color);
-@include bg-color-variant('.bg-color-light', 'bg-color-light', $bg-color-light); // ! New color that uses $bg-color-light
-@include bg-color-variant('.bg-primary', 'primary-color', $primary-color);
-@include bg-color-variant('.bg-secondary', 'secondary-color', $secondary-color);
-
-/*
-  Control colors.
-*/
-@include bg-color-variant('.bg-error', 'error-color', $error-color);
-@include bg-color-variant('.bg-info', 'info-color', $info-color); // ! New color.
-@include bg-color-variant('.bg-success', 'success-color', $success-color);
-@include bg-color-variant('.bg-warning', 'warning-color', $warning-color);
-
-/*
-  Gray colors.
-*/
-@include bg-color-variant('.bg-gray', 'gray-color', $gray-color); // ? .bg-gray is not $bg-color but directly $gray-color.
-@include bg-color-variant('.bg-gray-dark', 'gray-color-dark', $gray-color-dark); // ! New color.
-@include bg-color-variant('.bg-gray-light', 'gray-color-light', $gray-color-light); // ! New color.
 ```
 
 ## Helper class
