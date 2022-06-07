@@ -1,0 +1,10 @@
+@use '../mixins/define-color-based-on' as *;
+@use '../variables' as *;
+
+/*
+  Spectre.css body colors. Alphabetical order.
+*/
+:root, :host {
+  @include define-color-based-on('body-bg-color', 'bg-color-light'); // $bg-color-light
+  @include define-color-based-on('body-font-color', 'dark-color', $lightness: +5%); // lighten($dark-color, 5%)
+}

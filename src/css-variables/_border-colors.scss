@@ -1,0 +1,11 @@
+@use '../mixins/define-color-based-on' as *;
+@use '../variables' as *;
+
+/*
+  Spectre.css border colors. Alphabetical order.
+*/
+:root, :host {
+  @include define-color-based-on('border-color', 'dark-color', $lightness: +65%); // lighten($dark-color, 65%)
+  @include define-color-based-on('border-color-dark', 'border-color', $lightness: -10%); // darken($border-color, 10%)
+  @include define-color-based-on('border-color-light', 'border-color', $lightness: +8%); // lighten($border-color, 8%)
+}
