@@ -21,7 +21,7 @@ export class Color<
    * @angularpackage
    */
   public static colorToHex(color: number): string {
-    const hexadecimal = color.toString(16);
+    const hexadecimal = Math.round(color).toString(16);
     return hexadecimal.length === 1 ? '0' + hexadecimal : hexadecimal;
   }
 
