@@ -1,0 +1,21 @@
+@use '../mixins/set-var' as *;
+@use '../variables' as *;
+
+/*
+  Responsive breakpoints. Alphabetical order.
+*/
+:root, :host {
+  @include set-var('size-2x', $size-2x); // 1440px
+  @include set-var('size-lg', $size-lg); // 960px
+  @include set-var('size-md', $size-md); // 840px
+  @include set-var('size-sm', $size-sm); // 600px
+  @include set-var('size-xl', $size-xl); // 1280px
+  @include set-var('size-xs', $size-xs); // 480px
+
+  // OffCanvas breakpoint.
+  // TODO: @media
+  // @include set-var('off-canvas-breakpoint', $off-canvas-breakpoint); // $size-lg
+
+  // Responsive breakpoint.
+  @include set-var('responsive-breakpoint', $responsive-breakpoint); // $size-xs
+}
