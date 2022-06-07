@@ -9,15 +9,15 @@
 :root, :host {
   // padding-x
   @include set-var('control-padding-x', $control-padding-x); // $unit-2
-  // padding-x-sm
-  @include set-var('control-padding-x', calc(get-var('control-padding') * 0.75), $suffix: 'sm'); // $unit-2 * 0.75
   // padding-x-lg
-  @include set-var('control-padding-x', calc(get-var('control-padding') * 1.5), $suffix: 'lg'); // $unit-2 * 1.5
+  @include set-var('control-padding-x', calc(get-var('control-padding-x') * 1.5), $suffix: 'lg'); // $unit-2 * 1.5
+  // padding-x-sm
+  @include set-var('control-padding-x', calc(get-var('control-padding-x') * 0.75), $suffix: 'sm'); // $unit-2 * 0.75
 
   // padding-y
   @include set-var('control-padding-y', calc((get-var('control-size') - get-var('line-height')) * 0.5 - get-var('border-width'))); // ($control-size - $line-height) * 0.5 - $border-width
-  // padding-y-sm
-  @include set-var('control-padding-y', calc((get-var('control-size', $suffix: 'sm') - get-var('line-height')) * 0.5 - get-var('border-width'))); // ($control-size-sm - $line-height) * 0.5 - $border-width
   // padding-y-lg
-  @include set-var('control-padding-y', calc((get-var('control-size', $suffix: 'lg') - get-var('line-height')) * 0.5 - get-var('border-width'))); // ($control-size-lg - $line-height) * 0.5 - $border-width
+  @include set-var('control-padding-y', calc((get-var('control-size', $suffix: 'lg') - get-var('line-height')) * 0.5 - get-var('border-width')), $suffix: 'lg'); // ($control-size-lg - $line-height) * 0.5 - $border-width
+  // padding-y-sm
+  @include set-var('control-padding-y', calc((get-var('control-size', $suffix: 'sm') - get-var('line-height')) * 0.5 - get-var('border-width')), $suffix: 'sm'); // ($control-size-sm - $line-height) * 0.5 - $border-width
 }
