@@ -16,7 +16,9 @@ The angular-package supports the development process of [angular](https://angula
 
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 
-**This Spectre.css is maintained by the `@angular-package`.** Feel free to submit a pull request. Help is always appreciated.
+**This Spectre.css is maintained by the [`@angular-package`](https://www.npmjs.com/package/@angular-package/spectre.css).**
+
+> Feel free to submit a pull request. Help is always appreciated.
 
 Spectre.css is a lightweight, responsive and modern CSS framework.
 
@@ -298,7 +300,7 @@ For example `primary-color` or `primary-color-dark`:
 
 ## Background colors
 
-In the original Spectre.css, background colors are based on SCSS variables, but in `@angular-package` Spectre.css they are based on CSS variables.
+In the original Spectre.css, background colors are based on SCSS variables, but in [`@angular-package`](https://www.npmjs.com/package/@angular-package/spectre.css) Spectre.css they are based on CSS variables.
 They are set the same way, by the `bg-color-variant()` mixin, but using respective SCSS variables to initialize and change the lightness of the background font color.
 
 Original Spectre.css backgrounds are using the same SCSS variable name as the class name except one `.bg-gray`, which uses `$bg-color`.
