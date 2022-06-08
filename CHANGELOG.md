@@ -1,5 +1,46 @@
 #### Spectre.css Changelog
 
+##### v1.0.0-alpha.2
+
+- Update grid sizes to use CSS variables for size. [e875ec2]
+- Add CSS variables for z-index and responsive breakpoint. [53a9c0e]
+- Update styles to use CSS variable of the z-index. [7d7d6da]
+- Update styles to use `get-var()` to use CSS variables instead of Sass variables, change `avatar-base()` mixin parameters to string to use CSS variables. Calculate grid sizes with css variables. [5f2714e]
+- Update styles to use `get-var()` function and update including mixins to use string parameters of CSS variables. [7381a86]
+- Add `set-var()` mixin to define variable with a specified `$prefix` and optional `$suffix`. [8ad9180]
+- Use `get-var()` Sass function to use CSS variables instead of scss variables in the `margin-variant()` and `padding-variant()` mixins. [32dfd63]
+- Update `define-color()` and `define-color-based-on()` mixin to use `set-var()` Sass function to define CSS variables. [5bc2df3] [bed18ef]
+- Update `avatar-base()` mixin to use CSS variables by adding `get-var()` function. [c829c8b]
+- Fix `Color` class by adding `Math.round()` to the `color: number` argument to properly calculate hex. [8e53827]
+- Add `var-negative()` Sass function to make the given value negative by multiply `-1`. [08c9bae]
+- Add `strip-unit()` Sass function to strip unit from the given value. [8c48cf1]
+- Add `get-var()` Sass function to get CSS variable with prefix and/or unit. [f6da5fa]
+- Update `color()` mixin by adding argument `$prefix` to use `$var-prefix` for CSS variable name customization. [7e84edc]
+- Add CSS variables `border-width`, `border-radius`, `control-padding-x`, `control-padding-y`, `control-icon-size`, `control-size`, `control-width`, `font-size`, `html-font-size`, `html-line-height`, `line-height`, `layout-spacing`,`unit-o`, `unit-h`, and `unit-0` to `unit-16`. [dfdc843]
+- Separate defining CSS variables into different files. [b82878c]
+- Add `$var-prefix` to customize CSS variable name, add `$disabled-color` SCSS variable. [7623233]
+- Add CSS variables `font-size`, `html-font-size`, `html-line-height`, `line-height`. [4cddda6]
+
+[e875ec2]: https://github.com/angular-package/spectre.css/commit/e875ec2a4500070e63fac020634cc053e9e3d232
+[53a9c0e]: https://github.com/angular-package/spectre.css/commit/53a9c0e49a61fec5f1690b94fea8e4aae2fbe38a
+[7d7d6da]: https://github.com/angular-package/spectre.css/commit/7d7d6da41503800ac25c739b3f73b0d3278f2319
+[5f2714e]: https://github.com/angular-package/spectre.css/commit/5f2714eb17581086197b30ee6e39e4b3fcee1c45
+[7381a86]: https://github.com/angular-package/spectre.css/commit/7381a866e4cd8662127b5331816a69222a520ee0
+[8ad9180]: https://github.com/angular-package/spectre.css/commit/8ad91804cc29d8e33f70649c1c5e052b1dd2d061
+[32dfd63]: https://github.com/angular-package/spectre.css/commit/32dfd633a98b82294ad32dbfc784ca7902e6a183
+[bed18ef]: https://github.com/angular-package/spectre.css/commit/bed18ef8c4d6fc59ada4f68b610f22ba148626e6
+[5bc2df3]: https://github.com/angular-package/spectre.css/commit/5bc2df37f32bf6fbb8495169b6f2722de90f042b
+[c829c8b]: https://github.com/angular-package/spectre.css/commit/c829c8b3f38606bb3be101edef24bcc69f4cca03
+[8e53827]: https://github.com/angular-package/spectre.css/commit/8e53827e0261a25d5ddde9413cb94bd1c41563c4
+[08c9bae]: https://github.com/angular-package/spectre.css/commit/08c9baed86976ec17567611dde26428a81197543
+[8c48cf1]: https://github.com/angular-package/spectre.css/commit/8c48cf119a87d54264968858a450c15b9992d969
+[f6da5fa]: https://github.com/angular-package/spectre.css/commit/f6da5fa038a77351f8d3e1c4f973a09e4a30e1df
+[7e84edc]: https://github.com/angular-package/spectre.css/commit/7e84edc7a38c73902db6e16456e7628e903ad1d0
+[dfdc843]: https://github.com/angular-package/spectre.css/commit/dfdc8438ca56c9c8848a6a69ad726f05de8ac032
+[b82878c]: https://github.com/angular-package/spectre.css/commit/b82878c8c0c891f9aed35e01db9df1c141e8c3f1
+[7623233]: https://github.com/angular-package/spectre.css/commit/7623233663646b5c313365e518d70f527405a8fd
+[4cddda6]: https://github.com/angular-package/spectre.css/commit/4cddda6a90da727e641c10dc5fa5c5dc2b743e49
+
 ##### v1.0.0-alpha.1
 
 - Change file name from general `function/_css-variable-color.scss` to just `functions/_color.scss`. [a8b14ac]
