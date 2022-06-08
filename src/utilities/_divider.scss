@@ -1,4 +1,6 @@
-@use '../functions' as *;
+@use '../functions/color' as *;
+@use '../functions/get-var' as *;
+@use '../functions/var-negative' as *;
 @use '../variables' as *;
 
 // Divider
@@ -19,7 +21,7 @@
     // padding: 0 $unit-2; // old spectre.css
     padding: 0 get-var('unit-2');
     // transform: translateY(-$font-size-sm + $border-width); // old spectre.css
-    transform: translateY(var-negative(get-var('font-size', $suffix: 'sm') + get-var('border-width')));
+    transform: translateY(calc(var-negative(get-var('font-size', $suffix: 'sm')) + get-var('border-width')));
   }
 }
 
