@@ -16,7 +16,7 @@ The angular-package supports the development process of [angular](https://angula
 
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 
-**This Spectre.css is maintained by the [`@angular-package`](https://www.npmjs.com/package/@angular-package/spectre.css).**
+**This [`Spectre.css`](https://github.com/picturepan2/spectre) is maintained by the [`@angular-package`](https://www.npmjs.com/package/@angular-package/spectre.css).**
 
 > Feel free to submit a pull request. Help is always appreciated.
 
@@ -48,13 +48,17 @@ Demonstration will be available soon here https://angular-package.dev/ui-kit/com
 
 ## Major changes
 
-### @Use ready
+### `@use` ready
 
 We can read [here](https://sass-lang.com/documentation/at-rules/import), that the **Sass** team is going to remove `@import` from the engine in the next few years, and `@angular-package/spectre.css` is rewritten to use `@forward` and `@use`.
 
 ### CSS variables
 
 Almost all SCSS variables have their equivalent CSS variables, meaning that SCSS variables are only used to define CSS variables and the CSS variables are used in styles instead of SCSS, which results in the ability to change them on the fly without pre-loading.
+
+### Angular components
+
+The [`@angular-package`](https://github.com/angular-package) has already some components that will be soon shared public under the [`@angular-package/spectre`](https://github.com/angular-package/spectre) package.
 
 ## Import
 
