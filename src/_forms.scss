@@ -230,6 +230,7 @@ textarea.form-input {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    // width: $control-icon-size; // old spectre.css
     width: get-var('control-icon-size');
     // z-index: $zindex-0 + 1; // old spectre.css
     z-index: calc(get-var('z-index-0') + 1);
@@ -324,6 +325,7 @@ textarea.form-input {
   .form-icon {
     // background: $bg-color-light; // old spectre.css
     background: color('bg-color-light');
+    // height: $control-icon-size; // old spectre.css
     height: get-var('control-icon-size');
     left: 0;
     // top: ($control-size-sm - $control-icon-size) / 2; // old spectre.css
