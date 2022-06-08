@@ -1,0 +1,15 @@
+@use '../mixins/define-color' as *;
+@use '../mixins/set-var' as *;
+@use '../variables' as *;
+
+/*
+  Parallax CSS variables. Alphabetical order.
+*/
+:root, :host {
+  @include set-var('parallax-deg', $parallax-deg); // 3deg
+  @include define-color('parallax-fade-color', $parallax-fade-color, $alpha: 0.35); // rgba(255, 255, 255, 0.35)
+  @include set-var('parallax-offset', $parallax-offset); // 4.5px
+  @include set-var('parallax-offset-z', $parallax-offset-z); // 50px
+  @include set-var('parallax-perspective', $parallax-perspective); // 1000px
+  @include set-var('parallax-scale', $parallax-scale); // 0.95
+}

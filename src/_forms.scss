@@ -1,4 +1,6 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
+@use 'functions/var-negative' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
 
@@ -7,34 +9,44 @@
 // Forms
 .form-group {
   &:not(:last-child) {
-    margin-bottom: $layout-spacing;
+    // margin-bottom: $layout-spacing; // old spectre.css
+    margin-bottom: get-var('layout-spacing', $unit: 1);
   }
 }
 
 fieldset {
-  margin-bottom: $layout-spacing-lg;
+  // margin-bottom: $layout-spacing-lg; // old spectre.css
+  margin-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: 1);
 }
 
 legend {
-  font-size: $font-size-lg;
+  // font-size: $font-size-lg; // old spectre.css
+  font-size: get-var('font-size', $suffix: 'lg');
   font-weight: 500;
-  margin-bottom: $layout-spacing-lg;
+  // margin-bottom: $layout-spacing-lg; // old spectre.css
+  margin-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: 1);
 }
 
 // Form element: Label
 .form-label {
   display: block;
-  line-height: $line-height;
-  padding: $control-padding-y + $border-width 0;
+  // line-height: $line-height; // old spectre.css
+  line-height: get-var('line-height');
+  // padding: $control-padding-y + $border-width 0; // old spectre.css
+  padding: calc(get-var('control-padding-y') + get-var('border-width')) 0;
 
   &.label-sm {
-    font-size: $font-size-sm;
-    padding: $control-padding-y-sm + $border-width 0;
+    // font-size: $font-size-sm; // old spectre.css
+    font-size: get-var('font-size', $suffix: 'sm');
+    // padding: $control-padding-y-sm + $border-width 0; // old spectre.css
+    padding: calc(get-var('control-padding-y', $suffix: 'sm') + get-var('border-width')) 0;
   }
 
   &.label-lg {
-    font-size: $font-size-lg;
-    padding: $control-padding-y-lg + $border-width 0;
+    // font-size: $font-size-lg; // old spectre.css
+    font-size: get-var('font-size', $suffix: 'lg');
+    // padding: $control-padding-y-lg + $border-width 0; // old spectre.css
+    padding: calc(get-var('control-padding-y', $suffix: 'lg') + get-var('border-width')) 0;
   }
 }
 
@@ -45,17 +57,22 @@ legend {
   background: color('bg-color-light');
   background-image: none;
   // border: $border-width solid $border-color-dark; // old spectre.css
-  border: $border-width solid color('border-color-dark');
-  border-radius: $border-radius;
+  border: get-var('border-width') solid color('border-color-dark');
+  // border-radius: $border-radius; // old spectre.css
+  border-radius: get-var('border-radius');
   // color: $body-font-color; // old spectre.css
   color: color('body-font-color');
   display: block;
-  font-size: $font-size;
-  height: $control-size;
-  line-height: $line-height;
+  // font-size: $font-size; // old spectre.css
+  font-size: get-var('font-size');
+  // height: $control-size; // old spectre.css
+  height: get-var('control-size');
+  // line-height: $line-height; // old spectre.css
+  line-height: get-var('line-height');
   max-width: 100%;
   outline: none;
-  padding: $control-padding-y $control-padding-x;
+  // padding: $control-padding-y $control-padding-x; // old spectre.css
+  padding: get-var('control-padding-y') get-var('control-padding-x');
   position: relative;
   transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s;
   width: 100%;
@@ -71,15 +88,21 @@ legend {
 
   // Input sizes
   &.input-sm {
-    font-size: $font-size-sm;
-    height: $control-size-sm;
-    padding: $control-padding-y-sm $control-padding-x-sm;
+    // font-size: $font-size-sm; // old spectre.css
+    font-size: get-var('font-size', $suffix: 'sm');
+    // height: $control-size-sm; // old spectre.css
+    height: get-var('control-size', $suffix: 'sm');
+    // padding: $control-padding-y-sm $control-padding-x-sm; // old spectre.css
+    padding: get-var('control-padding-y', $suffix: 'sm') get-var('control-padding-x', $suffix: 'sm');
   }
 
   &.input-lg {
-    font-size: $font-size-lg;
-    height: $control-size-lg;
-    padding: $control-padding-y-lg $control-padding-x-lg;
+    // font-size: $font-size-lg; // old spectre.css
+    font-size: get-var('font-size', $suffix: 'lg');
+    // height: $control-size-lg; // old spectre.css
+    height: get-var('control-size', $suffix: 'lg');
+    // padding: $control-padding-y-lg $control-padding-x-lg; // old spectre.css
+    padding: get-var('control-padding-y', $suffix: 'lg') get-var('control-padding-x', $suffix: 'lg');
   }
 
   &.input-inline {
@@ -107,8 +130,10 @@ textarea.form-input {
 .form-input-hint {
   // color: $gray-color; // old spectre.css
   color: color('gray-color');
-  font-size: $font-size-sm;
-  margin-top: $unit-1;
+  // font-size: $font-size-sm; // old spectre.css
+  font-size: get-var('font-size', $suffix: 'sm');
+  // margin-top: $unit-1; // old spectre.css
+  margin-top: get-var('unit-1');
 
   .has-success &,
   .is-success + & {
@@ -127,14 +152,19 @@ textarea.form-input {
 .form-select {
   appearance: none;
   // border: $border-width solid $border-color-dark; // old spectre.css
-  border: $border-width solid color('border-color-dark');
-  border-radius: $border-radius;
+  border: get-var('border-width') solid color('border-color-dark');
+  // border-radius: $border-radius; // old spectre.css
+  border-radius: get-var('border-radius');
   color: inherit;
-  font-size: $font-size;
-  height: $control-size;
-  line-height: $line-height;
+  // font-size: $font-size; // old spectre.css
+  font-size: get-var('font-size');
+  // height: $control-size; // old spectre.css
+  height: get-var('control-size');
+  // line-height: $line-height; // old spectre.css
+  line-height: get-var('line-height');
   outline: none;
-  padding: $control-padding-y $control-padding-x;
+  // padding: $control-padding-y $control-padding-x; // old spectre.css
+  padding: get-var('control-padding-y') get-var('control-padding-x');
   vertical-align: middle;
   width: 100%;
   // background: $bg-color-light; // old spectre.css
@@ -150,31 +180,40 @@ textarea.form-input {
 
   // Select sizes
   &.select-sm {
-    font-size: $font-size-sm;
-    height: $control-size-sm;
-    padding: $control-padding-y-sm ($control-icon-size + $control-padding-x-sm) $control-padding-y-sm $control-padding-x-sm;
+    // font-size: $font-size-sm; // old spectre.css
+    font-size: get-var('font-size', $suffix: 'sm');
+    // height: $control-size-sm; // old spectre.css
+    height: get-var('control-size', $suffix: 'sm');
+    // padding: $control-padding-y-sm ($control-icon-size + $control-padding-x-sm) $control-padding-y-sm $control-padding-x-sm; // old spectre.css
+    padding: get-var('control-padding-y', $suffix: 'sm') calc(get-var('control-icon-size') + get-var('control-padding-x', $suffix: 'sm')) get-var('control-padding-y', $suffix: 'sm') get-var('control-padding-x', $suffix: 'sm');
   }
 
   &.select-lg {
-    font-size: $font-size-lg;
-    height: $control-size-lg;
-    padding: $control-padding-y-lg ($control-icon-size + $control-padding-x-lg) $control-padding-y-lg $control-padding-x-lg;
+    // font-size: $font-size-lg; // old spectre.css
+    font-size: get-var('font-size', $suffix: 'lg');
+    // height: $control-size-lg; // old spectre.css
+    height: get-var('control-size', $suffix: 'lg');
+    // padding: $control-padding-y-lg ($control-icon-size + $control-padding-x-lg) $control-padding-y-lg $control-padding-x-lg; // old spectre.css
+    padding: get-var('control-padding-y', $suffix: 'lg') calc(get-var('control-icon-size') + get-var('control-padding-x', $suffix: 'lg')) get-var('control-padding-y', $suffix: 'lg') get-var('control-padding-x', $suffix: 'lg');
   }
 
   // Multiple select
   &[size],
   &[multiple] {
     height: auto;
-    padding: $control-padding-y $control-padding-x;
+    // padding: $control-padding-y $control-padding-x; // old spectre.css
+    padding: get-var('control-padding-y') get-var('control-padding-x');
 
     option {
-      padding: $unit-h $unit-1;
+      // padding: $unit-h $unit-1; // old spectre.css
+      padding: get-var('unit-h') get-var('unit-1');
     }
   }
   &:not([multiple]):not([size]) {
     // background: $bg-color-light url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23667189'%20d='M2%200L0%202h4zm0%205L0%203h4z'/%3E%3C/svg%3E") no-repeat right .35rem center / .4rem .5rem; // old spectre.css
     background: color('bg-color-light') url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23667189'%20d='M2%200L0%202h4zm0%205L0%203h4z'/%3E%3C/svg%3E") no-repeat right 0.35rem center / 0.4rem 0.5rem;
-    padding-right: $control-icon-size + $control-padding-x;
+    // padding-right: $control-icon-size + $control-padding-x; // old spectre.css
+    padding-right: calc(get-var('control-icon-size') + get-var('control-padding-x'));
   }
 }
 
@@ -184,33 +223,41 @@ textarea.form-input {
   position: relative;
 
   .form-icon {
-    height: $control-icon-size;
-    margin: 0 $control-padding-y;
+    // height: $control-icon-size; // old spectre.css
+    height: get-var('control-icon-size');
+    // margin: 0 $control-padding-y; // old spectre.css
+    margin: 0 get-var('control-padding-y'); // old spectre.css
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: $control-icon-size;
-    z-index: $zindex-0 + 1;
+    // width: $control-icon-size; // old spectre.css
+    width: get-var('control-icon-size');
+    // z-index: $zindex-0 + 1; // old spectre.css
+    z-index: calc(get-var('z-index-0') + 1);
   }
 }
 
 .has-icon-left {
   .form-icon {
-    left: $border-width;
+    // left: $border-width; // old spectre.css
+    left: get-var('border-width');
   }
 
   .form-input {
-    padding-left: $control-icon-size + $control-padding-y * 2;
+    // padding-left: $control-icon-size + $control-padding-y * 2; // old spectre.css
+    padding-left: calc(get-var('control-icon-size') + get-var('control-padding-y') * 2);
   }
 }
 
 .has-icon-right {
   .form-icon {
-    right: $border-width;
+    // right: $border-width; // old spectre.css
+    right: get-var('border-width');
   }
 
   .form-input {
-    padding-right: $control-icon-size + $control-padding-y * 2;
+    // padding-right: $control-icon-size + $control-padding-y * 2; // old spectre.css
+    padding-right: calc(get-var('control-icon-size') + get-var('control-padding-y') * 2);
   }
 }
 
@@ -219,10 +266,14 @@ textarea.form-input {
 .form-radio,
 .form-switch {
   display: block;
-  line-height: $line-height;
-  margin: ($control-size - $control-size-sm) * 0.5 0;
-  min-height: $control-size-sm;
-  padding: (($control-size-sm - $line-height) / 2) $control-padding-x (($control-size-sm - $line-height) / 2) ($control-icon-size + $control-padding-x);
+  // line-height: $line-height; // old spectre.css
+  line-height: get-var('line-height');
+  // margin: ($control-size - $control-size-sm) * 0.5 0; // old spectre.css
+  margin: calc((get-var('control-size') - get-var('control-size', $suffix: 'sm')) * 0.5) 0;
+  // min-height: $control-size-sm; // old spectre.css
+  min-height: get-var('control-size', $suffix: 'sm');
+  // padding: (($control-size-sm - $line-height) / 2) $control-padding-x (($control-size-sm - $line-height) / 2) ($control-icon-size + $control-padding-x); // old spectre.css
+  padding: calc((get-var('control-size', $suffix: 'sm') - get-var('line-height')) / 2) get-var('control-padding-x') calc((get-var('control-size', $suffix: 'sm') - get-var('line-height')) / 2) calc(get-var('control-icon-size') + get-var('control-padding-x')); // old spectre.css
   position: relative;
 
   input {
@@ -247,7 +298,7 @@ textarea.form-input {
 
   .form-icon {
     // border: $border-width solid $border-color-dark; // old spectre.css
-    border: $border-width solid color('border-color-dark');
+    border: get-var('border-width') solid color('border-color-dark');
     cursor: pointer;
     display: inline-block;
     position: absolute;
@@ -256,13 +307,16 @@ textarea.form-input {
 
   // Input checkbox, radio and switch sizes
   &.input-sm {
-    font-size: $font-size-sm;
+    // font-size: $font-size-sm; // old spectre.css
+    font-size: get-var('font-size', $suffix: 'sm');
     margin: 0;
   }
 
   &.input-lg {
-    font-size: $font-size-lg;
-    margin: ($control-size-lg - $control-size-sm) / 2 0;
+    // font-size: $font-size-lg; // old spectre.css
+    font-size: get-var('font-size', $suffix: 'lg');
+    // margin: ($control-size-lg - $control-size-sm) / 2 0; // old spectre.css
+    margin: calc((get-var('control-size', $suffix: 'lg') - get-var('control-size', $suffix: 'sm')) / 2) 0;
   }
 }
 
@@ -271,10 +325,13 @@ textarea.form-input {
   .form-icon {
     // background: $bg-color-light; // old spectre.css
     background: color('bg-color-light');
-    height: $control-icon-size;
+    // height: $control-icon-size; // old spectre.css
+    height: get-var('control-icon-size');
     left: 0;
-    top: ($control-size-sm - $control-icon-size) / 2;
-    width: $control-icon-size;
+    // top: ($control-size-sm - $control-icon-size) / 2; // old spectre.css
+    top: calc((get-var('control-size', $suffix: 'sm') - get-var('control-icon-size')) / 2);
+    // width: $control-icon-size; // old spectre.css
+    width: get-var('control-icon-size');
   }
 
   input {
@@ -286,7 +343,8 @@ textarea.form-input {
 }
 .form-checkbox {
   .form-icon {
-    border-radius: $border-radius;
+    // border-radius: $border-radius; // old spectre.css
+    border-radius: get-var('border-radius');
   }
 
   input {
@@ -294,7 +352,7 @@ textarea.form-input {
       &::before {
         background-clip: padding-box;
         // border: $border-width-lg solid $light-color; // old spectre.css
-        border: $border-width-lg solid color('light-color');
+        border: get-var('border-width', $suffix: 'lg') solid color('light-color');
         border-left-width: 0;
         border-top-width: 0;
         content: "";
@@ -353,29 +411,36 @@ textarea.form-input {
 
 // Form element: Switch
 .form-switch {
-  padding-left: ($unit-8 + $control-padding-x);
+  // padding-left: ($unit-8 + $control-padding-x); // old spectre.css
+  padding-left: calc(get-var('unit-8') + get-var('control-padding-x'));
 
   .form-icon {
     // background: $gray-color; // old spectre.css
     background: color('gray-color');
     background-clip: padding-box;
-    border-radius: $unit-2 + $border-width;
-    height: $unit-4 + $border-width * 2;
+    // border-radius: $unit-2 + $border-width; // old spectre.css
+    border-radius: calc(get-var('unit-2') + get-var('border-width'));
+    // height: $unit-4 + $border-width * 2; // old spectre.css
+    height: calc(get-var('unit-4') + get-var('border-width') * 2);
     left: 0;
-    top: ($control-size-sm - $unit-4) / 2 - $border-width;
-    width: $unit-8;
+    // top: ($control-size-sm - $unit-4) / 2 - $border-width; // old spectre.css
+    top: calc((get-var('control-size', $suffix: 'sm') - get-var('unit-4')) / 2 - get-var('border-width'));
+    // width: $unit-8; // old spectre.css
+    width: get-var('unit-8');
     &::before {
       // background: $bg-color-light; // old spectre.css
       background: color('bg-color-light');
       border-radius: 50%;
       content: "";
       display: block;
-      height: $unit-4;
+      // height: $unit-4; // old spectre.css
+      height: get-var('unit-4');
       left: 0;
       position: absolute;
       top: 0;
       transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s, left 0.2s;
-      width: $unit-4;
+      // width: $unit-4; // old spectre.css
+      width: get-var('unit-4');
     }
   }
 
@@ -401,21 +466,29 @@ textarea.form-input {
   .input-group-addon {
     // background: $bg-color; // old spectre.css
     background: color('bg-color');
-    border: $border-width solid $border-color-dark; // old spectre.css
-    border: $border-width solid color('border-color-dark');
-    border-radius: $border-radius;
-    line-height: $line-height;
-    padding: $control-padding-y $control-padding-x;
+    // border: $border-width solid $border-color-dark; // old spectre.css
+    border: get-var('border-width') solid color('border-color-dark');
+    // border-radius: $border-radius; // old spectre.css
+    border-radius: get-var('border-radius');
+    // line-height: $line-height; // old spectre.css
+    line-height: get-var('line-height');
+    // padding: $control-padding-y $control-padding-x; // old spectre.css
+    padding: get-var('control-padding-y') get-var('control-padding-x');
+
     white-space: nowrap;
 
     &.addon-sm {
-      font-size: $font-size-sm;
-      padding: $control-padding-y-sm $control-padding-x-sm;
+      // font-size: $font-size-sm; // old spectre.css
+      font-size: get-var('font-size', $suffix: 'sm');
+      // padding: $control-padding-y-sm $control-padding-x-sm; // old spectre.css
+      padding: get-var('control-padding-y', $suffix: 'sm') get-var('control-padding-x', $suffix: 'sm');
     }
 
     &.addon-lg {
-      font-size: $font-size-lg;
-      padding: $control-padding-y-lg $control-padding-x-lg;
+      // font-size: $font-size-lg; // old spectre.css
+      font-size: get-var('font-size', $suffix: 'lg');
+      // padding: $control-padding-y-lg $control-padding-x-lg; // old spectre.css
+      padding: get-var('control-padding-y', $suffix: 'lg') get-var('control-padding-x', $suffix: 'lg');
     }
   }
 
@@ -426,7 +499,8 @@ textarea.form-input {
   }
 
   .input-group-btn {
-    z-index: $zindex-0;
+    // z-index: $zindex-0; // old spectre.css
+    z-index: get-var('z-index-0');
   }
 
   .form-input,
@@ -439,15 +513,18 @@ textarea.form-input {
     }
     &:not(:first-child):not(:last-child) {
       border-radius: 0;
-      margin-left: -$border-width;
+      // margin-left: -$border-width; // old spectre.css
+      margin-left: var-negative(get-var('border-width'));
     }
     &:last-child:not(:first-child) {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
-      margin-left: -$border-width;
+      // margin-left: -$border-width; // old spectre.css
+      margin-left: var-negative(get-var('border-width'));
     }
     &:focus {
-      z-index: $zindex-0 + 1;
+      // z-index: $zindex-0 + 1; // old spectre.css
+      z-index: calc(get-var('z-index-0') + 1);
     }
   }
 
@@ -557,7 +634,8 @@ textarea.form-input {
   &:disabled,
   &.disabled {
     // background-color: $bg-color-dark; // old spectre.css
-    background-color: color('bg-color-dark');
+    // background-color: color('bg-color-dark');
+    background-color: color('disabled-color');
     cursor: not-allowed;
     opacity: .5;
   }
@@ -575,7 +653,8 @@ input {
   &.disabled {
     & + .form-icon {
       // background: $bg-color-dark; // old spectre.css
-      background: color('bg-color-dark');
+      // background: color('bg-color-dark');
+      background-color: color('disabled-color');
       cursor: not-allowed;
       opacity: .5;
     }
@@ -588,7 +667,8 @@ input {
     &.disabled {
       & + .form-icon::before {
         // background: $bg-color-light; // old spectre.css
-        background: color('bg-color-light');
+        // background: color('bg-color-light');
+        background-color: color('disabled-color');
       }
     }
   }
@@ -596,7 +676,8 @@ input {
 
 // Form horizontal
 .form-horizontal {
-  padding: $layout-spacing 0;
+  // padding: $layout-spacing 0; // old spectre.css
+  padding: get-var('layout-spacing', $unit: 1) 0;
 
   .form-group {
     display: flex;

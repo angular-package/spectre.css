@@ -1,9 +1,11 @@
-@use '../functions' as *;
+@use '../functions/color' as *;
+@use '../functions/get-var' as *;
 @use '../variables' as *;
 
 // Label base style
 @mixin label-base() {
-  border-radius: $border-radius;
+  // border-radius: $border-radius; // old spectre.css
+  border-radius: get-var('border-radius');
   line-height: 1.25;
   padding: .1rem .2rem;
 }

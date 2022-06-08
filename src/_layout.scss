@@ -1,3 +1,7 @@
+@use 'functions/get-var' as *;
+// @use 'functions/strip-unit' as *;
+@use 'functions/var-negative' as *;
+@use 'mixins/set-var' as *;
 @use 'sass:math';
 @use 'variables' as *;
 
@@ -5,31 +9,39 @@
 .container {
   margin-left: auto;
   margin-right: auto;
-  padding-left: $layout-spacing;
-  padding-right: $layout-spacing;
+  // padding-left: $layout-spacing; // old spectre.css
+  padding-left: get-var('layout-spacing', $unit: 1);
+  // padding-right: $layout-spacing; // old spectre.css
+  padding-right: get-var('layout-spacing', $unit: 1);
   width: 100%;
 
   // $grid-spacing: ($layout-spacing / ($layout-spacing * 0 + 1)) * $html-font-size; // old spectre.css
-  $grid-spacing: math.div($layout-spacing, $layout-spacing * 0 + 1) * $html-font-size;
+  // $grid-spacing: math.div($layout-spacing, $layout-spacing * 0 + 1) * $html-font-size; // old @angular-package/spectre.css
+  // $grid-spacing: strip-unit($layout-spacing) * $html-font-size; // ? Not used.
 
   &.grid-xl {
-    max-width: $grid-spacing * 2 + $size-xl;
+    // max-width: $grid-spacing * 2 + $size-xl; // old spectre.css
+    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + get-var('size-xl'));
   }
 
   &.grid-lg {
-    max-width: $grid-spacing * 2 + $size-lg;
+    // max-width: $grid-spacing * 2 + $size-lg; // old spectre.css
+    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + get-var('size-lg'));
   }
 
   &.grid-md {
-    max-width: $grid-spacing * 2 + $size-md;
+    // max-width: $grid-spacing * 2 + $size-md; // old spectre.css
+    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + get-var('size-md'));
   }
 
   &.grid-sm {
-    max-width: $grid-spacing * 2 + $size-sm;
+    // max-width: $grid-spacing * 2 + $size-sm; // old spectre.css
+    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + get-var('size-sm'));
   }
 
   &.grid-xs {
-    max-width: $grid-spacing * 2 + $size-xs;
+    // max-width: $grid-spacing * 2 + $size-xs; // old spectre.css
+    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + get-var('size-xs'));
   }
 }
 
@@ -47,8 +59,10 @@
 .columns {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -$layout-spacing;
-  margin-right: -$layout-spacing;
+  // margin-left: -$layout-spacing; // old spectre.css
+  margin-left: var-negative(get-var('layout-spacing', $unit: 1));
+  // margin-right: -$layout-spacing; // old spectre.css
+  margin-right: var-negative(get-var('layout-spacing', $unit: 1));
 
   &.col-gapless {
     margin-left: 0;
@@ -68,8 +82,11 @@
 .column {
   flex: 1;
   max-width: 100%;
-  padding-left: $layout-spacing;
-  padding-right: $layout-spacing;
+  // padding-left: $layout-spacing; // old spectre.css
+  padding-left: get-var('layout-spacing', $unit: 1);
+  // padding-right: $layout-spacing; // old spectre.css
+  padding-right: get-var('layout-spacing', $unit: 1);
+
 
   &.col-12,
   &.col-11,

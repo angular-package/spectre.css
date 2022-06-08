@@ -1,3 +1,4 @@
+@use 'functions/get-var' as *;
 @use 'variables' as *;
 
 // Navbar
@@ -24,7 +25,8 @@
   }
 
   .navbar-brand {
-    font-size: $font-size-lg;
+    // font-size: $font-size-lg; // old spectre.css
+    font-size: get-var('font-size', $suffix: 'lg');
     text-decoration: none;
   }
 }

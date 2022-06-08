@@ -1,4 +1,4 @@
-@use 'functions' as *;
+@use 'functions/get-var' as *;
 @use 'variables' as *;
 
 // Media
@@ -69,11 +69,13 @@ video.video-responsive {
 
 // Figure
 .figure {
-  margin: 0 0 $layout-spacing 0;
+  // margin: 0 0 $layout-spacing 0; // old spectre.css
+  margin: 0 0 get-var('layout-spacing', $unit: 1) 0;
 
   .figure-caption {
     // color: $gray-color-dark; // old spectre.css
     color: color('gray-color-dark');
-    margin-top: $layout-spacing;
+    // margin-top: $layout-spacing; // old spectre.css
+    margin-top: get-var('layout-spacing', $unit: 1);
   }
 }

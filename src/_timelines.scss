@@ -1,11 +1,13 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
 @use 'variables' as *;
 
 // Timelines
 .timeline {
   .timeline-item {
     display: flex;
-    margin-bottom: $unit-6;
+    // margin-bottom: $unit-6; // old spectre.css
+    margin-bottom: get-var('unit-6');
     position: relative;
     &::before {
       // background: $border-color; // old spectre.css
@@ -14,7 +16,8 @@
       height: 100%;
       left: 11px;
       position: absolute;
-      top: $unit-6;
+      // top: $unit-6; // old spectre.css
+      top: get-var('unit-6');
       width: 2px;
     }
 
@@ -24,7 +27,8 @@
 
     .timeline-content {
       flex: 1 1 auto;
-      padding: 2px 0 2px $layout-spacing-lg;
+      // padding: 2px 0 2px $layout-spacing-lg; // old spectre.css
+      padding: 2px 0 2px get-var('layout-spacing', $suffix: 'lg', $unit: 1);
     }
 
     .timeline-icon {
@@ -33,27 +37,34 @@
       // color: $light-color; // old spectre.css
       color: color('light-color');
       display: flex;
-      height: $unit-6;
+      // height: $unit-6; // old spectre.css
+      height: get-var('unit-6');
       justify-content: center;
       text-align: center;
-      width: $unit-6;
+      // width: $unit-6; // old spectre.css
+      width: get-var('unit-6');
       &::before {
         // border: $border-width-lg solid $primary-color; // old spectre.css
-        border: $border-width-lg solid color('primary-color');
+        border: get-var('border-width', $suffix: 'lg') solid color('primary-color');
         border-radius: 50%;
         content: '';
         display: block;
-        height: $unit-2;
-        left: $unit-2;
+        // height: $unit-2; // old spectre.css
+        height: get-var('unit-2');
+        // left: $unit-2; // old spectre.css
+        left: get-var('unit-2');
         position: absolute;
-        top: $unit-2;
-        width: $unit-2;
+        // top: $unit-2; // old spectre.css
+        top: get-var('unit-2');
+        // width: $unit-2; // old spectre.css
+        width: get-var('unit-2');
       }
 
       &.icon-lg {
         // background: $primary-color; // old spectre.css
         background: color('primary-color');
-        line-height: $line-height;
+        // line-height: $line-height; // old spectre.css
+        line-height: get-var('line-height');
         &::before {
           content: none;
         }

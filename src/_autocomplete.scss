@@ -1,4 +1,5 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
 
@@ -11,8 +12,10 @@
     display: flex;
     flex-wrap: wrap;
     height: auto;
-    min-height: $unit-8;
-    padding: $unit-h;
+    // min-height: $unit-8; // old spectre.css
+    min-height: get-var('unit-8');
+    // padding: $unit-h; // old spectre.css
+    padding: get-var('unit-h');
 
     &.is-focused {
       @include control-shadow();
@@ -25,9 +28,12 @@
       box-shadow: none;
       display: inline-block;
       flex: 1 0 auto;
-      height: $unit-6;
-      line-height: $unit-4;
-      margin: $unit-h;
+      // height: $unit-6; // old spectre.css
+      height: get-var('unit-6');
+      // line-height: $unit-4; // old spectre.css
+      line-height: get-var('unit-4');
+      // margin: $unit-h; // old spectre.css
+      margin: get-var('unit-h');
       width: auto;
     }
   }

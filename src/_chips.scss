@@ -1,4 +1,6 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
+@use 'functions/var-negative' as *;
 @use 'variables' as *;
 
 // Chips
@@ -9,12 +11,17 @@
   border-radius: 5rem;
   display: inline-flex;
   font-size: 90%;
-  height: $unit-6;
-  line-height: $unit-4;
-  margin: $unit-h;
-  max-width: $control-width-sm;
+  // height: $unit-6; // old spectre.css
+  height: get-var('unit-6');
+  // line-height: $unit-4; // old spectre.css
+  line-height: get-var('unit-4');
+  // margin: $unit-h; // old spectre.css
+  margin: get-var('unit-h');
+  // max-width: $control-width-sm; // old spectre.css
+  max-width: get-var('control-width', $suffix: 'sm');
   overflow: hidden;
-  padding: $unit-1 $unit-2;
+  // padding: $unit-1 $unit-2; // old spectre.css
+  padding: get-var('unit-1') get-var('unit-2');
   text-decoration: none;
   text-overflow: ellipsis;
   vertical-align: middle;
@@ -28,8 +35,10 @@
   }
 
   .avatar {
-    margin-left: -$unit-2;
-    margin-right: $unit-1;
+    // margin-left: -$unit-2; // old spectre.css
+    margin-left: var-negative(get-var('unit-2'));
+    // margin-right: $unit-1; // old spectre.css
+    margin-right: get-var('unit-1');
   }
 
   .btn-clear {

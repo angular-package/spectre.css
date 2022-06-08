@@ -1,0 +1,24 @@
+@use '../mixins/set-var' as *;
+@use '../variables' as *;
+
+/*
+  Unit sizes. Alphabetical order.
+*/
+:root, :host {
+  @include set-var('unit-o', $unit-o); // 0.05rem
+  @include set-var('unit-h', $unit-h); // 0.1rem
+
+  @include set-var('unit-0', 0rem); // ! New. 0rem
+  @include set-var('unit-1', $unit-1); // 0.2rem
+  @include set-var('unit-2', $unit-2); // 0.4rem
+  @include set-var('unit-3', $unit-3); // 0.6rem
+  @include set-var('unit-4', $unit-4); // 0.8rem
+  @include set-var('unit-5', $unit-5); // 1rem
+  @include set-var('unit-6', $unit-6); // 1.2rem
+  @include set-var('unit-7', $unit-7); // 1.4rem
+  @include set-var('unit-8', $unit-8); // 1.6rem
+  @include set-var('unit-9', $unit-9); // 1.8rem
+  @include set-var('unit-10', $unit-10); // 2rem
+  @include set-var('unit-12', $unit-12); // 2.4rem
+  @include set-var('unit-16', $unit-16); // 3.2rem
+}

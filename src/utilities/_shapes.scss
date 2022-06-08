@@ -1,8 +1,10 @@
+@use '../functions/get-var' as *;
 @use '../variables' as *;
 
 // Shapes
 .s-rounded {
-  border-radius: $border-radius;
+  // border-radius: $border-radius; // old spectre.css
+  border-radius: get-var('border-radius');
 }
 
 .s-circle {

@@ -1,4 +1,6 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
+@use 'functions/var-negative' as *;
 @use 'variables' as *;
 
 // Tooltips
@@ -7,31 +9,38 @@
   &::after {
     // background: rgba($dark-color, .95);
     background: color('dark-color', $alpha: 0.95);
-    border-radius: $border-radius;
+    // border-radius: $border-radius; // old spectre.css
+    border-radius: get-var('border-radius');
     bottom: 100%;
     // color: $light-color; // old spectre.css
     color: color('light-color');
     content: attr(data-tooltip);
     display: block;
-    font-size: $font-size-sm;
+    // font-size: $font-size-sm; // old spectre.css
+    font-size: get-var('font-size', $suffix: 'sm');
     left: 50%;
-    max-width: $control-width-sm;
+    // max-width: $control-width-sm; // old spectre.css
+    max-width: get-var('control-width', $suffix: 'sm');
     opacity: 0;
     overflow: hidden;
-    padding: $unit-1 $unit-2;
+    // padding: $unit-1 $unit-2; // old spectre.css
+    padding: get-var('unit-1') get-var('unit-2');
     pointer-events: none;
     position: absolute;
     text-overflow: ellipsis;
-    transform: translate(-50%, $unit-2);
+    // transform: translate(-50%, $unit-2); // old spectre.css
+    transform: translate(-50%, get-var('unit-2'));
     transition: opacity 0.2s, transform 0.2s;
     white-space: pre;
-    z-index: $zindex-3;
+    // z-index: $zindex-3; // old spectre.css
+    z-index: get-var('z-index-3');
   }
   &:focus,
   &:hover {
     &::after {
       opacity: 1;
-      transform: translate(-50%, -$unit-1);
+      // transform: translate(-50%, -$unit-1); // old spectre.css
+      transform: translate(-50%, var-negative(get-var('unit-1')));
     }
   }
   &[disabled],
@@ -43,12 +52,14 @@
     &::after {
       bottom: 50%;
       left: 100%;
-      transform: translate(-$unit-1, 50%);
+      // transform: translate(-$unit-1, 50%); // old spectre.css
+      transform: translate(var-negative(get-var('unit-1')), 50%);
     }
     &:focus,
     &:hover {
       &::after {
-        transform: translate($unit-1, 50%);
+        // transform: translate($unit-1, 50%); // old spectre.css
+        transform: translate(get-var('unit-1'), 50%);
       }
     }
   }
@@ -57,12 +68,14 @@
     &::after {
       bottom: auto;
       top: 100%;
-      transform: translate(-50%, -$unit-2);
+      // transform: translate(-50%, -$unit-2); // old spectre.css
+      transform: translate(-50%, var-negative(get-var('unit-2')));
     }
     &:focus,
     &:hover {
       &::after {
-        transform: translate(-50%, $unit-1);
+        // transform: translate(-50%, $unit-1); // old spectre.css
+        transform: translate(-50%, get-var('unit-1'));
       }
     }
   }
@@ -72,12 +85,14 @@
       bottom: 50%;
       left: auto;
       right: 100%;
-      transform: translate($unit-2, 50%);
+      // transform: translate($unit-2, 50%); // old spectre.css
+      transform: translate(get-var('unit-2'), 50%);
     }
     &:focus,
     &:hover {
       &::after {
-        transform: translate(-$unit-1, 50%);
+        // transform: translate(-$unit-1, 50%); // old spectre.css
+        transform: translate(var-negative(get-var('unit-1')), 50%);
       }
     }
   }

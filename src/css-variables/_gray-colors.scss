@@ -1,0 +1,11 @@
+@use '../mixins/define-color-based-on' as *;
+@use '../variables' as *;
+
+/*
+  Spectre.css gray colors. Alphabetical order.
+*/
+:root, :host {
+  @include define-color-based-on('gray-color', 'dark-color', $lightness: +55%); // lighten($dark-color, 55%)
+  @include define-color-based-on('gray-color-dark', 'gray-color', $lightness: -30%); // darken($gray-color, 30%)
+  @include define-color-based-on('gray-color-light', 'gray-color', $lightness: +20%); // lighten($gray-color, 20%)
+}

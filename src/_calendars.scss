@@ -1,12 +1,14 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
 
 // Calendars
 .calendar {
   // border: $border-width solid $border-color; // old spectre.css
-  border: $border-width solid color('border-color');
-  border-radius: $border-radius;
+  border: get-var('border-width') solid color('border-color');
+  // border-radius: $border-radius; // old spectre.css
+  border-radius: get-var('border-radius');
   display: block;
   min-width: 280px;
 
@@ -14,11 +16,15 @@
     align-items: center;
     // background: $bg-color; // old spectre.css
     background: color('bg-color');
-    border-top-left-radius: $border-radius;
-    border-top-right-radius: $border-radius;
+    // border-top-left-radius: $border-radius; // old spectre.css
+    border-top-left-radius: get-var('border-radius');
+    // border-top-right-radius: $border-radius; // old spectre.css
+    border-top-right-radius: get-var('border-radius');
     display: flex;
-    font-size: $font-size-lg;
-    padding: $layout-spacing;
+    // font-size: $font-size-lg; // old spectre.css
+    font-size: get-var('font-size', $suffix: 'lg');
+    // padding: $layout-spacing; // old spectre.css
+    padding: get-var('layout-spacing', $unit: 1);
   }
 
   .calendar-header,
@@ -26,7 +32,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: $layout-spacing 0;
+    // padding: $layout-spacing 0; // old spectre.css
+    padding: get-var('layout-spacing', $unit: 1) 0;
 
     .calendar-date {
       flex: 0 0 14.28%; // 7 calendar-items each row
@@ -38,10 +45,11 @@
     // background: $bg-color; // old spectre.css
     background: color('bg-color');
     // border-bottom: $border-width solid $border-color; // old spectre.css
-    border-bottom: $border-width solid color('border-color');
+    border-bottom: get-var('border-width') solid color('border-color');
     // color: $gray-color; // old spectre.css
     color: color('gray-color');
-    font-size: $font-size-sm;
+    // font-size: $font-size-sm; // old spectre.css
+    font-size: get-var('font-size', $suffix: 'sm');
     text-align: center;
   }
 
@@ -52,28 +60,34 @@
 
   .calendar-date {
     border: 0;
-    padding: $unit-1;
+    // padding: $unit-1; // old spectre.css
+    padding: get-var('unit-1');
 
     .date-item {
       appearance: none;
       background: transparent;
-      border: $border-width solid transparent;
+      border: get-var('border-width') solid transparent;
       border-radius: 50%;
       // color: $gray-color-dark; // old spectre.css
       color: color('gray-color-dark');
       cursor: pointer;
-      font-size: $font-size-sm;
-      height: $unit-7;
-      line-height: $unit-5;
+      // font-size: $font-size-sm; // old spectre.css
+      font-size: get-var('font-size', $suffix: 'sm');
+      // height: $unit-7; // old spectre.css
+      height: get-var('unit-7');
+      // line-height: $unit-5; // old spectre.css
+      line-height: get-var('unit-5');
       outline: none;
-      padding: $unit-h;
+      // padding: $unit-h; // old spectre.css
+      padding: get-var('unit-h');
       position: relative;
       text-align: center;
       text-decoration: none;
       transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s;
       vertical-align: middle;
       white-space: nowrap;
-      width: $unit-7;
+      // width: $unit-7; // old spectre.css
+      width: get-var('unit-7');
 
       &.date-today {
         // border-color: $secondary-color-dark; // old spectre.css
@@ -143,7 +157,8 @@
       // background: $secondary-color; // old spectre.css
       background: color('secondary-color');
       content: '';
-      height: $unit-7;
+      // height: $unit-7; // old spectre.css
+      height: get-var('unit-7');
       left: 0;
       position: absolute;
       right: 0;
@@ -186,9 +201,9 @@
 
       .calendar-date {
         // border-bottom: $border-width solid $border-color; // old spectre.css
-        border-bottom: $border-width solid color('border-color');
+        border-bottom: get-var('border-width') solid color('border-color');
         // border-right: $border-width solid $border-color; // old spectre.css
-        border-right: $border-width solid color('border-color');
+        border-right: get-var('border-width') solid color('border-color');
         display: flex;
         flex-direction: column;
         height: 5.5rem;
@@ -205,9 +220,12 @@
 
     .date-item {
       align-self: flex-end;
-      height: $unit-7;
-      margin-right: $layout-spacing-sm;
-      margin-top: $layout-spacing-sm;
+      // height: $unit-7; // old spectre.css
+      height: get-var('unit-7');
+      // margin-right: $layout-spacing-sm; // old spectre.css
+      margin-right: get-var('layout-spacing', $suffix: 'sm', $unit: 1);
+      // margin-top: $layout-spacing-sm; // old spectre.css
+      margin-top: get-var('layout-spacing', $suffix: 'sm', $unit: 1);
     }
 
     .calendar-range {
@@ -231,14 +249,18 @@
       flex-grow: 1;
       line-height: 1;
       overflow-y: auto;
-      padding: $layout-spacing-sm;
+      // padding: $layout-spacing-sm; // old spectre.css
+      padding: get-var('layout-spacing', $suffix: 'sm', $unit: 1);
     }
 
     .calendar-event {
-      border-radius: $border-radius;
-      font-size: $font-size-sm;
+      // border-radius: $border-radius; // old spectre.css
+      border-radius: get-var('border-radius');
+      // font-size: $font-size-sm; // old spectre.css
+      font-size: get-var('font-size', $suffix: 'sm');
       display: block;
-      margin: $unit-h auto;
+      // margin: $unit-h auto; // old spectre.css
+      margin: get-var('unit-h') auto;
       overflow: hidden;
       padding: 3px 4px;
       text-overflow: ellipsis;

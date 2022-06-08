@@ -1,4 +1,6 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
+@use 'functions/var-negative' as *;
 @use 'mixins/button' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
@@ -9,17 +11,22 @@
   // background: $bg-color-light; // old spectre.css
   background: color('bg-color-light');
   // border: $border-width solid $primary-color; // old spectre.css
-  border: $border-width solid color('primary-color');
-  border-radius: $border-radius;
+  border: get-var('border-width') solid color('primary-color');
+  // border-radius: $border-radius; // old spectre.css
+  border-radius: get-var('border-radius');
   // color: $primary-color; // old spectre.css
   color: color('primary-color');
   cursor: pointer;
   display: inline-block;
-  font-size: $font-size;
-  height: $control-size;
-  line-height: $line-height;
+  // font-size: $font-size; // old spectre.css
+  font-size: get-var('font-size');
+  // height: $control-size; // old spectre.css
+  height: get-var('control-size');
+  // line-height: $line-height; // old spectre.css
+  line-height: get-var('line-height');
   outline: none;
-  padding: $control-padding-y $control-padding-x;
+  // padding: $control-padding-y $control-padding-x; // old spectre.css
+  padding: get-var('control-padding-y') get-var('control-padding-x');
   text-align: center;
   text-decoration: none;
   transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s;
@@ -136,15 +143,22 @@
 
   // Button Sizes
   &.btn-sm {
-    font-size: $font-size-sm;
-    height: $control-size-sm;
-    padding: $control-padding-y-sm $control-padding-x-sm;
+    // font-size: $font-size-sm; // old spectre.css
+    font-size: get-var('font-size', $suffix: 'sm');
+    // height: $control-size-sm; // old spectre.css
+    height: get-var('control-size', $suffix: 'sm');
+    // padding: $control-padding-y-sm $control-padding-x-sm; // old spectre.css
+    padding: get-var('control-padding-y', $suffix: 'sm') get-var('control-padding-x', $suffix: 'sm');
+
   }
 
   &.btn-lg {
-    font-size: $font-size-lg;
-    height: $control-size-lg;
-    padding: $control-padding-y-lg $control-padding-x-lg;
+    // font-size: $font-size-lg; // old spectre.css
+    font-size: get-var('font-size', $suffix: 'lg');
+    // height: $control-size-lg; // old spectre.css
+    height: get-var('control-size', $suffix: 'lg');
+    // padding: $control-padding-y-lg $control-padding-x-lg; // old spectre.css
+    padding: get-var('control-padding-y', $suffix: 'lg') get-var('control-padding-x', $suffix: 'lg');
   }
 
   // Button Block
@@ -155,16 +169,20 @@
 
   // Button Action
   &.btn-action {
-    width: $control-size;
+    // width: $control-size; // old spectre.css
+    width: get-var('control-size');
+
     padding-left: 0;
     padding-right: 0;
 
     &.btn-sm {
-      width: $control-size-sm;
+      // width: $control-size-sm; // old spectre.css
+      width: get-var('control-size', $suffix: 'sm');
     }
 
     &.btn-lg {
-      width: $control-size-lg;
+      // width: $control-size-lg; // old spectre.css
+      width: get-var('control-size', $suffix: 'lg');
     }
   }
 
@@ -173,14 +191,19 @@
     background: transparent;
     border: 0;
     color: currentColor;
-    height: $unit-5;
-    line-height: $unit-4;
-    margin-left: $unit-1;
+    // height: $unit-5; // old spectre.css
+    height: get-var('unit-5');
+    // line-height: $unit-4; // old spectre.css
+    line-height: get-var('unit-4');
+    // margin-left: $unit-1; // old spectre.css
+    margin-left: get-var('unit-1');
     margin-right: -2px;
     opacity: 1;
-    padding: $unit-h;
+    // padding: $unit-h; // old spectre.css
+    padding: get-var('unit-h');
     text-decoration: none;
-    width: $unit-5;
+    // width: $unit-5; // old spectre.css
+    width: get-var('unit-5');
 
     &:focus,
     &:hover {
@@ -208,18 +231,21 @@
     }
     &:not(:first-child):not(:last-child) {
       border-radius: 0;
-      margin-left: -$border-width;
+      // margin-left: -$border-width; // old spectre.css
+      margin-left: var-negative(get-var('border-width'));
     }
     &:last-child:not(:first-child) {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
-      margin-left: -$border-width;
+      // margin-left: -$border-width; // old spectre.css
+      margin-left: var-negative(get-var('border-width'));
     }
     &:focus,
     &:hover,
     &:active,
     &.active {
-      z-index: $zindex-0;
+      // z-index: $zindex-0; // old spectre.css
+      z-index: get-var('z-index-0');
     }
   }
 

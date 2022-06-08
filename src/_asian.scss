@@ -1,3 +1,4 @@
+@use 'functions/get-var' as *;
 @use 'variables' as *;
 
 // Optimized for East Asian CJK
@@ -28,7 +29,8 @@ html:lang(ko),
 .lang-cjk {
   ins,
   u {
-    border-bottom: $border-width solid;
+    // border-bottom: $border-width solid; // old spectre.css
+    border-bottom: get-var('border-width') solid;
     text-decoration: none;
   }
 

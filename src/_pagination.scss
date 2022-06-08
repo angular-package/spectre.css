@@ -1,25 +1,32 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
 @use 'variables' as *;
 
 // Pagination
 .pagination {
   display: flex;
   list-style: none;
-  margin: $unit-1 0;
-  padding: $unit-1 0;
+  // margin: $unit-1 0; // old spectre.css
+  margin: get-var('unit-1') 0;
+  // padding: $unit-1 0; // old spectre.css
+  padding: get-var('unit-1') 0;
 
   .page-item {
-    margin: $unit-1 $unit-o;
+    // margin: $unit-1 $unit-o; // old spectre.css
+    margin: get-var('unit-1') get-var('unit-o');
 
     span {
       display: inline-block;
-      padding: $unit-1 $unit-1;
+      // padding: $unit-1 $unit-1; // old spectre.css
+      padding: get-var('unit-1') get-var('unit-1');
     }
 
     a {
-      border-radius: $border-radius;
+      // border-radius: $border-radius; // old spectre.css
+      border-radius: get-var('border-radius');
       display: inline-block;
-      padding: $unit-1 $unit-2;
+      // padding: $unit-1 $unit-2; // old spectre.css
+      padding: get-var('unit-1') get-var('unit-2');
       text-decoration: none;
       &:focus,
       &:hover {

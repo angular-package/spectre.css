@@ -1,0 +1,11 @@
+@use '../mixins/define-color-based-on' as *;
+@use '../variables' as *;
+
+/*
+  Spectre.css bg colors. Alphabetical order.
+*/
+:root, :host {
+  @include define-color-based-on('bg-color', 'dark-color', $lightness: +75%); // lighten($dark-color, 75%)
+  @include define-color-based-on('bg-color-dark', 'bg-color', $lightness: -3%); // darken($bg-color, 3%)
+  @include define-color-based-on('bg-color-light', 'light-color'); // $light-color
+}

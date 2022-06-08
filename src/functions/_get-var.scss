@@ -1,0 +1,24 @@
+@use 'sass:string';
+@use '../variables' as *;
+
+// Gets the CSS variable with or without separated unit.
+@function get-var(
+  $name,
+  $prefix: $var-prefix,
+  $suffix: '',
+  $unit: 0
+) {
+  @if string.length($suffix) > 0 {
+    @if $unit == 1 {
+      @return calc(var(--#{$prefix}-#{$name}-#{$suffix}) * var(--#{$prefix}-#{$name}-unit));
+    } @else {
+      @return var(--#{$prefix}-#{$name}-#{$suffix});
+    }
+  } @else {
+    @if $unit == 1 {
+      @return calc(var(--#{$prefix}-#{$name}) * var(--#{$prefix}-#{$name}-unit));
+    } @else {
+      @return var(--#{$prefix}-#{$name});
+    }
+  }
+}

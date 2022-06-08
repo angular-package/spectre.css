@@ -1,4 +1,5 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
 @use 'variables' as *;
 
 // Tables
@@ -55,10 +56,12 @@
   td,
   th {
     // border-bottom: $border-width solid $border-color; // old spectre.css
-    border-bottom: $border-width solid color('border-color');
-    padding: $unit-3 $unit-2;
+    border-bottom: get-var('border-width') solid color('border-color');
+    // padding: $unit-3 $unit-2; // old spectre.css
+    padding: get-var('unit-3') get-var('unit-2');
   }
   th {
-    border-bottom-width: $border-width-lg;
+    // border-bottom-width: $border-width-lg; // old spectre.css
+    border-bottom-width: get-var('border-width', $suffix: 'lg');
   }
 }

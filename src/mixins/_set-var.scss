@@ -1,0 +1,12 @@
+@use 'sass:string';
+@use '../variables' as *;
+
+// The mixin defines a variable with a specified prefix.
+// Set Spectre CSS variable.
+@mixin set-var($name, $value: '', $prefix: $var-prefix, $suffix: '') {
+  @if string.length($suffix) > 0 {
+    --#{$prefix}-#{$name}-#{$suffix}: #{$value};
+  } @else {
+    --#{$prefix}-#{$name}: #{$value};
+  }
+}

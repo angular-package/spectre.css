@@ -1,4 +1,5 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
 
@@ -11,8 +12,10 @@
 
 html {
   box-sizing: border-box;
-  font-size: $html-font-size;
-  line-height: $html-line-height;
+  // font-size: $html-font-size; // old spectre.css
+  font-size: get-var('html-font-size');
+  // line-height: $html-line-height; // old spectre.css
+  line-height: get-var('html-line-height');
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -22,7 +25,8 @@ body {
   // color: $body-font-color; // old spectre.css
   color: color('body-font-color');
   font-family: $body-font-family;
-  font-size: $font-size;
+  // font-size: $font-size; // old spectre.css
+  font-size: get-var('font-size');
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
 }
