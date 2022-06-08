@@ -171,3 +171,14 @@ $zindex-1: 100 !default; // ! New CSS variable.
 $zindex-2: 200 !default; // ! New CSS variable.
 $zindex-3: 300 !default; // ! New CSS variable.
 $zindex-4: 400 !default; // ! New CSS variable.
+
+
+/*
+  Parallax
+*/
+$parallax-deg: 3deg !default;
+$parallax-offset: 4.5px !default;
+$parallax-offset-z: 50px !default;
+$parallax-perspective: 1000px !default;
+$parallax-scale: 0.95 !default;
+$parallax-fade-color: #ffffff !default;
