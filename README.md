@@ -205,7 +205,9 @@ $code-color: #d73e48 !default; // CSS variable.
 $highlight-color: #ffe9b3 !default; // CSS variable.
 
 // Body colors
-$body-bg: $bg-color-light !default; // CSS variable.
+// $body-bg: $bg-color-light !default; // REMOVED in favor of $body-bg-color
+$body-bg-color: $bg-color-light !default; // New SCSS variable, CSS variable.
+
 ```
 
 Colors that are based on the **hex** colors above.
@@ -255,11 +257,15 @@ Each **hex** color has **four** CSS variables defined by the mixin `define-color
 ```scss
 // src/mixins/_define-color.scss
 // The mixin defines CSS variable color in hsla form.
-@mixin define-color($name, $color, $prefix: $var-prefix) {
+@mixin define-color($name, $color, $prefix: $var-prefix, $alpha: -1) {
   @include set-var($name, hue($color), $prefix, 'h');
   @include set-var($name, saturation($color), $prefix, 's');
   @include set-var($name, lightness($color), $prefix, 'l');
-  @include set-var($name, alpha($color), $prefix, 'a');
+  @if $alpha == -1 {
+    @include set-var($name, alpha($color), $prefix, 'a');
+  } @else {
+    @include set-var($name, $alpha, $prefix, 'a');
+  }
 }
 ```
 
@@ -601,6 +607,35 @@ Equivalent CSS variables with default prefix `s`.
   --s-z-index-2: 200;
   --s-z-index-3: 300;
   --s-z-index-4: 400;
+}
+```
+
+### Parallax
+
+SCSS variables.
+
+```scss
+$parallax-deg: 3deg !default;
+$parallax-offset: 4.5px !default;
+$parallax-offset-z: 50px !default;
+$parallax-perspective: 1000px !default;
+$parallax-scale: 0.95 !default;
+$parallax-fade-color: #ffffff !default;
+```
+
+Equivalent CSS variables with default prefix `s`.
+
+```css
+:root, :host {
+  --s-parallax-deg: 3deg;
+  --s-parallax-fade-color-h: 0deg;
+  --s-parallax-fade-color-s: 0%;
+  --s-parallax-fade-color-l: 100%;
+  --s-parallax-fade-color-a: 0.35;
+  --s-parallax-offset: 4.5px;
+  --s-parallax-offset-z: 50px;
+  --s-parallax-perspective: 1000px;
+  --s-parallax-scale: 0.95;
 }
 ```
 
