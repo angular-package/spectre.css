@@ -1,14 +1,8 @@
-@use 'functions' as *;
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
+@use 'functions/var-negative' as *;
 @use 'mixins/shadow' as *;
 @use 'variables' as *;
-
-// Parallax
-$parallax-deg: 3deg !default;
-$parallax-offset: 4.5px !default;
-$parallax-offset-z: 50px !default;
-$parallax-perspective: 1000px !default;
-$parallax-scale: 0.95 !default;
-$parallax-fade-color: rgba(255, 255, 255, 0.35) !default; // TODO: Add color.
 
 // Mixin: Parallax direction
 @mixin parallax-dir() {
@@ -29,7 +23,8 @@ $parallax-fade-color: rgba(255, 255, 255, 0.35) !default; // TODO: Add color.
   .parallax-content {
     @include shadow-variant(1rem);
     height: auto;
-    transform: perspective($parallax-perspective);
+    // transform: perspective($parallax-perspective); // old spectre.css
+    transform: perspective(get-var('parallax-perspective'));
     transform-style: preserve-3d;
     transition: all 0.4s ease;
     width: 100%;
@@ -58,7 +53,8 @@ $parallax-fade-color: rgba(255, 255, 255, 0.35) !default; // TODO: Add color.
     // text-shadow: 0 0 20px rgba($dark-color, .75); // old spectre.css
     text-shadow: 0 0 20px color('dark-color', $alpha: 0.75);
     top: 0;
-    transform: translateZ($parallax-offset-z) scale($parallax-scale);
+    // transform: translateZ($parallax-offset-z) scale($parallax-scale); // old spectre.css
+    transform: translateZ(get-var('parallax-offset-z')) scale(get-var('parallax-scale'));
     transition: transform 0.4s;
     width: 100%;
     // z-index: $zindex-0; // old spectre.css
@@ -72,14 +68,17 @@ $parallax-fade-color: rgba(255, 255, 255, 0.35) !default; // TODO: Add color.
 
     &:focus ~ .parallax-content,
     &:hover ~ .parallax-content {
-      transform: perspective($parallax-perspective) rotateX($parallax-deg) rotateY(-$parallax-deg);
+      // transform: perspective($parallax-perspective) rotateX($parallax-deg) rotateY(-$parallax-deg); // old spectre.css
+      transform: perspective(get-var('parallax-perspective')) rotateX(get-var('parallax-deg')) rotateY(var-negative(get-var('parallax-deg')));
 
       &::before {
-        background: linear-gradient(135deg, $parallax-fade-color 0%, transparent 50%);
+        // background: linear-gradient(135deg, $parallax-fade-color 0%, transparent 50%); // old spectre.css
+        background: linear-gradient(135deg, color('parallax-fade-color') 0%, transparent 50%);
       }
 
       .parallax-front {
-        transform: translate3d($parallax-offset, $parallax-offset, $parallax-offset-z) scale($parallax-scale);
+        // transform: translate3d($parallax-offset, $parallax-offset, $parallax-offset-z) scale($parallax-scale); // old spectre.css
+        transform: translate3d(get-var('parallax-offset'), get-var('parallax-offset'), get-var('parallax-offset-z')) scale(get-var('parallax-scale'));
       }
     }
   }
@@ -91,14 +90,17 @@ $parallax-fade-color: rgba(255, 255, 255, 0.35) !default; // TODO: Add color.
 
     &:focus ~ .parallax-content,
     &:hover ~ .parallax-content {
-      transform: perspective($parallax-perspective) rotateX($parallax-deg) rotateY($parallax-deg);
+      // transform: perspective($parallax-perspective) rotateX($parallax-deg) rotateY($parallax-deg); // old spectre.css
+      transform: perspective(get-var('parallax-perspective')) rotateX(get-var('parallax-deg')) rotateY(get-var('parallax-deg'));
 
       &::before {
-        background: linear-gradient(-135deg, $parallax-fade-color 0%, transparent 50%);
+        // background: linear-gradient(-135deg, $parallax-fade-color 0%, transparent 50%); // old spectre.css
+        background: linear-gradient(-135deg, color('parallax-fade-color') 0%, transparent 50%);
       }
 
       .parallax-front {
-        transform: translate3d(-$parallax-offset, $parallax-offset, $parallax-offset-z) scale($parallax-scale);
+        // transform: translate3d(-$parallax-offset, $parallax-offset, $parallax-offset-z) scale($parallax-scale); // old spectre.css
+        transform: translate3d(var-negative(get-var('parallax-offset')), get-var('parallax-offset'), get-var('parallax-offset-z')) scale(get-var('parallax-scale'));
       }
     }
   }
@@ -110,14 +112,17 @@ $parallax-fade-color: rgba(255, 255, 255, 0.35) !default; // TODO: Add color.
 
     &:focus ~ .parallax-content,
     &:hover ~ .parallax-content {
-      transform: perspective($parallax-perspective) rotateX(-$parallax-deg) rotateY(-$parallax-deg);
+      // transform: perspective($parallax-perspective) rotateX(-$parallax-deg) rotateY(-$parallax-deg); // old spectre.css
+      transform: perspective(get-var('parallax-perspective')) rotateX(var-negative(get-var('parallax-deg'))) rotateY(var-negative(get-var('parallax-deg')));
 
       &::before {
-        background: linear-gradient(45deg, $parallax-fade-color 0%, transparent 50%);
+        // background: linear-gradient(45deg, $parallax-fade-color 0%, transparent 50%); // old spectre.css
+        background: linear-gradient(45deg, color('parallax-fade-color') 0%, transparent 50%);
       }
 
       .parallax-front {
-        transform: translate3d($parallax-offset, -$parallax-offset, $parallax-offset-z) scale($parallax-scale);
+        // transform: translate3d($parallax-offset, -$parallax-offset, $parallax-offset-z) scale($parallax-scale); // old spectre.css
+        transform: translate3d(get-var('parallax-offset'), var-negative(get-var('parallax-offset')), get-var('parallax-offset-z')) scale(get-var('parallax-scale'));
       }
     }
   }
@@ -129,14 +134,17 @@ $parallax-fade-color: rgba(255, 255, 255, 0.35) !default; // TODO: Add color.
 
     &:focus ~ .parallax-content,
     &:hover ~ .parallax-content {
-      transform: perspective($parallax-perspective) rotateX(-$parallax-deg) rotateY($parallax-deg);
+      // transform: perspective($parallax-perspective) rotateX(-$parallax-deg) rotateY($parallax-deg); // old spectre.css
+      transform: perspective(get-var('parallax-perspective')) rotateX(var-negative(get-var('parallax-deg'))) rotateY(get-var('parallax-deg'));
 
       &::before {
-        background: linear-gradient(-45deg, $parallax-fade-color 0%, transparent 50%);
+        // background: linear-gradient(-45deg, $parallax-fade-color 0%, transparent 50%); // old spectre.css
+        background: linear-gradient(-45deg, color('parallax-fade-color') 0%, transparent 50%);
       }
 
       .parallax-front {
-        transform: translate3d(-$parallax-offset, -$parallax-offset, $parallax-offset-z) scale($parallax-scale);
+        // transform: translate3d(-$parallax-offset, -$parallax-offset, $parallax-offset-z) scale($parallax-scale); // old spectre.css
+        transform: translate3d(var-negative(get-var('parallax-offset')), var-negative(get-var('parallax-offset')), get-var('parallax-offset-z')) scale(get-var('parallax-scale'));
       }
     }
   }
