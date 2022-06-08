@@ -1,7 +1,13 @@
-#### Spectre.css Changelog
+# Spectre.css changelog
 
-##### v1.0.0-alpha.2
+## v1.0.0-alpha.2
 
+- Update `define-color()` mixin by adding `$alpha` parameter. [5a4f317]
+- Update CSS variable `body-bg-color` to use SCSS variable `$body-bg-color` instead of basing on `bg-color-light`. [c529aa9]
+- Change the `$body-bg` SCSS variable to `$body-bg-color`. [d6b582f]
+- Move parallax variables into `_variables.scss` and add to CSS variables. [5b2c0b4] [84f247c]
+- Remove `$grid-spacing` in `_layout.scss` in favor of CSS variables calculation.
+- Update forms state disabled to use `disabled-color` instead `bg-color-dark` and the color is assigned to `background-color` not `background`.
 - Update grid sizes to use CSS variables for size. [e875ec2]
 - Add CSS variables for z-index and responsive breakpoint. [53a9c0e]
 - Update styles to use CSS variable of the z-index. [7d7d6da]
@@ -21,6 +27,11 @@
 - Add `$var-prefix` to customize CSS variable name, add `$disabled-color` SCSS variable. [7623233]
 - Add CSS variables `font-size`, `html-font-size`, `html-line-height`, `line-height`. [4cddda6]
 
+[d6b582f]: https://github.com/angular-package/spectre.css/commit/d6b582f3ad97256ad646745c38c6fca489c5d025
+[5a4f317]: https://github.com/angular-package/spectre.css/commit/5a4f3174d5161ddd3c9dfaf6e47d4264c8939fe3
+[c529aa9]: https://github.com/angular-package/spectre.css/commit/c529aa9838db68458aa0f2624be37cad8047b3b7
+[5b2c0b4]: https://github.com/angular-package/spectre.css/commit/5b2c0b484d7ddbbeb5a8fa88ce3164eb49e767ff
+[84f247c]: https://github.com/angular-package/spectre.css/commit/84f247c73350980c94f6bf8f48e243c98e73a4fb
 [e875ec2]: https://github.com/angular-package/spectre.css/commit/e875ec2a4500070e63fac020634cc053e9e3d232
 [53a9c0e]: https://github.com/angular-package/spectre.css/commit/53a9c0e49a61fec5f1690b94fea8e4aae2fbe38a
 [7d7d6da]: https://github.com/angular-package/spectre.css/commit/7d7d6da41503800ac25c739b3f73b0d3278f2319
