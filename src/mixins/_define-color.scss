@@ -2,11 +2,15 @@
 @use 'set-var' as *;
 
 // The mixin defines CSS variable color in hsl form.
-@mixin define-color($name, $color, $prefix: $var-prefix) {
+@mixin define-color($name, $color, $prefix: $var-prefix, $alpha: -1) {
   @include set-var($name, hue($color), $prefix, 'h');
   @include set-var($name, saturation($color), $prefix, 's');
   @include set-var($name, lightness($color), $prefix, 'l');
-  @include set-var($name, alpha($color), $prefix, 'a');
+  @if $alpha == -1 {
+    @include set-var($name, alpha($color), $prefix, 'a');
+  } @else {
+    @include set-var($name, $alpha, $prefix, 'a');
+  }
 }
 
 // Old @angular-package/spectre.css
