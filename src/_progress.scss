@@ -40,7 +40,8 @@
   &:indeterminate {
     animation: progress-indeterminate 1.5s linear infinite;
     // TODO: Gradient.
-    background: color('bg-color-dark') linear-gradient(to right, $primary-color 30%, $bg-color-dark 30%) top left / 150% 150% no-repeat;
+    // background: color('bg-color-dark') linear-gradient(to right, $primary-color 30%, $bg-color-dark 30%) top left / 150% 150% no-repeat;
+    background: color('bg-color-dark') linear-gradient(to right, color('primary-color') 30%, color('bg-color-dark') 30%) top left / 150% 150% no-repeat;
 
     &::-moz-progress-bar {
       background: transparent;
