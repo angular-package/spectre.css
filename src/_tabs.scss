@@ -25,7 +25,7 @@
       // margin: 0 $unit-2 0 0; // old spectre.css
       margin: 0 get-var('unit-2') 0 0;
       // padding: $unit-2 $unit-1 $unit-2 - $border-width-lg $unit-1; // old spectre.css
-      padding: get-var('unit-2') get-var('unit-1') calc(get-var('unit-2') - get-var('border-width', $suffix: 'lg')) $unit-1;
+      padding: get-var('unit-2') get-var('unit-1') calc(get-var('unit-2') - get-var('border-width', $suffix: 'lg')) get-var('unit-1');
       text-decoration: none;
       &:focus,
       &:hover {
