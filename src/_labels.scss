@@ -17,6 +17,18 @@
   }
 
   // Label colors
+  &.label-accent {
+    @include label-variant('light-color', 'accent-color');
+  }
+
+  &.label-dark {
+    @include label-variant('light-color', 'dark-color');
+  }
+
+  &.label-light {
+    @include label-variant('dark-color', 'light-color');
+  }
+
   &.label-primary {
     // @include label-variant($light-color, $primary-color); // old spectre.css
     @include label-variant('light-color', 'primary-color');
@@ -27,6 +39,23 @@
     @include label-variant('primary-color', 'secondary-color');
   }
 
+  // Control colors
+  &.label-disabled {
+    background-color: color('disabled-color');
+    color: color('disabled-color', $lightness: -10%);
+  }
+
+  &.label-error {
+    // @include label-variant($light-color, $error-color); // old spectre.css
+    @include label-variant('light-color', 'error-color');
+  }
+
+  // New color.
+  &.label-info {
+    background-color: color('info-color');
+    color: color('info-color', $lightness: -60%);
+  }
+
   &.label-success {
     // @include label-variant($light-color, $success-color); // old spectre.css
     @include label-variant('light-color', 'success-color');
@@ -35,10 +64,5 @@
   &.label-warning {
     // @include label-variant($light-color, $warning-color); // old spectre.css
     @include label-variant('light-color', 'warning-color');
-  }
-
-  &.label-error {
-    // @include label-variant($light-color, $error-color); // old spectre.css
-    @include label-variant('light-color', 'error-color');
   }
 }
