@@ -18,10 +18,55 @@
   padding: get-var('layout-spacing', $unit: 1);
   width: 100%;
 
-  // TODO: Add accent toast, info toast.
+  &.toast-accent {
+    @include toast-variant('accent-color');
+  }
+
+  &.toast-dark {
+    @include toast-variant('dark-color');
+  }
+
+  &.toast-disabled {
+    @include toast-variant('disabled-color');
+    color: color('disabled-color', $lightness: -10%);
+  }
+
+  &.toast-error {
+    // @include toast-variant($error-color); // old spectre.css
+    @include toast-variant('error-color');
+  }
+
+  &.toast-gray {
+    @include toast-variant('gray-color');
+  }
+
+  &.toast-gray-dark {
+    @include toast-variant('gray-color-dark');
+  }
+
+  &.toast-gray-light {
+    @include toast-variant('gray-color-light');
+    color: color('gray-color-dark');
+  }
+
+  &.toast-info {
+    @include toast-variant('info-color');
+    color: color('info-color', $lightness: -60%);
+  }
+
+  &.toast-light {
+    @include toast-variant('light-color');
+    color: color('body-font-color');
+  }
+
   &.toast-primary {
     // @include toast-variant($primary-color); // old spectre.css
     @include toast-variant('primary-color');
+  }
+
+  &.toast-secondary {
+    @include toast-variant('secondary-color');
+    color: color('primary-color');
   }
 
   &.toast-success {
@@ -32,11 +77,6 @@
   &.toast-warning {
     // @include toast-variant($warning-color); // old spectre.css
     @include toast-variant('warning-color');
-  }
-
-  &.toast-error {
-    // @include toast-variant($error-color); // old spectre.css
-    @include toast-variant('error-color');
   }
 
   a {
