@@ -74,7 +74,11 @@ legend {
   // padding: $control-padding-y $control-padding-x; // old spectre.css
   padding: get-var('control-padding-y') get-var('control-padding-x');
   position: relative;
-  transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s;
+  // transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s; // old spectre.css
+  transition: background get-var('transition-duration'),
+    border get-var('transition-duration'),
+    box-shadow get-var('transition-duration'),
+    color get-var('transition-duration');
   width: 100%;
   &:focus {
     @include control-shadow();
@@ -302,7 +306,11 @@ textarea.form-input {
     cursor: pointer;
     display: inline-block;
     position: absolute;
-    transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s;
+    // transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s; // old spectre.css
+    transition: background get-var('transition-duration'),
+      border get-var('transition-duration'),
+      box-shadow get-var('transition-duration'),
+      color get-var('transition-duration');
   }
 
   // Input checkbox, radio and switch sizes
@@ -438,7 +446,12 @@ textarea.form-input {
       left: 0;
       position: absolute;
       top: 0;
-      transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s, left 0.2s;
+      // transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s, left 0.2s; // old spectre.css
+      transition: background get-var('transition-duration'),
+        border get-var('transition-duration'),
+        box-shadow get-var('transition-duration'),
+        color get-var('transition-duration'),
+        left get-var('transition-duration');
       // width: $unit-4; // old spectre.css
       width: get-var('unit-4');
     }

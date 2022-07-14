@@ -30,7 +30,8 @@
     text-overflow: ellipsis;
     // transform: translate(-50%, $unit-2); // old spectre.css
     transform: translate(-50%, get-var('unit-2'));
-    transition: opacity 0.2s, transform 0.2s;
+    // transition: opacity 0.2s, transform 0.2s; // old spectre.css
+    transition: opacity get-var('transition-duration'), transform get-var('transition-duration');
     white-space: pre;
     // z-index: $zindex-3; // old spectre.css
     z-index: get-var('z-index-3');

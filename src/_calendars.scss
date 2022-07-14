@@ -83,7 +83,11 @@
       position: relative;
       text-align: center;
       text-decoration: none;
-      transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s;
+      // transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s; // old spectre.css
+      transition: background get-var('transition-duration'),
+        border get-var('transition-duration'),
+        box-shadow get-var('transition-duration'),
+        color get-var('transition-duration');
       vertical-align: middle;
       white-space: nowrap;
       // width: $unit-7; // old spectre.css

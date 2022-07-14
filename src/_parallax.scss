@@ -26,7 +26,9 @@
     // transform: perspective($parallax-perspective); // old spectre.css
     transform: perspective(get-var('parallax-perspective'));
     transform-style: preserve-3d;
-    transition: all 0.4s ease;
+    // transition: all 0.4s ease; // old spectre.css
+    transition: all calc(get-var('transition-duration') + 0.2s) ease;
+
     width: 100%;
 
     &::before {
@@ -55,7 +57,8 @@
     top: 0;
     // transform: translateZ($parallax-offset-z) scale($parallax-scale); // old spectre.css
     transform: translateZ(get-var('parallax-offset-z')) scale(get-var('parallax-scale'));
-    transition: transform 0.4s;
+    // transition: transform 0.4s; // old spectre.css
+    transition: transform calc(get-var('transition-duration') + 0.2s);
     width: 100%;
     // z-index: $zindex-0; // old spectre.css
     z-index: get-var('z-index-0');

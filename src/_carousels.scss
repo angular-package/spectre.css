@@ -68,7 +68,8 @@ $carousel-number: 8;
       opacity: 0;
       position: absolute;
       top: 50%;
-      transition: all 0.4s;
+      // transition: all 0.4s; // old spectre.css
+      transition: all calc(get-var('transition-duration') + 0.2s);
       transform: translateY(-50%);
       // z-index: $zindex-1; // old spectre.css
       z-index: get-var('z-index-1');

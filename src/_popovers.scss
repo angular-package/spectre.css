@@ -15,7 +15,8 @@
     position: absolute;
     top: 0;
     transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.2s;
+    // transition: transform 0.2s; // old spectre.css
+    transition: transform get-var('transition-duration');
     // width: $control-width-sm; // old spectre.css
     width: get-var('control-width', $suffix: 'sm');
     // z-index: $zindex-3; // old spectre.css

@@ -1,0 +1,9 @@
+@use '../mixins/set-var' as *;
+@use '../variables' as *;
+
+/*
+  Transition duration CSS variable.
+*/
+:root, :host {
+  @include set-var('transition-duration', $transition-duration); // 0.2s
+}
