@@ -1,0 +1,20 @@
+@use '../functions/color' as *;
+
+// Includes box-shadow of the specific side, size and color.
+@mixin box-shadow-side($side, $size: 10px, $color: 'gray-color') {
+  @if $side == right {
+    // Right side.
+    box-shadow: $size 0px $size ($size * -1) color($color);
+  } @else if $side == left {
+    // Left side.
+    box-shadow: ($size * -1) 0px $size ($size * -1) color($color);
+  } @else if $side == bottom {
+    // Bottom side.
+    box-shadow: 0px $size $size ($size * -1) color($color);
+  } @else if $side == top {
+    // Top side.
+    box-shadow: 0px ($size * -1) $size ($size * -1) color($color);
+  } @else {
+    @error "Unknown side #{$side}.";
+  }
+}
