@@ -38,7 +38,8 @@ $off-canvas-breakpoint: $size-lg !default;
     overflow-y: auto;
     position: fixed;
     top: 0;
-    transition: transform 0.25s;
+    // transition: transform 0.25s; // old spectre.css
+    transition: transform calc(get-var('transition-duration') + 0.05s );
     // z-index: $zindex-2; // old spectre.css
     z-index: get-var('z-index-2');
     @if $rtl == true {

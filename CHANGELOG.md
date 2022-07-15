@@ -1,5 +1,31 @@
 # Spectre.css changelog
 
+## v1.0.0-alpha.3.0.1
+
+- Remove unnecessary ignore files.
+
+## v1.0.0-alpha.3
+
+- Add new `toast-class-variant()` and `label-class-variant()` mixins. [87ebe64] [e6d2ac8] [921dc86] [fdbe64b]
+- Add sass variable `$transition-duration` and css variable `transition-duration` of the default value equal to `0.2s` and use in styles. [1db668c]
+- Add text and bg color variants. [8e6822e]
+- Add mixin `box-shadow-side()` to include sided box-shadow. [c010f4c]
+- Add toasts `accent`, `dark`, `disabled`, `gray`, `gray-dark`, `gray-light`, `info`, `light`, and `secondary` colors. [b5b3e0e]
+- Add label colors, `accent`, `dark`, `light`, `disabled`, `info`. [ed96a91]
+- Add missing mixins and add new. [845c528] [cc720f9]
+
+[fdbe64b]: https://github.com/angular-package/spectre.css/commit/fdbe64b7c57b27da26f2aba3e0a16f4a1a5653a6
+[921dc86]: https://github.com/angular-package/spectre.css/commit/921dc86e2e1ca9ddf299948235e4bd55f4626505
+[e6d2ac8]: https://github.com/angular-package/spectre.css/commit/e6d2ac8e1d6991e30d75193b685b3cee6c12667f
+[87ebe64]: https://github.com/angular-package/spectre.css/commit/87ebe641e4d61d8d89caa5f6856b96da01013d1f
+[1db668c]: https://github.com/angular-package/spectre.css/commit/1db668c108f9b29d54295ad06bce90e8f3516971
+[8e6822e]: https://github.com/angular-package/spectre.css/commit/8e6822ef0394e406ddb1a6914a7f6059a744f837
+[c010f4c]: https://github.com/angular-package/spectre.css/commit/c010f4cd0443463be40462b2d2e79cf5cab5bffd
+[b5b3e0e]: https://github.com/angular-package/spectre.css/commit/b5b3e0edc357de160936b90f8a78924a7cf4b37f
+[ed96a91]: https://github.com/angular-package/spectre.css/commit/ed96a917e014d6000e94d1f3d03ff54adffb70f6
+[845c528]: https://github.com/angular-package/spectre.css/commit/845c5287983b7054e158df491dd708f0a44f3466
+[cc720f9]: https://github.com/angular-package/spectre.css/commit/cc720f9d3bc67e617d190611f20684e6805fda42
+
 ## v1.0.0-alpha.2
 
 - Update `define-color()` mixin by adding `$alpha` parameter. [5a4f317]

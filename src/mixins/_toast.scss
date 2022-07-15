@@ -1,11 +1,22 @@
 @use '../functions/color' as *;
-@use '../variables' as *;
 
 // Toast variant mixin
+/*
+  The mixin includes toast `background` and `border` of a given `$color`.
+*/
 // @mixin toast-variant($color: $dark-color) { // old spectre.css
 @mixin toast-variant($color: 'dark-color') {
   // background: rgba($color, .95); // old spectre.css
   background: color($color, $alpha: 0.95);
   // border-color: $color; // old spectre.css
   border-color: color($color);
+}
+
+/*
+  The mixin includes an extension class of name prefixed with `toast-` with a given color name that includes a toast variant of the given `$color`.
+*/
+@mixin toast-class-variant($name: 'dark', $color: 'dark-color') {
+  &.toast-#{$name} {
+    @include toast-variant($color);
+  }
 }

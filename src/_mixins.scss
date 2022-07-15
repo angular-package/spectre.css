@@ -3,8 +3,11 @@
 @forward 'mixins/button';
 @forward 'mixins/clearfix';
 @forward 'mixins/color';
+@forward 'mixins/define-color-based-on';
+@forward 'mixins/define-color';
 @forward 'mixins/label';
 @forward 'mixins/position';
+@forward 'mixins/set-var';
 @forward 'mixins/shadow';
 @forward 'mixins/text';
 @forward 'mixins/toast';

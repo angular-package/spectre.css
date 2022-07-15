@@ -22,7 +22,8 @@
     padding: get-var('unit-1') get-var('unit-2');
 
     .icon {
-      transition: transform 0.25s;
+      // transition: transform 0.25s; // old spectre.css
+      transition: transform calc(get('transition-duration') + 0.05s); // old spectre.css
     }
   }
 
@@ -31,7 +32,8 @@
     margin-bottom: get-var('layout-spacing', $unit: 1);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.25s;
+    // transition: max-height 0.25s; // old spectre.css
+    transition: max-height calc(get('transition-duration') + 0.05s); // old spectre.css
   }
 }
 

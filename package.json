@@ -1,9 +1,9 @@
 {
   "name": "@angular-package/spectre.css",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3.0.1",
   "homepage": "http://picturepan2.github.io/spectre",
-  "author": "Yan Zhu <picturepan2@hotmail.com>",
-  "description": "Spectre.css: A lightweight, responsive and modern CSS framework",
+  "author": "@angular-package <contact@angular-package.dev>",
+  "description": "Modified Spectre.css - a lightweight, responsive, and modern CSS framework originally designed by Yan Zhu",
   "main": "dist/spectre.scss",
   "repository": {
     "type": "git",
@@ -11,14 +11,18 @@
   },
   "license": "MIT",
   "keywords": [
+    "@angular-package",
+    "css variables",
     "css",
-    "framework",
     "flexbox",
-    "responsive",
-    "mobile-friendly",
+    "framework",
     "front-end",
+    "mobile-friendly",
+    "modern",
+    "responsive",
     "sass",
-    "modern"
+    "spectre",
+    "spectre.css"
   ],
   "bugs": {
     "url": "https://github.com/angular-package/spectre.css/issues"

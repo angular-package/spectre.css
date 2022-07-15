@@ -36,7 +36,8 @@
     height: get-var('unit-3');
     // margin-top: -($unit-3 - $unit-h) / 2; // old spectre.css
     margin-top: calc(var-negative(get-var('unit-3') - get-var('unit-h')) / 2);
-    transition: transform 0.2s;
+    // transition: transform 0.2s; // old spectre.css
+    transition: transform get-var('transition-duration');
     // width: $unit-3; // old spectre.css
     width: get-var('unit-3');
   }
@@ -47,7 +48,8 @@
     border-radius: 50%;
     // height: $unit-3; // old spectre.css
     height: get-var('unit-3');
-    transition: transform 0.2s;
+    // transition: transform 0.2s; // old spectre.css
+    transition: transform get-var('transition-duration');
     // width: $unit-3; // old spectre.css
     width: get-var('unit-3');
   }
@@ -58,7 +60,8 @@
     border-radius: 50%;
     // height: $unit-3; // old spectre.css
     height: get-var('unit-3');
-    transition: transform 0.2s;
+    // transition: transform 0.2s; // old spectre.css
+    transition: transform get-var('transition-duration');
     // width: $unit-3; // old spectre.css
     width: get-var('unit-3');
   }

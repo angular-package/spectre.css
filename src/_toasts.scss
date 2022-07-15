@@ -6,7 +6,8 @@
 // Toasts
 .toast {
   // @include toast-variant($dark-color); // old spectre.css
-  @include toast-variant('dark-color');
+  @include toast-variant($color: 'dark-color');
+
   // border: $border-width solid $dark-color; // old spectre.css
   border: get-var('border-width') solid color('dark-color');
   // border-radius: $border-radius; // old spectre.css
@@ -18,25 +19,38 @@
   padding: get-var('layout-spacing', $unit: 1);
   width: 100%;
 
-  // TODO: Add accent toast, info toast.
-  &.toast-primary {
-    // @include toast-variant($primary-color); // old spectre.css
-    @include toast-variant('primary-color');
+  // Variants.
+  @include toast-class-variant($name: 'accent', $color: 'accent-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'disabled', $color: 'disabled-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'error', $color: 'error-color');
+  @include toast-class-variant($name: 'gray', $color: 'gray-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'gray-dark', $color: 'gray-color-dark'); // ! New toast variant.
+  @include toast-class-variant($name: 'gray-light', $color: 'gray-color-light'); // ! New toast variant.
+  @include toast-class-variant($name: 'info', $color: 'info-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'light', $color: 'light-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'primary', $color: 'primary-color');
+  @include toast-class-variant($name: 'secondary', $color: 'secondary-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'success', $color: 'success-color');
+  @include toast-class-variant($name: 'warning', $color: 'warning-color');
+
+  &.toast-disabled {
+    color: color('disabled-color', $lightness: -10%);
   }
 
-  &.toast-success {
-    // @include toast-variant($success-color); // old spectre.css
-    @include toast-variant('success-color');
+  &.toast-gray-light {
+    color: color('gray-color-dark');
   }
 
-  &.toast-warning {
-    // @include toast-variant($warning-color); // old spectre.css
-    @include toast-variant('warning-color');
+  &.toast-info {
+    color: color('info-color', $lightness: -60%);
   }
 
-  &.toast-error {
-    // @include toast-variant($error-color); // old spectre.css
-    @include toast-variant('error-color');
+  &.toast-light {
+    color: color('body-font-color');
+  }
+
+  &.toast-secondary {
+    color: color('primary-color');
   }
 
   a {
