@@ -1,19 +1,22 @@
 @use '../functions/color' as *;
 
-// Includes box-shadow of the specific side, size and color.
+/*
+  The mixin includes the `box-shadow` of the specified side, size, and color.
+  The side can be `bottom`, `left`, `right`, `top`, size default is 10px and color default is `gray-color`.
+*/
 @mixin box-shadow-side($side, $size: 10px, $color: 'gray-color') {
   @if $side == right {
     // Right side.
-    box-shadow: $size 0px $size ($size * -1) color($color);
+    box-shadow: $size 0 $size ($size * -1) color($color);
   } @else if $side == left {
     // Left side.
-    box-shadow: ($size * -1) 0px $size ($size * -1) color($color);
+    box-shadow: ($size * -1) 0 $size ($size * -1) color($color);
   } @else if $side == bottom {
     // Bottom side.
-    box-shadow: 0px $size $size ($size * -1) color($color);
+    box-shadow: 0 $size $size ($size * -1) color($color);
   } @else if $side == top {
     // Top side.
-    box-shadow: 0px ($size * -1) $size ($size * -1) color($color);
+    box-shadow: 0 ($size * -1) $size ($size * -1) color($color);
   } @else {
     @error "Unknown side #{$side}.";
   }
