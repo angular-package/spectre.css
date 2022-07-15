@@ -12,9 +12,3 @@
     @include set-var($name, $alpha, $prefix, 'a');
   }
 }
-
-// Old @angular-package/spectre.css
-// --s-#{$name}-h: #{hue($color)};
-// --s-#{$name}-l: #{lightness($color)};
-// --s-#{$name}-s: #{saturation($color)};
-// --s-#{$name}-a: #{alpha($color)};

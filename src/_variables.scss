@@ -1,5 +1,5 @@
 // Core variables
-$version: '1.0.0-alpha.2';
+$version: '1.0.0-alpha.4';
 
 // Core features
 $rtl: false !default;
@@ -53,7 +53,7 @@ $border-color-light: lighten($border-color, 8%) !default; // CSS variable.
 /*
   Control colors.
 */
-$disabled-color: $bg-color-dark !default; // ! CSS Variable. New control color.
+$disabled-color: $bg-color-dark !default;
 $error-color: #e85600 !default; // CSS variable.
 $info-color: #d9edf7 !default; // CSS variable.
 $success-color: #32b643 !default; // CSS variable.
@@ -89,88 +89,88 @@ $cjk-ko-font-family: $base-font-family, "Malgun Gothic", $fallback-font-family !
 $body-font-family: $base-font-family, $fallback-font-family !default;
 
 // Unit sizes.
-$unit-o: 0.05rem !default; // ! New CSS variable.
-$unit-h: 0.1rem !default; // ! New CSS variable.
-$unit-1: 0.2rem !default; // ! New CSS variable.
-$unit-2: 0.4rem !default; // ! New CSS variable.
-$unit-3: 0.6rem !default; // ! New CSS variable.
-$unit-4: 0.8rem !default; // ! New CSS variable.
-$unit-5: 1rem !default; // ! New CSS variable.
-$unit-6: 1.2rem !default; // ! New CSS variable.
-$unit-7: 1.4rem !default; // ! New CSS variable.
-$unit-8: 1.6rem !default; // ! New CSS variable.
-$unit-9: 1.8rem !default; // ! New CSS variable.
-$unit-10: 2rem !default; // ! New CSS variable.
-$unit-12: 2.4rem !default; // ! New CSS variable.
-$unit-16: 3.2rem !default; // ! New CSS variable.
+$unit-o: 0.05rem !default;
+$unit-h: 0.1rem !default;
+$unit-1: 0.2rem !default;
+$unit-2: 0.4rem !default;
+$unit-3: 0.6rem !default;
+$unit-4: 0.8rem !default;
+$unit-5: 1rem !default;
+$unit-6: 1.2rem !default;
+$unit-7: 1.4rem !default;
+$unit-8: 1.6rem !default;
+$unit-9: 1.8rem !default;
+$unit-10: 2rem !default;
+$unit-12: 2.4rem !default;
+$unit-16: 3.2rem !default;
 
 // Font sizes.
-$html-font-size: 20px !default; // ! New CSS variable.
-$font-size: 0.8rem !default; // ! New CSS variable.
-$font-size-sm: 0.7rem !default; // ! New CSS variable.
-$font-size-lg: 0.9rem !default; // ! New CSS variable.
+$html-font-size: 20px !default;
+$font-size: 0.8rem !default;
+$font-size-sm: 0.7rem !default;
+$font-size-lg: 0.9rem !default;
 
 // Line height.
-$html-line-height: 1.5 !default; // ! New CSS variable.
-$line-height: 1.2rem !default; // ! New CSS variable.
+$html-line-height: 1.5 !default;
+$line-height: 1.2rem !default;
 
 /*
   Sizes.
 */
 // Layout.
-$layout-spacing: $unit-2 !default; // ! New CSS variable.
-$layout-spacing-sm: $unit-1 !default; // ! New CSS variable.
-$layout-spacing-lg: $unit-4 !default; // ! New CSS variable.
+$layout-spacing: $unit-2 !default;
+$layout-spacing-sm: $unit-1 !default;
+$layout-spacing-lg: $unit-4 !default;
 
 // Border radius.
-$border-radius: $unit-h !default; // ! New CSS variable.
+$border-radius: $unit-h !default;
 
 // Border width.
-$border-width: $unit-o !default; // ! New CSS variable.
-$border-width-lg: $unit-h !default; // ! New CSS variable.
+$border-width: $unit-o !default;
+$border-width-lg: $unit-h !default;
 
 // Control size.
-$control-size: $unit-9 !default; // ! New CSS variable.
-$control-size-sm: $unit-7 !default; // ! New CSS variable.
-$control-size-lg: $unit-10 !default; // ! New CSS variable.
+$control-size: $unit-9 !default;
+$control-size-sm: $unit-7 !default;
+$control-size-lg: $unit-10 !default;
 
 // Control padding.
-$control-padding-x: $unit-2 !default; // ! New CSS variable.
-$control-padding-x-sm: $unit-2 * 0.75 !default; // ! New CSS variable.
-$control-padding-x-lg: $unit-2 * 1.5 !default; // ! New CSS variable.
-$control-padding-y: ($control-size - $line-height) * 0.5 - $border-width !default; // ! New CSS variable.
-$control-padding-y-sm: ($control-size-sm - $line-height) * 0.5 - $border-width !default; // ! New CSS variable.
-$control-padding-y-lg: ($control-size-lg - $line-height) * 0.5 - $border-width !default; // ! New CSS variable.
+$control-padding-x: $unit-2 !default;
+$control-padding-x-sm: $unit-2 * 0.75 !default;
+$control-padding-x-lg: $unit-2 * 1.5 !default;
+$control-padding-y: ($control-size - $line-height) * 0.5 - $border-width !default;
+$control-padding-y-sm: ($control-size-sm - $line-height) * 0.5 - $border-width !default;
+$control-padding-y-lg: ($control-size-lg - $line-height) * 0.5 - $border-width !default;
 
 // Control icon.
-$control-icon-size: 0.8rem !default; // ! New CSS variable.
+$control-icon-size: 0.8rem !default;
 
 // Control width.
-$control-width-xs: 180px !default; // ! New CSS variable.
-$control-width-sm: 320px !default; // ! New CSS variable.
-$control-width-md: 640px !default; // ! New CSS variable.
-$control-width-lg: 960px !default; // ! New CSS variable.
-$control-width-xl: 1280px !default; // ! New CSS variable. Not used.
+$control-width-xs: 180px !default;
+$control-width-sm: 320px !default;
+$control-width-md: 640px !default;
+$control-width-lg: 960px !default;
+$control-width-xl: 1280px !default;
 
 // Max Columns number.
 $columns-count: 4;
 
 // Responsive breakpoints.
-$size-xs: 480px !default; // ! New CSS variable.
-$size-sm: 600px !default; // ! New CSS variable.
-$size-md: 840px !default; // ! New CSS variable.
-$size-lg: 960px !default; // ! New CSS variable.
-$size-xl: 1280px !default; // ! New CSS variable.
-$size-2x: 1440px !default; // ! New CSS variable.
+$size-xs: 480px !default;
+$size-sm: 600px !default;
+$size-md: 840px !default;
+$size-lg: 960px !default;
+$size-xl: 1280px !default;
+$size-2x: 1440px !default;
 
-$responsive-breakpoint: $size-xs !default; // ! New CSS variable.
+$responsive-breakpoint: $size-xs !default;
 
 // Z-index.
-$zindex-0: 1 !default; // ! New CSS variable.
-$zindex-1: 100 !default; // ! New CSS variable.
-$zindex-2: 200 !default; // ! New CSS variable.
-$zindex-3: 300 !default; // ! New CSS variable.
-$zindex-4: 400 !default; // ! New CSS variable.
+$zindex-0: 1 !default;
+$zindex-1: 100 !default;
+$zindex-2: 200 !default;
+$zindex-3: 300 !default;
+$zindex-4: 400 !default;
 
 
 /*
@@ -187,4 +187,4 @@ $parallax-fade-color: #ffffff !default;
   Transition duration
 
 */
-$transition-duration: 0.2s; // ! New + CSS variable.
+$transition-duration: 0.2s;
