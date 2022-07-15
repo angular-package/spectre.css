@@ -817,7 +817,7 @@ Label color variants are included by using [`label-class-variant()`](#label-clas
 
 ### Toast colors
 
-Toast color variants are included by using [`toast-class-variant()`](#toast-class-variant) mixin in the `.toast` class as it extension.
+Toast color variants are included by using [`toast-class-variant()`](#toast-class-variant) mixin in the `.toast` class as its extension.
 
 ```scss
 // src/_toasts.scss
