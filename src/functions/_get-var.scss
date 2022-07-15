@@ -1,7 +1,9 @@
 @use 'sass:string';
 @use '../variables' as *;
 
-// Gets the CSS variable with or without separated unit.
+/*
+  The function returns the CSS var function or calc function with the specified name, prefix, optional suffix, or unit. Unit is used for variables with a separated unit from the value.
+*/
 @function get-var(
   $name,
   $prefix: $var-prefix,
