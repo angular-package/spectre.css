@@ -51,6 +51,14 @@ Modified Spectre.css - a lightweight, responsive, and modern CSS framework origi
   * [Label](#label-colors)
   * [Text](#text-colors)
   * [Toast](#toast-colors)
+* [Sass functions/mixins](#sass-functionsmixins)
+  * [`box-shadow-side()`](#box-shadow-side)
+  * [`color()`](#color)
+  * [`get-var()`](#get-var)
+  * [`label-class-variant()`](#label-class-variant)
+  * [`set-var()`](#set-var)
+  * [`var-negative()`](#var-negative)
+  * [`toast-class-variant()`](#toast-class-variant)
 * [Helper class](#helper-class)
 * [Documentation and examples](#documentation-and-examples)
 * [Browser support](#browser-support)
@@ -687,6 +695,7 @@ There are also new background `.bg-accent` (`$accent-color`), `.bg-gray-dark` (`
 they are also `.bg-color-dark` (`$bg-color-dark`), `.bg-color-light` (`$bg-color-light`) that aren't.
 
 ```scss
+// src/utilities/_colors.scss
 /*
   Background colors
 */
@@ -742,25 +751,31 @@ they are also `.bg-color-dark` (`$bg-color-dark`), `.bg-color-light` (`$bg-color
 
 ### Label colors
 
-```scss
-// Label colors
-@include label-class-variant($name: 'accent', $color: 'light-color', $bg-color: 'accent-color'); // ! New label color variant.
-@include label-class-variant($name: 'dark', $color: 'light-color', $bg-color: 'dark-color'); // ! New label color variant.
-@include label-class-variant($name: 'light', $color: 'dark-color', $bg-color: 'light-color'); // ! New label color variant.
-@include label-class-variant($name: 'primary', $color: 'light-color', $bg-color: 'primary-color');
-@include label-class-variant($name: 'secondary', $color: 'primary-color', $bg-color: 'secondary-color');
+Label color variants are included by using [`label-class-variant()`](#label-class-variant) mixin in the `.label` class as its extension.
 
-// Label control colors
-@include label-class-variant($name: 'disabled', $color: 'disabled-color', $bg-color: 'disabled-color'); // ! New label color variant.
-@include label-class-variant($name: 'error', $color: 'light-color', $bg-color: 'error-color');
-@include label-class-variant($name: 'info', $color: 'info-color', $bg-color: 'info-color'); // ! New label color variant.
-@include label-class-variant($name: 'success', $color: 'light-color', $bg-color: 'success-color');
-@include label-class-variant($name: 'warning', $color: 'light-color', $bg-color: 'warning-color');
+```scss
+// src/_labels.scss
+.label {
+  // Label colors
+  @include label-class-variant($name: 'accent', $color: 'light-color', $bg-color: 'accent-color'); // ! New label color variant.
+  @include label-class-variant($name: 'dark', $color: 'light-color', $bg-color: 'dark-color'); // ! New label color variant.
+  @include label-class-variant($name: 'light', $color: 'dark-color', $bg-color: 'light-color'); // ! New label color variant.
+  @include label-class-variant($name: 'primary', $color: 'light-color', $bg-color: 'primary-color');
+  @include label-class-variant($name: 'secondary', $color: 'primary-color', $bg-color: 'secondary-color');
+
+  // Label control colors
+  @include label-class-variant($name: 'disabled', $color: 'disabled-color', $bg-color: 'disabled-color'); // ! New label color variant.
+  @include label-class-variant($name: 'error', $color: 'light-color', $bg-color: 'error-color');
+  @include label-class-variant($name: 'info', $color: 'info-color', $bg-color: 'info-color'); // ! New label color variant.
+  @include label-class-variant($name: 'success', $color: 'light-color', $bg-color: 'success-color');
+  @include label-class-variant($name: 'warning', $color: 'light-color', $bg-color: 'warning-color');
+}
 ```
 
 ### Text colors
 
 ```scss
+// src/utilities/_colors.scss
 /*
   Text colors
 */
@@ -802,19 +817,24 @@ they are also `.bg-color-dark` (`$bg-color-dark`), `.bg-color-light` (`$bg-color
 
 ### Toast colors
 
+Toast color variants are included by using [`toast-class-variant()`](#toast-class-variant) mixin in the `.toast` class as it extension.
+
 ```scss
-@include toast-class-variant($name: 'accent', $color: 'accent-color'); // ! New toast variant.
-@include toast-class-variant($name: 'disabled', $color: 'disabled-color'); // ! New toast variant.
-@include toast-class-variant($name: 'error', $color: 'error-color');
-@include toast-class-variant($name: 'gray', $color: 'gray-color'); // ! New toast variant.
-@include toast-class-variant($name: 'gray-dark', $color: 'gray-color-dark'); // ! New toast variant.
-@include toast-class-variant($name: 'gray-light', $color: 'gray-color-light'); // ! New toast variant.
-@include toast-class-variant($name: 'info', $color: 'info-color'); // ! New toast variant.
-@include toast-class-variant($name: 'light', $color: 'light-color'); // ! New toast variant.
-@include toast-class-variant($name: 'primary', $color: 'primary-color');
-@include toast-class-variant($name: 'secondary', $color: 'secondary-color'); // ! New toast variant.
-@include toast-class-variant($name: 'success', $color: 'success-color');
-@include toast-class-variant($name: 'warning', $color: 'warning-color');
+// src/_toasts.scss
+.toast {
+  @include toast-class-variant($name: 'accent', $color: 'accent-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'disabled', $color: 'disabled-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'error', $color: 'error-color');
+  @include toast-class-variant($name: 'gray', $color: 'gray-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'gray-dark', $color: 'gray-color-dark'); // ! New toast variant.
+  @include toast-class-variant($name: 'gray-light', $color: 'gray-color-light'); // ! New toast variant.
+  @include toast-class-variant($name: 'info', $color: 'info-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'light', $color: 'light-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'primary', $color: 'primary-color');
+  @include toast-class-variant($name: 'secondary', $color: 'secondary-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'success', $color: 'success-color');
+  @include toast-class-variant($name: 'warning', $color: 'warning-color');
+}
 ```
 
 ## Sass functions/mixins
