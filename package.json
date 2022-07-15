@@ -1,6 +1,6 @@
 {
   "name": "@angular-package/spectre.css",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.3.0.1",
   "homepage": "http://picturepan2.github.io/spectre",
   "author": "@angular-package <contact@angular-package.dev>",
   "description": "Modified Spectre.css - a lightweight, responsive, and modern CSS framework originally designed by Yan Zhu",
