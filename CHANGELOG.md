@@ -1,5 +1,9 @@
 # Spectre.css changelog
 
+## v1.0.0-alpha.3.0.1
+
+- Remove unnecessary ignore files.
+
 ## v1.0.0-alpha.3
 
 - Add new `toast-class-variant()` and `label-class-variant()` mixins. [87ebe64] [e6d2ac8] [921dc86] [fdbe64b]
