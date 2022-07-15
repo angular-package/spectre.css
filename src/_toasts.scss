@@ -6,7 +6,9 @@
 // Toasts
 .toast {
   // @include toast-variant($dark-color); // old spectre.css
-  @include toast-variant('dark-color');
+  // @include toast-variant('dark-color'); // old @angular-package/spectre.css
+  background: color('dark-color', $alpha: 0.95);
+  border-color: color('dark-color');
   // border: $border-width solid $dark-color; // old spectre.css
   border: get-var('border-width') solid color('dark-color');
   // border-radius: $border-radius; // old spectre.css
@@ -18,65 +20,38 @@
   padding: get-var('layout-spacing', $unit: 1);
   width: 100%;
 
-  &.toast-accent {
-    @include toast-variant('accent-color');
-  }
-
-  &.toast-dark {
-    @include toast-variant('dark-color');
-  }
+  // Variants.
+  @include toast-variant($name: 'accent', $color: 'accent-color'); // ! New toast variant.
+  @include toast-variant($name: 'disabled', $color: 'disabled-color'); // ! New toast variant.
+  @include toast-variant($name: 'error', $color: 'error-color');
+  @include toast-variant($name: 'gray', $color: 'gray-color'); // ! New toast variant.
+  @include toast-variant($name: 'gray-dark', $color: 'gray-color-dark'); // ! New toast variant.
+  @include toast-variant($name: 'gray-light', $color: 'gray-color-light'); // ! New toast variant.
+  @include toast-variant($name: 'info', $color: 'info-color'); // ! New toast variant.
+  @include toast-variant($name: 'light', $color: 'light-color'); // ! New toast variant.
+  @include toast-variant($name: 'primary', $color: 'primary-color');
+  @include toast-variant($name: 'secondary', $color: 'secondary-color'); // ! New toast variant.
+  @include toast-variant($name: 'success', $color: 'success-color');
+  @include toast-variant($name: 'warning', $color: 'warning-color');
 
   &.toast-disabled {
-    @include toast-variant('disabled-color');
     color: color('disabled-color', $lightness: -10%);
   }
 
-  &.toast-error {
-    // @include toast-variant($error-color); // old spectre.css
-    @include toast-variant('error-color');
-  }
-
-  &.toast-gray {
-    @include toast-variant('gray-color');
-  }
-
-  &.toast-gray-dark {
-    @include toast-variant('gray-color-dark');
-  }
-
   &.toast-gray-light {
-    @include toast-variant('gray-color-light');
     color: color('gray-color-dark');
   }
 
   &.toast-info {
-    @include toast-variant('info-color');
     color: color('info-color', $lightness: -60%);
   }
 
   &.toast-light {
-    @include toast-variant('light-color');
     color: color('body-font-color');
   }
 
-  &.toast-primary {
-    // @include toast-variant($primary-color); // old spectre.css
-    @include toast-variant('primary-color');
-  }
-
   &.toast-secondary {
-    @include toast-variant('secondary-color');
     color: color('primary-color');
-  }
-
-  &.toast-success {
-    // @include toast-variant($success-color); // old spectre.css
-    @include toast-variant('success-color');
-  }
-
-  &.toast-warning {
-    // @include toast-variant($warning-color); // old spectre.css
-    @include toast-variant('warning-color');
   }
 
   a {
