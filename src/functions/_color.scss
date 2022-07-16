@@ -6,8 +6,8 @@
 @function color(
   $name,
   $hue: 0deg,
-  $lightness: 0%,
   $saturation: 0%,
+  $lightness: 0%,
   $alpha: 1,
   $prefix: $var-prefix
 ) {
