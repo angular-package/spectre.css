@@ -34,8 +34,9 @@ Modified Spectre.css - a lightweight, responsive, and modern CSS framework origi
 * Flexbox-based, responsive and mobile-friendly layout
 * Elegantly designed and developed elements and components
 
-Spectre is a side project based on years of CSS development work on a large web service project. Spectre only includes modern base styles, responsive layout system, CSS components and utilities, and it can be modified for your project with Sass/Scss compiler.
-Spectre.css is completely free to use. If you enjoy it, please consider [donating via Paypal](https://www.paypal.me/picturepan2) or [via Patreon](https://www.patreon.com/spectrecss) for the further development. ♥
+Spectre is a side project based on years of CSS development work on a large web service project. Spectre only includes modern base styles, responsive layout system, CSS components and utilities, and it can be modified for your project with Sass/Scss compiler.  
+
+Spectre.css is completely free to use. If you enjoy it, please consider [donating via Paypal](https://www.paypal.me/picturepan2) or [via Patreon](https://www.patreon.com/spectrecss) for the further development. ♥  
 
 > Feel free to submit a pull request. Help is always appreciated.
 
@@ -53,7 +54,7 @@ Spectre.css is completely free to use. If you enjoy it, please consider [donatin
   * [CSS variable name](#css-variable-name)
   * [Settable SCSS colors](#settable-scss-colors)
   * [Based on settable SCSS colors](#based-on-settable-scss-colors)
-  * [CSS variable color](#css-variable-color)
+  * [CSS variable colors](#css-variable-colors)
     * [Structure](#css-variable-color-structure)
     * [Using](#using-css-variable-color)
   * [Other variables](#other-variables)
@@ -66,18 +67,23 @@ Spectre.css is completely free to use. If you enjoy it, please consider [donatin
     * [Transition duration](#transition-duration)
     * [Units](#units)
     * [z-index](#z-index)
-* [CSS Color classes](#css-color-classes)
+* [CSS Color Classes](#css-color-classes)
   * [Background](#background-colors)
   * [Label](#label-colors)
   * [Text](#text-colors)
   * [Toast](#toast-colors)
 * [Sass functions/mixins](#sass-functionsmixins)
+  * [bg-color-variant()](#bg-color-variant)
   * [box-shadow-side()](#box-shadow-side)
   * [color()](#color)
+  * [define-color()](#define-color)
+  * [define-color-based-on()](#define-color-based-on)
   * [get-var()](#get-var)
+  * [label-variant()](#label-variant)
   * [label-class-variant()](#label-class-variant)
   * [set-var()](#set-var)
   * [var-negative()](#var-negative)
+  * [toast-variant()](#toast-variant)
   * [toast-class-variant()](#toast-class-variant)
 * [Helper class](#helper-class)
 * [Documentation and examples](#documentation-and-examples)
@@ -172,6 +178,12 @@ And you can use following sass files.
 
 <br>
 
+## Compiling custom version
+
+You can compile your custom version of Spectre.css. [Read the documentation](https://angular-package.github.io/spectre.css/getting-started/custom.html).
+
+<br>
+
 ## Demonstration
 
 Demonstration is available here [https://angular-package.dev/ui-kit](https://angular-package.dev/ui-kit)
@@ -208,7 +220,7 @@ The CSS `color-scheme` property is set to normal in both `:root` and `:host` ele
 
 ### CSS variable name
 
-Spectre CSS variables are defined in the same pattern as SCSS variables to have naming consistency, but with additional customizable prefix. In general CSS variable name structure is defined as follows.
+Spectre CSS variables are defined in the same pattern as SCSS variables to have naming consistency, but with additional customizable prefix. In general, CSS variable name's structure is defined as follows.
 
 ```scss
 --#{$var-prefix}-#{$name}: #{$value}
@@ -222,6 +234,17 @@ $var-prefix: 's';
 ```
 
 For example, default CSS variable `--s-control-padding-x` can be changed to `--spectre-control-padding-x` after change the `$var-prefix: 'spectre';`
+
+```scss
+// Get variables.
+@use 'node_modules/@angular-package/spectre.css/variables' as *;
+
+// Change the $var-prefix
+$var-prefix: 'spectre';
+
+// Define CSS variables.
+@use 'node_modules/@angular-package/spectre.css/css-variables' as *;
+```
 
 ### Settable SCSS colors
 
@@ -323,7 +346,7 @@ $link-color-light: lighten($link-color, 10%) !default; // --#{$var-prefix}-link-
 $body-font-color: lighten($dark-color, 5%) !default; // --#{$var-prefix}-body-font-color.
 ```
 
-### CSS variable color
+### CSS variable colors
 
 #### CSS variable color structure
 
@@ -339,7 +362,8 @@ The single CSS color is defined as follows.
 }
 ```
 
-The SCSS `$var-prefix` variable is to make CSS variable unique, `$name` is the color name and `$color` is the hex color to obtain hue, saturation, lightness and alpha. For example, the `primary-color` is built from the CSS variables based on hex `#5755d9`.
+The SCSS `$var-prefix` variable is to make CSS variable **unique**, `$name` is the color name and `$color` is the **hex** color to obtain hue, saturation, lightness and alpha.
+For example, the `primary-color` is built from the CSS variables based on hex `#5755d9`.
 
 ```css
 --s-primary-color-h: 240.9090909091deg; // Hue.
@@ -348,7 +372,7 @@ The SCSS `$var-prefix` variable is to make CSS variable unique, `$name` is the c
 --s-primary-color-a: 1; // Alpha.
 ```
 
-CSS variables are defined in both `:root` and `:host`. For example, core colors.
+CSS variables are defined in both `:root` and `:host` elements. For example, core colors.
 
 ```scss
 // src/css-variables/_core-colors.scss
@@ -400,7 +424,7 @@ CSS variables that are based on others are also defined in both `:root` and `:ho
 
 #### Using CSS variable color
 
-To easily use color defined in four CSS variables with the help comes [`color()`](#color) function, which takes five parameters: `$name`, `$hue`, `$lightness`, `$saturation`, `$alpha`, and `$prefix`, and returns color in `hsla()` form.
+To easily use color defined in four CSS variables with the help comes [`color()`](#color) function, which takes six parameters: `$name`, `$hue`, `$lightness`, `$saturation`, `$alpha`, and `$prefix`, and returns color in `hsla()` form.
 There is only `$name` parameter required, and the `$hue`, `$lightness`, `$saturation` default values are set to `0`, `$alpha` default value is set to `1`, and `$prefix` default value is equal to `$var-prefix`.
 So, it's very easy to insert the color into any style and change the default value of the CSS variable color, for example `primary-color` or `primary-color-dark` can be inserted as follows.
 
@@ -444,11 +468,11 @@ SCSS variables.
 ```scss
 // src/_variables.scss
 // Border radius.
-$border-radius: $unit-h !default; // ! New CSS variable.
+$border-radius: $unit-h !default; // --#{$var-prefix}-border-radius.
 
 // Border width.
-$border-width: $unit-o !default; // ! New CSS variable.
-$border-width-lg: $unit-h !default; // ! New CSS variable.
+$border-width: $unit-o !default; // --#{$var-prefix}-border-width.
+$border-width-lg: $unit-h !default; // --#{$var-prefix}-border-width-lg.
 ```
 
 Equivalent CSS variables with default prefix `s`.
@@ -468,27 +492,27 @@ SCSS variables.
 ```scss
 // src/_variables.scss
 // Control size.
-$control-size: $unit-9 !default; // ! New CSS variable.
-$control-size-lg: $unit-10 !default; // ! New CSS variable.
-$control-size-sm: $unit-7 !default; // ! New CSS variable.
+$control-size: $unit-9 !default; // --#{$var-prefix}-control-size.
+$control-size-sm: $unit-7 !default; // --#{$var-prefix}-control-size-sm.
+$control-size-lg: $unit-10 !default; // --#{$var-prefix}-control-size-lg.
 
 // Control padding.
-$control-padding-x: $unit-2 !default; // ! New CSS variable.
-$control-padding-x-lg: $unit-2 * 1.5 !default; // ! New CSS variable.
-$control-padding-x-sm: $unit-2 * 0.75 !default; // ! New CSS variable.
-$control-padding-y: ($control-size - $line-height) * 0.5 - $border-width !default; // ! New CSS variable.
-$control-padding-y-lg: ($control-size-lg - $line-height) * 0.5 - $border-width !default; // ! New CSS variable.
-$control-padding-y-sm: ($control-size-sm - $line-height) * 0.5 - $border-width !default; // ! New CSS variable.
+$control-padding-x: $unit-2 !default; // --#{$var-prefix}-control-padding-x.
+$control-padding-x-sm: $unit-2 * 0.75 !default; // --#{$var-prefix}-control-padding-x-sm.
+$control-padding-x-lg: $unit-2 * 1.5 !default; // --#{$var-prefix}-control-padding-x-lg.
+$control-padding-y: ($control-size - $line-height) * 0.5 - $border-width !default; // --#{$var-prefix}-control-padding-y.
+$control-padding-y-sm: ($control-size-sm - $line-height) * 0.5 - $border-width !default; // --#{$var-prefix}-control-padding-y-sm.
+$control-padding-y-lg: ($control-size-lg - $line-height) * 0.5 - $border-width !default; // --#{$var-prefix}-control-padding-y-lg.
 
 // Control icon.
-$control-icon-size: 0.8rem !default; // ! New CSS variable.
+$control-icon-size: 0.8rem !default; // --#{$var-prefix}-control-icon-size.
 
 // Control width.
-$control-width-lg: 960px !default; // ! New CSS variable.
-$control-width-md: 640px !default; // ! New CSS variable.
-$control-width-sm: 320px !default; // ! New CSS variable.
-$control-width-xl: 1280px !default; // ! New CSS variable. Not used.
-$control-width-xs: 180px !default; // ! New CSS variable.
+$control-width-xs: 180px !default; // --#{$var-prefix}-control-width-xs.
+$control-width-sm: 320px !default; // --#{$var-prefix}-control-width-sm.
+$control-width-md: 640px !default; // --#{$var-prefix}-control-width-md.
+$control-width-lg: 960px !default; // --#{$var-prefix}-control-width-lg.
+$control-width-xl: 1280px !default; // --#{$var-prefix}-control-width-xl.
 ```
 
 Equivalent CSS variables with default prefix `s`.
@@ -497,52 +521,57 @@ Equivalent CSS variables with default prefix `s`.
 :root, :host {
   // Control size.
   --s-control-size: 1.8rem;
-  --s-control-size-lg: 2rem;
   --s-control-size-sm: 1.4rem;
+  --s-control-size-lg: 2rem;
 
   // Control padding.
   --s-control-padding-x: 0.4rem;
-  --s-control-padding-x-lg: calc(var(--s-control-padding-x) * 1.5);
   --s-control-padding-x-sm: calc(var(--s-control-padding-x) * 0.75);
+  --s-control-padding-x-lg: calc(var(--s-control-padding-x) * 1.5);
   --s-control-padding-y: calc((var(--s-control-size) - var(--s-line-height)) * 0.5 - var(--s-border-width));
-  --s-control-padding-y-lg: calc((var(--s-control-size-lg) - var(--s-line-height)) * 0.5 - var(--s-border-width));
   --s-control-padding-y-sm: calc((var(--s-control-size-sm) - var(--s-line-height)) * 0.5 - var(--s-border-width));
+  --s-control-padding-y-lg: calc((var(--s-control-size-lg) - var(--s-line-height)) * 0.5 - var(--s-border-width));
 
   // Control icon size.
   --s-control-icon-size: 0.8rem;
 
   // Control width.
-  --s-control-width-lg: 960px;
-  --s-control-width-md: 640px;
-  --s-control-width-sm: 320px;
-  --s-control-width-xl: 1280px;
   --s-control-width-xs: 180px;
+  --s-control-width-sm: 320px;
+  --s-control-width-md: 640px;
+  --s-control-width-lg: 960px;
+  --s-control-width-xl: 1280px;
 }
 ```
 
-#### Font sizes and line-height
+#### Font sizes and line height
 
 SCSS variables.
 
 ```scss
 // src/_variables.scss
-$font-size: 0.8rem !default; // ! New CSS variable.
-$font-size-lg: 0.9rem !default; // ! New CSS variable.
-$font-size-sm: 0.7rem !default; // ! New CSS variable.
-$html-font-size: 20px !default; // ! New CSS variable.
-$html-line-height: 1.5 !default; // ! New CSS variable.
-$line-height: 1.2rem !default; // ! New CSS variable.
+// Font sizes.
+$html-font-size: 20px !default; // --#{$var-prefix}-html-font-size.
+$font-size: 0.8rem !default; // --#{$var-prefix}-font-size.
+$font-size-sm: 0.7rem !default; // --#{$var-prefix}-font-size-sm.
+$font-size-lg: 0.9rem !default; // --#{$var-prefix}-font-size-lg.
+
+// Line height.
+$html-line-height: 1.5 !default; // --#{$var-prefix}-html-line-height.
+$line-height: 1.2rem !default; // --#{$var-prefix}-line-height.
 ```
 
 Equivalent CSS variables with default prefix `s`.
 
 ```css
-// src/css-variables/_font-size.scss
 :root, :host {
-  --s-font-size: 0.8rem;
-  --s-font-size-lg: 0.9rem;
-  --s-font-size-sm: 0.7rem;
+  // Font size.
   --s-html-font-size: 20px;
+  --s-font-size: 0.8rem;
+  --s-font-size-sm: 0.7rem;
+  --s-font-size-lg: 0.9rem;
+
+  // Line height.
   --s-html-line-height: 1.5;
   --s-line-height: 1.2rem;
 }
@@ -554,20 +583,21 @@ SCSS variables.
 
 ```scss
 // src/_variables.scss
-$layout-spacing: $unit-2 !default; // ! New CSS variable.
-$layout-spacing-sm: $unit-1 !default; // ! New CSS variable.
-$layout-spacing-lg: $unit-4 !default; // ! New CSS variable.
+// Layout spacing.
+$layout-spacing: $unit-2 !default; // --#{$var-prefix}-layout-spacing.
+$layout-spacing-sm: $unit-1 !default; // --#{$var-prefix}-layout-spacing-sm.
+$layout-spacing-lg: $unit-4 !default; // --#{$var-prefix}-layout-spacing-lg.
 ```
 
 Equivalent CSS variables with default prefix `s`.
 
-> This property is set without a unit because it's used in calculation with a different unit (`px`).
+> This property is set without a unit to calculate with a different unit (`px`).
 
 ```css
 :root, :host {
   --s-layout-spacing: 0.4;
-  --s-layout-spacing-lg: 0.8;
   --s-layout-spacing-sm: 0.2;
+  --s-layout-spacing-lg: 0.8;
   --s-layout-spacing-unit: 1rem;
 }
 ```
@@ -577,12 +607,14 @@ Equivalent CSS variables with default prefix `s`.
 SCSS variables.
 
 ```scss
-$parallax-deg: 3deg !default;
-$parallax-offset: 4.5px !default;
-$parallax-offset-z: 50px !default;
-$parallax-perspective: 1000px !default;
-$parallax-scale: 0.95 !default;
-$parallax-fade-color: #ffffff !default;
+$parallax-deg: 3deg !default; // --#{$var-prefix}-parallax-deg.
+$parallax-offset: 4.5px !default; // --#{$var-prefix}-parallax-offset.
+$parallax-offset-z: 50px !default; // --#{$var-prefix}-parallax-offset-z.
+$parallax-perspective: 1000px !default; // --#{$var-prefix}-parallax-perspective.
+$parallax-scale: 0.95 !default; // --#{$var-prefix}-parallax-scale.
+
+// color.
+$parallax-fade-color: #ffffff !default; // --#{$var-prefix}-fade-color-h/s/l/a.
 ```
 
 Equivalent CSS variables with default prefix `s`.
@@ -590,40 +622,44 @@ Equivalent CSS variables with default prefix `s`.
 ```css
 :root, :host {
   --s-parallax-deg: 3deg;
-  --s-parallax-fade-color-h: 0deg;
-  --s-parallax-fade-color-s: 0%;
-  --s-parallax-fade-color-l: 100%;
-  --s-parallax-fade-color-a: 0.35;
   --s-parallax-offset: 4.5px;
   --s-parallax-offset-z: 50px;
   --s-parallax-perspective: 1000px;
   --s-parallax-scale: 0.95;
+
+  // color
+  --s-parallax-fade-color-h: 0deg;
+  --s-parallax-fade-color-s: 0%;
+  --s-parallax-fade-color-l: 100%;
+  --s-parallax-fade-color-a: 0.35;
 }
 ```
 
 #### Responsive breakpoints
 
+SCSS variables.
+
 ```scss
 // src/_variables.scss
 // Responsive breakpoints.
-$size-2x: 1440px !default; // ! New CSS variable.
-$size-lg: 960px !default; // ! New CSS variable.
-$size-md: 840px !default; // ! New CSS variable.
-$size-sm: 600px !default; // ! New CSS variable.
-$size-xl: 1280px !default; // ! New CSS variable.
-$size-xs: 480px !default; // ! New CSS variable.
+$size-xs: 480px !default; // --#{$var-prefix}-size-xs.
+$size-sm: 600px !default; // --#{$var-prefix}-size-sm.
+$size-md: 840px !default; // --#{$var-prefix}-size-md.
+$size-lg: 960px !default; // --#{$var-prefix}-size-lg.
+$size-xl: 1280px !default; // --#{$var-prefix}-size-xl.
+$size-2x: 1440px !default; // --#{$var-prefix}-size-2x.
 
-$responsive-breakpoint: $size-xs !default; // ! New CSS variable.
+$responsive-breakpoint: $size-xs !default; // --#{$var-prefix}-responsive-breakpoint.
 ```
 
 ```css
 :root, :host {
-  --s-size-2x: 1440px;
-  --s-size-lg: 960px;
-  --s-size-md: 840px;
-  --s-size-sm: 600px;
-  --s-size-xl: 1280px;
   --s-size-xs: 480px;
+  --s-size-sm: 600px;
+  --s-size-md: 840px;
+  --s-size-lg: 960px;
+  --s-size-xl: 1280px;
+  --s-size-2x: 1440px;
 
   --s-responsive-breakpoint: 480px;
 }
@@ -634,6 +670,7 @@ $responsive-breakpoint: $size-xs !default; // ! New CSS variable.
 SCSS variable.
 
 ```scss
+// src/_variables.scss
 $transition-duration: 0.2s;
 ```
 
@@ -671,7 +708,6 @@ $unit-16: 3.2rem !default; // ! New CSS variable.
 Equivalent CSS variables with default prefix `s`. Here we have the new variable `--s-unit-0`.
 
 ```css
-// src/css-variables/_unit-sizes.scss
 :root, :host {
   --s-unit-o: 0.05rem;
   --s-unit-h: 0.1rem;
@@ -697,11 +733,11 @@ SCSS variables.
 
 ```scss
 // Z-index.
-$zindex-0: 1 !default; // ! New CSS variable.
-$zindex-1: 100 !default; // ! New CSS variable.
-$zindex-2: 200 !default; // ! New CSS variable.
-$zindex-3: 300 !default; // ! New CSS variable.
-$zindex-4: 400 !default; // ! New CSS variable.
+$zindex-0: 1 !default; // --#{$var-prefix}-z-index-0.
+$zindex-1: 100 !default; // --#{$var-prefix}-z-index-1.
+$zindex-2: 200 !default; // --#{$var-prefix}-z-index-2.
+$zindex-3: 300 !default; // --#{$var-prefix}-z-index-3.
+$zindex-4: 400 !default; // --#{$var-prefix}-z-index-4.
 ```
 
 Equivalent CSS variables with default prefix `s`.
@@ -716,24 +752,44 @@ Equivalent CSS variables with default prefix `s`.
 }
 ```
 
-## CSS Color classes
+## CSS Color Classes
 
 ### Background colors
 
-In the original Spectre.css, background colors are based on SCSS variables, but in [`@angular-package`](https://www.npmjs.com/package/@angular-package/spectre.css) Spectre.css they are based on CSS variables.
-They are set the same way, by the `bg-color-variant()` mixin, but using respective SCSS variables to initialize and change the lightness of the background font color.
+In the original Spectre.css, background color is based on SCSS variable, but in the [`@angular-package/spectre.css`][spectre.css-npm-readme] it is based on CSS variable.
+It is set by the modified [`bg-color-variant()`](#bg-color-variant) mixin, to use the [`color()`](#color) function to set the `background` and `color` style, and the SCSS variable is used to add the color property `light-color` the same way by checking whether the lightness of the SCSS variable is below `60`.
 
-Original Spectre.css backgrounds are using the same SCSS variable name as the class name except one `.bg-gray`, which uses `$bg-color`.
-This version, `$bg-color` SASS variable is used in the new background `.bg` class, and `.bg-gray` uses `$gray-color` to have consistent naming.
+```scss
+@if (lightness($hex-color) < 60) {
+  color: color('light-color');
+}
+```
 
-There are also new background `.bg-accent` (`$accent-color`), `.bg-gray-dark` (`$gray-color-dark`), `.bg-gray-light` (`$gray-color-light`), `.bg-info` (`$info-color`) classes that are consistent in Spectre.css naming convention, but
-they are also `.bg-color-dark` (`$bg-color-dark`), `.bg-color-light` (`$bg-color-light`) that aren't.
+For example, to add `.bg-accent` CSS class background color that uses CSS variable `accent-color`.
+
+```scss
+// Get bg-color-variant mixin
+@use 'node_modules/@angular-package/spectre.css/src/mixins/color' as *;
+@use 'node_modules/@angular-package/spectre.css/variables' as *;
+
+// Include
+@include bg-color-variant('.bg-accent', 'accent-color', $accent-color);
+```
+
+All colors have equivalent background CSS classes even with `dark` and `light` shades.
+Spectre.css backgrounds are using the same SCSS variable name as the class name except one `.bg-gray`, which uses `$bg-color`.
+In the `@angular-package/spectre.css` it's modified, now `$bg-color` SASS variable is used in the new background `.bg` and `.bg-bg` class, and `.bg-gray` uses `$gray-color` to have **consistent** naming.
+
+> The class name does not include suffix **`color`**, but there is one exception in the `.bg-color`, which includes.
+> If I want to create background CSS class color `.bg-dark`, it should refer to the SCSS variable `$dark-color` to preserve naming **consistency**, but it can refer also to the `$bg-color-dark` with losing consistency.
+> In the **beta** version, I decided to add the `.bg-bg background` class name to have full naming **consistency**, so the non-consistent **.bg-color** is treated as **deprecated**.
+
+Let's look at how CSS background class colors finally are defined.
 
 ```scss
 // src/utilities/_colors.scss
-/*
-  Core colors.
-*/
+// Background colors
+// Core colors.
 // Accent
 @include bg-color-variant('.bg-accent', 'accent-color', $accent-color);
 
@@ -747,122 +803,97 @@ they are also `.bg-color-dark` (`$bg-color-dark`), `.bg-color-light` (`$bg-color
 @include bg-color-variant('.bg-secondary-dark', 'secondary-color-dark', $secondary-color-dark);
 @include bg-color-variant('.bg-secondary-light', 'secondary-color-light', $secondary-color-light);
 
-/*
-  Shades.
-*/
+// Shades.
 @include bg-color-variant('.bg-dark', 'dark-color', $dark-color);
 @include bg-color-variant('.bg-light', 'light-color', $light-color);
 
-/*
-  Gray colors.
-*/
+// Gray colors.
 @include bg-color-variant('.bg-gray', 'gray-color', $gray-color);
 @include bg-color-variant('.bg-gray-dark', 'gray-color-dark', $gray-color-dark);
 @include bg-color-variant('.bg-gray-light', 'gray-color-light', $gray-color-light);
 
-/*
-  Link colors.
-*/
+// Link colors.
 @include bg-color-variant('.bg-link', 'link-color', $link-color);
 @include bg-color-variant('.bg-link-dark', 'link-color-dark', $link-color-dark);
 @include bg-color-variant('.bg-link-light', 'link-color-light', $link-color-light);
 
-/*
-  Body colors.
-*/
+// Body colors.
 @include bg-color-variant('.bg-body', 'body-bg-color', $body-bg-color);
 
-/*
-  Bg colors
-*/
+// Bg colors
 @include bg-color-variant('.bg', 'bg-color', $bg-color);
-@include bg-color-variant('.bg-color', 'bg-color', $bg-color);
-@include bg-color-variant('.bg-color-dark', 'bg-color-dark', $bg-color-dark);
-@include bg-color-variant('.bg-color-light', 'bg-color-light', $bg-color-light);
+@include bg-color-variant('.bg-bg', 'bg-color', $bg-color);
+@include bg-color-variant('.bg-bg-dark', 'bg-color-dark', $bg-color-dark);
+@include bg-color-variant('.bg-bg-light', 'bg-color-light', $bg-color-light);
 
-/*
-  Control colors.
-*/
+@include bg-color-variant('.bg-color', 'bg-color', $bg-color); // @deprecated
+@include bg-color-variant('.bg-color-dark', 'bg-color-dark', $bg-color-dark); // @deprecated
+@include bg-color-variant('.bg-color-light', 'bg-color-light', $bg-color-light); // @deprecated
+
+// Control colors.
 @include bg-color-variant('.bg-disabled', 'disabled-color', $disabled-color);
 @include bg-color-variant('.bg-error', 'error-color', $error-color);
 @include bg-color-variant('.bg-info', 'info-color', $info-color);
 @include bg-color-variant('.bg-success', 'success-color', $success-color);
 @include bg-color-variant('.bg-warning', 'warning-color', $warning-color);
 
-/*
-  Other colors.
-*/
+// Other colors.
 @include bg-color-variant('.bg-code', 'code-color');
 @include bg-color-variant('.bg-highlight', 'highlight-color');
 ```
 
 ### Label colors
 
-Label color variants are included by using [`label-class-variant()`](#label-class-variant) mixin in the `.label` class as its extension.
+Label color variants are included by using the [`label-class-variant()`](#label-class-variant) mixin that uses `color()` function, in the `.label` class as its extension in the `src/_labels.scss` file.
 
 ```scss
 // src/_labels.scss
 .label {
-  /*
-    Core colors.
-  */
-  // Accent.
+  // Label color variants.
+  // - Core colors.
+  // -- Accent.
   @include label-class-variant($name: 'accent', $color: 'light-color', $bg-color: 'accent-color');
 
-  // Primary.
+  // -- Primary.
   @include label-class-variant($name: 'primary', $color: 'light-color', $bg-color: 'primary-color');
   @include label-class-variant($name: 'primary-dark', $color: 'light-color', $bg-color: 'primary-color-dark'); // ! New label color variant.
   @include label-class-variant($name: 'primary-light', $color: 'light-color', $bg-color: 'primary-color-light'); // ! New label color variant.
 
-  // Secondary.
+  // -- Secondary.
   @include label-class-variant($name: 'secondary', $color: 'primary-color', $bg-color: 'secondary-color');
   @include label-class-variant($name: 'secondary-dark', $color: 'primary-color', $bg-color: 'secondary-color-dark'); // ! New label color variant.
   @include label-class-variant($name: 'secondary-light', $color: 'primary-color', $bg-color: 'secondary-color-light'); // ! New label color variant.
 
-  /*
-    Shades.
-  */
+  // - Shades.
   @include label-class-variant($name: 'dark', $color: 'light-color', $bg-color: 'dark-color');
   @include label-class-variant($name: 'light', $color: 'body-font-color', $bg-color: 'light-color');
 
-  /*
-    Gray colors.
-  */
+  // - Gray colors.
   @include label-class-variant($name: 'gray', $color: 'gray-color-dark', $bg-color: 'gray-color'); // ! New label color variant.
   @include label-class-variant($name: 'gray-dark', $color: 'gray-color-light', $bg-color: 'gray-color-dark'); // ! New label color variant.
   @include label-class-variant($name: 'gray-light', $color: 'gray-color-dark', $bg-color: 'gray-color-light'); // ! New label color variant.
 
-  /*
-    Link colors.
-  */
+  // - Link colors.
   @include label-class-variant($name: 'link', $color: 'link-color-light', $bg-color: 'link-color'); // ! New label color variant.
   @include label-class-variant($name: 'link-dark', $color: 'link-color-light', $bg-color: 'link-color-dark'); // ! New label color variant.
   @include label-class-variant($name: 'link-light', $color: 'link-color-dark', $bg-color: 'link-color-light'); // ! New label color variant.
 
-  /*
-    Body colors.
-  */
+  // - Body colors.
   @include label-class-variant($name: 'body-bg', $color: 'body-font-color', $bg-color: 'body-bg-color'); // ! New label color variant.
 
-  /*
-    Bg colors.
-  */
+  // - Bg colors.
   @include label-class-variant($name: 'bg', $color: 'body-font-color', $bg-color: 'bg-color'); // ! New label color variant.
-  @include label-class-variant($name: 'bg-color-dark', $color: 'body-font-color', $bg-color: 'bg-color-dark'); // ! New label color variant.
-  @include label-class-variant($name: 'bg-color-light', $color: 'body-font-color', $bg-color: 'bg-color-light'); // ! New label color variant.
+  @include label-class-variant($name: 'bg-dark', $color: 'body-font-color', $bg-color: 'bg-color-dark'); // ! New label color variant.
+  @include label-class-variant($name: 'bg-light', $color: 'body-font-color', $bg-color: 'bg-color-light'); // ! New label color variant.
 
-  /*
-    Control colors.
-  */
+  // - Control colors.
   @include label-class-variant($name: 'disabled', $color: ('disabled-color', -10%), $bg-color: 'disabled-color');
   @include label-class-variant($name: 'error', $color: 'light-color', $bg-color: 'error-color');
   @include label-class-variant($name: 'info', $color: ('info-color', -60%), $bg-color: 'info-color');
   @include label-class-variant($name: 'success', $color: 'light-color', $bg-color: 'success-color');
   @include label-class-variant($name: 'warning', $color: 'light-color', $bg-color: 'warning-color');
 
-  /*
-    Other colors.
-  */
+  // - Other colors.
   @include label-class-variant($name: 'code', $color: 'light-color', $bg-color: 'code-color'); // ! New label color variant.
   @include label-class-variant($name: 'highlight', $color: ('highlight-color', -50%), $bg-color: 'highlight-color'); // ! New label color variant.
 }
@@ -874,9 +905,6 @@ Text color variants are included by using `text-color-variant()` mixin in the `_
 
 ```scss
 // src/utilities/_colors.scss
-/*
-  Core colors.
-*/
 // Accent.
 @include text-color-variant('.text-accent', 'accent-color'); // ! New text color variant.
 
@@ -955,11 +983,35 @@ Toast color variants are included by using [`toast-class-variant()`](#toast-clas
 
 ## Sass functions/mixins
 
+### `bg-color-variant()`
+
+```scss
+@use '../functions/color' as *;
+@use '../variables' as *;
+
+@mixin bg-color-variant(
+  $name: '.bg-primary',
+  $color: 'primary-color',
+  $hex-color: $primary-color
+) {
+  #{$name} {
+    background: color($color) !important;
+
+    @if (lightness($hex-color) < 60) {
+      color: color('light-color');
+    }
+  }
+}
+```
+
 ### `box-shadow-side()`
 
 The mixin includes the `box-shadow` of the specified side, size, and color. The side can be `bottom`, `left`, `right`, `top`, size default is `10px` and color default is `gray-color`.
 
 ```scss
+// src/mixins/_box-shadow-side.scss
+@use '../functions/color' as *;
+
 @mixin box-shadow-side($side, $size: 10px, $color: 'gray-color') {
   @if $side == right {
     // Right side.
@@ -985,9 +1037,8 @@ The function `color()` returns the [hsla](https://developer.mozilla.org/en-US/do
 
 ```scss
 // src/functions/_color.scss
-/*
-  The function `color()` returns the hsla color from a CSS variable of the given `$name`.
-*/
+@use '../variables' as *;
+
 @function color(
   $name,
   $hue: 0deg,
@@ -1009,6 +1060,9 @@ The function `color()` returns the [hsla](https://developer.mozilla.org/en-US/do
 
 ```scss
 // src/mixins/_define-color.scss
+@use '../variables' as *;
+@use 'set-var' as *;
+
 @mixin define-color($name, $color, $prefix: $var-prefix, $alpha: -1) {
   @include set-var($name, hue($color), $prefix, 'h');
   @include set-var($name, saturation($color), $prefix, 's');
@@ -1027,6 +1081,10 @@ Defines a color based on the specified CSS variable name and its lightness.
 
 ```scss
 // src/mixins/_define-color-based-on.scss
+@use '../functions/get-var' as *;
+@use '../variables' as *;
+@use 'set-var' as *;
+
 @mixin define-color-based-on($name, $color, $lightness: 0%, $prefix: $var-prefix) {
   @include set-var($name, get-var($color, $suffix: 'h'), $prefix, 'h');
   @include set-var($name, get-var($color, $suffix: 's'), $prefix, 's');
@@ -1069,6 +1127,11 @@ Both `$color` and `$bg-color` parameters can be passed as two-index list where t
 For example `$color: ('primary', -10%)` when font color `primary` should be darker by 10%, and `$bg-color: ('primary-dark', +10%)` when label background color is `primary-dark` lighter by 10%.
 
 ```scss
+// src/mixins/_label.scss
+@use '../functions/color' as *;
+@use '../functions/get-var' as *;
+@use 'sass:list';
+
 @mixin label-variant(
   $color: 'light-color',
   $bg-color: 'primary-color',
@@ -1101,9 +1164,14 @@ For example `$color: ('primary', -10%)` when font color `primary` should be dark
 
 The mixin contains an extending class of the name prefixed with `label-` with the given color `$name` that includes a label variant of the given CSS variable names `$color` and `$bg-color`.
 Both `$color` and `$bg-color` parameters can be passed as two-index list where the second item in the list refers to the lightness.
-For example `$color: ('primary', -10%)` when font color `primary` should be darker by 10%, and `$bg-color: ('primary-dark', +10%)` when label background color is `primary-dark` lighter by 10%.
+For example `$color: ('primary', -10%)` when font color `primary` should be darker by `10%`, and `$bg-color: ('primary-dark', +10%)` when label background color is `primary-dark` lighter by `10%`.
 
 ```scss
+// src/mixins/_label.scss
+@use '../functions/color' as *;
+@use '../functions/get-var' as *;
+@use 'sass:list';
+
 @mixin label-class-variant(
   $name: 'light',
   $color: 'light-color',
@@ -1122,6 +1190,10 @@ For example `$color: ('primary', -10%)` when font color `primary` should be dark
 The mixin `set-var()` defines the CSS variable with a specified name, value, prefix, and optional suffix. By default argument prefix is set to `$var-prefix`.
 
 ```scss
+// src/mixins/set-var.scss
+@use '../variables' as *;
+@use 'sass:string';
+
 @mixin set-var($name, $value: '', $prefix: $var-prefix, $suffix: '') {
   @if string.length($suffix) > 0 {
     --#{$prefix}-#{$name}-#{$suffix}: #{$value};
@@ -1136,6 +1208,9 @@ The mixin `set-var()` defines the CSS variable with a specified name, value, pre
 The function `var-negative()` returns CSS [calc function](https://developer.mozilla.org/en-US/docs/Web/CSS/calc) with the given `$value` multiplied by `-1`.
 
 ```scss
+// src/functions/var-negative.scss
+@use 'sass:string';
+
 @function var-negative($value) {
   @return calc((#{$value}) * -1);
 }
@@ -1145,9 +1220,13 @@ The function `var-negative()` returns CSS [calc function](https://developer.mozi
 
 The mixin includes toast `background` and `border` color of a given `$color` CSS variable name.
 The `$color` parameter can be passed as two-index list where the second item in the list refers to the background lightness, and third to background alpha.
-For example `$color: ('primary', -10%)` when font color `primary` should be darker by 10%, and `$color: ('primary-dark', +10%, 0.5)` when toast background color is `primary-dark` lighter by 10% with transparency `0.5`.
+For example `$color: ('primary', -10%)` when font color `primary` should be darker by `10%`, and `$color: ('primary-dark', +10%, 0.5)` when toast background color is `primary-dark` lighter by `10%` with transparency `0.5`.
 
 ```scss
+// src/mixins/_toast.scss
+@use '../functions/color' as *;
+@use 'sass:list';
+
 @mixin toast-variant($color: 'dark-color', $lightness: 0%, $alpha: 0.95) {
   @if list.length($color) > 1 {
     @if list.length($color) == 3 {
@@ -1157,9 +1236,7 @@ For example `$color: ('primary', -10%)` when font color `primary` should be dark
     $color: list.nth($color, 1);
   }
 
-  // background: rgba($color, .95); // old spectre.css
   background: color($color, $lightness: $lightness, $alpha: $alpha);
-  // border-color: $color; // old spectre.css
   border-color: color($color);
 }
 ```
@@ -1171,6 +1248,10 @@ The `$color` parameter can be passed as two-index list where the second item in 
 For example `$color: ('primary', -10%)` when font color `primary` should be darker by 10%, and `$bg-color: ('primary-dark', +10%)` when label background color is `primary-dark` lighter by 10%.
 
 ```scss
+// src/mixins/_toast.scss
+@use '../functions/color' as *;
+@use 'sass:list';
+
 @mixin toast-class-variant(
   $name: 'dark',
   $color: 'dark-color',
