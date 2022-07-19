@@ -1,8 +1,6 @@
 @use '../variables' as *;
 
-/*
-  The function `color()` returns the hsla color from a CSS variable of the given `$name`.
-*/
+// The function `color()` returns the hsla color from a CSS variable of the given `$name`.
 @function color(
   $name,
   $hue: 0deg,
