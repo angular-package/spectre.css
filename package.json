@@ -1,10 +1,19 @@
 {
   "name": "@angular-package/spectre.css",
   "version": "1.0.0-alpha.3.0.1",
-  "homepage": "http://picturepan2.github.io/spectre",
+  "homepage": "https://angular-package.github.io/spectre.css",
   "author": "@angular-package <contact@angular-package.dev>",
   "description": "Modified Spectre.css - a lightweight, responsive, and modern CSS framework originally designed by Yan Zhu",
   "main": "dist/spectre.scss",
+  "scripts": {
+    "sass:dev": "sass --no-source-map --style=expanded src:dist",
+    "sass:prod": "npm run sass:prod:spectre & npm run sass:prod:spectre:exp & npm run sass:prod:spectre:icons",
+    "sass:prod:spectre": "sass --no-source-map --style=compressed src/spectre.scss:dist/spectre.min.css",
+    "sass:prod:spectre:exp": "sass --no-source-map --style=compressed src/spectre-exp.scss:dist/spectre-exp.min.css",
+    "sass:prod:spectre:icons": "sass --no-source-map --style=compressed src/spectre-icons.scss:dist/spectre-icons.min.css",
+    "build:docs": "pug docs/src --pretty --out ./docs",
+    "build": "npm run sass:prod & ng build spectre.css & npm run build:docs"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/angular-package/spectre.css"
@@ -28,6 +37,8 @@
     "url": "https://github.com/angular-package/spectre.css/issues"
   },
   "devDependencies": {
+    "jstransformer-highlight": "^2.0.0",
+    "jstransformer-markdown-it": "^2.1.0",
     "tslib": "^2.3.0",
     "tslint": "^6.1.3"
   }
