@@ -7,9 +7,7 @@ $rtl: false !default;
 // CSS variable.
 $var-prefix: 's'; // It's used to make css variable names unique. --#{var-prefix}-#{name}
 
-/*
-  Core colors.
-*/
+// Core colors.
 // Accent.
 $accent-color: #9932CC !default; // --#{var-prefix}-accent-color.
 
@@ -29,30 +27,22 @@ $secondary-color: lighten($primary-color, 37.5%) !default; // --#{$var-prefix}-s
 $secondary-color-dark: darken($secondary-color, 3%) !default; // --#{$var-prefix}-secondary-color-dark.
 $secondary-color-light: lighten($secondary-color, 3%) !default; // --#{$var-prefix}-secondary-color-light.
 
-/*
-  Gray colors.
-*/
+// Gray colors.
 $gray-color: lighten($dark-color, 55%) !default; // --#{$var-prefix}-gray-color.
 $gray-color-dark: darken($gray-color, 30%) !default; // --#{$var-prefix}-gray-color-dark.
 $gray-color-light: lighten($gray-color, 20%) !default; // --#{$var-prefix}-gray-color-light.
 
-/*
-  Background colors.
-*/
+// Background colors.
 $bg-color: lighten($dark-color, 75%) !default; // --#{$var-prefix}-bg-color.
 $bg-color-dark: darken($bg-color, 3%) !default; // --#{$var-prefix}-bg-color-dark.
 $bg-color-light: $light-color !default; // --#{$var-prefix}-bg-color-light.
 
-/*
-  Border colors.
-*/
+// Border colors.
 $border-color: lighten($dark-color, 65%) !default; // --#{$var-prefix}-border-color.
 $border-color-dark: darken($border-color, 10%) !default; // --#{$var-prefix}-border-color-dark.
 $border-color-light: lighten($border-color, 8%) !default; // --#{$var-prefix}-border-color-light.
 
-/*
-  Control colors.
-*/
+// Control colors.
 $disabled-color: $bg-color-dark !default; // --#{$var-prefix}-disabled-color.
 $error-color: #e85600 !default; // --#{$var-prefix}-error-color.
 $info-color: #d9edf7 !default; // --#{$var-prefix}-info-color.
@@ -65,15 +55,11 @@ $link-color: $primary-color !default; // --#{$var-prefix}-link-color.
 $link-color-dark: darken($link-color, 10%) !default; // --#{$var-prefix}-link-color-dark.
 $link-color-light: lighten($link-color, 10%) !default; // --#{$var-prefix}-link-color-light.
 
-/*
-  Other colors.
-*/
+// Other colors.
 $code-color: #d73e48 !default; // --#{$var-prefix}-code-color.
 $highlight-color: #ffe9b3 !default; // --#{$var-prefix}-highlight-color.
 
-/*
-  Body colors.
-*/
+// Body colors.
 $body-bg-color: $bg-color-light !default; // --#{$var-prefix}-body-bg-color.
 $body-font-color: lighten($dark-color, 5%) !default; // --#{$var-prefix}-body-font-color.
 
@@ -114,10 +100,8 @@ $font-size-lg: 0.9rem !default; // --#{$var-prefix}-font-size-lg.
 $html-line-height: 1.5 !default; // --#{$var-prefix}-html-line-height.
 $line-height: 1.2rem !default; // --#{$var-prefix}-line-height.
 
-/*
-  Sizes.
-*/
-// Layout.
+// Sizes.
+// Layout spacing.
 $layout-spacing: $unit-2 !default; // --#{$var-prefix}-layout-spacing.
 $layout-spacing-sm: $unit-1 !default; // --#{$var-prefix}-layout-spacing-sm.
 $layout-spacing-lg: $unit-4 !default; // --#{$var-prefix}-layout-spacing-lg.
@@ -173,9 +157,7 @@ $zindex-3: 300 !default; // --#{$var-prefix}-z-index-3.
 $zindex-4: 400 !default; // --#{$var-prefix}-z-index-4.
 
 
-/*
-  Parallax
-*/
+// Parallax
 $parallax-deg: 3deg !default; // --#{$var-prefix}-parallax-deg.
 $parallax-offset: 4.5px !default; // --#{$var-prefix}-parallax-offset.
 $parallax-offset-z: 50px !default; // --#{$var-prefix}-parallax-offset-z.
@@ -183,8 +165,5 @@ $parallax-perspective: 1000px !default; // --#{$var-prefix}-parallax-perspective
 $parallax-scale: 0.95 !default; // --#{$var-prefix}-parallax-scale.
 $parallax-fade-color: #ffffff !default; // --#{$var-prefix}-fade-color-h/s/l/a.
 
-/*
-  Transition duration
-
-*/
+//Transition duration
 $transition-duration: 0.2s; // --#{$var-prefix}-transition-duration.
