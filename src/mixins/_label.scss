@@ -10,67 +10,64 @@
   padding: 0.1rem 0.2rem;
 }
 
-/*
-  The mixin contains `background` and `color` style of the specified CSS variable name.
-  Both `$color` and `$bg-color` parameters can be passed as two-index list where the second item in the list refers to the lightness.
-*/
+// The mixin contains the `color` and `background` style of the values given respectively by `$color` and `$bg-color` CSS variable name.
+// Both parameters can be passed as two-index list where the second item in the list refers to the lightness, and parameter `$bg-color` can be passed using the three-index list where the third item is a label background alpha.
+// For example `$color: ('primary', -10%)` when font color `primary` should be darker by 10%, and `$bg-color: ('primary-dark', +10%)` when label background color is `primary-dark` lighter by 10%
 // @mixin label-variant($color: $light-color, $bg-color: $primary-color) { // old spectre.css
 @mixin label-variant(
   $color: 'light-color',
   $bg-color: 'primary-color',
   $color-lightness: 0%,
-  $bg-lightness: 0%,
+  $bg-lightness: 0%
 ) {
-
+  $alpha: 1;
   @if list.length($color) > 1 {
     $color-lightness: list.nth($color, 2);
     $color: list.nth($color, 1);
   }
 
-  @if list.length($bg-color) == 2 {
+  @if list.length($bg-color) > 1 {
+    @if list.length($bg-color) == 3 {
+      $alpha: list.nth($bg-color, 3);
+    }
+
     $bg-lightness: list.nth($bg-color, 2);
     $bg-color: list.nth($bg-color, 1);
   }
 
   // background: $bg-color; // old spectre.css
-  background: color($bg-color, $lightness: $bg-lightness);
+  background: color($bg-color, $lightness: $bg-lightness, $alpha: $alpha);
   // color: $color; // old spectre.css
   color: color($color, $lightness: $color-lightness);
 }
 
-/*
-  The mixin contains `background` and `color` style of the given `$bg-color` and `$color` sass variables.
-  It is created to pass color by using the `color()` function, to have the ability to customize all color parameters.
-*/
+// The mixin contains `color` and `background` color of the given respectively `$color` and `$bg-color` sass variables.
+// It is created to pass color by using the `color()` function, to have the ability to customize all color parameters.
 @mixin label--variant(
   $color: color('light-color'),
-  $bg-color: color('primary-color'),
+  $bg-color: color('primary-color')
 ) {
   color: $color;
   background: $bg-color;
 }
 
-/*
-  The mixin contains an extending class of the name prefixed with `label-` with the given color `$name` that includes a label variant of the given CSS variable names `$color` and `$bg-color`.
-  Both `$color` and `$bg-color` parameters can be passed as two-index list where the second item in the list refers to the lightness.
-  For example `($color: 'primary', -10%)` when primary color should be darker by 10%.
-*/
+// The mixin contains an extending class of the name prefixed with `label-` with the given color `$name` that includes a label variant of the given CSS variable names `$color` and `$bg-color`.
+// Both `$color` and `$bg-color` parameters can be passed as two-index list where the second item in the list refers to the lightness.
+// For example `$color: ('primary', -10%)` when primary color should be darker by 10%.
 @mixin label-class-variant(
   $name: 'light',
   $color: 'light-color',
   $bg-color: 'primary-color',
   $color-lightness: 0%,
-  $bg-lightness: 0%,
+  $bg-lightness: 0%
 ) {
   &.label-#{$name} {
     @include label-variant($color, $bg-color, $color-lightness, $bg-lightness);
   }
 }
 
-/*
-  The mixin contains an extending class of the name prefixed with `label-` with the given color `$name` that includes a label variant of the given sass variable names `$color` and `$bg-color`.
-  It is created to pass color by using the `color()` function, to have the ability to customize its parameters like lightness.
-*/
+// The mixin contains an extending class of the name prefixed with `label-` with the given color `$name` that includes a label variant of the given sass variable names `$color` and `$bg-color`.
+// It is created to pass color by using the `color()` function, to have the ability to customize its parameters like lightness.
 @mixin label-class--variant(
   $name: 'light',
   $color: color('light-color'),
