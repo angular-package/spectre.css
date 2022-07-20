@@ -8,8 +8,8 @@ The angular-package supports the development process of [angular](https://angula
 
 <br>
 
-<a href="https://picturepan2.github.io/spectre">
-  <img src="https://picturepan2.github.io/spectre/img/spectre-logo.svg" width="72" height="72">
+<a href="https://angular-package.github.io/spectre.css">
+  <img src="https://angular-package.github.io/spectre.css/img/spectre-logo.svg" width="72" height="72">
 </a>
 
 ## Spectre.css
@@ -842,6 +842,8 @@ Let's look at how CSS background class colors finally are defined.
 @include bg-color-variant('.bg-highlight', 'highlight-color');
 ```
 
+[Demonstration](https://angular-package.dev/ui-kit/utility/color) | [Documentation](https://angular-package.github.io/spectre.css/utilities/colors.html)
+
 ### Label colors
 
 Label color variants are included by using the [`label-class-variant()`](#label-class-variant) mixin that uses `color()` function, in the `.label` class as its extension in the `src/_labels.scss` file.
@@ -898,6 +900,8 @@ Label color variants are included by using the [`label-class-variant()`](#label-
   @include label-class-variant($name: 'highlight', $color: ('highlight-color', -50%), $bg-color: 'highlight-color'); // ! New label color variant.
 }
 ```
+
+[Demonstration](https://angular-package.dev/ui-kit/component/label) | [Documentation](https://angular-package.github.io/spectre.css/elements/labels.html)
 
 ### Text colors
 
@@ -959,6 +963,8 @@ Text color variants are included by using `text-color-variant()` mixin in the `_
 @include text-color-variant('.text-highlight', 'highlight-color');
 ```
 
+[Demonstration](https://angular-package.dev/ui-kit/utility/color) | [Documentation](https://angular-package.github.io/spectre.css/utilities/colors.html)
+
 ### Toast colors
 
 Toast color variants are included by using [`toast-class-variant()`](#toast-class-variant) mixin in the `.toast` class as its extension.
@@ -966,20 +972,52 @@ Toast color variants are included by using [`toast-class-variant()`](#toast-clas
 ```scss
 // src/_toasts.scss
 .toast {
-  @include toast-class-variant($name: 'accent', $color: 'accent-color'); // ! New toast variant.
-  @include toast-class-variant($name: 'disabled', $color: 'disabled-color'); // ! New toast variant.
-  @include toast-class-variant($name: 'error', $color: 'error-color');
+  // Toast color variants.
+  // - Core colors.
+  @include toast-class-variant($name: 'accent', $color: 'accent-color');
+  @include toast-class-variant($name: 'light', $color: 'light-color');
+
+  // - Primary colors.
+  @include toast-class-variant($name: 'primary', $color: 'primary-color');
+  @include toast-class-variant($name: 'primary-dark', $color: 'primary-color-dark'); // ! New toast variant.
+  @include toast-class-variant($name: 'primary-light', $color: 'primary-color-light'); // ! New toast variant.
+
+  // - Secondary colors.
+  @include toast-class-variant($name: 'secondary', $color: 'secondary-color');
+  @include toast-class-variant($name: 'secondary-dark', $color: 'secondary-color-dark'); // ! New toast variant.
+  @include toast-class-variant($name: 'secondary-light', $color: 'secondary-color-light'); // ! New toast variant.
+
+  // - Body & bg colors.
+  @include toast-class-variant($name: 'body-bg', $color: 'body-bg-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'bg', $color: 'bg-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'bg-dark', $color: 'bg-color-dark'); // ! New toast variant.
+  @include toast-class-variant($name: 'bg-light', $color: 'bg-color-light'); // ! New toast variant.
+
+  // - Link colors.
+  @include toast-class-variant($name: 'link', $color: 'link-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'link-dark', $color: 'link-color-dark'); // ! New toast variant.
+  @include toast-class-variant($name: 'link-light', $color: 'link-color-light'); // ! New toast variant.
+
+  // - Gray colors.
   @include toast-class-variant($name: 'gray', $color: 'gray-color'); // ! New toast variant.
   @include toast-class-variant($name: 'gray-dark', $color: 'gray-color-dark'); // ! New toast variant.
   @include toast-class-variant($name: 'gray-light', $color: 'gray-color-light'); // ! New toast variant.
-  @include toast-class-variant($name: 'info', $color: 'info-color'); // ! New toast variant.
-  @include toast-class-variant($name: 'light', $color: 'light-color'); // ! New toast variant.
-  @include toast-class-variant($name: 'primary', $color: 'primary-color');
-  @include toast-class-variant($name: 'secondary', $color: 'secondary-color'); // ! New toast variant.
+
+  // - Control colors.
+  @include toast-class-variant($name: 'disabled', $color: 'disabled-color');
+  @include toast-class-variant($name: 'error', $color: 'error-color');
+  @include toast-class-variant($name: 'info', $color: 'info-color');
   @include toast-class-variant($name: 'success', $color: 'success-color');
   @include toast-class-variant($name: 'warning', $color: 'warning-color');
+
+  // - Other colors.
+  @include toast-class-variant($name: 'code', $color: 'code-color'); // ! New toast variant.
+  @include toast-class-variant($name: 'highlight', $color: 'highlight-color'); // ! New toast variant.
+
 }
 ```
+
+[Documentation](https://angular-package.github.io/spectre.css/components/toasts.html)
 
 ## Sass functions/mixins
 
@@ -1153,9 +1191,7 @@ For example `$color: ('primary', -10%)` when font color `primary` should be dark
     $bg-color: list.nth($bg-color, 1);
   }
 
-  // background: $bg-color; // old spectre.css
   background: color($bg-color, $lightness: $bg-lightness, $alpha: $alpha);
-  // color: $color; // old spectre.css
   color: color($color, $lightness: $color-lightness);
 }
 ```
@@ -1348,62 +1384,62 @@ with the CSS variable result:
 
 ### Elements
 
-* [Typography](https://picturepan2.github.io/spectre/elements/typography.html)
-* [Tables](https://picturepan2.github.io/spectre/elements/tables.html)
-* [Buttons](https://picturepan2.github.io/spectre/elements/buttons.html)
-* [Forms](https://picturepan2.github.io/spectre/elements/forms.html)
+* [Typography](https://angular-package.github.io/spectre.css/elements/typography.html)
+* [Tables](https://angular-package.github.io/spectre.css/elements/tables.html)
+* [Buttons](https://angular-package.github.io/spectre.css/elements/buttons.html)
+* [Forms](https://angular-package.github.io/spectre.css/elements/forms.html)
 * [Icons.css](https://picturepan2.github.io/icons.css) - CSS ONLY
-* [Labels](https://picturepan2.github.io/spectre/elements/labels.html)
-* [Code](https://picturepan2.github.io/spectre/elements/code.html)
-* [Media](https://picturepan2.github.io/spectre/elements/media.html)
+* [Labels](https://angular-package.github.io/spectre.css/elements/labels.html)
+* [Code](https://angular-package.github.io/spectre.css/elements/code.html)
+* [Media](https://angular-package.github.io/spectre.css/elements/media.html)
 
 ### Layout
 
-* [Flexbox grid](https://picturepan2.github.io/spectre/layout/grid.html)
-* [Responsive](https://picturepan2.github.io/spectre/layout/responsive.html)
-* [Hero](https://picturepan2.github.io/spectre/layout/hero.html)
-* [Navbar](https://picturepan2.github.io/spectre/layout/navbar.html)
+* [Flexbox grid](https://angular-package.github.io/spectre.css/layout/grid.html)
+* [Responsive](https://angular-package.github.io/spectre.css/layout/responsive.html)
+* [Hero](https://angular-package.github.io/spectre.css/layout/hero.html)
+* [Navbar](https://angular-package.github.io/spectre.css/layout/navbar.html)
 
 ### Components
 
-* [Accordions](https://picturepan2.github.io/spectre/components/accordions.html)
-* [Avatars](https://picturepan2.github.io/spectre/components/avatars.html)
-* [Badges](https://picturepan2.github.io/spectre/components/badges.html)
-* [Breadcrumbs](https://picturepan2.github.io/spectre/components/breadcrumbs.html)
-* [Bars](https://picturepan2.github.io/spectre/components/bars.html)
-* [Cards](https://picturepan2.github.io/spectre/components/cards.html)
-* [Chips](https://picturepan2.github.io/spectre/components/chips.html)
-* [Empty states](https://picturepan2.github.io/spectre/components/empty.html)
-* [Menu](https://picturepan2.github.io/spectre/components/menu.html)
-* [Nav](https://picturepan2.github.io/spectre/components/nav.html)
-* [Modals](https://picturepan2.github.io/spectre/components/modals.html)
-* [Pagination](https://picturepan2.github.io/spectre/components/pagination.html)
-* [Panels](https://picturepan2.github.io/spectre/components/panels.html)
-* [Popovers](https://picturepan2.github.io/spectre/components/popovers.html)
-* [Steps](https://picturepan2.github.io/spectre/components/steps.html)
-* [Tabs](https://picturepan2.github.io/spectre/components/tabs.html)
-* [Tiles](https://picturepan2.github.io/spectre/components/tiles.html)
-* [Toasts](https://picturepan2.github.io/spectre/components/toasts.html)
-* [Tooltips](https://picturepan2.github.io/spectre/components/tooltips.html)
+* [Accordions](https://angular-package.github.io/spectre.css/components/accordions.html)
+* [Avatars](https://angular-package.github.io/spectre.css/components/avatars.html)
+* [Badges](https://angular-package.github.io/spectre.css/components/badges.html)
+* [Breadcrumbs](https://angular-package.github.io/spectre.css/components/breadcrumbs.html)
+* [Bars](https://angular-package.github.io/spectre.css/components/bars.html)
+* [Cards](https://angular-package.github.io/spectre.css/components/cards.html)
+* [Chips](https://angular-package.github.io/spectre.css/components/chips.html)
+* [Empty states](https://angular-package.github.io/spectre.css/components/empty.html)
+* [Menu](https://angular-package.github.io/spectre.css/components/menu.html)
+* [Nav](https://angular-package.github.io/spectre.css/components/nav.html)
+* [Modals](https://angular-package.github.io/spectre.css/components/modals.html)
+* [Pagination](https://angular-package.github.io/spectre.css/components/pagination.html)
+* [Panels](https://angular-package.github.io/spectre.css/components/panels.html)
+* [Popovers](https://angular-package.github.io/spectre.css/components/popovers.html)
+* [Steps](https://angular-package.github.io/spectre.css/components/steps.html)
+* [Tabs](https://angular-package.github.io/spectre.css/components/tabs.html)
+* [Tiles](https://angular-package.github.io/spectre.css/components/tiles.html)
+* [Toasts](https://angular-package.github.io/spectre.css/components/toasts.html)
+* [Tooltips](https://angular-package.github.io/spectre.css/components/tooltips.html)
 
 ### Utilities
 
-* [Utilities](https://picturepan2.github.io/spectre/utilities.html) - colors, display, divider, loading, position, shapes and text utilities
+* [Utilities](https://angular-package.github.io/spectre.css/utilities.html) - colors, display, divider, loading, position, shapes and text utilities
 
 ### Experimentals
 
-* [360-Degree Viewer](https://picturepan2.github.io/spectre/experimentals/viewer-360.html) - CSS ONLY
-* [Autocomplete](https://picturepan2.github.io/spectre/experimentals/autocomplete.html)
-* [Calendars](https://picturepan2.github.io/spectre/experimentals/calendars.html)
-* [Carousels](https://picturepan2.github.io/spectre/experimentals/carousels.html) - CSS ONLY
-* [Comparison Sliders](https://picturepan2.github.io/spectre/experimentals/comparison.html) - CSS ONLY
-* [Filters](https://picturepan2.github.io/spectre/experimentals/filters.html) - CSS ONLY
-* [Meters](https://picturepan2.github.io/spectre/experimentals/meters.html)
-* [Off-canvas](https://picturepan2.github.io/spectre/experimentals/off-canvas.html) - CSS ONLY
-* [Parallax](https://picturepan2.github.io/spectre/experimentals/parallax.html) - CSS ONLY
-* [Progress](https://picturepan2.github.io/spectre/experimentals/progress.html)
-* [Sliders](https://picturepan2.github.io/spectre/experimentals/sliders.html)
-* [Timelines](https://picturepan2.github.io/spectre/experimentals/timelines.html)
+* [360-Degree Viewer](https://angular-package.github.io/spectre.css/experimentals/viewer-360.html) - CSS ONLY
+* [Autocomplete](https://angular-package.github.io/spectre.css/experimentals/autocomplete.html)
+* [Calendars](https://angular-package.github.io/spectre.css/experimentals/calendars.html)
+* [Carousels](https://angular-package.github.io/spectre.css/experimentals/carousels.html) - CSS ONLY
+* [Comparison Sliders](https://angular-package.github.io/spectre.css/experimentals/comparison.html) - CSS ONLY
+* [Filters](https://angular-package.github.io/spectre.css/experimentals/filters.html) - CSS ONLY
+* [Meters](https://angular-package.github.io/spectre.css/experimentals/meters.html)
+* [Off-canvas](https://angular-package.github.io/spectre.css/experimentals/off-canvas.html) - CSS ONLY
+* [Parallax](https://angular-package.github.io/spectre.css/experimentals/parallax.html) - CSS ONLY
+* [Progress](https://angular-package.github.io/spectre.css/experimentals/progress.html)
+* [Sliders](https://angular-package.github.io/spectre.css/experimentals/sliders.html)
+* [Timelines](https://angular-package.github.io/spectre.css/experimentals/timelines.html)
 
 ## Browser support
 
