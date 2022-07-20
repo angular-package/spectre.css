@@ -30,7 +30,7 @@ Modified Spectre.css - a lightweight, responsive, and modern CSS framework origi
 [![GitHub stars][spectre.css-badge-stars]][spectre.css-stars]
 [![GitHub license][spectre.css-badge-license]][spectre.css-license]
 
-* Lightweight (~20kB min+zipped) starting point for your projects
+* Lightweight (~**20kB** min+zipped) starting point for your projects
 * Flexbox-based, responsive and mobile-friendly layout
 * Elegantly designed and developed elements and components
 
@@ -1044,6 +1044,8 @@ Toast color variants are included by using [`toast-class-variant()`](#toast-clas
 }
 ```
 
+[![documentation]](https://spectrecss.angular-package.dev/mixin/bg-color-variant)
+
 ### `box-shadow-side()`
 
 The mixin includes the `box-shadow` of the specified side, size, and color. The side can be `bottom`, `left`, `right`, `top`, size default is `10px` and color default is `gray-color`.
@@ -1071,12 +1073,12 @@ The mixin includes the `box-shadow` of the specified side, size, and color. The 
 }
 ```
 
+[![documentation]](https://spectrecss.angular-package.dev/mixin/box-shadow-side)
+
 ### `color()`
 
-The function `color()` returns the [hsla](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsla) color from a CSS variables of the given `$name`.
+The function `color()` returns the [hsla](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsla) color from the four CSS variables of the given `$name`.
 The `$name` parameter can be passed as two-index list, where the second item is the `$lightness`, or can be passed as three-index list, where the third item is the `$alpha`.
-
-[Technical documentation]()
 
 ```scss
 // src/functions/_color.scss
@@ -1108,6 +1110,8 @@ The `$name` parameter can be passed as two-index list, where the second item is 
 }
 ```
 
+[![documentation]](https://spectrecss.angular-package.dev/function/color)
+
 ### `define-color()`
 
 ```scss
@@ -1126,6 +1130,8 @@ The `$name` parameter can be passed as two-index list, where the second item is 
   }
 }
 ```
+
+[![documentation]](https://spectrecss.angular-package.dev/mixin/define-color)
 
 ### `define-color-based-on()`
 
@@ -1172,6 +1178,8 @@ The function returns the CSS [var function](https://developer.mozilla.org/en-US/
 }
 ```
 
+[![documentation]](https://spectrecss.angular-package.dev/function/get-var)
+
 ### `label-variant()`
 
 The mixin `label-varian()` contains `color` and `background` color of the given respectively `$color` and `$bg-color` CSS variable name.
@@ -1210,6 +1218,8 @@ For example `$color: ('primary', -10%)` when font color `primary` should be dark
 }
 ```
 
+[![documentation]](https://spectrecss.angular-package.dev/mixin/label-variant)
+
 ### `label-class-variant()`
 
 The mixin contains an extending class of the name prefixed with `label-` with the given color `$name` that includes a label variant of the given CSS variable names `$color` and `$bg-color`.
@@ -1235,6 +1245,8 @@ For example `$color: ('primary', -10%)` when font color `primary` should be dark
 }
 ```
 
+[![documentation]](https://spectrecss.angular-package.dev/mixin/label-class-variant)
+
 ### `set-var()`
 
 The mixin `set-var()` defines the CSS variable with a specified name, value, prefix, and optional suffix. By default argument prefix is set to `$var-prefix`.
@@ -1253,6 +1265,8 @@ The mixin `set-var()` defines the CSS variable with a specified name, value, pre
 }
 ```
 
+[![documentation]](https://spectrecss.angular-package.dev/mixin/set-var)
+
 ### `var-negative()`
 
 The function `var-negative()` returns CSS [calc function](https://developer.mozilla.org/en-US/docs/Web/CSS/calc) with the given `$value` multiplied by `-1`.
@@ -1265,6 +1279,8 @@ The function `var-negative()` returns CSS [calc function](https://developer.mozi
   @return calc((#{$value}) * -1);
 }
 ```
+
+[![documentation]](https://spectrecss.angular-package.dev/mixin/var-negative)
 
 ### `toast-variant()`
 
@@ -1291,6 +1307,8 @@ For example `$color: ('primary', -10%)` when font color `primary` should be dark
 }
 ```
 
+[![documentation]](https://spectrecss.angular-package.dev/mixin/toast-variant)
+
 ### `toast-class-variant()`
 
 The mixin includes an extension class of name prefixed with `toast-` with a given color `$name` that includes a toast variant of the given `$color`.
@@ -1313,6 +1331,8 @@ For example `$color: ('primary', -10%)` when font color `primary` should be dark
   }
 }
 ```
+
+[![documentation]](https://spectrecss.angular-package.dev/mixin/toast-class-variant)
 
 ## Helper class
 
@@ -1534,6 +1554,7 @@ MIT © Yan Zhu ([license](https://github.com/picturepan2/spectre/blob/master/LIC
 [fix]: https://img.shields.io/badge/-fix-red
 [new]: https://img.shields.io/badge/-new-green
 [update]: https://img.shields.io/badge/-update-red
+[documentation]: https://img.shields.io/badge/-Documentation-informational
 
 <!-- Discord -->
 [discord-badge]: https://img.shields.io/discord/925168966098386944
