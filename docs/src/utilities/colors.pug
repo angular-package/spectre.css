@@ -17,94 +17,354 @@ block docs-content
     .docs-demo.columns
       .column.col-12
         p
+          span.text-accent accent color
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <span class="text-primary">primary color</span>
+      .column.col-12
+        p
           span.text-primary primary color
+        p
+          span.text-primary-dark primary color dark
+        p
+          span.text-primary-light primary color light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <span class="text-primary">primary color</span>
+              <span class="text-primary-dark">primary color dark</span>
+              <span class="text-primary-light">primary color light</span>
+      .column.col-12
         p
           span.text-secondary secondary color
         p
+          span.text-secondary-dark secondary color dark
+        p
+          span.text-secondary-light.bg-primary.p-1.rounded secondary color light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <span class="text-secondary">secondary color</span>
+              <span class="text-secondary-dark">secondary color dark</span>
+              <span class="text-secondary-light">secondary color light</span>
+      .column.col-12
+        p
           span.text-dark dark color
+        p
+          span.text-light.bg-dark.p-1.rounded light color
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <span class="text-dark">dark color</span>
+              <span class="text-light">light color</span>
+      .column.col-12
         p
           span.text-gray gray color
         p
-          span.text-light.bg-dark.p-1.rounded light color
+          span.text-gray-dark gray color dark
+        p
+          span.text-gray-light.bg-gray-dark.p-1.rounded gray color light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <span class="text-gray">gray color</span>
+              <span class="text-gray-dark">gray color dark</span>
+              <span class="text-gray-light">gray color light</span>
+      .column.col-12
+        p
+          span.text-link link color
+        p
+          span.text-link-dark link color dark
+        p
+          span.text-link-light link color light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <span class="text-link">link color</span>
+              <span class="text-link-dark">link color dark</span>
+              <span class="text-link-light">link color light</span>
+      .column.col-12
+        p
+          span.text-body-font body font color
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <span class="text-body-font">body font color</span>
+      .column.col-12
+        p
+          span.text-disabled disabled color
+        p
+          span.text-error error color
+        p
+          span.text-info info color
         p
           span.text-success success color
         p
           span.text-warning warning color
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <span class="text-disabled">disabled color</span>
+              <span class="text-error">error color</span>
+              <span class="text-info">info color</span>
+              <span class="text-success">success color</span>
+              <span class="text-warning">warning color</span>
+      .column.col-12
         p
-          span.text-error error color
+          span.text-code code color
+        p
+          span.text-highlight highlight color
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <span class="text-code">code color</span>
+              <span class="text-highlight">highlight color</span>
 
-    pre.code(data-lang='HTML')
-      code
-        :highlight(lang="html")
-          <span class="text-primary">primary color</span>
-          <span class="text-secondary">secondary color</span>
-          <span class="text-dark">dark color</span>
-          <span class="text-gray">gray color</span>
-          <span class="text-light">light color</span>
-          <span class="text-success">success color</span>
-          <span class="text-warning">warning color</span>
-          <span class="text-error">error color</span>
+    +docs-subheading('colors-link', 'Link colors')
 
     .docs-demo.columns
       .column.col-12
         p
+          a.text-accent.p-1(href="#colors") accent link
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Accent color -->
+              <a class="text-accent" href="#">accent color</a>
+      .column.col-12
+        p
           a.text-primary.p-1(href="#colors") primary link
+        p
+          a.text-primary-dark.p-1(href="#colors") primary link dark
+        p
+          a.text-primary-light.p-1(href="#colors") primary link light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Primary colors -->
+              <a class="text-primary" href="#">primary color</a>
+              <a class="text-primary-dark" href="#">primary color dark</a>
+              <a class="text-primary-light bg-primary" href="#">primary color light</a>
+      .column.col-12
         p
           a.text-secondary.p-1(href="#colors") secondary link
         p
+          a.text-secondary-dark.p-1(href="#colors") secondary link dark
+        p
+          a.text-secondary-light.bg-primary.p-1(href="#colors") secondary link light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Secondary colors -->
+              <a class="text-secondary" href="#">secondary color</a>
+              <a class="text-secondary-dark" href="#">secondary color dark</a>
+              <a class="text-secondary-light" href="#">secondary color light</a>
+      .column.col-12
+        p
           a.text-dark.p-1(href="#colors") dark link
+        p
+          a.text-light.bg-dark.p-1.rounded(href="#colors") light link
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Shades -->
+              <a class="text-dark" href="#">dark color</a>
+              <a class="text-light bg-dark" href="#">light color</a>
+      .column.col-12
         p
           a.text-gray.p-1(href="#colors") gray link
         p
-          a.text-light.bg-dark.p-1.rounded(href="#colors") light link
+          a.text-gray-dark.p-1(href="#colors") gray link dark
+        p
+          a.text-gray-light.bg-gray-dark.p-1(href="#colors") gray link light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Gray colors -->
+              <a class="text-gray" href="#">gray color</a>
+              <a class="text-gray-dark" href="#">gray color dark</a>
+              <a class="text-gray-light bg-gray-dark" href="#">gray color light</a>
+      .column.col-12
+        p
+          a.text-link.p-1(href="#colors") link
+        p
+          a.text-link-dark.p-1(href="#colors") link dark
+        p
+          a.text-link-light.p-1(href="#colors") link light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Link colors -->
+              <a class="text-link" href="#">link color</a>
+              <a class="text-link-dark" href="#">link color dark</a>
+              <a class="text-link-light" href="#">link color light</a>
+      .column.col-12
+        p
+          a.text-body-font.p-1(href="#colors") body font link
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Body colors -->
+              <a class="text-body-font" href="#">body font color</a>
+      .column.col-12
+        p
+          a.text-disabled.p-1(href="#colors") disabled link
+        p
+          a.text-error.p-1(href="#colors") error link
+        p
+          a.text-info.p-1(href="#colors") info link
         p
           a.text-success.p-1(href="#colors") success link
         p
           a.text-warning.p-1(href="#colors") warning link
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Control colors -->
+              <a class="text-disabled" href="#">disabled color</a>
+              <a class="text-error" href="#">error color</a>
+              <a class="text-info" href="#">info color</a>
+              <a class="text-success" href="#">success color</a>
+              <a class="text-warning" href="#">warning color</a>
+      .column.col-12
         p
-          a.text-error.p-1(href="#colors") error link
-
-    pre.code(data-lang='HTML')
-      code
-        :highlight(lang="html")
-          <a class="text-primary" href="#">primary color</a>
-          <a class="text-secondary" href="#">secondary color</a>
-          <a class="text-dark" href="#">dark color</a>
-          <a class="text-gray" href="#">gray color</a>
-          <a class="text-light" href="#">light color</a>
-          <a class="text-success" href="#">success color</a>
-          <a class="text-warning" href="#">warning color</a>
-          <a class="text-error" href="#">error color</a>
+          a.text-code.p-1(href="#colors") code link
+        p
+          a.text-highlight.p-1(href="#colors") highlight link
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Other colors -->
+              <a class="text-code " href="#">code color</a>
+              <a class="text-highlight" href="#">highlight color</a>
 
     +docs-subheading('colors-background', 'Background colors')
 
     .docs-demo.columns
       .column.col-12
         p
+          span.bg-accent.p-1.rounded accent bg
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <div class="bg-accent">accent bg</div>
+      .column.col-12
+        p
           span.bg-primary.p-1.rounded primary bg
+        p
+          span.bg-primary-dark.p-1.rounded primary bg dark
+        p
+          span.bg-primary-light.text-secondary-light.p-1.rounded primary bg light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Primary colors -->
+              <div class="bg-primary">primary bg</div>
+              <div class="bg-primary-dark">primary bg dark</div>
+              <div class="bg-primary-light text-secondary-light">primary bg light</div>
+      .column.col-12
         p
           span.bg-secondary.text-primary.p-1.rounded secondary bg
         p
+          span.bg-secondary-dark.text-primary.p-1.rounded secondary bg dark
+        p
+          span.bg-secondary-light.text-primary.p-1.rounded secondary bg light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Secondary colors -->
+              <div class="bg-secondary text-primary">secondary bg</div>
+              <div class="bg-secondary-dark text-primary">secondary bg dark</div>
+              <div class="bg-secondary-light text-primary">secondary bg light</div>
+      .column.col-12
+        p
           span.bg-dark.p-1.rounded dark bg
         p
+          span.bg-light.p-1.rounded light bg
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+
+              <!-- Shades -->
+              <div class="bg-dark">dark bg</div>
+              <div class="bg-light">light bg</div>
+      .column.col-12
+        p
           span.bg-gray.p-1.rounded gray bg
+        p
+          span.bg-gray-dark.p-1.rounded gray bg dark
+        p
+          span.bg-gray-light.p-1.rounded gray bg light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Gray colors -->
+              <div class="bg-gray">gray bg</div>
+              <div class="bg-gray-dark">gray bg dark</div>
+              <div class="bg-gray-light">gray bg light</div>
+      .column.col-12
+        p
+          span.bg-link.p-1.rounded link bg
+        p
+          span.bg-link-dark.p-1.rounded link bg dark
+        p
+          span.bg-link-light.p-1.rounded link bg light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Link colors -->
+              <div class="bg-link">link bg</div>
+              <div class="bg-link-dark">link bg dark</div>
+              <div class="bg-link-light">link bg light</div>
+      .column.col-12
+        p
+          span.bg.text-body-font.p-1.rounded bg
+        p
+          span.bg-bg.text-body-font.p-1.rounded bg bg
+        p
+          span.bg-bg-dark.text-body-font.p-1.rounded bg bg dark
+        p
+          span.bg-bg-light.text-body-font.p-1.rounded bg bg light
+        p
+          span.bg-body.text-body-font.p-1.rounded body bg
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Bg colors -->
+              <div class="bg text-body-font">bg</div>
+              <div class="bg-bg text-body-font">bg bg</div>
+              <div class="bg-bg-dark text-body-font">bg bg dark</div>
+              <div class="bg-bg-light text-body-font">bg bg light</div>
+              <div class="bg-body-bg text-body-font">bg body bg</div>
+      .column.col-12
+        p
+          span.bg-disabled.p-1.rounded disabled bg
+        p
+          span.bg-error.p-1.rounded error bg
         p
           span.bg-success.p-1.rounded success bg
         p
           span.bg-warning.p-1.rounded warning bg
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Control colors -->
+              <div class="bg-disabled">disabled bg</div>
+              <div class="bg-error">error bg</div>
+              <div class="bg-info">info bg</div>
+              <div class="bg-success">success bg</div>
+              <div class="bg-warning">warning bg</div>
         p
-          span.bg-error.p-1.rounded error bg
-
-    pre.code(data-lang='HTML')
-      code
-        :highlight(lang="html")
-          <div class="bg-primary">primary bg</div>
-          <div class="bg-secondary">secondary bg</div>
-          <div class="bg-dark">dark bg</div>
-          <div class="bg-gray">gray bg</div>
-          <div class="bg-success">success bg</div>
-          <div class="bg-warning">warning bg</div>
-          <div class="bg-error">error bg</div>
+          span.bg-code.p-1.rounded code bg
+        p
+          span.bg-highlight.text-warning.p-1.rounded highlight bg
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Other colors -->
+              <div class="bg-code">code bg</div>
+              <div class="bg-highlight text-warning">highlight bg</div>
 
     include ../_layout/_ad-c.pug
 
