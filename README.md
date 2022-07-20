@@ -9,7 +9,7 @@ The angular-package supports the development process of [angular](https://angula
 <br>
 
 <a href="https://angular-package.github.io/spectre.css">
-  <img src="https://angular-package.github.io/spectre.css/img/spectre-logo.svg" width="72" height="72">
+  <img src="https://github.com/angular-package/spectre.css/blob/1.0.x/docs/img/spectre-logo-1000x1000.png" width="72" height="72">
 </a>
 
 ## Spectre.css
@@ -752,6 +752,8 @@ Equivalent CSS variables with default prefix `s`.
 }
 ```
 
+<br>
+
 ## CSS Color Classes
 
 ### Background colors
@@ -1071,20 +1073,32 @@ The mixin includes the `box-shadow` of the specified side, size, and color. The 
 
 ### `color()`
 
-The function `color()` returns the [hsla](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsla) color from a CSS variable of the given `$name`.
+The function `color()` returns the [hsla](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsla) color from a CSS variables of the given `$name`.
+The `$name` parameter can be passed as two-index list, where the second item is the `$lightness`, or can be passed as three-index list, where the third item is the `$alpha`.
+
+[Technical documentation]()
 
 ```scss
 // src/functions/_color.scss
 @use '../variables' as *;
+@use 'sass:list';
 
 @function color(
   $name,
   $hue: 0deg,
-  $lightness: 0%,
   $saturation: 0%,
+  $lightness: 0%,
   $alpha: 1,
   $prefix: $var-prefix
 ) {
+  @if list.length($name) > 1 {
+    @if list.length($name) == 3 {
+      $alpha: list.nth($name, 3);
+    }
+
+    $lightness: list.nth($name, 2);
+    $name: list.nth($name, 1);
+  }
   @return hsla(
     calc(var(--#{$prefix}-#{$name}-h) + #{$hue}),
     calc(var(--#{$prefix}-#{$name}-s) + #{$saturation}),
