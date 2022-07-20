@@ -9,7 +9,7 @@ The angular-package supports the development process of [angular](https://angula
 <br>
 
 <a href="https://angular-package.github.io/spectre.css">
-  <img src="https://github.com/angular-package/spectre.css/blob/1.0.x/docs/img/spectre-logo-1000x1000.png" width="72" height="72">
+  <img src="https://angular-package.github.io/spectre.css/img/spectre-logo.svg" width="72" height="72">
 </a>
 
 ## Spectre.css
