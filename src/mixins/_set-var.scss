@@ -1,8 +1,7 @@
 @use '../variables' as *;
 @use 'sass:string';
-/*
-  The mixin `set-var()` defines the CSS variable with a specified name, value, prefix, and optional suffix. By default argument prefix is set to `$var-prefix`.
-*/
+
+// The mixin `set-var()` defines the CSS variable with a specified name, value, prefix, and optional suffix. By default argument prefix is set to `$var-prefix`.
 @mixin set-var($name, $value: '', $prefix: $var-prefix, $suffix: '') {
   @if string.length($suffix) > 0 {
     --#{$prefix}-#{$name}-#{$suffix}: #{$value};
