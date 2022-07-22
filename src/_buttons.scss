@@ -3,9 +3,10 @@
 @use 'functions/var-negative' as *;
 @use 'mixins/button' as *;
 @use 'mixins/shadow' as *;
+@use 'variables' as *;
 
 // Buttons
-.btn {
+.btn, .#{$var-prefix}-btn {
   appearance: none;
   // background: $bg-color-light; // old spectre.css
   background: color('bg-color-light');
@@ -222,7 +223,7 @@
 }
 
 // Button groups
-.btn-group {
+.btn-group, .#{$var-prefix}-btn-group {
   display: inline-flex;
   flex-wrap: wrap;
 
