@@ -90,6 +90,12 @@
 
 // Body colors.
 @include bg-color-variant('.bg-body', 'body-bg-color', $body-bg-color);
+@include bg-color-variant('.bg-body-font', 'body-font-color', $body-font-color);
+
+// Border colors.
+@include bg-color-variant('.bg-border', 'border-color', $border-color);
+@include bg-color-variant('.bg-border-dark', 'border-color-dark', $border-color-dark);
+@include bg-color-variant('.bg-border-light', 'border-color-light', $border-color-light);
 
 // Bg colors
 @include bg-color-variant('.bg', 'bg-color', $bg-color);
