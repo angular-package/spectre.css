@@ -18,47 +18,45 @@
   padding: get-var('layout-spacing', $unit: 1);
   width: 100%;
 
-  /*
-    Toast color variants.
-  */
-  // Core colors.
+  // Toast color variants.
+  // - Core colors.
   @include toast-class-variant($name: 'accent', $color: 'accent-color');
   @include toast-class-variant($name: 'light', $color: 'light-color');
 
-  // Primary colors.
+  // - Primary colors.
   @include toast-class-variant($name: 'primary', $color: 'primary-color');
   @include toast-class-variant($name: 'primary-dark', $color: 'primary-color-dark'); // ! New toast variant.
   @include toast-class-variant($name: 'primary-light', $color: 'primary-color-light'); // ! New toast variant.
 
-  // Secondary colors.
+  // - Secondary colors.
   @include toast-class-variant($name: 'secondary', $color: 'secondary-color');
   @include toast-class-variant($name: 'secondary-dark', $color: 'secondary-color-dark'); // ! New toast variant.
   @include toast-class-variant($name: 'secondary-light', $color: 'secondary-color-light'); // ! New toast variant.
 
-  // Body & bg colors.
+  // - Body & bg colors.
   @include toast-class-variant($name: 'body-bg', $color: 'body-bg-color'); // ! New toast variant.
   @include toast-class-variant($name: 'bg', $color: 'bg-color'); // ! New toast variant.
   @include toast-class-variant($name: 'bg-dark', $color: 'bg-color-dark'); // ! New toast variant.
   @include toast-class-variant($name: 'bg-light', $color: 'bg-color-light'); // ! New toast variant.
 
-  // Link colors.
+  // - Link colors.
   @include toast-class-variant($name: 'link', $color: 'link-color'); // ! New toast variant.
   @include toast-class-variant($name: 'link-dark', $color: 'link-color-dark'); // ! New toast variant.
   @include toast-class-variant($name: 'link-light', $color: 'link-color-light'); // ! New toast variant.
 
-  // Gray colors.
+  // - Gray colors.
   @include toast-class-variant($name: 'gray', $color: 'gray-color'); // ! New toast variant.
   @include toast-class-variant($name: 'gray-dark', $color: 'gray-color-dark'); // ! New toast variant.
   @include toast-class-variant($name: 'gray-light', $color: 'gray-color-light'); // ! New toast variant.
 
-  // Control colors.
+  // - Control colors.
   @include toast-class-variant($name: 'disabled', $color: 'disabled-color');
   @include toast-class-variant($name: 'error', $color: 'error-color');
   @include toast-class-variant($name: 'info', $color: 'info-color');
   @include toast-class-variant($name: 'success', $color: 'success-color');
   @include toast-class-variant($name: 'warning', $color: 'warning-color');
 
-  // Other colors.
+  // - Other colors.
   @include toast-class-variant($name: 'code', $color: 'code-color'); // ! New toast variant.
   @include toast-class-variant($name: 'highlight', $color: 'highlight-color'); // ! New toast variant.
 
