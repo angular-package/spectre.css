@@ -546,9 +546,6 @@
     display: none !important;
   }
 }
-/*
-  The function `var-negative()` returns CSS calc function with the given `$value` multiplied by `-1`.
-*/
 .parallax {
   display: block;
   height: auto;
