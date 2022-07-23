@@ -319,12 +319,9 @@
 /* Document
    ========================================================================== */
 html {
-  font-family: sans-serif;
-  /* 1 */
-  -ms-text-size-adjust: 100%;
-  /* 3 */
-  -webkit-text-size-adjust: 100%;
-  /* 3 */
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
 }
 
 /* Sections
@@ -365,8 +362,7 @@ h1 {
  */
 figcaption,
 figure,
-main {
-  /* 1 */
+main { /* 1 */
   display: block;
 }
 
@@ -378,12 +374,9 @@ main {
  * 2. Show the overflow in Edge and IE.
  */
 hr {
-  box-sizing: content-box;
-  /* 1 */
-  height: 0;
-  /* 1 */
-  overflow: visible;
-  /* 2 */
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
 }
 
 /**
@@ -397,10 +390,8 @@ hr {
  * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
  */
 a {
-  background-color: transparent;
-  /* 1 */
-  -webkit-text-decoration-skip: objects;
-  /* 2 */
+  background-color: transparent; /* 1 */
+  -webkit-text-decoration-skip: objects; /* 2 */
 }
 
 /**
@@ -447,10 +438,8 @@ code,
 kbd,
 pre,
 samp {
-  font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace;
-  /* 1 (changed) */
-  font-size: 1em;
-  /* 2 */
+  font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace; /* 1 (changed) */
+  font-size: 1em; /* 2 */
 }
 
 /**
@@ -468,8 +457,7 @@ dfn {
  */
 small {
   font-size: 80%;
-  font-weight: 400;
-  /* (added) */
+  font-weight: 400; /* (added) */
 }
 
 /**
@@ -535,14 +523,10 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit;
-  /* 1 (changed) */
-  font-size: inherit;
-  /* 1 (changed) */
-  line-height: inherit;
-  /* 1 (changed) */
-  margin: 0;
-  /* 2 */
+  font-family: inherit; /* 1 (changed) */
+  font-size: inherit; /* 1 (changed) */
+  line-height: inherit; /* 1 (changed) */
+  margin: 0; /* 2 */
 }
 
 /**
@@ -550,8 +534,7 @@ textarea {
  * 1. Show the overflow in Edge.
  */
 button,
-input {
-  /* 1 */
+input { /* 1 */
   overflow: visible;
 }
 
@@ -560,8 +543,7 @@ input {
  * 1. Remove the inheritance of text transform in Firefox.
  */
 button,
-select {
-  /* 1 */
+select { /* 1 */
   text-transform: none;
 }
 
@@ -574,8 +556,7 @@ button,
 html [type=button],
 [type=reset],
 [type=submit] {
-  -webkit-appearance: button;
-  /* 2 */
+  -webkit-appearance: button; /* 2 */
 }
 
 /**
@@ -608,18 +589,12 @@ fieldset {
  *    `fieldset` elements in all browsers.
  */
 legend {
-  box-sizing: border-box;
-  /* 1 */
-  color: inherit;
-  /* 2 */
-  display: table;
-  /* 1 */
-  max-width: 100%;
-  /* 1 */
-  padding: 0;
-  /* 3 */
-  white-space: normal;
-  /* 1 */
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
 }
 
 /**
@@ -627,10 +602,8 @@ legend {
  * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
 progress {
-  display: inline-block;
-  /* 1 */
-  vertical-align: baseline;
-  /* 2 */
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
 }
 
 /**
@@ -646,10 +619,8 @@ textarea {
  */
 [type=checkbox],
 [type=radio] {
-  box-sizing: border-box;
-  /* 1 */
-  padding: 0;
-  /* 2 */
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
 }
 
 /**
@@ -665,10 +636,8 @@ textarea {
  * 2. Correct the outline style in Safari.
  */
 [type=search] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
 }
 
 /**
@@ -684,10 +653,8 @@ textarea {
  * 2. Change font properties to `inherit` in Safari.
  */
 ::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
 }
 
 /* Interactive
@@ -2052,63 +2019,48 @@ video.video-responsive::before {
 .col-xl-auto {
     flex: none;
   }
-
   .col-xl-12 {
     width: 100%;
   }
-
   .col-xl-11 {
     width: 91.66666667%;
   }
-
   .col-xl-10 {
     width: 83.33333333%;
   }
-
   .col-xl-9 {
     width: 75%;
   }
-
   .col-xl-8 {
     width: 66.66666667%;
   }
-
   .col-xl-7 {
     width: 58.33333333%;
   }
-
   .col-xl-6 {
     width: 50%;
   }
-
   .col-xl-5 {
     width: 41.66666667%;
   }
-
   .col-xl-4 {
     width: 33.33333333%;
   }
-
   .col-xl-3 {
     width: 25%;
   }
-
   .col-xl-2 {
     width: 16.66666667%;
   }
-
   .col-xl-1 {
     width: 8.33333333%;
   }
-
   .col-xl-auto {
     width: auto;
   }
-
   .hide-xl {
     display: none !important;
   }
-
   .show-xl {
     display: block !important;
   }
@@ -2129,63 +2081,48 @@ video.video-responsive::before {
 .col-lg-auto {
     flex: none;
   }
-
   .col-lg-12 {
     width: 100%;
   }
-
   .col-lg-11 {
     width: 91.66666667%;
   }
-
   .col-lg-10 {
     width: 83.33333333%;
   }
-
   .col-lg-9 {
     width: 75%;
   }
-
   .col-lg-8 {
     width: 66.66666667%;
   }
-
   .col-lg-7 {
     width: 58.33333333%;
   }
-
   .col-lg-6 {
     width: 50%;
   }
-
   .col-lg-5 {
     width: 41.66666667%;
   }
-
   .col-lg-4 {
     width: 33.33333333%;
   }
-
   .col-lg-3 {
     width: 25%;
   }
-
   .col-lg-2 {
     width: 16.66666667%;
   }
-
   .col-lg-1 {
     width: 8.33333333%;
   }
-
   .col-lg-auto {
     width: auto;
   }
-
   .hide-lg {
     display: none !important;
   }
-
   .show-lg {
     display: block !important;
   }
@@ -2206,63 +2143,48 @@ video.video-responsive::before {
 .col-md-auto {
     flex: none;
   }
-
   .col-md-12 {
     width: 100%;
   }
-
   .col-md-11 {
     width: 91.66666667%;
   }
-
   .col-md-10 {
     width: 83.33333333%;
   }
-
   .col-md-9 {
     width: 75%;
   }
-
   .col-md-8 {
     width: 66.66666667%;
   }
-
   .col-md-7 {
     width: 58.33333333%;
   }
-
   .col-md-6 {
     width: 50%;
   }
-
   .col-md-5 {
     width: 41.66666667%;
   }
-
   .col-md-4 {
     width: 33.33333333%;
   }
-
   .col-md-3 {
     width: 25%;
   }
-
   .col-md-2 {
     width: 16.66666667%;
   }
-
   .col-md-1 {
     width: 8.33333333%;
   }
-
   .col-md-auto {
     width: auto;
   }
-
   .hide-md {
     display: none !important;
   }
-
   .show-md {
     display: block !important;
   }
@@ -2283,63 +2205,48 @@ video.video-responsive::before {
 .col-sm-auto {
     flex: none;
   }
-
   .col-sm-12 {
     width: 100%;
   }
-
   .col-sm-11 {
     width: 91.66666667%;
   }
-
   .col-sm-10 {
     width: 83.33333333%;
   }
-
   .col-sm-9 {
     width: 75%;
   }
-
   .col-sm-8 {
     width: 66.66666667%;
   }
-
   .col-sm-7 {
     width: 58.33333333%;
   }
-
   .col-sm-6 {
     width: 50%;
   }
-
   .col-sm-5 {
     width: 41.66666667%;
   }
-
   .col-sm-4 {
     width: 33.33333333%;
   }
-
   .col-sm-3 {
     width: 25%;
   }
-
   .col-sm-2 {
     width: 16.66666667%;
   }
-
   .col-sm-1 {
     width: 8.33333333%;
   }
-
   .col-sm-auto {
     width: auto;
   }
-
   .hide-sm {
     display: none !important;
   }
-
   .show-sm {
     display: block !important;
   }
@@ -2360,63 +2267,48 @@ video.video-responsive::before {
 .col-xs-auto {
     flex: none;
   }
-
   .col-xs-12 {
     width: 100%;
   }
-
   .col-xs-11 {
     width: 91.66666667%;
   }
-
   .col-xs-10 {
     width: 83.33333333%;
   }
-
   .col-xs-9 {
     width: 75%;
   }
-
   .col-xs-8 {
     width: 66.66666667%;
   }
-
   .col-xs-7 {
     width: 58.33333333%;
   }
-
   .col-xs-6 {
     width: 50%;
   }
-
   .col-xs-5 {
     width: 41.66666667%;
   }
-
   .col-xs-4 {
     width: 33.33333333%;
   }
-
   .col-xs-3 {
     width: 25%;
   }
-
   .col-xs-2 {
     width: 16.66666667%;
   }
-
   .col-xs-1 {
     width: 8.33333333%;
   }
-
   .col-xs-auto {
     width: auto;
   }
-
   .hide-xs {
     display: none !important;
   }
-
   .show-xs {
     display: block !important;
   }
@@ -2446,37 +2338,30 @@ video.video-responsive::before {
     -ms-flex-order: 1;
     order: 1;
   }
-
   .order-xs-1 {
     -ms-flex-order: 1;
     order: 1;
   }
-
   .order-2 {
     -ms-flex-order: 2;
     order: 2;
   }
-
   .order-xs-2 {
     -ms-flex-order: 2;
     order: 2;
   }
-
   .order-3 {
     -ms-flex-order: 3;
     order: 3;
   }
-
   .order-xs-3 {
     -ms-flex-order: 3;
     order: 3;
   }
-
   .order-4 {
     -ms-flex-order: 4;
     order: 4;
   }
-
   .order-xs-4 {
     -ms-flex-order: 4;
     order: 4;
@@ -2487,37 +2372,30 @@ video.video-responsive::before {
     -ms-flex-order: 1;
     order: 1;
   }
-
   .order-sm-1 {
     -ms-flex-order: 1;
     order: 1;
   }
-
   .order-2 {
     -ms-flex-order: 2;
     order: 2;
   }
-
   .order-sm-2 {
     -ms-flex-order: 2;
     order: 2;
   }
-
   .order-3 {
     -ms-flex-order: 3;
     order: 3;
   }
-
   .order-sm-3 {
     -ms-flex-order: 3;
     order: 3;
   }
-
   .order-4 {
     -ms-flex-order: 4;
     order: 4;
   }
-
   .order-sm-4 {
     -ms-flex-order: 4;
     order: 4;
@@ -2528,37 +2406,30 @@ video.video-responsive::before {
     -ms-flex-order: 1;
     order: 1;
   }
-
   .order-md-1 {
     -ms-flex-order: 1;
     order: 1;
   }
-
   .order-2 {
     -ms-flex-order: 2;
     order: 2;
   }
-
   .order-md-2 {
     -ms-flex-order: 2;
     order: 2;
   }
-
   .order-3 {
     -ms-flex-order: 3;
     order: 3;
   }
-
   .order-md-3 {
     -ms-flex-order: 3;
     order: 3;
   }
-
   .order-4 {
     -ms-flex-order: 4;
     order: 4;
   }
-
   .order-md-4 {
     -ms-flex-order: 4;
     order: 4;
@@ -2569,37 +2440,30 @@ video.video-responsive::before {
     -ms-flex-order: 1;
     order: 1;
   }
-
   .order-lg-1 {
     -ms-flex-order: 1;
     order: 1;
   }
-
   .order-2 {
     -ms-flex-order: 2;
     order: 2;
   }
-
   .order-lg-2 {
     -ms-flex-order: 2;
     order: 2;
   }
-
   .order-3 {
     -ms-flex-order: 3;
     order: 3;
   }
-
   .order-lg-3 {
     -ms-flex-order: 3;
     order: 3;
   }
-
   .order-4 {
     -ms-flex-order: 4;
     order: 4;
   }
-
   .order-lg-4 {
     -ms-flex-order: 4;
     order: 4;
@@ -2610,37 +2474,30 @@ video.video-responsive::before {
     -ms-flex-order: 1;
     order: 1;
   }
-
   .order-xl-1 {
     -ms-flex-order: 1;
     order: 1;
   }
-
   .order-2 {
     -ms-flex-order: 2;
     order: 2;
   }
-
   .order-xl-2 {
     -ms-flex-order: 2;
     order: 2;
   }
-
   .order-3 {
     -ms-flex-order: 3;
     order: 3;
   }
-
   .order-xl-3 {
     -ms-flex-order: 3;
     order: 3;
   }
-
   .order-4 {
     -ms-flex-order: 4;
     order: 4;
   }
-
   .order-xl-4 {
     -ms-flex-order: 4;
     order: 4;
@@ -2651,37 +2508,30 @@ video.video-responsive::before {
     -ms-flex-order: 1;
     order: 1;
   }
-
   .order-2x-1 {
     -ms-flex-order: 1;
     order: 1;
   }
-
   .order-2 {
     -ms-flex-order: 2;
     order: 2;
   }
-
   .order-2x-2 {
     -ms-flex-order: 2;
     order: 2;
   }
-
   .order-3 {
     -ms-flex-order: 3;
     order: 3;
   }
-
   .order-2x-3 {
     -ms-flex-order: 3;
     order: 3;
   }
-
   .order-4 {
     -ms-flex-order: 4;
     order: 4;
   }
-
   .order-2x-4 {
     -ms-flex-order: 4;
     order: 4;
@@ -3759,9 +3609,6 @@ a.text-secondary-light:visited {
   color: hsla(calc(var(--s-secondary-color-light-h) + 0deg), calc(var(--s-secondary-color-light-s) + 0%), calc(var(--s-secondary-color-light-l) + 5%), calc(var(--s-secondary-color-light-a) * 1));
 }
 
-/*
-  Shades.
-*/
 .text-dark {
   color: hsla(calc(var(--s-dark-color-h) + 0deg), calc(var(--s-dark-color-s) + 0%), calc(var(--s-dark-color-l) + 0%), calc(var(--s-dark-color-a) * 1)) !important;
 }
