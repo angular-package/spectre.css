@@ -2,120 +2,120 @@
 @use '../variables' as *;
 
 // Text colors
-// - Core colors.
-// -- Accent.
-@include text-color-variant('.text-accent', 'accent-color'); // ! New text color variant.
-
-// -- Primary
-// @include text-color-variant('.text-primary', $primary-color); // old spectre.css
-@include text-color-variant('.text-primary', 'primary-color');
-@include text-color-variant('.text-primary-dark', 'primary-color-dark');
-@include text-color-variant('.text-primary-light', 'primary-color-light');
-
-// -- Secondary
-// @include text-color-variant('.text-secondary', $secondary-color-dark); // old spectre.css
-@include text-color-variant('.text-secondary', 'secondary-color-dark');
-@include text-color-variant('.text-secondary-dark', 'secondary-color-dark');
-@include text-color-variant('.text-secondary-light', 'secondary-color-light');
-
 // - Shades.
 // @include text-color-variant('.text-dark', $body-font-color); // old spectre.css
 // @include text-color-variant('.text-dark', 'body-font-color'); // old @angular-package/spectre.css
-@include text-color-variant('.text-dark', 'dark-color');
+@include text-color-variant('dark', 'dark-color');
 // @include text-color-variant('.text-light', $light-color); // old spectre.css
-@include text-color-variant('.text-light', 'light-color');
+@include text-color-variant('light', 'light-color');
+
+// - Core colors.
+// -- Accent.
+@include text-color-variant('accent', 'accent-color'); // ! New text color variant.
+
+// -- Primary
+// @include text-color-variant('.text-primary', $primary-color); // old spectre.css
+@include text-color-variant('primary', 'primary-color');
+@include text-color-variant('primary-dark', 'primary-color-dark');
+@include text-color-variant('primary-light', 'primary-color-light');
+
+// -- Secondary
+// @include text-color-variant('.text-secondary', $secondary-color-dark); // old spectre.css
+@include text-color-variant('secondary', 'secondary-color-dark');
+@include text-color-variant('secondary-dark', 'secondary-color-dark');
+@include text-color-variant('secondary-light', 'secondary-color-light');
 
 // - Gray colors.
 // @include text-color-variant('.text-gray', $gray-color); // old spectre.css
-@include text-color-variant('.text-gray', 'gray-color');
-@include text-color-variant('.text-gray-dark', 'gray-color-dark');
-@include text-color-variant('.text-gray-light', 'gray-color-light');
-
-// - Link colors.
-@include text-color-variant('.text-link', 'link-color');
-@include text-color-variant('.text-link-dark', 'link-color-dark');
-@include text-color-variant('.text-link-light', 'link-color-light');
-
-// - Body colors.
-@include text-color-variant('.text-body-font', 'body-font-color');
+@include text-color-variant('gray', 'gray-color');
+@include text-color-variant('gray-dark', 'gray-color-dark');
+@include text-color-variant('gray-light', 'gray-color-light');
 
 // - Control colors.
-@include text-color-variant('.text-disabled', 'disabled-color');
+@include text-color-variant('disabled', 'disabled-color');
 // @include text-color-variant('.text-error', $error-color); // old spectre.css
-@include text-color-variant('.text-error', 'error-color');
-@include text-color-variant('.text-info', 'info-color');
+@include text-color-variant('error', 'error-color');
+@include text-color-variant('info', 'info-color');
 // @include text-color-variant('.text-success', $success-color); // old spectre.css
-@include text-color-variant('.text-success', 'success-color');
+@include text-color-variant('success', 'success-color');
 // @include text-color-variant('.text-warning', $warning-color); // old spectre.css
-@include text-color-variant('.text-warning', 'warning-color');
+@include text-color-variant('warning', 'warning-color');
+
+// - Link colors.
+@include text-color-variant('link', 'link-color');
+@include text-color-variant('link-dark', 'link-color-dark');
+@include text-color-variant('link-light', 'link-color-light');
 
 // - Other colors.
-@include text-color-variant('.text-code', 'code-color');
-@include text-color-variant('.text-highlight', 'highlight-color');
+@include text-color-variant('code', 'code-color');
+@include text-color-variant('highlight', 'highlight-color');
+
+// - Body colors.
+@include text-color-variant('body-font', 'body-font-color');
 
 // Background colors
+// - Shades.
+// @include bg-color-variant('.bg-dark', $dark-color); // old.spectre.css
+@include bg-color-variant('dark', 'dark-color', $dark-color);
+@include bg-color-variant('light', 'light-color', $light-color);
+
 // - Core colors.
 // -- Accent
-@include bg-color-variant('.bg-accent', 'accent-color', $accent-color);
+@include bg-color-variant('accent', 'accent-color', $accent-color);
 
 // -- Primary.
 // @include bg-color-variant('.bg-primary', $primary-color); // old spectre.css
-@include bg-color-variant('.bg-primary', 'primary-color', $primary-color);
-@include bg-color-variant('.bg-primary-dark', 'primary-color-dark', $primary-color-dark);
-@include bg-color-variant('.bg-primary-light', 'primary-color-light', $primary-color-light);
+@include bg-color-variant('primary', 'primary-color', $primary-color);
+@include bg-color-variant('primary-dark', 'primary-color-dark', $primary-color-dark);
+@include bg-color-variant('primary-light', 'primary-color-light', $primary-color-light);
 
 // -- Secondary.
 // @include bg-color-variant('.bg-secondary', $secondary-color); // old.spectre.css
-@include bg-color-variant('.bg-secondary', 'secondary-color', $secondary-color);
-@include bg-color-variant('.bg-secondary-dark', 'secondary-color-dark', $secondary-color-dark);
-@include bg-color-variant('.bg-secondary-light', 'secondary-color-light', $secondary-color-light);
-
-// - Shades.
-// @include bg-color-variant('.bg-dark', $dark-color); // old.spectre.css
-@include bg-color-variant('.bg-dark', 'dark-color', $dark-color);
-@include bg-color-variant('.bg-light', 'light-color', $light-color);
+@include bg-color-variant('secondary', 'secondary-color', $secondary-color);
+@include bg-color-variant('secondary-dark', 'secondary-color-dark', $secondary-color-dark);
+@include bg-color-variant('secondary-light', 'secondary-color-light', $secondary-color-light);
 
 // - Gray colors.
 // @include bg-color-variant('.bg-gray', $bg-color); // old.spectre.css
-@include bg-color-variant('.bg-gray', 'gray-color', $gray-color);
-@include bg-color-variant('.bg-gray-dark', 'gray-color-dark', $gray-color-dark);
-@include bg-color-variant('.bg-gray-light', 'gray-color-light', $gray-color-light);
-
-// - Link colors.
-@include bg-color-variant('.bg-link', 'link-color', $link-color);
-@include bg-color-variant('.bg-link-dark', 'link-color-dark', $link-color-dark);
-@include bg-color-variant('.bg-link-light', 'link-color-light', $link-color-light);
-
-// - Body colors.
-@include bg-color-variant('.bg-body', 'body-bg-color', $body-bg-color);
-@include bg-color-variant('.bg-body-font', 'body-font-color', $body-font-color);
-
-// - Border colors.
-@include bg-color-variant('.bg-border', 'border-color', $border-color);
-@include bg-color-variant('.bg-border-dark', 'border-color-dark', $border-color-dark);
-@include bg-color-variant('.bg-border-light', 'border-color-light', $border-color-light);
+@include bg-color-variant('gray', 'gray-color', $gray-color);
+@include bg-color-variant('gray-dark', 'gray-color-dark', $gray-color-dark);
+@include bg-color-variant('gray-light', 'gray-color-light', $gray-color-light);
 
 // - Bg colors
-@include bg-color-variant('.bg', 'bg-color', $bg-color);
-@include bg-color-variant('.bg-bg', 'bg-color', $bg-color);
-@include bg-color-variant('.bg-bg-dark', 'bg-color-dark', $bg-color-dark);
-@include bg-color-variant('.bg-bg-light', 'bg-color-light', $bg-color-light);
+// @include bg-color-variant('.bg', 'bg-color', $bg-color); // @deprecated
+@include bg-color-variant('bg', 'bg-color', $bg-color);
+@include bg-color-variant('bg-dark', 'bg-color-dark', $bg-color-dark);
+@include bg-color-variant('bg-light', 'bg-color-light', $bg-color-light);
 
-@include bg-color-variant('.bg-color', 'bg-color', $bg-color); // @deprecated
-@include bg-color-variant('.bg-color-dark', 'bg-color-dark', $bg-color-dark); // @deprecated
-@include bg-color-variant('.bg-color-light', 'bg-color-light', $bg-color-light); // @deprecated
+@include bg-color-variant('color', 'bg-color', $bg-color); // @deprecated
+@include bg-color-variant('color-dark', 'bg-color-dark', $bg-color-dark); // @deprecated
+@include bg-color-variant('color-light', 'bg-color-light', $bg-color-light); // @deprecated
 
+// - Border colors.
+@include bg-color-variant('border', 'border-color', $border-color);
+@include bg-color-variant('border-dark', 'border-color-dark', $border-color-dark);
+@include bg-color-variant('border-light', 'border-color-light', $border-color-light);
 
 // - Control colors.
-@include bg-color-variant('.bg-disabled', 'disabled-color', $disabled-color);
+@include bg-color-variant('disabled', 'disabled-color', $disabled-color);
 // @include bg-color-variant('.bg-error', $error-color); // old.spectre.css
-@include bg-color-variant('.bg-error', 'error-color', $error-color);
-@include bg-color-variant('.bg-info', 'info-color', $info-color);
+@include bg-color-variant('error', 'error-color', $error-color);
+@include bg-color-variant('info', 'info-color', $info-color);
 // @include bg-color-variant('.bg-success', $success-color); // old.spectre.css
-@include bg-color-variant('.bg-success', 'success-color', $success-color);
+@include bg-color-variant('success', 'success-color', $success-color);
 // @include bg-color-variant('.bg-warning', $warning-color); // old.spectre.css
-@include bg-color-variant('.bg-warning', 'warning-color', $warning-color);
+@include bg-color-variant('warning', 'warning-color', $warning-color);
+
+// - Link colors.
+@include bg-color-variant('link', 'link-color', $link-color);
+@include bg-color-variant('link-dark', 'link-color-dark', $link-color-dark);
+@include bg-color-variant('link-light', 'link-color-light', $link-color-light);
 
 // - Other colors.
-@include bg-color-variant('.bg-code', 'code-color');
-@include bg-color-variant('.bg-highlight', 'highlight-color');
+@include bg-color-variant('code', 'code-color');
+@include bg-color-variant('highlight', 'highlight-color');
+
+// - Body colors.
+@include bg-color-variant('body', 'body-bg-color', $body-bg-color); // @deprecated
+@include bg-color-variant('body-bg', 'body-bg-color', $body-bg-color);
+@include bg-color-variant('body-font', 'body-font-color', $body-font-color);
