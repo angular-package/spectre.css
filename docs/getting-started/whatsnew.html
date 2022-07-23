@@ -8,19 +8,19 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development. Spectre provides basic styles for typography and elements, flexbox based responsive layout system, pure CSS components and utilities with best practice coding and consistent design language.">
     <meta name="author" content="Yan Zhu">
-    <meta property="og:url" content="https://picturepan2.github.io/spectre/getting-started/whatsnew.html">
+    <meta property="og:url" content="https://angular-package.github.io/spectre.css/getting-started/whatsnew.html">
     <meta property="og:title" content="What's New - Getting started - Spectre.css CSS Framework">
     <meta property="og:description" content="Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development. Spectre provides basic styles for typography and elements, flexbox based responsive layout system, pure CSS components and utilities with best practice coding and consistent design language.">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@spectrecss">
-    <meta name="twitter:creator" content="@picturepan2">
+    <meta name="twitter:site" content="@angularpackage">
+    <meta name="twitter:creator" content="@angularpackage">
     <link rel="shortcut icon" href="../img/favicons/favicon.ico">
     <link rel="icon" href="../img/favicons/favicon.png">
     <link rel="stylesheet" href="../dist/spectre.min.css">
     <link rel="stylesheet" href="../dist/spectre-icons.min.css">
     <link rel="stylesheet" href="../dist/spectre-exp.min.css">
     <link rel="stylesheet" href="../dist/docs.min.css">
-    <link rel="canonical" href="https://picturepan2.github.io/spectre/getting-started/whatsnew.html">
+    <link rel="canonical" href="https://angular-package.github.io/spectre.css/getting-started/whatsnew.html">
   </head>
   <body>
     <div class="docs-container off-canvas off-canvas-sidebar-show">
@@ -210,7 +210,79 @@
                 <!-- GitHub-sm--><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2225124559530218" data-ad-slot="9278881734"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
               </div>
-            </div><h4>Spectre.css Changelog</h4>
+            </div><h1>Spectre.css changelog</h1>
+<h2>v1.0.0-alpha.3.0.1</h2>
+<ul>
+<li>Remove unnecessary ignore files.</li>
+</ul>
+<h2>v1.0.0-alpha.3</h2>
+<ul>
+<li>Add new <code>toast-class-variant()</code> and <code>label-class-variant()</code> mixins. <a href="https://github.com/angular-package/spectre.css/commit/87ebe641e4d61d8d89caa5f6856b96da01013d1f">87ebe64</a> <a href="https://github.com/angular-package/spectre.css/commit/e6d2ac8e1d6991e30d75193b685b3cee6c12667f">e6d2ac8</a> <a href="https://github.com/angular-package/spectre.css/commit/921dc86e2e1ca9ddf299948235e4bd55f4626505">921dc86</a> <a href="https://github.com/angular-package/spectre.css/commit/fdbe64b7c57b27da26f2aba3e0a16f4a1a5653a6">fdbe64b</a></li>
+<li>Add sass variable <code>$transition-duration</code> and css variable <code>transition-duration</code> of the default value equal to <code>0.2s</code> and use in styles. <a href="https://github.com/angular-package/spectre.css/commit/1db668c108f9b29d54295ad06bce90e8f3516971">1db668c</a></li>
+<li>Add text and bg color variants. <a href="https://github.com/angular-package/spectre.css/commit/8e6822ef0394e406ddb1a6914a7f6059a744f837">8e6822e</a></li>
+<li>Add mixin <code>box-shadow-side()</code> to include sided box-shadow. <a href="https://github.com/angular-package/spectre.css/commit/c010f4cd0443463be40462b2d2e79cf5cab5bffd">c010f4c</a></li>
+<li>Add toasts <code>accent</code>, <code>dark</code>, <code>disabled</code>, <code>gray</code>, <code>gray-dark</code>, <code>gray-light</code>, <code>info</code>, <code>light</code>, and <code>secondary</code> colors. <a href="https://github.com/angular-package/spectre.css/commit/b5b3e0edc357de160936b90f8a78924a7cf4b37f">b5b3e0e</a></li>
+<li>Add label colors, <code>accent</code>, <code>dark</code>, <code>light</code>, <code>disabled</code>, <code>info</code>. <a href="https://github.com/angular-package/spectre.css/commit/ed96a917e014d6000e94d1f3d03ff54adffb70f6">ed96a91</a></li>
+<li>Add missing mixins and add new. <a href="https://github.com/angular-package/spectre.css/commit/845c5287983b7054e158df491dd708f0a44f3466">845c528</a> <a href="https://github.com/angular-package/spectre.css/commit/cc720f9d3bc67e617d190611f20684e6805fda42">cc720f9</a></li>
+</ul>
+<h2>v1.0.0-alpha.2</h2>
+<ul>
+<li>Update <code>define-color()</code> mixin by adding <code>$alpha</code> parameter. <a href="https://github.com/angular-package/spectre.css/commit/5a4f3174d5161ddd3c9dfaf6e47d4264c8939fe3">5a4f317</a></li>
+<li>Update CSS variable <code>body-bg-color</code> to use SCSS variable <code>$body-bg-color</code> instead of basing on <code>bg-color-light</code>. <a href="https://github.com/angular-package/spectre.css/commit/c529aa9838db68458aa0f2624be37cad8047b3b7">c529aa9</a></li>
+<li>Change the <code>$body-bg</code> SCSS variable to <code>$body-bg-color</code>. <a href="https://github.com/angular-package/spectre.css/commit/d6b582f3ad97256ad646745c38c6fca489c5d025">d6b582f</a></li>
+<li>Move parallax variables into <code>_variables.scss</code> and add to CSS variables. <a href="https://github.com/angular-package/spectre.css/commit/5b2c0b484d7ddbbeb5a8fa88ce3164eb49e767ff">5b2c0b4</a> <a href="https://github.com/angular-package/spectre.css/commit/84f247c73350980c94f6bf8f48e243c98e73a4fb">84f247c</a></li>
+<li>Remove <code>$grid-spacing</code> in <code>_layout.scss</code> in favor of CSS variables calculation.</li>
+<li>Update forms state disabled to use <code>disabled-color</code> instead <code>bg-color-dark</code> and the color is assigned to <code>background-color</code> not <code>background</code>.</li>
+<li>Update grid sizes to use CSS variables for size. <a href="https://github.com/angular-package/spectre.css/commit/e875ec2a4500070e63fac020634cc053e9e3d232">e875ec2</a></li>
+<li>Add CSS variables for z-index and responsive breakpoint. <a href="https://github.com/angular-package/spectre.css/commit/53a9c0e49a61fec5f1690b94fea8e4aae2fbe38a">53a9c0e</a></li>
+<li>Update styles to use CSS variable of the z-index. <a href="https://github.com/angular-package/spectre.css/commit/7d7d6da41503800ac25c739b3f73b0d3278f2319">7d7d6da</a></li>
+<li>Update styles to use <code>get-var()</code> to use CSS variables instead of Sass variables, change <code>avatar-base()</code> mixin parameters to string to use CSS variables. Calculate grid sizes with css variables. <a href="https://github.com/angular-package/spectre.css/commit/5f2714eb17581086197b30ee6e39e4b3fcee1c45">5f2714e</a></li>
+<li>Update styles to use <code>get-var()</code> function and update including mixins to use string parameters of CSS variables. <a href="https://github.com/angular-package/spectre.css/commit/7381a866e4cd8662127b5331816a69222a520ee0">7381a86</a></li>
+<li>Add <code>set-var()</code> mixin to define variable with a specified <code>$prefix</code> and optional <code>$suffix</code>. <a href="https://github.com/angular-package/spectre.css/commit/8ad91804cc29d8e33f70649c1c5e052b1dd2d061">8ad9180</a></li>
+<li>Use <code>get-var()</code> Sass function to use CSS variables instead of scss variables in the <code>margin-variant()</code> and <code>padding-variant()</code> mixins. <a href="https://github.com/angular-package/spectre.css/commit/32dfd633a98b82294ad32dbfc784ca7902e6a183">32dfd63</a></li>
+<li>Update <code>define-color()</code> and <code>define-color-based-on()</code> mixin to use <code>set-var()</code> Sass function to define CSS variables. <a href="https://github.com/angular-package/spectre.css/commit/5bc2df37f32bf6fbb8495169b6f2722de90f042b">5bc2df3</a> <a href="https://github.com/angular-package/spectre.css/commit/bed18ef8c4d6fc59ada4f68b610f22ba148626e6">bed18ef</a></li>
+<li>Update <code>avatar-base()</code> mixin to use CSS variables by adding <code>get-var()</code> function. <a href="https://github.com/angular-package/spectre.css/commit/c829c8b3f38606bb3be101edef24bcc69f4cca03">c829c8b</a></li>
+<li>Fix <code>Color</code> class by adding <code>Math.round()</code> to the <code>color: number</code> argument to properly calculate hex. <a href="https://github.com/angular-package/spectre.css/commit/8e53827e0261a25d5ddde9413cb94bd1c41563c4">8e53827</a></li>
+<li>Add <code>var-negative()</code> Sass function to make the given value negative by multiply <code>-1</code>. <a href="https://github.com/angular-package/spectre.css/commit/08c9baed86976ec17567611dde26428a81197543">08c9bae</a></li>
+<li>Add <code>strip-unit()</code> Sass function to strip unit from the given value. <a href="https://github.com/angular-package/spectre.css/commit/8c48cf119a87d54264968858a450c15b9992d969">8c48cf1</a></li>
+<li>Add <code>get-var()</code> Sass function to get CSS variable with prefix and/or unit. <a href="https://github.com/angular-package/spectre.css/commit/f6da5fa038a77351f8d3e1c4f973a09e4a30e1df">f6da5fa</a></li>
+<li>Update <code>color()</code> mixin by adding argument <code>$prefix</code> to use <code>$var-prefix</code> for CSS variable name customization. <a href="https://github.com/angular-package/spectre.css/commit/7e84edc7a38c73902db6e16456e7628e903ad1d0">7e84edc</a></li>
+<li>Add CSS variables <code>border-width</code>, <code>border-radius</code>, <code>control-padding-x</code>, <code>control-padding-y</code>, <code>control-icon-size</code>, <code>control-size</code>, <code>control-width</code>, <code>font-size</code>, <code>html-font-size</code>, <code>html-line-height</code>, <code>line-height</code>, <code>layout-spacing</code>,<code>unit-o</code>, <code>unit-h</code>, and <code>unit-0</code> to <code>unit-16</code>. <a href="https://github.com/angular-package/spectre.css/commit/dfdc8438ca56c9c8848a6a69ad726f05de8ac032">dfdc843</a></li>
+<li>Separate defining CSS variables into different files. <a href="https://github.com/angular-package/spectre.css/commit/b82878c8c0c891f9aed35e01db9df1c141e8c3f1">b82878c</a></li>
+<li>Add <code>$var-prefix</code> to customize CSS variable name, add <code>$disabled-color</code> SCSS variable. <a href="https://github.com/angular-package/spectre.css/commit/7623233663646b5c313365e518d70f527405a8fd">7623233</a></li>
+<li>Add CSS variables <code>font-size</code>, <code>html-font-size</code>, <code>html-line-height</code>, <code>line-height</code>. <a href="https://github.com/angular-package/spectre.css/commit/4cddda6a90da727e641c10dc5fa5c5dc2b743e49">4cddda6</a></li>
+</ul>
+<h5>v1.0.0-alpha.1</h5>
+<ul>
+<li>Change file name from general <code>function/_css-variable-color.scss</code> to just <code>functions/_color.scss</code>. <a href="https://github.com/angular-package/spectre.css/commit/a8b14acd49be4e82eb387dfde0b964e7a41bd664">a8b14ac</a></li>
+<li>Move mixins from <code>mixins/_css-variable-color.scss</code> to separate files <code>_define-color.scss</code> and <code>_define-color-based-on.scss</code>. <a href="https://github.com/angular-package/spectre.css/commit/e9bb18b9ac4c47b40368f2d8a09e82476e08390b">e9bb18b</a></li>
+<li>Change folder name from <code>function</code> to <code>functions</code> for Spectre.css naming consistency. <a href="https://github.com/angular-package/spectre.css/commit/4582370757b32c2af3e2e138974485e7f35144de">4582370</a></li>
+<li>Change <code>.bg-gray</code> to use <code>$bg-gray</code> SCSS variable instead of <code>$bg-color</code>. <a href="https://github.com/angular-package/spectre.css/commit/ebd492c0cc835cde005e3fac371404461bec1b77">ebd492c</a></li>
+<li>Fix includes mixin <code>bg-color-variant()</code> by adding missing sass variables. <a href="https://github.com/angular-package/spectre.css/commit/ebd492c0cc835cde005e3fac371404461bec1b77">ebd492c</a></li>
+<li>New background class colors <code>.bg-color-dark</code> and <code>.bg-color-light</code>. <a href="https://github.com/angular-package/spectre.css/commit/fb1224c6799f0d6abdf992396e09b6d547f27e75">fb1224c</a></li>
+<li>Fix variable name from <code>$lighten</code> to <code>$lightness</code> in <code>textarea.form-input</code>. <a href="https://github.com/angular-package/spectre.css/commit/54790aef0bdf578d7aa2e6aeb01f1da905a00189">54790ae</a></li>
+<li>Update missing <code>color()</code> function in styles and use prettier on files. <a href="https://github.com/angular-package/spectre.css/commit/aed7fe0be311f9101a9c92767d244a2caca24d82">aed7fe0</a></li>
+<li>Update sass variable name to css style and add <code>!important</code> to <code>text-color-variant</code> mixin. <a href="https://github.com/angular-package/spectre.css/commit/03713ee038121d9b8a14c346c1dc08f4cf80f35a">03713ee</a></li>
+</ul>
+<h5>v1.0.0-alpha</h5>
+<ul>
+<li>Add helpers. <a href="https://github.com/angular-package/spectre.css/commit/a3fac3576d32bcf518f4727aac1903364c27863c">a3fac35</a></li>
+<li>Update from #688.</li>
+<li>Update the mixins to use string parameters. <a href="https://github.com/angular-package/spectre.css/commit/5cf16fa90bd93ea10c93f1e0d932e4bb7fe9351b">5cf16fa</a></li>
+<li>Change the spectre.css variables and mixins to use <code>color()</code> function. [759feb] <a href="https://github.com/angular-package/spectre.css/commit/978a9baa33c6557d0c493c9768d1c4899d057ac9">978a9ba</a> <a href="https://github.com/angular-package/spectre.css/commit/a89d3f7eed3913f71096bb0c0443ee66a736d9ac">a89d3f7</a> <a href="https://github.com/angular-package/spectre.css/commit/b8dd9c414c378ee49fa7e2d3823f7da88b9cb0e1">b8dd9c4</a> <a href="https://github.com/angular-package/spectre.css/commit/4b5e0659934abecb2024ec01c381a6654fa758d6">4b5e065</a></li>
+<li>Define CSS variables in HSL. <a href="https://github.com/angular-package/spectre.css/commit/4ead2caea86e6fbbb7ce7818f38df01e71e803b8">4ead2ca</a></li>
+<li>Add <code>$accent-color</code> and <code>$info-color</code>. <a href="https://github.com/angular-package/spectre.css/commit/5aebf31192dbec68c727b834b643dd0e98a5aaec">5aebf31</a></li>
+<li>Add function and mixins to handle CSS variables. <a href="https://github.com/angular-package/spectre.css/commit/9d6c62a9f162456d77cf7bcff20806465ab87f81">9d6c62a</a> <a href="https://github.com/angular-package/spectre.css/commit/214c17e49f8d6dca342b69b1c1af75ea8eb80ab3">214c17e</a></li>
+<li>Change <code>@import</code> in favor of <code>@use</code> and <code>@forward</code>. <a href="https://github.com/angular-package/spectre.css/commit/4110d67227cb05e1c43b30a98cc8385f5a821b85">4110d67</a> <a href="https://github.com/angular-package/spectre.css/commit/6ad89043b1b172697bdbb0d33a10a8b9e7f332b0">6ad8904</a></li>
+</ul>
+<h5>v0.5.10 <a href="https://github.com/angular-package/spectre.css/releases/tag/v0.5.10">#</a></h5>
+<ul>
+<li>Add columns order #632.</li>
+<li>Add icons #535.</li>
+<li>Fix buttons visited style for <code>a</code> tag #572.</li>
+<li>Change box-shadow in the mixins.</li>
+<li>Add class <code>card-shadow</code> in the <code>_cards.scss</code>.</li>
+</ul>
 <h5>v0.5.9 <a href="https://github.com/picturepan2/spectre/releases/tag/v0.5.9">#</a></h5>
 <ul>
 <li>Update gulp and dependencies</li>
@@ -517,8 +589,8 @@
             <p><a class="btn btn-primary" href="https://github.com/picturepan2/spectre/releases" target="_blank">Releases</a></p>
           </div>
           <div class="docs-footer container grid-lg" id="copyright">
-            <p><a href="https://github.com/picturepan2/spectre" target="_blank">GitHub</a> · <a href="https://twitter.com/spectrecss" target="_blank">Twitter</a> · <a href="https://www.paypal.me/picturepan2" target="_blank">PayPal Donate</a> · <a href="https://www.patreon.com/spectrecss" target="_blank">Patreon Sponsor</a> · Version <span class="version"></span></p>
-            <p>Designed and built with <span class="text-error">&hearts;</span> by <a href="https://twitter.com/picturepan2" target="_blank">Yan Zhu</a>. Licensed under the <a href="https://github.com/picturepan2/spectre/blob/master/LICENSE" target="_blank">MIT License</a>.</p>
+            <p><a href="https://github.com/angular-package/spectre.css" target="_blank">GitHub </a> · <a href="https://twitter.com/angularpackage" target="_blank">Twitter </a> · <a href="https://www.paypal.me/picturepan2" target="_blank">PayPal Donate </a> · <a href="https://www.patreon.com/spectrecss" target="_blank">Patreon Sponsor </a> · Version <span class="version"></span></p>
+            <p>Designed and built with <span class="text-error">&hearts; </span>by <a href="https://twitter.com/picturepan2" target="_blank">Yan Zhu</a>. Modified by the <a href="https://angular-package.dev" target="_blank">@angular-package</a>. Licensed under the <a href="https://github.com/angular-package/spectre.css/blob/master/LICENSE" target="_blank">MIT License</a>.</p>
           </div>
         </div>
       </div>

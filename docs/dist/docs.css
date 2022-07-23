@@ -1,6 +1,6 @@
 /*! Spectre.css Docs | MIT License | github.com/picturepan2/spectre */
 .version::after {
-  content: "0.5.10";
+  content: "1.0.0-beta";
 }
 
 .off-canvas .off-canvas-toggle {
@@ -44,7 +44,7 @@
 
 .docs-sidebar .docs-nav {
   bottom: 1.5rem;
-  -webkit-overflow-scrolling: touch; 
+  -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   padding: .5rem 1.5rem;
   position: fixed;
@@ -559,20 +559,20 @@
   display: inline-block;
   height: 32px !important;
   position: relative;
-  visibility: visible !important; 
+  visibility: visible !important;
   white-space: nowrap;
   width: 200px;
 }
 
 .searchbox .algolia-autocomplete {
   display: block;
-  height: 100%; 
+  height: 100%;
   width: 100%;
 }
 
 .searchbox__wrapper {
   height: 100%;
-  position: relative; 
+  position: relative;
   width: 100%;
   z-index: 999;
 }
@@ -580,7 +580,7 @@
 .searchbox__input {
   -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none; 
+  appearance: none;
   background: #fff !important;
   border: 0;
   border-radius: 16px;
@@ -609,7 +609,7 @@
 
 .searchbox__input:active,
 .searchbox__input:focus {
-  background: #fff; 
+  background: #fff;
   box-shadow: inset 0 0 0 1px #aaa;
   outline: 0;
 }
@@ -632,7 +632,7 @@
   border-radius: 16px 0 0 16px;
   font-size: inherit;
   height: 100%;
-  left: 0; 
+  left: 0;
   margin: 0;
   padding: 0;
   position: absolute;
@@ -648,7 +648,7 @@
 }
 
 .searchbox__submit:before {
-  content: ""; 
+  content: "";
   display: inline-block;
   height: 100%;
   margin-right: -4px;
@@ -665,7 +665,7 @@
 }
 
 .searchbox__submit svg {
-  fill: #6d7e96; 
+  fill: #6d7e96;
   height: 14px;
   vertical-align: middle;
   width: 14px;
@@ -676,7 +676,7 @@
   border: 0;
   cursor: pointer;
   display: block;
-  fill: rgba(0, 0, 0, .5); 
+  fill: rgba(0, 0, 0, .5);
   font-size: inherit;
   margin: 0;
   padding: 0;
@@ -699,30 +699,30 @@
 
 .searchbox__reset svg {
   display: block;
-  height: 8px; 
+  height: 8px;
   margin: 4px;
   width: 8px;
 }
 
 .searchbox__input:valid ~ .searchbox__reset {
-  animation-duration: .15s; 
+  animation-duration: .15s;
   animation-name: sbx-reset-in;
   display: block;
 }
 
 @keyframes sbx-reset-in {
   0% {
-    opacity: 0; 
+    opacity: 0;
     transform: translate3d(-20%, 0, 0);
   }
   to {
-    opacity: 1; 
+    opacity: 1;
     transform: none;
   }
 }
 
 .algolia-autocomplete.algolia-autocomplete-right .ds-dropdown-menu {
-  left: inherit !important; 
+  left: inherit !important;
   right: 0 !important;
 }
 
@@ -743,7 +743,7 @@
   background: transparent;
   border: none;
   border-radius: 4px;
-  box-shadow: 0 .05rem .2rem rgba(48, 55, 66, .15); 
+  box-shadow: 0 .05rem .2rem rgba(48, 55, 66, .15);
   height: auto;
   margin: 6px 0 0;
   max-width: 600px;
@@ -756,7 +756,7 @@
 }
 
 .algolia-autocomplete .ds-dropdown-menu .ds-suggestions {
-  margin-top: 8px; 
+  margin-top: 8px;
   position: relative;
   z-index: 1000;
 }
@@ -778,7 +778,7 @@
   background: #fff;
   border-radius: 4px;
   overflow: auto;
-  padding: 0 8px 8px; 
+  padding: 0 8px 8px;
   position: relative;
 }
 
@@ -790,7 +790,7 @@
   background: #fff;
   color: #303742;
   display: block;
-  overflow: hidden; 
+  overflow: hidden;
   padding: 0 8px;
   position: relative;
 }
@@ -805,19 +805,19 @@
 .algolia-autocomplete .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--category-header-lvl1 .algolia-docsearch-suggestion--highlight {
   background: inherit;
   box-shadow: inset 0 -2px 0 0 rgba(87, 85, 217, .8);
-  color: inherit; 
+  color: inherit;
   padding: 0 0 1px;
 }
 
 .algolia-autocomplete .algolia-docsearch-suggestion--text .algolia-docsearch-suggestion--highlight {
   background: inherit;
   box-shadow: inset 0 -2px 0 0 rgba(87, 85, 217, .8);
-  color: inherit; 
+  color: inherit;
   padding: 0 0 1px;
 }
 
 .algolia-autocomplete .algolia-docsearch-suggestion--content {
-  cursor: pointer; 
+  cursor: pointer;
   display: block;
   float: right;
   padding: 5.33333px 0 5.33333px 10.66667px;
@@ -830,7 +830,7 @@
   content: "";
   display: block;
   height: 100%;
-  left: -1px; 
+  left: -1px;
   position: absolute;
   top: 0;
   width: 1px;
@@ -838,7 +838,7 @@
 
 .algolia-autocomplete .algolia-docsearch-suggestion--category-header {
   border-bottom: 1px solid #f7f8f9;
-  color: #303742; 
+  color: #303742;
   display: none;
   font-size: 1em;
   margin-top: 8px;
@@ -848,7 +848,7 @@
 
 .algolia-autocomplete .algolia-docsearch-suggestion--wrapper {
   float: left;
-  padding: 8px 0 0; 
+  padding: 8px 0 0;
   width: 100%;
 }
 
@@ -869,7 +869,7 @@
   display: block;
   height: 100%;
   position: absolute;
-  right: 0; 
+  right: 0;
   top: 0;
   width: 1px;
 }
@@ -885,14 +885,14 @@
 }
 
 .algolia-autocomplete .algolia-docsearch-suggestion--text {
-  color: #66758c; 
+  color: #66758c;
   display: block;
   font-size: .85em;
   line-height: 1.2em;
 }
 
 .algolia-autocomplete .algolia-docsearch-suggestion--no-results {
-  font-size: 1.2em; 
+  font-size: 1.2em;
   padding: 8px 0;
   text-align: center;
   width: 100%;
@@ -907,7 +907,7 @@
   border: none;
   border-radius: 3px;
   color: #222;
-  font-family: Menlo, Monaco, Consolas, Courier New, monospace; 
+  font-family: Menlo, Monaco, Consolas, Courier New, monospace;
   font-size: 90%;
   padding: 1px 5px;
 }
@@ -923,12 +923,12 @@
 
 .algolia-autocomplete .suggestion-layout-simple.algolia-docsearch-suggestion {
   border-bottom: 1px solid #eee;
-  margin: 0; 
+  margin: 0;
   padding: 8px;
 }
 
 .algolia-autocomplete .suggestion-layout-simple .algolia-docsearch-suggestion--content {
-  padding: 0; 
+  padding: 0;
   width: 100%;
 }
 
@@ -937,7 +937,7 @@
 }
 
 .algolia-autocomplete .suggestion-layout-simple .algolia-docsearch-suggestion--category-header {
-  border: none; 
+  border: none;
   display: block;
   margin: 0;
   padding: 0;
@@ -945,19 +945,19 @@
 }
 
 .algolia-autocomplete .suggestion-layout-simple .algolia-docsearch-suggestion--category-header-lvl0 {
-  font-size: .85em; 
+  font-size: .85em;
   opacity: .6;
 }
 
 .algolia-autocomplete .suggestion-layout-simple .algolia-docsearch-suggestion--category-header-lvl1 {
-  font-size: .85em; 
+  font-size: .85em;
   opacity: .6;
 }
 
 .algolia-autocomplete .suggestion-layout-simple .algolia-docsearch-suggestion--category-header-lvl1:before {
   background-image: url("data:image/svg+xml;utf8,<svg width=\"10\" height=\"10\" viewBox=\"0 0 20 38\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M1.49 4.31l14 16.126.002-2.624-14 16.074-1.314 1.51 3.017 2.626 1.313-1.508 14-16.075 1.142-1.313-1.14-1.313-14-16.125L3.2.18.18 2.8l1.31 1.51z\" fill-rule=\"evenodd\" fill=\"%231D3657\" /></svg>");
   content: "";
-  display: inline-block; 
+  display: inline-block;
   height: 10px;
   width: 10px;
 }
@@ -965,7 +965,7 @@
 .algolia-autocomplete .suggestion-layout-simple .algolia-docsearch-suggestion--wrapper {
   float: left;
   margin: 0;
-  padding: 0; 
+  padding: 0;
   width: 100%;
 }
 
@@ -977,14 +977,14 @@
 .algolia-autocomplete .suggestion-layout-simple .algolia-docsearch-suggestion--title {
   color: #458ee1;
   font-size: .9em;
-  font-weight: 400; 
+  font-weight: 400;
   margin: 0;
 }
 
 .algolia-autocomplete .suggestion-layout-simple .algolia-docsearch-suggestion--title:before {
   color: #458ee1;
   content: "#";
-  display: inline-block; 
+  display: inline-block;
   font-weight: 700;
 }
 
@@ -994,12 +994,12 @@
   font-size: .85em;
   line-height: 1.4em;
   margin: 4px 0 0;
-  opacity: .8; 
+  opacity: .8;
   padding: 5.33333px 8px;
 }
 
 .algolia-autocomplete .suggestion-layout-simple .algolia-docsearch-suggestion--text .algolia-docsearch-suggestion--highlight {
-  box-shadow: none; 
+  box-shadow: none;
   color: #3f4145;
   font-weight: 700;
 }
@@ -1008,7 +1008,7 @@
   float: right;
   font-size: 0;
   height: 20px;
-  line-height: 0; 
+  line-height: 0;
   margin-top: 10.66667px;
   width: 134px;
   z-index: 2000;
@@ -1019,7 +1019,7 @@
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: 100%;
-  display: block; 
+  display: block;
   height: 100%;
   overflow: hidden;
   padding: 0 !important;
@@ -1040,7 +1040,7 @@
     float: left;
     font-size: .9em;
     font-weight: 700;
-    opacity: .5; 
+    opacity: .5;
     padding: 0;
     text-align: left;
     width: auto;
@@ -1054,7 +1054,7 @@
   .algolia-autocomplete .algolia-docsearch-suggestion .algolia-docsearch-suggestion--content {
     display: inline-block;
     float: left;
-    padding: 0; 
+    padding: 0;
     text-align: left;
     width: auto;
   }
