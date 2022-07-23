@@ -17,22 +17,16 @@ block docs-content
       code .scss
       |  source files.
     p
-      a.btn.btn-primary(href='https://github.com/picturepan2/spectre/', target='_blank') Sass Source Code
-    p
-      | If you are looking for Less version of Spectre.css, please switch to 
-      code Less
-      |  branch.
-    p
-      a.btn(href='https://github.com/picturepan2/spectre/tree/less', target='_blank') Less Branch
+      a.btn.btn-primary(href='https://github.com/angular-package/spectre.css', target='_blank') Sass Source Code
 
     +docs-subheading('compiling', 'Compiling CSS')
 
     p
-      | Spectre uses 
-      a(href='http://gulpjs.com/', target='_blank') Gulp
+      | Spectre uses
+      a(href='http://sass-lang.com/', target='_blank') sass
       |  for compiling CSS. Firstly you need to 
       a(href='https://www.npmjs.com/get-npm', target='_blank') install NPM
-      | , which is used to manage Gulp and other dependencies.
+      | , which is used to manage dependencies.
     p Then, you can build the CSS file from the command line:
     ol
       li Navigate to the root directory of Spectre.
@@ -42,23 +36,33 @@ block docs-content
         | . NPM will install all dev dependencies as listed in package.json.
       li
         | When completed, run 
-        code gulp build
-        |  task to compile Sass to CSS and minify files.
+        code npm run sass:prod
+        |  script to compile Sass to CSS and minify files.
       li
         | You can find compiled CSS files in 
         code /dist
         |  directory.
-    p All available Gulp tasks:
+    p All available scripts:
     ul
       li
-        code gulp build
-        |  - compile Sass to CSS and minify files (default)
+        code npm run sass:dev
+        |  - compile Sass to CSS without minify files
       li
-        code gulp docs
-        |  - compile Docs related files
+        code npm run sass:prod
+        |  - compile Sass to CSS and minify the files
       li
-        code gulp watch
-        |  - watch file changes and re-compile CSS files
+        code npm run build:docs
+        |  - compile Docs related files with pug
+      li
+        code npm run build
+        |  - runs scripts in order
+        code npm run sass:prod
+        | , 
+        code npm run sass:dev
+        | , 
+        code ng build spectre.css
+        | , 
+        code npm run build:docs 
 
     +docs-subheading('importing', 'Importing Sass')
     p
@@ -86,7 +90,7 @@ block docs-content
           $dark-color: #3e396b;
 
           // Import full Spectre source code
-          @import "node_modules/spectre.css/src/spectre";
+          @use 'node_modules/@angular-package/spectre.css/src/spectre' as *;
 
     p
       | Alternatively, you can create custom 
@@ -100,11 +104,11 @@ block docs-content
       code
         :highlight(lang="scss")
           // Example of project-name.scss
-          @import "variables";
+          @use 'variables' as *;
 
           // Import only the needed components
-          @import "node_modules/spectre.css/src/buttons";
-          @import "node_modules/spectre.css/src/forms";
+          @use 'node_modules/@angular-package/spectre.css/src/buttons';
+          @use 'node_modules/@angular-package/spectre.css/src/forms';
 
     +docs-subheading('folders', 'Folder structure')
 
@@ -150,80 +154,188 @@ block docs-content
           │   ├── _variables.scss
           │   └── ...
           │
-          ├── gulpfile.js
+          ├── gulpfile.js (no gulp)
           ├── package.json
           └── ...
 
     +docs-subheading('variables', 'Variables')
-
     p
-      | Spectre.css is designed with consistent design language. You can use your own variables to create your new or match existing design. All variables in 
+      | Spectre.css is designed with consistent design language. You can use your variables to create your new or match an existing design. All variables in
       code _variables.scss
       |  include 
       code !default
       |  flag. You can redefine the variables to override the values.
+    p
+      | By default, Spectre.css have some colors with defined hex and colors that depend on them, which means, for example, if the 
+      code primary-color
+      |  is overridden, then dependent 
+      code primary-dark
+      |  and 
+      code primary-light
+      |  automatically change.
 
     +docs-subheading('variables-colors', 'Variables - Colors')
 
     .columns
-      .column.col-2.col-md-6
-        .docs-color(style='background:#5755d9;color:#fff;')
+      .column.col-3.col-md-6
+        .docs-color.bg-primary
           .color-title #5755d9
           .color-subtitle Primary
-      .column.col-2.col-md-6
-        .docs-color(style='background:#f1f1fc;color:#5755d9;')
+      .column.col-3.col-md-6
+        .docs-color.bg-primary-dark
+          .color-title #4b48d6
+          .color-subtitle Primary dark
+      .column.col-3.col-md-6
+        .docs-color.bg-primary-light
+          .color-title #6362dc
+          .color-subtitle Primary light
+    .columns
+      .column.col-3.col-md-6
+        .docs-color.bg-secondary
           .color-title #f1f1fc
           .color-subtitle Secondary
+      .column.col-3.col-md-6
+        .docs-color.bg-secondary-dark
+          .color-title #e5e5f9
+          .color-subtitle Secondary dark
+      .column.col-3.col-md-6
+        .docs-color.bg-secondary-light
+          .color-title #fefeff
+          .color-subtitle Secondary light
     .columns
-      .column.col-2.col-md-6
-        .docs-color(style='background:#32b643;color:#fff;')
-          .color-title #32b643
-          .color-subtitle Success
-      .column.col-2.col-md-6
-        .docs-color(style='background:#ffb700;color:#fff;')
-          .color-title #ffb700
-          .color-subtitle Warning
-      .column.col-2.col-md-6
-        .docs-color(style='background:#e85600;color:#fff;')
+      .column.col-3.col-md-6
+        .docs-color.bg-disabled
+          .color-title #eef0f3
+          .color-subtitle Disabled
+      .column.col-3.col-md-6
+        .docs-color.bg-error
           .color-title #e85600
           .color-subtitle Error
+      .column.col-3.col-md-6
+        .docs-color.bg-info
+          .color-title #d9edf7
+          .color-subtitle Info
+      .column.col-3.col-md-6
+        .docs-color.bg-success
+          .color-title #32b643
+          .color-subtitle Success
+      .column.col-3.col-md-6
+        .docs-color.bg-warning
+          .color-title #ffb700
+          .color-subtitle Warning
     .columns
-      .column.col-2.col-md-6
-        .docs-color(style='background:#303742;color:#fff;')
+      .column.col-3.col-md-6
+        .docs-color.bg-body
+          .color-title #ffffff
+          .color-subtitle Body background
+      .column.col-3.col-md-6
+        .docs-color.bg-body-font
+          .color-title #3b4351
+          .color-subtitle Body font
+    .columns
+      .column.col-3.col-md-6
+        .docs-color.bg-dark
           .color-title #303742
           .color-subtitle Dark
-      .column.col-2.col-md-6
-        .docs-color(style='background:#66758c;color:#fff;')
-          .color-title #66758c
-          .color-subtitle Gray dark
-      .column.col-2.col-md-6
-        .docs-color(style='background:#bcc3ce;color:#fff;')
+      .column.col-3.col-md-6
+        .docs-color.bg-light
+          .color-title #ffffff
+          .color-subtitle Light
+    .columns
+      .column.col-3.col-md-6
+        .docs-color.bg-gray
           .color-title #bcc3ce
           .color-subtitle Gray
-      .column.col-2.col-md-6
-        .docs-color(style='background:#f7f8f9;color:#66758c;')
+      .column.col-3.col-md-6
+        .docs-color.bg-gray-dark
+          .color-title #66758c
+          .color-subtitle Gray dark
+      .column.col-3.col-md-6
+        .docs-color.bg-gray-light
           .color-title #f7f8f9
           .color-subtitle Gray light
-      .column.col-2.col-md-6
-        .docs-color(style='background:#fff;color:#bcc3ce;')
-          .color-title #fff
-          .color-subtitle Light
+    .columns
+      .column.col-3.col-md-6
+        .docs-color.bg-bg
+          .color-title #f7f8f9
+          .color-subtitle Bg
+      .column.col-3.col-md-6
+        .docs-color.bg-bg-dark
+          .color-title #eef0f3
+          .color-subtitle Bg dark
+      .column.col-3.col-md-6
+        .docs-color.bg-bg-light
+          .color-title #ffffff
+          .color-subtitle Bg light
+    .columns
+      .column.col-3.col-md-6
+        .docs-color.bg-border
+          .color-title #dadee4
+          .color-subtitle Border
+      .column.col-3.col-md-6
+        .docs-color.bg-border-dark
+          .color-title #bcc3ce
+          .color-subtitle Border dark
+      .column.col-3.col-md-6
+        .docs-color.bg-border-light
+          .color-title #f1f3f5
+          .color-subtitle Border light
+    .columns
+      .column.col-3.col-md-6
+        .docs-color.bg-link
+          .color-title #5755d9
+          .color-subtitle Link
+      .column.col-3.col-md-6
+        .docs-color.bg-link-dark
+          .color-title #302ecd
+          .color-subtitle Link dark
+      .column.col-3.col-md-6
+        .docs-color.bg-link-light
+          .color-title #807fe2
+          .color-subtitle Link light
+    .columns
+      .column.col-3.col-md-6
+        .docs-color.bg-code
+          .color-title #d73e48
+          .color-subtitle Code
+      .column.col-3.col-md-6
+        .docs-color.bg-highlight.text-warning
+          .color-title #ffe9b3
+          .color-subtitle Highlight
+    p
+      | Click on the link to see color dependency change.
+    p
+      a.btn.btn-primary(href='https://angular-package.dev/ui-kit/component/theme', target='_blank') Theme demonstration
+
 
     +docs-subheading('variables-buttons', 'Variables - Button mixins')
 
+    div.toast.toast-info 
+      | Instead of passing the SASS variable <code>$primary-color</code> there is a need to provide CSS variable color name <code>'primary-color'</code> cause <code>button-variant()</code> and <code>button-outline-variant()</code> mixins are modified to use <code>color()</code> function.
+    p
     p
       | There are 2 button variant mixins in 
-      code _mixins.scss
+      code src/mixins/_button.scss
       |  to generate different color variants.
     ul
       li
+        strike
+          | @mixin button-variant(
+          code $color
+          | : $primary-color);
+      li
         | @mixin button-variant(
         code $color
-        | : $primary-color);
+        | : 'primary-color');
+      li
+        strike
+          | @mixin button-outline-variant(
+          code $color
+          | : $primary-color);
       li
         | @mixin button-outline-variant(
         code $color
-        | : $primary-color);
+        | : 'primary-color');
 
     //- button mixins
     pre.code(data-lang='Sass')
@@ -231,12 +343,12 @@ block docs-content
         :highlight(lang="scss")
           <!-- filled button with the success color -->
           .btn-success {
-            @include button-variant($success-color);
+            @include button-variant('success-color');
           }
 
           <!-- outlined button with the success color -->
           .btn-outline-success {
-            @include button-outline-variant($success-color);
+            @include button-outline-variant('success-color');
           }
 
     +docs-subheading('variables-sizes', 'Variables - Sizes')
@@ -254,7 +366,18 @@ block docs-content
       code 4px
       |  as the unit size. Sizes of components are based on the unit size.
 
+    +docs-subheading('variables-var-prefix', 'Variables - Var prefix')
+    p
+      | Spectre.css compiles automatically primary classes with 
+      code $var-prefix
+      |  for example
+      code .btn, .s-btn {}
+    p
+
     +docs-subheading('variables-custom-prefix', 'Variables - Custom prefix')
+    div.toast.toast-error 
+      | There is no gulp here so the feature is not working.
+    p
     p
       | There is also a way to add custom prefix to all CSS classes. You can use 
       a(href='https://www.npmjs.com/package/gulp-css-prefix', target='_blank') gulp-css-prefix
@@ -265,7 +388,6 @@ block docs-content
       code
         :highlight(lang="Bash")
           npm install gulp-css-prefix
-
     p
       | To add 
       code spectre-
