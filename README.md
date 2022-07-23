@@ -36,7 +36,8 @@ Modified Spectre.css - a lightweight, responsive, and modern CSS framework origi
 
 Spectre is a side project based on years of CSS development work on a large web service project. Spectre only includes modern base styles, responsive layout system, CSS components and utilities, and it can be modified for your project with Sass/Scss compiler.  
 
-Spectre.css is completely free to use. If you enjoy it, please consider [donating via Paypal](https://www.paypal.me/picturepan2) or [via Patreon](https://www.patreon.com/spectrecss) for the further development. ♥  
+Spectre.css is completely free to use. If you enjoy it, please consider [donating via Paypal](https://www.paypal.me/picturepan2) or [via Patreon](https://www.patreon.com/spectrecss) for the [Yan Zhu](https://twitter.com/picturepan2),
+and consider donating via [`fiat`](https://spectrecss.angular-package.dev/donate/usd-fiat) or [`cryptocurrency`](https://spectrecss.angular-package.dev/donate/thb-cryptocurrency) the [`@angular-package`](https://github.com/sponsors/angular-package) for further development. ♥  
 
 > Feel free to submit a pull request. Help is always appreciated.
 
@@ -791,57 +792,63 @@ Let's look at how CSS background class colors finally are defined.
 ```scss
 // src/utilities/_colors.scss
 // Background colors
-// Core colors.
-// Accent
-@include bg-color-variant('.bg-accent', 'accent-color', $accent-color);
+// - Shades.
+@include bg-color-variant('dark', 'dark-color', $dark-color);
+@include bg-color-variant('light', 'light-color', $light-color);
 
-// Primary.
-@include bg-color-variant('.bg-primary', 'primary-color', $primary-color);
-@include bg-color-variant('.bg-primary-dark', 'primary-color-dark', $primary-color-dark);
-@include bg-color-variant('.bg-primary-light', 'primary-color-light', $primary-color-light);
+// - Core colors.
+// -- Accent
+@include bg-color-variant('accent', 'accent-color', $accent-color);
 
-// Secondary.
-@include bg-color-variant('.bg-secondary', 'secondary-color', $secondary-color);
-@include bg-color-variant('.bg-secondary-dark', 'secondary-color-dark', $secondary-color-dark);
-@include bg-color-variant('.bg-secondary-light', 'secondary-color-light', $secondary-color-light);
+// -- Primary.
+@include bg-color-variant('primary', 'primary-color', $primary-color);
+@include bg-color-variant('primary-dark', 'primary-color-dark', $primary-color-dark);
+@include bg-color-variant('primary-light', 'primary-color-light', $primary-color-light);
 
-// Shades.
-@include bg-color-variant('.bg-dark', 'dark-color', $dark-color);
-@include bg-color-variant('.bg-light', 'light-color', $light-color);
+// -- Secondary.
+@include bg-color-variant('secondary', 'secondary-color', $secondary-color);
+@include bg-color-variant('secondary-dark', 'secondary-color-dark', $secondary-color-dark);
+@include bg-color-variant('secondary-light', 'secondary-color-light', $secondary-color-light);
 
-// Gray colors.
-@include bg-color-variant('.bg-gray', 'gray-color', $gray-color);
-@include bg-color-variant('.bg-gray-dark', 'gray-color-dark', $gray-color-dark);
-@include bg-color-variant('.bg-gray-light', 'gray-color-light', $gray-color-light);
+// - Gray colors.
+@include bg-color-variant('gray', 'gray-color', $gray-color);
+@include bg-color-variant('gray-dark', 'gray-color-dark', $gray-color-dark);
+@include bg-color-variant('gray-light', 'gray-color-light', $gray-color-light);
 
-// Link colors.
-@include bg-color-variant('.bg-link', 'link-color', $link-color);
-@include bg-color-variant('.bg-link-dark', 'link-color-dark', $link-color-dark);
-@include bg-color-variant('.bg-link-light', 'link-color-light', $link-color-light);
+// - Bg colors
+@include bg-color-variant('bg', 'bg-color', $bg-color);
+@include bg-color-variant('bg-dark', 'bg-color-dark', $bg-color-dark);
+@include bg-color-variant('bg-light', 'bg-color-light', $bg-color-light);
 
-// Body colors.
-@include bg-color-variant('.bg-body', 'body-bg-color', $body-bg-color);
+@include bg-color-variant('color', 'bg-color', $bg-color); // @deprecated
+@include bg-color-variant('color-dark', 'bg-color-dark', $bg-color-dark); // @deprecated
+@include bg-color-variant('color-light', 'bg-color-light', $bg-color-light); // @deprecated
 
-// Bg colors
-@include bg-color-variant('.bg', 'bg-color', $bg-color);
-@include bg-color-variant('.bg-bg', 'bg-color', $bg-color);
-@include bg-color-variant('.bg-bg-dark', 'bg-color-dark', $bg-color-dark);
-@include bg-color-variant('.bg-bg-light', 'bg-color-light', $bg-color-light);
+// - Border colors.
+@include bg-color-variant('border', 'border-color', $border-color);
+@include bg-color-variant('border-dark', 'border-color-dark', $border-color-dark);
+@include bg-color-variant('border-light', 'border-color-light', $border-color-light);
 
-@include bg-color-variant('.bg-color', 'bg-color', $bg-color); // @deprecated
-@include bg-color-variant('.bg-color-dark', 'bg-color-dark', $bg-color-dark); // @deprecated
-@include bg-color-variant('.bg-color-light', 'bg-color-light', $bg-color-light); // @deprecated
+// - Control colors.
+@include bg-color-variant('disabled', 'disabled-color', $disabled-color);
+@include bg-color-variant('error', 'error-color', $error-color);
+@include bg-color-variant('info', 'info-color', $info-color);
+@include bg-color-variant('success', 'success-color', $success-color);
+@include bg-color-variant('warning', 'warning-color', $warning-color);
 
-// Control colors.
-@include bg-color-variant('.bg-disabled', 'disabled-color', $disabled-color);
-@include bg-color-variant('.bg-error', 'error-color', $error-color);
-@include bg-color-variant('.bg-info', 'info-color', $info-color);
-@include bg-color-variant('.bg-success', 'success-color', $success-color);
-@include bg-color-variant('.bg-warning', 'warning-color', $warning-color);
+// - Link colors.
+@include bg-color-variant('link', 'link-color', $link-color);
+@include bg-color-variant('link-dark', 'link-color-dark', $link-color-dark);
+@include bg-color-variant('link-light', 'link-color-light', $link-color-light);
 
-// Other colors.
-@include bg-color-variant('.bg-code', 'code-color');
-@include bg-color-variant('.bg-highlight', 'highlight-color');
+// - Other colors.
+@include bg-color-variant('code', 'code-color');
+@include bg-color-variant('highlight', 'highlight-color');
+
+// - Body colors.
+@include bg-color-variant('body', 'body-bg-color', $body-bg-color); // @deprecated
+@include bg-color-variant('body-bg', 'body-bg-color', $body-bg-color);
+@include bg-color-variant('body-font', 'body-font-color', $body-font-color);
 ```
 
 [Demonstration](https://angular-package.dev/ui-kit/utility/color) | [Documentation](https://angular-package.github.io/spectre.css/utilities/colors.html)
@@ -856,50 +863,50 @@ Label color variants are included by using the [`label-class-variant()`](#label-
   // Label color variants.
   // - Core colors.
   // -- Accent.
-  @include label-class-variant($name: 'accent', $color: 'light-color', $bg-color: 'accent-color');
+  @include label-class-variant('accent', 'light-color', 'accent-color');
 
   // -- Primary.
-  @include label-class-variant($name: 'primary', $color: 'light-color', $bg-color: 'primary-color');
-  @include label-class-variant($name: 'primary-dark', $color: 'light-color', $bg-color: 'primary-color-dark'); // ! New label color variant.
-  @include label-class-variant($name: 'primary-light', $color: 'light-color', $bg-color: 'primary-color-light'); // ! New label color variant.
+  @include label-class-variant('primary', 'light-color', 'primary-color');
+  @include label-class-variant('primary-dark', 'light-color', 'primary-color-dark'); // ! New label color variant.
+  @include label-class-variant('primary-light', 'light-color', 'primary-color-light'); // ! New label color variant.
 
   // -- Secondary.
-  @include label-class-variant($name: 'secondary', $color: 'primary-color', $bg-color: 'secondary-color');
-  @include label-class-variant($name: 'secondary-dark', $color: 'primary-color', $bg-color: 'secondary-color-dark'); // ! New label color variant.
-  @include label-class-variant($name: 'secondary-light', $color: 'primary-color', $bg-color: 'secondary-color-light'); // ! New label color variant.
+  @include label-class-variant('secondary', 'primary-color', 'secondary-color');
+  @include label-class-variant('secondary-dark', 'primary-color', 'secondary-color-dark'); // ! New label color variant.
+  @include label-class-variant('secondary-light', 'primary-color', 'secondary-color-light'); // ! New label color variant.
 
   // - Shades.
-  @include label-class-variant($name: 'dark', $color: 'light-color', $bg-color: 'dark-color');
-  @include label-class-variant($name: 'light', $color: 'body-font-color', $bg-color: 'light-color');
+  @include label-class-variant('dark', 'light-color', 'dark-color');
+  @include label-class-variant('light', 'body-font-color', 'light-color');
 
   // - Gray colors.
-  @include label-class-variant($name: 'gray', $color: 'gray-color-dark', $bg-color: 'gray-color'); // ! New label color variant.
-  @include label-class-variant($name: 'gray-dark', $color: 'gray-color-light', $bg-color: 'gray-color-dark'); // ! New label color variant.
-  @include label-class-variant($name: 'gray-light', $color: 'gray-color-dark', $bg-color: 'gray-color-light'); // ! New label color variant.
+  @include label-class-variant('gray', 'gray-color-dark', 'gray-color'); // ! New label color variant.
+  @include label-class-variant('gray-dark', 'gray-color-light', 'gray-color-dark'); // ! New label color variant.
+  @include label-class-variant('gray-light', 'gray-color-dark', 'gray-color-light'); // ! New label color variant.
 
   // - Link colors.
-  @include label-class-variant($name: 'link', $color: 'link-color-light', $bg-color: 'link-color'); // ! New label color variant.
-  @include label-class-variant($name: 'link-dark', $color: 'link-color-light', $bg-color: 'link-color-dark'); // ! New label color variant.
-  @include label-class-variant($name: 'link-light', $color: 'link-color-dark', $bg-color: 'link-color-light'); // ! New label color variant.
+  @include label-class-variant('link', 'link-color-light', 'link-color'); // ! New label color variant.
+  @include label-class-variant('link-dark', 'link-color-light', 'link-color-dark'); // ! New label color variant.
+  @include label-class-variant('link-light', 'link-color-dark', 'link-color-light'); // ! New label color variant.
 
   // - Body colors.
-  @include label-class-variant($name: 'body-bg', $color: 'body-font-color', $bg-color: 'body-bg-color'); // ! New label color variant.
+  @include label-class-variant('body-bg', 'body-font-color', 'body-bg-color'); // ! New label color variant.
 
   // - Bg colors.
-  @include label-class-variant($name: 'bg', $color: 'body-font-color', $bg-color: 'bg-color'); // ! New label color variant.
-  @include label-class-variant($name: 'bg-dark', $color: 'body-font-color', $bg-color: 'bg-color-dark'); // ! New label color variant.
-  @include label-class-variant($name: 'bg-light', $color: 'body-font-color', $bg-color: 'bg-color-light'); // ! New label color variant.
+  @include label-class-variant('bg', 'body-font-color', 'bg-color'); // ! New label color variant.
+  @include label-class-variant('bg-dark', 'body-font-color', 'bg-color-dark'); // ! New label color variant.
+  @include label-class-variant('bg-light', 'body-font-color', 'bg-color-light'); // ! New label color variant.
 
   // - Control colors.
-  @include label-class-variant($name: 'disabled', $color: ('disabled-color', -10%), $bg-color: 'disabled-color');
-  @include label-class-variant($name: 'error', $color: 'light-color', $bg-color: 'error-color');
-  @include label-class-variant($name: 'info', $color: ('info-color', -60%), $bg-color: 'info-color');
-  @include label-class-variant($name: 'success', $color: 'light-color', $bg-color: 'success-color');
-  @include label-class-variant($name: 'warning', $color: 'light-color', $bg-color: 'warning-color');
+  @include label-class-variant('disabled', ('disabled-color', -10%), 'disabled-color');
+  @include label-class-variant('error', 'light-color', 'error-color');
+  @include label-class-variant('info', ('info-color', -60%), 'info-color');
+  @include label-class-variant('success', 'light-color', 'success-color');
+  @include label-class-variant('warning', 'light-color', 'warning-color');
 
   // - Other colors.
-  @include label-class-variant($name: 'code', $color: 'light-color', $bg-color: 'code-color'); // ! New label color variant.
-  @include label-class-variant($name: 'highlight', $color: ('highlight-color', -50%), $bg-color: 'highlight-color'); // ! New label color variant.
+  @include label-class-variant('code', 'light-color', 'code-color'); // ! New label color variant.
+  @include label-class-variant('highlight', ('highlight-color', -50%), 'highlight-color'); // ! New label color variant.
 }
 ```
 
@@ -911,58 +918,48 @@ Text color variants are included by using `text-color-variant()` mixin in the `_
 
 ```scss
 // src/utilities/_colors.scss
-// Accent.
-@include text-color-variant('.text-accent', 'accent-color'); // ! New text color variant.
+// Text colors
+// - Shades.
+@include text-color-variant('dark', 'dark-color');
+@include text-color-variant('light', 'light-color');
 
-// Primary
-@include text-color-variant('.text-primary', 'primary-color');
-@include text-color-variant('.text-primary-dark', 'primary-color-dark');
-@include text-color-variant('.text-primary-light', 'primary-color-light');
+// - Core colors.
+// -- Accent.
+@include text-color-variant('accent', 'accent-color'); // ! New text color variant.
 
-// Secondary
-@include text-color-variant('.text-secondary', 'secondary-color-dark');
-@include text-color-variant('.text-secondary-dark', 'secondary-color-dark');
-@include text-color-variant('.text-secondary-light', 'secondary-color-light');
+// -- Primary
+@include text-color-variant('primary', 'primary-color');
+@include text-color-variant('primary-dark', 'primary-color-dark');
+@include text-color-variant('primary-light', 'primary-color-light');
 
-/*
-  Shades.
-*/
-@include text-color-variant('.text-dark', 'dark-color');
-@include text-color-variant('.text-light', 'light-color');
+// -- Secondary
+@include text-color-variant('secondary', 'secondary-color-dark');
+@include text-color-variant('secondary-dark', 'secondary-color-dark');
+@include text-color-variant('secondary-light', 'secondary-color-light');
 
-/*
-  Gray colors.
-*/
-@include text-color-variant('.text-gray', 'gray-color');
-@include text-color-variant('.text-gray-dark', 'gray-color-dark');
-@include text-color-variant('.text-gray-light', 'gray-color-light');
+// - Gray colors.
+@include text-color-variant('gray', 'gray-color');
+@include text-color-variant('gray-dark', 'gray-color-dark');
+@include text-color-variant('gray-light', 'gray-color-light');
 
-/*
-  Link colors.
-*/
-@include text-color-variant('.text-link', 'link-color');
-@include text-color-variant('.text-link-dark', 'link-color-dark');
-@include text-color-variant('.text-link-light', 'link-color-light');
+// - Control colors.
+@include text-color-variant('disabled', 'disabled-color');
+@include text-color-variant('error', 'error-color');
+@include text-color-variant('info', 'info-color');
+@include text-color-variant('success', 'success-color');
+@include text-color-variant('warning', 'warning-color');
 
-/*
-  Body colors.
-*/
-@include text-color-variant('.text-body-font', 'body-font-color');
+// - Link colors.
+@include text-color-variant('link', 'link-color');
+@include text-color-variant('link-dark', 'link-color-dark');
+@include text-color-variant('link-light', 'link-color-light');
 
-/*
-  Control colors.
-*/
-@include text-color-variant('.text-disabled', 'disabled-color');
-@include text-color-variant('.text-error', 'error-color');
-@include text-color-variant('.text-info', 'info-color');
-@include text-color-variant('.text-success', 'success-color');
-@include text-color-variant('.text-warning', 'warning-color');
+// - Other colors.
+@include text-color-variant('code', 'code-color');
+@include text-color-variant('highlight', 'highlight-color');
 
-/*
-  Other colors.
-*/
-@include text-color-variant('.text-code', 'code-color');
-@include text-color-variant('.text-highlight', 'highlight-color');
+// - Body colors.
+@include text-color-variant('body-font', 'body-font-color');
 ```
 
 [Demonstration](https://angular-package.dev/ui-kit/utility/color) | [Documentation](https://angular-package.github.io/spectre.css/utilities/colors.html)
@@ -976,46 +973,45 @@ Toast color variants are included by using [`toast-class-variant()`](#toast-clas
 .toast {
   // Toast color variants.
   // - Core colors.
-  @include toast-class-variant($name: 'accent', $color: 'accent-color');
-  @include toast-class-variant($name: 'light', $color: 'light-color');
+  @include toast-class-variant('accent', 'accent-color');
+  @include toast-class-variant('light', 'light-color');
 
   // - Primary colors.
-  @include toast-class-variant($name: 'primary', $color: 'primary-color');
-  @include toast-class-variant($name: 'primary-dark', $color: 'primary-color-dark'); // ! New toast variant.
-  @include toast-class-variant($name: 'primary-light', $color: 'primary-color-light'); // ! New toast variant.
+  @include toast-class-variant('primary', 'primary-color');
+  @include toast-class-variant('primary-dark', 'primary-color-dark'); // ! New toast variant.
+  @include toast-class-variant('primary-light', 'primary-color-light'); // ! New toast variant.
 
   // - Secondary colors.
-  @include toast-class-variant($name: 'secondary', $color: 'secondary-color');
-  @include toast-class-variant($name: 'secondary-dark', $color: 'secondary-color-dark'); // ! New toast variant.
-  @include toast-class-variant($name: 'secondary-light', $color: 'secondary-color-light'); // ! New toast variant.
+  @include toast-class-variant('secondary', 'secondary-color');
+  @include toast-class-variant('secondary-dark', 'secondary-color-dark'); // ! New toast variant.
+  @include toast-class-variant('secondary-light', 'secondary-color-light'); // ! New toast variant.
 
   // - Body & bg colors.
-  @include toast-class-variant($name: 'body-bg', $color: 'body-bg-color'); // ! New toast variant.
-  @include toast-class-variant($name: 'bg', $color: 'bg-color'); // ! New toast variant.
-  @include toast-class-variant($name: 'bg-dark', $color: 'bg-color-dark'); // ! New toast variant.
-  @include toast-class-variant($name: 'bg-light', $color: 'bg-color-light'); // ! New toast variant.
+  @include toast-class-variant('body-bg', 'body-bg-color'); // ! New toast variant.
+  @include toast-class-variant('bg', 'bg-color'); // ! New toast variant.
+  @include toast-class-variant('bg-dark', 'bg-color-dark'); // ! New toast variant.
+  @include toast-class-variant('bg-light', 'bg-color-light'); // ! New toast variant.
 
   // - Link colors.
-  @include toast-class-variant($name: 'link', $color: 'link-color'); // ! New toast variant.
-  @include toast-class-variant($name: 'link-dark', $color: 'link-color-dark'); // ! New toast variant.
-  @include toast-class-variant($name: 'link-light', $color: 'link-color-light'); // ! New toast variant.
+  @include toast-class-variant('link', 'link-color'); // ! New toast variant.
+  @include toast-class-variant('link-dark', 'link-color-dark'); // ! New toast variant.
+  @include toast-class-variant('link-light', 'link-color-light'); // ! New toast variant.
 
   // - Gray colors.
-  @include toast-class-variant($name: 'gray', $color: 'gray-color'); // ! New toast variant.
-  @include toast-class-variant($name: 'gray-dark', $color: 'gray-color-dark'); // ! New toast variant.
-  @include toast-class-variant($name: 'gray-light', $color: 'gray-color-light'); // ! New toast variant.
+  @include toast-class-variant('gray', 'gray-color'); // ! New toast variant.
+  @include toast-class-variant('gray-dark', 'gray-color-dark'); // ! New toast variant.
+  @include toast-class-variant('gray-light', 'gray-color-light'); // ! New toast variant.
 
   // - Control colors.
-  @include toast-class-variant($name: 'disabled', $color: 'disabled-color');
-  @include toast-class-variant($name: 'error', $color: 'error-color');
-  @include toast-class-variant($name: 'info', $color: 'info-color');
-  @include toast-class-variant($name: 'success', $color: 'success-color');
-  @include toast-class-variant($name: 'warning', $color: 'warning-color');
+  @include toast-class-variant('disabled', 'disabled-color');
+  @include toast-class-variant('error', 'error-color');
+  @include toast-class-variant('info', 'info-color');
+  @include toast-class-variant('success', 'success-color');
+  @include toast-class-variant('warning', 'warning-color');
 
   // - Other colors.
-  @include toast-class-variant($name: 'code', $color: 'code-color'); // ! New toast variant.
-  @include toast-class-variant($name: 'highlight', $color: 'highlight-color'); // ! New toast variant.
-
+  @include toast-class-variant('code', 'code-color'); // ! New toast variant.
+  @include toast-class-variant('highlight', 'highlight-color'); // ! New toast variant.
 }
 ```
 
@@ -1030,11 +1026,12 @@ Toast color variants are included by using [`toast-class-variant()`](#toast-clas
 @use '../variables' as *;
 
 @mixin bg-color-variant(
-  $name: '.bg-primary',
+  $name: 'primary',
   $color: 'primary-color',
-  $hex-color: $primary-color
+  $hex-color: $primary-color,
+  $prefix: $var-prefix
 ) {
-  #{$name} {
+  .bg-#{$name}, .#{$prefix}-bg-#{$name} {
     background: color($color) !important;
 
     @if (lightness($hex-color) < 60) {
@@ -1044,7 +1041,7 @@ Toast color variants are included by using [`toast-class-variant()`](#toast-clas
 }
 ```
 
-[![documentation]](https://spectrecss.angular-package.dev/mixin/bg-color-variant)
+[Documentation](https://spectrecss.angular-package.dev/mixin/bg-color-variant)
 
 ### `box-shadow-side()`
 
@@ -1073,11 +1070,11 @@ The mixin includes the `box-shadow` of the specified side, size, and color. The 
 }
 ```
 
-[![documentation]](https://spectrecss.angular-package.dev/mixin/box-shadow-side)
+[Documentation](https://spectrecss.angular-package.dev/mixin/box-shadow-side)
 
 ### `color()`
 
-The function `color()` returns the [hsla](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsla) color from the four CSS variables of the given `$name`.
+The function `color()` returns the [hsla](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsla) color from the **four** CSS variables of the given `$name`.
 The `$name` parameter can be passed as two-index list, where the second item is the `$lightness`, or can be passed as three-index list, where the third item is the `$alpha`.
 
 ```scss
@@ -1110,7 +1107,7 @@ The `$name` parameter can be passed as two-index list, where the second item is 
 }
 ```
 
-[![documentation]](https://spectrecss.angular-package.dev/function/color)
+[Documentation](https://spectrecss.angular-package.dev/function/color)
 
 ### `define-color()`
 
@@ -1131,7 +1128,7 @@ The `$name` parameter can be passed as two-index list, where the second item is 
 }
 ```
 
-[![documentation]](https://spectrecss.angular-package.dev/mixin/define-color)
+[Documentation](https://spectrecss.angular-package.dev/mixin/define-color)
 
 ### `define-color-based-on()`
 
@@ -1150,6 +1147,8 @@ Defines a color based on the specified CSS variable name and its lightness.
   @include set-var($name, get-var($color, $suffix: 'a'), $prefix, 'a');
 }
 ```
+
+[Documentation](https://spectrecss.angular-package.dev/mixin/define-color-based-on)
 
 ### `get-var()`
 
@@ -1178,7 +1177,7 @@ The function returns the CSS [var function](https://developer.mozilla.org/en-US/
 }
 ```
 
-[![documentation]](https://spectrecss.angular-package.dev/function/get-var)
+[Documentation](https://spectrecss.angular-package.dev/function/get-var)
 
 ### `label-variant()`
 
@@ -1218,11 +1217,11 @@ For example `$color: ('primary', -10%)` when font color `primary` should be dark
 }
 ```
 
-[![documentation]](https://spectrecss.angular-package.dev/mixin/label-variant)
+[Documentation](https://spectrecss.angular-package.dev/mixin/label-variant)
 
 ### `label-class-variant()`
 
-The mixin contains an extending class of the name prefixed with `label-` with the given color `$name` that includes a label variant of the given CSS variable names `$color` and `$bg-color`.
+The mixin contains an extending class of the name prefixed with `label-` and the given color `$name` that includes a label variant of the given CSS variable names `$color` and `$bg-color`.
 Both `$color` and `$bg-color` parameters can be passed as two-index list where the second item in the list refers to the lightness.
 For example `$color: ('primary', -10%)` when font color `primary` should be darker by `10%`, and `$bg-color: ('primary-dark', +10%)` when label background color is `primary-dark` lighter by `10%`.
 
@@ -1245,7 +1244,7 @@ For example `$color: ('primary', -10%)` when font color `primary` should be dark
 }
 ```
 
-[![documentation]](https://spectrecss.angular-package.dev/mixin/label-class-variant)
+[Documentation](https://spectrecss.angular-package.dev/mixin/label-class-variant)
 
 ### `set-var()`
 
@@ -1265,7 +1264,7 @@ The mixin `set-var()` defines the CSS variable with a specified name, value, pre
 }
 ```
 
-[![documentation]](https://spectrecss.angular-package.dev/mixin/set-var)
+[Documentation](https://spectrecss.angular-package.dev/mixin/set-var)
 
 ### `var-negative()`
 
@@ -1280,7 +1279,7 @@ The function `var-negative()` returns CSS [calc function](https://developer.mozi
 }
 ```
 
-[![documentation]](https://spectrecss.angular-package.dev/mixin/var-negative)
+[Documentation](https://spectrecss.angular-package.dev/mixin/var-negative)
 
 ### `toast-variant()`
 
@@ -1307,7 +1306,7 @@ For example `$color: ('primary', -10%)` when font color `primary` should be dark
 }
 ```
 
-[![documentation]](https://spectrecss.angular-package.dev/mixin/toast-variant)
+[Documentation](https://spectrecss.angular-package.dev/mixin/toast-variant)
 
 ### `toast-class-variant()`
 
@@ -1332,16 +1331,18 @@ For example `$color: ('primary', -10%)` when font color `primary` should be dark
 }
 ```
 
-[![documentation]](https://spectrecss.angular-package.dev/mixin/toast-class-variant)
+[Documentation](https://spectrecss.angular-package.dev/mixin/toast-class-variant)
 
 ## Helper class
 
-There is a temporary class to help handle CSS variables `CssPropertyColor` and here is an example usage of it:
+> There is no longer a helper class inside the `@angular-package/spectre.css`, it moved to the `ui` package.
+
+There is a class to help handle CSS variables `CssPropertyColor` and here is an example usage of it:
 
 First, you need to initialize the color you want to handle.
 
 ```typescript
-import { CssPropertyColor } from '@angular-package/spectre.css';
+import { CssPropertyColor } from '@angular-package/ui';
 
 const primary = new CssPropertyColor(
   'primary', // Name of the color in the CSS variable --s-primary, `color` is added automatically.
@@ -1352,7 +1353,7 @@ const primary = new CssPropertyColor(
 Get the hex of the `primary` color:
 
 ```typescript
-import { CssPropertyColor } from '@angular-package/spectre.css';
+import { CssPropertyColor } from '@angular-package/ui';
 
 const primary = new CssPropertyColor(
   'primary', // Name of the color in the CSS variable --s-primary, `color` is added automatically.
@@ -1550,11 +1551,12 @@ MIT © Yan Zhu ([license](https://github.com/picturepan2/spectre/blob/master/LIC
 [skeleton]: https://github.com/angular-package/skeleton
 
 <!-- Update status -->
-[experimental]: https://img.shields.io/badge/-experimental-orange
-[fix]: https://img.shields.io/badge/-fix-red
-[new]: https://img.shields.io/badge/-new-green
-[update]: https://img.shields.io/badge/-update-red
+[experimental]: https://img.shields.io/badge/-Experimental-orange
+[fix]: https://img.shields.io/badge/-Fix-red
+[new]: https://img.shields.io/badge/-eNw-green
+[update]: https://img.shields.io/badge/-Update-red
 [documentation]: https://img.shields.io/badge/-Documentation-informational
+[demonstration]: https://img.shields.io/badge/-Demonstration-green
 
 <!-- Discord -->
 [discord-badge]: https://img.shields.io/discord/925168966098386944
