@@ -70,6 +70,8 @@
       }
     }
   }
+
+  // Disabled.
   &[disabled],
   &:disabled,
   &.disabled {
@@ -78,6 +80,7 @@
     pointer-events: none;
   }
 
+  // Button Colors
   // Button Primary
   &.btn-primary {
     // background: $primary-color; // old spectre.css
@@ -118,18 +121,19 @@
     }
   }
 
-  // Button Colors
+  // - Success
   &.btn-success {
     // @include button-variant($success-color); // old spectre.css
     @include button-variant('success-color');
   }
 
+  // - Error
   &.btn-error {
     // @include button-variant($error-color); // old spectre.css
     @include button-variant('error-color');
   }
 
-  // Button Link
+  // - Link
   &.btn-link {
     background: transparent;
     border-color: transparent;
