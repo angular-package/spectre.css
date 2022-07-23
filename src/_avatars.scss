@@ -1,9 +1,10 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
 @use 'mixins/avatar' as *;
+@use 'variables' as *;
 
 // Avatars
-.avatar {
+.avatar, .#{$var-prefix}-avatar {
   @include avatar-base();
   // background: $primary-color; // old spectre.css
   background: color('primary-color');
