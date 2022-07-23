@@ -12,14 +12,31 @@ block docs-content
 
     p Labels are formatted text tags for highlighted, informative information.
 
+
     .docs-demo.columns
       .column
         span.label.mr-1 default label
+        span.label.accent-label.mr-1 accent label
+    .docs-demo.columns
+      .column
+        h5 Primary
         span.label.label-primary.mr-1 primary label
+        span.label.label-primary-dark.mr-1 primary label dark
+        span.label.label-primary-light.mr-1 primary label light
+    .docs-demo.columns
+      .column
+        h5 Secondary
         span.label.label-secondary.mr-1 secondary label
+        span.label.label-secondary-dark.mr-1 secondary label dark
+        span.label.label-secondary-light.mr-1 secondary label light
+    .docs-demo.columns
+      .column
+        h5 Control
+        span.label.label-disabled.mr-1 disabled label
+        span.label.label-error.mr-1 error label
+        span.label.label-info.mr-1 info label
         span.label.label-success.mr-1 success label
         span.label.label-warning.mr-1 warning label
-        span.label.label-error error label
       
     p
       | Add the #[code label] class to #{'<span>'} or #{'<small>'} elements.
