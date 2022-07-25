@@ -12,42 +12,228 @@ block docs-content
 
     p Labels are formatted text tags for highlighted, informative information.
 
-
     .docs-demo.columns
       .column
         span.label.mr-1 default label
-        span.label.accent-label.mr-1 accent label
+
+    p Add the #[code label] class to <code>#{'<span>'}</code> or <code>#{'<small>'}</code> elements.
+
+    +docs-subheading('labels-colors', 'Available label colors')
+
+    p There are labels of all the Spectre.css colors, and to use them add the <code>label-</code> class with a color name, for example <code>label-primary-dark</code>
+
+
+    +docs-subheading('default-prefix', 'Default CSS variable\'s prefix')
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-center
+          thead
+            tr
+              th
+              th Available
+              th Dark 
+              th Light
+          tbody
+            tr
+              td.text-left
+                a#dark dark
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left light
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left accent
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left primary
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left secondary
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left gray
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left bg
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left border
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left disabled
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left error
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left info
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left success
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left link
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left code
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left highlight
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left body-bg
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left body-font
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+
+    +docs-subheading('labels-available-colors', 'Label colors')
+
+    .docs-demo.columns
+      .column
+        h5 Accent
+        span.label.label-accent.mr-1 accent label
+
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Accent color -->
+              <span class="label label-accent">accent label</span>
+
     .docs-demo.columns
       .column
         h5 Primary
+        p You can add another class #[code label-primary], #[code label-primary-dark], #[code label-primary-light] for labels colored with primary colors.
         span.label.label-primary.mr-1 primary label
         span.label.label-primary-dark.mr-1 primary label dark
         span.label.label-primary-light.mr-1 primary label light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Primary color labels -->
+              <span class="label label-primary">primary label</span>
+              <span class="label label-primary-dark">primary label dark</span>
+              <span class="label label-primary-light">primary label light</span>
+
     .docs-demo.columns
       .column
         h5 Secondary
+        p You can add another class #[code label-secondary], #[code label-secondary-dark], #[code label-secondary-light] for labels colored with secondary colors.
         span.label.label-secondary.mr-1 secondary label
         span.label.label-secondary-dark.mr-1 secondary label dark
         span.label.label-secondary-light.mr-1 secondary label light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Secondary color labels -->
+              <span class="label label-secondary">secondary label</span>
+              <span class="label label-secondary-dark">secondary label dark</span>
+              <span class="label label-secondary-light">secondary label light</span>
+
     .docs-demo.columns
       .column
         h5 Control
+        p You can add another class #[code label-disabled], #[code label-error], #[code label-info], #[code label-success] and #[code label-warning] for colored labels.
         span.label.label-disabled.mr-1 disabled label
         span.label.label-error.mr-1 error label
         span.label.label-info.mr-1 info label
         span.label.label-success.mr-1 success label
         span.label.label-warning.mr-1 warning label
-      
-    p
-      | Add the #[code label] class to #{'<span>'} or #{'<small>'} elements.
-      | You can add another class #[code label-primary], #[code label-secondary], #[code label-success], #[code label-warning] and #[code label-error] for colored labels.
-
-    pre.code(data-lang='HTML')
-      code
-        :highlight(lang="html")
-          <!-- normal labels -->
-          <span class="label">default label</span>
-          <span class="label label-primary">primary label</span>
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Control color labels -->
+              <span class="label label-disabled">disabled label</span>
+              <span class="label label-error">error label</span>
+              <span class="label label-info">info label</span>
+              <span class="label label-success">success label</span>
+              <span class="label label-warning">warning label</span>
 
     +docs-subheading('labels-rounded', 'Rounded labels')
     
@@ -64,6 +250,8 @@ block docs-content
         :highlight(lang="html")
           <!-- rounded labels -->
           <span class="label label-rounded label-primary">primary label</span>
+
+    +docs-previous-next('elements', {url: 'icons', name: 'Icons.css'}, {url: 'media', name: 'Media'})
 
     include ../_layout/_ad-c.pug
 

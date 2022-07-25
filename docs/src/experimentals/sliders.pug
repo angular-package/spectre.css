@@ -29,6 +29,8 @@ block docs-content
           <!-- Sliders with tooltips -->
           <input class="slider tooltip" type="range" min="0" max="100" value="50" oninput="this.setAttribute('value', this.value);">
 
+    +docs-previous-next('experimentals', {url: 'progress', name: 'Progress'}, {url: 'timelines', name: 'Timelines'})
+
     include ../_layout/_ad-c.pug
 
   include ../_layout/_footer.pug
