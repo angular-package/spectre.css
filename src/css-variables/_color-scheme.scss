@@ -1,7 +1,9 @@
+@use '../variables' as *;
+
 /*
   Color scheme in :root and :host.
 */
 :root, :host {
   // Scheme.
-  color-scheme: normal; // light, dark, light dark
+  color-scheme: $color-scheme; // normal, light, dark, light dark
 }

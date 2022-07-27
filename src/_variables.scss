@@ -1,11 +1,14 @@
 // Core variables
-$version: '1.0.0-alpha.4';
+$version: '1.0.0-beta';
 
 // Core features
 $rtl: false !default;
 
+// color-scheme
+$color-scheme: normal !default;
+
 // CSS variable.
-$var-prefix: 's'; // It's used to make css variable names unique. --#{var-prefix}-#{name}
+$var-prefix: 's' !default; // It's used to make css variable names unique. --#{var-prefix}-#{name}
 
 // Core colors.
 // Accent.
@@ -166,4 +169,11 @@ $parallax-scale: 0.95 !default; // --#{$var-prefix}-parallax-scale.
 $parallax-fade-color: #ffffff !default; // --#{$var-prefix}-fade-color-h/s/l/a.
 
 //Transition duration
-$transition-duration: 0.2s; // --#{$var-prefix}-transition-duration.
+$transition-duration: 0.2s !default; // --#{$var-prefix}-transition-duration.
+
+// Hero sizes.
+$hero-size-xs: 1rem !default; // --#{$var-prefix}-hero-size-xs.
+$hero-size-sm: 2rem !default; // --#{$var-prefix}-hero-size-sm.
+$hero-size-md: 4rem !default; // --#{$var-prefix}-hero-size-md.
+$hero-size-lg: 8rem !default; // --#{$var-prefix}-hero-size-lg.
+$hero-size-xl: 10rem !default; // --#{$var-prefix}-hero-size-xl.
