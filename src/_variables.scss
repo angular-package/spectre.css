@@ -4,11 +4,11 @@ $version: '1.0.0-beta';
 // Core features
 $rtl: false !default;
 
-// color-scheme
-$color-scheme: normal !default;
-
 // CSS variable.
 $var-prefix: 's' !default; // It's used to make css variable names unique. --#{var-prefix}-#{name}
+
+// color-scheme
+$color-scheme: normal !default;
 
 // Core colors.
 // Accent.
