@@ -1,0 +1,10 @@
+@use '../functions/color' as *;
+@use '../functions/get-var' as *;
+
+@function get-border(
+  $width: 'border-width',
+  $style: solid,
+  $color: 'border-color',
+) {
+  @return #{get-var($width)} #{$style} #{color($color)};
+}
