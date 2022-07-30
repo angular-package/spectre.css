@@ -1,8 +1,10 @@
 @use 'functions/get-var' as *;
 @use 'mixins/text.scss' as *;
+@use 'variables' as *;
 
 // Tiles
-.tile {
+.tile,
+.#{$var-prefix}-tile {
   align-content: space-between;
   align-items: flex-start;
   display: flex;

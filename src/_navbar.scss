@@ -1,7 +1,9 @@
 @use 'functions/get-var' as *;
+@use 'variables' as *;
 
 // Navbar
-.navbar {
+.navbar,
+.#{$var-prefix}-navbar {
   align-items: stretch;
   display: flex;
   flex-wrap: wrap;

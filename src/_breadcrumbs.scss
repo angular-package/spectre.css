@@ -1,8 +1,10 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+@use 'variables' as *;
 
 // Breadcrumbs
-.breadcrumb {
+.breadcrumb,
+.#{$var-prefix}-breadcrumb {
   list-style: none;
   // margin: $unit-1 0; // old spectre.css
   margin: get-var('unit-1') 0;

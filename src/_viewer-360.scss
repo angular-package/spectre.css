@@ -1,5 +1,6 @@
 // Mixin: Viewer slider sizes
 @use 'sass:math';
+@use 'variables' as *;
 
 // 360 Degree Viewer
 
@@ -12,7 +13,8 @@
   }
 }
 
-.viewer-360 {
+.viewer-360,
+.#{$var-prefix}-viewer-360 {
   align-items: center;
   display: flex;
   flex-direction: column;

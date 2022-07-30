@@ -3,7 +3,8 @@
 @use 'variables' as *;
 
 // Tables
-.table {
+.table,
+.#{$var-prefix}-table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;

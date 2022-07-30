@@ -1,9 +1,11 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
 @use 'functions/var-negative' as *;
+@use 'variables' as *;
 
 // Chips
-.chip {
+.chip,
+.#{$var-prefix}-chip {
   align-items: center;
   // background: $bg-color-dark; // old spectre.css
   background: color('bg-color-dark');

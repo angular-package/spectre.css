@@ -1,8 +1,10 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+@use 'variables' as *;
 
 // Pagination
-.pagination {
+.pagination,
+.#{$var-prefix}-pagination {
   display: flex;
   list-style: none;
   // margin: $unit-1 0; // old spectre.css

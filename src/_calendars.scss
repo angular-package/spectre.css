@@ -1,9 +1,11 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
 @use 'mixins/shadow' as *;
+@use 'variables' as *;
 
 // Calendars
-.calendar {
+.calendar,
+.#{$var-prefix}-calendar {
   // border: $border-width solid $border-color; // old spectre.css
   border: get-var('border-width') solid color('border-color');
   // border-radius: $border-radius; // old spectre.css

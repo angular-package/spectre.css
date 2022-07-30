@@ -1,8 +1,10 @@
 @use 'functions' as *;
+@use 'variables' as *;
 
 // Progress
 // Credit: https://css-tricks.com/html5-progress-element/
-.progress {
+.progress,
+.#{$var-prefix}-progress {
   appearance: none;
   // background: $bg-color-dark; // old spectre.css
   background: color('bg-color-dark');

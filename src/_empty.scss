@@ -1,8 +1,10 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+@use 'variables' as *;
 
 // Empty states (or Blank slates)
-.empty {
+.empty,
+.#{$var-prefix}-empty {
   // background: $bg-color; // old spectre.css
   background: color('bg-color');
   // border-radius: $border-radius; // old spectre.css

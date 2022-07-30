@@ -1,7 +1,9 @@
 @use 'functions/get-var' as *;
+@use 'variables' as *;
 
 // Dropdown
-.dropdown {
+.dropdown,
+.#{$var-prefix}-dropdown {
   display: inline-block;
   position: relative;
 

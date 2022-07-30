@@ -2,9 +2,11 @@
 @use 'functions/get-var' as *;
 @use 'functions/var-negative' as *;
 @use 'mixins/shadow' as *;
+@use 'variables' as *;
 
 // Menus
-.menu {
+.menu,
+.#{$var-prefix}-menu {
   @include shadow-variant(0.05rem);
   // background: $bg-color-light; // old spectre.css
   background: color('bg-color-light');

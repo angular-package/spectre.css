@@ -1,8 +1,10 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+@use 'variables' as *;
 
 // Navs
-.nav {
+.nav,
+.#{$var-prefix}-nav {
   display: flex;
   flex-direction: column;
   list-style: none;

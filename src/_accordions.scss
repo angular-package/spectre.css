@@ -2,7 +2,8 @@
 @use '../variables' as *;
 
 // Accordions
-.accordion, #{$var-prefix}-accordion {
+.accordion,
+#{$var-prefix}-accordion {
   input:checked ~,
   &[open] {
     & .accordion-header > {

@@ -1,8 +1,10 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+@use 'variables' as *;
 
 // Timelines
-.timeline {
+.timeline,
+.#{$var-prefix}-timeline {
   .timeline-item {
     display: flex;
     // margin-bottom: $unit-6; // old spectre.css

@@ -1,9 +1,11 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
 @use 'mixins/shadow' as *;
+@use 'variables' as *;
 
 // Cards
-.card {
+.card,
+.#{$var-prefix}-card {
   // background: $bg-color-light; // old spectre.css
   background: color('bg-color-light');
   // border: $border-width solid $border-color; // old spectre.css

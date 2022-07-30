@@ -1,8 +1,10 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+@use 'variables' as *;
 
 // Badges
-.badge {
+.badge,
+.#{$var-prefix}-badge {
   position: relative;
   white-space: nowrap;
 

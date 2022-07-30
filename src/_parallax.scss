@@ -2,6 +2,7 @@
 @use 'functions/get-var' as *;
 @use 'functions/var-negative' as *;
 @use 'mixins/shadow' as *;
+@use 'variables' as *;
 
 // Mixin: Parallax direction
 @mixin parallax-dir() {
@@ -13,7 +14,8 @@
   z-index: get-var('z-index-1');
 }
 
-.parallax {
+.parallax,
+.#{$var-prefix}-parallax {
   display: block;
   height: auto;
   position: relative;

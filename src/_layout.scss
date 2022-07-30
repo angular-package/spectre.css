@@ -1,12 +1,16 @@
+// Sass.
+@use 'sass:math';
+
+// Spectre.
 @use 'functions/get-var' as *;
 // @use 'functions/strip-unit' as *;
 @use 'functions/var-negative' as *;
 @use 'mixins/set-var' as *;
-@use 'sass:math';
 @use 'variables' as *;
 
 // Layout
-.container {
+.container,
+.#{$var-prefix}-container {
   margin-left: auto;
   margin-right: auto;
   // padding-left: $layout-spacing; // old spectre.css

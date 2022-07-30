@@ -1,9 +1,11 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
 @use 'mixins/shadow' as *;
+@use 'variables' as *;
 
 // Autocomplete
-.form-autocomplete {
+.form-autocomplete,
+.#{$var-prefix}-form-autocomplete {
   position: relative;
 
   .form-autocomplete-input {

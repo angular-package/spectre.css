@@ -1,9 +1,11 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+@use 'variables' as *;
 
 // Meters
 // Credit: https://css-tricks.com/html5-meter-element/
-.meter {
+.meter,
+.#{$var-prefix}-meter {
   appearance: none;
   // background: $bg-color; // old spectre.css
   background: color('bg-color');

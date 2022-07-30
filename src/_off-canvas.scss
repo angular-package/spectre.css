@@ -6,7 +6,8 @@
 // TODO: canvas
 $off-canvas-breakpoint: $size-lg !default;
 
-.off-canvas {
+.off-canvas,
+.#{$var-prefix}-off-canvas {
   display: flex;
   flex-flow: nowrap;
   height: 100%;

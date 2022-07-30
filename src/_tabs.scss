@@ -1,9 +1,11 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
 @use 'functions/var-negative' as *;
+@use 'variables' as *;
 
 // Tabs
-.tab {
+.tab,
+.#{$var-prefix}-tab {
   align-items: center;
   // border-bottom: $border-width solid $border-color; // old spectre.css
   border-bottom: get-var('border-width') solid color('border-color');

@@ -1,9 +1,11 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+@use 'variables' as *;
 
 // Image comparison slider
 // Credit: http://codepen.io/solipsistacp/pen/Gpmaq
-.comparison-slider {
+.comparison-slider,
+.#{$var-prefix}-comparison-slider {
   height: 50vh;
   overflow: hidden;
   position: relative;

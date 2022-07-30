@@ -1,8 +1,10 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+@use 'variables' as *;
 
 // Panels
-.panel {
+.panel,
+.#{$var-prefix}-panel {
   // border: $border-width solid $border-color; // old spectre.css
   border: get-var('border-width') solid color('border-color');
   // border-radius: $border-radius; // old spectre.css

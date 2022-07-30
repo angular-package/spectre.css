@@ -1,9 +1,11 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
 @use 'functions/var-negative' as *;
+@use 'variables' as *;
 
 // Tooltips
-.tooltip {
+.tooltip,
+.#{$var-prefix}-tooltip {
   position: relative;
   &::after {
     // background: rgba($dark-color, .95);

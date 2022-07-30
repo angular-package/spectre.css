@@ -1,8 +1,10 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+@use 'variables' as *;
 
 // Steps
-.step {
+.step,
+.#{$var-prefix}-step {
   display: flex;
   flex-wrap: nowrap;
   list-style: none;

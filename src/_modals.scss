@@ -1,9 +1,11 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
 @use 'mixins/shadow' as *;
+@use 'variables' as *;
 
 // Modals
-.modal {
+.modal,
+.#{$var-prefix}-modal {
   align-items: center;
   bottom: 0;
   display: none;

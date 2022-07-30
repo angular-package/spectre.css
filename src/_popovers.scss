@@ -1,8 +1,10 @@
 @use 'functions/get-var' as *;
 @use 'mixins/shadow' as *;
+@use 'variables' as *;
 
 // Popovers
-.popover {
+.popover,
+.#{$var-prefix}-popover {
   display: inline-block;
   position: relative;
 

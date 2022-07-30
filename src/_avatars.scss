@@ -4,7 +4,8 @@
 @use 'variables' as *;
 
 // Avatars
-.avatar, .#{$var-prefix}-avatar {
+.avatar,
+.#{$var-prefix}-avatar {
   @include avatar-base();
   // background: $primary-color; // old spectre.css
   background: color('primary-color');

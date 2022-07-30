@@ -1,8 +1,10 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+@use 'variables' as *;
 
 // Bars
-.bar {
+.bar,
+.#{$var-prefix}-bar {
   // background: $bg-color-dark; // old spectre.css
   background: color('bg-color-dark');
   // border-radius: $border-radius; // old spectre.css
