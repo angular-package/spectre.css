@@ -2,12 +2,13 @@ extends ../_layout/_docs-layout.pug
 
 block variables
   - var slug = 'icons'
+  - var name = 'Icons.css'
   - var parent = 'elements'
   - var title = 'Icons - Elements - Spectre.css CSS Framework'
   - var description = 'Icons are single-element, responsive and pure CSS icons. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('icons', 'Icons.css')
+  +docs-heading(slug, name, { id: parent, name: 'Elements' })
     p
       small.label.label-secondary CSS ONLY
 

@@ -2,12 +2,13 @@ extends ../_layout/_docs-layout.pug
 
 block variables
   - var slug = 'media'
+  - var name = 'Media'
   - var parent = 'elements'
   - var title = 'Media - Elements - Spectre.css CSS Framework'
   - var description = 'Media includes responsive images, figures and video classes. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('media', 'Media')
+  +docs-heading(slug, name, { id: parent, name: 'Elements' })
     include ../_layout/_ad-g.pug
 
     p Media includes responsive images, figures and video classes.
