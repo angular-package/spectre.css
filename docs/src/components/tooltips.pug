@@ -48,7 +48,7 @@ block docs-content
         :highlight(lang="html")
           <button class="btn tooltip" data-tooltip="First Line Tooltip Text \n Second Line Tooltip Text">multiline tooltip</button>
 
-    +docs-pagination('components', {url: 'toasts', name: 'Toasts'}, {})
+    +docs-pagination({path: 'toasts', name: 'Toasts'}, {parent: 'utilities', name: 'Utilities'})
 
     include ../_layout/_ad-c.pug
 
