@@ -11,11 +11,13 @@ block docs-content
   +docs-heading(slug, name, { parent, name: 'Getting Started' })
     +docs-menu(name, {parent, slug},
       {
+        anchor: 'install',
+        name: 'Install',
         items: [
-          { anchor: 'install-manually', name: 'Manually' },
-          { anchor: 'install-cdn', name: 'From CDN' },
-          { anchor: 'install-npm' , name: 'With NPM' },
-          { anchor: 'install-yarn', name: 'From Yarn' },
+          { anchor: 'manually', name: 'Manually' },
+          { anchor: 'cdn', name: 'From CDN' },
+          { anchor: 'npm' , name: 'With NPM' },
+          { anchor: 'yarn', name: 'From Yarn' }
         ]
       }
     )
@@ -24,7 +26,7 @@ block docs-content
     p
       | There are 4 ways to get started with Spectre CSS framework in your projects. You can either install manually, from CDN or use package managers.
 
-    +docs-subheading('install-manually', 'Install manually')
+    +docs-subheading('install-manually', 'Install manually', {slug})
     p
       | Download the compiled and minified 
       a(href='https://github.com/angular-package/spectre.css/releases', target='_blank') Spectre CSS file
@@ -50,7 +52,7 @@ block docs-content
           <link rel="stylesheet" href="spectre-exp.min.css">
           <link rel="stylesheet" href="spectre-icons.min.css">
       
-    +docs-subheading('install-cdn', 'Install from CDN')
+    +docs-subheading('install-cdn', 'Install from CDN', {slug})
     p
       | Alternatively, you can use the 
       a(href='https://unpkg.com/', target='_blank') unpkg
@@ -64,7 +66,7 @@ block docs-content
           <link rel="stylesheet" href="https://unpkg.com/@angular-package/spectre.css/dist/spectre-exp.min.css">
           <link rel="stylesheet" href="https://unpkg.com/@angular-package/spectre.css/dist/spectre-icons.min.css">
 
-    +docs-subheading('install-npm', 'Install with NPM')
+    +docs-subheading('install-npm', 'Install with NPM', {slug})
 
     //- install with npm
     pre.code.c-select-all(data-lang='Bash')
@@ -72,7 +74,7 @@ block docs-content
         :highlight(lang="Bash")
           npm install @angular-package/spectre.css --save
 
-    +docs-subheading('install-yarn', 'Install with Yarn')
+    +docs-subheading('install-yarn', 'Install with Yarn', {slug})
 
     //- install with yarn
     pre.code.c-select-all(data-lang='Bash')
