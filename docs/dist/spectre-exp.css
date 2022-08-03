@@ -546,9 +546,6 @@
     display: none !important;
   }
 }
-/*
-  The function `var-negative()` returns CSS calc function with the given `$value` multiplied by `-1`.
-*/
 .parallax {
   display: block;
   height: auto;
@@ -962,4 +959,4 @@
   order: 1;
 }
 
-/*! Spectre.css Experimentals v1.0.0-alpha.4 | MIT License | github.com/picturepan2/spectre */
+/*! Spectre.css Experimentals v1.0.0-beta | MIT License | github.com/picturepan2/spectre */

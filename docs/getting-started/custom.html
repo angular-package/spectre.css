@@ -14,6 +14,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@angularpackage">
     <meta name="twitter:creator" content="@angularpackage">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2335983386025442" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../img/favicons/favicon.ico">
     <link rel="icon" href="../img/favicons/favicon.png">
     <link rel="stylesheet" href="../dist/spectre.min.css">
@@ -26,14 +27,14 @@
     <div class="docs-container off-canvas off-canvas-sidebar-show">
       <div class="docs-navbar"><a class="off-canvas-toggle btn btn-link btn-action" href="#sidebar"><i class="icon icon-menu"></i></a>
         <div class="btns d-flex">
-          <input class="docs-search form-input" type="text" placeholder="Search Docs"><a class="btn ml-1" href="https://www.paypal.me/picturepan2" target="_blank">PayPal</a><a class="btn btn-primary ml-1" href="https://github.com/picturepan2/spectre" target="_blank">GitHub</a>
+          <input class="docs-search form-input" type="text" placeholder="Search Docs"><a class="btn btn-primary ml-1" href="https://github.com/angular-package/spectre.css" target="_blank">GitHub</a>
         </div>
       </div>
-      <div class="docs-sidebar off-canvas-sidebar" id="sidebar">
+      <div class="docs-sidebar off-canvas-sidebar bg-body" id="sidebar">
         <div class="docs-brand"><a class="docs-logo" href="../index.html"><img src="../img/spectre-logo.svg" alt="Spectre.css CSS Framework">
             <h2>SPECTRE</h2><small class="label label-secondary text-bold">DOCS</small></a>
         </div>
-        <div class="docs-nav">
+        <div class="docs-nav hide-scrollbar bg-body">
           <div class="accordion-container">
             <div class="accordion">
               <input id="accordion-getting-started" type="checkbox" name="docs-accordion-checkbox" hidden="" checked="checked"/>
@@ -42,7 +43,9 @@
                 <ul class="menu menu-nav">
                   <li class="menu-item"><a href="../getting-started/installation.html">Installation</a>
                   </li>
-                  <li class="menu-item"><a href="../getting-started/custom.html">Custom version</a>
+                  <li class="menu-item"><a href="../getting-started/variables.html">Variables</a>
+                  </li>
+                  <li class="menu-item"><a class="active" href="../getting-started/custom.html">Custom version</a>
                   </li>
                   <li class="menu-item"><a href="../getting-started/browsers.html">Browser support</a>
                   </li>
@@ -56,11 +59,9 @@
               <label class="accordion-header c-hand" for="accordion-elements">Elements</label>
               <div class="accordion-body">
                 <ul class="menu menu-nav">
-                  <li class="menu-item"><a href="../elements/typography.html">Typography</a>
-                  </li>
-                  <li class="menu-item"><a href="../elements/tables.html">Tables</a>
-                  </li>
                   <li class="menu-item"><a href="../elements/buttons.html">Buttons</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/code.html">Code</a>
                   </li>
                   <li class="menu-item"><a href="../elements/forms.html">Forms</a>
                   </li>
@@ -68,9 +69,11 @@
                   </li>
                   <li class="menu-item"><a href="../elements/labels.html">Labels</a>
                   </li>
-                  <li class="menu-item"><a href="../elements/code.html">Code</a>
-                  </li>
                   <li class="menu-item"><a href="../elements/media.html">Media</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/tables.html">Tables</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/typography.html">Typography</a>
                   </li>
                 </ul>
               </div>
@@ -82,11 +85,11 @@
                 <ul class="menu menu-nav">
                   <li class="menu-item"><a href="../layout/grid.html">Flexbox grid</a>
                   </li>
-                  <li class="menu-item"><a href="../layout/responsive.html">Responsive</a>
-                  </li>
                   <li class="menu-item"><a href="../layout/hero.html">Hero</a>
                   </li>
                   <li class="menu-item"><a href="../layout/navbar.html">Navbar</a>
+                  </li>
+                  <li class="menu-item"><a href="../layout/responsive.html">Responsive</a>
                   </li>
                 </ul>
               </div>
@@ -200,25 +203,58 @@
         <div class="docs-content" id="content">
           <div class="container" id="custom">
             <h3 class="s-title">Custom version<a class="anchor" href="#custom" aria-hidden="true">#</a></h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="../index.html">Spectre.css</a></li>
+              <li class="breadcrumb-item"><a href="../getting-started.html">Getting Started</a></li>
+              <li class="breadcrumb-item"><a href="../getting-started/custom.html">Custom version</a></li>
+            </ul>
+            <div class="docs-menu">
+              <h5>Custom version</h5>
+              <ul class="menu hide-scrollbar">
+                <li class="menu-item"><a href="../getting-started/custom.html#custom-skeleton">Skeleton</a></li>
+                <li class="menu-item"><a href="../getting-started/custom.html#custom-compiling">Compiling CSS</a></li>
+                <li class="menu-item"><a href="../getting-started/custom.html#custom-importing">Importing Sass</a></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li>
+                  <div class="divider" data-content="Customizable"></div>
+                </li>
+                <li class="menu-item"><a href="../getting-started/custom.html#custom-customizable-prefix">Prefix</a></li>
+                <li class="menu-item"><a href="../getting-started/custom.html#custom-customizable-borders">Borders - mixins</a></li>
+                <li class="menu-item"><a href="../getting-started/custom.html#custom-customizable-buttons">Buttons - mixins</a></li>
+                <li class="menu-item"><a href="../getting-started/custom.html#custom-customizable-heros">Heros - mixins and variables</a></li>
+                <li class="menu-item"><a href="../getting-started/custom.html#custom-customizable-labels">Labels - mixins</a></li>
+                <li class="menu-item"><a href="../getting-started/custom.html#custom-customizable-toasts">Toasts - mixins</a></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li class="menu-item"><a href="../getting-started/custom.html#custom-undefined-folders">Folder structure</a></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+              </ul>
+            </div>
             <div class="docs-ad">
               <div class="hide-md text-center">
                 <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- GitHub-lg--><ins class="adsbygoogle mx-auto" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2225124559530218" data-ad-slot="9894180784"></ins>
+                <!-- GitHub-lg--><ins class="adsbygoogle mx-auto" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2335983386025442" data-ad-slot="9894180784"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
               </div>
               <div class="show-md text-center">
-                <!-- GitHub-sm--><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2225124559530218" data-ad-slot="9278881734"></ins>
+                <!-- GitHub-sm--><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2335983386025442" data-ad-slot="9278881734"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
               </div>
             </div>
-            <p>You can customize your version of Spectre.css by editing Sass files in <code>/src</code> directory or removing unneeded components from <code>.scss</code> source files.</p>
-            <p><a class="btn btn-primary" href="https://github.com/angular-package/spectre.css" target="_blank">Sass Source Code</a></p>
-            <h4 class="s-subtitle" id="compiling">Compiling CSS<a class="anchor" href="#compiling" aria-hidden="true">#</a></h4>
-            <p>Spectre uses<a href="http://sass-lang.com/" target="_blank">sass</a> for compiling CSS. Firstly you need to <a href="https://www.npmjs.com/get-npm" target="_blank">install NPM</a>, which is used to manage dependencies.</p>
+            <p>You can customize your version of <b>Spectre.css</b> by editing Sass files in <code>/src</code> directory or removing unneeded components from <code>.scss</code> source files.</p>
+            <p><a class="btn btn-primary" href="https://github.com/angular-package/spectre.css/tree/master/src" target="_blank">Sass Source Code</a></p>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="custom-skeleton">Skeleton<a class="anchor" href="#custom-skeleton" aria-hidden="true">#</a></h4>
+            <p><b>Spectre.css</b> is a part of a bigger project, it's an <a href="https://angular.io/guide/creating-libraries" target="_blank">angular library</a>, and it was generated by the <a href="https://github.com/angular-package/skeleton" target="_blank">skeleton workspace</a> with an <a href="https://github.com/angular/angular-cli" target="_blank">Angular CLI</a> version 13.0.0.</p>
+            <p>Download the <a href="https://github.com/angular-package/skeleton" target="_blank">skeleton</a> workspace, and copy the <a href="https://github.com/angular-package/spectre.css" target="_blank">spectre.css</a> package into the <code>packages/spectre.css</code> folder then run the commands below.</p>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="custom-compiling">Compiling CSS<a class="anchor" href="#custom-compiling" aria-hidden="true">#</a></h4>
+            <p><b>Spectre.css</b> uses <a href="http://sass-lang.com/" target="_blank">Sass</a> for compiling CSS. Firstly you need to <a href="https://www.npmjs.com/get-npm" target="_blank">install NPM</a>, which is used to manage dependencies.</p>
             <p>Then, you can build the CSS file from the command line:</p>
             <ol>
-              <li>Navigate to the root directory of Spectre.</li>
-              <li>Run <code>npm install</code>. NPM will install all dev dependencies as listed in package.json.</li>
+              <li>Navigate to the root directory of Skeleton.</li>
+              <li>Run <code>npm install</code> to install all dependencies as listed in <code>package.json</code>.</li>
+              <li>When completed, navigate to the root directory of <b>Spectre.css</b> package <code>packages/spectre.css</code>.</li>
+              <li>Run <code>npm install</code>to install dev dependencies as listed in <code>package.json</code>.</li>
               <li>When completed, run <code>npm run sass:prod</code> script to compile Sass to CSS and minify files.</li>
               <li>You can find compiled CSS files in <code>/dist</code> directory.</li>
             </ol>
@@ -229,30 +265,108 @@
               <li><code>npm run build:docs</code> - compile Docs related files with pug</li>
               <li><code>npm run build</code> - runs scripts in order<code>npm run sass:prod</code>, <code>npm run sass:dev</code>, <code>ng build spectre.css</code>, <code>npm run build:docs </code></li>
             </ul>
-            <h4 class="s-subtitle" id="importing">Importing Sass<a class="anchor" href="#importing" aria-hidden="true">#</a></h4>
-            <p>It is recommended to customize Spectre by importing Sass source files to your projects. In this way, you can keep Spectre up to date without conflicts, since Spectre code and your custom code are separate.</p>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="custom-importing">Importing Sass<a class="anchor" href="#custom-importing" aria-hidden="true">#</a></h4>
+            <p>It is recommended to customize <b>Spectre.css</b> by importing Sass source files to your projects. In this way, you can keep <b>Spectre.css</b> up to date without conflicts, since <b>Spectre.css</b> code and your custom code are separate.</p>
             <ul>
-              <li>First, create your own project and install Spectre via <a href="#installation">NPM or other package managers</a>.</li>
+              <li>First, create your own project and install <b>Spectre.css</b> via <a href="#installation">NPM or other package managers</a>.</li>
               <li>Then create your <code>project-name.scss</code> file in the root folder. You can use <code>project-name.scss</code> to define your variables.</li>
-              <li>Compile the Sass file to CSS to get the custom version of Spectre.</li>
+              <li>Compile the Sass file to CSS to get the custom version of <b>Spectre.css</b>.</li>
             </ul>
             <pre class="code" data-lang="Sass"><code><span class="hljs-comment">// Example of project-name.scss</span>
 <span class="hljs-comment">// Define variables to override default ones</span>
-<span class="hljs-variable">$primary-color</span>: <span class="hljs-number">#2e5bec</span>;
-<span class="hljs-variable">$dark-color</span>: <span class="hljs-number">#3e396b</span>;
+<span class="hljs-variable">$primary-color</span><span class="hljs-value">: <span class="hljs-hexcolor">#2e5bec</span>;</span>
+<span class="hljs-variable">$dark-color</span><span class="hljs-value">: <span class="hljs-hexcolor">#3e396b</span>;</span>
 
 <span class="hljs-comment">// Import full Spectre source code</span>
-<span class="hljs-keyword">@use</span> <span class="hljs-string">'node_modules/@angular-package/spectre.css/src/spectre'</span> as *;
+<span class="hljs-at_rule">@use <span class="hljs-string">'node_modules/@angular-package/spectre.css/spectre'</span><span class="hljs-preprocessor"> as</span> *;</span>
 </code></pre>
             <p>Alternatively, you can create custom <code>_variables.scss</code> and import it to <code>project-name.scss</code>.</p>
             <pre class="code" data-lang="Sass"><code><span class="hljs-comment">// Example of project-name.scss</span>
-<span class="hljs-keyword">@use</span> <span class="hljs-string">'variables'</span> as *;
+<span class="hljs-at_rule">@use <span class="hljs-string">'variables'</span><span class="hljs-preprocessor"> as</span> *;</span>
 
 <span class="hljs-comment">// Import only the needed components</span>
-<span class="hljs-keyword">@use</span> <span class="hljs-string">'node_modules/@angular-package/spectre.css/src/buttons'</span>;
-<span class="hljs-keyword">@use</span> <span class="hljs-string">'node_modules/@angular-package/spectre.css/src/forms'</span>;
+<span class="hljs-at_rule">@use <span class="hljs-string">'node_modules/@angular-package/spectre.css/src/buttons'</span>;</span>
+<span class="hljs-at_rule">@use <span class="hljs-string">'node_modules/@angular-package/spectre.css/src/forms'</span>;</span>
 </code></pre>
-            <h4 class="s-subtitle" id="folders">Folder structure<a class="anchor" href="#folders" aria-hidden="true">#</a></h4>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="custom-customizable-prefix">Custom prefix<a class="anchor" href="#custom-customizable-prefix" aria-hidden="true">#</a></h4>
+            <p>You can have CSS variables with a different prefix, by changing the Sass <code>$var-prefix</code> variable.</p>
+            <pre class="code" data-lang="Scss"><code><span class="hljs-comment">// Get variables.</span>
+<span class="hljs-at_rule">@use <span class="hljs-string">'node_modules/@angular-package/spectre.css/variables'</span><span class="hljs-preprocessor"> as</span> *;</span>
+
+<span class="hljs-comment">// Change the $var-prefix</span>
+<span class="hljs-variable">$var-prefix</span><span class="hljs-value">: <span class="hljs-string">'spectre'</span>;</span>
+
+<span class="hljs-comment">// Use the spectre.</span>
+<span class="hljs-at_rule">@use <span class="hljs-string">'node_modules/@angular-package/spectre.css/spectre'</span><span class="hljs-preprocessor"> as</span> *;</span>
+</code></pre>
+            <p>Then, for example the <code>$border-color</code> Sass variable has CSS variable </p>
+            <pre class="code" data-lang="Css"><code><span class="hljs-tag">--spectre-border-color</span>: <span class="hljs-id">#F7F8F9</span>;
+</code></pre>
+            <p>
+              The feature replaces in some minimal way custom prefixes for all classes with the gulp. Some primary classes are defined with the <code>$var-prefix</code>, for example:</p>
+            <pre class="code" data-lang="Sass"><code><span class="hljs-class">.btn</span>, .#{<span class="hljs-variable">$var-prefix</span>}-btn { ... }
+</code></pre>
+            <p>Then, CSS file is compiled with </p>
+            <pre class="code" data-lang="Css"><code>.btn, .spectre-btn { ... }
+</code></pre>
+            <div class="toast toast-error">
+               There is no gulp here so the feature is not working.</div>
+            <p></p>
+            <p>There is also a way to add custom prefix to all CSS classes. You can use <a href="https://www.npmjs.com/package/gulp-css-prefix" target="_blank">gulp-css-prefix</a> plugin and add a new Gulp task to enable it.</p>
+            <pre class="code" data-lang="Bash"><code>npm install gulp-css-prefix</code></pre>
+            <p>To add <code>spectre-</code> to all classes, you can add the Gulp task to <code>gulpfile.js</code> file.</p>
+            <pre class="code"><code><span class="hljs-keyword">var</span> cssPrefix = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-css-prefix'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prefix</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> gulp
+    .src(<span class="hljs-string">'./dist/*.css'</span>)
+    .pipe(cssPrefix(<span class="hljs-string">'spectre-'</span>))
+    .pipe(gulp.dest(<span class="hljs-string">'./dist'</span>));
+}
+
+exports.prefix = prefix;
+</code></pre>
+            <p>After you compile your version of <b>Spectre.css</b> in the /dist, run <code>gulp prefix</code> in the directory of <b>Spectre.css</b>.</p>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="custom-customizable-borders">Customizable borders - Border mixins<a class="anchor" href="#custom-customizable-borders" aria-hidden="true">#</a></h4>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="custom-customizable-buttons">Customizable buttons - Button mixins<a class="anchor" href="#custom-customizable-buttons" aria-hidden="true">#</a></h4>
+            <div class="toast toast-info">
+               Instead of passing the Sass variable <code>$primary-color</code> there is a need to provide CSS variable color name <code>'primary-color'</code> cause <code>button-variant()</code> and <code>button-outline-variant()</code> mixins are modified to use <code>color()</code> function.</div>
+            <p></p>
+            <p>There are 2 button variant mixins in <code>src/mixins/_button.scss</code> to generate different color variants.</p>
+            <ul>
+              <li>
+                <strike>@mixin button-variant(<code>$color</code>: $primary-color);</strike>
+              </li>
+              <li>@mixin button-variant(<code>$color</code>: 'primary-color');</li>
+              <li>
+                <strike>@mixin button-outline-variant(<code>$color</code>: $primary-color);</strike>
+              </li>
+              <li>@mixin button-outline-variant(<code>$color</code>: 'primary-color');</li>
+            </ul>
+            <pre class="code" data-lang="Sass"><code>&lt;!-- filled <span class="hljs-tag">button</span> with the success <span class="hljs-attribute">color</span> --&gt;
+<span class="hljs-class">.btn-success</span> {
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> button-variant</span>(<span class="hljs-string">'success-color'</span>);</span>
+}
+
+&lt;!-- outlined <span class="hljs-tag">button</span> with the success <span class="hljs-attribute">color</span> --&gt;
+<span class="hljs-class">.btn-outline-success</span> {
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> button-outline-variant</span>(<span class="hljs-string">'success-color'</span>);</span>
+}
+</code></pre>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="custom-customizable-heros">Customizable heros - Hero mixins and variables<a class="anchor" href="#custom-customizable-heros" aria-hidden="true">#</a></h4>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="custom-customizable-labels">Customizable labels - Labels mixins<a class="anchor" href="#custom-customizable-labels" aria-hidden="true">#</a></h4>
+            <p></p>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="custom-customizable-toasts">Customizable toasts - Toast mixins<a class="anchor" href="#custom-customizable-toasts" aria-hidden="true">#</a></h4>
+            <p> </p>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="custom-folders">Folder structure<a class="anchor" href="#custom-folders" aria-hidden="true">#</a></h4>
             <pre class="code"><code>spectre/
 ├── <span class="hljs-built_in">dist</span>/                           <span class="hljs-comment">// Build folder</span>
 │   ├── spectre-<span class="hljs-built_in">exp</span>.css
@@ -295,257 +409,21 @@
 ├── <span class="hljs-keyword">package</span>.json
 └── ...
 </code></pre>
-            <h4 class="s-subtitle" id="variables">Variables<a class="anchor" href="#variables" aria-hidden="true">#</a></h4>
-            <p>Spectre.css is designed with consistent design language. You can use your variables to create your new or match an existing design. All variables in<code>_variables.scss</code> include <code>!default</code> flag. You can redefine the variables to override the values.</p>
-            <p>By default, Spectre.css have some colors with defined hex and colors that depend on them, which means, for example, if the <code>primary-color</code> is overridden, then dependent <code>primary-dark</code> and <code>primary-light</code> automatically change.</p>
-            <h4 class="s-subtitle" id="variables-colors">Variables - Colors<a class="anchor" href="#variables-colors" aria-hidden="true">#</a></h4>
-            <div class="columns">
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-primary">
-                  <div class="color-title">#5755d9</div>
-                  <div class="color-subtitle">Primary</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-primary-dark">
-                  <div class="color-title">#4b48d6</div>
-                  <div class="color-subtitle">Primary dark</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-primary-light">
-                  <div class="color-title">#6362dc</div>
-                  <div class="color-subtitle">Primary light</div>
-                </div>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-secondary">
-                  <div class="color-title">#f1f1fc</div>
-                  <div class="color-subtitle">Secondary</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-secondary-dark">
-                  <div class="color-title">#e5e5f9</div>
-                  <div class="color-subtitle">Secondary dark</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-secondary-light">
-                  <div class="color-title">#fefeff</div>
-                  <div class="color-subtitle">Secondary light</div>
-                </div>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-disabled">
-                  <div class="color-title">#eef0f3</div>
-                  <div class="color-subtitle">Disabled</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-error">
-                  <div class="color-title">#e85600</div>
-                  <div class="color-subtitle">Error</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-info">
-                  <div class="color-title">#d9edf7</div>
-                  <div class="color-subtitle">Info</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-success">
-                  <div class="color-title">#32b643</div>
-                  <div class="color-subtitle">Success</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-warning">
-                  <div class="color-title">#ffb700</div>
-                  <div class="color-subtitle">Warning</div>
-                </div>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-body">
-                  <div class="color-title">#ffffff</div>
-                  <div class="color-subtitle">Body background</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-body-font">
-                  <div class="color-title">#3b4351</div>
-                  <div class="color-subtitle">Body font</div>
-                </div>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-dark">
-                  <div class="color-title">#303742</div>
-                  <div class="color-subtitle">Dark</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-light">
-                  <div class="color-title">#ffffff</div>
-                  <div class="color-subtitle">Light</div>
-                </div>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-gray">
-                  <div class="color-title">#bcc3ce</div>
-                  <div class="color-subtitle">Gray</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-gray-dark">
-                  <div class="color-title">#66758c</div>
-                  <div class="color-subtitle">Gray dark</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-gray-light">
-                  <div class="color-title">#f7f8f9</div>
-                  <div class="color-subtitle">Gray light</div>
-                </div>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-bg">
-                  <div class="color-title">#f7f8f9</div>
-                  <div class="color-subtitle">Bg</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-bg-dark">
-                  <div class="color-title">#eef0f3</div>
-                  <div class="color-subtitle">Bg dark</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-bg-light">
-                  <div class="color-title">#ffffff</div>
-                  <div class="color-subtitle">Bg light</div>
-                </div>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-border">
-                  <div class="color-title">#dadee4</div>
-                  <div class="color-subtitle">Border</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-border-dark">
-                  <div class="color-title">#bcc3ce</div>
-                  <div class="color-subtitle">Border dark</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-border-light">
-                  <div class="color-title">#f1f3f5</div>
-                  <div class="color-subtitle">Border light</div>
-                </div>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-link">
-                  <div class="color-title">#5755d9</div>
-                  <div class="color-subtitle">Link</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-link-dark">
-                  <div class="color-title">#302ecd</div>
-                  <div class="color-subtitle">Link dark</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-link-light">
-                  <div class="color-title">#807fe2</div>
-                  <div class="color-subtitle">Link light</div>
-                </div>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-code">
-                  <div class="color-title">#d73e48</div>
-                  <div class="color-subtitle">Code</div>
-                </div>
-              </div>
-              <div class="column col-3 col-md-6">
-                <div class="docs-color bg-highlight text-warning">
-                  <div class="color-title">#ffe9b3</div>
-                  <div class="color-subtitle">Highlight</div>
-                </div>
-              </div>
-            </div>
-            <p>Click on the link to see color dependency change.</p>
-            <p><a class="btn btn-primary" href="https://angular-package.dev/ui-kit/component/theme" target="_blank">Theme demonstration</a></p>
-            <h4 class="s-subtitle" id="variables-buttons">Variables - Button mixins<a class="anchor" href="#variables-buttons" aria-hidden="true">#</a></h4>
-            <div class="toast toast-info">
-               Instead of passing the SASS variable <code>$primary-color</code> there is a need to provide CSS variable color name <code>'primary-color'</code> cause <code>button-variant()</code> and <code>button-outline-variant()</code> mixins are modified to use <code>color()</code> function.</div>
-            <p></p>
-            <p>There are 2 button variant mixins in <code>src/mixins/_button.scss</code> to generate different color variants.</p>
-            <ul>
-              <li>
-                <strike>@mixin button-variant(<code>$color</code>: $primary-color);</strike>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <ul class="pagination pagination-border">
+              <li class="page-item page-prev"><a href="../getting-started/variables.html">
+                  <div class="page-item-subtitle">Previous</div>
+                  <div class="page-item-title">
+                    <h5>Variables</h5>
+                  </div></a>
               </li>
-              <li>@mixin button-variant(<code>$color</code>: 'primary-color');</li>
-              <li>
-                <strike>@mixin button-outline-variant(<code>$color</code>: $primary-color);</strike>
+              <li class="page-item page-next"><a href="../getting-started/browsers.html">
+                  <div class="page-item-subtitle">Next</div>
+                  <div class="page-item-title">
+                    <h5>Browser support</h5>
+                  </div></a>
               </li>
-              <li>@mixin button-outline-variant(<code>$color</code>: 'primary-color');</li>
             </ul>
-            <pre class="code" data-lang="Sass"><code>&lt;!-- filled <span class="hljs-selector-tag">button</span> with the success <span class="hljs-attribute">color</span> --&gt;
-<span class="hljs-selector-class">.btn-success</span> {
-  <span class="hljs-keyword">@include</span> button-variant(<span class="hljs-string">'success-color'</span>);
-}
-
-&lt;!-- outlined <span class="hljs-selector-tag">button</span> with the success <span class="hljs-attribute">color</span> --&gt;
-<span class="hljs-selector-class">.btn-outline-success</span> {
-  <span class="hljs-keyword">@include</span> button-outline-variant(<span class="hljs-string">'success-color'</span>);
-}
-</code></pre>
-            <h4 class="s-subtitle" id="variables-sizes">Variables - Sizes<a class="anchor" href="#variables-sizes" aria-hidden="true">#</a></h4>
-            <p>The default REM (root em) size in Spectre.css is <code>20px</code>.</p>
-            <p>Please note in the Chinese/Japanese/Korean version, Chrome uses 12px as default minimum font size. That is why Spectre sets rem default html font size to <code>20px</code>, which is relatively easy to calculate.</p>
-            <p>Spectre uses <code>4px</code> as the unit size. Sizes of components are based on the unit size.</p>
-            <h4 class="s-subtitle" id="variables-var-prefix">Variables - Var prefix<a class="anchor" href="#variables-var-prefix" aria-hidden="true">#</a></h4>
-            <p>Spectre.css compiles automatically primary classes with <code>$var-prefix</code> for example<code>.btn, .s-btn {}</code></p>
-            <p></p>
-            <h4 class="s-subtitle" id="variables-custom-prefix">Variables - Custom prefix<a class="anchor" href="#variables-custom-prefix" aria-hidden="true">#</a></h4>
-            <div class="toast toast-error">
-               There is no gulp here so the feature is not working.</div>
-            <p></p>
-            <p>There is also a way to add custom prefix to all CSS classes. You can use <a href="https://www.npmjs.com/package/gulp-css-prefix" target="_blank">gulp-css-prefix</a> plugin and add a new Gulp task to enable it.</p>
-            <pre class="code" data-lang="Bash"><code>npm install gulp-css-prefix</code></pre>
-            <p>To add <code>spectre-</code> to all classes, you can add the Gulp task to <code>gulpfile.js</code> file.</p>
-            <pre class="code"><code><span class="hljs-keyword">var</span> cssPrefix = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-css-prefix'</span>);
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prefix</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">return</span> gulp
-    .src(<span class="hljs-string">'./dist/*.css'</span>)
-    .pipe(cssPrefix(<span class="hljs-string">'spectre-'</span>))
-    .pipe(gulp.dest(<span class="hljs-string">'./dist'</span>));
-}
-
-exports.prefix = prefix;
-</code></pre>
-            <p>After you compile your version of Spectre in the /dist, run <code>gulp prefix</code> in the directory of Spectre.</p>
           </div>
           <div class="docs-footer container grid-lg" id="copyright">
             <p><a href="https://github.com/angular-package/spectre.css" target="_blank">GitHub </a> · <a href="https://twitter.com/angularpackage" target="_blank">Twitter </a> · <a href="https://www.paypal.me/picturepan2" target="_blank">PayPal Donate </a> · <a href="https://www.patreon.com/spectrecss" target="_blank">Patreon Sponsor </a> · Version <span class="version"></span></p>

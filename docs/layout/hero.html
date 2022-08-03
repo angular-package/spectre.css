@@ -14,6 +14,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@angularpackage">
     <meta name="twitter:creator" content="@angularpackage">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2335983386025442" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../img/favicons/favicon.ico">
     <link rel="icon" href="../img/favicons/favicon.png">
     <link rel="stylesheet" href="../dist/spectre.min.css">
@@ -26,14 +27,14 @@
     <div class="docs-container off-canvas off-canvas-sidebar-show">
       <div class="docs-navbar"><a class="off-canvas-toggle btn btn-link btn-action" href="#sidebar"><i class="icon icon-menu"></i></a>
         <div class="btns d-flex">
-          <input class="docs-search form-input" type="text" placeholder="Search Docs"><a class="btn ml-1" href="https://www.paypal.me/picturepan2" target="_blank">PayPal</a><a class="btn btn-primary ml-1" href="https://github.com/picturepan2/spectre" target="_blank">GitHub</a>
+          <input class="docs-search form-input" type="text" placeholder="Search Docs"><a class="btn btn-primary ml-1" href="https://github.com/angular-package/spectre.css" target="_blank">GitHub</a>
         </div>
       </div>
-      <div class="docs-sidebar off-canvas-sidebar" id="sidebar">
+      <div class="docs-sidebar off-canvas-sidebar bg-body" id="sidebar">
         <div class="docs-brand"><a class="docs-logo" href="../index.html"><img src="../img/spectre-logo.svg" alt="Spectre.css CSS Framework">
             <h2>SPECTRE</h2><small class="label label-secondary text-bold">DOCS</small></a>
         </div>
-        <div class="docs-nav">
+        <div class="docs-nav hide-scrollbar bg-body">
           <div class="accordion-container">
             <div class="accordion">
               <input id="accordion-getting-started" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
@@ -41,6 +42,8 @@
               <div class="accordion-body">
                 <ul class="menu menu-nav">
                   <li class="menu-item"><a href="../getting-started/installation.html">Installation</a>
+                  </li>
+                  <li class="menu-item"><a href="../getting-started/variables.html">Variables</a>
                   </li>
                   <li class="menu-item"><a href="../getting-started/custom.html">Custom version</a>
                   </li>
@@ -56,11 +59,9 @@
               <label class="accordion-header c-hand" for="accordion-elements">Elements</label>
               <div class="accordion-body">
                 <ul class="menu menu-nav">
-                  <li class="menu-item"><a href="../elements/typography.html">Typography</a>
-                  </li>
-                  <li class="menu-item"><a href="../elements/tables.html">Tables</a>
-                  </li>
                   <li class="menu-item"><a href="../elements/buttons.html">Buttons</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/code.html">Code</a>
                   </li>
                   <li class="menu-item"><a href="../elements/forms.html">Forms</a>
                   </li>
@@ -68,9 +69,11 @@
                   </li>
                   <li class="menu-item"><a href="../elements/labels.html">Labels</a>
                   </li>
-                  <li class="menu-item"><a href="../elements/code.html">Code</a>
-                  </li>
                   <li class="menu-item"><a href="../elements/media.html">Media</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/tables.html">Tables</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/typography.html">Typography</a>
                   </li>
                 </ul>
               </div>
@@ -82,11 +85,11 @@
                 <ul class="menu menu-nav">
                   <li class="menu-item"><a href="../layout/grid.html">Flexbox grid</a>
                   </li>
-                  <li class="menu-item"><a href="../layout/responsive.html">Responsive</a>
-                  </li>
-                  <li class="menu-item"><a href="../layout/hero.html">Hero</a>
+                  <li class="menu-item"><a class="active" href="../layout/hero.html">Hero</a>
                   </li>
                   <li class="menu-item"><a href="../layout/navbar.html">Navbar</a>
+                  </li>
+                  <li class="menu-item"><a href="../layout/responsive.html">Responsive</a>
                   </li>
                 </ul>
               </div>
@@ -200,56 +203,878 @@
         <div class="docs-content" id="content">
           <div class="container" id="hero">
             <h3 class="s-title">Hero<a class="anchor" href="#hero" aria-hidden="true">#</a></h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="../index.html">Spectre.css</a></li>
+              <li class="breadcrumb-item"><a href="../layout.html">Layout</a></li>
+              <li class="breadcrumb-item"><a href="../layout/hero.html">Hero</a></li>
+            </ul>
+            <div class="docs-menu">
+              <h5>Hero</h5>
+              <ul class="menu hide-scrollbar">
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li>
+                  <div class="divider" data-content="Sizes"></div>
+                </li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-hero-sizes">Available</a></li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-size-xs">Extra small</a></li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-size-sm">Small</a></li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-size-md">Medium</a></li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-size-lg">Large</a></li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-size-xl">Extra large</a></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li>
+                  <div class="divider" data-content="Colors"></div>
+                </li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-hero-colors">Available</a></li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-accent-color">Accent</a></li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-primary-colors">Primary</a></li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-secondary-colors">Secondary</a></li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-gray-colors">Gray</a></li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-bg-colors">Bg</a></li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-border-colors">Border</a></li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-link-colors">Link</a></li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-control-colors">Control</a></li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-body-colors">Body</a></li>
+                <li class="menu-item"><a href="../layout/hero.html#hero-undefined-other-colors">Other</a></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+              </ul>
+            </div>
             <div class="docs-ad">
               <div class="hide-md text-center">
                 <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- GitHub-lg--><ins class="adsbygoogle mx-auto" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2225124559530218" data-ad-slot="9894180784"></ins>
+                <!-- GitHub-lg--><ins class="adsbygoogle mx-auto" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2335983386025442" data-ad-slot="9894180784"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
               </div>
               <div class="show-md text-center">
-                <!-- GitHub-sm--><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2225124559530218" data-ad-slot="9278881734"></ins>
+                <!-- GitHub-sm--><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2335983386025442" data-ad-slot="9278881734"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
               </div>
             </div>
             <p>The Hero container shows key featured content or information.</p>
+            <p><a class="btn btn-accent" href="https://angular-package.dev/ui-kit/component/hero" target="_blank">Demonstration</a></p>
             <div class="docs-demo columns">
-              <div class="column">
-                <div class="hero bg-bg">
+              <div class="column col-12">
+                <div class="hero hero-bg text-gray">
                   <div class="hero-body">
                     <h1>Hero title</h1>
                     <p>This is a hero example</p>
                   </div>
                 </div>
-              </div>
-            </div>
-            <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hero bg-gray"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hero-body"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hero title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a hero example<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero hero-bg text-gray"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero title<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
-            <p>Use <code>hero-sm</code> and <code>hero-lg </code>to the hero container for smaller and larger padding. </p>
-            <div class="docs-demo columns">
-              <div class="column">
-                <div class="hero hero-sm bg-dark">
-                  <div class="hero-body">
-                    <h1>Hero title</h1>
-                    <p>This is a hero example</p>
-                  </div>
-                </div>
               </div>
             </div>
             <div class="docs-demo columns">
-              <div class="column">
-                <div class="hero hero-lg bg-primary">
+              <div class="column col-12">
+                <div class="s-hero hero-bg text-gray">
                   <div class="hero-body">
-                    <h1>Hero title</h1>
-                    <p>This is a hero example</p>
+                    <h1>Hero prefixed title</h1>
+                    <p>This is a hero prefixed example</p>
                   </div>
                 </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Prefixed --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-gray text-gray"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero prefixed title<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero prefixed example<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
               </div>
             </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="hero-sizes">Hero sizes<a class="anchor" href="#hero-sizes" aria-hidden="true">#</a></h4>
+            <p>There are following hero sizes available to use.</p>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table text-center">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>xs </th>
+                      <th>sm </th>
+                      <th>md  </th>
+                      <th>lg  </th>
+                      <th>xl </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left">Available</td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Size</td>
+                      <td><code>1rem</code></td>
+                      <td><code>2rem</code></td>
+                      <td><code>4rem</code></td>
+                      <td><code>8rem</code></td>
+                      <td><code>10rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">CSS variable</td>
+                      <td><code>--s-hero-size-xs</code></td>
+                      <td><code>--s-hero-size-sm</code></td>
+                      <td><code>--s-hero-size-md</code></td>
+                      <td><code>--s-hero-size-lg</code></td>
+                      <td><code>--s-hero-size-xl</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <p>Use sizes from the <code>hero-size-xs</code> to <code>hero-size-xl</code> to the hero container for the smallest to the largest padding. And <code>hero-size-vh</code> as view height <code>100%</code>.</p>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-size-xs">Size extra small<a class="anchor" href="#hero-size-xs" aria-hidden="true">#</a></h5>
+                <div class="hero hero-size-xs hero-primary">
+                  <div class="hero-body">
+                    <h1>Hero extra small</h1>
+                    <p>This is a hero example size extra small</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero hero-size-xs hero-primary"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero extra small<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example size extra small<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-size-sm">Size small<a class="anchor" href="#hero-size-sm" aria-hidden="true">#</a></h5>
+                <div class="hero hero-size-sm hero-primary">
+                  <div class="hero-body">
+                    <h1>Hero small</h1>
+                    <p>This is a hero example size small</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero hero-size-sm hero-primary"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero small<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example size small<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-size-md">Size medium<a class="anchor" href="#hero-size-md" aria-hidden="true">#</a></h5>
+                <div class="hero hero-size-md hero-primary">
+                  <div class="hero-body">
+                    <h1>Hero medium</h1>
+                    <p>This is a hero example size medium</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero hero-size-md hero-primary"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero medium<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example size medium<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-size-lg">Size large<a class="anchor" href="#hero-size-lg" aria-hidden="true">#</a></h5>
+                <div class="hero hero-size-lg hero-primary">
+                  <div class="hero-body">
+                    <h1>Hero large</h1>
+                    <p>This is a hero example size large</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero hero-size-lg hero-primary"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero large<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example size large<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-size-xl">Size extra large<a class="anchor" href="#hero-size-xl" aria-hidden="true">#</a></h5>
+                <div class="hero hero-size-xl hero-primary">
+                  <div class="hero-body">
+                    <h1>Hero extra large</h1>
+                    <p>This is a hero example extra large</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero hero-size-xl hero-primary"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero extra large<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example size extra large<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+</code></pre>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="hero-colors">Hero colors<a class="anchor" href="#hero-colors" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-center">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Available</th>
+                      <th>Dark </th>
+                      <th>Light</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left"><a href="#shades">dark</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td> 
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#shades">light</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td> 
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#accent-color">accent</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td> 
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#primary-colors">primary</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#secondary-colors">secondary</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#gray-colors">gray</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#bg-colors">bg</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#border-colors">border</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#control-colors">link</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#control-colors">disabled</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#control-colors">error</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#control-colors">info</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#control-colors">success</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#body-colors">body-bg</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#body-colors">body-font</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#other-colors">code</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#other-colors">highlight</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-dark-color">Dark color<a class="anchor" href="#hero-dark-color" aria-hidden="true">#</a></h5>
+                <div class="s-hero hero-dark">
+                  <div class="hero-body">
+                    <h1>Hero dark color</h1>
+                    <p>This is a hero example dark background .hero-dark</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-dark"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero dark color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example dark background .hero-dark<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-light-color">Light color<a class="anchor" href="#hero-light-color" aria-hidden="true">#</a></h5>
+                <div class="s-hero hero-light">
+                  <div class="hero-body">
+                    <h1>Hero light color</h1>
+                    <p>This is a hero example light background .hero-light</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-light"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero light color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example light background .hero-light<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-accent-color">Accent color<a class="anchor" href="#hero-accent-color" aria-hidden="true">#</a></h5>
+                <div class="s-hero hero-accent">
+                  <div class="hero-body">
+                    <h1>Hero accent color</h1>
+                    <p>This is a hero example accent background .hero-accent</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-accent"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero accent color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example accent background .hero-accent<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-primary-colors">Primary colors<a class="anchor" href="#hero-primary-colors" aria-hidden="true">#</a></h5>
+                <div class="s-hero hero-primary">
+                  <div class="hero-body">
+                    <h1>Hero primary color</h1>
+                    <p>This is a hero example primary background .hero-primary</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-primary"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero primary color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example primary background .hero-primary<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-primary-dark">
+                  <div class="hero-body">
+                    <h1>Hero primary color dark</h1>
+                    <p>This is a hero example primary dark background .hero-primary-dark</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-primary-dark"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero primary color dark<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example primary dark background .hero-primary-dark<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-primary-light">
+                  <div class="hero-body">
+                    <h1>Hero primary color light</h1>
+                    <p>This is a hero example primary light background .hero-primary-light</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-primary-light"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero primary color light<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example primary light background .hero-primary-light<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-secondary-colors">Secondary colors<a class="anchor" href="#hero-secondary-colors" aria-hidden="true">#</a></h5>
+                <div class="s-hero hero-secondary">
+                  <div class="hero-body">
+                    <h1>Hero secondary color</h1>
+                    <p>This is a hero example secondary background .hero-secondary</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-secondary"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero secondary color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example secondary background .hero-secondary<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-secondary-dark">
+                  <div class="hero-body">
+                    <h1>Hero secondary color dark</h1>
+                    <p>This is a hero example secondary dark background .hero-secondary-dark</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-secondary-dark"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero secondary color dark<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example secondary dark background .hero-secondary-dark<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-secondary-light">
+                  <div class="hero-body">
+                    <h1>Hero secondary color light</h1>
+                    <p>This is a hero example secondary light background .hero-secondary-light</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-primary-light"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero secondary color light<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example secondary light background .hero-secondary-light<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-gray-colors">Gray colors<a class="anchor" href="#hero-gray-colors" aria-hidden="true">#</a></h5>
+                <div class="s-hero hero-gray">
+                  <div class="hero-body">
+                    <h1>Hero gray color</h1>
+                    <p>This is a hero example gray background .hero-gray</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-gray"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero gray color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example gray background .hero-gray<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-gray-dark">
+                  <div class="hero-body">
+                    <h1>Hero gray color dark</h1>
+                    <p>This is a hero example gray dark background .hero-gray-dark</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-gray-dark"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero gray dark color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example gray dark background .hero-gray-dark<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-gray-light">
+                  <div class="hero-body">
+                    <h1>Hero gray color light</h1>
+                    <p>This is a hero example gray light background .hero-gray-light</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-gray-light"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero gray light color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example gray light background .hero-gray-light<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-bg-colors">Bg colors<a class="anchor" href="#hero-bg-colors" aria-hidden="true">#</a></h5>
+                <div class="s-hero hero-bg">
+                  <div class="hero-body">
+                    <h1>Hero bg color</h1>
+                    <p>This is a hero example bg background .hero-bg</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-bg"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero bg color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example bg background .hero-bg<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-bg-dark">
+                  <div class="hero-body">
+                    <h1>Hero bg color dark</h1>
+                    <p>This is a hero example bg background .hero-bg-dark</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-bg-dark"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero bg color dark<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example bg dark background .hero-bg-dark<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-bg-light">
+                  <div class="hero-body">
+                    <h1>Hero bg color light</h1>
+                    <p>This is a hero example bg background .hero-bg-light</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-light"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero bg color light<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example bg light background .hero-bg-light<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-border-colors">Border colors<a class="anchor" href="#hero-border-colors" aria-hidden="true">#</a></h5>
+                <div class="s-hero hero-border">
+                  <div class="hero-body">
+                    <h1>Hero border color</h1>
+                    <p>This is a hero example border background .hero-border</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-border"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero border color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example border background .hero-border<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-border-dark">
+                  <div class="hero-body">
+                    <h1>Hero border color dark</h1>
+                    <p>This is a hero example border background .hero-border-dark</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-border-dark"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero border color dark<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example border dark background .hero-border-dark<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-border-light">
+                  <div class="hero-body">
+                    <h1>Hero border color light</h1>
+                    <p>This is a hero example border background .hero-border-light</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-border-light"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero border color light<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example border light background .hero-border-light<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-link-colors">Link colors<a class="anchor" href="#hero-link-colors" aria-hidden="true">#</a></h5>
+                <div class="s-hero hero-link">
+                  <div class="hero-body">
+                    <h1>Hero link color</h1>
+                    <p>This is a hero example link background .hero-link</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-link"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero link color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example link background .hero-link<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-link-dark">
+                  <div class="hero-body">
+                    <h1>Hero link color dark</h1>
+                    <p>This is a hero example link background .hero-link-dark</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero link-hero-dark"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero link color dark<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example link dark background .hero-link-dark<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+                <div class="s-hero hero-link-light">
+                  <div class="hero-body">
+                    <h1>Hero link color light</h1>
+                    <p>This is a hero example link background .hero-link-light</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-link-light"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero link color light<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example link light background .hero-link-light<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-control-colors">Control colors<a class="anchor" href="#hero-control-colors" aria-hidden="true">#</a></h5>
+                <div class="s-hero hero-disabled">
+                  <div class="hero-body">
+                    <h1>Hero disabled color</h1>
+                    <p>This is a hero example disabled background .hero-disabled</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-disabled"</span>&gt;</span> 
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero disabled color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example disabled background .hero-disabled<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-error">
+                  <div class="hero-body">
+                    <h1>Hero error color</h1>
+                    <p>This is a hero example error background .hero-error</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-error"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero error color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example error background .hero-error<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-info">
+                  <div class="hero-body">
+                    <h1>Hero info color</h1>
+                    <p>This is a hero example info background .hero-info</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-info"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero info color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example info background .hero-info<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-success">
+                  <div class="hero-body">
+                    <h1>Hero success color</h1>
+                    <p>This is a hero example success background .hero-success</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-success"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero success color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example success background .hero-success<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-warning">
+                  <div class="hero-body">
+                    <h1>Hero warning color</h1>
+                    <p>This is a hero example warning background .hero-warning</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-warning"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero warning color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example warning background .hero-warning<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-body-colors">Body colors<a class="anchor" href="#hero-body-colors" aria-hidden="true">#</a></h5>
+                <div class="s-hero hero-body-bg">
+                  <div class="hero-body">
+                    <h1>Hero body-bg color</h1>
+                    <p>This is a hero example body-bg background .hero-body-bg</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-body-bg"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero body-bg color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example body-bg background .hero-body-bg<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-body-font">
+                  <div class="hero-body">
+                    <h1>Hero highlight color</h1>
+                    <p>This is a hero example highlight background .hero-body-font</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-body-font"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero body-font color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example body-font background .hero-body-font<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+              <div class="column col-12">
+                <h5 class="s-subtitle" id="hero-other-colors">Other colors<a class="anchor" href="#hero-other-colors" aria-hidden="true">#</a></h5>
+                <div class="s-hero hero-code">
+                  <div class="hero-body">
+                    <h1>Hero code color</h1>
+                    <p>This is a hero example code background .hero-code</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-code"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero code color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example code background .hero-code<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+                <div class="s-hero hero-highlight">
+                  <div class="hero-body">
+                    <h1>Hero highlight color</h1>
+                    <p>This is a hero example highlight background .hero-highlight</p>
+                  </div>
+                </div>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"s-hero hero-highlight"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"hero-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hero highlight color<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a hero example highlight background .hero-highlight<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <ul class="pagination pagination-border">
+              <li class="page-item page-prev"><a href="../layout/grid.html">
+                  <div class="page-item-subtitle">Previous</div>
+                  <div class="page-item-title">
+                    <h5>Flexbox grid</h5>
+                  </div></a>
+              </li>
+              <li class="page-item page-next"><a href="../layout/navbar.html">
+                  <div class="page-item-subtitle">Next</div>
+                  <div class="page-item-title">
+                    <h5>Navbar</h5>
+                  </div></a>
+              </li>
+            </ul>
           </div>
           <div class="docs-footer container grid-lg" id="copyright">
             <p><a href="https://github.com/angular-package/spectre.css" target="_blank">GitHub </a> · <a href="https://twitter.com/angularpackage" target="_blank">Twitter </a> · <a href="https://www.paypal.me/picturepan2" target="_blank">PayPal Donate </a> · <a href="https://www.patreon.com/spectrecss" target="_blank">Patreon Sponsor </a> · Version <span class="version"></span></p>

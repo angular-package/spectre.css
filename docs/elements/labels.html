@@ -14,6 +14,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@angularpackage">
     <meta name="twitter:creator" content="@angularpackage">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2335983386025442" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../img/favicons/favicon.ico">
     <link rel="icon" href="../img/favicons/favicon.png">
     <link rel="stylesheet" href="../dist/spectre.min.css">
@@ -26,14 +27,14 @@
     <div class="docs-container off-canvas off-canvas-sidebar-show">
       <div class="docs-navbar"><a class="off-canvas-toggle btn btn-link btn-action" href="#sidebar"><i class="icon icon-menu"></i></a>
         <div class="btns d-flex">
-          <input class="docs-search form-input" type="text" placeholder="Search Docs"><a class="btn ml-1" href="https://www.paypal.me/picturepan2" target="_blank">PayPal</a><a class="btn btn-primary ml-1" href="https://github.com/picturepan2/spectre" target="_blank">GitHub</a>
+          <input class="docs-search form-input" type="text" placeholder="Search Docs"><a class="btn btn-primary ml-1" href="https://github.com/angular-package/spectre.css" target="_blank">GitHub</a>
         </div>
       </div>
-      <div class="docs-sidebar off-canvas-sidebar" id="sidebar">
+      <div class="docs-sidebar off-canvas-sidebar bg-body" id="sidebar">
         <div class="docs-brand"><a class="docs-logo" href="../index.html"><img src="../img/spectre-logo.svg" alt="Spectre.css CSS Framework">
             <h2>SPECTRE</h2><small class="label label-secondary text-bold">DOCS</small></a>
         </div>
-        <div class="docs-nav">
+        <div class="docs-nav hide-scrollbar bg-body">
           <div class="accordion-container">
             <div class="accordion">
               <input id="accordion-getting-started" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
@@ -41,6 +42,8 @@
               <div class="accordion-body">
                 <ul class="menu menu-nav">
                   <li class="menu-item"><a href="../getting-started/installation.html">Installation</a>
+                  </li>
+                  <li class="menu-item"><a href="../getting-started/variables.html">Variables</a>
                   </li>
                   <li class="menu-item"><a href="../getting-started/custom.html">Custom version</a>
                   </li>
@@ -56,21 +59,21 @@
               <label class="accordion-header c-hand" for="accordion-elements">Elements</label>
               <div class="accordion-body">
                 <ul class="menu menu-nav">
-                  <li class="menu-item"><a href="../elements/typography.html">Typography</a>
-                  </li>
-                  <li class="menu-item"><a href="../elements/tables.html">Tables</a>
-                  </li>
                   <li class="menu-item"><a href="../elements/buttons.html">Buttons</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/code.html">Code</a>
                   </li>
                   <li class="menu-item"><a href="../elements/forms.html">Forms</a>
                   </li>
                   <li class="menu-item"><a href="../elements/icons.html">Icons.css</a>
                   </li>
-                  <li class="menu-item"><a href="../elements/labels.html">Labels</a>
-                  </li>
-                  <li class="menu-item"><a href="../elements/code.html">Code</a>
+                  <li class="menu-item"><a class="active" href="../elements/labels.html">Labels</a>
                   </li>
                   <li class="menu-item"><a href="../elements/media.html">Media</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/tables.html">Tables</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/typography.html">Typography</a>
                   </li>
                 </ul>
               </div>
@@ -82,11 +85,11 @@
                 <ul class="menu menu-nav">
                   <li class="menu-item"><a href="../layout/grid.html">Flexbox grid</a>
                   </li>
-                  <li class="menu-item"><a href="../layout/responsive.html">Responsive</a>
-                  </li>
                   <li class="menu-item"><a href="../layout/hero.html">Hero</a>
                   </li>
                   <li class="menu-item"><a href="../layout/navbar.html">Navbar</a>
+                  </li>
+                  <li class="menu-item"><a href="../layout/responsive.html">Responsive</a>
                   </li>
                 </ul>
               </div>
@@ -200,51 +203,533 @@
         <div class="docs-content" id="content">
           <div class="container" id="labels">
             <h3 class="s-title">Labels<a class="anchor" href="#labels" aria-hidden="true">#</a></h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="../index.html">Spectre.css</a></li>
+              <li class="breadcrumb-item"><a href="../elements.html">Elements</a></li>
+              <li class="breadcrumb-item"><a href="../elements/labels.html">Labels</a></li>
+            </ul>
+            <div class="docs-menu">
+              <h5>Labels</h5>
+              <ul class="menu hide-scrollbar">
+                <li class="menu-item"><a href="../elements/labels.html#labels-undefined-hero-sizes">Sizes</a></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li>
+                  <div class="divider" data-content="Colors"></div>
+                </li>
+                <li class="menu-item"><a href="../elements/labels.html#labels-undefined-labels-available-colors">Available colors</a></li>
+                <li class="menu-item"><a href="../elements/labels.html#labels-undefined-accent-color">Accent</a></li>
+                <li class="menu-item"><a href="../elements/labels.html#labels-undefined-primary-colors">Primary</a></li>
+                <li class="menu-item"><a href="../elements/labels.html#labels-undefined-primary-colors">Secondary</a></li>
+                <li class="menu-item"><a href="../elements/labels.html#labels-undefined-gray-colors">Gray</a></li>
+                <li class="menu-item"><a href="../elements/labels.html#labels-undefined-bg-colors">Bg</a></li>
+                <li class="menu-item"><a href="../elements/labels.html#labels-undefined-border-colors">Border</a></li>
+                <li class="menu-item"><a href="../elements/labels.html#labels-undefined-link-colors">Link</a></li>
+                <li class="menu-item"><a href="../elements/labels.html#labels-undefined-control-colors">Control</a></li>
+                <li class="menu-item"><a href="../elements/labels.html#labels-undefined-body-colors">Body</a></li>
+                <li class="menu-item"><a href="../elements/labels.html#labels-undefined-other-colors">Other</a></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+              </ul>
+            </div>
             <div class="docs-ad">
               <div class="hide-md text-center">
                 <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- GitHub-lg--><ins class="adsbygoogle mx-auto" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2225124559530218" data-ad-slot="9894180784"></ins>
+                <!-- GitHub-lg--><ins class="adsbygoogle mx-auto" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2335983386025442" data-ad-slot="9894180784"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
               </div>
               <div class="show-md text-center">
-                <!-- GitHub-sm--><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2225124559530218" data-ad-slot="9278881734"></ins>
+                <!-- GitHub-sm--><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2335983386025442" data-ad-slot="9278881734"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
               </div>
             </div>
             <p>Labels are formatted text tags for highlighted, informative information.</p>
             <div class="docs-demo columns">
-              <div class="column"><span class="label mr-1">default label</span><span class="label accent-label mr-1">accent label</span></div>
+              <div class="column"><span class="label mr-1">default label</span></div>
             </div>
+            <p>Add the <code>label</code> class to <code>&lt;span&gt;</code> or <code>&lt;small&gt;</code> elements.</p>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="labels-available-colors">Available label colors<a class="anchor" href="#labels-available-colors" aria-hidden="true">#</a></h4>
+            <p>There are labels of all the <b>Spectre.css</b> colors, and to use them add the <code>label-</code> class with a color name, for example <code>label-primary-dark</code>.</p>
             <div class="docs-demo columns">
-              <div class="column">
-                <h5>Primary</h5><span class="label label-primary mr-1">primary label</span><span class="label label-primary-dark mr-1">primary label dark</span><span class="label label-primary-light mr-1">primary label light</span>
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-center">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Available</th>
+                      <th>Dark </th>
+                      <th>Light</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left"><a href="#shades">dark</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#shades">light</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#accent-color">accent</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#primary-colors">primary</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#secondary-colors">secondary</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#gray-colors">gray</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#bg-colors">bg</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#border-colors">border</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#control-colors">link</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#control-colors">disabled</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#control-colors">error</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#control-colors">info</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#control-colors">success</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#other-colors">code</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#other-colors">highlight</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#body-colors">body-bg</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><a href="#body-colors">body-font</a></td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="labels-colors">Label colors<a class="anchor" href="#labels-colors" aria-hidden="true">#</a></h4>
             <div class="docs-demo columns">
               <div class="column">
-                <h5>Secondary</h5><span class="label label-secondary mr-1">secondary label</span><span class="label label-secondary-dark mr-1">secondary label dark</span><span class="label label-secondary-light mr-1">secondary label light</span>
-              </div>
-            </div>
-            <div class="docs-demo columns">
-              <div class="column">
-                <h5>Control</h5><span class="label label-disabled mr-1">disabled label</span><span class="label label-error mr-1">error label</span><span class="label label-info mr-1">info label</span><span class="label label-success mr-1">success label</span><span class="label label-warning mr-1">warning label</span>
-              </div>
-            </div>
-            <p>Add the <code>label</code> class to &lt;span&gt; or &lt;small&gt; elements.
-              You can add another class <code>label-primary</code>, <code>label-secondary</code>, <code>label-success</code>, <code>label-warning</code> and <code>label-error</code> for colored labels.
-            </p>
-            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- normal labels --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"label"</span>&gt;</span>default label<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"label label-primary"</span>&gt;</span>primary label<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <h5 id="shades">Shades</h5><span class="label label-dark mr-1">dark label</span><span class="label label-light mr-1">light label</span>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Dark &amp; Light colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-dark"</span>&gt;</span>dark label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-light"</span>&gt;</span>light label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
 </code></pre>
+              </div>
+            </div>
+            <div class="docs-demo columns">
+              <div class="column">
+                <h5 id="accent-color">Accent color</h5><span class="label label-accent mr-1">accent label</span>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Accent color --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-accent"</span>&gt;</span>accent label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="docs-demo columns">
+              <div class="column">
+                <h5 id="primary-colors">Primary colors</h5>
+                <p>You can add another class <code>label-primary</code>, <code>label-primary-dark</code>, <code>label-primary-light</code> for labels colored with primary colors.</p><span class="label label-primary mr-1">primary label</span><span class="label label-primary-dark mr-1">primary label dark</span><span class="label label-primary-light mr-1">primary label light</span>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Primary color labels --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-primary"</span>&gt;</span>primary label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-primary-dark"</span>&gt;</span>primary label dark<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-primary-light"</span>&gt;</span>primary label light<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="docs-demo columns">
+              <div class="column">
+                <h5 id="secondary-colors">Secondary colors</h5>
+                <p>You can add another class <code>label-secondary</code>, <code>label-secondary-dark</code>, <code>label-secondary-light</code> for labels colored with secondary colors.</p><span class="label label-secondary mr-1">secondary label</span><span class="label label-secondary-dark mr-1">secondary label dark</span><span class="label label-secondary-light mr-1">secondary label light</span>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Secondary color labels --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-secondary"</span>&gt;</span>secondary label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-secondary-dark"</span>&gt;</span>secondary label dark<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-secondary-light"</span>&gt;</span>secondary label light<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="docs-demo columns">
+              <div class="column">
+                <h5 id="gray-colors">Gray colors</h5>
+                <p>You can add another class <code>label-gray</code>, <code>label-gray-dark</code>, <code>label-gray-light</code> for labels colored with gray colors.</p><span class="label label-gray mr-1">gray label</span><span class="label label-gray-dark mr-1">gray label dark</span><span class="label label-gray-light mr-1">gray label light</span>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Gray color labels --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-gray"</span>&gt;</span>gray label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-gray-dark"</span>&gt;</span>gray label dark<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-gray-light"</span>&gt;</span>gray label light<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="docs-demo columns">
+              <div class="column">
+                <h5 id="bg-colors">Bg colors</h5>
+                <p>You can add another class <code>label-bg</code>, <code>label-bg-dark</code>, <code>label-bg-light</code> for labels colored with bg colors.</p><span class="label label-bg mr-1">bg label</span><span class="label label-bg-dark mr-1">bg label dark</span><span class="label label-bg-light mr-1">bg label light</span>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Bg color labels --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-bg"</span>&gt;</span>bg label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-bg-dark"</span>&gt;</span>bg label dark<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-bg-light"</span>&gt;</span>bg label light<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="docs-demo columns">
+              <div class="column">
+                <h5 id="border-colors">Border colors</h5>
+                <p>You can add another class <code>label-border</code>, <code>label-border-dark</code>, <code>label-border-light</code> for labels colored with border colors.</p><span class="label label-border mr-1">border label</span><span class="label label-border-dark mr-1">border label dark</span><span class="label label-border-light mr-1">border label light</span>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Border color labels --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-border"</span>&gt;</span>border label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-border-dark"</span>&gt;</span>border label dark<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-border-light"</span>&gt;</span>border label light<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="docs-demo columns">
+              <div class="column">
+                <h5 id="link-colors">Link colors</h5>
+                <p>You can add another class <code>label-link</code>, <code>label-link-dark</code>, <code>label-link-light</code> for labels colored with link colors.</p><span class="label label-link mr-1">link label</span><span class="label label-link-dark mr-1">link label dark</span><span class="label label-link-light mr-1">link label light</span>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Link color labels --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-link"</span>&gt;</span>link label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-link-dark"</span>&gt;</span>link label dark<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-link-light"</span>&gt;</span>link label light<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="docs-demo columns">
+              <div class="column">
+                <h5 id="control-colors">Control colors</h5>
+                <p>You can add another class <code>label-disabled</code>, <code>label-error</code>, <code>label-info</code>, <code>label-success</code> and <code>label-warning</code> for colored labels.</p><span class="label label-disabled mr-1">disabled label</span><span class="label label-error mr-1">error label</span><span class="label label-info mr-1">info label</span><span class="label label-success mr-1">success label</span><span class="label label-warning mr-1">warning label</span>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Control color labels --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-disabled"</span>&gt;</span>disabled label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-error"</span>&gt;</span>error label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-info"</span>&gt;</span>info label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-success"</span>&gt;</span>success label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-warning"</span>&gt;</span>warning label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="docs-demo columns">
+              <div class="column">
+                <h5 id="other-colors">Other colors</h5>
+                <p>You can add another class <code>label-code</code> or <code>label-highlight</code> for labels colored.</p><span class="label label-code mr-1">code label</span><span class="label label-highlight mr-1">highlight label</span>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Other color labels --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-code"</span>&gt;</span>link label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-highlight"</span>&gt;</span>highlight label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="docs-demo columns">
+              <div class="column">
+                <h5 id="body-colors">Body colors</h5>
+                <p>You can add another class <code>label-body-bg</code> or <code>label-body-font</code> for labels body colors colored.</p><span class="label label-body-bg mr-1">body-bg label</span><span class="label label-body-font mr-1">body-font label</span>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Body color labels --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-body-bg"</span>&gt;</span>body-bg label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-body-font"</span>&gt;</span>body-font label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="labels-sizes">Label sizes<a class="anchor" href="#labels-sizes" aria-hidden="true">#</a></h4>
+            <p>There are labels with the size changed by padding, and to use it add the <code>label-size</code> class with a size, for example <code>label-size-sm</code>. You can mix it with any color above.</p>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table text-center">
+                  <thead>
+                    <tr>
+                      <th>xs </th>
+                      <th>sm </th>
+                      <th>md  </th>
+                      <th>lg  </th>
+                      <th>xl </th>
+                      <th>2x </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="docs-demo columns">
+              <div class="column">
+                <h5 id="label-sizes">Label sizes</h5><span class="label label-primary label-size-xs mb-1">primary extra small label</span><br><span class="label label-primary label-size-sm mb-1">primary small label</span><br><span class="label label-primary label-size-md mb-1">primary medium label</span><br><span class="label label-primary label-size-lg mb-1">primary large label</span><br><span class="label label-primary label-size-xl mb-1">primary extra large label</span>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Sized labels --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-primary label-size-xs"</span>&gt;</span>primary extra small label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-primary label-size-sm"</span>&gt;</span>primary small label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-primary label-size-md"</span>&gt;</span>primary medium label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-primary label-size-lg"</span>&gt;</span>primary large label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-primary label-size-xl"</span>&gt;</span>primary extra large label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
             <h4 class="s-subtitle" id="labels-rounded">Rounded labels<a class="anchor" href="#labels-rounded" aria-hidden="true">#</a></h4>
             <div class="docs-demo columns">
               <div class="column"><span class="label label-rounded mr-1">default label</span><span class="label label-rounded label-primary">primary label</span></div>
             </div>
-            <p>Add the <code>label-rounded</code> class to have rounded labels.</p>
+            <p>Add the <code>label-rounded</code> class to have rounded labels. You can mix it with, rounded, any size and color above.</p>
             <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- rounded labels --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"label label-rounded label-primary"</span>&gt;</span>primary label<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-rounded label-primary"</span>&gt;</span>primary label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
 </code></pre>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="labels-bordered">Bordered labels<a class="anchor" href="#labels-bordered" aria-hidden="true">#</a></h4>
+            <p>Add the <code>border</code> class to have bordered labels. You can mix it with any size and color above.</p>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <h5 id="border-available-sizes">Available sizes</h5>
+                <table class="docs-table table text-center">
+                  <thead>
+                    <tr>
+                      <th>xs </th>
+                      <th>sm </th>
+                      <th>md  </th>
+                      <th>lg  </th>
+                      <th>xl </th>
+                      <th>2x </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="docs-demo columns">
+              <div class="column">
+                <h5 id="border-sizes">Sizes</h5>
+                <p>Add the <code>border-lg</code> class to have large border.</p><span class="label border mr-1">border label</span><span class="label border-lg mr-1">border large label</span>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Bordered labels --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label border"</span>&gt;</span>border label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label border-lg"</span>&gt;</span>border large label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="docs-demo columns">
+              <div class="column">
+                <h5 id="border-sizes">Shades</h5>
+                <p>Add the <code>border-light</code> or <code>border-dark</code> class to have light or dark color border. And also add to each shade <code>-lg</code> for large size.</p><span class="label label-border border-light mr-1">border light label</span><span class="label label-light border-light-lg mr-1">border light large label</span><span class="label label-border-light border-dark mr-1">border dark label</span><span class="label label-border-light border-dark-lg mr-1">border dark large label</span>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Bordered labels --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-border border-light"</span>&gt;</span>border light label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-border border-light-lg"</span>&gt;</span>border light large label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-border-light border-dark"</span>&gt;</span>border dark label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-border-light border-dark-lg"</span>&gt;</span>border dark large label<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+</code></pre>
+                <p class="toast toast-info">You can add new border variants with a <a href="../getting-started/custom.html#customizable-borders">mixin</a> or modify border colors by changing <a href="../getting-started/variables.html#border-colors">CSS variables</a>, and sizes by changing <a href="../getting-started/variables.html#variables-border">CSS variables</a>.</p>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <ul class="pagination pagination-border">
+              <li class="page-item page-prev"><a href="../elements/icons.html">
+                  <div class="page-item-subtitle">Previous</div>
+                  <div class="page-item-title">
+                    <h5>Icons.css</h5>
+                  </div></a>
+              </li>
+              <li class="page-item page-next"><a href="../elements/media.html">
+                  <div class="page-item-subtitle">Next</div>
+                  <div class="page-item-title">
+                    <h5>Media</h5>
+                  </div></a>
+              </li>
+            </ul>
           </div>
           <div class="docs-footer container grid-lg" id="copyright">
             <p><a href="https://github.com/angular-package/spectre.css" target="_blank">GitHub </a> · <a href="https://twitter.com/angularpackage" target="_blank">Twitter </a> · <a href="https://www.paypal.me/picturepan2" target="_blank">PayPal Donate </a> · <a href="https://www.patreon.com/spectrecss" target="_blank">Patreon Sponsor </a> · Version <span class="version"></span></p>

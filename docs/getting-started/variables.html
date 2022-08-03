@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Variables - Getting started - Spectre.css CSS Framework</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development. Spectre provides basic styles for typography and elements, flexbox based responsive layout system, pure CSS components and utilities with best practice coding and consistent design language.">
+    <meta name="author" content="Yan Zhu">
+    <meta property="og:url" content="https://angular-package.github.io/spectre.css/getting-started/variables.html">
+    <meta property="og:title" content="Variables - Getting started - Spectre.css CSS Framework">
+    <meta property="og:description" content="Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development. Spectre provides basic styles for typography and elements, flexbox based responsive layout system, pure CSS components and utilities with best practice coding and consistent design language.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@angularpackage">
+    <meta name="twitter:creator" content="@angularpackage">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2335983386025442" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../img/favicons/favicon.ico">
+    <link rel="icon" href="../img/favicons/favicon.png">
+    <link rel="stylesheet" href="../dist/spectre.min.css">
+    <link rel="stylesheet" href="../dist/spectre-icons.min.css">
+    <link rel="stylesheet" href="../dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="../dist/docs.min.css">
+    <link rel="canonical" href="https://angular-package.github.io/spectre.css/getting-started/variables.html">
+  </head>
+  <body>
+    <div class="docs-container off-canvas off-canvas-sidebar-show">
+      <div class="docs-navbar"><a class="off-canvas-toggle btn btn-link btn-action" href="#sidebar"><i class="icon icon-menu"></i></a>
+        <div class="btns d-flex">
+          <input class="docs-search form-input" type="text" placeholder="Search Docs"><a class="btn btn-primary ml-1" href="https://github.com/angular-package/spectre.css" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <div class="docs-sidebar off-canvas-sidebar bg-body" id="sidebar">
+        <div class="docs-brand"><a class="docs-logo" href="../index.html"><img src="../img/spectre-logo.svg" alt="Spectre.css CSS Framework">
+            <h2>SPECTRE</h2><small class="label label-secondary text-bold">DOCS</small></a>
+        </div>
+        <div class="docs-nav hide-scrollbar bg-body">
+          <div class="accordion-container">
+            <div class="accordion">
+              <input id="accordion-getting-started" type="checkbox" name="docs-accordion-checkbox" hidden="" checked="checked"/>
+              <label class="accordion-header c-hand" for="accordion-getting-started">Getting started</label>
+              <div class="accordion-body">
+                <ul class="menu menu-nav">
+                  <li class="menu-item"><a href="../getting-started/installation.html">Installation</a>
+                  </li>
+                  <li class="menu-item"><a class="active" href="../getting-started/variables.html">Variables</a>
+                  </li>
+                  <li class="menu-item"><a href="../getting-started/custom.html">Custom version</a>
+                  </li>
+                  <li class="menu-item"><a href="../getting-started/browsers.html">Browser support</a>
+                  </li>
+                  <li class="menu-item"><a href="../getting-started/whatsnew.html">What's new</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion">
+              <input id="accordion-elements" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
+              <label class="accordion-header c-hand" for="accordion-elements">Elements</label>
+              <div class="accordion-body">
+                <ul class="menu menu-nav">
+                  <li class="menu-item"><a href="../elements/buttons.html">Buttons</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/code.html">Code</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/forms.html">Forms</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/icons.html">Icons.css</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/labels.html">Labels</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/media.html">Media</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/tables.html">Tables</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/typography.html">Typography</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion">
+              <input id="accordion-layout" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
+              <label class="accordion-header c-hand" for="accordion-layout">Layout</label>
+              <div class="accordion-body">
+                <ul class="menu menu-nav">
+                  <li class="menu-item"><a href="../layout/grid.html">Flexbox grid</a>
+                  </li>
+                  <li class="menu-item"><a href="../layout/hero.html">Hero</a>
+                  </li>
+                  <li class="menu-item"><a href="../layout/navbar.html">Navbar</a>
+                  </li>
+                  <li class="menu-item"><a href="../layout/responsive.html">Responsive</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion">
+              <input id="accordion-components" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
+              <label class="accordion-header c-hand" for="accordion-components">Components</label>
+              <div class="accordion-body">
+                <ul class="menu menu-nav">
+                  <li class="menu-item"><a href="../components/accordions.html">Accordions</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/avatars.html">Avatars</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/badges.html">Badges</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/bars.html">Bars</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/breadcrumbs.html">Breadcrumbs</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/cards.html">Cards</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/chips.html">Chips</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/empty.html">Empty states</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/menu.html">Menu</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/modals.html">Modals</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/nav.html">Nav</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/pagination.html">Pagination</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/panels.html">Panels</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/popovers.html">Popovers</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/steps.html">Steps</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/tabs.html">Tabs</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/tiles.html">Tiles</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/toasts.html">Toasts</a>
+                  </li>
+                  <li class="menu-item"><a href="../components/tooltips.html">Tooltips</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion">
+              <input id="accordion-utilities" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
+              <label class="accordion-header c-hand" for="accordion-utilities">Utilities</label>
+              <div class="accordion-body">
+                <ul class="menu menu-nav">
+                  <li class="menu-item"><a href="../utilities/colors.html">Colors</a>
+                  </li>
+                  <li class="menu-item"><a href="../utilities/cursors.html">Cursors</a>
+                  </li>
+                  <li class="menu-item"><a href="../utilities/display.html">Display</a>
+                  </li>
+                  <li class="menu-item"><a href="../utilities/divider.html">Divider</a>
+                  </li>
+                  <li class="menu-item"><a href="../utilities/loading.html">Loading</a>
+                  </li>
+                  <li class="menu-item"><a href="../utilities/position.html">Position</a>
+                  </li>
+                  <li class="menu-item"><a href="../utilities/shapes.html">Shapes</a>
+                  </li>
+                  <li class="menu-item"><a href="../utilities/text.html">Text</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion">
+              <input id="accordion-experimentals" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
+              <label class="accordion-header c-hand" for="accordion-experimentals">Experimentals</label>
+              <div class="accordion-body">
+                <ul class="menu menu-nav">
+                  <li class="menu-item"><a href="../experimentals/viewer-360.html">360-Degree Viewer</a>
+                  </li>
+                  <li class="menu-item"><a href="../experimentals/autocomplete.html">Autocomplete</a>
+                  </li>
+                  <li class="menu-item"><a href="../experimentals/calendars.html">Calendars</a>
+                  </li>
+                  <li class="menu-item"><a href="../experimentals/carousels.html">Carousels</a>
+                  </li>
+                  <li class="menu-item"><a href="../experimentals/comparison.html">Comparison sliders</a>
+                  </li>
+                  <li class="menu-item"><a href="../experimentals/filters.html">Filters</a>
+                  </li>
+                  <li class="menu-item"><a href="../experimentals/meters.html">Meters</a>
+                  </li>
+                  <li class="menu-item"><a href="../experimentals/off-canvas.html">Off-canvas</a>
+                  </li>
+                  <li class="menu-item"><a href="../experimentals/parallax.html">Parallax</a>
+                  </li>
+                  <li class="menu-item"><a href="../experimentals/progress.html">Progress</a>
+                  </li>
+                  <li class="menu-item"><a href="../experimentals/sliders.html">Sliders</a>
+                  </li>
+                  <li class="menu-item"><a href="../experimentals/timelines.html">Timelines</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><a class="off-canvas-overlay" href="#close"></a>
+      <div class="off-canvas-content">
+        <div class="docs-content" id="content">
+          <div class="container" id="variables">
+            <h3 class="s-title">Variables<a class="anchor" href="#variables" aria-hidden="true">#</a></h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="../index.html">Spectre.css</a></li>
+              <li class="breadcrumb-item"><a href="../getting-started.html">Getting Started</a></li>
+              <li class="breadcrumb-item"><a href="../getting-started/variables.html">Variables</a></li>
+            </ul>
+            <div class="docs-menu">
+              <h5>Variables</h5>
+              <ul class="menu hide-scrollbar">
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-prefix">Prefix</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-sizes">Sizes</a></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li>
+                  <div class="divider" data-content="Colors"></div>
+                </li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-colors-scheme">Color scheme</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-colors-dark">Dark</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-colors-light">Light</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-colors-accent">Accent</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-colors-primary">Primary</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-colors-primary-dark">Primary dark</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-colors-primary-light">Primary light</a></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-colors-cards">Colors on cards</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-border">Border</a></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li>
+                  <div class="divider" data-content="Control"></div>
+                </li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-control-sizes">Sizes</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-control-padding">Padding</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-control-icon-sizes">Icon sizes</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-control-width">Width</a></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-font-sizes">Font sizes</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-line-height">Line height</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-hero-sizes">Hero sizes</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-layout-spacing">Layout spacing</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-parallax">Parallax</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-responsive-breakpoints">Responsive breakpoints</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-transition-duration">Transition duration</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-units">Units</a></li>
+                <li class="menu-item"><a href="../getting-started/variables.html#variables-z-index">z-index</a></li>
+              </ul>
+            </div>
+            <div class="docs-ad">
+              <div class="hide-md text-center">
+                <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- GitHub-lg--><ins class="adsbygoogle mx-auto" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2335983386025442" data-ad-slot="9894180784"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+              </div>
+              <div class="show-md text-center">
+                <!-- GitHub-sm--><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2335983386025442" data-ad-slot="9278881734"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+              </div>
+            </div>
+            <p><b>Spectre.css</b> is designed with consistent design language. You can use your variables to create your new or match an existing design. All variables in <code>_variables.scss</code> include <code>!default</code> flag. You can redefine the variables to override the values.</p>
+            <p> Almost all the Sass variables are used to initialize equivalent CSS variables, means, they are defined in the same pattern as Sass variables to have naming consistency, but with an additional customizable prefix.</p>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-prefix">Variables - Prefix<a class="anchor" href="#variables-prefix" aria-hidden="true">#</a></h4>
+            <p>The <b>Spectre.css</b> has the Sass <code>$var-prefix</code> variable that is used as the prefix of the CSS variables, and as the prefix of some CSS classes(this feature replaces in some minimal way custom prefixes for all classes with the gulp).
+              In general CSS variable name structure is defined as follows.
+              <pre class="code" data-lang="SCSS"><code>--#{<span class="hljs-variable">$var-prefix</span>}-#{<span class="hljs-variable">$name</span>}<span class="hljs-value">: #{<span class="hljs-variable">$value</span>}
+</span></code></pre>
+            </p>
+            <p>Click on the link for detailed information.</p>
+            <p><a class="btn btn-primary" href="https://spectrecss.angular-package.dev/variables/css-variable-name" target="_blank">Technical documentation</a></p>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-sizes">Variables - Sizes<a class="anchor" href="#variables-sizes" aria-hidden="true">#</a></h4>
+            <p>The default REM (root em) size in <b>Spectre.css</b> is <code>20px</code>.</p>
+            <p>Please note in the Chinese/Japanese/Korean version, Chrome uses 12px as default minimum font size. That is why <b>Spectre.css</b> sets rem default html font size to <code>20px</code>, which is relatively easy to calculate.</p>
+            <p><b>Spectre.css</b> uses <code>4px</code> as the unit size. Sizes of components are based on the unit size.</p>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-colors-scheme">Variables - Color scheme<a class="anchor" href="#variables-colors-scheme" aria-hidden="true">#</a></h4>
+            <p>The CSS <code>color-scheme</code> property is set to <code>normal</code> in both <code>:root</code> and <code>:host</code> elements with the Sass <code>$color-scheme</code> variable.</p>
+            <pre class="code" data-lang="SCSS"><code><span class="hljs-comment">// src/_variables.scss</span>
+<span class="hljs-variable">$color-scheme</span><span class="hljs-value">: normal;</span>
+</code></pre>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-colors">Variables - Colors<a class="anchor" href="#variables-colors" aria-hidden="true">#</a></h4>
+            <p><b>Spectre.css</b> has some colors with defined hex and colors that depend on them, which means, for example, if the <code>primary-color</code> is overridden, then dependent <code>primary-dark</code> and <code>primary-light</code> automatically change.</p>
+            <p>Each hex color is in <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsla"><code>hsla()</code></a> form defined by the <a href="https://spectrecss.angular-package.dev/mixin/define-color"><code>define-color()</code></a> mixin, split into four CSS variables, where suffix <code>h</code> indicates hue, <code>s</code> saturation, <code>l</code> lightness and <code>a</code> alpha.
+              Click <a href="https://spectrecss.angular-package.dev/variables/colors/css-variable-color" target="_blank">here</a> for detailed information. 
+            </p>
+            <p>The single CSS color is defined as follows.</p>
+            <pre class="code" data-lang="SCSS"><code>--#{<span class="hljs-variable">$var-prefix</span>}-#{<span class="hljs-variable">$name</span>}-<span class="hljs-attribute">color</span>-h<span class="hljs-value">: <span class="hljs-function">hue</span>(<span class="hljs-variable">$color</span>)
+--#{<span class="hljs-variable">$var-prefix</span>}-#{<span class="hljs-variable">$name</span>}-color-s: <span class="hljs-function">saturation</span>(<span class="hljs-variable">$color</span>)
+--#{<span class="hljs-variable">$var-prefix</span>}-#{<span class="hljs-variable">$name</span>}-color-l: <span class="hljs-function">lightness</span>(<span class="hljs-variable">$color</span>)
+--#{<span class="hljs-variable">$var-prefix</span>}-#{<span class="hljs-variable">$name</span>}-color-a: <span class="hljs-function">alpha</span>(<span class="hljs-variable">$color</span>)</span></code></pre>
+            <h5 class="s-subtitle" id="variables-colors-dark">Variables - Dark color<a class="anchor" href="#variables-colors-dark" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-3 col-md-6">
+                <div class="card card-color bg-dark"><span class="card-color-code">dark</span>
+                  <input class="color-picker" type="color" name="dark-color" value="#303742"><span class="card-color-name">Dark color</span>
+                </div>
+              </div>
+              <div class="column col-9">
+                <table class="docs-table table table-striped text-left">
+                  <tbody>
+                    <tr>
+                      <th>Code</th>
+                      <td colspan="2"><code>dark</code></td>
+                    </tr>
+                    <tr>
+                      <th>Sass variable</th>
+                      <td><code>$dark-color</code></td>
+                      <td><code>#303742</code></td>
+                    </tr>
+                    <tr>
+                      <th>Hue</th>
+                      <td> <code>--s-dark-color-h</code>
+                      </td>
+                      <td> <code>216.6666666667deg</code></td>
+                    </tr>
+                    <tr>
+                      <th>Saturation</th>
+                      <td> <code>--s-dark-color-s</code>
+                      </td>
+                      <td> <code>15.7894736842%</code></td>
+                    </tr>
+                    <tr>
+                      <th>Lightness</th>
+                      <td> <code>--s-dark-color-l</code>
+                      </td>
+                      <td> <code>22.3529411765%</code></td>
+                    </tr>
+                    <tr>
+                      <th>Red</th>
+                      <td> <code>--s-dark-color-r</code>
+                      </td>
+                      <td> <code>216.6666666667deg</code></td>
+                    </tr>
+                    <tr>
+                      <th>Green</th>
+                      <td> <code>--s-dark-color-sg</code>
+                      </td>
+                      <td> <code>15.7894736842%</code></td>
+                    </tr>
+                    <tr>
+                      <th>Blue</th>
+                      <td> <code>--s-dark-color-b</code>
+                      </td>
+                      <td> <code>22.3529411765%</code></td>
+                    </tr>
+                    <tr>
+                      <th>Alpha</th>
+                      <td> <code>--s-dark-color-a</code>
+                      </td>
+                      <td> <code>1</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="variables-colors-light">Variables - Light color<a class="anchor" href="#variables-colors-light" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-4 col-md-6">
+                <div class="card card-color bg-light border"><span class="card-color-code">light</span><span class="card-color-hex">#FFFFFF</span>
+                  <input class="color-picker" type="color" name="light-color" value="#FFFFFF"><span class="card-color-name">Light color</span>
+                </div>
+              </div>
+              <div class="column col-12">
+                <table class="docs-table table text-left">
+                  <thead>
+                    <tr>
+                      <th>Code</th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Hex</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th class="text-left">light</th>
+                      <td class="text-left"> <code>$light-color</code></td>
+                      <td class="text-left"> <code>--s-light-color-h</code><br/><code>--s-light-color-s</code><br/><code>--s-light-color-l</code><br/><code>--s-light-color-a</code>
+                      </td>
+                      <td class="text-right"> 
+                        <input type="color" name="light-color" value="#FFFFFF">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="variables-colors-accent">Variables - Accent color<a class="anchor" href="#variables-colors-accent" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table text-left">
+                  <thead>
+                    <tr>
+                      <th>Code</th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Hex</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th class="text-left">accent</th>
+                      <td class="text-left"> <code>$accent-color</code></td>
+                      <td class="text-left"> <code>--s-accent-color-h</code><br/><code>--s-accent-color-s</code><br/><code>--s-accent-color-l</code><br/><code>--s-accent-color-a</code>
+                      </td>
+                      <td class="text-right">
+                        <input type="color" name="accent-color" value="#9932CC">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="variables-colors-primary">Variables - Primary<a class="anchor" href="#variables-colors-primary" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table text-left">
+                  <thead>
+                    <tr>
+                      <th>Code</th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Hex</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th class="text-left">primary</th>
+                      <td class="text-left"> <code>$primary-color</code></td>
+                      <td class="text-left"> <code>--s-primary-color-h</code><br/><code>--s-primary-color-s</code><br/><code>--s-primary-color-l</code><br/><code>--s-primary-color-a</code>
+                      </td>
+                      <td class="text-right">
+                        <input type="color" name="primary-color" value="#5755D9">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="variables-colors-primary-dark">Variables - Primary dark<a class="anchor" href="#variables-colors-primary-dark" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table text-left">
+                  <thead>
+                    <tr>
+                      <th>Code</th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Hex</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th class="text-left">primary-dark</th>
+                      <td class="text-left"> <code>$primary-color-dark</code></td>
+                      <td class="text-left"> <code>--s-primary-color-dark-h</code><br/><code>--s-primary-color-dark-s</code><br/><code>--s-primary-color-dark-l</code><br/><code>--s-primary-color-dark-a</code>
+                      </td>
+                      <td class="text-right">
+                        <input type="color" name="primary-color-dark" value="#4B49D6">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="variables-colors-primary-light">Variables - Primary light<a class="anchor" href="#variables-colors-primary-light" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table text-left">
+                  <thead>
+                    <tr>
+                      <th>Code</th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Hex</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th class="text-left">primary-light</th>
+                      <td class="text-left"> <code>$primary-color-light</code></td>
+                      <td class="text-left"> <code>--s-primary-color-light-h</code><br/><code>--s-primary-color-light-s</code><br/><code>--s-primary-color-light-l</code><br/><code>--s-primary-color-light-a</code>
+                      </td>
+                      <td class="text-right">
+                        <input type="color" name="primary-color-light" value="#6362DC">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="variables-colors-secondary">Variables - Secondary<a class="anchor" href="#variables-colors-secondary" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table text-left">
+                  <thead>
+                    <tr>
+                      <th>Code</th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Hex</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th class="text-left">secondary</th>
+                      <td class="text-left"> <code>$secondary-color</code></td>
+                      <td class="text-left"> <code>--s-secondary-color-h</code><br/><code>--s-secondary-color-s</code><br/><code>--s-secondary-color-l</code><br/><code>--s-secondary-color-a</code>
+                      </td>
+                      <td class="text-right">
+                        <input type="color" name="secondary" value="#F1F1FC">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">secondary-dark</th>
+                      <td class="text-left"> <code>$secondary-color-dark</code></td>
+                      <td class="text-left"> <code>--s-secondary-color-dark-h</code><br/><code>--s-secondary-color-dark-s</code><br/><code>--s-secondary-color-dark-l</code><br/><code>--s-secondary-color-dark-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="secondary-color-dark" value="#E5E5F9">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">secondary-light</th>
+                      <td class="text-left"> <code>$secondary-color-light</code></td>
+                      <td class="text-left"> <code>--s-secondary-color-light-h</code><br/><code>--s-secondary-color-light-s</code><br/><code>--s-secondary-color-light-l</code><br/><code>--s-secondary-color-light-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="secondary-color-light" value="#FEFEFF">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left bg-light" colspan="4">
+                        <h5 id="gray-colors">Gray colors</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">gray</th>
+                      <td class="text-left"> <code>$gray-color</code></td>
+                      <td class="text-left"> <code>--s-gray-color-h</code><br/><code>--s-gray-color-s</code><br/><code>--s-gray-color-l</code><br/><code>--s-gray-color-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="gray-color" value="#BCC3CE">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">gray-dark</th>
+                      <td class="text-left"> <code>$gray-color-dark</code></td>
+                      <td class="text-left"> <code>--s-gray-color-dark-h</code><br/><code>--s-gray-color-dark-s</code><br/><code>--s-gray-color-dark-l</code><br/><code>--s-gray-color-dark-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="gray-color-dark" value="#66758C">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">gray-light</th>
+                      <td class="text-left"> <code>$gray-color-light</code></td>
+                      <td class="text-left"><code>--s-gray-color-light-h</code><br/><code>--s-gray-color-light-s</code><br/><code>--s-gray-color-light-l</code><br/><code>--s-gray-color-light-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="gray-color-light" value="#F7F8F9">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left bg-light" colspan="4">
+                        <h5 id="bg-colors">Bg colors</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">bg</th>
+                      <td class="text-left"> <code>$bg-color</code></td>
+                      <td class="text-left"> <code>--s-bg-color-h</code><br/><code>--s-bg-color-s</code><br/><code>--s-bg-color-l</code><br/><code>--s-bg-color-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="bg-color" value="#BCC3CE">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">bg-dark</th>
+                      <td class="text-left"> <code>$bg-color-dark</code></td>
+                      <td class="text-left"><code>--s-bg-color-dark-h</code><br/><code>--s-bg-color-dark-s</code><br/><code>--s-bg-color-dark-l</code><br/><code>--s-bg-color-dark-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="bg-color-dark" value="#EEF0F3">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">bg-light</th>
+                      <td class="text-left"> <code>$bg-color-light</code></td>
+                      <td class="text-left"><code>--s-bg-color-light-h</code><br/><code>--s-bg-color-light-s</code><br/><code>--s-bg-color-light-l</code><br/><code>--s-bg-color-light-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="bg-color-light" value="#FFFFFF">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left bg-light" colspan="4">
+                        <h5 id="border-colors">Border colors</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">border</th>
+                      <td class="text-left"> <code>$border-color</code></td>
+                      <td class="text-left"> <code>--s-border-color-h</code><br/><code>--s-border-color-s</code><br/><code>--s-border-color-l</code><br/><code>--s-border-color-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="border-color" value="#DADEE4">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">border-dark</th>
+                      <td class="text-left"> <code>$border-color-dark</code></td>
+                      <td class="text-left"> <code>--s-border-color-dark-h</code><br/><code>--s-border-color-dark-s</code><br/><code>--s-border-color-dark-l</code><br/><code>--s-border-color-dark-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="border-color-dark" value="#BCC3CE">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">border-light</th>
+                      <td class="text-left"> <code>$border-color-light</code></td>
+                      <td class="text-left"> <code>--s-border-color-light-h</code><br/><code>--s-border-color-light-s</code><br/><code>--s-border-color-light-l</code><br/><code>--s-border-color-light-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="border-color-light" value="#F1F3F5">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left bg-light" colspan="4">
+                        <h5 id="link-colors">Link colors</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">link</th>
+                      <td class="text-left"> <code>$link-color</code></td>
+                      <td class="text-left"> <code>--s-link-color-h</code><br/><code>--s-link-color-s</code><br/><code>--s-link-color-l</code><br/><code>--s-link-color-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="link-color" value="#5755D9">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">link-dark</th>
+                      <td class="text-left"> <code>$link-color-dark</code></td>
+                      <td class="text-left"> <code>--s-link-color-dark-h</code><br/><code>--s-link-color-dark-s</code><br/><code>--s-link-color-dark-l</code><br/><code>--s-link-color-dark-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="link-color-dark" value="#302ECD">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">link-light</th>
+                      <td class="text-left"> <code>$link-color-light</code></td>
+                      <td class="text-left"> <code>--s-link-color-light-h</code><br/><code>--s-link-color-light-s</code><br/><code>--s-link-color-light-l</code><br/><code>--s-link-color-light-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="link-color-light" value="#807FE2">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left bg-light" colspan="4">
+                        <h5 id="control-colors">Control colors</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">disabled</th>
+                      <td class="text-left"> <code>$disabled-color</code></td>
+                      <td class="text-left"> <code>--s-disabled-color-h</code><br/><code>--s-disabled-color-s</code><br/><code>--s-disabled-color-l</code><br/><code>--s-disabled-color-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="disabled-color" value="#EEF0F3">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">error</th>
+                      <td class="text-left"> <code>$error-color</code></td>
+                      <td class="text-left"> <code>--s-error-color-h</code><br/><code>--s-error-color-s</code><br/><code>--s-error-color-l</code><br/><code>--s-error-color-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="error-color" value="#E85600">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">info</th>
+                      <td class="text-left"> <code>$info-color</code></td>
+                      <td class="text-left"> <code>--s-info-color-h</code><br/><code>--s-info-color-s</code><br/><code>--s-info-color-l</code><br/><code>--s-info-color-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="info-color" value="#D9EDF7">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">success</th>
+                      <td class="text-left"> <code>$success-color</code></td>
+                      <td class="text-left"><code>--s-success-color-h</code><br/><code>--s-success-color-s</code><br/><code>--s-success-color-l</code><br/><code>--s-success-color-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="success-color" value="#32B643">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">warning</th>
+                      <td class="text-left"> <code>$warning-color</code></td>
+                      <td class="text-left"> <code>--s-warning-color-h</code><br/><code>--s-warning-color-s</code><br/><code>--s-warning-color-l</code><br/><code>--s-warning-color-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="warning-color" value="#FFB700">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left bg-light" colspan="4">
+                        <h5 id="body-colors">Body colors</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">body-bg</td>
+                      <td class="text-left"> <code>$body-bg-color</code></td>
+                      <td class="text-left"> <code>--s-body-bg-color-h</code><br/><code>--s-body-bg-color-s</code><br/><code>--s-body-bg-color-l</code><br/><code>--s-body-bg-color-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="body-bg-color" value="#FFFFFF">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">body-font</th>
+                      <td class="text-left"> <code>$body-font-color</code></td>
+                      <td class="text-left"> <code>--s-body-font-color-h</code><br/><code>--s-body-font-color-s</code><br/><code>--s-body-font-color-l</code><br/><code>--s-body-font-color-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="body-font-color" value="#3B4351">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left bg-light" colspan="4">
+                        <h5 id="other-colors">Other colors</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">code</th>
+                      <td class="text-left"> <code>$code-color</code></td>
+                      <td class="text-left"> <code>--s-code-color-h</code><br/><code>--s-code-color-s</code><br/><code>--s-code-color-l</code><br/><code>--s-code-color-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="code-color" value="#D73E48">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">highlight</th>
+                      <td class="text-left"> <code>$highlight-color</code></td>
+                      <td class="text-left"> <code>--s-highlight-color-h</code><br/><code>--s-highlight-color-s</code><br/><code>--s-highlight-color-l</code><br/><code>--s-highlight-color-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="highlight-color" value="#FFE9B3">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left">parallax-fade</th>
+                      <td class="text-left"> <code>$parallax-fade-color</code></td>
+                      <td class="text-left"> <code>--s-parallax-fade-color-h</code><br/><code>--s-parallax-fade-color-s</code><br/><code>--s-parallax-fade-color-l</code><br/><code>--s-parallax-fade-color-a</code>
+                      </td>
+                      <td>
+                        <input type="color" name="parallax-fade-color" value="#FFFFFF">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-colors-cards">Variables - Colors on cards<a class="anchor" href="#variables-colors-cards" aria-hidden="true">#</a></h4>
+            <p>Click on the link to see color dependency change.</p>
+            <p><a class="btn btn-primary" href="https://angular-package.dev/ui-kit/component/theme" target="_blank">Theme demonstration</a></p>
+            <div class="columns">
+              <div class="column col-12">
+                <div class="h5">Accent color</div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-accent">
+                  <div class="color-title">#9932CC</div>
+                  <div class="color-subtitle">Accent</div>
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column col-12">
+                <div class="h5">Primary colors</div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-primary">
+                  <div class="color-title">#5755d9</div>
+                  <div class="color-subtitle">Primary</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-primary-dark">
+                  <div class="color-title">#4b48d6</div>
+                  <div class="color-subtitle">Primary dark</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-primary-light">
+                  <div class="color-title">#6362dc</div>
+                  <div class="color-subtitle">Primary light</div>
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column col-12">
+                <div class="h5">Secondary colors</div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-secondary">
+                  <div class="color-title">#f1f1fc</div>
+                  <div class="color-subtitle">Secondary</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-secondary-dark">
+                  <div class="color-title">#e5e5f9</div>
+                  <div class="color-subtitle">Secondary dark</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-secondary-light">
+                  <div class="color-title">#fefeff</div>
+                  <div class="color-subtitle">Secondary light</div>
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column col-12">
+                <div class="h5">Gray colors</div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-gray">
+                  <div class="color-title">#bcc3ce</div>
+                  <div class="color-subtitle">Gray</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-gray-dark">
+                  <div class="color-title">#66758c</div>
+                  <div class="color-subtitle">Gray dark</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-gray-light">
+                  <div class="color-title">#f7f8f9</div>
+                  <div class="color-subtitle">Gray light</div>
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column col-12">
+                <div class="h5">Bg colors</div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-bg">
+                  <div class="color-title">#f7f8f9</div>
+                  <div class="color-subtitle">Bg</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-bg-dark">
+                  <div class="color-title">#eef0f3</div>
+                  <div class="color-subtitle">Bg dark</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-bg-light">
+                  <div class="color-title">#ffffff</div>
+                  <div class="color-subtitle">Bg light</div>
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column col-12">
+                <div class="h5">Border colors</div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-border">
+                  <div class="color-title">#dadee4</div>
+                  <div class="color-subtitle">Border</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-border-dark">
+                  <div class="color-title">#bcc3ce</div>
+                  <div class="color-subtitle">Border dark</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-border-light">
+                  <div class="color-title">#f1f3f5</div>
+                  <div class="color-subtitle">Border light</div>
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column col-12">
+                <div class="h5">Link colors</div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-link">
+                  <div class="color-title">#5755d9</div>
+                  <div class="color-subtitle">Link</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-link-dark">
+                  <div class="color-title">#302ecd</div>
+                  <div class="color-subtitle">Link dark</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-link-light">
+                  <div class="color-title">#807fe2</div>
+                  <div class="color-subtitle">Link light</div>
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column col-12">
+                <div class="h5">Control colors</div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-disabled">
+                  <div class="color-title">#eef0f3</div>
+                  <div class="color-subtitle">Disabled</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-error">
+                  <div class="color-title">#e85600</div>
+                  <div class="color-subtitle">Error</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-info">
+                  <div class="color-title">#d9edf7</div>
+                  <div class="color-subtitle">Info</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-success">
+                  <div class="color-title">#32b643</div>
+                  <div class="color-subtitle">Success</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-warning">
+                  <div class="color-title">#ffb700</div>
+                  <div class="color-subtitle">Warning</div>
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column col-12">
+                <div class="h5">Body colors</div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-body">
+                  <div class="color-title">#ffffff</div>
+                  <div class="color-subtitle">Body background</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-body-font">
+                  <div class="color-title">#3b4351</div>
+                  <div class="color-subtitle">Body font</div>
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column col-12">
+                <div class="h5">Other colors</div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-code">
+                  <div class="color-title">#d73e48</div>
+                  <div class="color-subtitle">Code</div>
+                </div>
+              </div>
+              <div class="column col-3 col-md-6">
+                <div class="docs-color bg-highlight text-warning">
+                  <div class="color-title">#ffe9b3</div>
+                  <div class="color-subtitle">Highlight</div>
+                </div>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-border">Variables - Border<a class="anchor" href="#variables-border" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-left">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Default value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left">border-radius</td>
+                      <td class="text-left"><code>$border-radius</code></td>
+                      <td class="text-left"> <code>--s-border-radius</code></td>
+                      <td class="text-right"><code>0.1rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">border-width</td>
+                      <td class="text-left"> <code>$border-width</code></td>
+                      <td class="text-left"><code>--s-border-width</code></td>
+                      <td class="text-right"><code>0.05rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">border-width-lg</td>
+                      <td class="text-left"><code>$border-width-lg</code></td>
+                      <td class="text-left"><code>--s-border-width-lg</code></td>
+                      <td class="text-right"><code>0.1rem</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-control">Variables - Control<a class="anchor" href="#variables-control" aria-hidden="true">#</a></h4>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-control-sizes">Variables - Control sizes<a class="anchor" href="#variables-control-sizes" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-left">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Default value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left">control-size</td>
+                      <td class="text-left"><code>$control-size</code></td>
+                      <td class="text-left"><code>--s-control-size</code></td>
+                      <td class="text-right"><code>1.8rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">control-size-sm</td>
+                      <td class="text-left"><code>$control-size-sm</code></td>
+                      <td class="text-left"><code>--s-control-size-sm</code></td>
+                      <td class="text-right"><code>1.4rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">control-size-lg</td>
+                      <td class="text-left"><code>$control-size-lg</code></td>
+                      <td class="text-left"><code>--s-control-size-lg</code></td>
+                      <td class="text-right"><code>2rem</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-control-padding">Variables - Control padding<a class="anchor" href="#variables-control-padding" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-left">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Default value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left">control-padding-x</td>
+                      <td class="text-left"><code>$control-padding-x</code></td>
+                      <td class="text-left"><code>--s-control-padding-x</code></td>
+                      <td class="text-right"><code>0.4rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">control-padding-x-sm</td>
+                      <td class="text-left"><code>$control-padding-x-sm</code></td>
+                      <td class="text-left"><code>--s-control-padding-x-sm</code></td>
+                      <td class="text-right"><code>0.3rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">control-padding-x-lg</td>
+                      <td class="text-left"><code>$control-padding-x-lg</code></td>
+                      <td class="text-left"><code>--s-control-padding-x-lg</code></td>
+                      <td class="text-right"><code>0.6rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">control-padding-y</td>
+                      <td class="text-left"><code>$control-padding-y</code></td>
+                      <td class="text-left"><code>--s-control-padding-y</code></td>
+                      <td class="text-right"><code>0.25rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">control-padding-y-sm</td>
+                      <td class="text-left"><code>$control-padding-y-sm</code></td>
+                      <td class="text-left"><code>--s-control-padding-y-sm</code></td>
+                      <td class="text-right"><code>0.05rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">control-padding-y-lg</td>
+                      <td class="text-left"><code>$control-padding-y-lg</code></td>
+                      <td class="text-left"><code>--s-control-padding-y-lg</code></td>
+                      <td class="text-right"><code>0.35rem</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-control-icon-sizes">Variables - Control icon sizes<a class="anchor" href="#variables-control-icon-sizes" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-left">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Default value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left">control-icon-size</td>
+                      <td class="text-left"><code>$control-icon-size</code></td>
+                      <td class="text-left"><code>--s-control-icon-size</code></td>
+                      <td class="text-right"><code>0.8rem</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-control-width">Variables - Control width<a class="anchor" href="#variables-control-width" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-left">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Default value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left">control-width-xs</td>
+                      <td class="text-left"><code>$control-width-xs</code></td>
+                      <td class="text-left"><code>--s-control-width-xs</code></td>
+                      <td class="text-right"><code>180px</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">control-width-sm</td>
+                      <td class="text-left"><code>$control-width-sm</code></td>
+                      <td class="text-left"><code>--s-control-width-sm</code></td>
+                      <td class="text-right"><code>320px</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">control-width-md</td>
+                      <td class="text-left"><code>$control-width-md</code></td>
+                      <td class="text-left"><code>--s-control-width-md</code></td>
+                      <td class="text-right"><code>640px</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">control-width-lg</td>
+                      <td class="text-left"><code>$control-width-lg</code></td>
+                      <td class="text-left"><code>--s-control-width-lg</code></td>
+                      <td class="text-right"><code>960px</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">control-width-xl</td>
+                      <td class="text-left"><code>$control-width-xl</code></td>
+                      <td class="text-left"><code>--s-control-width-xl</code></td>
+                      <td class="text-right"><code>1280px</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-font-sizes-line-height">Variables - Font sizes and line height<a class="anchor" href="#variables-font-sizes-line-height" aria-hidden="true">#</a></h4>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-font-sizes">Variables - Font sizes<a class="anchor" href="#variables-font-sizes" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-left">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Default value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left">html-font-size</td>
+                      <td class="text-left"><code>$html-font-size</code></td>
+                      <td class="text-left"><code>--s-html-font-size</code></td>
+                      <td class="text-right"><code>20px</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">font-size</td>
+                      <td class="text-left"><code>$font-size</code></td>
+                      <td class="text-left"><code>--s-font-size</code></td>
+                      <td class="text-right"><code>0.8rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">font-size</td>
+                      <td class="text-left"><code>$font-size-sm</code></td>
+                      <td class="text-left"><code>--s-font-size-sm</code></td>
+                      <td class="text-right"><code>0.7rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">font-size</td>
+                      <td class="text-left"><code>$font-size-lg</code></td>
+                      <td class="text-left"><code>--s-font-size-lg</code></td>
+                      <td class="text-right"><code>0.9rem</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-line-height">Variables - Line height<a class="anchor" href="#variables-line-height" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-left">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Default value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left">html-line-height</td>
+                      <td class="text-left"><code>$html-line-height</code></td>
+                      <td class="text-left"><code>--s-html-line-height</code></td>
+                      <td class="text-right"><code>1.5</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">line-height</td>
+                      <td class="text-left"><code>$line-height</code></td>
+                      <td class="text-left"><code>--s-line-height</code></td>
+                      <td class="text-right"><code>1.2rem</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-hero-sizes">Variables - Hero sizes<a class="anchor" href="#variables-hero-sizes" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12"> 
+                <p>These are common variables for the <a href="../layout/hero.html"><b>hero</b></a> element defined in the <code>_variables.scss</code> via the sass map <code>$hero-size</code> variable.</p>
+              </div>
+              <div class="column col-12">
+                <table class="docs-table table text-center">
+                  <thead>
+                    <tr>
+                      <th>xs </th>
+                      <th>sm </th>
+                      <th>md  </th>
+                      <th>lg  </th>
+                      <th>xl </th>
+                      <th>2x </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="column col-12">
+                <pre class="code" data-lang="SCSS"><code><span class="hljs-comment">// src/_variables.scss</span>
+<span class="hljs-comment">// Hero sizes.</span>
+<span class="hljs-variable">$hero-size</span><span class="hljs-value">: (
+  <span class="hljs-string">'xs'</span>: <span class="hljs-number">1rem</span>, // --#{<span class="hljs-variable">$var-prefix</span>}-hero-size-xs.
+  <span class="hljs-string">'sm'</span>: <span class="hljs-number">2rem</span>, // --#{<span class="hljs-variable">$var-prefix</span>}-hero-size-sm.
+  <span class="hljs-string">'md'</span>: <span class="hljs-number">4rem</span>, // --#{<span class="hljs-variable">$var-prefix</span>}-hero-size-md.
+  <span class="hljs-string">'lg'</span>: <span class="hljs-number">8rem</span>, // --#{<span class="hljs-variable">$var-prefix</span>}-hero-size-lg.
+  <span class="hljs-string">'xl'</span>: <span class="hljs-number">10rem</span> // --#{<span class="hljs-variable">$var-prefix</span>}-hero-size-xl.
+) !default;</span>
+</code></pre>
+                <p>
+                   Common hero size Sass and CSS variables list</p>
+                <table class="docs-table table table-striped text-left">
+                  <thead>
+                    <tr>
+                      <th>Classes</th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Default value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left"> <code>.hero.hero-size-xs</code><br><code>.s-hero.hero-size-xs</code></td>
+                      <td class="text-left"><code>$hero-size['xs']</code></td>
+                      <td class="text-left"><code>--s-hero-size-xs</code></td>
+                      <td class="text-right"><code>1rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><code>.hero.hero-size-sm</code><br><code>.s-hero.hero-size-sm</code></td>
+                      <td class="text-left"><code>$hero-size['sm']</code></td>
+                      <td class="text-left"><code>--s-hero-size-sm</code></td>
+                      <td class="text-right"><code>2rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><code>.hero.hero-size-md</code><br><code>.s-hero.hero-size-md</code></td>
+                      <td class="text-left"><code>$hero-size['md']</code></td>
+                      <td class="text-left"><code>--s-hero-size-md</code></td>
+                      <td class="text-right"><code>4rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><code>.hero.hero-size-lg</code><br><code>.s-hero.hero-size-lg</code></td>
+                      <td class="text-left"><code>$hero-size['lg']</code></td>
+                      <td class="text-left"><code>--s-hero-size-lg</code></td>
+                      <td class="text-right"><code>8rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><code>.hero.hero-size-xl</code><br><code>.s-hero.hero-size-xl</code></td>
+                      <td class="text-left"><code>$hero-size['xl']</code></td>
+                      <td class="text-left"><code>--s-hero-size-xl</code></td>
+                      <td class="text-right"><code>10rem</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <h5 id="specific-color-hero-sizes">Specific color hero sizes</h5>
+                <p>
+                  There are hero sizes CSS variables defined only for the specific colors giving the ability to set different sizes for one color. For example, there is a <code>.hero-primary</code> class that fills the hero with the <code>--s-primary-color</code>, and to change the size assigned to the primary color to large add class <code>hero-primary-size-xl</code>. 
+                  Read more about hero sizes customization <a href="../getting-started/custom.html#customizable-heros">here</a>.
+                </p>
+              </div>
+              <div class="column col-12">
+                <table class="docs-table table text-center">
+                  <thead>
+                    <tr>
+                      <th class="text-left">Color</th>
+                      <th>xs </th>
+                      <th>sm </th>
+                      <th>md  </th>
+                      <th>lg  </th>
+                      <th>xl </th>
+                      <th>2x </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left">Dark color</td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Light color</td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Accent color</td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Primary colors</td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Secondary colors</td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Gray colors</td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Bg colors</td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Border colors</td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Link colors</td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Control colors</td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Body colors</td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Other colors</td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-left">
+                  <thead>
+                    <tr>
+                      <th>Classes</th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Default value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left"> <code>.hero.hero-primary-size-xs</code><br><code>.s-hero.hero-primary-size-xs</code></td>
+                      <td class="text-left"><code>$hero-size['xs']</code></td>
+                      <td class="text-left"><code>--s-hero-primary-size-xs</code></td>
+                      <td class="text-right"><code>1rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"> <code>.hero.hero-primary-size-sm</code><br><code>.s-hero.hero-primary-size-sm</code></td>
+                      <td class="text-left"><code>$hero-size['sm']</code></td>
+                      <td class="text-left"><code>--s-hero-primary-size-sm</code></td>
+                      <td class="text-right"><code>2rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"><code>.hero.hero-primary-size-md</code><br><code>.s-hero.hero-primary-size-md</code></td>
+                      <td class="text-left"><code>$hero-size['md']</code></td>
+                      <td class="text-left"><code>--s-hero-primary-size-md</code></td>
+                      <td class="text-right"><code>4rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"> <code>.hero.hero-primary-size-lg</code><br><code>.s-hero.hero-primary-size-lg</code></td>
+                      <td class="text-left"><code>$hero-size['lg']</code></td>
+                      <td class="text-left"><code>--s-hero-primary-size-lg</code></td>
+                      <td class="text-right"><code>8rem</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left"> <code>.hero.hero-primary-size-xl</code><br><code>.s-hero.hero-primary-size-xl</code></td>
+                      <td class="text-left"><code>$hero-size['xl']</code></td>
+                      <td class="text-left"><code>--s-hero-primary-size-xl</code></td>
+                      <td class="text-right"><code>10rem</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-layout-spacing">Variables - Layout spacing<a class="anchor" href="#variables-layout-spacing" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-left">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Default value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left">layout-spacing</td>
+                      <td class="text-left"><code>$layout-spacing</code></td>
+                      <td class="text-left"><code>--s-layout-spacing</code></td>
+                      <td class="text-right"><code>0.4</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">layout-spacing-sm</td>
+                      <td class="text-left"><code>$layout-spacing-sm</code></td>
+                      <td class="text-left"><code>--s-layout-spacing-sm</code></td>
+                      <td class="text-right"><code>0.8</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">layout-spacing</td>
+                      <td class="text-left"><code>$layout-spacing-lg</code></td>
+                      <td class="text-left"><code>--s-layout-spacing-lg</code></td>
+                      <td class="text-right"><code>0.8</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">layout-spacing-unit</td>
+                      <td class="text-left"><code>$layout-spacing-unit</code></td>
+                      <td class="text-left"><code>--s-layout-spacing-unit</code></td>
+                      <td class="text-right"><code>1rem</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-parallax">Variables - Parallax<a class="anchor" href="#variables-parallax" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-left">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Default value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left">parallax-deg</td>
+                      <td class="text-left"><code>$parallax-deg</code></td>
+                      <td class="text-left"><code>--s-parallax-deg</code></td>
+                      <td class="text-right"><code>3deg</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">parallax-offset</td>
+                      <td class="text-left"><code>$parallax-offset</code></td>
+                      <td class="text-left"><code>--s-parallax-offset</code></td>
+                      <td class="text-right"><code>4.5px</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">parallax-offset-z</td>
+                      <td class="text-left"><code>$parallax-offset-z</code></td>
+                      <td class="text-left"><code>--s-parallax-offset-z</code></td>
+                      <td class="text-right"><code>50px</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">parallax-perspective</td>
+                      <td class="text-left"><code>$parallax-perspective</code></td>
+                      <td class="text-left"><code>--s-parallax-perspective</code></td>
+                      <td class="text-right"><code>1000px</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">parallax-scale</td>
+                      <td class="text-left"><code>$parallax-scale</code></td>
+                      <td class="text-left"><code>--s-parallax-scale</code></td>
+                      <td class="text-right"><code>0.95</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">parallax-fade-color</td>
+                      <td class="text-left"><code>$parallax-fade-color</code></td>
+                      <td class="text-left"><code>--s-parallax-fade-color</code></td>
+                      <td class="text-right"><code>#FFFFFF</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-responsive-breakpoints">Variables - Responsive breakpoints<a class="anchor" href="#variables-responsive-breakpoints" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-left">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Default value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left">size-xs</td>
+                      <td class="text-left"><code>$size-xs</code></td>
+                      <td class="text-left"><code>--s-size-xs</code></td>
+                      <td class="text-right"><code>480px</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">size-sm</td>
+                      <td class="text-left"><code>$size-sm</code></td>
+                      <td class="text-left"><code>--s-size-sm</code></td>
+                      <td class="text-right"><code>600px</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">size-md</td>
+                      <td class="text-left"><code>$size-md</code></td>
+                      <td class="text-left"><code>--s-size-md</code></td>
+                      <td class="text-right"><code>840px</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">size-lg</td>
+                      <td class="text-left"><code>$size-lg</code></td>
+                      <td class="text-left"><code>--s-size-lg</code></td>
+                      <td class="text-right"><code>960px</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">size-xl</td>
+                      <td class="text-left"><code>$size-xl</code></td>
+                      <td class="text-left"><code>--s-size-xl</code></td>
+                      <td class="text-right"><code>1280px</code></td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">size-2x</td>
+                      <td class="text-left"><code>$size-2x</code></td>
+                      <td class="text-left"><code>--s-size-2x</code></td>
+                      <td class="text-right"><code>1440px</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-transition-duration">Variables - Transition duration<a class="anchor" href="#variables-transition-duration" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-left">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Default value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>transition-duration</td>
+                      <td><code>$transition-duration</code></td>
+                      <td><code>--s-transition-duration</code></td>
+                      <td class="text-right"><code>0.2s</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-units">Variables - Units<a class="anchor" href="#variables-units" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-left">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Default value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>unit-o</td>
+                      <td><code>$unit-o</code></td>
+                      <td><code>--s-unit-o</code></td>
+                      <td class="text-right"><code>0.05rem</code></td>
+                    </tr>
+                    <tr>
+                      <td>unit-h</td>
+                      <td><code>$unit-h</code></td>
+                      <td><code>--s-unit-h</code></td>
+                      <td class="text-right"><code>0.1rem</code></td>
+                    </tr>
+                    <tr>
+                      <td>unit-1</td>
+                      <td><code>$unit-1</code></td>
+                      <td><code>--s-unit-1</code></td>
+                      <td class="text-right"><code>0.2rem</code></td>
+                    </tr>
+                    <tr>
+                      <td>unit-2</td>
+                      <td><code>$unit-2</code></td>
+                      <td><code>--s-unit-2</code></td>
+                      <td class="text-right"><code>0.4rem</code></td>
+                    </tr>
+                    <tr>
+                      <td>unit-3</td>
+                      <td><code>$unit-3</code></td>
+                      <td><code>--s-unit-3</code></td>
+                      <td class="text-right"><code>0.6rem</code></td>
+                    </tr>
+                    <tr>
+                      <td>unit-4</td>
+                      <td><code>$unit-4</code></td>
+                      <td><code>--s-unit-4</code></td>
+                      <td class="text-right"><code>0.8rem</code></td>
+                    </tr>
+                    <tr>
+                      <td>unit-5</td>
+                      <td><code>$unit-5</code></td>
+                      <td><code>--s-unit-5</code></td>
+                      <td class="text-right"><code>1rem</code></td>
+                    </tr>
+                    <tr>
+                      <td>unit-6</td>
+                      <td><code>$unit-6</code></td>
+                      <td><code>--s-unit-6</code></td>
+                      <td class="text-right"><code>1.2rem</code></td>
+                    </tr>
+                    <tr>
+                      <td>unit-7</td>
+                      <td><code>$unit-7</code></td>
+                      <td><code>--s-unit-7</code></td>
+                      <td class="text-right"><code>1.4rem</code></td>
+                    </tr>
+                    <tr>
+                      <td>unit-8</td>
+                      <td><code>$unit-8</code></td>
+                      <td><code>--s-unit-8</code></td>
+                      <td class="text-right"><code>1.6rem</code></td>
+                    </tr>
+                    <tr>
+                      <td>unit-9</td>
+                      <td><code>$unit-9</code></td>
+                      <td><code>--s-unit-9</code></td>
+                      <td class="text-right"><code>1.8rem</code></td>
+                    </tr>
+                    <tr>
+                      <td>unit-10</td>
+                      <td><code>$unit-10</code></td>
+                      <td><code>--s-unit-10</code></td>
+                      <td class="text-right"><code>2rem</code></td>
+                    </tr>
+                    <tr>
+                      <td>unit-12</td>
+                      <td><code>$unit-12</code></td>
+                      <td><code>--s-unit-12</code></td>
+                      <td class="text-right"><code>2.4rem</code></td>
+                    </tr>
+                    <tr>
+                      <td>unit-16</td>
+                      <td><code>$unit-16</code></td>
+                      <td><code>--s-unit-16</code></td>
+                      <td class="text-right"><code>3.2rem</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="variables-z-index">Variables - z-index<a class="anchor" href="#variables-z-index" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table table-striped text-left">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Sass variable</th>
+                      <th>CSS variable </th>
+                      <th class="text-right">Default value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>z-index-0</td>
+                      <td><code>$zindex-0</code></td>
+                      <td><code>--s-z-index-0</code></td>
+                      <td class="text-right"><code>1</code></td>
+                    </tr>
+                    <tr>
+                      <td>z-index-1</td>
+                      <td><code>$zindex-1</code></td>
+                      <td><code>--s-z-index-1</code></td>
+                      <td class="text-right"><code>100</code></td>
+                    </tr>
+                    <tr>
+                      <td>z-index-2</td>
+                      <td><code>$zindex-2</code></td>
+                      <td><code>--s-z-index-2</code></td>
+                      <td class="text-right"><code>200</code></td>
+                    </tr>
+                    <tr>
+                      <td>z-index-3</td>
+                      <td><code>$zindex-3</code></td>
+                      <td><code>--s-z-index-3</code></td>
+                      <td class="text-right"><code>300</code></td>
+                    </tr>
+                    <tr>
+                      <td>z-index-4</td>
+                      <td><code>$zindex-4</code></td>
+                      <td><code>--s-z-index-4</code></td>
+                      <td class="text-right"><code>400</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <ul class="pagination pagination-border">
+              <li class="page-item page-prev"><a href="../getting-started/installation.html">
+                  <div class="page-item-subtitle">Previous</div>
+                  <div class="page-item-title">
+                    <h5>Installation</h5>
+                  </div></a>
+              </li>
+              <li class="page-item page-next"><a href="../getting-started/custom.html">
+                  <div class="page-item-subtitle">Next</div>
+                  <div class="page-item-title">
+                    <h5>Custom version</h5>
+                  </div></a>
+              </li>
+            </ul>
+          </div>
+          <div class="docs-footer container grid-lg" id="copyright">
+            <p><a href="https://github.com/angular-package/spectre.css" target="_blank">GitHub </a> · <a href="https://twitter.com/angularpackage" target="_blank">Twitter </a> · <a href="https://www.paypal.me/picturepan2" target="_blank">PayPal Donate </a> · <a href="https://www.patreon.com/spectrecss" target="_blank">Patreon Sponsor </a> · Version <span class="version"></span></p>
+            <p>Designed and built with <span class="text-error">&hearts; </span>by <a href="https://twitter.com/picturepan2" target="_blank">Yan Zhu</a>. Modified by the <a href="https://angular-package.dev" target="_blank">@angular-package</a>. Licensed under the <a href="https://github.com/angular-package/spectre.css/blob/master/LICENSE" target="_blank">MIT License</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script>
+      docsearch({ 
+      apiKey: 'bede06373c5a1fa3c1bbe8401e24c653', 
+      indexName: 'picturepan2_spectre', 
+      inputSelector: '.docs-search', 
+      debug: true
+      }); 
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-2702768-8', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>

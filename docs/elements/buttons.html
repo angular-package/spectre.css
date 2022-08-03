@@ -14,6 +14,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@angularpackage">
     <meta name="twitter:creator" content="@angularpackage">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2335983386025442" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../img/favicons/favicon.ico">
     <link rel="icon" href="../img/favicons/favicon.png">
     <link rel="stylesheet" href="../dist/spectre.min.css">
@@ -26,14 +27,14 @@
     <div class="docs-container off-canvas off-canvas-sidebar-show">
       <div class="docs-navbar"><a class="off-canvas-toggle btn btn-link btn-action" href="#sidebar"><i class="icon icon-menu"></i></a>
         <div class="btns d-flex">
-          <input class="docs-search form-input" type="text" placeholder="Search Docs"><a class="btn ml-1" href="https://www.paypal.me/picturepan2" target="_blank">PayPal</a><a class="btn btn-primary ml-1" href="https://github.com/picturepan2/spectre" target="_blank">GitHub</a>
+          <input class="docs-search form-input" type="text" placeholder="Search Docs"><a class="btn btn-primary ml-1" href="https://github.com/angular-package/spectre.css" target="_blank">GitHub</a>
         </div>
       </div>
-      <div class="docs-sidebar off-canvas-sidebar" id="sidebar">
+      <div class="docs-sidebar off-canvas-sidebar bg-body" id="sidebar">
         <div class="docs-brand"><a class="docs-logo" href="../index.html"><img src="../img/spectre-logo.svg" alt="Spectre.css CSS Framework">
             <h2>SPECTRE</h2><small class="label label-secondary text-bold">DOCS</small></a>
         </div>
-        <div class="docs-nav">
+        <div class="docs-nav hide-scrollbar bg-body">
           <div class="accordion-container">
             <div class="accordion">
               <input id="accordion-getting-started" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
@@ -41,6 +42,8 @@
               <div class="accordion-body">
                 <ul class="menu menu-nav">
                   <li class="menu-item"><a href="../getting-started/installation.html">Installation</a>
+                  </li>
+                  <li class="menu-item"><a href="../getting-started/variables.html">Variables</a>
                   </li>
                   <li class="menu-item"><a href="../getting-started/custom.html">Custom version</a>
                   </li>
@@ -56,11 +59,9 @@
               <label class="accordion-header c-hand" for="accordion-elements">Elements</label>
               <div class="accordion-body">
                 <ul class="menu menu-nav">
-                  <li class="menu-item"><a href="../elements/typography.html">Typography</a>
+                  <li class="menu-item"><a class="active" href="../elements/buttons.html">Buttons</a>
                   </li>
-                  <li class="menu-item"><a href="../elements/tables.html">Tables</a>
-                  </li>
-                  <li class="menu-item"><a href="../elements/buttons.html">Buttons</a>
+                  <li class="menu-item"><a href="../elements/code.html">Code</a>
                   </li>
                   <li class="menu-item"><a href="../elements/forms.html">Forms</a>
                   </li>
@@ -68,9 +69,11 @@
                   </li>
                   <li class="menu-item"><a href="../elements/labels.html">Labels</a>
                   </li>
-                  <li class="menu-item"><a href="../elements/code.html">Code</a>
-                  </li>
                   <li class="menu-item"><a href="../elements/media.html">Media</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/tables.html">Tables</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/typography.html">Typography</a>
                   </li>
                 </ul>
               </div>
@@ -82,11 +85,11 @@
                 <ul class="menu menu-nav">
                   <li class="menu-item"><a href="../layout/grid.html">Flexbox grid</a>
                   </li>
-                  <li class="menu-item"><a href="../layout/responsive.html">Responsive</a>
-                  </li>
                   <li class="menu-item"><a href="../layout/hero.html">Hero</a>
                   </li>
                   <li class="menu-item"><a href="../layout/navbar.html">Navbar</a>
+                  </li>
+                  <li class="menu-item"><a href="../layout/responsive.html">Responsive</a>
                   </li>
                 </ul>
               </div>
@@ -200,14 +203,61 @@
         <div class="docs-content" id="content">
           <div class="container" id="buttons">
             <h3 class="s-title">Buttons<a class="anchor" href="#buttons" aria-hidden="true">#</a></h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="../index.html">Spectre.css</a></li>
+              <li class="breadcrumb-item"><a href="../elements.html">Elements</a></li>
+              <li class="breadcrumb-item"><a href="../elements/buttons.html">Buttons</a></li>
+            </ul>
+            <div class="docs-menu">
+              <h5>Buttons</h5>
+              <ul class="menu hide-scrollbar">
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li>
+                  <div class="divider" data-content="Colors"></div>
+                </li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-colors-available">Available colors</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-colors-dark">Dark</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-colors-light">Light</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-colors-accent">Accent</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-colors-primary">Primary</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-colors-secondary">Secondary</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-colors-gray">Gray</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-colors-bg">Bg</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-colors-border">Border</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-colors-link">Link</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-colors-control">Control</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-colors-body">Body</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-colors-other">Other</a></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li>
+                  <div class="divider" data-content="Sizes"></div>
+                </li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-sizes-available">Available sizes</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-sizes-large">Large </a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-sizes-small">Small</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-sizes-full-width">Full width</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-sizes-action">Action</a></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li>
+                  <div class="divider" data-content="States"></div>
+                </li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-states-active">Active</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-states-disabled">Disabled</a></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-states-loading">Loading</a></li>
+                <li class="divider divider-no-border divider-size-xs"></li>
+                <li class="menu-item"><a href="../elements/buttons.html#buttons-groups">Groups</a></li>
+              </ul>
+            </div>
             <div class="docs-ad">
               <div class="hide-md text-center">
                 <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- GitHub-lg--><ins class="adsbygoogle mx-auto" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2225124559530218" data-ad-slot="9894180784"></ins>
+                <!-- GitHub-lg--><ins class="adsbygoogle mx-auto" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2335983386025442" data-ad-slot="9894180784"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
               </div>
               <div class="show-md text-center">
-                <!-- GitHub-sm--><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2225124559530218" data-ad-slot="9278881734"></ins>
+                <!-- GitHub-sm--><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2335983386025442" data-ad-slot="9278881734"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
               </div>
             </div>
@@ -219,27 +269,559 @@
                 <button class="btn btn-link">link button</button>
               </div>
             </div>
-            <p>Add the <code>btn</code> class to &lt;a&gt;, &lt;input&gt; or &lt;button&gt; elements for a default button. 
+            <p>Add the <code>btn</code> class to <code>&lt;a&gt;</code>, <code>&lt;input&gt;</code> or <code>&lt;button&gt;</code> elements for a default button. 
               There are classes <code>btn-primary</code> and <code>btn-link</code> for predefined primary and link buttons.
             </p>
-            <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn"</span>&gt;</span>default button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-primary"</span>&gt;</span>primary button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-link"</span>&gt;</span>link button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn"</span>&gt;</span>default button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary"</span>&gt;</span>primary button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-link"</span>&gt;</span>link button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 </code></pre>
+            <div class="divider divider-no-border divider-size-xl"></div>
             <h4 class="s-subtitle" id="buttons-colors">Button colors<a class="anchor" href="#buttons-colors" aria-hidden="true">#</a></h4>
+            <p>There are buttons of all the <b>Spectre.css</b> colors, and to use them add the <code>btn-</code> class with a color name, for example <code>btn-primary-dark</code>.</p>
+            <h5 class="s-subtitle" id="buttons-colors-available">Available button colors<a class="anchor" href="#buttons-colors-available" aria-hidden="true">#</a></h5>
+            <p>The following table contains the available colors for the buttons and outline buttons.</p>
+            <table class="docs-table table table-striped text-center">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Available</th>
+                  <th>Dark </th>
+                  <th>Light</th>
+                  <th>Outline</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-dark">Dark</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td> 
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-light">Light</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td> 
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-accent">Accent</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td> 
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-primary">Primary</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-secondary">Secondary</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-gray">Gray</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-bg">Bg</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-border">Border</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-link">Link</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-control">Disabled</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-control">Error</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-control">Info</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-control">Success</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-body">Body-bg</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-body">Body-font</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-other">Code</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-left"><a href="#buttons-colors-other">Highlight</a></th>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-secondary docs-dot"></div>
+                  </td>
+                  <td>
+                    <div class="bg-primary docs-dot"></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h5 class="s-subtitle" id="buttons-colors-dark">Dark color<a class="anchor" href="#buttons-colors-dark" aria-hidden="true">#</a></h5>
+            <p>Add the <code>btn-dark</code> class for the button color of CSS variable <code>--s-dark-color</code>.</p>
             <div class="docs-demo columns">
               <div class="column col-12">
-                <button class="btn btn-success">success button</button>
-                <button class="btn btn-error">error button</button>
+                <button class="btn btn-dark">Dark button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-dark"</span>&gt;</span>dark button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+                <p>Add the <code>btn-outline</code> class for the <b>outline</b> button style.</p>
+                <button class="btn btn-dark btn-outline">dark outline button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-dark btn-outline"</span>&gt;</span>dark outline button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
               </div>
             </div>
-            <p>Add the <code>btn-success</code> or <code>btn-error</code> class for success (green) or error (red) button color.
-              If you need more button colors, please use <a href="../getting-started/custom.html#variables-buttons">button mixins</a> to create your own button color variants.
-            </p>
-            <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-success"</span>&gt;</span>success button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-error"</span>&gt;</span>error button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <h5 class="s-subtitle" id="buttons-colors-light">Light color<a class="anchor" href="#buttons-colors-light" aria-hidden="true">#</a></h5>
+            <p>Add the <code>btn-light</code> class for the button color of CSS variable <code>--s-light-color</code>.</p>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-light">Light button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-light"</span>&gt;</span>light button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 </code></pre>
-            <h4 class="s-subtitle" id="buttons-sizes">Button sizes<a class="anchor" href="#buttons-sizes" aria-hidden="true">#</a></h4>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-colors-accent">Accent color<a class="anchor" href="#buttons-colors-accent" aria-hidden="true">#</a></h5>
+            <p>Add the <code>btn-accent</code> class for the button color of CSS variable <code>--s-accent-color</code>.</p>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-accent">accent button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-accent"</span>&gt;</span>accent button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+                <p>Add the <code>btn-outline</code> class for the <b>outline</b> button style.</p>
+                <button class="btn btn-accent btn-outline">accent outline button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-accent btn-outline"</span>&gt;</span>accent outline button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-colors-primary">Primary colors<a class="anchor" href="#buttons-colors-primary" aria-hidden="true">#</a></h5>
+            <p>Add the <code>btn-primary</code>, <code>btn-primary-dark</code> or <code>btn-primary-light</code> class for the button color of CSS variable <code>--s-primary-color</code> and its shades.</p>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-primary">primary button</button>
+                <button class="btn btn-primary-dark">primary button dark</button>
+                <button class="btn btn-primary-light">primary button light</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary"</span>&gt;</span>primary button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary-dark"</span>&gt;</span>primary button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary-light"</span>&gt;</span>primary button light<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+                <p>Add the <code>btn-outline</code> class for the <b>outline</b> button style.</p>
+                <button class="btn btn-primary btn-outline">primary outline button</button>
+                <button class="btn btn-primary-dark btn-outline">primary outline button dark</button>
+                <button class="btn btn-primary-light btn-outline">primary outline button light</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary btn-outline"</span>&gt;</span>primary outline button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary-dark btn-outline"</span>&gt;</span>primary outline button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary-light btn-outline"</span>&gt;</span>primary outline button light<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-colors-secondary">Secondary colors<a class="anchor" href="#buttons-colors-secondary" aria-hidden="true">#</a></h5>
+            <p>Add the <code>btn-secondary</code>, <code>btn-secondary-dark</code> or <code>btn-secondary-light</code> class for the button color of CSS variable <code>--s-secondary-color</code> and its shades.</p>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-secondary">secondary button</button>
+                <button class="btn btn-secondary-dark">secondary button dark</button>
+                <button class="btn btn-secondary-light">secondary button light</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-secondary"</span>&gt;</span>secondary button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-secondary-dark"</span>&gt;</span>secondary button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-secondary-light"</span>&gt;</span>secondary button light<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+                <p>Add the <code>btn-outline</code> class for the <b>outline</b> button style.</p>
+                <button class="btn btn-secondary btn-outline">secondary outline button</button>
+                <button class="btn btn-secondary-dark btn-outline">secondary outline button dark</button>
+                <button class="btn btn-secondary-light btn-outline">secondary outline button light</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-secondary btn-outline"</span>&gt;</span>secondary outline button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-secondary-dark btn-outline"</span>&gt;</span>secondary outline button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-secondary-light btn-outline"</span>&gt;</span>secondary outline button light<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-colors-gray">Gray colors<a class="anchor" href="#buttons-colors-gray" aria-hidden="true">#</a></h5>
+            <p>Add the <code>btn-gray</code>, <code>btn-gray-dark</code> or <code>btn-gray-light</code> class for the button color of CSS variable <code>--s-gray-color</code> and its shades.</p>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-gray">gray button</button>
+                <button class="btn btn-gray-dark">gray button dark</button>
+                <button class="btn btn-gray-light">gray button light</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-gray"</span>&gt;</span>gray button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-gray-dark"</span>&gt;</span>gray button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-gray-light"</span>&gt;</span>gray button light<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+                <p>Add the <code>btn-outline</code> class for the <b>outline</b> button style.</p>
+                <button class="btn btn-gray btn-outline">gray outline button</button>
+                <button class="btn btn-gray-dark btn-outline">gray outline button dark</button>
+                <button class="btn btn-gray-light btn-outline">gray outline button light</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-gray btn-outline"</span>&gt;</span>gray outline button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-gray-dark btn-outline"</span>&gt;</span>gray outline button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-gray-light btn-outline"</span>&gt;</span>gray outline button light<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-colors-bg">Bg colors<a class="anchor" href="#buttons-colors-bg" aria-hidden="true">#</a></h5>
+            <p>Add the <code>btn-bg</code>, <code>btn-bg-dark</code> or <code>btn-bg-light</code> class for the button color of CSS variable <code>--s-bg-color</code> and its shades.</p>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p>
+                  <button class="btn btn-bg btn-text-dark-10">bg button</button>
+                  <button class="btn btn-bg-dark btn-text-dark-10">bg button dark</button>
+                  <button class="btn btn-bg-light btn-text-dark-10">bg button light</button>
+                </p>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg"</span>&gt;</span>bg button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg-dark"</span>&gt;</span>bg button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg-light"</span>&gt;</span>bg button light<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+                <p>Add the <code>text-gray</code> class to have the button font color of CSS variable <code>--s-gray-color</code>.</p>
+                <p>
+                  <button class="btn btn-bg btn-text-dark-10">bg button</button>
+                  <button class="btn btn-bg-dark btn-text-dark-10">bg button dark</button>
+                  <button class="btn btn-bg-light btn-text-dark-10">bg button light</button>
+                </p>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg btn-text-dark-10"</span>&gt;</span>bg button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg-dark btn-text-dark-10"</span>&gt;</span>bg button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg-light btn-text-dark-10"</span>&gt;</span>bg button light<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+                <p>Add the <code>text-gray-dark</code> class to have the button font color of CSS variable <code>--s-gray-color-dark</code>.</p>
+                <p>
+                  <button class="btn btn-bg text-gray-dark">bg button</button>
+                  <button class="btn btn-bg-dark text-gray-dark">bg button dark</button>
+                  <button class="btn btn-bg-light text-gray-dark">bg button light</button>
+                </p>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg text-gray-dark"</span>&gt;</span>bg button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg-dark text-gray-dark"</span>&gt;</span>bg button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg-light text-gray-dark"</span>&gt;</span>bg button light<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+                <p>Add the <code>btn-outline</code> class for the <b>outline</b> button style.</p>
+                <button class="btn btn-bg btn-outline">bg outline button</button>
+                <button class="btn btn-bg-dark btn-outline">bg outline button dark</button>
+                <button class="btn btn-bg-light btn-outline">bg outline button light</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg btn-outline"</span>&gt;</span>bg outline button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg-dark btn-outline"</span>&gt;</span>bg outline button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg-light btn-outline"</span>&gt;</span>bg outline button light<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-colors-border">Border colors<a class="anchor" href="#buttons-colors-border" aria-hidden="true">#</a></h5>
+            <p>Add the <code>btn-border</code>, <code>btn-border-dark</code> or <code>btn-border-light</code> class for the button color of CSS variable <code>--s-border-color</code> and its shades.</p>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-border">border button</button>
+                <button class="btn btn-border-dark">border button dark</button>
+                <button class="btn btn-border-light">border button light</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-border"</span>&gt;</span>border button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-border-dark"</span>&gt;</span>border button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-border-light"</span>&gt;</span>border button light<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+                <p>Add the <code>btn-outline</code> class for the <b>outline</b> button style.</p>
+                <button class="btn btn-border btn-outline">border outline button</button>
+                <button class="btn btn-border-dark btn-outline">border outline button dark</button>
+                <button class="btn btn-border-light btn-outline">border outline button light</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-border btn-outline"</span>&gt;</span>border outline button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-border-dark btn-outline"</span>&gt;</span>border outline button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-border-light btn-outline"</span>&gt;</span>border outline button light<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-colors-link">Link colors<a class="anchor" href="#buttons-colors-link" aria-hidden="true">#</a></h5>
+            <p>Add the <code>btn-link</code>, <code>btn-link-dark</code> or <code>btn-link-light</code> class for the button color of CSS variable <code>--s-link-color</code> and its shades.</p>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-link">link button</button>
+                <button class="btn btn-link-dark">link button dark</button>
+                <button class="btn btn-link-light">link button light</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-link"</span>&gt;</span>link button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-link-dark"</span>&gt;</span>link button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-link-light"</span>&gt;</span>link button light<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+                <p>Add the <code>btn-outline</code> class for the <b>outline</b> button style.</p>
+                <button class="btn btn-link btn-outline">link button</button>
+                <button class="btn btn-link-dark btn-outline">link button dark</button>
+                <button class="btn btn-link-light btn-outline">link button light</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-link btn-outline"</span>&gt;</span>link button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-link-dark btn-outline"</span>&gt;</span>link button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-link-light btn-outline"</span>&gt;</span>link button light<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-colors-control">Control colors<a class="anchor" href="#buttons-colors-control" aria-hidden="true">#</a></h5>
+            <p>Add the <code>btn-disabled</code>, <code>btn-error</code>, <code>btn-info</code>, <code>btn-success</code> or <code>btn-warning</code> class for disabled (gray), error (red), info (blue), success (green) or warning (orange) button color.</p>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-disabled">disabled button</button>
+                <button class="btn btn-error">error button</button>
+                <button class="btn btn-info">info button</button>
+                <button class="btn btn-success">success button</button>
+                <button class="btn btn-warning">warning button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-disabled"</span>&gt;</span>disabled button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-error"</span>&gt;</span>error button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-info"</span>&gt;</span>info button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-success"</span>&gt;</span>success button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-warning"</span>&gt;</span>warning button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+                <p>Add the <code>btn-outline</code> class for the <b>outline</b> button style.</p>
+                <button class="btn btn-disabled btn-outline">disabled outline button</button>
+                <button class="btn btn-error btn-outline">error outline button</button>
+                <button class="btn btn-info btn-outline">info outline button</button>
+                <button class="btn btn-success btn-outline">success outline button</button>
+                <button class="btn btn-warning btn-outline">warning outline button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-disabled btn-outline"</span>&gt;</span>disabled outline button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-error btn-outline"</span>&gt;</span>error outline button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-info btn-outline"</span>&gt;</span>info outline button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-success btn-outline"</span>&gt;</span>success outline button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-warning btn-outline"</span>&gt;</span>warning outline button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-colors-body">Body colors<a class="anchor" href="#buttons-colors-body" aria-hidden="true">#</a></h5>
+            <p>Add the <code>btn-body-bg</code> or <code>btn-body-font</code> class for body colors button.</p>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-body-bg">body-bg button</button>
+                <button class="btn btn-body-font">body-font button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-body-bg"</span>&gt;</span>body-bg button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-body-font"</span>&gt;</span>body-font button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+                <p>Add the <code>btn-outline</code> class for the <b>outline</b> button style.</p>
+                <button class="btn btn-body-font btn-outline">body-font outline button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-body-font btn-outline"</span>&gt;</span>body-font outline button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-colors-other">Other colors<a class="anchor" href="#buttons-colors-other" aria-hidden="true">#</a></h5>
+            <p>Add the <code>btn-code</code> or <code>btn-highlight</code> class for code (red) or highlight (yellow) button color.</p>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-code">code button</button>
+                <button class="btn btn-highlight">highlight button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-code"</span>&gt;</span>code button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-highlight"</span>&gt;</span>highlight button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+                <p>Add the <code>btn-outline</code> class for the <b>outline</b> button style.</p>
+                <button class="btn btn-code btn-outline">code outline button</button>
+                <button class="btn btn-highlight btn-outline">highlight outline button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-code btn-outline"</span>&gt;</span>code outline button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-highlight btn-outline"</span>&gt;</span>highlight outline button dark<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <p>If you need more button colors, please use <a href="../getting-started/custom.html#customizable-buttons">button mixins</a> to create your own button color variants.</p>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="buttons-sizes-available">Button sizes<a class="anchor" href="#buttons-sizes-available" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <table class="docs-table table text-center">
+                  <thead>
+                    <tr>
+                      <th>xs </th>
+                      <th>sm </th>
+                      <th>md  </th>
+                      <th>lg  </th>
+                      <th>xl </th>
+                      <th>2x </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-primary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot"></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
             <div class="docs-demo columns">
               <div class="column col-12">
                 <button class="btn btn-primary btn-lg">large <i class="icon icon-arrow-down"></i></button>
@@ -257,16 +839,187 @@
             <p>Add the <code>btn-sm</code> or <code>btn-lg</code> class for small or large button size. 
               Also, you can add the <code>btn-block</code> class for a full-width button.
             </p>
-            <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-lg"</span>&gt;</span>large button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-sm"</span>&gt;</span>small button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-lg"</span>&gt;</span>large button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-sm"</span>&gt;</span>small button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-block"</span>&gt;</span>block button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-block"</span>&gt;</span>block button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-primary btn-lg"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-arrow-left"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span> large<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-primary"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-arrow-left"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span> normal<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-primary btn-sm"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-arrow-left"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span> small<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary btn-lg"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">i</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"icon icon-arrow-left"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">i</span>&gt;</span> large<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">i</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"icon icon-arrow-left"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">i</span>&gt;</span> normal<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary btn-sm"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">i</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"icon icon-arrow-left"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">i</span>&gt;</span> small<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 </code></pre>
             <p>Please note that you could use the <code>btn-action</code> class for a square button, or add another <code>s-circle</code> class for a round button, which is often used as a Float Action Button (FAB).</p>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="buttons-sizes-large">Button sizes - Large button<a class="anchor" href="#buttons-sizes-large" aria-hidden="true">#</a></h4>
+            <h5 class="s-subtitle" id="buttons-sizes-large-colors-primary">Large button - Primary colors<a class="anchor" href="#buttons-sizes-large-colors-primary" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-primary btn-lg">large primary button</button>
+                <button class="btn btn-primary-dark btn-lg">large primary dark button</button>
+                <button class="btn btn-primary-light btn-lg">large primary light button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary btn-lg"</span>&gt;</span>large primary button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary-dark btn-lg"</span>&gt;</span>large primary dark button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary-light btn-lg"</span>&gt;</span>large primary light button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-sizes-large-colors-secondary">Large button - Secondary colors<a class="anchor" href="#buttons-sizes-large-colors-secondary" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-secondary btn-lg">large secondary button</button>
+                <button class="btn btn-secondary-dark btn-lg">large secondary dark button</button>
+                <button class="btn btn-secondary-light btn-lg">large secondary light button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-secondary btn-lg"</span>&gt;</span>large secondary button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-secondary-dark btn-lg"</span>&gt;</span>large secondary dark button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-secondary-light btn-lg"</span>&gt;</span>large secondary light button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-sizes-large-colors-gray">Large button - Gray colors<a class="anchor" href="#buttons-sizes-large-colors-gray" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-gray btn-lg">large gray button</button>
+                <button class="btn btn-gray-dark btn-lg">large gray dark button</button>
+                <button class="btn btn-gray-light btn-lg">large gray light button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-gray btn-lg"</span>&gt;</span>large gray button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-gray-dark btn-lg"</span>&gt;</span>large gray dark button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-gray-light btn-lg"</span>&gt;</span>large gray light button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-sizes-large-colors-bg">Large button - Bg colors<a class="anchor" href="#buttons-sizes-large-colors-bg" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-bg btn-lg">large bg button</button>
+                <button class="btn btn-bg-dark btn-lg">large bg dark button</button>
+                <button class="btn btn-bg-light btn-lg">large bg light button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg btn-lg"</span>&gt;</span>large bg button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg-dark btn-lg"</span>&gt;</span>large bg dark button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg-light btn-lg"</span>&gt;</span>large bg light button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-sizes-large-colors-other">Large button - Control colors<a class="anchor" href="#buttons-sizes-large-colors-other" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-disabled btn-lg">large disabled button</button>
+                <button class="btn btn-error btn-lg">large error button</button>
+                <button class="btn btn-info btn-lg">large info button</button>
+                <button class="btn btn-success btn-lg">large success button</button>
+                <button class="btn btn-warning btn-lg">large warning button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-disabled btn-lg"</span>&gt;</span>large disabled button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-error btn-lg"</span>&gt;</span>large error button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-info btn-lg"</span>&gt;</span>large info button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-success btn-lg"</span>&gt;</span>large success button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-warning btn-lg"</span>&gt;</span>large warning button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-sizes-large-colors-other">Large button - Other colors<a class="anchor" href="#buttons-sizes-large-colors-other" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-code btn-lg">large disabled button</button>
+                <button class="btn btn-highlight btn-lg">large highlight button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-code btn-lg"</span>&gt;</span>large code button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-highlight btn-lg"</span>&gt;</span>large highlight button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-sizes-small">Button sizes - Small button<a class="anchor" href="#buttons-sizes-small" aria-hidden="true">#</a></h5>
+            <h5 class="s-subtitle" id="buttons-sizes-small-colors-primary">Small button - Primary colors<a class="anchor" href="#buttons-sizes-small-colors-primary" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-primary btn-sm">small primary button</button>
+                <button class="btn btn-primary-dark btn-sm">small primary dark button</button>
+                <button class="btn btn-primary-light btn-sm">small primary light button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary btn-sm"</span>&gt;</span>small primary button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary-dark btn-sm"</span>&gt;</span>small primary dark button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary-light btn-sm"</span>&gt;</span>small primary light button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-sizes-small-colors-secondary">Small button - Secondary colors<a class="anchor" href="#buttons-sizes-small-colors-secondary" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-secondary btn-sm">small secondary button</button>
+                <button class="btn btn-secondary-dark btn-sm">small secondary dark button</button>
+                <button class="btn btn-secondary-light btn-sm">small secondary light button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-secondary btn-sm"</span>&gt;</span>small secondary button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-secondary-dark btn-sm"</span>&gt;</span>small secondary dark button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-secondary-light btn-sm"</span>&gt;</span>small secondary light button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-sizes-small-colors-gray">Small button - Gray colors<a class="anchor" href="#buttons-sizes-small-colors-gray" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-gray btn-sm">small gray button</button>
+                <button class="btn btn-gray-dark btn-sm">small gray dark button</button>
+                <button class="btn btn-gray-light btn-sm">small gray light button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-gray btn-sm"</span>&gt;</span>small gray button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-gray-dark btn-sm"</span>&gt;</span>small gray dark button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-gray-light btn-sm"</span>&gt;</span>small gray light button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-sizes-small-colors-bg">Small button - Bg colors<a class="anchor" href="#buttons-sizes-small-colors-bg" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-bg btn-sm">small bg button</button>
+                <button class="btn btn-bg-dark btn-sm">small bg dark button</button>
+                <button class="btn btn-bg-light btn-sm">small bg light button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg btn-sm"</span>&gt;</span>small bg button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg-dark btn-sm"</span>&gt;</span>small bg dark button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-bg-light btn-sm"</span>&gt;</span>small bg light button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-sizes-small-control-colors">Small button - Control colors<a class="anchor" href="#buttons-sizes-small-control-colors" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-disabled btn-sm">small disabled button</button>
+                <button class="btn btn-error btn-sm">small error button</button>
+                <button class="btn btn-info btn-sm">small info button</button>
+                <button class="btn btn-success btn-sm">small success button</button>
+                <button class="btn btn-warning btn-sm">small warning button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-disabled btn-sm"</span>&gt;</span>small disabled button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-error btn-sm"</span>&gt;</span>small error button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-info btn-sm"</span>&gt;</span>small info button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-success btn-sm"</span>&gt;</span>small success button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-warning btn-sm"</span>&gt;</span>small warning button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-sizes-small-colors-other">Other colors<a class="anchor" href="#buttons-sizes-small-colors-other" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-code btn-sm">small disabled button</button>
+                <button class="btn btn-highlight btn-sm">small highlight button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-code btn-sm"</span>&gt;</span>small code button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-highlight btn-sm"</span>&gt;</span>small highlight button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <h5 class="s-subtitle" id="buttons-sizes-full-width">Button sizes - Full-width button<a class="anchor" href="#buttons-sizes-full-width" aria-hidden="true">#</a></h5>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <button class="btn btn-primary btn-block">Confirm</button>
+                <button class="btn btn-link btn-block btn-sm">Cancel</button>
+                <button class="btn btn-disabled btn-block btn-lg">Disabled</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary btn-block"</span>&gt;</span>
+  Confirm
+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-link btn-block btn-sm"</span>&gt;</span>
+  Cancel
+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-disabled btn-block btn-lg"</span>&gt;</span>
+  Disabled
+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <h4 class="s-subtitle" id="buttons-sizes-action">Button sizes - Action button<a class="anchor" href="#buttons-sizes-action" aria-hidden="true">#</a></h4>
             <div class="docs-demo columns">
               <div class="column col-xs-12">
                 <button class="btn btn-action btn-primary btn-lg"><i class="icon icon-menu"></i></button>
@@ -278,43 +1031,60 @@
                 <button class="btn btn-action btn-primary s-circle"><i class="icon icon-arrow-up"></i></button>
                 <button class="btn btn-action btn-primary btn-sm s-circle"><i class="icon icon-arrow-up"></i></button>
               </div>
-            </div>
-            <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-action"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-arrow-left"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-action s-circle"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-arrow-left"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <div class="column col-xs-12">
+                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-action"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">i</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"icon icon-arrow-left"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-action s-circle"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">i</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"icon icon-arrow-left"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 </code></pre>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-size-xl"></div>
             <h4 class="s-subtitle" id="buttons-states">Button states<a class="anchor" href="#buttons-states" aria-hidden="true">#</a></h4>
             <p>Add the <code>active</code> class for active button state style.</p>
+            <h5 class="s-subtitle" id="buttons-states-active">Button states - active<a class="anchor" href="#buttons-states-active" aria-hidden="true">#</a></h5>
             <div class="docs-demo columns">
               <div class="column col-12">
                 <button class="btn active">default active</button>
+                <button class="btn btn-accent active">accent active</button>
                 <button class="btn btn-primary active">primary active</button>
                 <button class="btn btn-link active">link active</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- buttons with active state --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-active"</span> <span class="hljs-attribute">tabindex</span>=<span class="hljs-value">"-1"</span>&gt;</span>default active<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-accent btn-active"</span> <span class="hljs-attribute">tabindex</span>=<span class="hljs-value">"-1"</span>&gt;</span>accent active<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary btn-active"</span> <span class="hljs-attribute">tabindex</span>=<span class="hljs-value">"-1"</span>&gt;</span>primary active<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-link btn-active"</span> <span class="hljs-attribute">tabindex</span>=<span class="hljs-value">"-1"</span>&gt;</span>link active<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
               </div>
             </div>
             <p>Add the <code>disabled</code> class or the <code>disabled</code> attribute for disabled button state style.</p>
+            <h5 class="s-subtitle" id="buttons-states-disabled">Button states - disabled<a class="anchor" href="#buttons-states-disabled" aria-hidden="true">#</a></h5>
             <div class="docs-demo columns">
               <div class="column col-12">
+                <button class="btn btn-accent disabled" tabindex="-1">accent disabled</button>
                 <button class="btn disabled" tabindex="-1">default disabled</button>
                 <button class="btn btn-primary" disabled="" tabindex="-1">primary disabled</button>
                 <button class="btn btn-link" disabled="" tabindex="-1">link disabled</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- buttons with disabled state --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-accent disabled"</span> <span class="hljs-attribute">tabindex</span>=<span class="hljs-value">"-1"</span>&gt;</span>accent disabled<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn"</span> <span class="hljs-attribute">disabled</span> <span class="hljs-attribute">tabindex</span>=<span class="hljs-value">"-1"</span>&gt;</span>default button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary disabled"</span> <span class="hljs-attribute">tabindex</span>=<span class="hljs-value">"-1"</span>&gt;</span>primary button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-link disabled"</span> <span class="hljs-attribute">tabindex</span>=<span class="hljs-value">"-1"</span>&gt;</span>link button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
               </div>
             </div>
-            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- buttons with disabled state --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn disabled"</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"-1"</span>&gt;</span>disabled button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn"</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"-1"</span>&gt;</span>disabled button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-</code></pre>
             <p>A button with the <code>loading</code> class can show loading indicator.</p>
+            <h5 class="s-subtitle" id="buttons-states-loading">Button states - loading<a class="anchor" href="#buttons-states-loading" aria-hidden="true">#</a></h5>
             <div class="docs-demo columns">
               <div class="column col-12">
                 <button class="btn loading">default button</button>
                 <button class="btn btn-primary loading">primary button</button>
                 <button class="btn btn-link loading">link button</button>
+                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- buttons with loading state --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn loading"</span>&gt;</span>button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary loading"</span>&gt;</span>primary button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
               </div>
             </div>
-            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- buttons with loading state --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn loading"</span>&gt;</span>button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-primary loading"</span>&gt;</span>primary button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-</code></pre>
+            <div class="divider divider-no-border divider-size-xl"></div>
             <h4 class="s-subtitle" id="buttons-groups">Button groups<a class="anchor" href="#buttons-groups" aria-hidden="true">#</a></h4>
             <div class="docs-demo columns">
               <div class="column col-6 col-md-12">
@@ -349,12 +1119,27 @@
             <p>If you want to use buttons as a group, add the <code>btn-group</code> class to the container.
               You can add the <code>btn-group-block</code> class for a full-width button group.
             </p>
-            <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn-group btn-group-block"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn"</span>&gt;</span>first button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn"</span>&gt;</span>second button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn"</span>&gt;</span>third button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> 
+            <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn-group btn-group-block"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn"</span>&gt;</span>first button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn"</span>&gt;</span>second button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn"</span>&gt;</span>third button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span> 
 </code></pre>
+            <div class="divider divider-no-border divider-size-xl"></div>
+            <ul class="pagination pagination-border">
+              <li class="page-item page-prev"><a href="../elements.html">
+                  <div class="page-item-subtitle">Previous</div>
+                  <div class="page-item-title">
+                    <h5>Elements</h5>
+                  </div></a>
+              </li>
+              <li class="page-item page-next"><a href="../elements/code.html">
+                  <div class="page-item-subtitle">Next</div>
+                  <div class="page-item-title">
+                    <h5>Code</h5>
+                  </div></a>
+              </li>
+            </ul>
           </div>
           <div class="docs-footer container grid-lg" id="copyright">
             <p><a href="https://github.com/angular-package/spectre.css" target="_blank">GitHub </a> · <a href="https://twitter.com/angularpackage" target="_blank">Twitter </a> · <a href="https://www.paypal.me/picturepan2" target="_blank">PayPal Donate </a> · <a href="https://www.patreon.com/spectrecss" target="_blank">Patreon Sponsor </a> · Version <span class="version"></span></p>

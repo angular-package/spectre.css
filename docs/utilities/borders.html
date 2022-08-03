@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Tiles - Components - Spectre.css CSS Framework</title>
+    <title>Border utilities - Utilities - Spectre.css CSS Framework</title>
     <meta charset="utf-8">
     <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="Tiles are repeatable or embeddable information blocks. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.">
+    <meta name="description" content="Border utilities specify which border to display on specific element. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.">
     <meta name="author" content="Yan Zhu">
-    <meta property="og:url" content="https://angular-package.github.io/spectre.css/components/tiles.html">
-    <meta property="og:title" content="Tiles - Components - Spectre.css CSS Framework">
-    <meta property="og:description" content="Tiles are repeatable or embeddable information blocks. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.">
+    <meta property="og:url" content="https://angular-package.github.io/spectre.css/utilities/borders.html">
+    <meta property="og:title" content="Border utilities - Utilities - Spectre.css CSS Framework">
+    <meta property="og:description" content="Border utilities specify which border to display on specific element. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@angularpackage">
     <meta name="twitter:creator" content="@angularpackage">
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../dist/spectre-icons.min.css">
     <link rel="stylesheet" href="../dist/spectre-exp.min.css">
     <link rel="stylesheet" href="../dist/docs.min.css">
-    <link rel="canonical" href="https://angular-package.github.io/spectre.css/components/tiles.html">
+    <link rel="canonical" href="https://angular-package.github.io/spectre.css/utilities/borders.html">
   </head>
   <body>
     <div class="docs-container off-canvas off-canvas-sidebar-show">
@@ -95,7 +95,7 @@
               </div>
             </div>
             <div class="accordion">
-              <input id="accordion-components" type="checkbox" name="docs-accordion-checkbox" hidden="" checked="checked"/>
+              <input id="accordion-components" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
               <label class="accordion-header c-hand" for="accordion-components">Components</label>
               <div class="accordion-body">
                 <ul class="menu menu-nav">
@@ -131,7 +131,7 @@
                   </li>
                   <li class="menu-item"><a href="../components/tabs.html">Tabs</a>
                   </li>
-                  <li class="menu-item"><a class="active" href="../components/tiles.html">Tiles</a>
+                  <li class="menu-item"><a href="../components/tiles.html">Tiles</a>
                   </li>
                   <li class="menu-item"><a href="../components/toasts.html">Toasts</a>
                   </li>
@@ -141,7 +141,7 @@
               </div>
             </div>
             <div class="accordion">
-              <input id="accordion-utilities" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
+              <input id="accordion-utilities" type="checkbox" name="docs-accordion-checkbox" hidden="" checked="checked"/>
               <label class="accordion-header c-hand" for="accordion-utilities">Utilities</label>
               <div class="accordion-body">
                 <ul class="menu menu-nav">
@@ -201,20 +201,13 @@
       </div><a class="off-canvas-overlay" href="#close"></a>
       <div class="off-canvas-content">
         <div class="docs-content" id="content">
-          <div class="container" id="tiles">
-            <h3 class="s-title">Tiles<a class="anchor" href="#tiles" aria-hidden="true">#</a></h3>
+          <div class="container" id="borders">
+            <h3 class="s-title">Border utilities<a class="anchor" href="#borders" aria-hidden="true">#</a></h3>
             <ul class="breadcrumb">
               <li class="breadcrumb-item"><a href="../index.html">Spectre.css</a></li>
-              <li class="breadcrumb-item"><a href="../components.html">Components</a></li>
-              <li class="breadcrumb-item"><a href="../components/tiles.html">Tiles</a></li>
+              <li class="breadcrumb-item"><a href="../utilities.html">Utilities</a></li>
+              <li class="breadcrumb-item"><a href="../utilities/borders.html">Border utilities</a></li>
             </ul>
-            <div class="docs-menu">
-              <h5>Tiles</h5>
-              <ul class="menu hide-scrollbar">
-                <li class="menu-item"><a href="../components/tiles.html#tiles-undefined-tiles-compact">Compact</a></li>
-                <li class="divider divider-no-border divider-size-xs"></li>
-              </ul>
-            </div>
             <div class="docs-ad">
               <div class="hide-md text-center">
                 <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -226,109 +219,46 @@
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
               </div>
             </div>
-            <p>Tiles are repeatable or embeddable information blocks.</p>
+            <p>Border utilities specify which border to display on specific element.</p>
             <div class="docs-demo columns">
-              <div class="column col-9 col-sm-12">
-                <div class="tile">
-                  <div class="tile-icon">
-                    <figure class="avatar avatar-lg"><img src="../img/avatar-3.png" alt="Avatar"></figure>
-                  </div>
-                  <div class="tile-content">
-                    <p class="tile-title">The Avengers</p>
-                    <p class="tile-subtitle">Earth's Mightiest Heroes joined forces to take on threats that were too big for any one hero to tackle...</p>
-                  </div>
-                  <div class="tile-action">
-                    <button class="btn btn-primary">Join</button>
-                    <button class="btn">Contact</button>
-                  </div>
-                </div>
+              <div class="column col-4">
+                <div class="bg-bg docs-block c-hand">c-hand</div>
               </div>
-              <div class="column col-9 col-sm-12">
-                <div class="tile">
-                  <div class="tile-icon">
-                    <figure class="avatar avatar-lg"><img src="../img/avatar-2.png" alt="Avatar"></figure>
-                  </div>
-                  <div class="tile-content">
-                    <p class="tile-title">The S.H.I.E.L.D.</p>
-                    <p class="tile-subtitle">The Strategic Homeland Intervention, Enforcement, and Logistics Division...</p>
-                    <p>
-                      <button class="btn btn-primary btn-sm">Join</button>
-                      <button class="btn btn-sm">Contact</button>
-                    </p>
-                  </div>
-                </div>
+              <div class="column col-4">
+                <div class="bg-bg docs-block c-move">c-move</div>
+              </div>
+              <div class="column col-4">
+                <div class="bg-bg docs-block c-zoom-in">c-zoom-in</div>
+              </div>
+              <div class="column col-4">
+                <div class="bg-bg docs-block c-zoom-out">c-zoom-out</div>
+              </div>
+              <div class="column col-4">
+                <div class="bg-bg docs-block c-not-allowed">c-not-allowed</div>
+              </div>
+              <div class="column col-4">
+                <div class="bg-bg docs-block c-auto">c-auto</div>
               </div>
             </div>
-            <p>Add a container with the <code>tile</code> class.
-              And add child elements with the <code>tile-icon</code>, <code>tile-content</code> or/and <code>tile-action</code> classes.
-              The <code>tile-icon</code> and <code>tile-action</code> are optional.
-            </p>
-            <p>There are <code>tile-title</code> and <code>tile-subtitle</code> classes for title and subtitle text styles.</p>
-            <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tile"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tile-icon"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"example-tile-icon"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">i</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"icon icon-file centered"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">i</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tile-content"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tile-title"</span>&gt;</span>The Avengers<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tile-subtitle"</span>&gt;</span>Earth's Mightiest Heroes joined forces to take on threats that were too big for any one hero to tackle...<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tile-action"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-primary"</span>&gt;</span>Join<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-</code></pre>
-            <div class="divider divider-no-border divider-size-xl"></div>
-            <h4 class="s-subtitle" id="tiles-compact">Compact tiles<a class="anchor" href="#tiles-compact" aria-hidden="true">#</a></h4>
-            <p>There is compact version of Tiles component, which is often used as contact and file info blocks.</p>
-            <p>Add the <code>tile-centered</code> class to the container <code>tile</code>.
-              The <code>tile-icon</code>, <code>tile-content</code> and <code>tile-action</code> will be vertically centered.
-            </p>
-            <div class="docs-demo columns">
-              <div class="column col-6 col-md-9 col-xs-12">
-                <div class="tile tile-centered">
-                  <div class="tile-icon">
-                    <div class="example-tile-icon"><i class="icon icon-mail centered"></i></div>
-                  </div>
-                  <div class="tile-content">
-                    <div class="tile-title">spectre-docs.pdf</div><small class="tile-subtitle text-gray">14MB · Public · 1 Jan, 2017</small>
-                  </div>
-                  <div class="tile-action">
-                    <button class="btn btn-link btn-action"><i class="icon icon-more-vert"></i></button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tile tile-centered"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tile-icon"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"example-tile-icon"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">i</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"icon icon-file centered"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">i</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tile-content"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tile-title"</span>&gt;</span>spectre-docs.pdf<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">small</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tile-subtitle text-gray"</span>&gt;</span>14MB · Public · 1 Jan, 2017<span class="hljs-tag">&lt;/<span class="hljs-title">small</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tile-action"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-link"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">i</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"icon icon-more-vert"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">i</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- cursor: hand; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"c-hand"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- cursor: move; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"c-move"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- cursor: zoom-in; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"c-zoom-in"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- cursor: zoom-out; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"c-zoom-out"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- cursor: not-allowed; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"c-not-allowed"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- cursor: auto; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"c-auto"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
             <div class="divider divider-no-border divider-size-xl"></div>
             <ul class="pagination pagination-border">
-              <li class="page-item page-prev"><a href="../components/tabs.html">
-                  <div class="page-item-subtitle">Previous</div>
-                  <div class="page-item-title">
-                    <h5>Tabs</h5>
-                  </div></a>
-              </li>
-              <li class="page-item page-next"><a href="../components/toasts.html">
+              <li class="page-item page-next"><a href="../utilities/colors.html">
                   <div class="page-item-subtitle">Next</div>
                   <div class="page-item-title">
-                    <h5>Toasts</h5>
+                    <h5>Colors</h5>
                   </div></a>
               </li>
             </ul>
