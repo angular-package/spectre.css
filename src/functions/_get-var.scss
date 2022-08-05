@@ -6,16 +6,16 @@
   $name,
   $prefix: $var-prefix,
   $suffix: '',
-  $unit: 0
+  $unit: false
 ) {
   @if string.length($suffix) > 0 {
-    @if $unit == 1 {
+    @if $unit == true {
       @return calc(var(--#{$prefix}-#{$name}-#{$suffix}) * var(--#{$prefix}-#{$name}-unit));
     } @else {
       @return var(--#{$prefix}-#{$name}-#{$suffix});
     }
   } @else {
-    @if $unit == 1 {
+    @if $unit == true {
       @return calc(var(--#{$prefix}-#{$name}) * var(--#{$prefix}-#{$name}-unit));
     } @else {
       @return var(--#{$prefix}-#{$name});
