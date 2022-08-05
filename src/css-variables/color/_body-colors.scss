@@ -1,6 +1,6 @@
-@use '../mixins/color/set-color.mixin' as *;
-@use '../mixins/color/set-derived-color.mixin' as *;
-@use '../variables' as *;
+@use '../../mixins/color/set-color.mixin' as *;
+@use '../../mixins/color/set-derived-color.mixin' as *;
+@use '../../variables' as *;
 
 // Spectre.css body colors. Alphabetical order.
 :root, :host {

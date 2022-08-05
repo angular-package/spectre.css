@@ -1,5 +1,5 @@
-@use '../mixins/color/set-color.mixin' as *;
-@use '../variables' as *;
+@use '../../mixins/color/set-color.mixin' as *;
+@use '../../variables' as *;
 
 // Spectre.css other colors. Alphabetical order.
 :root, :host {
