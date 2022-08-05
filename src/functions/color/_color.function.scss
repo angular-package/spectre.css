@@ -17,11 +17,17 @@
   $alpha: 1,
   $prefix: $var-prefix
 ) {
-  @if $color-format == 'hsla' {
-    @return get-hsla-color($name, $hue, $saturation, $lightness, $alpha, $prefix);
-  } @else if $color-format == 'rgba' {
+  @if ($color-format == 'hsla') {
+    @return get-hsla-color(
+      $name,
+      $hue,
+      $saturation,
+      $lightness,
+      $alpha,
+      $prefix
+    );
+  } @else if ($color-format == 'rgba') {
     // TODO: rgba color format.
-    @return get-hsla-color($name, $hue, $saturation, $lightness, $alpha, $prefix);
   } @else {
     @warn 'Select proper color format \'rgba\' or \'hsla\', selected: \'#{$color-format}\'';
   }
