@@ -29,7 +29,7 @@
     .timeline-content {
       flex: 1 1 auto;
       // padding: 2px 0 2px $layout-spacing-lg; // old spectre.css
-      padding: 2px 0 2px get-var('layout-spacing', $suffix: 'lg', $unit: 1);
+      padding: 2px 0 2px get-var('layout-spacing', $suffix: 'lg', $unit: true);
     }
 
     .timeline-icon {

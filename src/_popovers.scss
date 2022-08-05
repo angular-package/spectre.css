@@ -12,7 +12,7 @@
     left: 50%;
     opacity: 0;
     // padding: $layout-spacing; // old spectre.css
-    padding: get-var('layout-spacing', $unit: 1);
+    padding: get-var('layout-spacing', $unit: true);
     position: absolute;
     top: 0;
     transform: translate(-50%, -50%) scale(0);

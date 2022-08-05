@@ -25,7 +25,7 @@
     // font-size: $font-size-lg; // old spectre.css
     font-size: get-var('font-size', $suffix: 'lg');
     // padding: $layout-spacing; // old spectre.css
-    padding: get-var('layout-spacing', $unit: 1);
+    padding: get-var('layout-spacing', $unit: true);
   }
 
   .calendar-header,
@@ -34,7 +34,7 @@
     flex-wrap: wrap;
     justify-content: center;
     // padding: $layout-spacing 0; // old spectre.css
-    padding: get-var('layout-spacing', $unit: 1) 0;
+    padding: get-var('layout-spacing', $unit: true) 0;
 
     .calendar-date {
       flex: 0 0 14.28%; // 7 calendar-items each row
@@ -228,9 +228,9 @@
       // height: $unit-7; // old spectre.css
       height: get-var('unit-7');
       // margin-right: $layout-spacing-sm; // old spectre.css
-      margin-right: get-var('layout-spacing', $suffix: 'sm', $unit: 1);
+      margin-right: get-var('layout-spacing', $suffix: 'sm', $unit: true);
       // margin-top: $layout-spacing-sm; // old spectre.css
-      margin-top: get-var('layout-spacing', $suffix: 'sm', $unit: 1);
+      margin-top: get-var('layout-spacing', $suffix: 'sm', $unit: true);
     }
 
     .calendar-range {
@@ -255,7 +255,7 @@
       line-height: 1;
       overflow-y: auto;
       // padding: $layout-spacing-sm; // old spectre.css
-      padding: get-var('layout-spacing', $suffix: 'sm', $unit: 1);
+      padding: get-var('layout-spacing', $suffix: 'sm', $unit: true);
     }
 
     .calendar-event {

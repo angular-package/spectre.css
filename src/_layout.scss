@@ -14,9 +14,9 @@
   margin-left: auto;
   margin-right: auto;
   // padding-left: $layout-spacing; // old spectre.css
-  padding-left: get-var('layout-spacing', $unit: 1);
+  padding-left: get-var('layout-spacing', $unit: true);
   // padding-right: $layout-spacing; // old spectre.css
-  padding-right: get-var('layout-spacing', $unit: 1);
+  padding-right: get-var('layout-spacing', $unit: true);
   width: 100%;
 
   // $grid-spacing: ($layout-spacing / ($layout-spacing * 0 + 1)) * $html-font-size; // old spectre.css
@@ -64,9 +64,9 @@
   display: flex;
   flex-wrap: wrap;
   // margin-left: -$layout-spacing; // old spectre.css
-  margin-left: var-negative(get-var('layout-spacing', $unit: 1));
+  margin-left: var-negative(get-var('layout-spacing', $unit: true));
   // margin-right: -$layout-spacing; // old spectre.css
-  margin-right: var-negative(get-var('layout-spacing', $unit: 1));
+  margin-right: var-negative(get-var('layout-spacing', $unit: true));
 
   &.col-gapless {
     margin-left: 0;
@@ -87,9 +87,9 @@
   flex: 1;
   max-width: 100%;
   // padding-left: $layout-spacing; // old spectre.css
-  padding-left: get-var('layout-spacing', $unit: 1);
+  padding-left: get-var('layout-spacing', $unit: true);
   // padding-right: $layout-spacing; // old spectre.css
-  padding-right: get-var('layout-spacing', $unit: 1);
+  padding-right: get-var('layout-spacing', $unit: true);
 
 
   &.col-12,

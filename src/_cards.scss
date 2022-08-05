@@ -1,6 +1,10 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+
 @use 'mixins/shadow' as *;
+@use 'mixins/color/color-picker.mixin' as *;
+@use 'mixins/transition-duration' as *;
+
 @use 'variables' as *;
 
 // Cards
@@ -19,12 +23,12 @@
   .card-body,
   .card-footer {
     // padding: $layout-spacing-lg; // old spectre.css
-    padding: get-var('layout-spacing', $suffix: 'lg', $unit: 1);
+    padding: get-var('layout-spacing', $suffix: 'lg', $unit: true);
     padding-bottom: 0;
 
     &:last-child {
       // padding-bottom: $layout-spacing-lg; // old spectre.css
-      padding-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: 1);
+      padding-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: true);
     }
   }
 
@@ -34,7 +38,7 @@
 
   .card-image {
     // padding-top: $layout-spacing-lg; // old spectre.css
-    padding-top: get-var('layout-spacing', $suffix: 'lg', $unit: 1);
+    padding-top: get-var('layout-spacing', $suffix: 'lg', $unit: true);
 
     &:first-child {
       padding-top: 0;
@@ -60,5 +64,39 @@
   &.card-shadow {
     @include shadow-variant(0.1rem);
     border: 0;
+  }
+}
+
+.card {
+  // Color card.
+  &.card-color {
+    position: relative;
+    flex-direction: column;
+    justify-content: end;
+
+    // Size.
+    height: fit-content;
+    padding: 5rem 0.5rem 0.75rem;
+
+    // Animations.
+    @include transition-duration(0.05s);
+
+    // Color name.
+    .card-color-name {
+      font-weight: 500;
+    }
+
+    .card-color-code {
+      position: absolute;
+      top: 0.25rem;
+      right: 0.5rem;
+      font-size: small;
+    }
+
+    // Color card picker.
+    input[type='color'].card-color-picker {
+      border-color: transparent;
+      @include color-picker;
+    }
   }
 }

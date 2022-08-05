@@ -18,16 +18,16 @@ $off-canvas-breakpoint: $size-lg !default;
     display: block;
     position: absolute;
     // top: $layout-spacing; // old spectre.css
-    top: get-var('layout-spacing', $unit: 1);
+    top: get-var('layout-spacing', $unit: true);
     transition: none;
     // z-index: $zindex-0; // old spectre.css
     z-index: get-var('z-index-0');
     @if $rtl == true {
       // right: $layout-spacing; // old spectre.css
-      right: get-var('layout-spacing', $unit: 1);
+      right: get-var('layout-spacing', $unit: true);
     } @else {
       // left: $layout-spacing; // old spectre.css
-      left: get-var('layout-spacing', $unit: 1);
+      left: get-var('layout-spacing', $unit: true);
     }
   }
 
@@ -56,7 +56,7 @@ $off-canvas-breakpoint: $size-lg !default;
     flex: 1 1 auto;
     height: 100%;
     // padding: $layout-spacing $layout-spacing $layout-spacing 4rem; // old spectre.css
-    padding: get-var('layout-spacing', $unit: 1) get-var('layout-spacing', $unit: 1) get-var('layout-spacing', $unit: 1) 4rem;
+    padding: get-var('layout-spacing', $unit: true) get-var('layout-spacing', $unit: true) get-var('layout-spacing', $unit: true) 4rem;
   }
 
   .off-canvas-overlay {

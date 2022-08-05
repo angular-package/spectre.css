@@ -19,7 +19,7 @@ $filter-number: 8 !default;
 .filter {
   .filter-nav {
     // margin: $layout-spacing 0; // old spectre.css
-    margin: get-var('layout-spacing', $unit: 1) 0;
+    margin: get-var('layout-spacing', $unit: true) 0;
   }
 
   .filter-body {

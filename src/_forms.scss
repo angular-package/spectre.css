@@ -9,13 +9,13 @@
 .form-group {
   &:not(:last-child) {
     // margin-bottom: $layout-spacing; // old spectre.css
-    margin-bottom: get-var('layout-spacing', $unit: 1);
+    margin-bottom: get-var('layout-spacing', $unit: true);
   }
 }
 
 fieldset {
   // margin-bottom: $layout-spacing-lg; // old spectre.css
-  margin-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: 1);
+  margin-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: true);
 }
 
 legend {
@@ -23,7 +23,7 @@ legend {
   font-size: get-var('font-size', $suffix: 'lg');
   font-weight: 500;
   // margin-bottom: $layout-spacing-lg; // old spectre.css
-  margin-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: 1);
+  margin-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: true);
 }
 
 // Form element: Label
@@ -689,7 +689,7 @@ input {
 // Form horizontal
 .form-horizontal {
   // padding: $layout-spacing 0; // old spectre.css
-  padding: get-var('layout-spacing', $unit: 1) 0;
+  padding: get-var('layout-spacing', $unit: true) 0;
 
   .form-group {
     display: flex;

@@ -30,7 +30,7 @@
 
   .accordion-body {
     // margin-bottom: $layout-spacing; // old spectre.css
-    margin-bottom: get-var('layout-spacing', $unit: 1);
+    margin-bottom: get-var('layout-spacing', $unit: true);
     max-height: 0;
     overflow: hidden;
     // transition: max-height 0.25s; // old spectre.css

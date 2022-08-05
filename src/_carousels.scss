@@ -97,7 +97,7 @@ $carousel-number: 8;
 
   .carousel-nav {
     // bottom: $layout-spacing; // old spectre.css
-    bottom: get-var('layout-spacing', $unit: 1);
+    bottom: get-var('layout-spacing', $unit: true);
     display: flex;
     justify-content: center;
     left: 50%;

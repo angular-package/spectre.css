@@ -6,7 +6,8 @@
 // Credit: https://css-tricks.com/html5-meter-element/
 .meter,
 .#{$var-prefix}-meter {
-  appearance: none;
+  // old spectre.css
+  // appearance: none;
   // background: $bg-color; // old spectre.css
   background: color('bg-color');
   border: 0;

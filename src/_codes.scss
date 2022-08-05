@@ -26,7 +26,7 @@ code {
     font-size: get-var('font-size', $suffix: 'sm');
     position: absolute;
     // right: $layout-spacing; // old spectre.css
-    right: get-var('layout-spacing', $unit: 1);
+    right: get-var('layout-spacing', $unit: true);
     // top: $unit-h; // old spectre.css
     top: get-var('unit-h');
   }

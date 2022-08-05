@@ -19,7 +19,7 @@
   // padding: $unit-2; // old spectre.css
   padding: get-var('unit-2');
   // transform: translateY($layout-spacing-sm); // old spectre.css
-  transform: translateY(get-var('layout-spacing', $suffix: 'sm', $unit: 1));
+  transform: translateY(get-var('layout-spacing', $suffix: 'sm', $unit: true));
   // z-index: $zindex-3; // old spectre.css
   z-index: get-var('z-index-3');
 
