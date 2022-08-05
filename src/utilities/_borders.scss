@@ -10,13 +10,15 @@
 // Default border size large.
 .border-lg,
 .#{$var-prefix}-border-lg {
-  @include border($width: 'border-width-lg');
+  @include border('lg');
 }
 
+
+// TODO: Add colors.
 // Border dark color.
 @include border-class-variant('dark', 'border-color-dark'); // .border-dark, .s-border-dark
 @include border-class-variant('dark', 'border-color-dark', 'lg'); // .border-dark-lg, .s-border-dark-lg
 
 // Border light color.
-@include border-class-variant('light'); // .border-light, .s-border-light
+@include border-class-variant('light', $size: ''); // .border-light, .s-border-light
 @include border-class-variant('light', $size: 'lg'); // .border-light-lg, .s-border-light-lg
