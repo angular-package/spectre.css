@@ -1,3 +1,5 @@
+@use '../mixins/hide-scrollbar' as *;
+
 // Display
 .d-block {
   display: block;
@@ -41,4 +43,8 @@
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+.hide-scrollbar {
+  @include hide-scrollbar();
 }
