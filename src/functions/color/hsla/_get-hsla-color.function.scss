@@ -1,0 +1,36 @@
+// Sass.
+@use 'sass:list';
+
+// Internal.
+@use '../../../variables' as *;
+@use '../get-var-alpha.function' as *;
+@use 'get-var-hue.function' as *;
+@use 'get-var-lightness.function' as *;
+@use 'get-var-saturation.function' as *;
+
+// The function `color()` returns the `hsla()` color from a CSS variables of the given `$name`.
+// The `$name` parameter can be passed as two-index list, where the second item is the `$lightness`,
+// or can be passed as three-index list, where the third item is the `$alpha`.
+@function get-hsla-color(
+  $name,
+  $hue: 0deg,
+  $saturation: 0%,
+  $lightness: 0%,
+  $alpha: 1,
+  $prefix: $var-prefix
+) {
+  @if list.length($name) > 1 {
+    @if list.length($name) == 3 {
+      $alpha: list.nth($name, 3);
+    }
+
+    $lightness: $lightness + list.nth($name, 2);
+    $name: list.nth($name, 1);
+  }
+  @return hsla(
+    calc(#{get-var-hue($name, $prefix)} + #{$hue}),
+    calc(#{get-var-saturation($name, $prefix)} + #{$saturation}),
+    calc(#{get-var-lightness($name, $prefix)} + #{$lightness}),
+    calc(#{get-var-alpha($name, $prefix)} * #{$alpha})
+  );
+}
