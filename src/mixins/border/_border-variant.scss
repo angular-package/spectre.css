@@ -1,0 +1,19 @@
+@use 'sass:string';
+@use 'border' as *;
+
+@mixin border-variant(
+  $size,
+  $style: solid,
+  $color: 'border-color',
+  $radius: 'border-radius',
+) {
+  @if (string.length($size) > 0) {
+    &.border-#{$size} {
+      @include border(border-width-#{$size}, solid, $color, $radius);
+    }
+  } @else {
+    &.border {
+      @include border(border-width, solid, $color, $radius);
+    }
+  }
+}

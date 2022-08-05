@@ -1,0 +1,12 @@
+@use 'border' as *;
+
+@mixin border-hover(
+  $width: 'border-width',
+  $style: solid,
+  $color: 'border-color',
+  $radius: 'border-radius',
+) {
+  &:hover {
+    @include border($width, $style, $color, $radius);
+  }
+}

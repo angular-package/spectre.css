@@ -1,0 +1,40 @@
+@use '../../functions/get-border' as *;
+@use '../../functions/get-var' as *;
+
+@mixin border(
+  $size: 'md',
+  $style: solid,
+  $color: 'border-color',
+  $radius: 'border-radius',
+  $side: 'all'
+) {
+  // Size.
+  $width: 'border-width';
+  @if $size == 'lg' {
+    $width: '#{$width}-lg';
+  }
+
+  // Side.
+  @if $side == all {
+    border: get-border($width, $style, $color);
+  } @else if $side == right {
+    // Right side.
+    border-right: get-border($width, $style, $color);
+  } @else if $side == left {
+    // Left side.
+    border-left: get-border($width, $style, $color);
+  } @else if $side == bottom {
+    // Bottom side.
+    border-bottom: get-border($width, $style, $color);
+  } @else if $side == top {
+    // Top side.
+    border-top: get-border($width, $style, $color);
+  } @else {
+    @error "Unknown side #{$side}.";
+  }
+
+  // Radius.
+  @if $radius {
+    border-radius: get-var($radius);
+  }
+}
