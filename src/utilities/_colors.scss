@@ -1,4 +1,6 @@
-@use '../mixins/color' as *;
+@use '../mixins/color/bg-color-variant.mixin' as *;
+@use '../mixins/color/text-color-variant.mixin' as *;
+@use '../mixins/color/text-color-hover-variant.mixin' as *;
 @use '../variables' as *;
 
 // Text colors
@@ -49,6 +51,15 @@
 // - Other colors.
 @include text-color-variant('code', 'code-color');
 @include text-color-variant('highlight', 'highlight-color');
+
+
+// Text color hover
+@include text-color-hover-variant('bg-dark', 'bg-color-dark');
+
+@include text-color-hover-variant('accent', 'accent-color');
+
+@include text-color-hover-variant('primary', 'primary-color');
+
 
 // - Body colors.
 @include text-color-variant('body-font', 'body-font-color');
@@ -111,11 +122,11 @@
 @include bg-color-variant('link-dark', 'link-color-dark', $link-color-dark);
 @include bg-color-variant('link-light', 'link-color-light', $link-color-light);
 
-// - Other colors.
-@include bg-color-variant('code', 'code-color');
-@include bg-color-variant('highlight', 'highlight-color');
-
 // - Body colors.
 @include bg-color-variant('body', 'body-bg-color', $body-bg-color); // @deprecated
 @include bg-color-variant('body-bg', 'body-bg-color', $body-bg-color);
 @include bg-color-variant('body-font', 'body-font-color', $body-font-color);
+
+// - Other colors.
+@include bg-color-variant('code', 'code-color', $code-color);
+@include bg-color-variant('highlight', 'highlight-color', $highlight-color);
