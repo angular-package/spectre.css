@@ -1,4 +1,5 @@
-@use 'functions/color' as *;
+@use 'mixins/border/border' as *;
+@use 'mixins/color/background-color.mixin' as *;
 @use 'functions/get-var' as *;
 @use 'variables' as *;
 
@@ -18,7 +19,8 @@
     tbody {
       tr:nth-of-type(odd) {
         // background: $bg-color; // old spectre.css
-        background: color('bg-color');
+        // background: color('bg-color');
+        @include background-color('bg-color');
       }
     }
   }
@@ -29,7 +31,8 @@
       tr {
         &.active {
           // background: $bg-color-dark; // old spectre.css
-          background: color('bg-color-dark');
+          // background: color('bg-color-dark');
+          @include background-color('bg-color-dark');
         }
       }
     }
@@ -40,7 +43,8 @@
       tr {
         &:hover {
           // background: $bg-color-dark; // old spectre.css
-          background: color('bg-color-dark');
+          // background: color('bg-color-dark');
+          @include background-color('bg-color-dark');
         }
       }
     }
@@ -54,15 +58,18 @@
     white-space: nowrap;
   }
 
-  td,
-  th {
+  thead > tr > th,
+  tbody > tr > td,
+  tbody > tr > th {
     // border-bottom: $border-width solid $border-color; // old spectre.css
-    border-bottom: get-var('border-width') solid color('border-color');
+    // border-bottom: get-var('border-width') solid color('border-color');
+    @include border($side: bottom, $radius: false);
     // padding: $unit-3 $unit-2; // old spectre.css
     padding: get-var('unit-3') get-var('unit-2');
   }
-  th {
+  thead > tr > th {
     // border-bottom-width: $border-width-lg; // old spectre.css
-    border-bottom-width: get-var('border-width', $suffix: 'lg');
+    // border-bottom-width: get-var('border-width', $suffix: 'lg');
+    @include border($side: bottom, $radius: false);
   }
 }
