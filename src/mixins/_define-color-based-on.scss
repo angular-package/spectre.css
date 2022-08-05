@@ -2,8 +2,10 @@
 @use '../variables' as *;
 @use 'set-var' as *;
 
+// @deprecated
 // Defines a color based on the specified CSS variable and its lightness.
 @mixin define-color-based-on($name, $color, $lightness: 0%, $prefix: $var-prefix) {
+  @warn 'define-color-based-on() mixin is deprecated in favor of set-derived-color()';
   @include set-var($name, get-var($color, $suffix: 'h'), $prefix, 'h');
   @include set-var($name, get-var($color, $suffix: 's'), $prefix, 's');
   @include set-var($name, calc(var(--#{$prefix}-#{$color}-l) + #{$lightness}), $prefix, 'l');
