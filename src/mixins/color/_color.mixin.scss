@@ -1,0 +1,11 @@
+@use '../../functions/color' as *;
+@use '../../variables' as *;
+
+// The mixin contains the `color` style of the given `$color` CSS variable name without the prefix.
+@mixin color($color, $lightness: 0%, $important: false, $prefix: $var-prefix) {
+  @if $important {
+    color: color($color, $lightness: $lightness, $prefix: $prefix) !important;
+  } @else {
+    color: color($color, $lightness: $lightness, $prefix: $prefix);
+  }
+}

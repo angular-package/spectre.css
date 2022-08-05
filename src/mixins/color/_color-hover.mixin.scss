@@ -1,0 +1,8 @@
+@use 'color.mixin' as *;
+
+// On hover use the color style of the given `$color`.
+@mixin color-hover($color, $lightness: 0%) {
+  &:hover {
+    @include color($color, $lightness);
+  }
+}

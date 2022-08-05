@@ -1,0 +1,13 @@
+@use 'color-focus.mixin' as *;
+@use 'color-hover.mixin' as *;
+@use 'color-visited.mixin' as *;
+
+// The mixin
+@mixin text-color-hover-variant($name, $color) {
+  .text-#{$name}-hover,
+  a.text-#{$name}-hover {
+    @include color-focus($color, $lightness: -5%);
+    @include color-hover($color, $lightness: -5%);
+    @include color-visited($color, $lightness: 5%);
+  }
+}

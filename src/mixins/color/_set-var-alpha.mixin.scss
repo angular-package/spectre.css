@@ -1,0 +1,12 @@
+@use '../../variables' as *;
+@use '../set-var' as *;
+
+// The mixin sets CSS variable alpha for the hsla and rgba color form from the given hex `$color`.
+@mixin set-var-alpha(
+  $name,
+  $color,
+  $prefix: $var-prefix,
+  $suffix: $var-alpha
+) {
+  @include set-var($name, alpha($color), $prefix, $suffix);
+}
