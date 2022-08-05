@@ -1,0 +1,34 @@
+@use '../../../functions/get-var' as *;
+@use '../../../variables' as *;
+@use '../../set-var' as *;
+@use '../set-var-alpha.mixin' as *;
+@use 'set-var-hue.mixin' as *;
+@use 'set-var-lightness.mixin' as *;
+@use 'set-var-saturation.mixin' as *;
+
+// The mixin sets CSS variable color in hsla form, by splitting it in four CSS variables.
+@mixin set-hsla-color(
+  $name,
+  $color,
+  $lightness: 0%,
+  $alpha: 'auto',
+  $prefix: $var-prefix
+) {
+  @include set-var-hue($name, $color, $prefix);
+  // @include set-var($name, hue($color), $prefix, 'h');
+
+  @include set-var-saturation($name, $color, $prefix);
+  // @include set-var($name, saturation($color), $prefix, 's');
+
+  @include set-var-lightness($name, $color, $lightness, $prefix);
+  // @include set-var($name, calc(lightness($color) + get-var($name, $suffix: 'l-l')), $prefix, 'l');
+  // @include set-var($name, $lightness, $prefix, 'l-l');
+  // Get the alpha from $color.
+  @if $alpha == 'auto' {
+    @include set-var-alpha($name, $color, $prefix);
+    // @include set-var($name, alpha($color), $prefix, 'a');
+  // Set the $alpha to the given $color.
+  } @else if $alpha > -1 {
+    @include set-var($name, $alpha, $prefix, $var-alpha);
+  }
+}

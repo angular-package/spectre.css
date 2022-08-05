@@ -1,0 +1,16 @@
+@use '../../../functions/get-var' as *;
+@use '../../../variables' as *;
+@use '../../set-var' as *;
+
+// The mixin sets CSS variable lightness for the hsla form from the given hex `$color`.
+@mixin set-var-lightness(
+  $name,
+  $color,
+  $lightness: 0%,
+  $prefix: $var-prefix,
+  $suffix: $var-lightness
+) {
+  // @include set-var($name, lightness($color), $prefix, $suffix);
+  @include set-var($name, calc(lightness($color) + get-var($name, $suffix:  '#{$suffix}-l')), $prefix, $suffix);
+  @include set-var($name, $lightness, $prefix, '#{$suffix}-l');
+}

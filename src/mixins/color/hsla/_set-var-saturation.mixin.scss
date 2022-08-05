@@ -1,0 +1,12 @@
+@use '../../../variables' as *;
+@use '../../set-var' as *;
+
+// The mixin sets CSS variable saturation for the hsla color form from the given hex `$color`.
+@mixin set-var-saturation(
+  $name,
+  $color,
+  $prefix: $var-prefix,
+  $suffix: $var-saturation
+) {
+  @include set-var($name, saturation($color), $prefix, $suffix);
+}

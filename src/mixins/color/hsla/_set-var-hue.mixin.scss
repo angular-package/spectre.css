@@ -1,0 +1,7 @@
+@use '../../../variables' as *;
+@use '../../set-var' as *;
+
+// The mixin sets CSS variable hue for the hsla form from the given hex `$color`.
+@mixin set-var-hue($name, $color, $prefix: $var-prefix, $suffix: $var-hue) {
+  @include set-var($name, hue($color), $prefix, $suffix);
+}
