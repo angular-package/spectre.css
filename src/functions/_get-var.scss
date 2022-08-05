@@ -9,13 +9,13 @@
   $unit: false
 ) {
   @if string.length($suffix) > 0 {
-    @if $unit == true {
+    @if $unit {
       @return calc(var(--#{$prefix}-#{$name}-#{$suffix}) * var(--#{$prefix}-#{$name}-unit));
     } @else {
       @return var(--#{$prefix}-#{$name}-#{$suffix});
     }
   } @else {
-    @if $unit == true {
+    @if $unit {
       @return calc(var(--#{$prefix}-#{$name}) * var(--#{$prefix}-#{$name}-unit));
     } @else {
       @return var(--#{$prefix}-#{$name});
