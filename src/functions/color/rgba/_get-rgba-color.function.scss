@@ -1,0 +1,25 @@
+// Sass.
+@use 'sass:list';
+
+// Internal.
+@use '../../../variables' as *;
+@use '../get-var-alpha.function' as *;
+@use './get-var-blue.function' as *;
+@use './get-var-green.function' as *;
+@use './get-var-red.function' as *;
+
+@function get-rgba-color(
+  $name,
+  $red: 0,
+  $green: 0,
+  $blue: 0,
+  $alpha: 1,
+  $prefix: $var-prefix
+) {
+  @return rgba(
+    calc(#{get-var-red($name, $prefix)} + #{$blue}),
+    calc(#{get-var-green($name, $prefix)} + #{$green}),
+    calc(#{get-var-blue($name, $prefix)} + #{$blue}),
+    calc(#{get-var-alpha($name, $prefix)} * #{$alpha})
+  );
+}

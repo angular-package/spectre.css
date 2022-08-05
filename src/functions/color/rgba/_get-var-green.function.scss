@@ -1,0 +1,6 @@
+@use '../../../variables' as *;
+
+// The function returns the CSS variable green color of the given `$name` and `$prefix`.
+@function get-var-green($name, $prefix: $var-prefix) {
+  @return var(--#{$prefix}-#{$name}-#{$var-green});
+}
