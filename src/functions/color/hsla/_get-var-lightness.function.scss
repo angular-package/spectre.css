@@ -1,6 +1,7 @@
 @use '../../../variables' as *;
+@use '../get-color-name.function' as *;
 
 // The function returns the CSS variable lightness color of the given `$name` and `$prefix`.
 @function get-var-lightness($name, $prefix: $var-prefix) {
-  @return var(--#{$prefix}-#{$name}-#{$var-lightness});
+  @return var(--#{$prefix}-#{get-color-name($name)}-#{$var-lightness});
 }

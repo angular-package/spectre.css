@@ -1,6 +1,7 @@
 @use '../../../variables' as *;
+@use '../get-color-name.function' as *;
 
 // The function returns the CSS variable saturation color of the given `$name` and `$prefix`.
 @function get-var-saturation($name, $prefix: $var-prefix) {
-  @return var(--#{$prefix}-#{$name}-#{$var-saturation});
+  @return var(--#{$prefix}-#{get-color-name($name)}-#{$var-saturation});
 }
