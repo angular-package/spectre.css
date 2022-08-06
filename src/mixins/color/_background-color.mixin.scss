@@ -5,6 +5,7 @@
 @mixin background-color(
   $color,
   $lightness: 0%,
+  $alpha: 1,
   $important: false,
   $prefix: $var-prefix
 ) {
@@ -12,6 +13,7 @@
     background-color: color(
       $color,
       $lightness: $lightness,
+      $alpha: $alpha,
       $prefix: $prefix
     ) !important;
   } @else {
