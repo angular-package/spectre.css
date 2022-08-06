@@ -3,8 +3,10 @@
 
 // The function returns the color $name if the given name was the color code.
 @function get-color-name($name) {
+  @if string.index($name, '-') == null {
+    $name: string.insert($name, -color, string.length($name) + 1);
   // If the color code contains separator `-` but does'nt contain the `color`.
-  @if string.index($name, '-') and string.index($name, 'color') == null {
+  } @else if string.index($name, 'color') == null {
     @if string.index($name, 'dark') != null {
       $name: #{string.insert(string.slice($name, 1, string.index($name, 'dark') - 1), color-dark, string.index($name, 'dark'))};
     } @else if string.index($name, 'light') != null {
