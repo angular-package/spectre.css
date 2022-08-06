@@ -1,5 +1,5 @@
 @use '../../variables' as *;
-@use 'background-color.mixin' as *;
+@use 'background.mixin' as *;
 @use 'color.mixin' as *;
 
 // Background color utility mixin
@@ -12,7 +12,7 @@
   .#{$prefix}-bg-#{$name} {
     // background: $color !important; // old spectre.
     // background: color($color) !important;
-    @include background-color($color, $important: true);
+    @include background($color, $important: true);
 
     // old spectre.
     // @if (lightness($color) < 60) {
@@ -20,7 +20,7 @@
     // }
     @if (lightness($hex-color) < 60) {
       // color: color('light-color');
-      @include color('light-color');
+      @include color('light');
     }
   }
 }
