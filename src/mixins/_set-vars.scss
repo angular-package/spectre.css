@@ -1,0 +1,9 @@
+@use '../mixins/set-var' as *;
+@use '../variables' as *;
+
+// The mixin TODO: description.
+@mixin set-vars($name, $values, $prefix: $var-prefix) {
+  @each $suffix, $value in $values {
+    @include set-var($name, $value: $value, $suffix: $suffix, $prefix: $prefix);
+  }
+}
