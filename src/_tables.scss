@@ -1,5 +1,5 @@
 @use 'mixins/border/border' as *;
-@use 'mixins/color/background-color.mixin' as *;
+@use 'mixins/color/background.mixin' as *;
 @use 'functions/get-var' as *;
 @use 'variables' as *;
 
@@ -20,7 +20,7 @@
       tr:nth-of-type(odd) {
         // background: $bg-color; // old spectre.css
         // background: color('bg-color');
-        @include background-color('bg-color');
+        @include background('bg');
       }
     }
   }
@@ -32,7 +32,7 @@
         &.active {
           // background: $bg-color-dark; // old spectre.css
           // background: color('bg-color-dark');
-          @include background-color('bg-color-dark');
+          @include background('bg-dark');
         }
       }
     }
@@ -44,7 +44,7 @@
         &:hover {
           // background: $bg-color-dark; // old spectre.css
           // background: color('bg-color-dark');
-          @include background-color('bg-color-dark');
+          @include background('bg-dark');
         }
       }
     }

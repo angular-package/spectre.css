@@ -1,5 +1,9 @@
+
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+
+@use 'mixins/color/background.mixin' as *;
+
 @use 'variables' as *;
 
 // Off canvas menus
@@ -33,7 +37,8 @@ $off-canvas-breakpoint: $size-lg !default;
 
   .off-canvas-sidebar {
     // background: $bg-color; // old spectre.css
-    background: color('bg-color');
+    // background: color('bg-color');
+    @include background('bg');
     bottom: 0;
     min-width: 10rem;
     overflow-y: auto;
@@ -61,7 +66,8 @@ $off-canvas-breakpoint: $size-lg !default;
 
   .off-canvas-overlay {
     // background: rgba($dark-color, .1); // old spectre.css
-    background: color('dark-color', $alpha: 0.1);
+    // background: color('dark-color', $alpha: 0.1);
+    @include background('dark', $alpha: 0.1);
     border-color: transparent;
     border-radius: 0;
     bottom: 0;
