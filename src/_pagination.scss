@@ -1,5 +1,10 @@
-@use 'functions/color' as *;
 @use 'functions/get-var' as *;
+
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/border/border' as *;
+@use 'mixins/border/border-hover' as *;
+@use 'mixins/transition-duration' as *;
+
 @use 'variables' as *;
 
 // Pagination
@@ -11,6 +16,21 @@
   margin: get-var('unit-1') 0;
   // padding: $unit-1 0; // old spectre.css
   padding: get-var('unit-1') 0;
+
+  // Pagination border.
+  &.pagination-border {
+    > li.page-item {
+      a {
+        width: 100%;
+        @include border();
+        @include border-hover($color: 'primary');
+        @include transition-duration((border, 0.2s));
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+  }
 
   .page-item {
     // margin: $unit-1 $unit-o; // old spectre.css
@@ -32,7 +52,8 @@
       &:focus,
       &:hover {
         // color: $primary-color; // old spectre.css
-        color: color('primary-color');
+        // color: color('primary-color');
+        @include color('primary'); // color code used.
       }
     }
 
@@ -47,9 +68,11 @@
     &.active {
       a {
         // background: $primary-color; // old spectre.css
-        background: color('primary-color');
+        // background: color('primary-color');
+        @include background('primary');
         // color: $light-color; // old spectre.css
-        color: color('light-color');
+        // color: color('light-color');
+        @include color('light');
       }
     }
 
