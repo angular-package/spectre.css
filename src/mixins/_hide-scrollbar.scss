@@ -1,7 +1,8 @@
-@use '../functions/color' as *;
+// @use '../functions/color' as *;
+@use '../mixins/color/background-color.mixin' as *;
 
 // Hide scrollbar.
-@mixin hide-scrollbar($width: 0.2rem, $bg-color: 'gray-color') {
+@mixin hide-scrollbar($width: 0.2rem, $bg-color: 'gray') {
   /* hide scrollbar but allow scrolling */
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   scrollbar-width: none; /* for Firefox */
@@ -15,7 +16,8 @@
     background: transparent;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: color($bg-color);
+    // background-color: color($bg-color);
+    @include background-color($bg-color);
     border-radius: 20px;
     border: transparent;
   }
