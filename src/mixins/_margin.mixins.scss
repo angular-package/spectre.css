@@ -1,0 +1,25 @@
+@use '../functions/get-var' as *;
+
+@mixin margin($sides) {
+  $margin: '';
+  @each $side in $sides {
+    $margin: $margin + get-var($side) + ' ';
+  }
+  margin: #{$margin};
+}
+
+@mixin margin-bottom($size) {
+  margin-bottom: get-var($size);
+}
+
+@mixin margin-left($size) {
+  margin-left: get-var($size);
+}
+
+@mixin margin-right($size) {
+  margin-right: get-var($size);
+}
+
+@mixin margin-top($size) {
+  margin-top: get-var($size);
+}
