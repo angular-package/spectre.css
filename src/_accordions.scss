@@ -1,9 +1,12 @@
 @use 'functions/get-var' as *;
 @use '../variables' as *;
 
+@use 'mixins/padding.mixins' as *;
+
 // Accordions
 .accordion,
 #{$var-prefix}-accordion {
+
   input:checked ~,
   &[open] {
     & .accordion-header > {
@@ -20,11 +23,12 @@
   .accordion-header {
     display: block;
     // padding: $unit-1 $unit-2; // old spectre.css
-    padding: get-var('unit-1') get-var('unit-2');
+    // padding: get-var('unit-1') get-var('unit-2');
+    @include padding(('unit-1', 'unit-2'));
 
     .icon {
       // transition: transform 0.25s; // old spectre.css
-      transition: transform calc(get('transition-duration') + 0.05s); // old spectre.css
+      transition: transform calc(get-var('transition-duration') + 0.05s); // old spectre.css
     }
   }
 
@@ -34,7 +38,7 @@
     max-height: 0;
     overflow: hidden;
     // transition: max-height 0.25s; // old spectre.css
-    transition: max-height calc(get('transition-duration') + 0.05s); // old spectre.css
+    transition: max-height calc(get-var('transition-duration') + 0.05s); // old spectre.css
   }
 }
 
