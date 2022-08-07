@@ -1,6 +1,9 @@
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+
 @use 'mixins/avatar' as *;
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/color/background.mixin' as *;
 @use 'variables' as *;
 
 // Avatars
@@ -8,10 +11,12 @@
 .#{$var-prefix}-avatar {
   @include avatar-base();
   // background: $primary-color; // old spectre.css
-  background: color('primary-color');
+  // background: color('primary-color'); // old @angular-package/spectre.css
+  @include background('primary');
   border-radius: 50%;
   // color: rgba($light-color, .85); // old spectre.css
-  color: color('light-color', $alpha: 0.85);
+  // color: color('light-color', $alpha: 0.85); // old @angular-package/spectre.css
+  @include color('light', $alpha: 0.85);
   display: inline-block;
   font-weight: 300;
   line-height: 1.25;
@@ -48,7 +53,8 @@
   .avatar-icon,
   .avatar-presence {
     // background: $bg-color-light; // old spectre.css
-    background: color('bg-color-light');
+    // background: color('bg-color-light'); // old @angular-package/spectre.css
+    @include background('bg');
     bottom: 14.64%;
     height: 50%;
     // padding: $border-width-lg; // old spectre.css
@@ -63,26 +69,30 @@
 
   .avatar-presence {
     // background: $gray-color; // old spectre.css
-    background: color('gray-color');
+    // background: color('gray-color'); // old @angular-package/spectre.css
+    @include background('gray');
     // box-shadow: 0 0 0 $border-width-lg $light-color; // old spectre.css
-    box-shadow: 0 0 0 get-var('border-width', $suffix: 'lg') color('light-color');
+    box-shadow: 0 0 0 get-var('border-width', $suffix: 'lg') color('light');
     border-radius: 50%;
     height: 0.5em;
     width: 0.5em;
 
     &.online {
       // background: $success-color; // old spectre.css
-      background: color('success-color');
+      // background: color('success-color'); // old @angular-package/spectre.css
+      @include background('success');
     }
 
     &.busy {
       // background: $error-color; // old spectre.css
-      background: color('error-color');
+      // background: color('error-color'); // old @angular-package/spectre.css
+      @include background('error');
     }
 
     &.away {
       // background: $warning-color; // old spectre.css
-      background: color('warning-color');
+      // background: color('warning-color'); // old @angular-package/spectre.css
+      @include background('warning');
     }
   }
 
