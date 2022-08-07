@@ -1,4 +1,6 @@
+@use 'sass:list';
 @use 'sass:string';
+
 @use '../variables' as *;
 
 // The function returns the CSS var function or calc function with the specified name, prefix, optional suffix, or unit. Unit is used for variables with a separated unit from the value.
@@ -8,6 +10,11 @@
   $suffix: '',
   $unit: false
 ) {
+  // Get `$unit` from the `$name`.
+  @if list.length($name) > 1 {
+    $unit: list.nth($name, 2);
+    $name: list.nth($name, 1);
+  }
   @if string.length($suffix) > 0 {
     @if $unit {
       @return calc(var(--#{$prefix}-#{$name}-#{$suffix}) * var(--#{$prefix}-#{$name}-unit));
