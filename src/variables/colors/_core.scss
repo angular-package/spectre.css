@@ -1,0 +1,19 @@
+// Core colors.
+// - Dark.
+$dark-color: #303742 !default; // --#{$var-prefix}-dark-color.
+
+// - Light.
+$light-color: #fff !default; // --#{$var-prefix}-light-color.
+
+// - Accent.
+$accent-color: #9932CC !default; // --#{var-prefix}-accent-color.
+
+// - Primary.
+$primary-color: #5755d9 !default; // --#{$var-prefix}-primary-color.
+$primary-color-dark: darken($primary-color, 3%) !default; // --#{$var-prefix}-primary-color-dark.
+$primary-color-light: lighten($primary-color, 3%) !default; // --#{$var-prefix}-primary-color-light.
+
+// Secondary.
+$secondary-color: lighten($primary-color, 37.5%) !default; // --#{$var-prefix}-secondary-color.
+$secondary-color-dark: darken($secondary-color, 3%) !default; // --#{$var-prefix}-secondary-color-dark.
+$secondary-color-light: lighten($secondary-color, 3%) !default; // --#{$var-prefix}-secondary-color-light.

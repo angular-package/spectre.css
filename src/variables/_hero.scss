@@ -1,0 +1,8 @@
+// Hero sizes.
+$hero-size: (
+  'xs': 1rem, // --#{$var-prefix}-hero-size-xs.
+  'sm': 2rem, // --#{$var-prefix}-hero-size-sm.
+  'md': 4rem, // --#{$var-prefix}-hero-size-md.
+  'lg': 8rem, // --#{$var-prefix}-hero-size-lg.
+  'xl': 10rem // --#{$var-prefix}-hero-size-xl.
+) !default;

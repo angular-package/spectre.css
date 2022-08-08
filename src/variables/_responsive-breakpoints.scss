@@ -1,0 +1,12 @@
+// Max Columns number.
+$columns-count: 4;
+
+// Responsive breakpoints.
+$size-xs: 480px !default; // --#{$var-prefix}-size-xs.
+$size-sm: 600px !default; // --#{$var-prefix}-size-sm.
+$size-md: 840px !default; // --#{$var-prefix}-size-md.
+$size-lg: 960px !default; // --#{$var-prefix}-size-lg.
+$size-xl: 1280px !default; // --#{$var-prefix}-size-xl.
+$size-2x: 1440px !default; // --#{$var-prefix}-size-2x.
+
+$responsive-breakpoint: $size-xs !default; // --#{$var-prefix}-responsive-breakpoint.

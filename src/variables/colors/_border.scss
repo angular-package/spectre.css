@@ -1,0 +1,6 @@
+@use 'core' as *;
+
+// Border colors.
+$border-color: lighten($dark-color, 65%) !default; // --#{$var-prefix}-border-color.
+$border-color-dark: darken($border-color, 10%) !default; // --#{$var-prefix}-border-color-dark.
+$border-color-light: lighten($border-color, 8%) !default; // --#{$var-prefix}-border-color-light.
