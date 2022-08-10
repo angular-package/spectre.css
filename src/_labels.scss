@@ -5,7 +5,7 @@
 @use 'mixins/color/background.mixin' as *;
 @use 'mixins/color/color.mixin' as *;
 @use 'mixins/label' as *;
-@use 'mixins/padding-size-variant.mixin' as *;
+@use 'mixins/padding-size-variants.mixin' as *;
 
 // Labels
 .label,
@@ -27,7 +27,7 @@
   }
 
   // Padding size
-  @include padding-size-variant('label');
+  @include padding-size-variants('label');
 
   // Label color variants.
   // - Shades.
