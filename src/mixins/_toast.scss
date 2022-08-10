@@ -1,31 +1,34 @@
-@use '../functions/color' as *;
 @use 'sass:list';
 
-// The mixin includes toast `background` and `border` of a given `$color` CSS variable name.
-// @mixin toast-variant($color: $dark-color) { // old spectre.css
-@mixin toast-variant($color: 'dark-color', $lightness: 0%, $alpha: 0.95) {
-  @if list.length($color) > 1 {
-    @if list.length($color) == 3 {
-      $alpha: list.nth($color, 3);
-    }
-    $lightness: list.nth($color, 2);
-    $color: list.nth($color, 1);
-  }
+// Functions.
+@use '../functions/color' as *;
 
-  // background: rgba($color, .95); // old spectre.css
-  background: color($color, $lightness: $lightness, $alpha: $alpha);
-  // border-color: $color; // old spectre.css
-  border-color: color($color);
-}
+// Mixins.
+@use '../mixins/color/background.mixin' as *;
+@use '../mixins/color/color.mixin' as *;
 
 // The mixin includes an extension class of name prefixed with `toast-` with a given color name that includes a toast variant of the given `$color`.
-@mixin toast-class-variant(
+// The mixin includes toast `background` and `border` of a given `$color` CSS variable name.
+// @mixin toast-variant($color: $dark-color) { // old spectre.css
+@mixin toast-variant(
   $name: 'dark',
-  $color: 'dark-color',
-  $lightness: 0%,
-  $alpha: 0.95
+  $color: 'dark',
+  $font-color: 'light',
 ) {
   &.toast-#{$name} {
-    @include toast-variant($color, $lightness: $lightness, $alpha: $alpha);
+    // background: rgba($color, .95); // old spectre.css
+    // background: color($color);
+    @include background($color, $alpha: 0.95);
+    // border-color: $color; // old spectre.css
+    border-color: color($color);
+    // Font color.
+    // color: color($font-color);
+    @include color($font-color);
+    a:active,
+    a:visited,
+    a:link {
+      // color: color($font-color); // old @angular-package/spectre.css
+      @include color($font-color);
+    }
   }
 }
