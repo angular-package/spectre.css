@@ -1,9 +1,7 @@
 @use '../mixins/set-var' as *;
 @use '../variables' as *;
 
-/*
-  Border width. Alphabetical order.
-*/
+// Border width. Alphabetical order.
 :root, :host {
   @include set-var('border-radius', $border-radius); // $unit-h
   @include set-var('border-width', $border-width); // $unit-o
