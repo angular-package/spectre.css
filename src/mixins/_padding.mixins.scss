@@ -1,0 +1,27 @@
+@use 'sass:list';
+
+// Functions.
+@use '../functions/get-var' as *;
+
+// Mixins.
+@use 'property.mixin' as *;
+
+@mixin padding($sides...) {
+  @include property(padding, $sides...)
+}
+
+@mixin padding-bottom($var-name) {
+  padding-bottom: get-var($var-name);
+}
+
+@mixin padding-left($var-name) {
+  padding-left: get-var($var-name);
+}
+
+@mixin padding-right($var-name) {
+  padding-right: get-var($var-name);
+}
+
+@mixin padding-top($var-name) {
+  padding-top: get-var($var-name);
+}
