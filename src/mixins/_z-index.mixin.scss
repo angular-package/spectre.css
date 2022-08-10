@@ -1,0 +1,10 @@
+@use '../functions/get-var' as *;
+@use '../functions/important.function' as *;
+
+@mixin z-index($level: '0', $adjust: 0, $important: '') {
+  @if $adjust > 0 {
+    z-index: calc(get-var('z-index', $suffix: $level) + $adjust) important($important);
+  } @else {
+    z-index: get-var('z-index', $suffix: $level) important($important);
+  }
+}
