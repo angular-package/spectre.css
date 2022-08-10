@@ -1,0 +1,16 @@
+@use 'sass:list';
+@use '../functions/get-var' as *;
+
+@mixin property($name, $values...) {
+  $important: '';
+  $property-value: '';
+  @if list.index($values, '!important') {
+    $important: #{' ' + list.nth($values, list.index($values, '!important'))};
+  }
+  @each $value in $values {
+    @if $value != '!important' {
+      $property-value: $property-value + get-var($value) + ' ';
+    }
+  }
+  #{$name}: #{$property-value}#{$important};
+}
