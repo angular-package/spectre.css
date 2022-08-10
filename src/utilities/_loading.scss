@@ -1,53 +1,70 @@
+// Functions.
 @use '../functions/color' as *;
 @use '../functions/get-var' as *;
+@use '../functions/get-var-unit.function' as *;
 @use '../functions/var-negative' as *;
+
+// Mixins.
+@use '../mixins/border/border' as *;
+@use '../mixins/z-index.mixin' as *;
 
 // Loading
 .loading {
   color: transparent !important;
   // min-height: $unit-4; // old spectre.css
-  min-height: get-var('unit-4');
+  min-height: get-var-unit('4');
   pointer-events: none;
   position: relative;
   &::after {
     animation: loading 500ms infinite linear;
     background: transparent;
     // border: $border-width-lg solid $primary-color; // old spectre.css
-    border: get-var('border-width', $suffix: 'lg') solid color('primary-color');
+    // border: get-var('border-width', $suffix: 'lg') solid color('primary-color'); // old @angular-package/spectre.css
+    @include border('lg', solid, 'primary');
     border-radius: 50%;
     border-right-color: transparent;
     border-top-color: transparent;
     content: '';
     display: block;
     // height: $unit-4; // old spectre.css
-    height: get-var('unit-4');
+    // height: get-var('unit-4'); // old @angular-package/spectre.css
+    height: get-var-unit('4');
     left: 50%;
     // margin-left: -$unit-2; // old spectre.css
-    margin-left: var-negative(get-var('unit-2'));
+    // margin-left: var-negative(get-var('unit-2')); // old @angular-package/spectre.css
+    margin-left: var-negative(get-var-unit('2'));
     // margin-top: -$unit-2; // old spectre.css
-    margin-top: var-negative(get-var('unit-2'));
+    // margin-top: var-negative(get-var('unit-2')); // old @angular-package/spectre.css
+    margin-top: var-negative(get-var-unit('2'));
     opacity: 1;
     padding: 0;
     position: absolute;
     top: 50%;
     // width: $unit-4; // old spectre.css
-    width: get-var('unit-4');
+    // width: get-var('unit-4'); // old @angular-package/spectre.css
+    width: get-var-unit('4');
     // z-index: $zindex-0; // old spectre.css
-    z-index: get-var('z-index-0');
+    // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
+    @include z-index('0');
   }
 
   &.loading-lg {
     // min-height: $unit-10; // old spectre.css
-    min-height: get-var('unit-10');
+    // min-height: get-var('unit-10'); // old @angular-package/spectre.css
+    min-height: get-var-unit('10');
     &::after {
       // height: $unit-8; // old spectre.css
-      height: get-var('unit-8');
+      // height: get-var('unit-8'); // old @angular-package/spectre.css
+      height: get-var-unit('8');
       // margin-left: -$unit-4; // old spectre.css
-      margin-left: var-negative(get-var('unit-4'));
+      // margin-left: var-negative(get-var('unit-4')); // old @angular-package/spectre.css
+      margin-left: var-negative(get-var-unit('4'));
       // margin-top: -$unit-4; // old spectre.css
-      margin-top: var-negative(get-var('unit-4'));
+      // margin-top: var-negative(get-var('unit-4')); // old @angular-package/spectre.css
+      margin-top: var-negative(get-var-unit('4'));
       // width: $unit-8; // old spectre.css
-      width: get-var('unit-8');
+      // width: get-var('unit-8'); // old @angular-package/spectre.css
+      width: get-var-unit('8');
     }
   }
 }
