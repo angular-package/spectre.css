@@ -1,5 +1,7 @@
-@use '../mixins/set-var' as *;
 @use '../variables' as *;
+
+// Mixins.
+@use '../mixins/set-var' as *;
 
 // The mixin TODO: description.
 @mixin set-vars($name, $values, $prefix: $var-prefix) {
