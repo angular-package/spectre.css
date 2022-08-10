@@ -1,6 +1,13 @@
+// Functions.
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+@use 'functions/get-var-unit.function' as *;
+
+// Mixins.
+@use 'mixins/border/border' as *;
 @use 'mixins/label' as *;
+@use 'mixins/margin.mixins' as *;
+@use 'mixins/padding.mixins' as *;
 
 // Typography
 // Headings
@@ -52,7 +59,8 @@ h6,
 // Paragraphs
 p {
   // margin: 0 0 $line-height; // old spectre.css
-  margin: 0 0 get-var('line-height');
+  // margin: 0 0 get-var('line-height'); // old @angular-package/spectre.css
+  @include margin('unit-0', 'unit-0', 'line-height');
 }
 
 // Semantic text elements
@@ -72,29 +80,35 @@ abbr[title] {
 kbd {
   @include label-base();
   // @include label-variant($light-color, $dark-color); // old spectre.css
-  @include label-variant('light-color', 'dark-color');
+  // @include label-variant('light-color', 'dark-color'); // old @angular-package/spectre.css
+  @include label-variant('light', 'dark');
   // font-size: $font-size-sm; // old spectre.css
   font-size: get-var('font-size', $suffix: 'sm');
 }
 
 mark {
   // @include label-variant($body-font-color, $highlight-color); // old spectre.css
-  @include label-variant('body-font-color', 'highlight-color');
+  // @include label-variant('body-font-color', 'highlight-color'); // old @angular-package/spectre.css
+  @include label-variant('body-font', 'highlight');
   // border-bottom: $unit-o solid darken($highlight-color, 15%); // old spectre.css
-  border-bottom: get-var('unit-o') solid color('highlight-color', $lightness: -15%);
+  // border-bottom: get-var('unit-o') solid color('highlight-color', $lightness: -15%); // TODO: border unit-o
+  border-bottom: get-var-unit('o') solid color('highlight', $lightness: -15%);
   // border-radius: $border-radius; // old spectre.css
   border-radius: get-var('border-radius');
   // padding: $unit-o $unit-h 0; // old spectre.css
-  padding: get('unit-o') get-var('unit-h') 0;
+  // padding: get-var('unit-o') get-var('unit-h') 0; // old @angular-package/spectre.css
+  @include padding('unit-o', 'unit-h', 'unit-0');
 }
 
 // Blockquote
 blockquote {
   // border-left: $border-width-lg solid $border-color; // old spectre.css
-  border-left: get-var('border-width', $suffix: 'lg') solid color('border-color');
+  // border-left: get-var('border-width', $suffix: 'lg') solid color('border-color'); // old @angular-package/spectre.css
+  @include border('lg', $side: left);
   margin-left: 0;
   // padding: $unit-2 $unit-4; // old spectre.css
-  padding: get-var('unit-2') get-var('unit-4');
+  // padding: get-var('unit-2') get-var('unit-4'); // old @angular-package/spectre.css
+  @include padding('unit-2', 'unit-4');
 
   p:last-child {
     margin-bottom: 0;
@@ -105,18 +119,21 @@ blockquote {
 ul,
 ol {
   // margin: $unit-4 0 $unit-4 $unit-4; // old spectre.css
-  margin: get-var('unit-4') 0 get-var('unit-4') get-var('unit-4');
+  // margin: get-var('unit-4') 0 get-var('unit-4') get-var('unit-4'); // old @angular-package/spectre.css
+  @include margin('unit-4', 'unit-0', 'unit-4', 'unit-4');
   padding: 0;
 
   ul,
   ol {
     // margin: $unit-4 0 $unit-4 $unit-4; // old spectre.css
-    margin: get-var('unit-4') 0 get-var('unit-4') get-var('unit-4');
+    // margin: get-var('unit-4') 0 get-var('unit-4') get-var('unit-4'); // old @angular-package/spectre.css
+    @include margin('unit-4', 'unit-0', 'unit-4', 'unit-4');
   }
 
   li {
     // margin-top: $unit-2; // old spectre.css
-    margin-top: get-var('unit-2');
+    // margin-top: get-var('unit-2'); // old @angular-package/spectre.css
+    @include margin-top('unit-2');
   }
 }
 
@@ -142,6 +159,7 @@ dl {
   }
   dd {
     // margin: $unit-2 0 $unit-4 0; // old spectre.css
-    margin: get-var('unit-2') 0 get-var('unit-4') 0; // old spectre.css
+    // margin: get-var('unit-2') 0 get-var('unit-4') 0; // old @angular-package/spectre.css
+    @include margin('unit-2', 'unit-0', 'unit-4', 'unit-0');
   }
 }

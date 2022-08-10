@@ -1,7 +1,15 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'mixins/shadow' as *;
 @use 'variables' as *;
+
+// Functions.
+// @use 'functions/color' as *; // @angular-package/spectre.css
+@use 'functions/get-var' as *;
+
+// Mixins.
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/padding.mixins' as *;
+@use 'mixins/shadow' as *;
+@use 'mixins/z-index.mixin' as *;
 
 // Modals
 .modal,
@@ -14,7 +22,8 @@
   opacity: 0;
   overflow: hidden;
   // padding: $layout-spacing; // old spectre.css
-  padding: get-var('layout-spacing', $unit: true);
+  // padding: get-var('layout-spacing', $unit: true); // old @angular-package/spectre.css
+  @include padding(('layout-spacing', true));
   position: fixed;
   right: 0;
   top: 0;
@@ -24,11 +33,13 @@
     display: flex;
     opacity: 1;
     // z-index: $zindex-4; // old spectre.css
-    z-index: get-var('z-index-4');
+    // z-index: get-var('z-index-4'); // old @angular-package/spectre.css
+    @include z-index('4');
 
     .modal-overlay {
       // background: rgba($bg-color, .75); // old spectre.css
-      background: color('bg-color', $alpha: 0.75);
+      // background: color('bg-color', $alpha: 0.75); // old @angular-package/spectre.css
+      @include background('bg', $alpha: 0.75); // TODO: Check.
       bottom: 0;
       cursor: default;
       display: block;
@@ -41,7 +52,9 @@
     .modal-container {
       animation: slide-down 0.2s ease 1;
       // z-index: $zindex-0; // old spectre.css
-      z-index: get-var('z-index-0');
+      // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
+      @include z-index('0');
+
     }
   }
 
@@ -50,14 +63,16 @@
       // max-width: $control-width-sm; // old spectre.css
       max-width: get-var('control-width', $suffix: 'sm');
       // padding: 0 $unit-2; // old spectre.css
-      padding: 0 get-var('unit-2');
+      // padding: 0 get-var('unit-2'); // old @angular-package/spectre.css
+      @include padding('unit-0', 'unit-2');
     }
   }
 
   &.modal-lg {
     .modal-overlay {
       // background: $bg-color-light; // old spectre.css
-      background: color('bg-color-light');
+      // background: color('bg-color-light'); // old @angular-package/spectre.css
+      @include background('bg-light');
     }
 
     .modal-container {
@@ -71,7 +86,8 @@
 .modal-container {
   @include shadow-variant(0.2rem);
   // background: $bg-color-light; // old spectre.css
-  background: color('bg-color-light');
+  // background: color('bg-color-light'); // old @angular-package/spectre.css
+  @include background('bg-light');
   // border-radius: $border-radius; // old spectre.css
   border-radius: get-var('border-radius');
   display: flex;
@@ -80,7 +96,8 @@
   // max-width: $control-width-md; // old spectre.css
   max-width: get-var('control-width', $suffix: 'md');
   // padding: 0 $unit-4; // old spectre.css
-  padding: 0 get-var('unit-4');
+  // padding: 0 get-var('unit-4'); // old @angular-package/spectre.css
+  @include padding('unit-0', 'unit-4');
   width: 100%;
 
   &.modal-fullheight {
@@ -89,21 +106,25 @@
 
   .modal-header {
     // color: $dark-color; // old spectre.css
-    color: color('dark-color');
+    // color: color('dark-color'); // old @angular-package/spectre.css
+    @include color('dark');
     // padding: $unit-4; // old spectre.css
-    padding: get-var('unit-4');
+    // padding: get-var('unit-4'); // old @angular-package/spectre.css
+    @include padding('unit-4');
   }
 
   .modal-body {
     overflow-y: auto;
     // padding: $unit-4; // old spectre.css
-    padding: get-var('unit-4');
+    // padding: get-var('unit-4'); // old @angular-package/spectre.css
+    @include padding('unit-4');
     position: relative;
   }
 
   .modal-footer {
     // padding: $unit-4; // old spectre.css
-    padding: get-var('unit-4');
+    // padding: get-var('unit-4'); // old @angular-package/spectre.css
+    @include padding('unit-4');
     text-align: right;
   }
 }

@@ -1,6 +1,12 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
 @use 'variables' as *;
+
+// Functions.
+// @use 'functions/color' as *; // @angular-package/spectre.css
+@use 'functions/get-var' as *;
+@use 'functions/get-var-unit.function' as *;
+
+// Mixins.
+@use 'mixins/color/background.mixin' as *;
 
 // Meters
 // Credit: https://css-tricks.com/html5-meter-element/
@@ -9,14 +15,16 @@
   // old spectre.css
   // appearance: none;
   // background: $bg-color; // old spectre.css
-  background: color('bg-color');
+  // background: color('bg-color'); // old @angular-package/spectre.css
+  @include background('bg');
   border: 0;
   // border-radius: $border-radius; // old spectre.css
   border-radius: get-var('border-radius');
   display: block;
   width: 100%;
   // height: $unit-4; // old spectre.css
-  height: get-var('unit-4');
+  // height: get-var('unit-4'); // old @angular-package/spectre.css
+  height: get-var-unit('4');
 
   &::-webkit-meter-inner-element {
     display: block;
@@ -32,22 +40,26 @@
 
   &::-webkit-meter-bar {
     // background: $bg-color; // old spectre.css
-    background: color('bg-color');
+    // background: color('bg-color'); // old @angular-package/spectre.css
+    @include background('bg');
   }
 
   &::-webkit-meter-optimum-value {
     // background: $success-color; // old spectre.css
-    background: color('success-color');
+    // background: color('success-color'); // old @angular-package/spectre.css
+    @include background('success');
   }
 
   &::-webkit-meter-suboptimum-value {
     // background: $warning-color; // old spectre.css
-    background: color('warning-color');
+    // background: color('warning-color'); // old @angular-package/spectre.css
+    @include background('warning');
   }
 
   &::-webkit-meter-even-less-good-value {
     // background: $error-color; // old spectre.css
-    background: color('error-color');
+    // background: color('error-color'); // old @angular-package/spectre.css
+    @include background('error');
   }
 
   &::-moz-meter-bar,
@@ -60,16 +72,19 @@
 
   &:-moz-meter-optimum::-moz-meter-bar {
     // background: $success-color; // old spectre.css
-    background: color('success-color');
+    // background: color('success-color'); // old @angular-package/spectre.css
+    @include background('success');
   }
 
   &:-moz-meter-sub-optimum::-moz-meter-bar {
     // background: $warning-color; // old spectre.css
-    background: color('warning-color');
+    // background: color('warning-color'); // old @angular-package/spectre.css
+    @include background('warning');
   }
 
   &:-moz-meter-sub-sub-optimum::-moz-meter-bar {
     // background: $error-color; // old spectre.css
-    background: color('error-color');
+    // background: color('error-color'); // old @angular-package/spectre.css
+    @include background('error');
   }
 }

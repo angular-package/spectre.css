@@ -1,7 +1,19 @@
+// Functions.
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+@use 'functions/get-var-unit.function' as *;
 @use 'functions/var-negative' as *;
+
+// Mixins.
+@use 'mixins/border/border' as *;
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/color/background-color.mixin' as *;
+@use 'mixins/margin.mixins' as *;
+@use 'mixins/padding.mixins' as *;
 @use 'mixins/shadow' as *;
+@use 'mixins/transition.mixin' as *;
+@use 'mixins/z-index.mixin' as *;
 
 // $transition: .2s;
 
@@ -9,13 +21,15 @@
 .form-group {
   &:not(:last-child) {
     // margin-bottom: $layout-spacing; // old spectre.css
-    margin-bottom: get-var('layout-spacing', $unit: true);
+    // margin-bottom: get-var('layout-spacing', $unit: true); // @angular-package/spectre.css
+    @include margin-bottom(('layout-spacing', true));
   }
 }
 
 fieldset {
   // margin-bottom: $layout-spacing-lg; // old spectre.css
-  margin-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: true);
+  // margin-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: true); // @angular-package/spectre.css
+  @include margin-bottom(('layout-spacing', ('suffix': 'lg', unit: true)));
 }
 
 legend {
@@ -23,7 +37,8 @@ legend {
   font-size: get-var('font-size', $suffix: 'lg');
   font-weight: 500;
   // margin-bottom: $layout-spacing-lg; // old spectre.css
-  margin-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: true);
+  // margin-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: true); // @angular-package/spectre.css
+  @include margin-bottom(('layout-spacing', ('suffix': 'lg', unit: true)));
 }
 
 // Form element: Label
@@ -53,14 +68,17 @@ legend {
 .form-input {
   appearance: none;
   // background: $bg-color-light; // old spectre.css
-  background: color('bg-color-light');
+  // background: color('bg-color-light'); // @angular-package/spectre.css
+  @include background('bg-light');
   background-image: none;
   // border: $border-width solid $border-color-dark; // old spectre.css
-  border: get-var('border-width') solid color('border-color-dark');
+  // border: get-var('border-width') solid color('border-color-dark'); // @angular-package/spectre.css
   // border-radius: $border-radius; // old spectre.css
-  border-radius: get-var('border-radius');
+  // border-radius: get-var('border-radius');
+  @include border($color: 'border-dark');
   // color: $body-font-color; // old spectre.css
-  color: color('body-font-color');
+  // color: color('body-font-color'); // @angular-package/spectre.css
+  @include color('body-font');
   display: block;
   // font-size: $font-size; // old spectre.css
   font-size: get-var('font-size');
@@ -71,22 +89,26 @@ legend {
   max-width: 100%;
   outline: none;
   // padding: $control-padding-y $control-padding-x; // old spectre.css
-  padding: get-var('control-padding-y') get-var('control-padding-x');
+  // padding: get-var('control-padding-y') get-var('control-padding-x'); // @angular-package/spectre.css
+  @include padding('control-padding-y', 'control-padding-x');
   position: relative;
   // transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s; // old spectre.css
-  transition: background get-var('transition-duration'),
-    border get-var('transition-duration'),
-    box-shadow get-var('transition-duration'),
-    color get-var('transition-duration');
+  // transition: background get-var('transition-duration'),
+  //   border get-var('transition-duration'),
+  //   box-shadow get-var('transition-duration'),
+  //   color get-var('transition-duration');
+  @include transition(background, border, box-shadow, color);
   width: 100%;
   &:focus {
     @include control-shadow();
     // border-color: $primary-color; // old spectre.css
-    border-color: color('primary-color');
+    // border-color: color('primary-color'); // @angular-package/spectre.css
+    border-color: color('primary');
   }
   &::placeholder {
     // color: $gray-color; // old spectre.css
-    color: color('gray-color');
+    // color: color('gray-color'); // @angular-package/spectre.css
+    @include color('gray');
   }
 
   // Input sizes
@@ -96,7 +118,8 @@ legend {
     // height: $control-size-sm; // old spectre.css
     height: get-var('control-size', $suffix: 'sm');
     // padding: $control-padding-y-sm $control-padding-x-sm; // old spectre.css
-    padding: get-var('control-padding-y', $suffix: 'sm') get-var('control-padding-x', $suffix: 'sm');
+    // padding: get-var('control-padding-y', $suffix: 'sm') get-var('control-padding-x', $suffix: 'sm'); // @angular-package/spectre.css
+    @include padding('control-padding-y-sm', 'control-padding-x-sm');
   }
 
   &.input-lg {
@@ -105,7 +128,8 @@ legend {
     // height: $control-size-lg; // old spectre.css
     height: get-var('control-size', $suffix: 'lg');
     // padding: $control-padding-y-lg $control-padding-x-lg; // old spectre.css
-    padding: get-var('control-padding-y', $suffix: 'lg') get-var('control-padding-x', $suffix: 'lg');
+    // padding: get-var('control-padding-y', $suffix: 'lg') get-var('control-padding-x', $suffix: 'lg'); // @angular-package/spectre.css
+    @include padding('control-padding-y-lg', 'control-padding-x-lg');
   }
 
   &.input-inline {
@@ -132,22 +156,26 @@ textarea.form-input {
 // Form element: Input hint
 .form-input-hint {
   // color: $gray-color; // old spectre.css
-  color: color('gray-color');
+  // color: color('gray-color'); // @angular-package/spectre.css
+  @include color('gray');
   // font-size: $font-size-sm; // old spectre.css
   font-size: get-var('font-size', $suffix: 'sm');
   // margin-top: $unit-1; // old spectre.css
-  margin-top: get-var('unit-1');
+  // margin-top: get-var('unit-1'); // @angular-package/spectre.css
+  @include margin-top('unit-1');
 
   .has-success &,
   .is-success + & {
     // color: $success-color; // old spectre.css
-    color: color('success-color');
+    // color: color('success-color'); // @angular-package/spectre.css
+    @include color('success');
   }
 
   .has-error &,
   .is-error + & {
     // color: $error-color; // old spectre.css
-    color: color('error-color');
+    // color: color('error-color'); // @angular-package/spectre.css
+    @include color('error');
   }
 }
 
@@ -155,7 +183,8 @@ textarea.form-input {
 .form-select {
   appearance: none;
   // border: $border-width solid $border-color-dark; // old spectre.css
-  border: get-var('border-width') solid color('border-color-dark');
+  // border: get-var('border-width') solid color('border-color-dark'); // @angular-package/spectre.css
+  @include border($color: 'border-dark');
   // border-radius: $border-radius; // old spectre.css
   border-radius: get-var('border-radius');
   color: inherit;
@@ -167,15 +196,18 @@ textarea.form-input {
   line-height: get-var('line-height');
   outline: none;
   // padding: $control-padding-y $control-padding-x; // old spectre.css
-  padding: get-var('control-padding-y') get-var('control-padding-x');
+  // padding: get-var('control-padding-y') get-var('control-padding-x'); // @angular-package/spectre.css
+  @include padding('control-padding-y', 'control-padding-x');
   vertical-align: middle;
   width: 100%;
   // background: $bg-color-light; // old spectre.css
-  background: color('bg-color-light');
+  // background: color('bg-color-light'); // @angular-package/spectre.css
+  @include background('bg-light');
   &:focus {
     @include control-shadow();
     // border-color: $primary-color; // old spectre.css
-    border-color: color('primary-color');
+    // border-color: color('primary-color'); // @angular-package/spectre.css
+    border-color: color('primary');
   }
   &::-ms-expand {
     display: none;
@@ -205,11 +237,13 @@ textarea.form-input {
   &[multiple] {
     height: auto;
     // padding: $control-padding-y $control-padding-x; // old spectre.css
-    padding: get-var('control-padding-y') get-var('control-padding-x');
+    // padding: get-var('control-padding-y') get-var('control-padding-x'); // @angular-package/spectre.css
+    @include padding('control-padding-y', 'control-padding-x');
 
     option {
       // padding: $unit-h $unit-1; // old spectre.css
-      padding: get-var('unit-h') get-var('unit-1');
+      // padding: get-var('unit-h') get-var('unit-1'); // @angular-package/spectre.css
+      @include padding('unit-h', 'unit-1');
     }
   }
   &:not([multiple]):not([size]) {
@@ -229,14 +263,16 @@ textarea.form-input {
     // height: $control-icon-size; // old spectre.css
     height: get-var('control-icon-size');
     // margin: 0 $control-padding-y; // old spectre.css
-    margin: 0 get-var('control-padding-y'); // old spectre.css
+    // margin: 0 get-var('control-padding-y'); // @angular-package/spectre.css
+    @include margin('unit-0', 'control-padding-y');
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     // width: $control-icon-size; // old spectre.css
     width: get-var('control-icon-size');
     // z-index: $zindex-0 + 1; // old spectre.css
-    z-index: calc(get-var('z-index-0') + 1);
+    // z-index: calc(get-var('z-index-0') + 1); // @angular-package/spectre.css
+    @include z-index('0', 1);
   }
 }
 
@@ -289,27 +325,32 @@ textarea.form-input {
     &:focus + .form-icon {
       @include control-shadow();
       // border-color: $primary-color; // old spectre.css
-      border-color: color('primary-color');
+      // border-color: color('primary-color'); // @angular-package/spectre.css
+      border-color: ('primary');
     }
     &:checked + .form-icon {
       // background: $primary-color; // old spectre.css
-      background: color('primary-color');
+      // background: color('primary-color'); // @angular-package/spectre.css
+      @include background('primary');
       // border-color: $primary-color; // old spectre.css
-      border-color: color('primary-color');
+      // border-color: color('primary-color'); // @angular-package/spectre.css
+      border-color: color('primary');
     }
   }
 
   .form-icon {
     // border: $border-width solid $border-color-dark; // old spectre.css
-    border: get-var('border-width') solid color('border-color-dark');
+    // border: get-var('border-width') solid color('border-color-dark'); // @angular-package/spectre.css
+    @include border($color: 'border-dark');
     cursor: pointer;
     display: inline-block;
     position: absolute;
     // transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s; // old spectre.css
-    transition: background get-var('transition-duration'),
-      border get-var('transition-duration'),
-      box-shadow get-var('transition-duration'),
-      color get-var('transition-duration');
+    // transition: background get-var('transition-duration'),
+    //   border get-var('transition-duration'),
+    //   box-shadow get-var('transition-duration'),
+    //   color get-var('transition-duration');
+    @include transition(background, border, box-shadow, color);
   }
 
   // Input checkbox, radio and switch sizes
@@ -331,7 +372,8 @@ textarea.form-input {
 .form-radio {
   .form-icon {
     // background: $bg-color-light; // old spectre.css
-    background: color('bg-color-light');
+    // background: color('bg-color-light'); // @angular-package/spectre.css
+    @include background('bg-light');
     // height: $control-icon-size; // old spectre.css
     height: get-var('control-icon-size');
     left: 0;
@@ -344,7 +386,8 @@ textarea.form-input {
   input {
     &:active + .form-icon {
       // background: $bg-color-dark; // old spectre.css
-      background: color('bg-color-dark');
+      // background: color('bg-color-dark'); // @angular-package/spectre.css
+      @include background('bg-dark');
     }
   }
 }
@@ -359,7 +402,8 @@ textarea.form-input {
       &::before {
         background-clip: padding-box;
         // border: $border-width-lg solid $light-color; // old spectre.css
-        border: get-var('border-width', $suffix: 'lg') solid color('light-color');
+        // border: get-var('border-width', $suffix: 'lg') solid color('light-color'); // @angular-package/spectre.css
+        @include border('lg', $color: 'light');
         border-left-width: 0;
         border-top-width: 0;
         content: "";
@@ -375,12 +419,15 @@ textarea.form-input {
     }
     &:indeterminate + .form-icon {
       // background: $primary-color; // old spectre.css
-      background: color('primary-color');
+      // background: color('primary-color'); // @angular-package/spectre.css
+      @include background('primary');
       // border-color: $primary-color; // old spectre.css
-      border-color: color('primary-color');
+      // border-color: color('primary-color'); // @angular-package/spectre.css
+      border-color: color('primary');
       &::before {
         // background: $bg-color-light; // old spectre.css
-        background: color('bg-color-light');
+        // background: color('bg-color-light'); // @angular-package/spectre.css
+        @include background('bg-light');
         content: "";
         height: 2px;
         left: 50%;
@@ -402,7 +449,8 @@ textarea.form-input {
     &:checked + .form-icon {
       &::before {
         // background: $bg-color-light; // old spectre.css
-        background: color('bg-color-light');
+        // background: color('bg-color-light'); // @angular-package/spectre.css
+        @include background('bg-light');
         border-radius: 50%;
         content: "";
         height: 6px;
@@ -423,36 +471,45 @@ textarea.form-input {
 
   .form-icon {
     // background: $gray-color; // old spectre.css
-    background: color('gray-color');
+    // background: color('gray-color'); // @angular-package/spectre.css
+    @include background('gray');
     background-clip: padding-box;
     // border-radius: $unit-2 + $border-width; // old spectre.css
-    border-radius: calc(get-var('unit-2') + get-var('border-width'));
+    // border-radius: calc(get-var('unit-2') + get-var('border-width')); // @angular-package/spectre.css
+    border-radius: calc(get-var-unit('2') + get-var('border-width'));
     // height: $unit-4 + $border-width * 2; // old spectre.css
-    height: calc(get-var('unit-4') + get-var('border-width') * 2);
+    // height: calc(get-var('unit-4') + get-var('border-width') * 2); // @angular-package/spectre.css
+    height: calc(get-var-unit('4') + get-var('border-width') * 2);
     left: 0;
     // top: ($control-size-sm - $unit-4) / 2 - $border-width; // old spectre.css
-    top: calc((get-var('control-size', $suffix: 'sm') - get-var('unit-4')) / 2 - get-var('border-width'));
+    // top: calc((get-var('control-size', $suffix: 'sm') - get-var('unit-4')) / 2 - get-var('border-width')); // @angular-package/spectre.css
+    top: calc((get-var('control-size', $suffix: 'sm') - get-var-unit('4')) / 2 - get-var('border-width'));
     // width: $unit-8; // old spectre.css
-    width: get-var('unit-8');
+    // width: get-var('unit-8'); // @angular-package/spectre.css
+    width: get-var-unit('8');
     &::before {
       // background: $bg-color-light; // old spectre.css
-      background: color('bg-color-light');
+      // background: color('bg-color-light'); // @angular-package/spectre.css
+      @include background('bg-light');
       border-radius: 50%;
       content: "";
       display: block;
       // height: $unit-4; // old spectre.css
-      height: get-var('unit-4');
+      // height: get-var('unit-4'); // @angular-package/spectre.css
+      height: get-var-unit('4');
       left: 0;
       position: absolute;
       top: 0;
       // transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s, left 0.2s; // old spectre.css
-      transition: background get-var('transition-duration'),
-        border get-var('transition-duration'),
-        box-shadow get-var('transition-duration'),
-        color get-var('transition-duration'),
-        left get-var('transition-duration');
+      // transition: background get-var('transition-duration'),
+      //   border get-var('transition-duration'),
+      //   box-shadow get-var('transition-duration'),
+      //   color get-var('transition-duration'),
+      //   left get-var('transition-duration');
+      @include transition(background, border, box-shadow, color, left);
       // width: $unit-4; // old spectre.css
-      width: get-var('unit-4');
+      // width: get-var('unit-4'); // @angular-package/spectre.css
+      width: get-var-unit('4');
     }
   }
 
@@ -465,7 +522,8 @@ textarea.form-input {
     &:active + .form-icon {
       &::before {
         // background: $bg-color; // old spectre.css
-        background: color('bg-color');
+        // background: color('bg-color'); // old @angular-package/spectre.css
+        @include background('bg');
       }
     }
   }
@@ -477,15 +535,18 @@ textarea.form-input {
 
   .input-group-addon {
     // background: $bg-color; // old spectre.css
-    background: color('bg-color');
+    // background: color('bg-color'); // old @angular-package/spectre.css
+    @include background('bg');
     // border: $border-width solid $border-color-dark; // old spectre.css
-    border: get-var('border-width') solid color('border-color-dark');
+    // border: get-var('border-width') solid color('border-color-dark'); // old @angular-package/spectre.css
+    @include border($color: 'border-dark');
     // border-radius: $border-radius; // old spectre.css
     border-radius: get-var('border-radius');
     // line-height: $line-height; // old spectre.css
     line-height: get-var('line-height');
     // padding: $control-padding-y $control-padding-x; // old spectre.css
-    padding: get-var('control-padding-y') get-var('control-padding-x');
+    // padding: get-var('control-padding-y') get-var('control-padding-x'); // old @angular-package/spectre.css
+    @include padding('control-padding-y', 'control-padding-x');
 
     white-space: nowrap;
 
@@ -493,14 +554,16 @@ textarea.form-input {
       // font-size: $font-size-sm; // old spectre.css
       font-size: get-var('font-size', $suffix: 'sm');
       // padding: $control-padding-y-sm $control-padding-x-sm; // old spectre.css
-      padding: get-var('control-padding-y', $suffix: 'sm') get-var('control-padding-x', $suffix: 'sm');
+      // padding: get-var('control-padding-y', $suffix: 'sm') get-var('control-padding-x', $suffix: 'sm'); // old @angular-package/spectre.css
+      @include padding('control-padding-y-sm', 'control-padding-x-sm');
     }
 
     &.addon-lg {
       // font-size: $font-size-lg; // old spectre.css
       font-size: get-var('font-size', $suffix: 'lg');
       // padding: $control-padding-y-lg $control-padding-x-lg; // old spectre.css
-      padding: get-var('control-padding-y', $suffix: 'lg') get-var('control-padding-x', $suffix: 'lg');
+      // padding: get-var('control-padding-y', $suffix: 'lg') get-var('control-padding-x', $suffix: 'lg'); // old @angular-package/spectre.css
+      @include padding('control-padding-y-lg', 'control-padding-x-lg');
     }
   }
 
@@ -512,7 +575,8 @@ textarea.form-input {
 
   .input-group-btn {
     // z-index: $zindex-0; // old spectre.css
-    z-index: get-var('z-index-0');
+    // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
+    @include z-index('0');
   }
 
   .form-input,
@@ -536,7 +600,8 @@ textarea.form-input {
     }
     &:focus {
       // z-index: $zindex-0 + 1; // old spectre.css
-      z-index: calc(get-var('z-index-0') + 1);
+      // z-index: calc(get-var('z-index-0') + 1); // old @angular-package/spectre.css
+      @include z-index('0', 1);
     }
   }
 
@@ -555,24 +620,30 @@ textarea.form-input {
   .has-success &,
   &.is-success {
     // background: lighten($success-color, 53%); // old spectre.css
-    background: color('success-color', $lightness: +53%);
+    // background: color('success-color', $lightness: +53%); // old @angular-package/spectre.css
+    @include background('success', $lightness: +53%);
     // border-color: $success-color; // old spectre.css
-    border-color: color('success-color');
+    // border-color: color('success-color'); // old @angular-package/spectre.css
+    border-color: color('success');
     &:focus {
       // @include control-shadow($success-color); // old spectre.css
-      @include control-shadow('success-color');
+      // @include control-shadow('success-color'); // old @angular-package/spectre.css
+      @include control-shadow('success');
     }
   }
 
   .has-error &,
   &.is-error {
     // background: lighten($error-color, 53%); // old spectre.css
-    background: color('error-color', $lightness: +53%);
+    // background: color('error-color', $lightness: +53%); // old @angular-package/spectre.css
+    @include background('error', $lightness: +53%);
     // border-color: $error-color; // old spectre.css
-    border-color: color('error-color');
+    // border-color: color('error-color'); // old @angular-package/spectre.css
+    border-color: color('error');
     &:focus {
       // @include control-shadow($error-color); // old spectre.css
-      @include control-shadow('error-color');
+      // @include control-shadow('error-color'); // old @angular-package/spectre.css
+      @include control-shadow('error');
     }
   }
 }
@@ -584,22 +655,27 @@ textarea.form-input {
   &.is-error {
     .form-icon {
       // border-color: $error-color; // old spectre.css
-      border-color: color('error-color');
+      // border-color: color('error-color'); // old @angular-package/spectre.css
+      border-color: color('error');
     }
 
     input {
       &:checked + .form-icon {
         // background: $error-color; // old spectre.css
-        background: color('error-color');
+        // background: color('error-color'); // old @angular-package/spectre.css
+        @include background('error');
         // border-color: $error-color; // old spectre.css
-        border-color: color('error-color');
+        // border-color: color('error-color'); // old @angular-package/spectre.css
+        border-color: color('error');
       }
 
       &:focus + .form-icon {
         // @include control-shadow($error-color); // old spectre.css
-        @include control-shadow('error-color');
+        // @include control-shadow('error-color'); // old @angular-package/spectre.css
+        @include control-shadow('error');
         // border-color: $error-color; // old spectre.css
-        border-color: color('error-color');
+        // border-color: color('error-color'); // old @angular-package/spectre.css
+        border-color: color('error');
       }
     }
   }
@@ -611,9 +687,11 @@ textarea.form-input {
     input {
       &:indeterminate + .form-icon {
         // background: $error-color; // old spectre.css
-        background: color('error-color');
+        // background: color('error-color'); // old @angular-package/spectre.css
+        @include background('error');
         // border-color: $error-color; // old spectre.css
-        border-color: color('error-color');
+        // border-color: color('error-color'); // old @angular-package/spectre.css
+        border-color: color('error');
       }
     }
   }
@@ -624,17 +702,21 @@ textarea.form-input {
   &:not(:placeholder-shown) {
     &:invalid {
       // border-color: $error-color; // old spectre.css
-      border-color: color('error-color');
+      // border-color: color('error-color'); // old @angular-package/spectre.css
+      border-color: color('error');
       &:focus {
         // @include control-shadow($error-color); // old spectre.css
-        @include control-shadow('error-color');
+        // @include control-shadow('error-color'); // old @angular-package/spectre.css
+        @include control-shadow('error');
         // background: lighten($error-color, 53%); // old spectre.css
-        background: color('error-color', $lightness: +53%);
+        // background: color('error-color', $lightness: +53%); // old @angular-package/spectre.css
+        @include background('error', $lightness: +53%);
       }
 
       & + .form-input-hint {
         // color: $error-color; // old spectre.css
-        color: color('error-color');
+        // color: color('error-color'); // old @angular-package/spectre.css
+        @include color('error');
       }
     }
   }
@@ -647,7 +729,8 @@ textarea.form-input {
   &.disabled {
     // background-color: $bg-color-dark; // old spectre.css
     // background-color: color('bg-color-dark');
-    background-color: color('disabled-color');
+    // background-color: color('disabled-color'); // old @angular-package/spectre.css
+    @include background-color('disabled');
     cursor: not-allowed;
     opacity: .5;
   }
@@ -656,7 +739,8 @@ textarea.form-input {
 .form-input {
   &[readonly] {
     // background-color: $bg-color; // old spectre.css
-    background-color: color('bg-color');
+    // background-color: color('bg-color'); // old @angular-package/spectre.css
+    @include background-color('bg');
   }
 }
 
@@ -666,7 +750,8 @@ input {
     & + .form-icon {
       // background: $bg-color-dark; // old spectre.css
       // background: color('bg-color-dark');
-      background-color: color('disabled-color');
+      // background-color: color('disabled-color'); // old @angular-package/spectre.css
+      @include background-color('disabled');
       cursor: not-allowed;
       opacity: .5;
     }
@@ -680,7 +765,8 @@ input {
       & + .form-icon::before {
         // background: $bg-color-light; // old spectre.css
         // background: color('bg-color-light');
-        background-color: color('disabled-color');
+        // background-color: color('disabled-color'); // old @angular-package/spectre.css
+        @include background-color('disabled');
       }
     }
   }
@@ -689,7 +775,8 @@ input {
 // Form horizontal
 .form-horizontal {
   // padding: $layout-spacing 0; // old spectre.css
-  padding: get-var('layout-spacing', $unit: true) 0;
+  // padding: get-var('layout-spacing', $unit: true) 0; // old @angular-package/spectre.css
+  @include padding(('layout-spacing', true), 'unit-0');
 
   .form-group {
     display: flex;

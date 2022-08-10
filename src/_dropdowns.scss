@@ -1,5 +1,7 @@
-@use 'functions/get-var' as *;
 @use 'variables' as *;
+
+// Functions.
+@use 'functions/get-var' as *;
 
 // Dropdown
 .dropdown,

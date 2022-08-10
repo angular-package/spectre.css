@@ -1,7 +1,13 @@
+@use 'variables' as *;
+
+// Functions.
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
+
+// Mixins.
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/color/background.mixin' as *;
 @use 'mixins/shadow' as *;
-@use 'variables' as *;
 
 // Base
 *,
@@ -21,9 +27,11 @@ html {
 
 body {
   // background: $body-bg; // old spectre.css
-  background: color('body-bg-color');
+  // background: color('body-bg-color'); // old @angular-package/spectre.css
+  @include background('body-bg');
   // color: $body-font-color; // old spectre.css
-  color: color('body-font-color');
+  // color: color('body-font-color'); // old @angular-package/spectre.css
+  @include color('body-font');
   font-family: $body-font-family;
   // font-size: $font-size; // old spectre.css
   font-size: get-var('font-size');
@@ -33,7 +41,8 @@ body {
 
 a {
   // color: $link-color; // old spectre.css
-  color: color('link-color');
+  // color: color('link-color'); // old @angular-package/spectre.css
+  @include color('link');
   outline: none;
   text-decoration: none;
 
@@ -46,12 +55,14 @@ a {
   &:active,
   &.active {
     // color: $link-color-dark; // old spectre.css
-    color: color('link-color-dark');
+    // color: color('link-color-dark'); // old @angular-package/spectre.css
+    @include color('link-dark');
     text-decoration: underline;
   }
 
   &:visited {
     // color: $link-color-light; // old spectre.css
-    color: color('link-color-light');
+    // color: color('link-color-light'); // old @angular-package/spectre.css
+    @include color('link-light');
   }
 }

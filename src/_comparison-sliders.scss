@@ -1,6 +1,15 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
 @use 'variables' as *;
+
+// Functions.
+// @use 'functions/color' as *; // old @angular-package/spectre.css
+// @use 'functions/get-var' as *; // old @angular-package/spectre.css
+@use 'functions/get-var-unit.function' as *;
+
+// Mixins.
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/padding.mixins' as *;
+@use 'mixins/z-index.mixin' as *;
 
 // Image comparison slider
 // Credit: http://codepen.io/solipsistacp/pen/Gpmaq
@@ -36,7 +45,8 @@
 
     .comparison-label {
       // right: $unit-4; // old spectre.css
-      right: get-var('unit-4');
+      // right: get-var('unit-4'); // old @angular-package/spectre.css
+      right: get-var-unit('4');
     }
   }
 
@@ -53,10 +63,12 @@
       left: 0;
       position: absolute;
       // right: $unit-4; // old spectre.css
-      right: get-var('unit-4');
+      // right: get-var('unit-4'); // old @angular-package/spectre.css
+      right: get-var-unit('4');
       top: 0;
       // z-index: $zindex-0; // old spectre.css
-      z-index: get-var('z-index-0');
+      // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
+      @include z-index('0');
     }
 
     &::after {
@@ -64,13 +76,15 @@
       border-radius: 50%;
       box-shadow: 0 -5px, 0 5px;
       // color: $light-color; // old spectre.css
-      color: color('light-color');
+      // color: color('light-color'); // old @angular-package/spectre.css
+      @include color('light');
       content: '';
       height: 3px;
       pointer-events: none;
       position: absolute;
       // right: $unit-2; // old spectre.css
-      right: get-var('unit-2');
+      // right: get-var('unit-2'); // old @angular-package/spectre.css
+      right: get-var-unit('2');
       top: 50%;
       transform: translate(50%, -50%);
       width: 3px;
@@ -78,7 +92,8 @@
 
     .comparison-label {
       // left: $unit-4; // old spectre.css
-      left: get-var('unit-4');
+      // left: get-var('unit-4'); // old @angular-package/spectre.css
+      left: get-var-unit('4');
     }
   }
 
@@ -86,11 +101,13 @@
     animation: first-run 1.5s 1 ease-in-out;
     cursor: ew-resize;
     // height: $unit-4; // old spectre.css
-    height: get-var('unit-4');
+    // height: get-var('unit-4'); // old @angular-package/spectre.css
+    height: get-var-unit('4');
     left: 0;
     max-width: 100%;
     // min-width: $unit-4; // old spectre.css
-    min-width: get-var('unit-4');
+    // min-width: get-var('unit-4'); // old @angular-package/spectre.css
+    min-width: get-var-unit('4');
     opacity: 0;
     outline: none;
     position: relative;
@@ -102,13 +119,17 @@
 
   .comparison-label {
     // background: rgba($dark-color, .5); // old spectre.css
-    background: color('dark-color', $alpha: 0.5);
+    // background: color('dark-color', $alpha: 0.5); // old @angular-package/spectre.css
+    @include background('dark', $alpha: 0.5);
     // bottom: $unit-4; // old spectre.css
-    bottom: get-var('unit-4');
+    // bottom: get-var('unit-4'); // old @angular-package/spectre.css
+    bottom: get-var-unit('4');
     // color: $light-color; // old spectre.css
-    color: color('light-color');
+    // color: color('light-color'); // old @angular-package/spectre.css
+    @include color('light');
     // padding: $unit-1 $unit-2; // old spectre.css
-    padding: get-var('unit-1') get-var('unit-2');
+    // padding: get-var('unit-1') get-var('unit-2'); // old @angular-package/spectre.css
+    @include padding('unit-1', 'unit-2');
     position: absolute;
     user-select: none;
   }
@@ -120,15 +141,18 @@
   }
   25% {
     // width: $unit-12; // old spectre.css
-    width: get-var('unit-12');
+    // width: get-var('unit-12'); // old @angular-package/spectre.css
+    width: get-var-unit('12');
   }
   50% {
     // width: $unit-4; // old spectre.css
-    width: get-var('unit-4');
+    // width: get-var('unit-4'); // old @angular-package/spectre.css
+    width: get-var-unit('4');
   }
   75% {
     // width: $unit-6; // old spectre.css
-    width: get-var('unit-6');
+    // width: get-var-unit('6'); // old @angular-package/spectre.css
+    width: get-var-unit('6');
   }
   100% {
     width: 0;

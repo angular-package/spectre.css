@@ -1,89 +1,95 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'mixins/toast' as *;
 @use 'variables' as *;
 
-// Toasts
-.toast, .#{$var-prefix}-toast {
-  // @include toast-variant($dark-color); // old spectre.css
-  @include toast-variant('dark-color');
+// Functions.
+// @use 'functions/color' as *; // old @angular-package/spectre.css
+// @use 'functions/get-var' as *; // old @angular-package/spectre.css
 
+// Mixins.
+@use 'mixins/border/border' as *;
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/margin.mixins' as *;
+@use 'mixins/padding.mixins' as *;
+@use 'mixins/toast' as *;
+
+// Toasts
+.toast,
+.#{$var-prefix}-toast {
+  // @include toast-variant($dark-color); // old spectre.css
+  // @include toast-variant('dark-color');
+  // background: color('dark-color'); // old @angular-package/spectre.css
+  @include background('dark');
   // border: $border-width solid $dark-color; // old spectre.css
-  border: get-var('border-width') solid color('dark-color');
+  // border: get-var('border-width') solid color('dark-color'); // old @angular-package/spectre.css
   // border-radius: $border-radius; // old spectre.css
-  border-radius: get-var('border-radius');
+  // border-radius: get-var('border-radius'); // old @angular-package/spectre.css
+  @include border($color: 'dark');
   // color: $light-color; // old spectre.css
-  color: color('light-color');
+  // color: color('light-color'); // old @angular-package/spectre.css
+  @include color('light');
   display: block;
   // padding: $layout-spacing; // old spectre.css
-  padding: get-var('layout-spacing', $unit: 1);
+  // padding: get-var('layout-spacing', $unit: true); // old @angular-package/spectre.css
+  @include padding(('layout-spacing', true));
   width: 100%;
 
   // Toast color variants.
+  // - Shades.
+  @include toast-variant('dark', 'dark-color', 'light-color');
+  @include toast-variant('light', 'light-color', 'dark-color');
+
   // - Core colors.
-  @include toast-class-variant('accent', 'accent-color');
-  @include toast-class-variant('light', 'light-color');
+  @include toast-variant('accent', 'accent-color', 'light-color');
 
   // - Primary colors.
-  @include toast-class-variant('primary', 'primary-color');
-  @include toast-class-variant('primary-dark', 'primary-color-dark'); // ! New toast variant.
-  @include toast-class-variant('primary-light', 'primary-color-light'); // ! New toast variant.
+  @include toast-variant('primary', 'primary-color', 'light-color');
+  @include toast-variant('primary-dark', 'primary-color-dark',  ('primary-color-dark', 40%)); // ! New toast variant.
+  @include toast-variant('primary-light', 'primary-color-light',  ('primary-color-light', 40%)); // ! New toast variant.
 
   // - Secondary colors.
-  @include toast-class-variant('secondary', 'secondary-color');
-  @include toast-class-variant('secondary-dark', 'secondary-color-dark'); // ! New toast variant.
-  @include toast-class-variant('secondary-light', 'secondary-color-light'); // ! New toast variant.
-
-  // - Body & bg colors.
-  @include toast-class-variant('body-bg', 'body-bg-color'); // ! New toast variant.
-  @include toast-class-variant('bg', 'bg-color'); // ! New toast variant.
-  @include toast-class-variant('bg-dark', 'bg-color-dark'); // ! New toast variant.
-  @include toast-class-variant('bg-light', 'bg-color-light'); // ! New toast variant.
-
-  // - Link colors.
-  @include toast-class-variant('link', 'link-color'); // ! New toast variant.
-  @include toast-class-variant('link-dark', 'link-color-dark'); // ! New toast variant.
-  @include toast-class-variant('link-light', 'link-color-light'); // ! New toast variant.
+  @include toast-variant('secondary', 'secondary-color', ('secondary-color', -40%));
+  @include toast-variant('secondary-dark', 'secondary-color-dark', ('secondary-color-dark', -40%)); // ! New toast variant.
+  @include toast-variant('secondary-light', 'secondary-color-light', ('secondary-color-light', -40%)); // ! New toast variant.
 
   // - Gray colors.
-  @include toast-class-variant('gray', 'gray-color'); // ! New toast variant.
-  @include toast-class-variant('gray-dark', 'gray-color-dark'); // ! New toast variant.
-  @include toast-class-variant('gray-light', 'gray-color-light'); // ! New toast variant.
+  @include toast-variant('gray', 'gray-color', ('gray-color', 20%)); // ! New toast variant.
+  @include toast-variant('gray-dark', 'gray-color-dark', 'gray-color-light'); // ! New toast variant.
+  @include toast-variant('gray-light', 'gray-color-light', 'gray-color-dark'); // ! New toast variant.
+
+  // - Bg colors.
+  @include toast-variant('bg', 'bg-color', 'body-font-color'); // ! New toast variant.
+  @include toast-variant('bg-dark', 'bg-color-dark', ('bg-color-dark', -50%)); // ! New toast variant.
+  @include toast-variant('bg-light', 'bg-color-light', ('bg-color-light', -50%)); // ! New toast variant.
+
+  // - Border colors.
+  @include toast-variant('border', 'border-color', ('border-color', -40%)); // ! New toast variant.
+  @include toast-variant('border-dark', 'border-color-dark', ('border-color-dark', 40%)); // ! New toast variant.
+  @include toast-variant('border-light', 'border-color-light', ('border-color-light', -40%)); // ! New toast variant.
+
+  // - Link colors.
+  @include toast-variant('link', 'link-color', ('link-color', 40%)); // ! New toast variant.
+  @include toast-variant('link-dark', 'link-color-dark', ('link-color-dark', 60%)); // ! New toast variant.
+  @include toast-variant('link-light', 'link-color-light', ('link-color-light', 30%)); // ! New toast variant.
 
   // - Control colors.
-  @include toast-class-variant('disabled', 'disabled-color');
-  @include toast-class-variant('error', 'error-color');
-  @include toast-class-variant('info', 'info-color');
-  @include toast-class-variant('success', 'success-color');
-  @include toast-class-variant('warning', 'warning-color');
+  @include toast-variant('disabled', 'disabled-color', ('disabled-color', -10%));
+  @include toast-variant('error', 'error-color', 'light-color');
+  @include toast-variant('info', 'info-color', ('info-color', -50%));
+  @include toast-variant('success', 'success-color', 'light-color');
+  @include toast-variant('warning', 'warning-color', 'light-color');
+
+  // - Body colors.
+  @include toast-variant('body-bg', 'body-bg-color', 'body-font-color'); // ! New toast variant.
+  @include toast-variant('body-font', 'body-font-color', 'body-bg-color'); // ! New toast variant.
 
   // - Other colors.
-  @include toast-class-variant('code', 'code-color'); // ! New toast variant.
-  @include toast-class-variant('highlight', 'highlight-color'); // ! New toast variant.
-
-  &.toast-disabled {
-    color: color('disabled-color', $lightness: -10%);
-  }
-
-  &.toast-gray-light {
-    color: color('gray-color-dark');
-  }
-
-  &.toast-info {
-    color: color('info-color', $lightness: -60%);
-  }
-
-  &.toast-light {
-    color: color('body-font-color');
-  }
-
-  &.toast-secondary {
-    color: color('primary-color');
-  }
+  @include toast-variant('code', 'code-color', ('code-color', 50%)); // ! New toast variant.
+  @include toast-variant('highlight', 'highlight-color', ('highlight-color', -50%)); // ! New toast variant.
 
   a {
     // color: $light-color; // old spectre.css
-    color: color('light-color');
+    // color: color('light-color'); // old @angular-package/spectre.css
+    @include color('light');
     text-decoration: underline;
 
     &:focus,
@@ -91,12 +97,15 @@
     &:active,
     &.active {
       opacity: 0.75;
+      // color: color('light-color'); // old @angular-package/spectre.css
+      @include color('light');
     }
   }
 
   .btn-clear {
     // margin: $unit-h; // old spectre.css
-    margin: get-var('unit-h');
+    // margin: get-var('unit-h'); // old @angular-package/spectre.css
+    @include margin('unit-h');
   }
 
   p {

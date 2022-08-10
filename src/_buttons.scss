@@ -1,75 +1,65 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'functions/var-negative' as *;
-@use 'mixins/button' as *;
-@use 'mixins/shadow' as *;
 @use 'variables' as *;
 
+// Functions.
+@use 'functions/color' as *;
+@use 'functions/get-var' as *;
+@use 'functions/get-var-unit.function' as *;
+@use 'functions/var-negative' as *;
+
+// Mixins.
+@use 'mixins/border/border' as *;
+@use 'mixins/button' as *;
+@use 'mixins/color' as *;
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/margin.mixins' as *;
+@use 'mixins/padding.mixins' as *;
+@use 'mixins/shadow' as *;
+@use 'mixins/transition.mixin' as *;
+@use 'mixins/z-index.mixin' as *;
+
 // Buttons
-.btn, .#{$var-prefix}-btn {
-  appearance: none;
-  // background: $bg-color-light; // old spectre.css
-  background: color('bg-color-light');
-  // border: $border-width solid $primary-color; // old spectre.css
-  border: get-var('border-width') solid color('primary-color');
-  // border-radius: $border-radius; // old spectre.css
-  border-radius: get-var('border-radius');
-  // color: $primary-color; // old spectre.css
-  color: color('primary-color');
-  cursor: pointer;
+.btn,
+.#{$var-prefix}-btn {
+  // General.
   display: inline-block;
-  // font-size: $font-size; // old spectre.css
-  font-size: get-var('font-size');
+  appearance: none;
+  cursor: pointer;
+
+  // Height & Line height.
   // height: $control-size; // old spectre.css
   height: get-var('control-size');
   // line-height: $line-height; // old spectre.css
   line-height: get-var('line-height');
-  outline: none;
+
+  // Padding.
   // padding: $control-padding-y $control-padding-x; // old spectre.css
-  padding: get-var('control-padding-y') get-var('control-padding-x');
+  // padding: get-var('control-padding-y') get-var('control-padding-x'); // old @angular-package/spectre.css
+  @include padding('control-padding-y', 'control-padding-x');
+  outline: none;
+
+  // Border.
+  // border-width: get-var('border-width'); // old @angular-package/spectre.css
+  // border-style: solid; // old @angular-package/spectre.css
+  // border-radius: $border-radius; // old spectre.css
+  // border-radius: get-var('border-radius'); // old @angular-package/spectre.css
+  @include border();
+
+  // Text & Font.
+  // font-size: $font-size; // old spectre.css
+  font-size: get-var('font-size');
   text-align: center;
   text-decoration: none;
   // transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s; // old spectre.css
-  transition: background get-var('transition-duration'),
-    border get-var('transition-duration'),
-    box-shadow get-var('transition-duration'),
-    color get-var('transition-duration');
+  // transition: background get-var('transition-duration'), // old @angular-package/spectre.css
+    // border get-var('transition-duration'),
+    // box-shadow get-var('transition-duration'),
+    // color get-var('transition-duration');
+  @include transition(background, border, box-shadow, color);
+
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  &:visited {
-    // color: $primary-color-dark; // old spectre.css
-    color: color('primary-color-dark');
-  }
-  &:focus {
-    @include control-shadow();
-  }
-  &:focus,
-  &:hover {
-    // background: $secondary-color; // old spectre.css
-    background: color('secondary-color');
-    // border-color: $primary-color-dark; // old spectre.css
-    border-color: color('primary-color-dark');
-    text-decoration: none;
-  }
-  &:active,
-  &.active {
-    // background: $primary-color-dark; // old spectre.css
-    background: color('primary-color-dark');
-    // border-color: darken($primary-color-dark, 5%); // old spectre.css
-    border-color: color('primary-color-dark', $lightness: -5%);
-    // color: $light-color; // old spectre.css
-    color: color('light-color');
-    text-decoration: none;
-    &.loading {
-      &::after {
-        // border-bottom-color: $light-color; // old spectre.css
-        border-bottom-color: color('light-color');
-        // border-left-color: $light-color; // old spectre.css
-        border-left-color: color('light-color');
-      }
-    }
-  }
 
   // Disabled.
   &[disabled],
@@ -80,73 +70,214 @@
     pointer-events: none;
   }
 
-  // Button Colors
-  // Button Primary
-  &.btn-primary {
-    // background: $primary-color; // old spectre.css
-    background: color('primary-color');
-    // border-color: $primary-color-dark; // old spectre.css
-    border-color: color('primary-color-dark');
-    // color: $light-color; // old spectre.css
-    color: color('light-color');
+  // States.
+  &:focus {
+    @include control-shadow();
+  }
+  &:focus,
+  &:hover,
+  &:active,
+  &.active {
+    text-decoration: none;
+  }
+
+  // Standard, not outline.
+  &:not(.btn-outline) {
+    // Default button.
+    // background: $bg-color-light; // old spectre.css
+    // background: color('bg-color-light'); // old @angular-package/spectre.css
+    @include background('bg-light');
+    // border: $border-width solid $primary-color; // old spectre.css
+    // border-color: color('primary-color'); // old @angular-package/spectre.css
+    border-color: color('primary');
+    // color: $primary-color; // old spectre.css
+    // color: color('primary-color'); // old @angular-package/spectre.css
+    @include color('primary');
+
     &:visited {
-      // color: $light-color; // old spectre.css
-      color: color('light-color');
+      // color: $primary-color-dark; // old spectre.css
+      // color: color('primary-color-dark'); // old @angular-package/spectre.css
+      @include color('primary-dark');
     }
     &:focus,
     &:hover {
-      // background: darken($primary-color-dark, 2%); // old spectre.css
-      background: color('primary-color-dark', $lightness: -2%);
-      // border-color: darken($primary-color-dark, 5%); // old spectre.css
-      border-color: color('primary-color-dark', $lightness: -5%);
-      // color: $light-color; // old spectre.css
-      color: color('light-color');
+      // background: $secondary-color; // old spectre.css
+      // background: color('secondary-color'); // old @angular-package/spectre.css
+      @include background('secondary');
+      // border-color: $primary-color-dark; // old spectre.css
+      // border-color: color('primary-color-dark'); // old @angular-package/spectre.css
+      border-color: color('primary-dark');
     }
     &:active,
     &.active {
-      // background: darken($primary-color-dark, 4%); // old spectre.css
-      background: color('primary-color-dark', $lightness: -4%);
-      // border-color: darken($primary-color-dark, 7%); // old spectre.css
-      border-color: color('primary-color-dark', $lightness: -7%);
+      // background: $primary-color-dark; // old spectre.css
+      // background: color('primary-color-dark'); // old @angular-package/spectre.css
+      @include background('primary-dark');
+      // border-color: darken($primary-color-dark, 5%); // old spectre.css
+      // border-color: color('primary-color-dark', $lightness: -5%); // old @angular-package/spectre.css
+      border-color: color('primary-dark', $lightness: -5%);
       // color: $light-color; // old spectre.css
-      color: color('light-color');
-    }
-    &.loading {
-      &::after {
-        // border-bottom-color: $light-color; // old spectre.css
-        border-bottom-color: color('light-color');
-        // border-left-color: $light-color; // old spectre.css
-        border-left-color: color('light-color');
+      // color: color('light-color'); // old @angular-package/spectre.css
+      @include color('light');
+      &.loading {
+        &::after {
+          // border-bottom-color: $light-color; // old spectre.css
+          // border-bottom-color: color('light-color'); // old @angular-package/spectre.css
+          border-bottom-color: color('light');
+          // border-left-color: $light-color; // old spectre.css
+          // border-left-color: color('light-color'); // old @angular-package/spectre.css
+          border-left-color: color('light');
+        }
       }
     }
-  }
 
-  // - Success
-  &.btn-success {
-    // @include button-variant($success-color); // old spectre.css
-    @include button-variant('success-color');
-  }
+    // Button Colors
+    // - Shades
+    // -- Dark
+    @include button-variant('dark', 'dark-color'); // ! New color variant.
+    // -- Light
+    @include button-variant('light', 'light-color', 'dark-color'); // ! New color variant.
 
-  // - Error
-  &.btn-error {
+    // - Accent
+    @include button-variant('accent', 'accent-color'); // ! New color variant.
+
+    // - Primary
+    @include button-variant('primary', 'primary-color'); // ! New color variant.
+    // -- Primary dark
+    @include button-variant('primary-dark', 'primary-color-dark'); // ! New color variant.
+    // -- Primary light
+    @include button-variant('primary-light', 'primary-color-light'); // ! New color variant.
+
+    // - Secondary colors
+    @include button-variant('secondary', 'secondary-color', 'primary-color'); // ! New color variant.
+    // -- Secondary dark
+    @include button-variant('secondary-dark', 'secondary-color-dark', ('secondary-color-light', -40.5%)); // ! New color variant.
+    // -- Secondary light
+    @include button-variant('secondary-light', 'secondary-color-light', ('secondary-color-dark', -34.5%)); // ! New color variant.
+
+    // - Gray colors
+    @include button-variant('gray', 'gray-color'); // ! New color variant.
+    // -- Gray dark
+    @include button-variant('gray-dark', 'gray-color-dark', 'gray-color-light'); // ! New color variant.
+    // -- Gray light
+    @include button-variant('gray-light', 'gray-color-light', 'gray-color-dark'); // ! New color variant.
+
+    // - Bg colors
+    @include button-variant('bg', 'bg-color', 'bg-color-dark'); // ! New color variant.
+    // -- Bg dark
+    @include button-variant('bg-dark', 'bg-color-dark', 'bg-color-light'); // ! New color variant.
+    // -- Bg light
+    @include button-variant('bg-light', 'bg-color-light', 'bg-color-dark'); // ! New color variant.
+
+    // - Border colors
+    @include button-variant('border', 'border-color', 'border-color-dark'); // ! New color variant.
+    // -- Border dark
+    @include button-variant('border-dark', 'border-color-dark', 'border-color-light'); // ! New color variant.
+    // -- Border light
+    @include button-variant('border-light', 'border-color-light', 'border-color-dark'); // ! New color variant.
+
+    // - Link colors.
+    @include button-link-variant; // Default.
+    @include button-link-variant('link-dark', 'link-color-dark'); // Link dark.
+    @include button-link-variant('link-light', 'link-color-light'); // Link light.
+
+    // - Control colors
+    // -- Disabled
+    @include button-variant('disabled', 'disabled-color', ('disabled-color', -10%)); // ! New color variant.
+    // -- Error
     // @include button-variant($error-color); // old spectre.css
-    @include button-variant('error-color');
+    @include button-variant('error', 'error-color');
+    // -- Info
+    @include button-variant('info', 'info-color', ('info-color', -50%)); // ! New color variant.
+    // -- Success
+    // @include button-variant($success-color); // old spectre.css
+    @include button-variant('success', 'success-color');
+    // -- Warning
+    @include button-variant('warning', 'warning-color'); // ! New color variant.
+
+    // - Body colors
+    // -- Body bg
+    @include button-variant('body-bg', 'body-bg-color', 'body-font-color'); // ! New color variant.
+    // -- Body font
+    @include button-variant('body-font', 'body-font-color', 'body-bg-color'); // ! New color variant.
+
+    // - Other colors
+    // -- Code
+    @include button-variant('code', 'code-color', ('code-color', 50%)); // ! New color variant.
+    // - Highlight
+    @include button-variant('highlight', 'highlight-color', ('highlight-color', -40%)); // ! New color variant.
+
+    // TODO: finish
+    // Button: text shades.
+    &.btn-bg-light {
+      &.btn-text-dark-10 {
+        color: color(('bg-color-dark', -10%));
+      }
+      &.btn-text-dark-20 {
+        color: color(('bg-color-dark', -20%));
+      }
+      &.btn-text-dark-30 {
+        color: color(('bg-color-dark', -30%));
+      }
+      &.btn-text-dark-40 {
+        color: color(('bg-color-dark', -40%));
+      }
+    }
+
+    // Button: hover
+    // &.btn-primary-hover {
+    //   @include color-focus('primary-color');
+    //   @include color-hover('primary-color');
+    //   @include color-visited('primary-color');
+    // }
   }
 
-  // - Link
-  &.btn-link {
-    background: transparent;
-    border-color: transparent;
-    // color: $link-color; // old spectre.css
-    color: color('link-color');
-    &:visited,
-    &:focus,
-    &:hover,
-    &:active,
-    &.active {
-      // color: $link-color-dark; // old spectre.css
-      color: color('link-color-dark');
-    }
+  // Outline variants // ! New color variant.
+  &.btn-outline {
+    @include button-outline-variant('dark', 'dark-color');
+
+    @include button-outline-variant('accent', 'accent-color');
+
+    @include button-outline-variant('primary', 'primary-color');
+    @include button-outline-variant('primary-dark', 'primary-color-dark');
+    @include button-outline-variant('primary-light', 'primary-color-light');
+
+    @include button-outline-variant('secondary', 'secondary-color');
+    @include button-outline-variant('secondary-dark', 'secondary-color-dark');
+    @include button-outline-variant('secondary-light', 'secondary-color-light');
+
+    @include button-outline-variant('gray', 'gray-color');
+    @include button-outline-variant('gray-dark', 'gray-color-dark');
+    @include button-outline-variant('gray-light', 'gray-color-light');
+
+    @include button-outline-variant('bg', 'bg-color');
+    @include button-outline-variant('bg-dark', 'bg-color-dark');
+    @include button-outline-variant('bg-light', 'bg-color-light', -10%);
+
+    // - Border colors
+    @include button-outline-variant('border',  'border-color');
+    // -- Border dark
+    @include button-outline-variant('border-dark', 'border-color-dark');
+    // -- Border light
+    @include button-outline-variant('border-light', 'border-color-light', -10%);
+
+    // - Link colors.
+    @include button-link-outline-variant; // Default.
+    @include button-link-outline-variant('link-dark', 'link-color-dark'); // .btn-link-dark
+    @include button-link-outline-variant('link-light', 'link-color-light'); // .btn-link-light
+
+    // - Control colors.
+    @include button-outline-variant('disabled', 'disabled-color'); // .btn-disabled
+    @include button-outline-variant('error', 'error-color'); // .btn-error
+    @include button-outline-variant('info', ('info-color', -50%)); // .btn-info
+    @include button-outline-variant('success', 'success-color'); // .btn-success
+    @include button-outline-variant('warning', 'warning-color'); // .btn-warning
+
+    // @include button-outline-variant('body-bg', 'body-bg-color');
+    @include button-outline-variant('body-font', 'body-font-color'); // .btn-body-font
+
+    @include button-outline-variant('code', 'code-color'); // .btn-code
+    @include button-outline-variant('highlight', ('highlight-color', -35%)); // .btn-highlight
   }
 
   // Button Sizes
@@ -156,8 +287,8 @@
     // height: $control-size-sm; // old spectre.css
     height: get-var('control-size', $suffix: 'sm');
     // padding: $control-padding-y-sm $control-padding-x-sm; // old spectre.css
-    padding: get-var('control-padding-y', $suffix: 'sm') get-var('control-padding-x', $suffix: 'sm');
-
+    // padding: get-var('control-padding-y', $suffix: 'sm') get-var('control-padding-x', $suffix: 'sm'); // old @angular-package/spectre.css
+    @include padding('control-padding-y-sm', 'control-padding-x-sm');
   }
 
   &.btn-lg {
@@ -166,7 +297,8 @@
     // height: $control-size-lg; // old spectre.css
     height: get-var('control-size', $suffix: 'lg');
     // padding: $control-padding-y-lg $control-padding-x-lg; // old spectre.css
-    padding: get-var('control-padding-y', $suffix: 'lg') get-var('control-padding-x', $suffix: 'lg');
+    // padding: get-var('control-padding-y', $suffix: 'lg') get-var('control-padding-x', $suffix: 'lg'); // old @angular-package/spectre.css
+    @include padding('control-padding-y-lg', 'control-padding-x-lg');
   }
 
   // Button Block
@@ -200,23 +332,29 @@
     border: 0;
     color: currentColor;
     // height: $unit-5; // old spectre.css
-    height: get-var('unit-5');
+    // height: get-var('unit-5'); // old @angular-package/spectre.css
+    height: get-var-unit('5');
     // line-height: $unit-4; // old spectre.css
-    line-height: get-var('unit-4');
+    // line-height: get-var('unit-4'); // old @angular-package/spectre.css
+    line-height: get-var-unit('4');
     // margin-left: $unit-1; // old spectre.css
-    margin-left: get-var('unit-1');
+    // margin-left: get-var('unit-1'); // old @angular-package/spectre.css
+    @include margin-left('unit-1');
     margin-right: -2px;
     opacity: 1;
     // padding: $unit-h; // old spectre.css
-    padding: get-var('unit-h');
+    // padding: get-var('unit-h'); // old @angular-package/spectre.css
+    @include padding('unit-h');
     text-decoration: none;
     // width: $unit-5; // old spectre.css
-    width: get-var('unit-5');
+    // width: get-var('unit-5'); // old @angular-package/spectre.css
+    width: get-var-unit('5');
 
     &:focus,
     &:hover {
       // background: rgba($bg-color, .5); // old spectre.css
-      background: color('bg-color', $alpha: 0.5);
+      // background: color('bg-color', $alpha: 0.5); // old @angular-package/spectre.css
+      @include background('bg', $alpha: 0.5);
       opacity: 0.95;
     }
 
@@ -253,7 +391,8 @@
     &:active,
     &.active {
       // z-index: $zindex-0; // old spectre.css
-      z-index: get-var('z-index-0');
+      // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
+      @include z-index('0');
     }
   }
 

@@ -1,12 +1,22 @@
 // Sass.
 @use 'sass:math';
 
-// Spectre.
-@use 'functions/get-var' as *;
-// @use 'functions/strip-unit' as *;
-@use 'functions/var-negative' as *;
-@use 'mixins/set-var' as *;
+// Variables.
 @use 'variables' as *;
+
+// Functions.
+@use 'functions/get-var' as *;
+@use 'functions/get-var-size.function' as *;
+// @use 'functions/strip-unit' as *; // @angular-package/spectre.css
+@use 'functions/var-negative' as *;
+
+// Mixins.
+@use 'mixins/border' as *;
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/margin.mixins' as *;
+@use 'mixins/padding.mixins' as *;
+
 
 // Layout
 .container,
@@ -14,9 +24,12 @@
   margin-left: auto;
   margin-right: auto;
   // padding-left: $layout-spacing; // old spectre.css
-  padding-left: get-var('layout-spacing', $unit: true);
+  // padding-left: get-var('layout-spacing', $unit: true); // old @angular-package/spectre.css
+  @include padding-left(('layout-spacing', true));
+
   // padding-right: $layout-spacing; // old spectre.css
-  padding-right: get-var('layout-spacing', $unit: true);
+  // padding-right: get-var('layout-spacing', $unit: true); // old @angular-package/spectre.css
+  @include padding-right(('layout-spacing', true));
   width: 100%;
 
   // $grid-spacing: ($layout-spacing / ($layout-spacing * 0 + 1)) * $html-font-size; // old spectre.css
@@ -25,27 +38,27 @@
 
   &.grid-xl {
     // max-width: $grid-spacing * 2 + $size-xl; // old spectre.css
-    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + get-var('size-xl'));
+    max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + get-var-size('xl'));
   }
 
   &.grid-lg {
     // max-width: $grid-spacing * 2 + $size-lg; // old spectre.css
-    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + get-var('size-lg'));
+    max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + get-var-size('lg'));
   }
 
   &.grid-md {
     // max-width: $grid-spacing * 2 + $size-md; // old spectre.css
-    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + get-var('size-md'));
+    max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + get-var-size('md'));
   }
 
   &.grid-sm {
     // max-width: $grid-spacing * 2 + $size-sm; // old spectre.css
-    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + get-var('size-sm'));
+    max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + get-var-size('sm'));
   }
 
   &.grid-xs {
     // max-width: $grid-spacing * 2 + $size-xs; // old spectre.css
-    max-width: calc(get-var('layout-spacing') * get-var('html-font-size') * 2 + get-var('size-xs'));
+    max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + get-var-size('xs'));
   }
 }
 
@@ -64,9 +77,9 @@
   display: flex;
   flex-wrap: wrap;
   // margin-left: -$layout-spacing; // old spectre.css
-  margin-left: var-negative(get-var('layout-spacing', $unit: true));
+  margin-left: var-negative(get-var(('layout-spacing', true))); // TODO: Negative get-var()
   // margin-right: -$layout-spacing; // old spectre.css
-  margin-right: var-negative(get-var('layout-spacing', $unit: true));
+  margin-right: var-negative(get-var(('layout-spacing', true))); // TODO: Negative get-var()
 
   &.col-gapless {
     margin-left: 0;
@@ -87,9 +100,12 @@
   flex: 1;
   max-width: 100%;
   // padding-left: $layout-spacing; // old spectre.css
-  padding-left: get-var('layout-spacing', $unit: true);
+  // padding-left: get-var('layout-spacing'); // old @angular-package/spectre.css
+  @include padding-left(('layout-spacing', true));
+
   // padding-right: $layout-spacing; // old spectre.css
-  padding-right: get-var('layout-spacing', $unit: true);
+  // padding-right: get-var('layout-spacing'); // old @angular-package/spectre.css
+  @include padding-right(('layout-spacing', true));
 
 
   &.col-12,

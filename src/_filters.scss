@@ -1,5 +1,11 @@
-@use 'functions/color' as *;
+// Functions.
+// @use 'functions/color' as *; // old @angular-package/spectre.css
 @use 'functions/get-var' as *;
+
+// Mixins.
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/margin.mixins' as *;
 
 // Filters
 // The number of filter options
@@ -7,9 +13,11 @@ $filter-number: 8 !default;
 
 %filter-checked-nav {
   // background: $primary-color; // old spectre.css
-  background: color('primary-color');
+  // background: color('primary-color'); // old @angular-package/spectre.css
+  @include background('primary');
   // color: $light-color; // old spectre.css
-  color: color('light-color');
+  // color: color('light-color'); // old @angular-package/spectre.css
+  @include color('light');
 }
 
 %filter-checked-body {
@@ -19,7 +27,8 @@ $filter-number: 8 !default;
 .filter {
   .filter-nav {
     // margin: $layout-spacing 0; // old spectre.css
-    margin: get-var('layout-spacing', $unit: true) 0;
+    // margin: get-var('layout-spacing', $unit: true) 0; // old @angular-package/spectre.css
+    @include margin(('layout-spacing', true), 0);
   }
 
   .filter-body {

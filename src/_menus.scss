@@ -1,15 +1,26 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'functions/var-negative' as *;
-@use 'mixins/shadow' as *;
 @use 'variables' as *;
+
+// Functions.
+// @use 'functions/color' as *; // @angular-package/spectre.css
+@use 'functions/get-var' as *;
+// @use 'functions/get-var-unit.function' as *; // @angular-package/spectre.css
+@use 'functions/var-negative' as *;
+
+// Mixins.
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/margin.mixins' as *;
+@use 'mixins/padding.mixins' as *;
+@use 'mixins/shadow' as *;
+@use 'mixins/z-index.mixin' as *;
 
 // Menus
 .menu,
 .#{$var-prefix}-menu {
   @include shadow-variant(0.05rem);
   // background: $bg-color-light; // old spectre.css
-  background: color('bg-color-light');
+  // background: color('bg-color-light'); // old @angular-package/spectre.css
+  @include background('bg-light');
   // border-radius: $border-radius; // old spectre.css
   border-radius: get-var('border-radius');
   list-style: none;
@@ -17,11 +28,13 @@
   // min-width: $control-width-xs; // old spectre.css
   min-width: get-var('control-width', $suffix: 'xs');
   // padding: $unit-2; // old spectre.css
-  padding: get-var('unit-2');
+  // padding: get-var('unit-2'); // old @angular-package/spectre.css
+  @include padding('unit-2');
   // transform: translateY($layout-spacing-sm); // old spectre.css
   transform: translateY(get-var('layout-spacing', $suffix: 'sm', $unit: true));
   // z-index: $zindex-3; // old spectre.css
-  z-index: get-var('z-index-3');
+  // z-index: get-var('z-index-3'); // old @angular-package/spectre.css
+  @include z-index('3');
 
   &.menu-nav {
     background: transparent;
@@ -31,7 +44,8 @@
   .menu-item {
     margin-top: 0;
     // padding: 0 $unit-2; // old spectre.css
-    padding: 0 get-var('unit-2');
+    // padding: 0 get-var('unit-2'); // old @angular-package/spectre.css
+    @include padding('unit-0', 'unit-2');
     position: relative;
     text-decoration: none;
 
@@ -43,21 +57,26 @@
       // margin: 0 (-$unit-2); // old spectre.css
       margin: 0 var-negative(get-var('unit-2'));
       // padding: $unit-1 $unit-2; // old spectre.css
-      padding: get-var('unit-1') get-var('unit-2');
+      // padding: get-var('unit-1') get-var('unit-2'); // @angular-package/spectre.css
+      @include padding('unit-1', 'unit-2');
       text-decoration: none;
       &:focus,
       &:hover {
         // background: $secondary-color; // old spectre.css
-        background: color('secondary-color');
+        // background: color('secondary-color'); // @angular-package/spectre.css
+        @include background('secondary');
         // color: $primary-color; // old spectre.css
-        color: color('primary-color');
+        // color: color('primary-color'); // @angular-package/spectre.css
+        @include color('primary');
       }
       &:active,
       &.active {
         // background: $secondary-color; // old spectre.css
-        background: color('secondary-color');
+        // background: color('secondary-color'); // @angular-package/spectre.css
+        @include background('secondary');
         // color: $primary-color; // old spectre.css
-        color: color('primary-color');
+        // color: color('primary-color'); // @angular-package/spectre.css
+        @include color('primary');
       }
     }
 
@@ -65,12 +84,14 @@
     .form-radio,
     .form-switch {
       // margin: $unit-h 0; // old spectre.css
-      margin: get-var('unit-h') 0;
+      // margin: get-var('unit-h') 0; // @angular-package/spectre.css
+      @include margin('unit-h', 'unit-0');
     }
 
     & + .menu-item {
       // margin-top: $unit-1; // old spectre.css
-      margin-top: get-var('unit-1');
+      // margin-top: get-var('unit-1'); // @angular-package/spectre.css
+      @include margin-top('unit-1');
     }
   }
 
@@ -84,7 +105,8 @@
 
     .label {
       // margin-right: $unit-2; // old spectre.scss
-      margin-right: get-var('unit-2');
+      // margin-right: get-var('unit-2'); // @angular-package/spectre.css
+      @include margin-right('unit-2');
     }
   }
 }

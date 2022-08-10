@@ -1,10 +1,16 @@
+// Variables.
+@use 'variables' as *;
+
+// Functions.
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
 
+// Mixins.
 @use 'mixins/avatar' as *;
 @use 'mixins/color/color.mixin' as *;
 @use 'mixins/color/background.mixin' as *;
-@use 'variables' as *;
+@use 'mixins/padding.mixins' as *;
+@use 'mixins/z-index.mixin' as *;
 
 // Avatars
 .avatar,
@@ -47,7 +53,8 @@
     position: relative;
     width: 100%;
     // z-index: $zindex-0; // old spectre.css
-    z-index: get-var('z-index-0');
+    // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
+    @include z-index('0');
   }
 
   .avatar-icon,
@@ -58,13 +65,16 @@
     bottom: 14.64%;
     height: 50%;
     // padding: $border-width-lg; // old spectre.css
-    padding: get-var('border-width', $suffix: 'lg');
+    // padding: get-var('border-width', $suffix: 'lg'); // old @angular-package/spectre.css
+    @include padding('border-width-lg');
+
     position: absolute;
     right: 14.64%;
     transform: translate(50%, 50%);
     width: 50%;
     // z-index: $zindex-0 + 1; // old spectre.css
-    z-index: calc(get-var('z-index-0') + 1);
+    // z-index: calc(z-index('0') + 1); // old @angular-package/spectre.css
+    @include z-index('0', 1);
   }
 
   .avatar-presence {
@@ -104,6 +114,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
     // z-index: $zindex-0; // old spectre.css
-    z-index: get-var('z-index-0');
+    // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
+    @include z-index('0');
   }
 }

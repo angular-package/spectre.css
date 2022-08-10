@@ -1,12 +1,16 @@
-@use 'functions/get-var' as *;
+@use 'variables' as *;
 
+// Functions.
+// @use 'functions/get-var' as *; // @angular-package/spectre.css
+
+// Mixins.
 @use 'mixins/border/border' as *;
 @use 'mixins/border/border-hover' as *;
 @use 'mixins/color/background.mixin' as *;
 @use 'mixins/color/color.mixin' as *;
-@use 'mixins/transition-duration' as *;
-
-@use 'variables' as *;
+@use 'mixins/margin.mixins' as *;
+@use 'mixins/padding.mixins' as *;
+@use 'mixins/transition.mixin' as *;
 
 // Pagination
 .pagination,
@@ -14,9 +18,11 @@
   display: flex;
   list-style: none;
   // margin: $unit-1 0; // old spectre.css
-  margin: get-var('unit-1') 0;
+  // margin: get-var('unit-1') 0; // old @angular-package/spectre.css
+  @include margin('unit-1', 'unit-0');
   // padding: $unit-1 0; // old spectre.css
-  padding: get-var('unit-1') 0;
+  // padding: get-var('unit-1') 0; // old @angular-package/spectre.css
+  @include padding('unit-1', 'unit-0');
 
   // Pagination border.
   &.pagination-border {
@@ -25,7 +31,7 @@
         width: 100%;
         @include border();
         @include border-hover($color: 'primary');
-        @include transition-duration((border, 0.2s));
+        @include transition((border, 0.2s));
         &:focus {
           box-shadow: none;
         }
@@ -35,12 +41,14 @@
 
   .page-item {
     // margin: $unit-1 $unit-o; // old spectre.css
-    margin: get-var('unit-1') get-var('unit-o');
+    // margin: get-var('unit-1') get-var('unit-o'); // old @angular-package/spectre.css
+    @include margin('unit-1', 'unit-o');
 
     span {
       display: inline-block;
       // padding: $unit-1 $unit-1; // old spectre.css
-      padding: get-var('unit-1') get-var('unit-1');
+      // padding: get-var('unit-1') get-var('unit-1'); // old @angular-package/spectre.css
+      @include padding('unit-1', 'unit-1');
     }
 
     a {
@@ -48,12 +56,13 @@
       border-radius: get-var('border-radius');
       display: inline-block;
       // padding: $unit-1 $unit-2; // old spectre.css
-      padding: get-var('unit-1') get-var('unit-2');
+      // padding: get-var('unit-1') get-var('unit-2'); // old @angular-package/spectre.css
+      @include padding('unit-1', 'unit-2');
       text-decoration: none;
       &:focus,
       &:hover {
         // color: $primary-color; // old spectre.css
-        // color: color('primary-color');
+        // color: color('primary-color'); // old @angular-package/spectre.css
         @include color('primary'); // color code used.
       }
     }
@@ -69,10 +78,10 @@
     &.active {
       a {
         // background: $primary-color; // old spectre.css
-        // background: color('primary-color');
+        // background: color('primary-color'); // old @angular-package/spectre.css
         @include background('primary');
         // color: $light-color; // old spectre.css
-        // color: color('light-color');
+        // color: color('light-color'); // old @angular-package/spectre.css
         @include color('light');
       }
     }

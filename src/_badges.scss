@@ -1,6 +1,13 @@
+@use 'variables' as *;
+
+// Functions.
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
-@use 'variables' as *;
+
+// Mixins.
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/z-index.mixin' as *;
 
 // Badges
 .badge,
@@ -12,13 +19,15 @@
   &:not([data-badge]) {
     &::after {
       // background: $primary-color; // old spectre.css
-      background: color('primary-color');
+      // background: color('primary-color'); // old @angular-package/spectre.css
+      @include background('primary');
       background-clip: padding-box;
       border-radius: 0.5rem;
       // box-shadow: 0 0 0 .1rem $bg-color-light; // old spectre.css
       box-shadow: 0 0 0 0.1rem color('bg-color-light');
       // color: $light-color; // old spectre.css
-      color: color('light-color');
+      // color: color('light-color'); // old @angular-package/spectre.css
+      @include color('light');
       content: attr(data-badge);
       display: inline-block;
       transform: translate(-0.05rem, -0.5rem);
@@ -64,7 +73,8 @@
       right: 14.64%;
       transform: translate(50%, -50%);
       // z-index: $zindex-1; // old spectre.css
-      z-index: get-var('z-index-1');
+      // z-index: get-var('z-index-1'); // old @angular-package/spectre.css
+      @include z-index('1');
     }
   }
 }

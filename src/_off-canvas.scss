@@ -1,10 +1,14 @@
+@use 'variables' as *;
 
-@use 'functions/color' as *;
+// Functions.
+// @use 'functions/color' as *; // @angular-package/spectre.css
 @use 'functions/get-var' as *;
 
+// Mixins.
 @use 'mixins/color/background.mixin' as *;
-
-@use 'variables' as *;
+@use 'mixins/padding.mixins' as *;
+@use 'mixins/transition.mixin' as *;
+@use 'mixins/z-index.mixin' as *;
 
 // Off canvas menus
 // TODO: canvas
@@ -22,16 +26,20 @@ $off-canvas-breakpoint: $size-lg !default;
     display: block;
     position: absolute;
     // top: $layout-spacing; // old spectre.css
-    top: get-var('layout-spacing', $unit: true);
+    // top: get-var('layout-spacing', $unit: true); // old @angular-package/spectre.css
+    top: get-var(('layout-spacing', true));
     transition: none;
     // z-index: $zindex-0; // old spectre.css
-    z-index: get-var('z-index-0');
+    // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
+    @include z-index('0');
     @if $rtl == true {
       // right: $layout-spacing; // old spectre.css
-      right: get-var('layout-spacing', $unit: true);
+      // right: get-var('layout-spacing', $unit: true); // old @angular-package/spectre.css
+      right: get-var(('layout-spacing', true));
     } @else {
       // left: $layout-spacing; // old spectre.css
-      left: get-var('layout-spacing', $unit: true);
+      // left: get-var('layout-spacing', $unit: true); // old @angular-package/spectre.css
+      left: get-var(('layout-spacing', true));
     }
   }
 
@@ -45,9 +53,11 @@ $off-canvas-breakpoint: $size-lg !default;
     position: fixed;
     top: 0;
     // transition: transform 0.25s; // old spectre.css
-    transition: transform calc(get-var('transition-duration') + 0.05s );
+    // transition: transform calc(get-var('transition-duration') + 0.05s ); // old @angular-package/spectre.css
+    @include transition((transform, 0.05s));
     // z-index: $zindex-2; // old spectre.css
-    z-index: get-var('z-index-2');
+    // z-index: get-var('z-index-2'); // old @angular-package/spectre.css
+    @include z-index('2');
     @if $rtl == true {
       right: 0;
       transform: translateX(100%);
@@ -61,12 +71,14 @@ $off-canvas-breakpoint: $size-lg !default;
     flex: 1 1 auto;
     height: 100%;
     // padding: $layout-spacing $layout-spacing $layout-spacing 4rem; // old spectre.css
-    padding: get-var('layout-spacing', $unit: true) get-var('layout-spacing', $unit: true) get-var('layout-spacing', $unit: true) 4rem;
+    // padding: get-var('layout-spacing', $unit: true) get-var('layout-spacing', $unit: true) get-var('layout-spacing', $unit: true) 4rem; // old @angular-package/spectre.css
+    @include padding(('layout-spacing', true)); // TODO: Check.
+    padding-left: 4rem;
   }
 
   .off-canvas-overlay {
     // background: rgba($dark-color, .1); // old spectre.css
-    // background: color('dark-color', $alpha: 0.1);
+    // background: color('dark-color', $alpha: 0.1); // old @angular-package/spectre.css
     @include background('dark', $alpha: 0.1);
     border-color: transparent;
     border-radius: 0;
@@ -90,7 +102,8 @@ $off-canvas-breakpoint: $size-lg !default;
     &.active ~ .off-canvas-overlay {
       display: block;
       // z-index: $zindex-1; // old spectre.css
-      z-index: get-var('z-index-1');
+      // z-index: get-var('z-index-1'); // old @angular-package/spectre.css
+      @include z-index('1');
     }
   }
 }

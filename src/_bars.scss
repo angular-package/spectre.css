@@ -1,37 +1,52 @@
+@use 'variables' as *;
+
+// Functions.
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
-@use 'variables' as *;
+@use 'functions/get-var-unit.function' as *;
+
+// Mixins.
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/margin.mixins' as *;
+@use 'mixins/z-index.mixin' as *;
 
 // Bars
 .bar,
 .#{$var-prefix}-bar {
   // background: $bg-color-dark; // old spectre.css
-  background: color('bg-color-dark');
+  // background: color('bg-color-dark'); // old @angular-package/spectre.css
+  @include background('bg-dark');
   // border-radius: $border-radius; // old spectre.css
   border-radius: get-var('border-radius');
   display: flex;
   flex-wrap: nowrap;
   // height: $unit-4; // old spectre.css
-  height: get-var('unit-4');
+  // height: get-var('unit-4'); // old @angular-package/spectre.css
+  height: get-var-unit('4');
   width: 100%;
 
   &.bar-sm {
     // height: $unit-1; // old spectre.css
-    height: get-var('unit-1');
+    // height: get-var('unit-1'); // old @angular-package/spectre.css
+    height: get-var-unit('1');
   }
 
   // TODO: attr() support
   .bar-item {
     // background: $primary-color; // old spectre.css
-    background: color('primary-color');
+    // background: color('primary-color'); // old @angular-package/spectre.css
+    @include background('primary');
     // color: $light-color; // old spectre.css
-    color: color('light-color');
+    // color: color('light-color'); // old @angular-package/spectre.css
+    @include color('light');
     display: block;
     // font-size: $font-size-sm; // old spectre.css
     font-size: get-var('font-size', $suffix: 'sm');
     flex-shrink: 0;
     // line-height: $unit-4; // old spectre.css
-    line-height: get-var('unit-4');
+    // line-height: get-var('unit-4'); // old @angular-package/spectre.css
+    line-height: get-var-unit('4'); // old @angular-package/spectre.css
     height: 100%;
     position: relative;
     text-align: center;
@@ -58,7 +73,9 @@
   // height: $border-width-lg; // old spectre.css
   height: get-var('border-width', $suffix: 'lg');
   // margin: $layout-spacing 0; // old spectre.css
-  margin: get-var('layout-spacing', $unit: true) 0;
+  // margin: get-var('layout-spacing') 0; // old @angular-package/spectre.css
+  @include margin(('layout-spacing', true), 'unit-0');
+
   position: relative;
 
   .bar-item {
@@ -67,31 +84,36 @@
     position: absolute;
     &:not(:last-child):first-child {
       // background: $bg-color-dark; // old spectre.css
-      background: color('bg-color-dark');
+      // background: color('bg-color-dark'); // old @angular-package/spectre.css
+      @include background('bg-dark');
       // z-index: $zindex-0; // old spectre.css
-      z-index: get-var('z-index-0');
-
+      // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
+      @include z-index('0');
     }
   }
 
   .bar-slider-btn {
     // background: $primary-color; // old spectre.css
-    background: color('primary-color');
+    // background: color('primary-color'); // old @angular-package/spectre.css
+    @include background('primary');
     border: 0;
     border-radius: 50%;
     // height: $unit-3; // old spectre.css
-    height: get-var('unit-3');
+    // height: get-var('unit-3'); // old @angular-package/spectre.css
+    height: get-var-unit('3'); // old @angular-package/spectre.css
     padding: 0;
     position: absolute;
     right: 0;
     top: 50%;
     transform: translate(50%, -50%);
     // width: $unit-3; // old spectre.css
-    width: get-var('unit-3');
+    // width: get-var('unit-3'); // old @angular-package/spectre.css
+    width: get-var-unit('3');
 
     &:active {
       // box-shadow: 0 0 0 .1rem $primary-color; // old spectre.css
-      box-shadow: 0 0 0 0.1rem color('primary-color');
+      // box-shadow: 0 0 0 0.1rem color('primary-color'); // old @angular-package/spectre.css
+      box-shadow: 0 0 0 0.1rem color('primary');
     }
   }
 }

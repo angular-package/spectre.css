@@ -1,21 +1,28 @@
-@use 'functions/color' as *;
+@use 'variables' as *;
+
+// Functions.
+// @use 'functions/color' as *;
 @use 'functions/get-var' as *;
 
-@use 'mixins/shadow' as *;
+// Mixins.
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/border/border' as *;
 @use 'mixins/color/color-picker.mixin' as *;
-@use 'mixins/transition-duration' as *;
-
-@use 'variables' as *;
+@use 'mixins/padding.mixins' as *;
+@use 'mixins/shadow' as *;
+@use 'mixins/transition.mixin' as *;
 
 // Cards
 .card,
 .#{$var-prefix}-card {
   // background: $bg-color-light; // old spectre.css
-  background: color('bg-color-light');
+  // background: color('bg-color-light'); // old @angular-package/spectre.css
+  @include background('bg-light');
   // border: $border-width solid $border-color; // old spectre.css
-  border: get-var('border-width') solid color('border-color');
+  // border: get-var('border-width') solid color('border-color'); // old @angular-package/spectre.css
   // border-radius: $border-radius; // old spectre.css
-  border-radius: get-var('border-radius');
+  // border-radius: get-var('border-radius'); // old @angular-package/spectre.css
+  @include border();
   display: flex;
   flex-direction: column;
 
@@ -23,12 +30,14 @@
   .card-body,
   .card-footer {
     // padding: $layout-spacing-lg; // old spectre.css
-    padding: get-var('layout-spacing', $suffix: 'lg', $unit: true);
+    // padding: get-var('layout-spacing', $suffix: 'lg', $unit: true); // old @angular-package/spectre.css
+    @include padding(('layout-spacing', ('suffix': 'lg', 'unit': true)));
     padding-bottom: 0;
 
     &:last-child {
       // padding-bottom: $layout-spacing-lg; // old spectre.css
-      padding-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: true);
+      // padding-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: true); // old @angular-package/spectre.css
+      @include padding-bottom(('layout-spacing', ('suffix': 'lg', 'unit': true)));
     }
   }
 
@@ -38,7 +47,8 @@
 
   .card-image {
     // padding-top: $layout-spacing-lg; // old spectre.css
-    padding-top: get-var('layout-spacing', $suffix: 'lg', $unit: true);
+    // padding-top: get-var('layout-spacing', $suffix: 'lg', $unit: true); // old @angular-package/spectre.css
+    @include padding-top(('layout-spacing', ('suffix': 'lg', 'unit': true)));
 
     &:first-child {
       padding-top: 0;
@@ -79,7 +89,7 @@
     padding: 5rem 0.5rem 0.75rem;
 
     // Animations.
-    @include transition-duration(0.05s);
+    // @include transition(0.05s); // TODO: transition
 
     // Color name.
     .card-color-name {

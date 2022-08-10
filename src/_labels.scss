@@ -1,15 +1,23 @@
-@use 'functions' as *;
-@use 'mixins/label' as *;
 @use 'variables' as *;
 
+// Mixins.
+@use 'mixins/border' as *;
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/label' as *;
+@use 'mixins/padding-size-variant.mixin' as *;
+
 // Labels
-.label, .#{$var-prefix}-label {
+.label,
+.#{$var-prefix}-label {
   @include label-base();
+  display: inline-block;
   // @include label-variant(lighten($body-font-color, 5%), $bg-color-dark); // old spectre.css
   // @include label--variant(color('body-font-color', $lightness: +5%), color('bg-color-dark')); // old @angular-package/spectre.css
-  @include label-variant(('body-font-color', +5%), 'bg-color-dark');
-
-  display: inline-block;
+  // background: color('bg-color-dark'); // old @angular-package/spectre.css
+  @include background('bg-dark');
+  // color: color(('body-font-color', +5%)); // old @angular-package/spectre.css
+  @include color(('body-font', +5%));
 
   // Label rounded
   &.label-rounded {
@@ -18,81 +26,90 @@
     padding-right: 0.4rem;
   }
 
+  // Padding size
+  @include padding-size-variant('label');
+
   // Label color variants.
+  // - Shades.
+  // &.label-dark { @include label-variant('light-color', 'dark-color'); } // old @angular-package/spectre.css
+  @include label-variant('dark', 'dark-color', 'light-color');
+  // &.label-light { @include label-variant('dark-color', 'light-color'); } // old @angular-package/spectre.css
+  @include label-variant('light', 'light-color', 'dark-color');
+
   // - Core colors.
   // -- Accent.
   // &.label-accent { @include label-variant('light-color', 'accent-color'); } // old @angular-package/spectre.css
-  @include label-class-variant('accent', 'light-color', 'accent-color');
+  @include label-variant('accent', 'accent-color', 'light-color');
   // &.label-primary {
     // @include label-variant($light-color, $primary-color); // old spectre.css
     // @include label-variant('light-color', 'primary-color'); // old @angular-package/spectre.css
   // }
 
   // -- Primary.
-  @include label-class-variant('primary', 'light-color', 'primary-color');
-  @include label-class-variant('primary-dark', 'light-color', 'primary-color-dark'); // ! New label color variant.
-  @include label-class-variant('primary-light', 'light-color', 'primary-color-light'); // ! New label color variant.
+  @include label-variant('primary', 'primary-color', 'light-color');
+  @include label-variant('primary-dark', 'primary-color-dark', ('primary-color-dark', 40%)); // ! New label color variant.
+  @include label-variant('primary-light', 'primary-color-light', ('primary-color-light', 40%)); // ! New label color variant.
 
   // -- Secondary.
   // &.label-secondary {
     // @include label-variant($primary-color, $secondary-color); // old spectre.css
     // @include label-variant('primary-color', 'secondary-color'); // old @angular-package/spectre.css
   // }
-  @include label-class-variant('secondary', 'primary-color', 'secondary-color');
-  @include label-class-variant('secondary-dark', 'primary-color', 'secondary-color-dark'); // ! New label color variant.
-  @include label-class-variant('secondary-light', 'primary-color', 'secondary-color-light'); // ! New label color variant.
-
-  // - Shades.
-  // &.label-dark { @include label-variant('light-color', 'dark-color'); } // old @angular-package/spectre.css
-  @include label-class-variant('dark', 'light-color', 'dark-color');
-  // &.label-light { @include label-variant('dark-color', 'light-color'); } // old @angular-package/spectre.css
-  @include label-class-variant('light', 'body-font-color', 'light-color');
+  @include label-variant('secondary', 'secondary-color', ('secondary-color', -40%));
+  @include label-variant('secondary-dark', 'secondary-color-dark', ('secondary-color-dark', -40%)); // ! New label color variant.
+  @include label-variant('secondary-light', 'secondary-color-light', ('secondary-color-light', -40%)); // ! New label color variant.
 
   // - Gray colors.
-  @include label-class-variant('gray', 'gray-color-dark', 'gray-color'); // ! New label color variant.
-  @include label-class-variant('gray-dark', 'gray-color-light', 'gray-color-dark'); // ! New label color variant.
-  @include label-class-variant('gray-light', 'gray-color-dark', 'gray-color-light'); // ! New label color variant.
-
-  // - Link colors.
-  @include label-class-variant('link', 'link-color-light', 'link-color'); // ! New label color variant.
-  @include label-class-variant('link-dark', 'link-color-light', 'link-color-dark'); // ! New label color variant.
-  @include label-class-variant('link-light', 'link-color-dark', 'link-color-light'); // ! New label color variant.
-
-  // - Body colors.
-  @include label-class-variant('body-bg', 'body-font-color', 'body-bg-color'); // ! New label color variant.
+  @include label-variant('gray', 'gray-color', ('gray-color', 20%)); // ! New label color variant.
+  @include label-variant('gray-dark', 'gray-color-dark', 'gray-color-light'); // ! New label color variant.
+  @include label-variant('gray-light', 'gray-color-light', 'gray-color-dark'); // ! New label color variant.
 
   // - Bg colors.
-  @include label-class-variant('bg', 'body-font-color', 'bg-color'); // ! New label color variant.
-  @include label-class-variant('bg-dark', 'body-font-color', 'bg-color-dark'); // ! New label color variant.
-  @include label-class-variant('bg-light', 'body-font-color', 'bg-color-light'); // ! New label color variant.
+  @include label-variant('bg', 'bg-color', 'body-font-color'); // ! New label color variant.
+  @include label-variant('bg-dark', 'bg-color-dark', ('bg-color-dark', -50%)); // ! New label color variant.
+  @include label-variant('bg-light', 'bg-color-light', ('bg-color-light', -50%)); // ! New label color variant.
+
+  // - Border colors.
+  @include label-variant('border', 'border-color', ('border-color', -40%)); // ! New label color variant.
+  @include label-variant('border-dark', 'border-color-dark', ('border-color-dark', 60%)); // ! New label color variant.
+  @include label-variant('border-light', 'border-color-light', ('border-color-light', -40%)); // ! New label color variant.
+
+  // - Link colors.
+  @include label-variant('link', 'link-color', ('link-color', 40%)); // ! New label color variant.
+  @include label-variant('link-dark', 'link-color-dark', ('link-color-dark', 60%)); // ! New label color variant.
+  @include label-variant('link-light', 'link-color-light', ('link-color-light', 30%)); // ! New label color variant.
 
   // - Control colors.
   // &.label-disabled {
     // background-color: color('disabled-color'); // old @angular-package/spectre.css
     // color: color('disabled-color', $lightness: -10%);
   // }
-  // @include label-class-variant('disabled', 'disabled-color', 'disabled-color'); // old @angular-package/spectre.css
-  @include label-class-variant('disabled', ('disabled-color', -10%), 'disabled-color');
+  // @include label-variant('disabled', 'disabled-color', 'disabled-color'); // old @angular-package/spectre.css
+  @include label-variant('disabled', 'disabled-color', ('disabled-color', -10%));
 
   // &.label-error {
     // @include label-variant($light-color, $error-color); // old spectre.css
     // @include label-variant('light-color', 'error-color'); // old @angular-package/spectre.css
   // }
-  @include label-class-variant('error', 'light-color', 'error-color');
-  @include label-class-variant('info', ('info-color', -60%), 'info-color');
+  @include label-variant('error', 'error-color', 'light-color');
+  @include label-variant('info', 'info-color', ('info-color', -50%));
 
   // &.label-success {
     // @include label-variant($light-color, $success-color); // old spectre.css
     // @include label-variant('light-color', 'success-color'); // old @angular-package/spectre.css
   // }
-  @include label-class-variant('success', 'light-color', 'success-color');
+  @include label-variant('success', 'success-color', 'light-color');
   // &.label-warning {
     // @include label-variant($light-color, $warning-color); // old spectre.css
     // @include label-variant('light-color', 'warning-color'); // old @angular-package/spectre.css
   // }
-  @include label-class-variant('warning', 'light-color', 'warning-color');
+  @include label-variant('warning', 'warning-color', 'light-color');
+
+  // - Body colors.
+  @include label-variant('body-bg', 'body-bg-color', 'body-font-color'); // ! New label color variant.
+  @include label-variant('body-font', 'body-font-color', 'body-bg-color'); // ! New label color variant.
 
   // - Other colors.
-  @include label-class-variant('code', 'light-color', 'code-color'); // ! New label color variant.
-  @include label-class-variant('highlight', ('highlight-color', -50%), 'highlight-color'); // ! New label color variant.
+  @include label-variant('code', 'code-color', ('code-color', 50%)); // ! New label color variant.
+  @include label-variant('highlight', 'highlight-color', ('highlight-color', -50%)); // ! New label color variant.
 }

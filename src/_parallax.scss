@@ -1,8 +1,16 @@
+@use 'variables' as *;
+
+// Functions.
 @use 'functions/color' as *;
 @use 'functions/get-var' as *;
 @use 'functions/var-negative' as *;
+
+// Mixins.
+@use 'mixins/color/color.mixin' as *;
 @use 'mixins/shadow' as *;
-@use 'variables' as *;
+@use 'mixins/transition.mixin' as *;
+@use 'mixins/z-index.mixin' as *;
+@use 'mixins/z-index.mixin' as *;
 
 // Mixin: Parallax direction
 @mixin parallax-dir() {
@@ -11,7 +19,8 @@
   position: absolute;
   width: 50%;
   // z-index: $zindex-1; // old spectre.css
-  z-index: get-var('z-index-1');
+  // z-index: get-var('z-index-1'); // old @angular-package/spectre.css
+  @include z-index('1');
 }
 
 .parallax,
@@ -28,7 +37,8 @@
     transform: perspective(get-var('parallax-perspective'));
     transform-style: preserve-3d;
     // transition: all 0.4s ease; // old spectre.css
-    transition: all calc(get-var('transition-duration') + 0.2s) ease;
+    // transition: all calc(get-var('transition-duration') + 0.2s) ease; // old @angular-package/spectre.css
+    @include transition(('all', 0.2s, ease));
 
     width: 100%;
 
@@ -46,7 +56,8 @@
   .parallax-front {
     align-items: center;
     // color: $light-color; // old spectre.css
-    color: color('light-color');
+    // color: color('light-color'); // old @angular-package/spectre.css
+    @include color('light');
     display: flex;
     height: 100%;
     justify-content: center;
@@ -54,15 +65,18 @@
     position: absolute;
     text-align: center;
     // text-shadow: 0 0 20px rgba($dark-color, .75); // old spectre.css
-    text-shadow: 0 0 20px color('dark-color', $alpha: 0.75);
+    // text-shadow: 0 0 20px color('dark-color', $alpha: 0.75); // old @angular-package/spectre.css
+    text-shadow: 0 0 20px color('dark', $alpha: 0.75);
     top: 0;
     // transform: translateZ($parallax-offset-z) scale($parallax-scale); // old spectre.css
     transform: translateZ(get-var('parallax-offset-z')) scale(get-var('parallax-scale'));
     // transition: transform 0.4s; // old spectre.css
-    transition: transform calc(get-var('transition-duration') + 0.2s);
+    // transition: transform calc(get-var('transition-duration') + 0.2s); // old @angular-package/spectre.css
+    @include transition((transform, 0.2s));
     width: 100%;
     // z-index: $zindex-0; // old spectre.css
-    z-index: get-var('z-index-0');
+    // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
+    @include z-index('0');
   }
 
   .parallax-top-left {
