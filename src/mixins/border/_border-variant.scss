@@ -4,7 +4,7 @@
 @mixin border-variant(
   $size,
   $style: solid,
-  $color: 'border-color',
+  $color: 'border',
   $radius: 'border-radius',
 ) {
   @if (string.length($size) > 0) {
