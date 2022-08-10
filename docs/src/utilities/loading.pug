@@ -7,7 +7,7 @@ block variables
   - var description = 'Loading indicator is used for loading or updating. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('loading', 'Loading')
+  +docs-heading(slug, 'Loading', {parent, name: 'Utilities'})
     include ../_layout/_ad-g.pug
 
     p
@@ -32,7 +32,7 @@ block docs-content
           <div class="loading"></div>
           <div class="loading loading-lg"></div>
 
-    +docs-pagination('utilities', {url: 'divider', name: 'Divider'}, {url: 'position', name: 'Position'})
+    +docs-pagination({path: 'divider', name: 'Divider'}, {path: 'position', name: 'Position'})
 
     include ../_layout/_ad-c.pug
 

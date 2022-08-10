@@ -7,7 +7,7 @@ block variables
   - var description = 'Display utilities are used for display and hidden things. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('display', 'Display utilities')
+  +docs-heading(slug, 'Display utilities', { parent, name: 'Utilities' })
     include ../_layout/_ad-g.pug
 
     p Display utilities are used for display and hidden things.
@@ -37,7 +37,7 @@ block docs-content
           <!-- assistive text for screen reader -->
           <div class="text-assistive"></div>
 
-    +docs-pagination('utilities', {url: 'cursors', name: 'Cursors'}, {url: 'divider', name: 'Divider'})
+    +docs-pagination({path: 'cursors', name: 'Cursors'}, {path: 'divider', name: 'Divider'})
 
     include ../_layout/_ad-c.pug
 
