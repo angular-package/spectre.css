@@ -1,22 +1,22 @@
-@use '../../functions/color' as *;
 @use '../../variables' as *;
+
+// Functions.
+@use '../../functions/color' as *;
+@use '../../functions/important.function' as *;
 
 // The mixin contains the `background` style of the given `$color` CSS variable name without the prefix.
 @mixin background(
   $color,
   $lightness: 0%,
   $alpha: 1,
-  $important: false,
+  $important: '',
   $prefix: $var-prefix
 ) {
-  @if $important {
-    background: color(
+  background: color(
       $color,
       $lightness: $lightness,
       $alpha: $alpha,
       $prefix: $prefix
-    ) !important;
-  } @else {
-    background: color($color, $lightness: $lightness, $prefix: $prefix);
-  }
+    )
+    important($important);
 }
