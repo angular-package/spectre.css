@@ -5,21 +5,124 @@ mixin docs-accordion(id, name, ...pages)
     .accordion-body
       ul.menu.menu-nav
         each page in pages
+          - var active = ''
+          if (slug == page.url)
+            - var active = 'active'
+
           li.menu-item
             if slug != parent
-              a(href='../' + id + '/' + page.url + '.html')= page.name
+              a(class=active  href='../' + id + '/' + page.url + '.html' )= page.name
             else
-              a(href=id + '/' + page.url + '.html')= page.name
+              a(class=active href=id + '/' + page.url + '.html')= page.name
 
-mixin docs-heading(id, name)
+mixin docs-breadcrumb(category, subcategory) 
+  ul.breadcrumb
+    li.breadcrumb-item
+      a(href="../index.html") Spectre.css
+    li.breadcrumb-item
+      a(href='../' + category.parent + '.html') #{category.name}
+    li.breadcrumb-item
+      a(href='../' + category.parent + '/' + subcategory.id + '.html') #{subcategory.name}
+
+mixin docs-css-variable-color(name, attribute = 'all', prefix = 's')
+  if attribute != 'all'
+    code --#{prefix}-#{name}-#{attribute}
+  else
+    code --#{prefix}-#{name}-h
+    br
+    code --#{prefix}-#{name}-s
+    br
+    code --#{prefix}-#{name}-l
+    br
+    code --#{prefix}-#{name}-a
+
+mixin docs-divider(size = 'xl')
+  div.divider.divider-no-border(class='divider-size-' + size)
+
+mixin docs-heading(id, name, category)
   .container(id=id)
     h3.s-title
       | #{name}
       a.anchor(href='#'+id aria-hidden='true') #
+    if category
+      +docs-breadcrumb(category, { id, name })
+
     if block
       block
 
-mixin docs-subheading(id, name)
-  h4.s-subtitle(id=id)
-    | #{name}
-    a.anchor(href='#'+id aria-hidden='true') #
+mixin docs-menu(header, path, ...items)
+  div.docs-menu
+    h5 #{header}
+    ul.menu.hide-scrollbar
+      each item in items
+        if item.items
+          if item.name
+            li.divider.divider-no-border.divider-size-xs
+            li
+              div.divider(data-content=item.name)
+          each subitem in item.items
+            li.menu-item
+              a(href='../' + path.parent + '/' + path.slug + '.html#' + path.slug + '-' + item.anchor + '-' + subitem.anchor) #{subitem.name}
+          li.divider.divider-no-border.divider-size-xs
+        else
+          li.menu-item
+            a(href='../' + path.parent + '/' + path.slug + '.html#' + path.slug + '-' + item.anchor) #{item.name}
+
+mixin docs-pagination(previous, next)
+  +docs-divider('xl')
+  ul.pagination.pagination-border
+    if (previous.name)
+      li.page-item.page-prev
+        +docs-pagination-prev(previous.name, previous)
+
+    if (next.name)
+      li.page-item.page-next
+        +docs-pagination-next(next.name, next)
+
+mixin docs-pagination-prev(title, previous)
+  - var location = ''
+  if (slug != parent)
+    - var location = '../'
+  if (previous.parent && previous.path)
+    - var href = location + previous.parent + '/' + previous.path + '.html'
+  else if (previous.parent)
+    - var href = location + previous.parent + '.html'
+  else if (previous.path)
+    - var href = location + parent + '/' + previous.path + '.html'
+  a(href=href)
+    div.page-item-subtitle Previous
+    div.page-item-title
+      h5 #{title}
+
+mixin docs-pagination-next(title, next)
+  - var location = ''
+  if (slug != parent)
+    - var location = '../'
+  if (next.parent && next.path)
+    - var href = location + next.parent + '/' + next.path + '.html'
+  else if (next.parent)
+    - var href = location + next.parent + '.html'
+  else if (next.path)
+    - var href = location + parent + '/' + next.path + '.html'
+  a(href=href)
+    div.page-item-subtitle Next
+    div.page-item-title
+      h5 #{title}
+
+mixin docs-subheading(id, name, options)
+  if options && options.tag
+    - var tag = options.tag 
+  else 
+    - var tag = 'h4'
+  if options && options.slug
+    - var slug = options.slug
+  if tag == 'h4'
+    +docs-divider('xl')
+  if slug
+    #{tag}.s-subtitle(id=slug + '-' + id)
+      | #{name}
+      a.anchor(href='#'+slug + '-' + id aria-hidden='true') #
+  else
+    #{tag}.s-subtitle(id=id)
+      | #{name}
+      a.anchor(href='#'+id aria-hidden='true') #
