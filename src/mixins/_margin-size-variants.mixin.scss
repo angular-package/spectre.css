@@ -1,6 +1,6 @@
 @use '../functions/get-var' as *;
 
-@mixin margin-size-variant($name: margin) {
+@mixin margin-size-variants($name: margin) {
   &.#{$name}-xs {
     margin: calc(get-var('control-padding-y', $suffix: 'sm') + get-var('unit-1')) calc(get-var('control-padding-x', $suffix: 'sm') + get-var('unit-1'));
   }
