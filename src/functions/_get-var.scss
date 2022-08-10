@@ -1,31 +1,67 @@
+@use 'sass:map';
 @use 'sass:list';
 @use 'sass:string';
 
 @use '../variables' as *;
 
+// Functions.
+@use './var-negative' as *;
+
 // The function returns the CSS var function or calc function with the specified name, prefix, optional suffix, or unit. Unit is used for variables with a separated unit from the value.
 @function get-var(
   $name,
+  $adjust: null,
+  $unit: false,
   $prefix: $var-prefix,
   $suffix: '',
-  $unit: false
 ) {
   // Get `$unit` from the `$name`.
   @if list.length($name) > 1 {
-    $unit: list.nth($name, 2);
+    @if type-of(list.nth($name, 2)) == 'map' {
+      @if (map.has-key(list.nth($name, 2), 'negative')) {
+        $negative: map.get(list.nth($name, 2), 'negative');
+      }
+
+      @if (map.has-key(list.nth($name, 2), 'prefix')) {
+        $prefix: map.get(list.nth($name, 2), 'prefix');
+      }
+
+      @if (map.has-key(list.nth($name, 2), 'suffix')) {
+        $suffix: map.get(list.nth($name, 2), 'suffix');
+      }
+
+      @if (map.has-key(list.nth($name, 2), 'unit')) {
+        $unit: map.get(list.nth($name, 2), 'unit');
+      }
+    } @else {
+      @if list.nth($name, 2) == true or list.nth($name, 2) == false {
+        $unit: list.nth($name, 2);
+      } @else if type-of(list.nth($name, 2)) == 'number' {
+        $adjust: list.nth($name, 2);
+      }
+      @if list.length($name) == 3 {
+        @if type-of(list.nth($name, 3)) == 'boolean' {
+          $unit: list.nth($name, 3);
+        } @else if type-of(list.nth($name, 3)) == 'number' {
+          $adjust: list.nth($name, 3);
+        }
+      }
+    }
     $name: list.nth($name, 1);
   }
   @if string.length($suffix) > 0 {
-    @if $unit {
-      @return calc(var(--#{$prefix}-#{$name}-#{$suffix}) * var(--#{$prefix}-#{$name}-unit));
-    } @else {
-      @return var(--#{$prefix}-#{$name}-#{$suffix});
+    $suffix: '-#{$suffix}';
+  }
+
+  @if $unit == true {
+    @if $adjust != null {
+      @return calc((var(--#{$prefix}-#{$name}#{$suffix}) * var(--#{$prefix}-#{$name}-unit)) + #{$adjust});
     }
+    @return calc(var(--#{$prefix}-#{$name}#{$suffix}) * var(--#{$prefix}-#{$name}-unit));
   } @else {
-    @if $unit {
-      @return calc(var(--#{$prefix}-#{$name}) * var(--#{$prefix}-#{$name}-unit));
-    } @else {
-      @return var(--#{$prefix}-#{$name});
+    @if $adjust != null {
+      @return calc(var(--#{$prefix}-#{$name}#{$suffix}) + #{$adjust});
     }
+    @return var(--#{$prefix}-#{$name}#{$suffix});
   }
 }
