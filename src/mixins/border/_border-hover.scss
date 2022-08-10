@@ -1,9 +1,9 @@
 @use 'border' as *;
 
 @mixin border-hover(
-  $width: 'border-width',
+  $width: '',
   $style: solid,
-  $color: 'border-color',
+  $color: 'border',
   $radius: 'border-radius',
 ) {
   &:hover {
