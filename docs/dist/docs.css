@@ -339,6 +339,16 @@
   color: #66758c;
 }
 
+.docs-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.docs-footer ul li a {
+  font-size: 0.75rem;
+}
+
 .docs-ad {
   background: #f7f8f9;
   border-radius: .1rem;
@@ -1113,3 +1123,5 @@
 .table tbody > tr:last-child > th {
   border-bottom: none !important;
 }
+
+
