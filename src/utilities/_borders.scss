@@ -1,5 +1,7 @@
-@use '../mixins/border' as *;
 @use '../variables' as *;
+
+// Mixins.
+@use '../mixins/border' as *;
 
 // Default border.
 .border,

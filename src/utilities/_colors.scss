@@ -1,7 +1,9 @@
+@use '../variables' as *;
+
+// Mixins.
 @use '../mixins/color/bg-color-variant.mixin' as *;
 @use '../mixins/color/text-color-variant.mixin' as *;
 @use '../mixins/color/text-color-hover-variant.mixin' as *;
-@use '../variables' as *;
 
 // Text colors
 // - Shades.
