@@ -7,7 +7,16 @@ block variables
   - var description = 'Responsive layout grid system and responsive visibility utilities. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('responsive', 'Responsive')
+  +docs-heading(slug, 'Responsive', {parent, name: 'Layout'})
+    +docs-menu('Responsive', {parent, slug},
+      {
+        items: [
+          { anchor: 'responsive-container', name: 'Container' },
+          { anchor: 'responsive-visibility', name: 'Visibility' },
+          { anchor: 'responsive-resizer', name: 'Resizer' },
+        ]
+      }
+    )
     include ../_layout/_ad-g.pug
 
     p Spectre provides a neat responsive layout grid system and responsive visibility utilities.
@@ -33,21 +42,21 @@ block docs-content
           .text-primary.show-sm col-sm-8
 
     p
-      | There are #[code col-xs-<1-12>], #[code col-sm-<1-12>], #[code col-md-<1-12>], #[code col-lg-<1-12>] and #[code col-xl-<1-12>] available for flexible grid across mobile, tablet and desktop viewport usage.
+      | There are #[code col-xs-#{'<1-12>'}], #[code col-sm-#{'<1-12>'}], #[code col-md-#{'<1-12>'}], #[code col-lg-#{'<1-12>'}] and #[code col-xl-#{'<1-12>'}] available for flexible grid across mobile, tablet and desktop viewport usage.
 
     ul
       li
-        | #[code col-xs-<1-12>] apply to window width smaller than or equal to #[strong 480px].
+        | #[code col-xs-#{'<1-12>'}] apply to window width smaller than or equal to #[strong 480px].
       li
-        | #[code col-sm-<1-12>] apply to window width smaller than or equal to #[strong 600px].
+        | #[code col-sm-#{'<1-12>'}] apply to window width smaller than or equal to #[strong 600px].
       li
-        | #[code col-md-<1-12>] apply to window width smaller than or equal to #[strong 840px].
+        | #[code col-md-#{'<1-12>'}] apply to window width smaller than or equal to #[strong 840px].
       li
-        | #[code col-lg-<1-12>] apply to window width smaller than or equal to #[strong 960px].
+        | #[code col-lg-#{'<1-12>'}] apply to window width smaller than or equal to #[strong 960px].
       li
-        | #[code col-xl-<1-12>] apply to window width smaller than or equal to #[strong 1280px].
+        | #[code col-xl-#{'<1-12>'}] apply to window width smaller than or equal to #[strong 1280px].
       li
-        | #[code col-<1-12>] apply to all window width, including the width wider than #[strong 1280px].
+        | #[code col-#{'<1-12>'}] apply to all window width, including the width wider than #[strong 1280px].
 
     pre.code(data-lang='HTML')
       code

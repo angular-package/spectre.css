@@ -7,7 +7,17 @@ block variables
   - var description = 'Layout includes flexbox based responsive grid system with 12 columns. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('grid', 'Flexbox grid')
+  +docs-heading(slug, 'Flexbox grid', {parent, name: 'Layout'})
+    +docs-menu('Flexbox grid', {parent, slug},
+      {
+        items: [
+          { anchor: 'grid-gapless', name: 'Gapless grid' },
+          { anchor: 'grid-nesting', name: 'Grid nesting' },
+          { anchor: 'grid-offset', name: 'Column offset' },
+          { anchor: 'column-auto', name: 'Auto width column' },
+        ]
+      }
+    )
     include ../_layout/_ad-g.pug
 
     p
@@ -21,23 +31,23 @@ block docs-content
       .column
         .bg-primary.text-secondary.docs-block
       .column
-        .bg-secondary.text-primar.docs-block
+        .bg-secondary.text-primary.docs-block
       .column
         .bg-primary.text-secondary.docs-block
       .column
-        .bg-secondary.text-primar.docs-block
+        .bg-secondary.text-primary.docs-block
       .column
         .bg-primary.text-secondary.docs-block
       .column
-        .bg-secondary.text-primar.docs-block
+        .bg-secondary.text-primary.docs-block
       .column
         .bg-primary.text-secondary.docs-block
       .column
-        .bg-secondary.text-primar.docs-block
+        .bg-secondary.text-primary.docs-block
       .column
         .bg-primary.text-secondary.docs-block
       .column
-        .bg-secondary.text-primar.docs-block
+        .bg-secondary.text-primary.docs-block
     .columns
       .column.col-12
         .bg-bg.docs-block col-12 (100%)
@@ -67,7 +77,7 @@ block docs-content
     p
       | Add the #[code columns] class to a container with the #[code container] class.
       | And add any element you want with the #[code column] class inside the container. These columns will take up the space equally.
-      | You can specify the width of each column by adding class #[code col-<1-12>].
+      | You can specify the width of each column by adding class #[code col-#{'<1-12>'}].
 
     +docs-subheading('grid-gapless', 'Gapless grid')
 

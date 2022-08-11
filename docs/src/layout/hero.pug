@@ -2,12 +2,42 @@ extends ../_layout/_docs-layout.pug
 
 block variables
   - var slug = 'hero'
+  - var name = 'Hero'
   - var parent = 'layout'
   - var title = 'Hero - Layout - Spectre.css CSS Framework'
   - var description = 'The Hero container shows key featured content or information. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('hero', 'Hero')
+  +docs-heading(slug, name, { parent, name: 'Layout' })
+    +docs-menu(name, {parent, slug},
+      {
+        name: 'Sizes',
+        items: [
+          { name: 'Available', anchor: 'hero-sizes' },
+          { name: 'Extra small', anchor: 'size-xs' },
+          { name: 'Small', anchor: 'size-sm' },
+          { name: 'Medium', anchor: 'size-md' },
+          { name: 'Large', anchor: 'size-lg' },
+          { name: 'Extra large', anchor: 'size-xl' }
+        ]
+      },
+      {
+        name: 'Colors',
+        items: [
+          { name: 'Available', anchor: 'hero-colors' },
+          { name: 'Accent', anchor: 'accent-color' },
+          { name: 'Primary', anchor: 'primary-colors' },
+          { name: 'Secondary', anchor: 'secondary-colors' },
+          { name: 'Gray', anchor: 'gray-colors' },
+          { name: 'Bg', anchor: 'bg-colors' },
+          { name: 'Border', anchor: 'border-colors' },
+          { name: 'Link', anchor: 'link-colors' },
+          { name: 'Control', anchor: 'control-colors' },
+          { name: 'Body', anchor: 'body-colors' },
+          { name: 'Other', anchor: 'other-colors' }
+        ]
+      }
+    )
     include ../_layout/_ad-g.pug
 
     p
@@ -17,14 +47,14 @@ block docs-content
 
     .docs-demo.columns
       .column.col-12
-        .hero.bg-bg
+        .hero.hero-bg.text-gray
           .hero-body
             h1 Hero title
             p This is a hero example
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="hero bg-bg">
+              <div class="hero hero-bg text-gray">
                 <div class="hero-body">
                   <h1>Hero title</h1>
                   <p>This is a hero example</p>
@@ -33,7 +63,7 @@ block docs-content
 
     .docs-demo.columns
       .column.col-12
-        .s-hero.bg-bg
+        .s-hero.hero-bg.text-gray
           .hero-body
             h1 Hero prefixed title
             p This is a hero prefixed example
@@ -41,7 +71,7 @@ block docs-content
           code
             :highlight(lang="html")
               <!-- Prefixed -->
-              <div class="s-hero bg-bg">
+              <div class="s-hero hero-gray text-gray">
                 <div class="hero-body">
                   <h1>Hero prefixed title</h1>
                   <p>This is a hero prefixed example</p>
@@ -49,6 +79,48 @@ block docs-content
               </div>
 
     +docs-subheading('hero-sizes', 'Hero sizes')
+
+    p
+      | There are following hero sizes available to use.
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.text-center
+          thead
+            tr
+              th
+              th xs 
+              th sm 
+              th md  
+              th lg  
+              th xl 
+          tbody
+            tr
+              td.text-left Available
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left Size
+              td #[code 1rem]
+              td #[code 2rem]
+              td #[code 4rem]
+              td #[code 8rem]
+              td #[code 10rem]
+            tr
+              td.text-left CSS variable
+              td #[code --s-hero-size-xs]
+              td #[code --s-hero-size-sm]
+              td #[code --s-hero-size-md]
+              td #[code --s-hero-size-lg]
+              td #[code --s-hero-size-xl]
     p
       | Use sizes from the 
       code hero-size-xs
@@ -56,17 +128,18 @@ block docs-content
       code hero-size-xl
       |  to the hero container for the smallest to the largest padding. And 
       code hero-size-vh
-      |  as view height <code>100%</code>.
+      |  as view height #[code 100%].
     .docs-demo.columns
       .column.col-12
-        .hero.hero-size-xs.bg-primary
+        +docs-subheading('size-xs', 'Size extra small', { slug, tag: 'h5' })
+        .hero.hero-size-xs.hero-primary
           .hero-body
             h1 Hero extra small
             p This is a hero example size extra small
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="hero hero-size-xs bg-primary">
+              <div class="hero hero-size-xs hero-primary">
                 <div class="hero-body">
                   <h1>Hero extra small</h1>
                   <p>This is a hero example size extra small</p>
@@ -74,14 +147,15 @@ block docs-content
               </div>
 
       .column.col-12
-        .hero.hero-size-sm.bg-primary
+        +docs-subheading('size-sm', 'Size small', { slug, tag: 'h5' })
+        .hero.hero-size-sm.hero-primary
           .hero-body
             h1 Hero small
             p This is a hero example size small
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="hero hero-size-sm bg-primary">
+              <div class="hero hero-size-sm hero-primary">
                 <div class="hero-body">
                   <h1>Hero small</h1>
                   <p>This is a hero example size small</p>
@@ -89,14 +163,15 @@ block docs-content
               </div>
 
       .column.col-12
-        .hero.hero-size-md.bg-primary
+        +docs-subheading('size-md', 'Size medium', { slug, tag: 'h5' })
+        .hero.hero-size-md.hero-primary
           .hero-body
             h1 Hero medium
             p This is a hero example size medium
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="hero hero-size-md bg-primary">
+              <div class="hero hero-size-md hero-primary">
                 <div class="hero-body">
                   <h1>Hero medium</h1>
                   <p>This is a hero example size medium</p>
@@ -104,14 +179,15 @@ block docs-content
               </div>
 
       .column.col-12
-        .hero.hero-size-lg.bg-primary
+        +docs-subheading('size-lg', 'Size large', { slug, tag: 'h5' })
+        .hero.hero-size-lg.hero-primary
           .hero-body
             h1 Hero large
             p This is a hero example size large
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="hero hero-size-lg bg-primary">
+              <div class="hero hero-size-lg hero-primary">
                 <div class="hero-body">
                   <h1>Hero large</h1>
                   <p>This is a hero example size large</p>
@@ -119,431 +195,617 @@ block docs-content
               </div>
 
       .column.col-12
-        .hero.hero-size-xl.bg-primary
+        +docs-subheading('size-xl', 'Size extra large', { slug, tag: 'h5' })
+        .hero.hero-size-xl.hero-primary
           .hero-body
             h1 Hero extra large
             p This is a hero example extra large
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="hero hero-size-xl bg-primary">
+              <div class="hero hero-size-xl hero-primary">
                 <div class="hero-body">
                   <h1>Hero extra large</h1>
                   <p>This is a hero example size extra large</p>
                 </div>
               </div>
 
+
     +docs-subheading('hero-colors', 'Hero colors')
+
     .docs-demo.columns
       .column.col-12
-        .s-hero.bg-dark
+        table.docs-table.table.table-striped.text-center
+          thead
+            tr
+              th
+              th Available
+              th Dark 
+              th Light
+          tbody
+            tr
+              td.text-left
+                a(href="#shades") dark
+              td
+                .bg-primary.docs-dot
+              td 
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left
+                a(href="#shades") light
+              td
+                .bg-primary.docs-dot
+              td 
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left
+                a(href="#accent-color") accent
+              td
+                .bg-primary.docs-dot
+              td 
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left
+                a(href="#primary-colors") primary
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#secondary-colors") secondary
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#gray-colors") gray
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#bg-colors") bg
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#border-colors") border
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#control-colors") link
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#control-colors") disabled
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left
+                a(href="#control-colors") error
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left
+                a(href="#control-colors") info
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left
+                a(href="#control-colors") success
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left
+                a(href="#body-colors") body-bg
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left
+                a(href="#body-colors") body-font
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left
+                a(href="#other-colors") code
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left
+                a(href="#other-colors") highlight
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+
+    .docs-demo.columns
+      .column.col-12
+        +docs-subheading('dark-color', 'Dark color', { slug, tag: 'h5' })
+        .s-hero.hero-dark
           .hero-body
             h1 Hero dark color
-            p This is a hero example dark background .bg-dark
+            p This is a hero example dark background .hero-dark
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-dark">
+              <div class="s-hero hero-dark">
                 <div class="hero-body">
                   <h1>Hero dark color</h1>
-                  <p>This is a hero example dark background .bg-dark</p>
+                  <p>This is a hero example dark background .hero-dark</p>
                 </div>
               </div>
 
       .column.col-12
-        .s-hero.bg-light
+        +docs-subheading('light-color', 'Light color', { slug, tag: 'h5' })
+        .s-hero.hero-light
           .hero-body
             h1 Hero light color
-            p This is a hero example light background .bg-light
+            p This is a hero example light background .hero-light
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-light">
+              <div class="s-hero hero-light">
                 <div class="hero-body">
                   <h1>Hero light color</h1>
-                  <p>This is a hero example light background .bg-light</p>
+                  <p>This is a hero example light background .hero-light</p>
                 </div>
               </div>
 
       .column.col-12
-        .s-hero.bg-accent
+        +docs-subheading('accent-color', 'Accent color', { slug, tag: 'h5' })
+        .s-hero.hero-accent
           .hero-body
             h1 Hero accent color
-            p This is a hero example accent background .bg-accent
+            p This is a hero example accent background .hero-accent
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-accent">
+              <div class="s-hero hero-accent">
                 <div class="hero-body">
                   <h1>Hero accent color</h1>
-                  <p>This is a hero example accent background .bg-accent</p>
+                  <p>This is a hero example accent background .hero-accent</p>
                 </div>
               </div>
 
       .column.col-12
-        .s-hero.bg-primary
+        +docs-subheading('primary-colors', 'Primary colors', { slug, tag: 'h5' })
+        .s-hero.hero-primary
           .hero-body
             h1 Hero primary color
-            p This is a hero example primary background .bg-primary
+            p This is a hero example primary background .hero-primary
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-primary">
+              <div class="s-hero hero-primary">
                 <div class="hero-body">
                   <h1>Hero primary color</h1>
-                  <p>This is a hero example primary background .bg-primary</p>
+                  <p>This is a hero example primary background .hero-primary</p>
                 </div>
               </div>
-
-      .column.col-12
-        .s-hero.bg-primary-dark
+        .s-hero.hero-primary-dark
           .hero-body
             h1 Hero primary color dark
-            p This is a hero example primary dark background .bg-primary-dark
+            p This is a hero example primary dark background .hero-primary-dark
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-primary-dark">
+              <div class="s-hero hero-primary-dark">
                 <div class="hero-body">
                   <h1>Hero primary color dark</h1>
-                  <p>This is a hero example primary dark background .bg-primary-dark</p>
+                  <p>This is a hero example primary dark background .hero-primary-dark</p>
                 </div>
               </div>
-
-      .column.col-12
-        .s-hero.bg-primary-light
+        .s-hero.hero-primary-light
           .hero-body
             h1 Hero primary color light
-            p This is a hero example primary light background .bg-primary-light
+            p This is a hero example primary light background .hero-primary-light
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-primary-light">
+              <div class="s-hero hero-primary-light">
                 <div class="hero-body">
                   <h1>Hero primary color light</h1>
-                  <p>This is a hero example primary light background .bg-primary-light</p>
+                  <p>This is a hero example primary light background .hero-primary-light</p>
                 </div>
               </div>
+
       .column.col-12
-        .s-hero.bg-secondary
+        +docs-subheading('secondary-colors', 'Secondary colors', { slug, tag: 'h5' })
+        .s-hero.hero-secondary
           .hero-body
             h1 Hero secondary color
-            p This is a hero example secondary background .bg-secondary
+            p This is a hero example secondary background .hero-secondary
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-secondary">
+              <div class="s-hero hero-secondary">
                 <div class="hero-body">
                   <h1>Hero secondary color</h1>
-                  <p>This is a hero example secondary background .bg-secondary</p>
+                  <p>This is a hero example secondary background .hero-secondary</p>
                 </div>
               </div>
-
-      .column.col-12
-        .s-hero.bg-secondary-dark
+        .s-hero.hero-secondary-dark
           .hero-body
             h1 Hero secondary color dark
-            p This is a hero example secondary dark background .bg-secondary-dark
+            p This is a hero example secondary dark background .hero-secondary-dark
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-secondary-dark">
+              <div class="s-hero hero-secondary-dark">
                 <div class="hero-body">
                   <h1>Hero secondary color dark</h1>
-                  <p>This is a hero example secondary dark background .bg-secondary-dark</p>
+                  <p>This is a hero example secondary dark background .hero-secondary-dark</p>
                 </div>
               </div>
-
-      .column.col-12
-        .s-hero.bg-secondary-light
+        .s-hero.hero-secondary-light
           .hero-body
             h1 Hero secondary color light
-            p This is a hero example secondary light background .bg-secondary-light
+            p This is a hero example secondary light background .hero-secondary-light
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-primary-light">
+              <div class="s-hero hero-primary-light">
                 <div class="hero-body">
                   <h1>Hero secondary color light</h1>
-                  <p>This is a hero example secondary light background .bg-secondary-light</p>
+                  <p>This is a hero example secondary light background .hero-secondary-light</p>
                 </div>
               </div>
 
       .column.col-12
-        .s-hero.bg-gray
+        +docs-subheading('gray-colors', 'Gray colors', { slug, tag: 'h5' })
+        .s-hero.hero-gray
           .hero-body
             h1 Hero gray color
-            p This is a hero example gray background .bg-gray
+            p This is a hero example gray background .hero-gray
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-gray">
+              <div class="s-hero hero-gray">
                 <div class="hero-body">
                   <h1>Hero gray color</h1>
-                  <p>This is a hero example gray background .bg-gray</p>
+                  <p>This is a hero example gray background .hero-gray</p>
                 </div>
               </div>
-
-      .column.col-12
-        .s-hero.bg-gray-dark
+        .s-hero.hero-gray-dark
           .hero-body
             h1 Hero gray color dark
-            p This is a hero example gray dark background .bg-gray-dark
+            p This is a hero example gray dark background .hero-gray-dark
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-gray-dark">
+              <div class="s-hero hero-gray-dark">
                 <div class="hero-body">
                   <h1>Hero gray dark color</h1>
-                  <p>This is a hero example gray dark background .bg-gray-dark</p>
+                  <p>This is a hero example gray dark background .hero-gray-dark</p>
                 </div>
               </div>
-
-      .column.col-12
-        .s-hero.bg-gray-light
+        .s-hero.hero-gray-light
           .hero-body
             h1 Hero gray color light
-            p This is a hero example gray light background .bg-gray-light
+            p This is a hero example gray light background .hero-gray-light
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-gray-light">
+              <div class="s-hero hero-gray-light">
                 <div class="hero-body">
                   <h1>Hero gray light color</h1>
-                  <p>This is a hero example gray light background .bg-gray-light</p>
+                  <p>This is a hero example gray light background .hero-gray-light</p>
                 </div>
               </div>
 
       .column.col-12
-        .s-hero.bg-bg
+        +docs-subheading('bg-colors', 'Bg colors', { slug, tag: 'h5' })
+        .s-hero.hero-bg
           .hero-body
             h1 Hero bg color
-            p This is a hero example bg background .bg-bg
+            p This is a hero example bg background .hero-bg
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-bg">
+              <div class="s-hero hero-bg">
                 <div class="hero-body">
                   <h1>Hero bg color</h1>
-                  <p>This is a hero example bg background .bg-bg</p>
+                  <p>This is a hero example bg background .hero-bg</p>
                 </div>
               </div>
-      .column.col-12
-        .s-hero.bg-bg-dark
+        .s-hero.hero-bg-dark
           .hero-body
             h1 Hero bg color dark
-            p This is a hero example bg background .bg-bg-dark
+            p This is a hero example bg background .hero-bg-dark
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-bg-dark">
+              <div class="s-hero hero-bg-dark">
                 <div class="hero-body">
                   <h1>Hero bg color dark</h1>
-                  <p>This is a hero example bg dark background .bg-bg-dark</p>
+                  <p>This is a hero example bg dark background .hero-bg-dark</p>
                 </div>
               </div>
-      .column.col-12
-        .s-hero.bg-bg-light
+        .s-hero.hero-bg-light
           .hero-body
             h1 Hero bg color light
-            p This is a hero example bg background .bg-bg-light
+            p This is a hero example bg background .hero-bg-light
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-bg-light">
+              <div class="s-hero hero-light">
                 <div class="hero-body">
                   <h1>Hero bg color light</h1>
-                  <p>This is a hero example bg light background .bg-bg-light</p>
+                  <p>This is a hero example bg light background .hero-bg-light</p>
                 </div>
               </div>
 
       .column.col-12
-        .s-hero.bg-border
+        +docs-subheading('border-colors', 'Border colors', { slug, tag: 'h5' })
+        .s-hero.hero-border
           .hero-body
             h1 Hero border color
-            p This is a hero example border background .bg-border
+            p This is a hero example border background .hero-border
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-border">
+              <div class="s-hero hero-border">
                 <div class="hero-body">
                   <h1>Hero border color</h1>
-                  <p>This is a hero example border background .bg-border</p>
+                  <p>This is a hero example border background .hero-border</p>
                 </div>
               </div>
-      .column.col-12
-        .s-hero.bg-border-dark
+        .s-hero.hero-border-dark
           .hero-body
             h1 Hero border color dark
-            p This is a hero example border background .bg-border-dark
+            p This is a hero example border background .hero-border-dark
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero border-bg-dark">
+              <div class="s-hero hero-border-dark">
                 <div class="hero-body">
                   <h1>Hero border color dark</h1>
-                  <p>This is a hero example border dark background .bg-border-dark</p>
+                  <p>This is a hero example border dark background .hero-border-dark</p>
                 </div>
               </div>
-      .column.col-12
-        .s-hero.bg-border-light
+        .s-hero.hero-border-light
           .hero-body
             h1 Hero border color light
-            p This is a hero example border background .bg-border-light
+            p This is a hero example border background .hero-border-light
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-border-light">
+              <div class="s-hero hero-border-light">
                 <div class="hero-body">
                   <h1>Hero border color light</h1>
-                  <p>This is a hero example border light background .bg-border-light</p>
+                  <p>This is a hero example border light background .hero-border-light</p>
                 </div>
               </div>
 
       .column.col-12
-        .s-hero.bg-disabled
-          .hero-body
-            h1 Hero disabled color
-            p This is a hero example disabled background .bg-disabled
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <div class="s-hero bg-disabled">
-                <div class="hero-body">
-                  <h1>Hero disabled color</h1>
-                  <p>This is a hero example disabled background .bg-disabled</p>
-                </div>
-              </div>
-      .column.col-12
-        .s-hero.bg-error
-          .hero-body
-            h1 Hero error color
-            p This is a hero example error background .bg-error
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <div class="s-hero bg-error">
-                <div class="hero-body">
-                  <h1>Hero error color</h1>
-                  <p>This is a hero example error background .bg-error</p>
-                </div>
-              </div>
-      .column.col-12
-        .s-hero.bg-info
-          .hero-body
-            h1 Hero info color
-            p This is a hero example info background .bg-info
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <div class="s-hero bg-info">
-                <div class="hero-body">
-                  <h1>Hero info color</h1>
-                  <p>This is a hero example info background .bg-info</p>
-                </div>
-              </div>
-      .column.col-12
-        .s-hero.bg-success
-          .hero-body
-            h1 Hero success color
-            p This is a hero example success background .bg-success
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <div class="s-hero bg-success">
-                <div class="hero-body">
-                  <h1>Hero success color</h1>
-                  <p>This is a hero example success background .bg-success</p>
-                </div>
-              </div>
-      .column.col-12
-        .s-hero.bg-warning
-          .hero-body
-            h1 Hero warning color
-            p This is a hero example warning background .bg-warning
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <div class="s-hero bg-warning">
-                <div class="hero-body">
-                  <h1>Hero warning color</h1>
-                  <p>This is a hero example warning background .bg-warning</p>
-                </div>
-              </div>
-
-      .column.col-12
-        .s-hero.bg-link
+        +docs-subheading('link-colors', 'Link colors', { slug, tag: 'h5' })
+        .s-hero.hero-link
           .hero-body
             h1 Hero link color
-            p This is a hero example link background .bg-link
+            p This is a hero example link background .hero-link
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-link">
+              <div class="s-hero hero-link">
                 <div class="hero-body">
                   <h1>Hero link color</h1>
-                  <p>This is a hero example link background .bg-link</p>
+                  <p>This is a hero example link background .hero-link</p>
                 </div>
               </div>
-      .column.col-12
-        .s-hero.bg-link-dark
+        .s-hero.hero-link-dark
           .hero-body
             h1 Hero link color dark
-            p This is a hero example link background .bg-link-dark
+            p This is a hero example link background .hero-link-dark
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero link-bg-dark">
+              <div class="s-hero link-hero-dark">
                 <div class="hero-body">
                   <h1>Hero link color dark</h1>
-                  <p>This is a hero example link dark background .bg-link-dark</p>
+                  <p>This is a hero example link dark background .hero-link-dark</p>
                 </div>
               </div>
-      .column.col-12
-        .s-hero.bg-link-light
+
+        .s-hero.hero-link-light
           .hero-body
             h1 Hero link color light
-            p This is a hero example link background .bg-link-light
+            p This is a hero example link background .hero-link-light
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-link-light">
+              <div class="s-hero hero-link-light">
                 <div class="hero-body">
                   <h1>Hero link color light</h1>
-                  <p>This is a hero example link light background .bg-link-light</p>
+                  <p>This is a hero example link light background .hero-link-light</p>
                 </div>
               </div>
 
       .column.col-12
-        .s-hero.bg-code
+        +docs-subheading('control-colors', 'Control colors', { slug, tag: 'h5' })
+        .s-hero.hero-disabled
           .hero-body
-            h1 Hero code color
-            p This is a hero example code background .bg-code
+            h1 Hero disabled color
+            p This is a hero example disabled background .hero-disabled
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-code">
+              <div class="s-hero hero-disabled"> 
                 <div class="hero-body">
-                  <h1>Hero code color</h1>
-                  <p>This is a hero example code background .bg-code</p>
+                  <h1>Hero disabled color</h1>
+                  <p>This is a hero example disabled background .hero-disabled</p>
                 </div>
               </div>
+        .s-hero.hero-error
+          .hero-body
+            h1 Hero error color
+            p This is a hero example error background .hero-error
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <div class="s-hero hero-error">
+                <div class="hero-body">
+                  <h1>Hero error color</h1>
+                  <p>This is a hero example error background .hero-error</p>
+                </div>
+              </div>
+        .s-hero.hero-info
+          .hero-body
+            h1 Hero info color
+            p This is a hero example info background .hero-info
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <div class="s-hero hero-info">
+                <div class="hero-body">
+                  <h1>Hero info color</h1>
+                  <p>This is a hero example info background .hero-info</p>
+                </div>
+              </div>
+        .s-hero.hero-success
+          .hero-body
+            h1 Hero success color
+            p This is a hero example success background .hero-success
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <div class="s-hero hero-success">
+                <div class="hero-body">
+                  <h1>Hero success color</h1>
+                  <p>This is a hero example success background .hero-success</p>
+                </div>
+              </div>
+        .s-hero.hero-warning
+          .hero-body
+            h1 Hero warning color
+            p This is a hero example warning background .hero-warning
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <div class="s-hero hero-warning">
+                <div class="hero-body">
+                  <h1>Hero warning color</h1>
+                  <p>This is a hero example warning background .hero-warning</p>
+                </div>
+              </div>
+
       .column.col-12
-        .s-hero.bg-highlight.text-warning
+        +docs-subheading('body-colors', 'Body colors', { slug, tag: 'h5' })
+        .s-hero.hero-body-bg
+          .hero-body
+            h1 Hero body-bg color
+            p This is a hero example body-bg background .hero-body-bg
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <div class="s-hero hero-body-bg">
+                <div class="hero-body">
+                  <h1>Hero body-bg color</h1>
+                  <p>This is a hero example body-bg background .hero-body-bg</p>
+                </div>
+              </div>
+        .s-hero.hero-body-font
           .hero-body
             h1 Hero highlight color
-            p This is a hero example highlight background .bg-highlight
+            p This is a hero example highlight background .hero-body-font
         pre.code(data-lang='HTML')
           code
             :highlight(lang="html")
-              <div class="s-hero bg-highlight text-warning">
+              <div class="s-hero hero-body-font">
                 <div class="hero-body">
-                  <h1>Hero highlight color</h1>
-                  <p>This is a hero example highlight background .bg-highlight</p>
+                  <h1>Hero body-font color</h1>
+                  <p>This is a hero example body-font background .hero-body-font</p>
                 </div>
               </div>
 
-    +docs-previous-next('layout', {url: 'grid', name: 'Flexbox grid'}, {url: 'navbar', name: 'Navbar'})
+      .column.col-12
+        +docs-subheading('other-colors', 'Other colors', { slug, tag: 'h5' })
+        .s-hero.hero-code
+          .hero-body
+            h1 Hero code color
+            p This is a hero example code background .hero-code
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <div class="s-hero hero-code">
+                <div class="hero-body">
+                  <h1>Hero code color</h1>
+                  <p>This is a hero example code background .hero-code</p>
+                </div>
+              </div>
+        .s-hero.hero-highlight
+          .hero-body
+            h1 Hero highlight color
+            p This is a hero example highlight background .hero-highlight
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <div class="s-hero hero-highlight">
+                <div class="hero-body">
+                  <h1>Hero highlight color</h1>
+                  <p>This is a hero example highlight background .hero-highlight</p>
+                </div>
+              </div>
+
+    +docs-pagination({path: 'grid', name: 'Flexbox grid'}, {path: 'navbar', name: 'Navbar'})
 
     include ../_layout/_ad-c.pug
 
