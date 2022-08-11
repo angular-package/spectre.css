@@ -8,9 +8,25 @@ block variables
   - var description = 'Icons are single-element, responsive and pure CSS icons. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading(slug, name, { id: parent, name: 'Elements' })
+  +docs-heading(slug, name, { parent, name: 'Elements' })
+    +docs-menu(name, {parent, slug},
+      {
+        name: 'Icons',
+        items: [
+          { anchor: 'icons-navigation' , name: 'Navigation'},
+          { anchor: 'icons-action', name: 'Action '},
+          { anchor: 'icons-object', name: 'Object'},
+        ]
+      },
+      {
+        items: [
+          { anchor: 'icons-sizes', name: 'Icon sizes'}
+        ]
+      }
+    )
     p
       small.label.label-secondary CSS ONLY
+      small.label.label-secondary FONT AWESOME
 
     include ../_layout/_ad-g.pug
 

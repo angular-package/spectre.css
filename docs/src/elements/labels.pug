@@ -2,12 +2,36 @@ extends ../_layout/_docs-layout.pug
 
 block variables
   - var slug = 'labels'
+  - var name = 'Labels'
   - var parent = 'elements'
   - var title = 'Labels - Elements - Spectre.css CSS Framework'
   - var description = 'Labels are formatted text tags for highlighted, informative information. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('labels', 'Labels')
+  +docs-heading(slug, name, { parent, name: 'Elements' })
+    +docs-menu(name, {parent, slug},
+      {
+        items: [
+          { anchor: 'hero-sizes' , name: 'Sizes' },
+        ]
+      },
+      {
+        name: 'Colors',
+        items: [
+          { anchor: 'labels-available-colors', name: 'Available colors' },
+          { anchor: 'accent-color' , name: 'Accent' },
+          { anchor: 'primary-colors', name: 'Primary' },
+          { anchor: 'primary-colors', name: 'Secondary' },
+          { anchor: 'gray-colors', name: 'Gray' },
+          { anchor: 'bg-colors' , name: 'Bg' },
+          { anchor: 'border-colors', name: 'Border' },
+          { anchor: 'link-colors' , name: 'Link' },
+          { anchor: 'control-colors', name: 'Control' },
+          { anchor: 'body-colors', name: 'Body' },
+          { anchor: 'other-colors', name: 'Other' }
+        ]
+      }
+    )
     include ../_layout/_ad-g.pug
 
     p Labels are formatted text tags for highlighted, informative information.
@@ -18,12 +42,9 @@ block docs-content
 
     p Add the #[code label] class to <code>#{'<span>'}</code> or <code>#{'<small>'}</code> elements.
 
-    +docs-subheading('labels-colors', 'Available label colors')
+    +docs-subheading('labels-available-colors', 'Available label colors')
 
-    p There are labels of all the Spectre.css colors, and to use them add the <code>label-</code> class with a color name, for example <code>label-primary-dark</code>
-
-
-    +docs-subheading('default-prefix', 'Default CSS variable\'s prefix')
+    p There are labels of all the #[b Spectre.css] colors, and to use them add the #[code label-] class with a color name, for example #[code label-primary-dark].
 
     .docs-demo.columns
       .column.col-12
@@ -37,7 +58,7 @@ block docs-content
           tbody
             tr
               td.text-left
-                a#dark dark
+                a(href="#shades") dark
               td
                 .bg-primary.docs-dot
               td
@@ -45,7 +66,8 @@ block docs-content
               td
                 .bg-secondary.docs-dot
             tr
-              td.text-left light
+              td.text-left
+                a(href="#shades") light
               td
                 .bg-primary.docs-dot
               td
@@ -53,7 +75,8 @@ block docs-content
               td
                 .bg-secondary.docs-dot
             tr
-              td.text-left accent
+              td.text-left
+                a(href="#accent-color") accent
               td
                 .bg-primary.docs-dot
               td
@@ -61,7 +84,8 @@ block docs-content
               td
                 .bg-secondary.docs-dot
             tr
-              td.text-left primary
+              td.text-left
+                a(href="#primary-colors") primary
               td
                 .bg-primary.docs-dot
               td
@@ -69,7 +93,8 @@ block docs-content
               td
                 .bg-primary.docs-dot
             tr
-              td.text-left secondary
+              td.text-left
+                a(href="#secondary-colors") secondary
               td
                 .bg-primary.docs-dot
               td
@@ -77,7 +102,8 @@ block docs-content
               td
                 .bg-primary.docs-dot
             tr
-              td.text-left gray
+              td.text-left
+                a(href="#gray-colors") gray
               td
                 .bg-primary.docs-dot
               td
@@ -85,7 +111,8 @@ block docs-content
               td
                 .bg-primary.docs-dot
             tr
-              td.text-left bg
+              td.text-left
+                a(href="#bg-colors") bg
               td
                 .bg-primary.docs-dot
               td
@@ -93,7 +120,8 @@ block docs-content
               td
                 .bg-primary.docs-dot
             tr
-              td.text-left border
+              td.text-left
+                a(href="#border-colors") border
               td
                 .bg-primary.docs-dot
               td
@@ -101,7 +129,8 @@ block docs-content
               td
                 .bg-primary.docs-dot
             tr
-              td.text-left disabled
+              td.text-left
+                a(href="#control-colors") link
               td
                 .bg-primary.docs-dot
               td
@@ -109,7 +138,8 @@ block docs-content
               td
                 .bg-secondary.docs-dot
             tr
-              td.text-left error
+              td.text-left
+                a(href="#control-colors") disabled
               td
                 .bg-primary.docs-dot
               td
@@ -117,7 +147,8 @@ block docs-content
               td
                 .bg-secondary.docs-dot
             tr
-              td.text-left info
+              td.text-left
+                a(href="#control-colors") error
               td
                 .bg-primary.docs-dot
               td
@@ -125,7 +156,8 @@ block docs-content
               td
                 .bg-secondary.docs-dot
             tr
-              td.text-left success
+              td.text-left
+                a(href="#control-colors") info
               td
                 .bg-primary.docs-dot
               td
@@ -133,7 +165,8 @@ block docs-content
               td
                 .bg-secondary.docs-dot
             tr
-              td.text-left link
+              td.text-left
+                a(href="#control-colors") success
               td
                 .bg-primary.docs-dot
               td
@@ -141,7 +174,8 @@ block docs-content
               td
                 .bg-secondary.docs-dot
             tr
-              td.text-left code
+              td.text-left
+                a(href="#other-colors") code
               td
                 .bg-primary.docs-dot
               td
@@ -149,7 +183,8 @@ block docs-content
               td
                 .bg-secondary.docs-dot
             tr
-              td.text-left highlight
+              td.text-left
+                a(href="#other-colors") highlight
               td
                 .bg-primary.docs-dot
               td
@@ -157,7 +192,8 @@ block docs-content
               td
                 .bg-secondary.docs-dot
             tr
-              td.text-left body-bg
+              td.text-left
+                a(href="#body-colors") body-bg
               td
                 .bg-primary.docs-dot
               td
@@ -165,19 +201,33 @@ block docs-content
               td
                 .bg-secondary.docs-dot
             tr
-              td.text-left body-font
+              td.text-left
+                a(href="#body-colors") body-font
               td
-                .bg-secondary.docs-dot
+                .bg-primary.docs-dot
               td
                 .bg-secondary.docs-dot
               td
                 .bg-secondary.docs-dot
 
-    +docs-subheading('labels-available-colors', 'Label colors')
+    +docs-subheading('labels-colors', 'Label colors')
 
     .docs-demo.columns
       .column
-        h5 Accent
+        h5#shades Shades
+        span.label.label-dark.mr-1 dark label
+        span.label.label-light.mr-1 light label
+
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Dark & Light colors -->
+              <span class="label label-dark">dark label</span>
+              <span class="label label-light">light label</span>
+
+    .docs-demo.columns
+      .column
+        h5#accent-color Accent color
         span.label.label-accent.mr-1 accent label
 
         pre.code(data-lang='HTML')
@@ -188,7 +238,7 @@ block docs-content
 
     .docs-demo.columns
       .column
-        h5 Primary
+        h5#primary-colors Primary colors
         p You can add another class #[code label-primary], #[code label-primary-dark], #[code label-primary-light] for labels colored with primary colors.
         span.label.label-primary.mr-1 primary label
         span.label.label-primary-dark.mr-1 primary label dark
@@ -203,7 +253,7 @@ block docs-content
 
     .docs-demo.columns
       .column
-        h5 Secondary
+        h5#secondary-colors Secondary colors
         p You can add another class #[code label-secondary], #[code label-secondary-dark], #[code label-secondary-light] for labels colored with secondary colors.
         span.label.label-secondary.mr-1 secondary label
         span.label.label-secondary-dark.mr-1 secondary label dark
@@ -218,7 +268,67 @@ block docs-content
 
     .docs-demo.columns
       .column
-        h5 Control
+        h5#gray-colors Gray colors
+        p You can add another class #[code label-gray], #[code label-gray-dark], #[code label-gray-light] for labels colored with gray colors.
+        span.label.label-gray.mr-1 gray label
+        span.label.label-gray-dark.mr-1 gray label dark
+        span.label.label-gray-light.mr-1 gray label light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Gray color labels -->
+              <span class="label label-gray">gray label</span>
+              <span class="label label-gray-dark">gray label dark</span>
+              <span class="label label-gray-light">gray label light</span>
+
+    .docs-demo.columns
+      .column
+        h5#bg-colors Bg colors
+        p You can add another class #[code label-bg], #[code label-bg-dark], #[code label-bg-light] for labels colored with bg colors.
+        span.label.label-bg.mr-1 bg label
+        span.label.label-bg-dark.mr-1 bg label dark
+        span.label.label-bg-light.mr-1 bg label light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Bg color labels -->
+              <span class="label label-bg">bg label</span>
+              <span class="label label-bg-dark">bg label dark</span>
+              <span class="label label-bg-light">bg label light</span>
+
+    .docs-demo.columns
+      .column
+        h5#border-colors Border colors
+        p You can add another class #[code label-border], #[code label-border-dark], #[code label-border-light] for labels colored with border colors.
+        span.label.label-border.mr-1 border label
+        span.label.label-border-dark.mr-1 border label dark
+        span.label.label-border-light.mr-1 border label light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Border color labels -->
+              <span class="label label-border">border label</span>
+              <span class="label label-border-dark">border label dark</span>
+              <span class="label label-border-light">border label light</span>
+
+    .docs-demo.columns
+      .column
+        h5#link-colors Link colors
+        p You can add another class #[code label-link], #[code label-link-dark], #[code label-link-light] for labels colored with link colors.
+        span.label.label-link.mr-1 link label
+        span.label.label-link-dark.mr-1 link label dark
+        span.label.label-link-light.mr-1 link label light
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Link color labels -->
+              <span class="label label-link">link label</span>
+              <span class="label label-link-dark">link label dark</span>
+              <span class="label label-link-light">link label light</span>
+
+    .docs-demo.columns
+      .column
+        h5#control-colors Control colors
         p You can add another class #[code label-disabled], #[code label-error], #[code label-info], #[code label-success] and #[code label-warning] for colored labels.
         span.label.label-disabled.mr-1 disabled label
         span.label.label-error.mr-1 error label
@@ -235,15 +345,93 @@ block docs-content
               <span class="label label-success">success label</span>
               <span class="label label-warning">warning label</span>
 
+    .docs-demo.columns
+      .column
+        h5#other-colors Other colors
+        p You can add another class #[code label-code] or #[code label-highlight] for labels colored.
+        span.label.label-code.mr-1 code label
+        span.label.label-highlight.mr-1 highlight label
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Other color labels -->
+              <span class="label label-code">link label</span>
+              <span class="label label-highlight">highlight label</span>
+
+    .docs-demo.columns
+      .column
+        h5#body-colors Body colors
+        p You can add another class #[code label-body-bg] or #[code label-body-font] for labels body colors colored.
+        span.label.label-body-bg.mr-1 body-bg label
+        span.label.label-body-font.mr-1 body-font label
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Body color labels -->
+              <span class="label label-body-bg">body-bg label</span>
+              <span class="label label-body-font">body-font label</span>
+
+    +docs-subheading('labels-sizes', 'Label sizes')
+
+    p There are labels with the size changed by padding, and to use it add the #[code label-size] class with a size, for example #[code label-size-sm]. You can mix it with any color above.
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.text-center
+          thead
+            tr
+              th xs 
+              th sm 
+              th md  
+              th lg  
+              th xl 
+              th 2x 
+          tbody
+            tr
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+
+    .docs-demo.columns
+      .column
+        h5#label-sizes Label sizes
+        span.label.label-primary.label-size-xs.mb-1 primary extra small label
+        br
+        span.label.label-primary.label-size-sm.mb-1 primary small label
+        br
+        span.label.label-primary.label-size-md.mb-1 primary medium label
+        br
+        span.label.label-primary.label-size-lg.mb-1 primary large label
+        br
+        span.label.label-primary.label-size-xl.mb-1 primary extra large label
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Sized labels -->
+              <span class="label label-primary label-size-xs">primary extra small label</span>
+              <span class="label label-primary label-size-sm">primary small label</span>
+              <span class="label label-primary label-size-md">primary medium label</span>
+              <span class="label label-primary label-size-lg">primary large label</span>
+              <span class="label label-primary label-size-xl">primary extra large label</span>
+
     +docs-subheading('labels-rounded', 'Rounded labels')
-    
+
     .docs-demo.columns
       .column
         span.label.label-rounded.mr-1 default label
         span.label.label-rounded.label-primary primary label
 
     p
-      | Add the #[code label-rounded] class to have rounded labels.
+      | Add the #[code label-rounded] class to have rounded labels. You can mix it with, rounded, any size and color above.
 
     pre.code(data-lang='HTML')
       code
@@ -251,7 +439,74 @@ block docs-content
           <!-- rounded labels -->
           <span class="label label-rounded label-primary">primary label</span>
 
-    +docs-previous-next('elements', {url: 'icons', name: 'Icons.css'}, {url: 'media', name: 'Media'})
+    +docs-subheading('labels-bordered', 'Bordered labels')
+
+    p
+      | Add the #[code border] class to have bordered labels. You can mix it with any size and color above.
+
+    .docs-demo.columns
+      .column.col-12
+        h5#border-available-sizes Available sizes
+        table.docs-table.table.text-center
+          thead
+            tr
+              th xs 
+              th sm 
+              th md  
+              th lg  
+              th xl 
+              th 2x 
+          tbody
+            tr
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+
+    .docs-demo.columns
+      .column
+        h5#border-sizes Sizes
+        p
+          | Add the #[code border-lg] class to have large border.
+        span.label.border.mr-1 border label
+        span.label.border-lg.mr-1 border large label
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Bordered labels -->
+              <span class="label border">border label</span>
+              <span class="label border-lg">border large label</span>
+
+    .docs-demo.columns
+      .column
+        h5#border-sizes Shades
+        p
+          | Add the #[code border-light] or #[code border-dark] class to have light or dark color border. And also add to each shade #[code -lg] for large size.
+        span.label.label-border.border-light.mr-1 border light label
+        span.label.label-light.border-light-lg.mr-1 border light large label
+        span.label.label-border-light.border-dark.mr-1 border dark label
+        span.label.label-border-light.border-dark-lg.mr-1 border dark large label
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <!-- Bordered labels -->
+              <span class="label label-border border-light">border light label</span>
+              <span class="label label-border border-light-lg">border light large label</span>
+              <span class="label label-border-light border-dark">border dark label</span>
+              <span class="label label-border-light border-dark-lg">border dark large label</span>
+
+        p.toast.toast-info
+          | You can add new border variants with a #[a(href="../getting-started/custom.html#customizable-borders") mixin] or modify border colors by changing #[a(href="../getting-started/variables.html#border-colors") CSS variables], and sizes by changing #[a(href="../getting-started/variables.html#variables-border") CSS variables].
+
+    +docs-pagination({path: 'icons', name: 'Icons.css'}, {path: 'media', name: 'Media'})
 
     include ../_layout/_ad-c.pug
 

@@ -8,13 +8,29 @@ block variables
   - var description = 'Forms provide the most common control styles used in forms, including input, textarea, select, checkbox, radio and switch. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading(slug, name, { id: parent, name: 'Elements' })
+  +docs-heading(slug, name, { parent, name: 'Elements' })
+    +docs-menu(name, {parent, slug},
+      { anchor: 'input', name: 'Input' },
+      { anchor: 'textarea', name: 'Textarea' },
+      { anchor: 'select', name: 'Select' },
+      { anchor: 'radio', name: 'Radio' },
+      { anchor: 'switch', name: 'Switch' },
+      { anchor: 'checkbox', name: 'Checkbox' },
+      { anchor: 'inline', name: 'Inline forms' },
+      { anchor: 'horizontal', name: 'Horizontal forms' },
+      { anchor: 'sizes', name: 'Sizes' },
+      { anchor: 'icons', name: 'Form icons' },
+      { anchor: 'input-types', name: 'Input types' },
+      { anchor: 'input-groups', name: 'Input groups' },
+      { anchor: 'validation', name: 'Validation styles' },
+      { anchor: 'disabled', name: 'Disabled styles' }
+    )
     include ../_layout/_ad-g.pug
 
     p
       | Forms provide the most common control styles used in forms, including input, textarea, select, checkbox, radio and switch.
 
-    +docs-subheading('forms-input', 'Form input')
+    +docs-subheading('input', 'Form input', {slug})
 
     .docs-demo.columns
       .column.col-6.col-xs-12
@@ -34,7 +50,7 @@ block docs-content
             <input class="form-input" type="text" id="input-example-1" placeholder="Name">
           </div>
 
-    +docs-subheading('forms-textarea', 'Form textarea')
+    +docs-subheading('textarea', 'Form textarea', {slug})
 
     .docs-demo.columns
       .column.col-6.col-xs-12
@@ -51,7 +67,7 @@ block docs-content
             <textarea class="form-input" id="input-example-3" placeholder="Textarea" rows="3"></textarea>
           </div>
 
-    +docs-subheading('forms-select', 'Form select')
+    +docs-subheading('select', 'Form select', {slug})
 
     .docs-demo.columns
       .column.col-6.col-xs-12
@@ -81,7 +97,7 @@ block docs-content
             </select>
           </div>
 
-    +docs-subheading('forms-radio', 'Form radio')
+    +docs-subheading('radio', 'Form radio', {slug})
 
     .docs-demo.columns
       .column.col-6.col-xs-12
@@ -113,7 +129,7 @@ block docs-content
             </label>
           </div>
 
-    +docs-subheading('forms-switch', 'Form switch')
+    +docs-subheading('switch', 'Form switch', {slug})
 
     .docs-demo.columns
       .column.col-6.col-xs-12
@@ -139,7 +155,7 @@ block docs-content
             </label>
           </div>
 
-    +docs-subheading('forms-checkbox', 'Form checkbox')
+    +docs-subheading('checkbox', 'Form checkbox', {slug})
 
     .docs-demo.columns
       .column.col-6.col-xs-12
@@ -179,7 +195,7 @@ block docs-content
     p
       | You can change checkbox to indeterminate state by setting the #[code indeterminate] property of input checkboxes to #[code true].
 
-    +docs-subheading('forms-inline', 'Inline forms')
+    +docs-subheading('inline', 'Inline forms', {slug})
 
     .docs-demo.columns
       .column.col-6.col-xs-12
@@ -227,11 +243,11 @@ block docs-content
             </label>
           </div>
 
-    +docs-subheading('forms-horizontal', 'Horizontal forms')
+    +docs-subheading('horizontal', 'Horizontal forms', {slug})
 
     p
       | If you want to have a horizontal form, add the #[code form-horizontal] class to the #{'<form>'} container.
-      | And add the #[code col-<1-12>] and #[code col-xs/sm/lg/xl-<1-12>] class to the child elements for responsive form row layout.
+      | And add the #[code #{'col-<1-12>'}] and #[code #{'col-xs/sm/lg/xl-<1-12>'}'] class to the child elements for responsive form row layout.
 
     .docs-demo.columns
       .column.col-9.col-sm-12
@@ -299,7 +315,7 @@ block docs-content
             <!-- form structure -->
           </form>
 
-    +docs-subheading('forms-sizes', 'Form sizes')
+    +docs-subheading('sizes', 'Form sizes', {slug})
 
     p
       | For smaller or larger input and select controls, you could add the #[code input-sm]/#[code input-lg], #[code select-sm]/#[code select-lg] and #[code label-sm]/#[code label-lg] classes to the elements.
@@ -329,7 +345,7 @@ block docs-content
     p
       | You can add the #[code input-sm]/#[code input-lg] classes to the input-checkbox, input-radio and input-switch to have different sizes.
 
-    +docs-subheading('forms-icons', 'Form icons')
+    +docs-subheading('icons', 'Form icons', {slug})
 
     p
       | Spectre Forms components has 
@@ -400,7 +416,7 @@ block docs-content
             <i class="form-icon loading"></i>
           </div>
 
-    +docs-subheading('forms-input', 'Input types')
+    +docs-subheading('input-types', 'Input types', {slug})
 
     .docs-demo.columns
       .column.col-9.col-sm-12
@@ -451,7 +467,7 @@ block docs-content
             .col-9
               input#input-example-16.form-input(type="file")
 
-    +docs-subheading('forms-input-groups', 'Input groups')
+    +docs-subheading('input-groups', 'Input groups', {slug})
 
     .docs-demo.columns
       .column.col-6.col-xs-12
@@ -529,7 +545,7 @@ block docs-content
             <button class="btn btn-primary input-group-btn">Submit</button>
           </div>
 
-    +docs-subheading('forms-validation', 'Form validation styles')
+    +docs-subheading('validation', 'Form validation styles', {slug})
 
     .docs-demo.columns
       .column.col-9.col-sm-12
@@ -633,7 +649,7 @@ block docs-content
           <!-- pattern validation example for password (8 or more characters that are of at least one number, and one uppercase and lowercase letter) -->
           <input class="form-input" type="password" placeholder="Password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$">
 
-    +docs-subheading('forms-disabled', 'Form disabled styles')
+    +docs-subheading('disabled', 'Form disabled styles', {slug})
 
     p 
       | Add the #[code disabled] attribute to the element or #{'<fieldset>'} for a disabled form components style.
