@@ -1,0 +1,1740 @@
+extends ../_layout/_docs-layout.pug
+
+block variables
+  - var slug = 'variables'
+  - var parent = 'getting-started'
+  - var title = 'Variables - Getting started - Spectre.css CSS Framework'
+  - var description = 'Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development. Spectre provides basic styles for typography and elements, flexbox based responsive layout system, pure CSS components and utilities with best practice coding and consistent design language.'
+
+block docs-content
+  +docs-heading(slug, 'Variables', { parent, name: 'Getting Started' })
+    +docs-menu('Variables', {parent, slug},
+      { anchor: 'prefix' , name: 'Prefix' },
+      { anchor: 'sizes' , name: 'Sizes' },
+      {
+        anchor: 'colors',
+        name: 'Colors',
+        items: [
+          {anchor: 'scheme' , name: 'Color scheme'},
+          {anchor: 'dark', name: 'Dark'},
+          {anchor: 'light', name: 'Light'},
+          {anchor: 'accent', name: 'Accent'},
+          {anchor: 'primary', name: 'Primary'},
+          {anchor: 'primary-dark', name: 'Primary dark'},
+          {anchor: 'primary-light', name: 'Primary light'}
+        ]
+      },
+      { anchor: 'colors-cards' , name: 'Colors on cards' },
+      { anchor: 'border', name: 'Border' },
+      {
+        anchor: 'control',
+        name: 'Control',
+        items: [
+          { anchor: 'sizes' , name: 'Sizes' },
+          { anchor: 'padding', name: 'Padding' },
+          { anchor: 'icon-sizes', name: 'Icon sizes' },
+          { anchor: 'width', name: 'Width' }
+        ]
+      },
+      { anchor: 'font-sizes', name: 'Font sizes' },
+      { anchor: 'line-height', name: 'Line height' },
+      { anchor: 'hero-sizes', name: 'Hero sizes' },
+      { anchor: 'layout-spacing', name: 'Layout spacing' },
+      { anchor: 'parallax', name: 'Parallax' },
+      { anchor: 'responsive-breakpoints', name: 'Responsive breakpoints' },
+      { anchor: 'transition-duration', name: 'Transition duration' },
+      { anchor: 'units', name: 'Units' },
+      { anchor: 'z-index', name: 'z-index' }
+    )
+
+    //- p
+    //-   small.label.label-secondary ADVANCED CUSTOMIZATION
+
+    //- { name: 'Prefix', url: 'getting-started/variables.html#variables-prefix' }, { name: 'Sizes', url: 'getting-started/variables.html#variables-sizes' }
+
+    include ../_layout/_ad-g.pug
+
+    p
+      | #[b Spectre.css] is designed with consistent design language. You can use your variables to create your new or match an existing design. All variables in 
+      code _variables.scss
+      |  include 
+      code !default
+      |  flag. You can redefine the variables to override the values.
+    p
+      |  Almost all the Sass variables are used to initialize equivalent CSS variables, means, they are defined in the same pattern as Sass variables to have naming consistency, but with an additional customizable prefix.
+
+    +docs-subheading('prefix', 'Variables - Prefix', {slug})
+
+    p
+      | The #[b Spectre.css] has the Sass #[code $var-prefix] variable that is used as the prefix of the CSS variables, and as the prefix of some CSS classes(this feature replaces in some minimal way custom prefixes for all classes with the gulp).
+      | In general CSS variable name structure is defined as follows.
+      pre.code(data-lang='SCSS')
+        code
+          :highlight(lang="scss")
+            --#{$var-prefix}-#{$name}: #{$value}
+
+    p Click on the link for detailed information.
+    p
+      a.btn.btn-primary(href='https://spectrecss.angular-package.dev/variables/css-variable-name', target='_blank') Technical documentation
+
+    +docs-subheading('sizes', 'Variables - Sizes', {slug})
+
+    p
+      | The default REM (root em) size in #[b Spectre.css] is 
+      code 20px
+      | .
+    p
+      | Please note in the Chinese/Japanese/Korean version, Chrome uses 12px as default minimum font size. That is why #[b Spectre.css] sets rem default html font size to 
+      code 20px
+      | , which is relatively easy to calculate.
+    p
+      | #[b Spectre.css] uses 
+      code 4px
+      |  as the unit size. Sizes of components are based on the unit size.
+
+    +docs-subheading('colors-scheme', 'Variables - Color scheme', {slug})
+
+    p
+      | The CSS #[code color-scheme] property is set to #[code normal] in both #[code :root] and #[code :host] elements with the Sass #[code $color-scheme] variable.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          // src/_variables.scss
+          $color-scheme: normal;
+
+    +docs-subheading('colors', 'Variables - Colors', {slug})
+
+    p
+      | #[b Spectre.css] has some colors with defined hex and colors that depend on them, which means, for example, if the 
+      code primary-color
+      |  is overridden, then dependent 
+      code primary-dark
+      |  and 
+      code primary-light
+      |  automatically change.
+
+    p
+      | Each hex color is in 
+      a(href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsla") #[code hsla()]
+      |  form defined by the 
+      a(href="https://spectrecss.angular-package.dev/mixin/define-color") #[code define-color()]
+      |  mixin, split into four CSS variables, where suffix #[code h] indicates hue, #[code s] saturation, #[code l] lightness and #[code a] alpha.
+      | Click 
+      a(href='https://spectrecss.angular-package.dev/variables/colors/css-variable-color', target='_blank') here
+      |  for detailed information. 
+
+    p
+      | The single CSS color is defined as follows.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          --#{$var-prefix}-#{$name}-color-h: hue($color)
+          --#{$var-prefix}-#{$name}-color-s: saturation($color)
+          --#{$var-prefix}-#{$name}-color-l: lightness($color)
+          --#{$var-prefix}-#{$name}-color-a: alpha($color)
+    //- p
+    //-   | The table below contains all the #[b Spectre.css] Sass and CSS colors.
+
+    +docs-subheading('colors-dark', 'Variables - Dark color', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-3.col-md-6
+        .card.card-color.bg-dark
+          span.card-color-code dark
+          input(class="color-picker" type="color" name="dark-color" value="#303742")
+          span.card-color-name Dark color
+      .column.col-9
+        table.docs-table.table.table-striped.text-left
+          tbody
+            tr
+              th Code
+              td(colspan="2")
+                code dark
+            tr
+              th Sass variable
+              td
+                code $dark-color
+              td
+                code #303742
+            tr
+              th Hue
+              td 
+                +docs-css-variable-color('dark-color', 'h')
+              td 
+                code 216.6666666667deg
+            tr
+              th Saturation
+              td 
+                +docs-css-variable-color('dark-color', 's')
+              td 
+                code 15.7894736842%
+            tr
+              th Lightness
+              td 
+                +docs-css-variable-color('dark-color', 'l')
+              td 
+                code 22.3529411765%
+
+            tr
+              th Red
+              td 
+                +docs-css-variable-color('dark-color', 'r')
+              td 
+                code 216.6666666667deg
+            tr
+              th Green
+              td 
+                +docs-css-variable-color('dark-color', 'g')
+              td 
+                code 15.7894736842%
+            tr
+              th Blue
+              td 
+                +docs-css-variable-color('dark-color', 'b')
+              td 
+                code 22.3529411765%
+
+            tr
+              th Alpha
+              td 
+                +docs-css-variable-color('dark-color', 'a')
+              td 
+                code 1
+
+
+
+
+    +docs-subheading('colors-light', 'Variables - Light color', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-4.col-md-6
+        .card.card-color.bg-light.border
+          span.card-color-code light
+          span.card-color-hex #FFFFFF
+          input(class="color-picker" type="color" name="light-color" value="#FFFFFF")
+          span.card-color-name Light color
+      .column.col-12
+        table.docs-table.table.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Hex
+          tbody
+            tr
+              th.text-left light
+              td.text-left 
+                code $light-color
+              td.text-left 
+                +docs-css-variable-color('light-color')
+              td.text-right 
+                input(type="color", name="light-color", value="#FFFFFF")
+
+    +docs-subheading('colors-accent', 'Variables - Accent color', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Hex
+          tbody
+            tr
+              th.text-left accent
+              td.text-left 
+                code $accent-color
+              td.text-left 
+                +docs-css-variable-color('accent-color')
+              td.text-right
+                input(type="color", name="accent-color", value="#9932CC")
+
+    +docs-subheading('colors-primary', 'Variables - Primary', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Hex
+          tbody
+            tr
+              th.text-left primary
+              td.text-left 
+                code $primary-color
+              td.text-left 
+                +docs-css-variable-color('primary-color')
+              td.text-right
+                input(type="color", name="primary-color", value="#5755D9")
+
+    +docs-subheading('colors-primary-dark', 'Variables - Primary dark', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Hex
+          tbody
+            tr
+              th.text-left primary-dark
+              td.text-left 
+                code $primary-color-dark
+              td.text-left 
+                +docs-css-variable-color('primary-color-dark')
+              td.text-right
+                input(type="color", name="primary-color-dark", value="#4B49D6")
+
+    +docs-subheading('colors-primary-light', 'Variables - Primary light', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Hex
+          tbody
+            tr
+              th.text-left primary-light
+              td.text-left 
+                code $primary-color-light
+              td.text-left 
+                +docs-css-variable-color('primary-color-light')
+              td.text-right
+                input(type="color", name="primary-color-light", value="#6362DC")
+
+    +docs-subheading('colors-secondary', 'Variables - Secondary', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Hex
+          tbody
+            tr
+              th.text-left secondary
+              td.text-left 
+                code $secondary-color
+              td.text-left 
+                +docs-css-variable-color('secondary-color')
+              td.text-right
+                input(type="color", name="secondary", value="#F1F1FC")
+            tr
+              th.text-left secondary-dark
+              td.text-left 
+                code $secondary-color-dark
+              td.text-left 
+                +docs-css-variable-color('secondary-color-dark')
+              td
+                input(type="color", name="secondary-color-dark", value="#E5E5F9")
+            tr
+              th.text-left secondary-light
+              td.text-left 
+                code $secondary-color-light
+              td.text-left 
+                +docs-css-variable-color('secondary-color-light')
+              td
+                input(type="color", name="secondary-color-light", value="#FEFEFF")
+
+            tr
+              td.text-left.bg-light(colspan=4)
+                h5#gray-colors Gray colors
+            tr
+              th.text-left gray
+              td.text-left 
+                code $gray-color
+              td.text-left 
+                +docs-css-variable-color('gray-color')
+              td
+                input(type="color", name="gray-color", value="#BCC3CE")
+            tr
+              th.text-left gray-dark
+              td.text-left 
+                code $gray-color-dark
+              td.text-left 
+                +docs-css-variable-color('gray-color-dark')
+              td
+                input(type="color", name="gray-color-dark", value="#66758C")
+            tr
+              th.text-left gray-light
+              td.text-left 
+                code $gray-color-light
+              td.text-left
+                +docs-css-variable-color('gray-color-light')
+              td
+                input(type="color", name="gray-color-light", value="#F7F8F9")
+
+            tr
+              td.text-left.bg-light(colspan=4)
+                h5#bg-colors Bg colors
+            tr
+              th.text-left bg
+              td.text-left 
+                code $bg-color
+              td.text-left 
+                +docs-css-variable-color('bg-color')
+              td
+                input(type="color", name="bg-color", value="#BCC3CE")
+            tr
+              th.text-left bg-dark
+              td.text-left 
+                code $bg-color-dark
+              td.text-left
+                +docs-css-variable-color('bg-color-dark')
+              td
+                input(type="color", name="bg-color-dark", value="#EEF0F3")
+            tr
+              th.text-left bg-light
+              td.text-left 
+                code $bg-color-light
+              td.text-left
+                +docs-css-variable-color('bg-color-light')
+              td
+                input(type="color", name="bg-color-light", value="#FFFFFF")
+
+            tr
+              td.text-left.bg-light(colspan=4)
+                h5#border-colors Border colors
+            tr
+              th.text-left border
+              td.text-left 
+                code $border-color
+              td.text-left 
+                +docs-css-variable-color('border-color')
+              td
+                input(type="color", name="border-color", value="#DADEE4")
+            tr
+              th.text-left border-dark
+              td.text-left 
+                code $border-color-dark
+              td.text-left 
+                +docs-css-variable-color('border-color-dark')
+              td
+                input(type="color", name="border-color-dark", value="#BCC3CE")
+            tr
+              th.text-left border-light
+              td.text-left 
+                code $border-color-light
+              td.text-left 
+                +docs-css-variable-color('border-color-light')
+              td
+                input(type="color", name="border-color-light", value="#F1F3F5")
+
+            tr
+              td.text-left.bg-light(colspan=4)
+                h5#link-colors Link colors
+            tr
+              th.text-left link
+              td.text-left 
+                code $link-color
+              td.text-left 
+                +docs-css-variable-color('link-color')
+              td
+                input(type="color", name="link-color", value="#5755D9")
+            tr
+              th.text-left link-dark
+              td.text-left 
+                code $link-color-dark
+              td.text-left 
+                +docs-css-variable-color('link-color-dark')
+              td
+                input(type="color", name="link-color-dark", value="#302ECD")
+            tr
+              th.text-left link-light
+              td.text-left 
+                code $link-color-light
+              td.text-left 
+                +docs-css-variable-color('link-color-light')
+              td
+                input(type="color", name="link-color-light", value="#807FE2")
+
+            tr
+              td.text-left.bg-light(colspan=4)
+                h5#control-colors Control colors
+            tr
+              th.text-left disabled
+              td.text-left 
+                code $disabled-color
+              td.text-left 
+                +docs-css-variable-color('disabled-color')
+              td
+                input(type="color", name="disabled-color", value="#EEF0F3")
+            tr
+              th.text-left error
+              td.text-left 
+                code $error-color
+              td.text-left 
+                +docs-css-variable-color('error-color')
+              td
+                input(type="color", name="error-color", value="#E85600")
+            tr
+              th.text-left info
+              td.text-left 
+                code $info-color
+              td.text-left 
+                +docs-css-variable-color('info-color')
+              td
+                input(type="color", name="info-color", value="#D9EDF7")
+            tr
+              th.text-left success
+              td.text-left 
+                code $success-color
+              td.text-left
+                +docs-css-variable-color('success-color')
+              td
+                input(type="color", name="success-color", value="#32B643")
+            tr
+              th.text-left warning
+              td.text-left 
+                code $warning-color
+              td.text-left 
+                +docs-css-variable-color('warning-color')
+              td
+                input(type="color", name="warning-color", value="#FFB700")
+
+            tr
+              td.text-left.bg-light(colspan=4)
+                h5#body-colors Body colors
+            tr
+              td.text-left body-bg
+              td.text-left 
+                code $body-bg-color
+              td.text-left 
+                +docs-css-variable-color('body-bg-color')
+              td
+                input(type="color", name="body-bg-color", value="#FFFFFF")
+            tr
+              th.text-left body-font
+              td.text-left 
+                code $body-font-color
+              td.text-left 
+                +docs-css-variable-color('body-font-color')
+              td
+                input(type="color", name="body-font-color", value="#3B4351")
+
+            tr
+              td.text-left.bg-light(colspan=4)
+                h5#other-colors Other colors
+            tr
+              th.text-left code
+              td.text-left 
+                code $code-color
+              td.text-left 
+                +docs-css-variable-color('code-color')
+              td
+                input(type="color", name="code-color", value="#D73E48")
+            tr
+              th.text-left highlight
+              td.text-left 
+                code $highlight-color
+              td.text-left 
+                +docs-css-variable-color('highlight-color')
+              td
+                input(type="color", name="highlight-color", value="#FFE9B3")
+            tr
+              th.text-left parallax-fade
+              td.text-left 
+                code $parallax-fade-color
+              td.text-left 
+                +docs-css-variable-color('parallax-fade-color')
+              td
+                input(type="color", name="parallax-fade-color", value="#FFFFFF")
+
+    +docs-subheading('colors-cards', 'Variables - Colors on cards', {slug})
+
+    p Click on the link to see color dependency change.
+    p
+      a.btn.btn-primary(href='https://angular-package.dev/ui-kit/component/theme', target='_blank') Theme demonstration
+
+
+
+    .columns
+      .column.col-12
+        .h5 Accent color
+      .column.col-3.col-md-6
+        .docs-color.bg-accent
+          .color-title #9932CC
+          .color-subtitle Accent
+
+    .columns
+      .column.col-12
+        .h5 Primary colors
+      .column.col-3.col-md-6
+        .docs-color.bg-primary
+          .color-title #5755d9
+          .color-subtitle Primary
+      .column.col-3.col-md-6
+        .docs-color.bg-primary-dark
+          .color-title #4b48d6
+          .color-subtitle Primary dark
+      .column.col-3.col-md-6
+        .docs-color.bg-primary-light
+          .color-title #6362dc
+          .color-subtitle Primary light
+
+    .columns
+      .column.col-12
+        .h5 Secondary colors
+      .column.col-3.col-md-6
+        .docs-color.bg-secondary
+          .color-title #f1f1fc
+          .color-subtitle Secondary
+      .column.col-3.col-md-6
+        .docs-color.bg-secondary-dark
+          .color-title #e5e5f9
+          .color-subtitle Secondary dark
+      .column.col-3.col-md-6
+        .docs-color.bg-secondary-light
+          .color-title #fefeff
+          .color-subtitle Secondary light
+
+    .columns
+      .column.col-12
+        .h5 Gray colors
+      .column.col-3.col-md-6
+        .docs-color.bg-gray
+          .color-title #bcc3ce
+          .color-subtitle Gray
+      .column.col-3.col-md-6
+        .docs-color.bg-gray-dark
+          .color-title #66758c
+          .color-subtitle Gray dark
+      .column.col-3.col-md-6
+        .docs-color.bg-gray-light
+          .color-title #f7f8f9
+          .color-subtitle Gray light
+
+    .columns
+      .column.col-12
+        .h5 Bg colors
+      .column.col-3.col-md-6
+        .docs-color.bg-bg
+          .color-title #f7f8f9
+          .color-subtitle Bg
+      .column.col-3.col-md-6
+        .docs-color.bg-bg-dark
+          .color-title #eef0f3
+          .color-subtitle Bg dark
+      .column.col-3.col-md-6
+        .docs-color.bg-bg-light
+          .color-title #ffffff
+          .color-subtitle Bg light
+
+    .columns
+      .column.col-12
+        .h5 Border colors
+      .column.col-3.col-md-6
+        .docs-color.bg-border
+          .color-title #dadee4
+          .color-subtitle Border
+      .column.col-3.col-md-6
+        .docs-color.bg-border-dark
+          .color-title #bcc3ce
+          .color-subtitle Border dark
+      .column.col-3.col-md-6
+        .docs-color.bg-border-light
+          .color-title #f1f3f5
+          .color-subtitle Border light
+
+    .columns
+      .column.col-12
+        .h5 Link colors
+      .column.col-3.col-md-6
+        .docs-color.bg-link
+          .color-title #5755d9
+          .color-subtitle Link
+      .column.col-3.col-md-6
+        .docs-color.bg-link-dark
+          .color-title #302ecd
+          .color-subtitle Link dark
+      .column.col-3.col-md-6
+        .docs-color.bg-link-light
+          .color-title #807fe2
+          .color-subtitle Link light
+
+    .columns
+      .column.col-12
+        .h5 Control colors
+      .column.col-3.col-md-6
+        .docs-color.bg-disabled
+          .color-title #eef0f3
+          .color-subtitle Disabled
+      .column.col-3.col-md-6
+        .docs-color.bg-error
+          .color-title #e85600
+          .color-subtitle Error
+      .column.col-3.col-md-6
+        .docs-color.bg-info
+          .color-title #d9edf7
+          .color-subtitle Info
+      .column.col-3.col-md-6
+        .docs-color.bg-success
+          .color-title #32b643
+          .color-subtitle Success
+      .column.col-3.col-md-6
+        .docs-color.bg-warning
+          .color-title #ffb700
+          .color-subtitle Warning
+
+    .columns
+      .column.col-12
+        .h5 Body colors
+      .column.col-3.col-md-6
+        .docs-color.bg-body
+          .color-title #ffffff
+          .color-subtitle Body background
+      .column.col-3.col-md-6
+        .docs-color.bg-body-font
+          .color-title #3b4351
+          .color-subtitle Body font
+
+    .columns
+      .column.col-12
+        .h5 Other colors
+      .column.col-3.col-md-6
+        .docs-color.bg-code
+          .color-title #d73e48
+          .color-subtitle Code
+      .column.col-3.col-md-6
+        .docs-color.bg-highlight.text-warning
+          .color-title #ffe9b3
+          .color-subtitle Highlight
+
+
+    +docs-subheading('border', 'Variables - Border', {slug})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td.text-left border-radius
+              td.text-left
+                code $border-radius
+              td.text-left 
+                code --s-border-radius
+              td.text-right
+                code 0.1rem
+            tr
+              td.text-left border-width
+              td.text-left 
+                code $border-width
+              td.text-left
+                code --s-border-width
+              td.text-right
+                code 0.05rem
+            tr
+              td.text-left border-width-lg
+              td.text-left
+                code $border-width-lg
+              td.text-left
+                code --s-border-width-lg
+              td.text-right
+                code 0.1rem
+
+    +docs-subheading('control', 'Variables - Control', {slug})
+
+    +docs-subheading('control-sizes', 'Variables - Control sizes', {slug})
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td.text-left control-size
+              td.text-left
+                code $control-size
+              td.text-left
+                code --s-control-size
+              td.text-right
+                code 1.8rem
+            tr
+              td.text-left control-size-sm
+              td.text-left
+                code $control-size-sm
+              td.text-left
+                code --s-control-size-sm
+              td.text-right
+                code 1.4rem
+            tr
+              td.text-left control-size-lg
+              td.text-left
+                code $control-size-lg
+              td.text-left
+                code --s-control-size-lg
+              td.text-right
+                code 2rem
+
+    +docs-subheading('control-padding', 'Variables - Control padding', {slug})
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td.text-left control-padding-x
+              td.text-left
+                code $control-padding-x
+              td.text-left
+                code --s-control-padding-x
+              td.text-right
+                code 0.4rem
+            tr
+              td.text-left control-padding-x-sm
+              td.text-left
+                code $control-padding-x-sm
+              td.text-left
+                code --s-control-padding-x-sm
+              td.text-right
+                code 0.3rem
+            tr
+              td.text-left control-padding-x-lg
+              td.text-left
+                code $control-padding-x-lg
+              td.text-left
+                code --s-control-padding-x-lg
+              td.text-right
+                code 0.6rem
+            tr
+              td.text-left control-padding-y
+              td.text-left
+                code $control-padding-y
+              td.text-left
+                code --s-control-padding-y
+              td.text-right
+                code 0.25rem
+            tr
+              td.text-left control-padding-y-sm
+              td.text-left
+                code $control-padding-y-sm
+              td.text-left
+                code --s-control-padding-y-sm
+              td.text-right
+                code 0.05rem
+            tr
+              td.text-left control-padding-y-lg
+              td.text-left
+                code $control-padding-y-lg
+              td.text-left
+                code --s-control-padding-y-lg
+              td.text-right
+                code 0.35rem
+
+    +docs-subheading('control-icon-sizes', 'Variables - Control icon sizes', {slug})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td.text-left control-icon-size
+              td.text-left
+                code $control-icon-size
+              td.text-left
+                code --s-control-icon-size
+              td.text-right
+                code 0.8rem
+
+    +docs-subheading('control-width', 'Variables - Control width', {slug})
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td.text-left control-width-xs
+              td.text-left
+                code $control-width-xs
+              td.text-left
+                code --s-control-width-xs
+              td.text-right
+                code 180px
+            tr
+              td.text-left control-width-sm
+              td.text-left
+                code $control-width-sm
+              td.text-left
+                code --s-control-width-sm
+              td.text-right
+                code 320px
+            tr
+              td.text-left control-width-md
+              td.text-left
+                code $control-width-md
+              td.text-left
+                code --s-control-width-md
+              td.text-right
+                code 640px
+            tr
+              td.text-left control-width-lg
+              td.text-left
+                code $control-width-lg
+              td.text-left
+                code --s-control-width-lg
+              td.text-right
+                code 960px
+            tr
+              td.text-left control-width-xl
+              td.text-left
+                code $control-width-xl
+              td.text-left
+                code --s-control-width-xl
+              td.text-right
+                code 1280px
+
+    +docs-subheading('font-sizes-line-height', 'Variables - Font sizes and line height', {slug})
+
+    +docs-subheading('font-sizes', 'Variables - Font sizes', {slug})
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td.text-left html-font-size
+              td.text-left
+                code $html-font-size
+              td.text-left
+                code --s-html-font-size
+              td.text-right
+                code 20px
+            tr
+              td.text-left font-size
+              td.text-left
+                code $font-size
+              td.text-left
+                code --s-font-size
+              td.text-right
+                code 0.8rem
+            tr
+              td.text-left font-size
+              td.text-left
+                code $font-size-sm
+              td.text-left
+                code --s-font-size-sm
+              td.text-right
+                code 0.7rem
+            tr
+              td.text-left font-size
+              td.text-left
+                code $font-size-lg
+              td.text-left
+                code --s-font-size-lg
+              td.text-right
+                code 0.9rem
+
+    +docs-subheading('line-height', 'Variables - Line height', {slug})
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td.text-left html-line-height
+              td.text-left
+                code $html-line-height
+              td.text-left
+                code --s-html-line-height
+              td.text-right
+                code 1.5
+            tr
+              td.text-left line-height
+              td.text-left
+                code $line-height
+              td.text-left
+                code --s-line-height
+              td.text-right
+                code 1.2rem
+
+    +docs-subheading('hero-sizes', 'Variables - Hero sizes', {slug})
+
+    .docs-demo.columns
+      .column.col-12 
+        p These are common variables for the 
+          a(href='../layout/hero.html') #[b hero]
+          |  element defined in the #[code _variables.scss] via the sass map #[code $hero-size] variable.
+      .column.col-12
+        table.docs-table.table.text-center
+          thead
+            tr
+              th xs 
+              th sm 
+              th md  
+              th lg  
+              th xl 
+              th 2x 
+          tbody
+            tr
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+
+      .column.col-12
+        pre.code(data-lang='SCSS')
+          code
+            :highlight(lang="scss")
+              // src/_variables.scss
+              // Hero sizes.
+              $hero-size: (
+                'xs': 1rem, // --#{$var-prefix}-hero-size-xs.
+                'sm': 2rem, // --#{$var-prefix}-hero-size-sm.
+                'md': 4rem, // --#{$var-prefix}-hero-size-md.
+                'lg': 8rem, // --#{$var-prefix}-hero-size-lg.
+                'xl': 10rem // --#{$var-prefix}-hero-size-xl.
+              ) !default;
+
+        p 
+          | Common hero size Sass and CSS variables list
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Classes
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td.text-left 
+                code .hero.hero-size-xs
+                br
+                code .s-hero.hero-size-xs
+              td.text-left
+                code $hero-size['xs']
+              td.text-left
+                code --s-hero-size-xs
+              td.text-right
+                code 1rem
+            tr
+              td.text-left
+                code .hero.hero-size-sm
+                br
+                code .s-hero.hero-size-sm
+              td.text-left
+                code $hero-size['sm']
+              td.text-left
+                code --s-hero-size-sm
+              td.text-right
+                code 2rem
+            tr
+              td.text-left
+                code .hero.hero-size-md
+                br
+                code .s-hero.hero-size-md
+              td.text-left
+                code $hero-size['md']
+              td.text-left
+                code --s-hero-size-md
+              td.text-right
+                code 4rem
+            tr
+              td.text-left
+                code .hero.hero-size-lg
+                br
+                code .s-hero.hero-size-lg
+              td.text-left
+                code $hero-size['lg']
+              td.text-left
+                code --s-hero-size-lg
+              td.text-right
+                code 8rem
+            tr
+              td.text-left
+                code .hero.hero-size-xl
+                br
+                code .s-hero.hero-size-xl
+              td.text-left
+                code $hero-size['xl']
+              td.text-left
+                code --s-hero-size-xl
+              td.text-right
+                code 10rem
+
+    .docs-demo.columns
+      .column.col-12
+        h5#specific-color-hero-sizes Specific color hero sizes
+        p There are hero sizes CSS variables defined only for the specific colors giving the ability to set different sizes for one color. 
+          | For example, there is a #[code .hero-primary] class that fills the hero with the #[code --s-primary-color], and to change the size assigned to the primary color to large add class #[code hero-primary-size-xl]. 
+          | Read more about hero sizes customization 
+          a(href='../getting-started/custom.html#customizable-heros') here
+          | .
+
+      .column.col-12
+        table.docs-table.table.text-center
+          thead
+            tr
+              th.text-left Color
+              th xs 
+              th sm 
+              th md  
+              th lg  
+              th xl 
+              th 2x 
+          tbody
+            tr
+              td.text-left Dark color
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left Light color
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left Accent color
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left Primary colors
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left Secondary colors
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left Gray colors
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left Bg colors
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left Border colors
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left Link colors
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left Control colors
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left Body colors
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left Other colors
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Classes
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td.text-left 
+                code .hero.hero-primary-size-xs
+                br
+                code .s-hero.hero-primary-size-xs
+              td.text-left
+                code $hero-size['xs']
+              td.text-left
+                code --s-hero-primary-size-xs
+              td.text-right
+                code 1rem
+            tr
+              td.text-left 
+                code .hero.hero-primary-size-sm
+                br
+                code .s-hero.hero-primary-size-sm
+              td.text-left
+                code $hero-size['sm']
+              td.text-left
+                code --s-hero-primary-size-sm
+              td.text-right
+                code 2rem
+            tr
+              td.text-left
+                code .hero.hero-primary-size-md
+                br
+                code .s-hero.hero-primary-size-md
+              td.text-left
+                code $hero-size['md']
+              td.text-left
+                code --s-hero-primary-size-md
+              td.text-right
+                code 4rem
+            tr
+              td.text-left 
+                code .hero.hero-primary-size-lg
+                br
+                code .s-hero.hero-primary-size-lg
+              td.text-left
+                code $hero-size['lg']
+              td.text-left
+                code --s-hero-primary-size-lg
+              td.text-right
+                code 8rem
+            tr
+              td.text-left 
+                code .hero.hero-primary-size-xl
+                br
+                code .s-hero.hero-primary-size-xl
+              td.text-left
+                code $hero-size['xl']
+              td.text-left
+                code --s-hero-primary-size-xl
+              td.text-right
+                code 10rem
+
+    +docs-subheading('layout-spacing', 'Variables - Layout spacing', {slug})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td.text-left layout-spacing
+              td.text-left
+                code $layout-spacing
+              td.text-left
+                code --s-layout-spacing
+              td.text-right
+                code 0.4
+            tr
+              td.text-left layout-spacing-sm
+              td.text-left
+                code $layout-spacing-sm
+              td.text-left
+                code --s-layout-spacing-sm
+              td.text-right
+                code 0.8
+            tr
+              td.text-left layout-spacing
+              td.text-left
+                code $layout-spacing-lg
+              td.text-left
+                code --s-layout-spacing-lg
+              td.text-right
+                code 0.8
+            tr
+              td.text-left layout-spacing-unit
+              td.text-left
+                code $layout-spacing-unit
+              td.text-left
+                code --s-layout-spacing-unit
+              td.text-right
+                code 1rem
+
+    +docs-subheading('parallax', 'Variables - Parallax', {slug})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td.text-left parallax-deg
+              td.text-left
+                code $parallax-deg
+              td.text-left
+                code --s-parallax-deg
+              td.text-right
+                code 3deg
+            tr
+              td.text-left parallax-offset
+              td.text-left
+                code $parallax-offset
+              td.text-left
+                code --s-parallax-offset
+              td.text-right
+                code 4.5px
+            tr
+              td.text-left parallax-offset-z
+              td.text-left
+                code $parallax-offset-z
+              td.text-left
+                code --s-parallax-offset-z
+              td.text-right
+                code 50px
+            tr
+              td.text-left parallax-perspective
+              td.text-left
+                code $parallax-perspective
+              td.text-left
+                code --s-parallax-perspective
+              td.text-right
+                code 1000px
+            tr
+              td.text-left parallax-scale
+              td.text-left
+                code $parallax-scale
+              td.text-left
+                code --s-parallax-scale
+              td.text-right
+                code 0.95
+            tr
+              td.text-left parallax-fade-color
+              td.text-left
+                code $parallax-fade-color
+              td.text-left
+                code --s-parallax-fade-color
+              td.text-right
+                code #FFFFFF
+
+    +docs-subheading('responsive-breakpoints', 'Variables - Responsive breakpoints', {slug})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td.text-left size-xs
+              td.text-left
+                code $size-xs
+              td.text-left
+                code --s-size-xs
+              td.text-right
+                code 480px
+            tr
+              td.text-left size-sm
+              td.text-left
+                code $size-sm
+              td.text-left
+                code --s-size-sm
+              td.text-right
+                code 600px
+            tr
+              td.text-left size-md
+              td.text-left
+                code $size-md
+              td.text-left
+                code --s-size-md
+              td.text-right
+                code 840px
+            tr
+              td.text-left size-lg
+              td.text-left
+                code $size-lg
+              td.text-left
+                code --s-size-lg
+              td.text-right
+                code 960px
+            tr
+              td.text-left size-xl
+              td.text-left
+                code $size-xl
+              td.text-left
+                code --s-size-xl
+              td.text-right
+                code 1280px
+            tr
+              td.text-left size-2x
+              td.text-left
+                code $size-2x
+              td.text-left
+                code --s-size-2x
+              td.text-right
+                code 1440px
+
+    +docs-subheading('transition-duration', 'Variables - Transition duration', {slug})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td transition-duration
+              td
+                code $transition-duration
+              td
+                code --s-transition-duration
+              td.text-right
+                code 0.2s
+
+    +docs-subheading('units', 'Variables - Units', {slug})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td unit-o
+              td
+                code $unit-o
+              td
+                code --s-unit-o
+              td.text-right
+                code 0.05rem
+            tr
+              td unit-h
+              td
+                code $unit-h
+              td
+                code --s-unit-h
+              td.text-right
+                code 0.1rem
+            tr
+              td unit-1
+              td
+                code $unit-1
+              td
+                code --s-unit-1
+              td.text-right
+                code 0.2rem
+            tr
+              td unit-2
+              td
+                code $unit-2
+              td
+                code --s-unit-2
+              td.text-right
+                code 0.4rem
+            tr
+              td unit-3
+              td
+                code $unit-3
+              td
+                code --s-unit-3
+              td.text-right
+                code 0.6rem
+            tr
+              td unit-4
+              td
+                code $unit-4
+              td
+                code --s-unit-4
+              td.text-right
+                code 0.8rem
+            tr
+              td unit-5
+              td
+                code $unit-5
+              td
+                code --s-unit-5
+              td.text-right
+                code 1rem
+            tr
+              td unit-6
+              td
+                code $unit-6
+              td
+                code --s-unit-6
+              td.text-right
+                code 1.2rem
+            tr
+              td unit-7
+              td
+                code $unit-7
+              td
+                code --s-unit-7
+              td.text-right
+                code 1.4rem
+            tr
+              td unit-8
+              td
+                code $unit-8
+              td
+                code --s-unit-8
+              td.text-right
+                code 1.6rem
+            tr
+              td unit-9
+              td
+                code $unit-9
+              td
+                code --s-unit-9
+              td.text-right
+                code 1.8rem
+            tr
+              td unit-10
+              td
+                code $unit-10
+              td
+                code --s-unit-10
+              td.text-right
+                code 2rem
+            tr
+              td unit-12
+              td
+                code $unit-12
+              td
+                code --s-unit-12
+              td.text-right
+                code 2.4rem
+            tr
+              td unit-16
+              td
+                code $unit-16
+              td
+                code --s-unit-16
+              td.text-right
+                code 3.2rem
+
+    +docs-subheading('z-index', 'Variables - z-index', {slug})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td z-index-0
+              td
+                code $zindex-0
+              td
+                code --s-z-index-0
+              td.text-right
+                code 1
+            tr
+              td z-index-1
+              td
+                code $zindex-1
+              td
+                code --s-z-index-1
+              td.text-right
+                code 100
+            tr
+              td z-index-2
+              td
+                code $zindex-2
+              td
+                code --s-z-index-2
+              td.text-right
+                code 200
+            tr
+              td z-index-3
+              td
+                code $zindex-3
+              td
+                code --s-z-index-3
+              td.text-right
+                code 300
+            tr
+              td z-index-4
+              td
+                code $zindex-4
+              td
+                code --s-z-index-4
+              td.text-right
+                code 400
+
+
+    +docs-pagination({ path: 'installation', name: 'Installation' }, { path: 'custom', name: 'Custom version' })
+
+    include ../_layout/_ad-c.pug
+
+  include ../_layout/_footer.pug
