@@ -7,14 +7,232 @@ block variables
   - var description = 'Color utilities are used for changing colors for text, link and background. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('colors', 'Color utilities')
+  +docs-heading(slug, 'Color utilities', {parent, name: 'Utilities'})
+    +docs-menu('Colors', {parent, slug},
+      {
+        name: 'Text',
+        items: [
+          { anchor: 'available-text-colors', name: 'Available' },
+        ]
+      }
+    )
     include ../_layout/_ad-g.pug
 
     p Color utilities are used for changing colors for text, link and background.
     p
       a.btn.btn-accent(href='https://angular-package.dev/ui-kit/utility/color', target='_blank') Demonstration
 
+
     +docs-subheading('colors-text', 'Text colors')
+
+    p
+      | This section contains CSS classes to change the text color.
+
+
+    +docs-subheading('available-text-colors', 'Available text colors', { slug, tag: 'h5' })
+
+    p
+      | #[strong Spectre.css] has CSS classes prefixed with #[code text] and suffixed by the specified color.
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-center
+          thead
+            tr
+              th
+              th Available
+              th Dark 
+              th Light
+              th Outline
+          tbody
+            tr
+              td.text-left
+                a(href="#shades") dark
+              td
+                .bg-primary.docs-dot
+              td 
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#shades") light
+              td
+                .bg-primary.docs-dot
+              td 
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left
+                a(href="#accent-color") accent
+              td
+                .bg-primary.docs-dot
+              td 
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#primary-colors") primary
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#secondary-colors") secondary
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#gray-colors") gray
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#bg-colors") bg
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#border-colors") border
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#control-colors") link
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#control-colors") disabled
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#control-colors") error
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#control-colors") info
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#control-colors") success
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#body-colors") body-bg
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              td.text-left
+                a(href="#body-colors") body-font
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#other-colors") code
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-primary.docs-dot
+            tr
+              td.text-left
+                a(href="#other-colors") highlight
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-secondary.docs-dot
+              td
+                .bg-primary.docs-dot
+
 
     .docs-demo.columns
       .column.col-12
