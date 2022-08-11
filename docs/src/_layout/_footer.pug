@@ -1,21 +1,48 @@
+include _docs-footer-list.mixin.pug
+
 #copyright.docs-footer.container.grid-lg
-  p
-    a(href='https://github.com/angular-package/spectre.css' target='_blank') GitHub 
-    |  · 
-    a(href='https://twitter.com/angularpackage' target='_blank') Twitter 
-    |  · 
-    a(href='https://www.paypal.me/picturepan2' target='_blank') PayPal Donate 
-    |  · 
-    a(href='https://www.patreon.com/spectrecss' target='_blank') Patreon Sponsor 
-    |  · Version 
-    span.version
-  p
-    | Designed and built with 
-    span.text-error &hearts; 
-    | by 
-    a(href='https://twitter.com/picturepan2' target='_blank') Yan Zhu
-    | . Modified by the 
-    a(href='https://angular-package.dev' target='_blank') @angular-package
-    | . Licensed under the 
-    a(href='https://github.com/angular-package/spectre.css/blob/master/LICENSE' target='_blank') MIT License
-    | .
+  .columns
+    .column.col-5
+      +docs-footer-list('Documentation',
+        {path: 'getting-started', name: 'Getting started' },
+        {path: 'elements', name: 'Elements' },
+        {path: 'layout', name: 'Layout' },
+        {path: 'components', name: 'Components' },
+        {path: 'utilities', name: 'Utilities' },
+        {path: 'experimentals', name: 'Experimentals' }
+      )
+
+
+    .column.col-4
+      +docs-footer-list('Community',
+        {icon: 'fa-solid fa-fw fa-broom', url: 'https://gettr.com/user/angularpackage', target: '_blank', name: 'Gettr' },
+        {icon: 'fa-brands fa-fw fa-twitter', url: 'https://twitter.com/angularpackage', target: '_blank', name: 'Twitter' },
+        {icon: 'fa-brands fa-fw fa-youtube', url: 'https://www.youtube.com/channel/UC_AfUapk36KbBoROeA8a_lg', target:'_blank', name: 'YouTube' },
+        {icon: 'fa-brands fa-fw fa-discord', url: 'https://discord.com/channels/925168966098386944/998970323607228436', target: '_blank', name: 'Discord' },
+        {icon: 'fa-brands fa-fw fa-gitter', url: 'https://gitter.im/angularpackage/Lobby', target:'_blank', name: 'Gitter' }
+      )
+
+    .column.col-3.text-left
+      +docs-footer-list('Donate',
+        {icon: 'fa-brands fa-fw fa-paypal', url: 'https://www.paypal.me/picturepan2', target:'_blank', name: 'PayPal' },
+        {icon: 'fa-brands fa-fw fa-patreon', url: 'https://www.patreon.com/spectrecss', target:'_blank', name: 'Patreon' }
+      )
+
+  .columns
+    .column.col-12
+      | Designed and built with 
+      span.text-error &hearts; 
+      | by 
+      a(href='https://twitter.com/picturepan2' target='_blank') Yan Zhu
+      | . Modified by the 
+      a(href='https://angular-package.dev' target='_blank') @angular-package
+      | . 
+
+  div.divider
+
+  .columns
+    .column.col-12
+      | Version 
+      span.version
+      | . Licensed under the 
+      a(href='https://github.com/angular-package/spectre.css/blob/master/LICENSE' target='_blank') MIT License
