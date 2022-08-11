@@ -20,7 +20,7 @@
 @forward 'media';
 
 // Layout
-@forward 'hero';
+@forward 'hero'; // Updated.
 @forward 'layout';
 @forward 'columns-order';
 @forward 'navbar';
@@ -50,3 +50,7 @@
 // Utility classes
 @forward 'animations';
 @forward 'utilities';
+
+// Initialize mixins.
+// @use 'hero' as *;
+// @include hero;
