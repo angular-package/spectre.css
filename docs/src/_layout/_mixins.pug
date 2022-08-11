@@ -15,6 +15,12 @@ mixin docs-accordion(id, name, ...pages)
             else
               a(class=active href=id + '/' + page.url + '.html')= page.name
 
+mixin docs-dot(available, tooltip = 'available')
+  if available == true
+    .bg-primary.docs-dot.tooltip(data-tooltip="Is " + tooltip)
+  else
+    .bg-secondary.docs-dot.tooltip(data-tooltip="Not " + tooltip)
+
 mixin docs-breadcrumb(category, subcategory) 
   ul.breadcrumb
     li.breadcrumb-item
