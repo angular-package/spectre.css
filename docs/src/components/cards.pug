@@ -7,7 +7,7 @@ block variables
   - var description = 'Cards are flexible content containers. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('cards', 'Cards')
+  +docs-heading(cards, 'Cards', {parent, name: 'Components'})
     include ../_layout/_ad-g.pug
 
     p Cards are flexible content containers.
@@ -117,7 +117,7 @@ block docs-content
             | Empower every person and every organization on the planet to achieve more.
           .card-footer
             a.btn.btn-primary(href="#cards") Do
-    
+
     p
       | Add #[code card-shadow] class to a #[code card] element to get a card with shadow.
     
@@ -126,6 +126,31 @@ block docs-content
         :highlight(lang="html")
           <div class="card card-shadow">
             ...
+          </div>
+
+    +docs-subheading('color', 'Cards - Color', {slug})
+    p
+      | Add #[code card-color] class to a #[code card] element to get a color card.
+
+    .docs-demo.columns
+      .column.col-6.col-xs-12
+        .card.card-color.card-shadow.bg-primary
+          span.card-color-code primary-color
+          span.card-color-class .bg-primary
+          span.card-color-sass $primary-color
+          span.card-color-hex #5755D9
+          input(class="color-picker" type="color" name="primary-color" value="#5755D9")
+          span.card-color-name Primary color
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <div class="card card-color card-shadow bg-primary">
+            <span class="card-color-code">primary-color</span>
+            <span class="card-color-class">.bg-primary</span>
+            <span class="card-color-sass">$primary-color</span>
+            <span class="card-color-hex">#5755D9</span>
+            <input class="card-color-picker" type="color" name="primary-color" value="#5755D9" />
+            <span class="card-color-name">Primary color</span>
           </div>
 
     +docs-pagination({path: 'breadcrumbs', name: 'Breadcrumbs'}, {path: 'chips', name: 'Chips'})

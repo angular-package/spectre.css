@@ -7,7 +7,7 @@ block variables
   - var description = 'Chips are complex entities in small blocks. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('chips', 'Chips')
+  +docs-heading(slug, 'Chips', {parent, name: 'Components'})
     include ../_layout/_ad-g.pug
 
     p Chips are complex entities in small blocks.
@@ -55,7 +55,7 @@ block docs-content
             <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
           </div>
 
-    +docs-pagination('components', {url: 'cards', name: 'Cards'}, {url: 'empty', name: 'Empty states'})
+    +docs-pagination({path: 'cards', name: 'Cards'}, {path: 'empty', name: 'Empty states'})
 
     include ../_layout/_ad-c.pug
 

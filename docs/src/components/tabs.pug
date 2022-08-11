@@ -7,11 +7,25 @@ block variables
   - var description = 'Tabs enable quick switch between different views. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('tabs', 'Tabs')
+  +docs-heading(slug, 'Tabs', {parent, name: 'Components'})
+    +docs-menu('Tabs', {parent, slug},
+      {
+        items: [
+          { anchor: 'tabs-badges', name: 'Badges' },
+          { anchor: 'tabs-buttons-search', name: 'Tab buttons & search' },
+        ]
+      }
+    )
     include ../_layout/_ad-g.pug
 
     p Tabs enable quick switch between different views.
-          
+
+    p
+      | Add a container element with the #[code tab] class. 
+      | And add child elements with the #[code tab-item] class. 
+      | You can add the #[code tab-block] class for a full-width tab.
+      | The #[code tab-item] or its child #[code #{'<a>'}] with the #[code active] class will be highlighted.
+
     .docs-demo.columns
       .column.col-6.col-sm-12
         ul.tab
@@ -39,12 +53,6 @@ block docs-content
             a(href="#tabs")
               | Radio
 
-    p
-      | Add a container element with the #[code tab] class. 
-      | And add child elements with the #[code tab-item] class. 
-      | You can add the #[code tab-block] class for a full-width tab.
-      | The #[code tab-item] or its child #{'<a>'} with the #[code active] class will be highlighted.
-
     pre.code(data-lang='HTML')
       code
         :highlight(lang="html")
@@ -62,6 +70,11 @@ block docs-content
               <a href="#">Connect</a>
             </li>
           </ul>
+
+    +docs-subheading('tabs-badges', 'Tab badges')
+
+    p
+      | If you need #[code badges] on tabs, you can add badge class to the element within #[code tab-item].
 
     .docs-demo.columns
       .column.col-sm-12
@@ -86,20 +99,23 @@ block docs-content
           li.tab-item
             a(href="#tabs")
               | Radio
+      .column.col-12
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <ul class="tab tab-block">
+                <li class="tab-item active">
+                  <a href="#" class="badge" data-badge="9">
+                    Music
+                  </a>
+                </li>
+              </ul>
+
+    +docs-subheading('tabs-buttons-search', 'Tab buttons & search')
 
     p
-      | If you need #[code badges] on tabs, you can add badge class to the element within #[code tab-item].
-
-    pre.code(data-lang='HTML')
-      code
-        :highlight(lang="html")
-          <ul class="tab tab-block">
-            <li class="tab-item active">
-              <a href="#" class="badge" data-badge="9">
-                Music
-              </a>
-            </li>
-          </ul>
+      | You could add a search box or buttons inside a tab.
+      | Add the #[code tab-action] class to the #[code tab-item].
 
     .docs-demo.columns
       .column.col-12
@@ -121,27 +137,23 @@ block docs-content
             .input-group.input-inline
               input.form-input.input-sm(type="text")
               button.btn.btn-primary.btn-sm.input-group-btn Search
-
-    p
-      | You could add a search box or buttons inside a tab.
-      | Add the #[code tab-action] class to the #[code tab-item].
-
-    pre.code(data-lang='HTML')
-      code
-        :highlight(lang="html")
-          <ul class="tab">
-            <li class="tab-item active">
-              <a href="#">
-                Music
-              </a>
-            </li>
-            <li class="tab-item tab-action">
-              <div class="input-group input-inline">
-                <input class="form-input input-sm" type="text">
-                <button class="btn btn-primary btn-sm input-group-btn">Search</button>
-              </div>
-            </li>
-          </ul>
+      .column.col-12
+        pre.code(data-lang='HTML')
+          code
+            :highlight(lang="html")
+              <ul class="tab">
+                <li class="tab-item active">
+                  <a href="#">
+                    Music
+                  </a>
+                </li>
+                <li class="tab-item tab-action">
+                  <div class="input-group input-inline">
+                    <input class="form-input input-sm" type="text">
+                    <button class="btn btn-primary btn-sm input-group-btn">Search</button>
+                  </div>
+                </li>
+              </ul>
 
     +docs-pagination({path: 'steps', name: 'Steps'}, {path: 'tiles', name: 'Tiles'})
 
