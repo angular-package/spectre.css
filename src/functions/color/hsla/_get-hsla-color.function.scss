@@ -1,5 +1,6 @@
 // Sass.
 @use 'sass:list';
+@use 'sass:map';
 
 // Internal.
 @use '../../../variables' as *;
@@ -23,8 +24,18 @@
     @if list.length($name) == 3 {
       $alpha: list.nth($name, 3);
     }
+    // If second argument is the map.
+    @if type-of(list.nth($name, 2)) == 'map' {
+      @if map.has-key(list.nth($name, 2), 'alpha') {
+        $alpha: map.get(list.nth($name, 2), 'alpha');
+      }
+      @if map.has-key(list.nth($name, 2), 'lightness') {
+        $lightness: $lightness + map.get(list.nth($name, 2), 'lightness');
+      }
+    } @else {
+      $lightness: $lightness + list.nth($name, 2);
+    }
 
-    $lightness: $lightness + list.nth($name, 2);
     $name: list.nth($name, 1);
   }
   @return hsla(
@@ -34,3 +45,5 @@
     calc(#{get-var-alpha($name, $prefix)} * #{$alpha})
   );
 }
+// ('primary', -35.5%, 0.95);
+// ('primary-dark', ('lightness': -35.5%, 'alpha': 0.95));
