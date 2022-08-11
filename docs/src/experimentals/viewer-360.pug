@@ -56,7 +56,7 @@ block docs-content
           @include viewer-slider-size(36);
           @include viewer-slider-size(30);
 
-    +docs-pagination('experimentals', {}, {url: 'autocomplete', name: 'Autocomplete'})
+    +docs-pagination({parent, name: 'Experimentals'}, {path: 'autocomplete', name: 'Autocomplete'})
 
     include ../_layout/_ad-c.pug
 

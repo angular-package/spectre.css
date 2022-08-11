@@ -29,7 +29,7 @@ block docs-content
           <!-- Sliders with tooltips -->
           <input class="slider tooltip" type="range" min="0" max="100" value="50" oninput="this.setAttribute('value', this.value);">
 
-    +docs-pagination('experimentals', {url: 'progress', name: 'Progress'}, {url: 'timelines', name: 'Timelines'})
+    +docs-pagination({path: 'progress', name: 'Progress'}, {path: 'timelines', name: 'Timelines'})
 
     include ../_layout/_ad-c.pug
 
