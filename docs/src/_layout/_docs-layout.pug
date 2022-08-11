@@ -8,10 +8,13 @@ block content
         i.icon.icon-menu
       .btns.d-flex
         input.docs-search.form-input(type="text" placeholder="Search Docs")
-        a.btn.ml-1(href='https://www.paypal.me/picturepan2' target='_blank') PayPal
-        a.btn.btn-primary.ml-1(href='https://github.com/picturepan2/spectre' target='_blank') GitHub
+        //- a.btn.ml-1(href='https://www.paypal.me/picturepan2' target='_blank') PayPal
+        a.btn.btn-link.btn-outline.ml-1(href='https://www.npmjs.com/package/@angular-package/spectre.css' target='_blank')
+          i.fa-brands.fa-npm.fa-fw.fa-xl
+        a.btn.btn-link.btn-outline.ml-1(href='https://github.com/angular-package/spectre.css' target='_blank')
+          i.fa-brands.fa-github.fa-fw.fa-xl
 
-    #sidebar.docs-sidebar.off-canvas-sidebar
+    #sidebar.docs-sidebar.off-canvas-sidebar.bg-body
       .docs-brand
         if slug != parent
           a.docs-logo(href='../index.html')
@@ -23,12 +26,13 @@ block content
             img(src='img/spectre-logo.svg' alt='Spectre.css CSS Framework')
             h2 SPECTRE
             small.label.label-secondary.text-bold DOCS
-      .docs-nav
+      .docs-nav.hide-scrollbar.bg-body
         .accordion-container
           +docs-accordion(
             'getting-started',
             'Getting started',
             {url: 'installation', name: 'Installation'},
+            {url: 'variables', name: 'Variables'},
             {url: 'custom', name: 'Custom version'},
             {url: 'browsers', name: 'Browser support'},
             {url: 'whatsnew', name: 'What\'s new'}
@@ -36,22 +40,21 @@ block content
           +docs-accordion(
             'elements',
             'Elements',
-            {url: 'typography', name: 'Typography'},
-            {url: 'tables', name: 'Tables'},
             {url: 'buttons', name: 'Buttons'},
-            {url: 'forms', name: 'Forms'},
-            {url: 'icons', name: 'Icons.css'},
-            {url: 'labels', name: 'Labels'},
             {url: 'code', name: 'Code'},
-            {url: 'media', name: 'Media'}
+            {url: 'forms', name: 'Forms'},
+            {url: 'icons', name: 'Icons'},
+            {url: 'labels', name: 'Labels'},
+            {url: 'media', name: 'Media'},
+            {url: 'tables', name: 'Tables'},
+            {url: 'typography', name: 'Typography'}
           )
-          +docs-accordion(
-            'layout',
-            'Layout',
+          +docs-accordion('layout', 'Layout',
             {url: 'grid', name: 'Flexbox grid'},
-            {url: 'responsive', name: 'Responsive'},
+            {url: 'footer', name: 'Footer', disabled: true},
             {url: 'hero', name: 'Hero'},
-            {url: 'navbar', name: 'Navbar'}
+            {url: 'navbar', name: 'Navbar'},
+            {url: 'responsive', name: 'Responsive'}
           )
           +docs-accordion(
             'components',
@@ -85,6 +88,7 @@ block content
             {url: 'divider', name: 'Divider'},
             {url: 'loading', name: 'Loading'},
             {url: 'position', name: 'Position'},
+            {url: 'scrollbars', name: 'Scrollbars'},
             {url: 'shapes', name: 'Shapes'},
             {url: 'text', name: 'Text'}
           )
