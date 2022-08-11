@@ -1,0 +1,72 @@
+
+// Colors codes.
+$color-codes-core: (
+  'dark': (
+    'code': 'dark',
+    'name': 'dark-color',
+    'hex': $dark-color
+  ),
+  'light': (
+    'code': 'light',
+    'name': 'light-color',
+    'hex': $light-color
+  ),
+
+  'accent': (
+    'code': 'accent',
+    'name': 'accent-color',
+    'hex': $accent-color
+  ),
+
+  'primary': (
+    'code': 'primary',
+    'name': 'primary-color',
+    'hex': $primary-color
+  ),
+  'primary-dark': (
+    'code': 'primary-dark',
+    'name': 'primary-color-dark',
+    'hex': $primary-color-dark
+  ),
+  'primary-light': (
+    'code': 'primary-light',
+    'name': 'primary-color-light',
+    'hex': $primary-color-light
+  ),
+
+  'secondary',
+  'secondary-dark',
+  'secondary-light',
+);
+
+$color-codes: (
+  // Core colors.
+  $color-codes-core,
+  'gray',
+  'gray-dark',
+  'gray-light',
+
+  'bg',
+  'bg-dark',
+  'bg-light',
+
+  'border',
+  'border-dark',
+  'borer-light',
+
+  'link',
+  'link-dark',
+  'link-light',
+
+  'disabled',
+  'error',
+  'info',
+  'success',
+  'warning',
+
+  'body-bg',
+  'body-font',
+
+  'code',
+  'highlight',
+)
