@@ -12,7 +12,7 @@
   .#{$prefix}-bg-#{$name} {
     // background: $color !important; // old spectre.
     // background: color($color) !important;
-    @include background($color, $important: true);
+    @include background($color, $important: !important);
 
     // old spectre.
     // @if (lightness($color) < 60) {
