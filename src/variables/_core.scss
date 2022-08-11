@@ -28,3 +28,6 @@ $color-format: 'hsla' !default; // @new 'rgba' is not working, yet.
 
 //Transition duration.
 $transition-duration: 0.2s !default; // --#{$var-prefix}-transition-duration.
+
+// Max Columns number.
+$columns-count: 4;
