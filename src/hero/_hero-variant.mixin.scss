@@ -1,0 +1,35 @@
+// Sass.
+@use 'sass:list';
+
+// General.
+@use '../mixins/color/color.mixin' as *;
+@use '../mixins/color/background-color.mixin' as *;
+@use '../functions/get-var' as *;
+@use '../variables' as *;
+
+// Hero.
+@use 'hero-size-variants.mixin' as *;
+@use 'set-hero-vars.mixin' as *;
+
+@mixin hero-variant(
+  $name,
+  $bg-color,
+  $color,
+  $sizes: (),
+) {
+  &.hero-#{$name} {
+    // Set the CSS variables.
+    @if list.length($sizes) > 0 {
+      @include set-hero-vars('hero-#{$name}-size', $sizes);
+    }
+
+    // Variant.
+    @include background-color($bg-color);
+    @include color($color);
+
+    // Use CSS variables for variants.
+    @if list.length($sizes) > 0 {
+      @include hero-size-variants('hero-#{$name}-size', $sizes);
+    }
+  }
+}

@@ -1,0 +1,8 @@
+// General.
+@use '../functions/get-var' as *;
+
+@mixin hero-size-variant($name: 'hero-size', $size) {
+  &.#{$name}-#{$size} {
+    padding: get-var($name, $suffix: $size) 0;
+  }
+}

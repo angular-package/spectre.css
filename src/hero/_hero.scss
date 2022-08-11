@@ -1,0 +1,150 @@
+@use '../variables' as *;
+
+// Functions.
+@use '../functions/get-var' as *;
+
+// Mixins.
+@use '../mixins/color/background-color.mixin' as *;
+@use '../mixins/color/color.mixin' as *;
+@use '../mixins/padding.mixins' as *;
+
+// Hero.
+@use 'hero-border-variant.mixin' as *;
+@use 'hero-size-variants.mixin' as *;
+@use 'hero-variant.mixin' as *;
+@use 'set-hero-vars.mixin' as *;
+
+// Hero
+.hero,
+.#{$var-prefix}-hero {
+  // Set default hero sizes CSS variables.
+  @include set-hero-vars('hero-size', $hero-size);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  // Default size = md.
+  padding-bottom: 4rem;
+  padding-top: 4rem;
+
+  // old spectre.css
+  // &.hero-sm {
+  //   padding-bottom: 2rem;
+  //   padding-top: 2rem;
+  // }
+
+  // old spectre.css
+  // &.hero-lg {
+  //   padding-bottom: 8rem;
+  //   padding-top: 8rem;
+  // }
+
+  .hero-body {
+    // padding: $layout-spacing; // old spectre.css
+    // padding: get-var('layout-spacing'); // old @angular-package/spectre.css
+    @include padding('layout-spacing');
+  }
+}
+
+// Hero size variants
+.hero,
+.#{$var-prefix}-hero {
+  // Set the hero sizes variants.
+  @include hero-size-variants('hero-size', $hero-size);
+
+  // View height hero.
+  &.hero-size-vh {
+    justify-content: center;
+    height: 100vh;
+  }
+}
+
+// Hero border variants
+.hero,
+.#{$var-prefix}-hero {
+  @include hero-border-variant(); // Default size.
+  @include hero-border-variant($size: 'lg'); // Large size.
+}
+
+// Hero color variants
+.hero,
+.#{$var-prefix}-hero {
+  // Color variants.
+  // - Shades.
+  // -- Dark
+  @include hero-variant('dark', 'dark-color', 'light-color', $hero-size);
+  // -- Light
+  @include hero-variant('light', 'light-color', 'dark-color', $hero-size);
+
+  // - Accent color
+  @include hero-variant('accent', 'accent-color', 'light-color', $hero-size);
+
+  // - Primary colors
+  @include hero-variant('primary', 'primary-color', 'light-color', $hero-size);
+  // -- Primary dark
+  @include hero-variant('primary-dark', 'primary-color-dark', 'light-color', $hero-size);
+  // -- Primary light
+  @include hero-variant('primary-light', 'primary-color-light', 'light-color', $hero-size);
+
+  // - Secondary colors
+  @include hero-variant('secondary', 'secondary-color', 'primary-color', $hero-size);
+  // -- Secondary dark
+  @include hero-variant('secondary-dark', 'secondary-color-dark', ('secondary-color-light', -40.5%), $hero-size);
+  // -- Secondary light
+  @include hero-variant('secondary-light', 'secondary-color-light', ('secondary-color-dark', -34.5%), $hero-size);
+
+  // - Gray colors
+  @include hero-variant('gray', 'gray-color', 'light-color', $hero-size);
+  // -- Gray dark
+  @include hero-variant('gray-dark', 'gray-color-dark', 'gray-color-light', $hero-size);
+  // -- Gray light
+  @include hero-variant('gray-light', 'gray-color-light', 'gray-color-dark', $hero-size);
+
+  // - Bg colors
+  // -- Bg
+  @include hero-variant('bg', 'bg-color', 'bg-color-dark', $hero-size);
+  // -- Bg dark
+  @include hero-variant('bg-dark', 'bg-color-dark', 'bg-color-light', $hero-size);
+  // -- Bg light
+  @include hero-variant('bg-light', 'bg-color-light', 'bg-color-dark', $hero-size);
+
+  // - Border colors
+  @include hero-variant('border', 'border-color', 'border-color-dark', $hero-size);
+  // -- Border dark
+  @include hero-variant('border-dark', 'border-color-dark', 'border-color-light', $hero-size);
+  // -- Border light
+  @include hero-variant('border-light', 'border-color-light', 'border-color-dark', $hero-size);
+
+  // - Link colors
+  @include hero-variant('link', 'link-color', 'light-color', $hero-size);
+  // -- Link dark
+  @include hero-variant('link-dark', 'link-color-dark', 'light-color', $hero-size);
+  // -- Link light
+  @include hero-variant('link-light', 'link-color-light', 'light-color', $hero-size);
+
+
+  // - Control colors
+  // -- Disabled
+  @include hero-variant('disabled', 'disabled-color', ('disabled-color', -10%), $hero-size);
+  // -- Error
+  @include hero-variant('error', 'error-color', 'light-color', $hero-size);
+  // -- Info
+  @include hero-variant('info', 'info-color', ('info-color', -50%), $hero-size);
+  // -- Success
+  @include hero-variant('success', 'success-color', 'light-color', $hero-size);
+  // -- Warning
+  @include hero-variant('warning', 'warning-color', 'light-color', $hero-size);
+
+  // - Body colors
+  // -- Body bg
+  @include hero-variant('body-bg', 'body-bg-color', 'body-font-color', $hero-size);
+  // -- Body font
+  @include hero-variant('body-font', 'body-font-color', 'body-bg-color', $hero-size); // ! New color variant.
+
+  // - Other colors
+  // -- Code
+  @include hero-variant('code', 'code-color', ('code-color', 50%), $hero-size); // ! New color variant.
+  // - Highlight
+  @include hero-variant('highlight', 'highlight-color', ('highlight-color', -40%), $hero-size); // ! New color variant.
+}

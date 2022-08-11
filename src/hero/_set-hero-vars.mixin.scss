@@ -1,0 +1,11 @@
+@use '../mixins/set-vars' as *;
+@use '../variables' as *;
+
+// @include hero-css-variables('hero-size', $prefix: 'spectre');
+@mixin set-hero-vars(
+  $name,
+  $sizes: $hero-size,
+  $prefix: $var-prefix
+) {
+  @include set-vars($name, $sizes, $prefix);
+}
