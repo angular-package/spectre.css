@@ -42,7 +42,8 @@
   .page-item {
     // margin: $unit-1 $unit-o; // old spectre.css
     // margin: get-var('unit-1') get-var('unit-o'); // old @angular-package/spectre.css
-    @include margin('unit-1', 'unit-o');
+    // @include margin('unit-1', 'unit-o'); // old @angular-package/spectre.css
+    @include padding('unit-1', 'unit-o');
 
     span {
       display: inline-block;
