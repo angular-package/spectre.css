@@ -1,0 +1,50 @@
+@use '../variables' as *;
+
+// Functions.
+@use '../functions/get-var' as *;
+@use '../functions/var-negative' as *;
+
+// Mixins.
+@use '../mixins/z-index.mixin' as *;
+
+// Button groups
+.btn-group,
+.#{$var-prefix}-btn-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+
+  .btn {
+    flex: 1 0 auto;
+    &:first-child:not(:last-child) {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+      // margin-left: -$border-width; // old spectre.css
+      margin-left: var-negative(get-var('border-width'));
+    }
+    &:last-child:not(:first-child) {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      // margin-left: -$border-width; // old spectre.css
+      margin-left: var-negative(get-var('border-width'));
+    }
+    &:focus,
+    &:hover,
+    &:active,
+    &.active {
+      // z-index: $zindex-0; // old spectre.css
+      // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
+      @include z-index('0');
+    }
+  }
+
+  &.btn-group-block {
+    display: flex;
+
+    .btn {
+      flex: 1 0 0;
+    }
+  }
+}

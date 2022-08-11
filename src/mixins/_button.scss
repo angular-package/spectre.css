@@ -1,108 +1,178 @@
+// Functions.
 @use '../functions/color' as *;
+
+// Mixins.
+@use 'color/background.mixin' as *;
+@use 'color/color.mixin' as *;
+@use 'color/color-active.mixin' as *;
+@use 'color/color-focus.mixin' as *;
+@use 'color/color-hover.mixin' as *;
+@use 'color/color-visited.mixin' as *;
+
 @use 'shadow' as *;
 
 // Button variant mixin
 // @mixin button-variant($color: $primary-color) { // old spectre.css
-@mixin button-variant(
-  $bg-color: 'primary-color',
-  $border-color: 'primary-color',
-  $color: 'light-color'
-) {
-  // background: $color; // old spectre.css
-  // background: color($color); // old @angular-package/spectre.css
-  background: color($bg-color);
-  // border-color: darken($color, 3%); // old spectre.css
-  // border-color: color($color, $lightness: -3%); // @old @angular-package/spectre.css
-  border-color: color(($border-color, -3%));
-  // color: $light-color; // old spectre.css
-  // color: color('light-color'); // old @angular-package/spectre.css
-  color: color($color);
-  &:visited {
+@mixin button-variant($name, $bg-color, $color: 'light', $lightness: -2%) {
+  &.btn-#{$name} {
+    // background: $color; // old spectre.css
+    // background: color($color); // old @angular-package/spectre.css
+    // background: color($bg-color); // old @angular-package/spectre.css
+    @include background($bg-color);
+    // border-color: darken($color, 3%); // old spectre.css
+    // border-color: color($color, $lightness: -3%); // @old @angular-package/spectre.css
+    border-color: color($bg-color, $lightness: $lightness - 1%);
     // color: $light-color; // old spectre.css
     // color: color('light-color'); // old @angular-package/spectre.css
-    color: color($color);
-  }
-  &:focus {
-    // @include control-shadow($color); // old @angular-package/spectre.css
-    @include control-shadow($bg-color);
-  }
-  &:focus,
-  &:hover {
-    // background: darken($color, 2%); // old spectre.css
-    // background: color($color, $lightness: -2%); // old @angular-package/spectre.css
-    background: color($bg-color, $lightness: -2%);
-    // border-color: darken($color, 5%); // old spectre.css
-    // border-color: color($color, $lightness: -5%); // old @angular-package/spectre.css
-    border-color: color($bg-color, $lightness: -5%);
+    // color: color($color); // old @angular-package/spectre.css
+    @include color($color);
+
+    // old @angular-package/spectre.css
+    // &:visited {
     // color: $light-color; // old spectre.css
     // color: color('light-color'); // old @angular-package/spectre.css
-    color: color($color);
-  }
-  &:active,
-  &.active {
-    // background: darken($color, 7%); // old spectre.css
-    // background: color($color, $lightness: -7%); // old @angular-package/spectre.css
-    background: color($bg-color, $lightness: -7%);
-    // border-color: darken($color, 10%); // old spectre.css
-    // border-color: color($color, $lightness: -10%); // old @angular-package/spectre.css
-    border-color: color($bg-color, $lightness: -10%);
-    // color: $light-color; // old spectre.css
-    // color: color('light-color'); // old @angular-package/spectre.css
-    color: color($color);
-  }
-  &.loading {
-    &::after {
-      // border-bottom-color: $light-color; // old spectre.css
-      // border-bottom-color: color('light-color'); // old @angular-package/spectre.css
-      border-bottom-color: color($color);
-      // border-left-color: $light-color; // old spectre.css
-      // border-left-color: color('light-color'); // old @angular-package/spectre.css
-      border-left-color: color($color);
+    // color: color($color);
+    // }
+    @include color-visited($color);
+
+    &:focus {
+      // @include control-shadow($color); // old @angular-package/spectre.css
+      @include control-shadow($bg-color);
+    }
+    &:focus,
+    &:hover {
+      // background: darken($color, 2%); // old spectre.css
+      // background: color($color, $lightness: -2%); // old @angular-package/spectre.css
+      // background: color($bg-color, $lightness: $lightness); // old @angular-package/spectre.css
+      @include background($bg-color, $lightness: $lightness);
+
+      // border-color: darken($color, 5%); // old spectre.css
+      // border-color: color($color, $lightness: -5%); // old @angular-package/spectre.css
+      border-color: color($bg-color, $lightness: $lightness - 3%);
+      // color: $light-color; // old spectre.css
+      // color: color('light-color'); // old @angular-package/spectre.css
+      // color: color($color); // old @angular-package/spectre.css
+    }
+    @include color-focus($color);
+    @include color-hover($color);
+
+    &:active,
+    &.active {
+      // background: darken($color, 7%); // old spectre.css
+      // background: color($color, $lightness: -7%); // old @angular-package/spectre.css
+      // background: color($bg-color, $lightness: $lightness - 5%); // old @angular-package/spectre.css
+      @include background($bg-color, $lightness: $lightness - 5%);
+
+      // border-color: darken($color, 10%); // old spectre.css
+      // border-color: color($color, $lightness: -10%); // old @angular-package/spectre.css
+      border-color: color($bg-color, $lightness: $lightness - 8%);
+      // color: $light-color; // old spectre.css
+      // color: color('light-color'); // old @angular-package/spectre.css
+      // color: color($color); // old @angular-package/spectre.css
+    }
+    @include color-active($color);
+
+    &.loading {
+      &::after {
+        // border-bottom-color: $light-color; // old spectre.css
+        // border-bottom-color: color('light-color'); // old @angular-package/spectre.css
+        border-bottom-color: color($color);
+        // border-left-color: $light-color; // old spectre.css
+        // border-left-color: color('light-color'); // old @angular-package/spectre.css
+        border-left-color: color($color);
+      }
     }
   }
 }
 
-// Preparing to changes...
-@mixin button-class-variant($name: 'primary', $color: 'primary-color') {
-  // &.btn-
-  // @include b
+@mixin button-outline-variant($name, $color: 'primary', $lightness: -2%) {
+  &.btn-#{$name} {
+    // background: $light-color; // old spectre.css
+    // background: color('light-color'); // old @angular-package/spectre.css
+    @include background('light');
+    // border-color: $color; // old spectre.css
+    border-color: color($color);
+    // color: $color; // old spectre.css
+    // color: color($color); // old @angular-package/spectre.css
+    @include color($color);
+    &:focus {
+      @include control-shadow($color);
+    }
+    &:focus,
+    &:hover {
+      // background: lighten($color, 50%); // old spectre.css
+      // background: color($color); // old @angular-package/spectre.css
+      @include background($color);
+      // border-color: darken($color, 2%); // old spectre.css
+      border-color: color($color, $lightness: $lightness);
+      // color: $color; // old spectre.css
+      // color: color($color, $lightness: 100%); // old @angular-package/spectre.css
+      @include color($color, $lightness: 100%);
+    }
+    &:active,
+    &.active {
+      // background: $color; // old spectre.css
+      // background: color($color); // old @angular-package/spectre.css
+      @include background($color);
+      // border-color: darken($color, 5%); // old spectre.css
+      border-color: color($color, $lightness: $lightness - 3%);
+      // color: $light-color; // old spectre.css
+      // color: color($color, $lightness: 100%); // old @angular-package/spectre.css
+      @include background($color, $lightness: 100%);
+    }
+    &.loading {
+      &::after {
+        // border-bottom-color: $color; // old spectre.css
+        border-bottom-color: color($color);
+        // border-left-color: $color; // old spectre.css
+        border-left-color: color($color);
+      }
+    }
+  }
 }
 
-// @mixin button-outline-variant($color: $primary-color) { // old spectre.css
-@mixin button-outline-variant($color: 'primary-color') {
-  // background: $light-color; // old spectre.css
-  background: color('light-color');
-  // border-color: $color; // old spectre.css
-  border-color: color($color);
-  // color: $color; // old spectre.css
+@mixin button-link($color: 'link', $hover-color: 'link-dark') {
+  background: transparent;
+  border-color: transparent;
+  // color: $link-color; // old spectre.css
   color: color($color);
-  &:focus {
-    @include control-shadow($color);
-  }
+  &:visited,
   &:focus,
-  &:hover {
-    // background: lighten($color, 50%); // old spectre.css
-    background: color($color, $lightness: -50%);
-    // border-color: darken($color, 2%); // old spectre.css
-    border-color: color($color, $lightness: -2%);
-    // color: $color; // old spectre.css
-    color: color($color);
-  }
+  &:hover,
   &:active,
   &.active {
-    // background: $color; // old spectre.css
-    background: color($color);
-    // border-color: darken($color, 5%); // old spectre.css
-    border-color: color($color, $lightness: -5%);
-    // color: $light-color; // old spectre.css
-    color: color('light-color');
+    border-color: transparent;
+    background: transparent;
+    // color: $link-color-dark; // old spectre.css
+    // color: color($hover-color); // old @angular-package/spectre.css
+    @include color($hover-color);
   }
-  &.loading {
-    &::after {
-      // border-bottom-color: $color; // old spectre.css
-      border-bottom-color: color($color);
-      // border-left-color: $color; // old spectre.css
-      border-left-color: color($color);
+}
+
+@mixin button-link-variant(
+  $name: 'link',
+  $color: 'link',
+  $hover-color: 'link-dark'
+) {
+  &.btn-#{$name} {
+    @include button-link($color, $hover-color);
+  }
+}
+
+@mixin button-link-outline-variant(
+  $name: 'link',
+  $color: 'link',
+  $hover-color: 'link-dark'
+) {
+  &.btn-#{$name} {
+    @include button-link($color, $hover-color);
+
+    &:visited,
+    &:focus,
+    &:hover,
+    &:active,
+    &.active {
+      border-color: color($hover-color);
     }
   }
 }
