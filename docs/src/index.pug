@@ -22,46 +22,53 @@ block content
       p.text-gray
         | Latest version: 
         span.version
+
       .columns
         .column.col-4.col-xs-12
-          .card.text-center
+          .card.text-left.bg-light
             .card-header
               span.card-title Lightweight
             .card-body
-              | Lightweight  (~20KB zipped) starting point for your projects
+              | Lightweight  (~#[strong 30KB] core+min+zipped) starting point for your projects
         .column.col-4.col-xs-12
-          .card.text-center
+          .card.text-left.bg-light
             .card-header
               span.card-title Responsive
             .card-body
               | Flexbox-based, responsive and mobile-friendly layout
         .column.col-4.col-xs-12
-          .card.text-center
+          .card.text-left.bg-light
             .card-header
               span.card-title Modern
             .card-body
               | Elegantly designed and developed elements and components
         .column.col-4.col-xs-12
-          .card.text-center
+          .card.text-left.bg-light
             .card-header
               span.card-title CSS Variables
             .card-body
               | SCSS variables have equivalent CSS variables, and they are used to initialize CSS variables
         .column.col-4.col-xs-12
-          .card.text-center
+          .card.text-left.bg-light
             .card-header
               span.card-title Colors in hsla
             .card-body
-              | Colors are injected in hsla form, split into four CSS variables
+              | Colors are inserted in hsla form, split into #[strong five] CSS variables
         .column.col-4.col-xs-12
-          .card.text-center
+          .card.text-left.bg-light
+            .card-header
+              span.card-title Customizable
+            .card-body
+              | Customizable CSS property names, color shades with the lightness dedicated CSS variable and others with predefined mixins
+        .column.col-4.col-xs-12
+          .card.text-left.bg-light
             .card-header
               span.card-title Free to use
             .card-body
-              | Free for commercial use under MIT license
+              | Free for #[strong commercial] use under #[strong MIT] license
 
-  .section.section-ads.bg-bg
-    include _layout/_ad-g.pug
+  //- .section.section-ads.bg-bg
+    //- include _layout/_ad-g.pug
 
   .section.section-features.bg-primary.text-light.text-center
     .container.grid-lg
@@ -74,7 +81,7 @@ block content
           p.text-secondary
             | Spectre provides basic styles for typography and elements, flexbox based responsive layout system, pure CSS components and utilities with best practice coding and consistent design language.
         .column.col-10.col-sm-12.col-mx-auto
-          a.btn.btn-lg(href='getting-started/installation.html') Install Spectre.css
+          a.btn.btn-lg.btn-accent.btn-outline(href='getting-started/installation.html') Install Spectre.css
 
   .section.section-updates.bg-bg
     .container.grid-lg
@@ -92,11 +99,12 @@ block content
         .column.col-4.col-xs-12
           .card
             .card-header
-              .card-title.h6 PayPal Donate
+              .card-title.h6 Donate
             .card-body
-              | Spectre.css is completely free to use. If you enjoy it, please consider donating for the further development.
+              | Spectre.css is completely free to use. If you enjoy it, please consider donating the #[a(href="https://twitter.com/picturepan2" target="_blank") Yan Zhu] or consider donating the #[a(href="https://twitter.com/angularpackage" target="_blank") @angular-package] for further development.
             .card-footer
-              a.btn.btn-primary(href='https://www.paypal.me/picturepan2' target='_blank') Donate
+              a.btn.btn-primary(href='https://www.paypal.me/picturepan2' target='_blank') Yan Zhu
+              a.ml-1.btn.btn-primary(href='https://spectrecss.angular-package.dev/donate/usd-fiat' target='_blank') @angular-package
         .column.col-4.col-xs-12
           .card
             .card-header
@@ -104,7 +112,9 @@ block content
             .card-body
               | Your name or company logo will be put on Spectre Docs homepage.
             .card-footer
-              a.btn.btn-primary(href='https://www.patreon.com/spectrecss' target='_blank') Sponsor
+              a.btn.btn-primary(href='https://www.patreon.com/spectrecss' target='_blank') Yan Zhu
+              a.ml-1.btn.btn-primary(href='https://www.patreon.com/angularpackage' target='_blank') @angular-package
+
   .section.section-ads.bg-bg
     include _layout/_ad-c.pug
 
