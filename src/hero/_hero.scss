@@ -43,7 +43,8 @@
   .hero-body {
     // padding: $layout-spacing; // old spectre.css
     // padding: get-var('layout-spacing'); // old @angular-package/spectre.css
-    @include padding('layout-spacing');
+    // @include padding('layout-spacing'); // old @angular-package/spectre.css
+    @include padding(('layout-spacing', true));
   }
 }
 
