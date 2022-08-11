@@ -7,13 +7,240 @@ block variables
   - var description = 'Avatars are user profile pictures. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('avatars', 'Avatars')
+  +docs-heading(slug, 'Avatars', {parent, name: 'Components'})
+    +docs-menu('Avatars', {parent, slug},
+      { anchor: 'initials', name: 'Initials' },
+      {
+        anchor: 'sizes',
+        name: 'Sizes',
+        items: [
+          { anchor: 'xl', name: 'Extra large' },
+          { anchor: 'lg', name: 'Large' },
+          { anchor: 'md', name: 'Medium' },
+          { anchor: 'sm', name: 'Small' },
+          { anchor: 'xs', name: 'Extra small' },
+        ]
+      },
+      { anchor: 'icons', name: 'Icons' },
+      {
+        anchor: 'presence',
+        name: 'Presence',
+        items: [
+          { anchor: 'indicators', name: 'Indicators' },
+          { anchor: 'away', name: 'Away' },
+          { anchor: 'busy', name: 'Busy' },
+          { anchor: 'offline', name: 'Offline' },
+          { anchor: 'online', name: 'Online' },
+        ]
+      }
+
+    )
     include ../_layout/_ad-g.pug
     
-    p Avatars are user profile pictures. 
+    p #[strong Avatars] are user profile pictures. 
 
     .docs-demo.columns
-      .column.col-6.col-xs-12
+      .column.col-12.col-xs-12
+        figure.avatar.mr-2
+          img(src="../img/avatar-1.png" alt="Avatar 1")
+        figure.avatar.mr-2
+          img(src="../img/avatar-2.png" alt="Avatar 2")
+        figure.avatar.mr-2
+          img(src="../img/avatar-3.png" alt="Avatar 3")
+        figure.avatar.mr-2
+          img(src="../img/avatar-4.png" alt="Avatar 4")
+        figure.avatar.mr-2
+          img(src="../img/avatar-5.png" alt="Avatar 5")
+
+    p
+      | Add the #[code avatar] class to the #[code #{'<figure>'}] element. And add the #[code img] element as its profile picture into it.
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Basic avatar examples -->
+          <figure class="avatar"><img src="img/avatar-1.png" alt="Avatar 1"></figure>
+          <figure class="avatar"><img src="img/avatar-2.png" alt="Avatar 2"></figure>
+          <figure class="avatar"><img src="img/avatar-3.png" alt="Avatar 3"></figure>
+          <figure class="avatar"><img src="img/avatar-4.png" alt="Avatar 4"></figure>
+          <figure class="avatar"><img src="img/avatar-5.png" alt="Avatar 5"></figure>
+
+    +docs-subheading('initials', 'Avatar initials', {slug})
+
+    p
+      | For users who don't have profile pictures, you may use their initials for avatars.
+      | The #[code data-initial] attribute of the #[code figure] element is the name appear inside the avatar.
+
+    .docs-demo.columns
+      .column.col-12.col-xs-12
+        figure.avatar.mr-2(data-initial="ŚR")
+        figure.avatar.mr-2(data-initial="JK")
+        figure.avatar.mr-2(data-initial="RC")
+        figure.avatar.mr-2(data-initial="AC")
+        figure.avatar.mr-2(data-initial="DK")
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- No profile picture avatar examples -->
+          <figure class="avatar" data-initial="ŚR"></figure>
+          <figure class="avatar" data-initial="JK"></figure>
+          <figure class="avatar" data-initial="RC"></figure>
+          <figure class="avatar" data-initial="AC"></figure>
+          <figure class="avatar" data-initial="DK"></figure>
+
+          <!-- Show initals when avatar image is unavailable or not fully loaded -->
+          <figure class="avatar" data-initial="ŚR">
+            <img src="img/avatar-2.png" alt="ŚR">
+          </figure>
+
+    +docs-subheading('sizes', 'Avatar sizes', {slug})
+
+    p
+      | Avatar's size can be easily changed using the prepared classes by adding the #[code avatar] class and avatar size class to the #[code #{'<figure>'}] element.
+
+
+    +docs-subheading('sizes-available', 'Avatar available sizes', { slug, tag: 'h5' })
+
+    p
+      | There are 4 additional sizes available, including #[code avatar-xl](64px), #[code avatar-lg](48px), #[code avatar-sm](24px), and #[code avatar-xs](16px).
+      | By default, which means without any given class or given #[code avatar-md] class the avatar size is #[code 32px].
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-center
+          thead
+            tr
+              th 
+              th xs 
+              th sm 
+              th md  
+              th lg  
+              th xl 
+              th 2x 
+          tbody
+            tr
+              th.text-left Available
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+            tr
+              th.text-left Size(px)
+              td #[code 16px]
+              td #[code 24px]
+              td #[code 32px]
+              td #[code 48px]
+              td #[code 64px]
+              td -
+
+    <!-- Size: xl -->
+    +docs-subheading('sizes-xl', 'Avatar sizes - extra large(xl)', { slug, tag: 'h5' })
+    p 
+      | To change the avatar size to #[strong extra large] add the #[code avatar-xl] to the #[code figure] element.
+    .docs-demo.columns
+      .column.col-12.col-xs-12
+        figure.avatar.avatar-xl.mr-2
+          img(src="../img/avatar-1.png" alt="Avatar XL")
+        figure.avatar.avatar-xl.mr-2(data-initial="YZ")
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Extra large avatar example -->
+          <figure class="avatar avatar-xl">
+            <img src="img/avatar-1.png" alt="Avatar XL">
+          </figure>
+
+          <figure class="avatar avatar-xl" data-initial="YZ"></figure>
+
+    <!-- Size: lg -->
+    +docs-subheading('sizes-lg', 'Avatar sizes - large(lg)', { slug, tag: 'h5' })
+    p 
+      | To change the avatar size to #[strong large] add the #[code avatar-lg] to the #[code figure] element.
+    .docs-demo.columns
+      .column.col-12.col-xs-12
+        figure.avatar.avatar-lg.mr-2
+          img(src="../img/avatar-2.png" alt="Avatar LG")
+        figure.avatar.avatar-lg.mr-2(data-initial="YZ")
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Large avatar example -->
+          <figure class="avatar avatar-lg">
+            <img src="img/avatar-2.png" alt="Avatar LG">
+          </figure>
+
+          <figure class="avatar avatar-lg" data-initial="YZ"></figure>
+
+    +docs-subheading('sizes-md', 'Avatar sizes - medium(md)', { slug, tag: 'h5' })
+    p
+      | Without any or with #[code avatar-md] class the avatar is medium size.
+    .docs-demo.columns
+      .column.col-12.col-xs-12
+        figure.avatar.mr-2
+          img(src="../img/avatar-3.png" alt="Avatar or Avatar md")
+        figure.avatar.avatar-md.mr-2(data-initial="YZ")
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Medium avatar example -->
+          <figure class="avatar">
+            <img src="img/avatar-3.png" alt="Avatar or Avatar md">
+          </figure>
+          
+          <figure class="avatar avatar-md" data-initial="YZ"></figure>
+
+    +docs-subheading('sizes-sm', 'Avatar sizes - small(sm)', { slug, tag: 'h5' })
+    p 
+      | To change the avatar size to #[strong small] add the #[code avatar-sm] to the #[code figure] element.
+    .docs-demo.columns
+      .column.col-12.col-xs-12
+        figure.avatar.avatar-sm.mr-2
+          img(src="../img/avatar-3.png" alt="Avatar SM")
+        figure.avatar.avatar-sm.mr-2(data-initial="YZ")
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Small avatar example -->
+          <figure class="avatar avatar-sm">
+            <img src="img/avatar-3.png" alt="Avatar SM">
+          </figure>
+
+          <figure class="avatar avatar-sm" data-initial="YZ"></figure>
+
+    +docs-subheading('sizes-xs', 'Avatar sizes - extra small(xs)', { slug, tag: 'h5' })
+    p 
+      | To change the avatar size to #[strong extra small] add the #[code avatar-xs] to the #[code figure] element.
+    .docs-demo.columns
+      .column.col-12.col-xs-12
+        figure.avatar.avatar-xs.mr-2
+          img(src="../img/avatar-5.png" alt="Avatar XS")
+        figure.avatar.avatar-xs.mr-2(data-initial="XS")
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Extra small avatar examples -->
+          <figure class="avatar avatar-xs">
+            <img src="img/avatar-5.png" alt="Avatar XS">
+          </figure>
+
+          <figure class="avatar avatar-xs" data-initial="XS"></figure>
+
+    +docs-subheading('sizes-comparison', 'Avatar sizes comparison', { slug, tag: 'h5' })
+    .docs-demo.columns
+      .column.col-12.col-xs-12
         figure.avatar.avatar-xl.mr-2
           img(src="../img/avatar-1.png" alt="Avatar XL")
         figure.avatar.avatar-lg.mr-2
@@ -31,15 +258,6 @@ block docs-content
         figure.avatar.avatar-sm.mr-2(data-initial="YZ")
         figure.avatar.avatar-xs.mr-2(data-initial="YZ")
 
-    p
-      | Add the #[code avatar] class to #{'<img>'} element.
-      | There are 4 additional sizes available, including #[code avatar-xl](64px), #[code avatar-lg](48px), #[code avatar-sm](24px), and #[code avatar-xs](16px).
-      | By default, the avatar size is 32px.
-    p
-      | For users who don't have profile pictures, you may use their initials for avatars.
-      | Add the #[code avatar] class and avatar size class to #{'<div>'}  element.
-      | The #[code data-initial] attribute is the name appear inside the avatar.
-
     pre.code(data-lang='HTML')
       code
         :highlight(lang="html")
@@ -48,17 +266,29 @@ block docs-content
             <img src="img/avatar-1.png" alt="...">
           </figure>
 
-          <figure class="avatar avatar-xl" data-initial="YZ" style="background-color: #5755d9;"></figure>
+          <figure class="avatar avatar-xl" data-initial="YZ"></figure>
 
           <!-- Show initals when avatar image is unavailable or not fully loaded -->
-          <figure class="avatar avatar-xl" data-initial="YZ" style="background-color: #5755d9;">
+          <figure class="avatar avatar-xl" data-initial="YZ">
             <img src="img/avatar-1.png" alt="...">
           </figure>
 
-    +docs-subheading('avatars-icons', 'Avatar icons')
+    <!-- Avatars: icons -->
+    +docs-subheading('icons', 'Avatar icons', {slug})
 
     .docs-demo.columns
-      .column.col-6.col-xs-12
+      .column.col-12.col-xs-12
+        figure.avatar.avatar-xl.mr-2
+          img.avatar-icon(src="../img/avatar-2.png" alt="Avatar")
+        figure.avatar.avatar-lg.mr-2
+          img.avatar-icon(src="../img/avatar-3.png" alt="Avatar")
+        figure.avatar.mr-2
+          img.avatar-icon(src="../img/avatar-4.png" alt="Avatar")
+        figure.avatar.avatar-sm.mr-2
+          img.avatar-icon(src="../img/avatar-5.png" alt="Avatar")
+        figure.avatar.avatar-xs
+          img.avatar-icon(src="../img/avatar-1.png" alt="Avatar")
+
         figure.avatar.avatar-xl.mr-2
           img(src="../img/avatar-1.png" alt="Avatar")
           img.avatar-icon(src="../img/avatar-2.png" alt="Avatar")
@@ -79,37 +309,458 @@ block docs-content
       code
         :highlight(lang="html")
           <figure class="avatar avatar-xl">
-            <img src="img/avatar-1.png" alt="...">
-            <img src="img/avatar-5.png" class="avatar-icon" alt="...">
+            <img src="img/avatar-1.png" alt="xl">
+            <img src="img/avatar-5.png" class="avatar-icon" alt="xl">
+          </figure>
+          <figure class="avatar avatar-lg">
+            <img src="img/avatar-2.png" alt="lg">
+            <img src="img/avatar-3.png" class="avatar-icon" alt="lg">
+          </figure>
+          <figure class="avatar avatar-md">
+            <img src="img/avatar-3.png" alt="md">
+            <img src="img/avatar-4.png" class="avatar-icon" alt="md">
+          </figure>
+          <figure class="avatar avatar-sm">
+            <img src="img/avatar-5.png" alt="...">
+            <img src="img/avatar-1.png" class="avatar-icon" alt="sm">
+          </figure>
+          <figure class="avatar avatar-xs">
+            <img src="img/avatar-1.png" alt="xs">
+            <img src="img/avatar-5.png" class="avatar-icon" alt="xs">
           </figure>
 
-    +docs-subheading('avatars-presence', 'Avatar presence')
-            
-    .docs-demo.columns
-      .column.col-6.col-xs-12
-        figure.avatar.avatar-xl.mr-2(data-initial="YZ")
-          i.avatar-presence.online
-        figure.avatar.avatar-lg.mr-2(data-initial="YZ")
-          i.avatar-presence.busy
-        figure.avatar.mr-2(data-initial="YZ")
-          i.avatar-presence.away
-        figure.avatar.avatar-sm.mr-2(data-initial="YZ")
-          i.avatar-presence.offline
-        figure.avatar.avatar-xs.mr-2(data-initial="YZ")
-          i.avatar-presence.online
+
+    +docs-subheading('presence', 'Avatar presence', {slug})
 
     p
       | Avatars support presence indicators.
-      | You can add an #{'<i>'} element with the #[code avatar-presence] class, and add #[code online], #[code busy] or #[code away] class for different status colors.
+      | You can add an #[code #{'<i>'}] element with the #[code avatar-presence] class, and add #[code online], #[code busy] or #[code away] class for different status colors.
       | The default is gray which means offline.
+
+
+    +docs-subheading('presence-indicators', 'Avatar presence - Indicators', { slug, tag: 'h5' })
+
+    table.docs-table.table.table-striped.text-center
+      thead
+        tr
+          th 
+          th Away
+          th Busy 
+          th Offline
+          th Online
+      tbody
+        tr
+          th(scope="row").text-left Color
+          td
+            .bg-warning.docs-dot
+          td 
+            .bg-error.docs-dot
+          td
+            .bg-gray.docs-dot
+          td
+            .bg-success.docs-dot
+        tr
+          th(scope="row").text-left Class
+          td
+            code away
+          td 
+            code busy
+          td
+            code offline
+          td
+            code online
+        tr
+          th(scope="row").text-left CSS variable
+          td
+            code --s-warning-color
+          td 
+            code --s-error-color
+          td
+            code --s-gray-color
+          td
+            code --s-success-color
+      tfoot
+        tr
+          th(scope="row")
+          td
+            a.btn.btn-link(href="") View
+          td 
+            a.btn.btn-link(href="") View
+          td
+            a.btn.btn-link(href="") View
+          td
+            a.btn.btn-link(href="") View
+
+
+    +docs-subheading('presence-away', 'Avatar presence - Away', { slug, tag: 'h5' })
+    p
+      | Add #[code away] class for away status colors.
+
+    .docs-demo.columns
+      .column.col-12.col-xs-12
+        figure.avatar.avatar-xl.mr-2(data-initial="xl")
+          i.avatar-presence.away
+        figure.avatar.avatar-lg.mr-2(data-initial="lg")
+          i.avatar-presence.away
+        figure.avatar.mr-2(data-initial="md")
+          i.avatar-presence.away
+        figure.avatar.avatar-sm.mr-2(data-initial="sm")
+          i.avatar-presence.away
+        figure.avatar.avatar-xs.mr-2(data-initial="xs")
+          i.avatar-presence.away
+
+        figure.avatar.avatar-xl.mr-2(data-initial="xl")
+          img(src="../img/avatar-1.png" alt="Avatar XL")
+          i.avatar-presence.away
+        figure.avatar.avatar-lg.mr-2(data-initial="lg")
+          img(src="../img/avatar-2.png" alt="Avatar LG")
+          i.avatar-presence.away
+        figure.avatar.mr-2(data-initial="md")
+          img(src="../img/avatar-3.png" alt="Avatar MD")
+          i.avatar-presence.away
+        figure.avatar.avatar-sm.mr-2(data-initial="sm")
+          img(src="../img/avatar-4.png" alt="Avatar SM")
+          i.avatar-presence.away
+        figure.avatar.avatar-xs.mr-2(data-initial="xs")
+          img(src="../img/avatar-5.png" alt="Avatar XS")
+          i.avatar-presence.away
 
     pre.code(data-lang='HTML')
       code
         :highlight(lang="html")
+          <!-- Size extra large (xl) -->
+          <figure class="avatar avatar-xl" data-initial="xl">
+            <i class="avatar-presence away"></i>
+          </figure>
+
+          <!-- Size large (lg) -->
+          <figure class="avatar avatar-lg" data-initial="lg">
+            <i class="avatar-presence away"></i>
+          </figure>
+
+          <!-- Size medium (md) -->
+          <figure class="avatar" data-initial="md">
+            <i class="avatar-presence away"></i>
+          </figure>
+
+          <!-- Size small (sm) -->
+          <figure class="avatar avatar-sm" data-initial="sm">
+            <i class="avatar-presence away"></i>
+          </figure>
+
+          <!-- Size extra small (xs) -->
+          <figure class="avatar avatar-xs" data-initial="xs">
+            <i class="avatar-presence away"></i>
+          </figure>
+
+          <!-- With profile picture -->
+
+          <!-- Size extra large (xl) -->
           <figure class="avatar avatar-xl">
-            <img src="img/avatar-1.png" alt="...">
+            <img src="img/avatar-1.png" alt="Avatar XL">
+            <i class="avatar-presence away"></i>
+          </figure>
+
+          <!-- Size large (lg) -->
+          <figure class="avatar avatar-lg">
+            <img src="img/avatar-2.png" alt="Avatar LG">
+            <i class="avatar-presence away"></i>
+          </figure>
+
+          <!-- Size medium (md) -->
+          <figure class="avatar">
+            <img src="img/avatar-3.png" alt="Avatar MD">
+            <i class="avatar-presence away"></i>
+          </figure>
+
+          <!-- Size small (sm) -->
+          <figure class="avatar avatar-sm">
+            <img src="img/avatar-4.png" alt="Avatar SM">
+            <i class="avatar-presence away"></i>
+          </figure>
+
+          <!-- Size extra small (xs) -->
+          <figure class="avatar avatar-xs">
+            <img src="img/avatar-5.png" alt="Avatar XS">
+            <i class="avatar-presence busy"></i>
+          </figure>
+
+    +docs-subheading('presence-busy', 'Avatar presence - Busy', { slug, tag: 'h5' })
+    p
+      | Add #[code busy] class for busy status colors.
+    .docs-demo.columns
+      .column.col-12.col-xs-12
+        figure.avatar.avatar-xl.mr-2(data-initial="xl")
+          i.avatar-presence.busy
+        figure.avatar.avatar-lg.mr-2(data-initial="lg")
+          i.avatar-presence.busy
+        figure.avatar.mr-2(data-initial="md")
+          i.avatar-presence.busy
+        figure.avatar.avatar-sm.mr-2(data-initial="sm")
+          i.avatar-presence.busy
+        figure.avatar.avatar-xs.mr-2(data-initial="xs")
+          i.avatar-presence.busy
+
+        figure.avatar.avatar-xl.mr-2(data-initial="xl")
+          img(src="../img/avatar-1.png" alt="Avatar XL")
+          i.avatar-presence.busy
+        figure.avatar.avatar-lg.mr-2(data-initial="lg")
+          img(src="../img/avatar-2.png" alt="Avatar LG")
+          i.avatar-presence.busy
+        figure.avatar.mr-2(data-initial="md")
+          img(src="../img/avatar-3.png" alt="Avatar MD")
+          i.avatar-presence.busy
+        figure.avatar.avatar-sm.mr-2(data-initial="sm")
+          img(src="../img/avatar-4.png" alt="Avatar SM")
+          i.avatar-presence.busy
+        figure.avatar.avatar-xs.mr-2(data-initial="xs")
+          img(src="../img/avatar-5.png" alt="Avatar XS")
+          i.avatar-presence.busy
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Size extra large (xl) -->
+          <figure class="avatar avatar-xl" data-initial="xl">
+            <i class="avatar-presence busy"></i>
+          </figure>
+
+          <!-- Size large (lg) -->
+          <figure class="avatar avatar-lg" data-initial="lg">
+            <i class="avatar-presence busy"></i>
+          </figure>
+
+          <!-- Size medium (md) -->
+          <figure class="avatar" data-initial="md">
+            <i class="avatar-presence busy"></i>
+          </figure>
+
+          <!-- Size small (sm) -->
+          <figure class="avatar avatar-sm" data-initial="sm">
+            <i class="avatar-presence busy"></i>
+          </figure>
+
+          <!-- Size extra small (xs) -->
+          <figure class="avatar avatar-xs" data-initial="xs">
+            <i class="avatar-presence busy"></i>
+          </figure>
+
+          <!-- With profile picture -->
+
+          <!-- Size extra large (xl) -->
+          <figure class="avatar avatar-xl">
+            <img src="img/avatar-1.png" alt="Avatar XL">
+            <i class="avatar-presence busy"></i>
+          </figure>
+
+          <!-- Size large (lg) -->
+          <figure class="avatar avatar-lg">
+            <img src="img/avatar-2.png" alt="Avatar LG">
+            <i class="avatar-presence busy"></i>
+          </figure>
+
+          <!-- Size medium (md) -->
+          <figure class="avatar">
+            <img src="img/avatar-3.png" alt="Avatar MD">
+            <i class="avatar-presence busy"></i>
+          </figure>
+
+          <!-- Size small (sm) -->
+          <figure class="avatar avatar-sm">
+            <img src="img/avatar-4.png" alt="Avatar SM">
+            <i class="avatar-presence busy"></i>
+          </figure>
+
+          <!-- Size extra small (xs) -->
+          <figure class="avatar avatar-xs">
+            <img src="img/avatar-5.png" alt="Avatar XS">
+            <i class="avatar-presence busy"></i>
+          </figure>
+
+    +docs-subheading('presence-offline', 'Avatar presence - Offline', { slug, tag: 'h5' })
+    p
+      | Add #[code offline] class or no class for offline status colors.
+    .docs-demo.columns
+      .column.col-12.col-xs-12
+        figure.avatar.avatar-xl.mr-2(data-initial="xl")
+          i.avatar-presence.offline
+        figure.avatar.avatar-lg.mr-2(data-initial="lg")
+          i.avatar-presence.offline
+        figure.avatar.mr-2(data-initial="md")
+          i.avatar-presence.offline
+        figure.avatar.avatar-sm.mr-2(data-initial="sm")
+          i.avatar-presence.offline
+        figure.avatar.avatar-xs.mr-2(data-initial="xs")
+          i.avatar-presence.offline
+
+        figure.avatar.avatar-xl.mr-2(data-initial="xl")
+          img(src="../img/avatar-1.png" alt="Avatar XL")
+          i.avatar-presence.offline
+        figure.avatar.avatar-lg.mr-2(data-initial="lg")
+          img(src="../img/avatar-2.png" alt="Avatar LG")
+          i.avatar-presence.offline
+        figure.avatar.mr-2(data-initial="md")
+          img(src="../img/avatar-3.png" alt="Avatar MD")
+          i.avatar-presence.offline
+        figure.avatar.avatar-sm.mr-2(data-initial="sm")
+          img(src="../img/avatar-4.png" alt="Avatar SM")
+          i.avatar-presence.offline
+        figure.avatar.avatar-xs.mr-2(data-initial="xs")
+          img(src="../img/avatar-5.png" alt="Avatar XS")
+          i.avatar-presence.offline
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Size extra large (xl) -->
+          <figure class="avatar avatar-xl" data-initial="xl">
+            <i class="avatar-presence offline"></i>
+          </figure>
+
+          <!-- Size large (lg) -->
+          <figure class="avatar avatar-lg" data-initial="lg">
+            <i class="avatar-presence offline"></i>
+          </figure>
+
+          <!-- Size medium (md) -->
+          <figure class="avatar" data-initial="md">
+            <i class="avatar-presence offline"></i>
+          </figure>
+
+          <!-- Size small (sm) -->
+          <figure class="avatar avatar-sm" data-initial="sm">
+            <i class="avatar-presence offline"></i>
+          </figure>
+
+          <!-- Size extra small (xs) -->
+          <figure class="avatar avatar-xs" data-initial="xs">
+            <i class="avatar-presence offline"></i>
+          </figure>
+
+          <!-- With profile picture -->
+
+          <!-- Size extra large (xl) -->
+          <figure class="avatar avatar-xl">
+            <img src="img/avatar-1.png" alt="Avatar XL">
+            <i class="avatar-presence offline"></i>
+          </figure>
+
+          <!-- Size large (lg) -->
+          <figure class="avatar avatar-lg">
+            <img src="img/avatar-2.png" alt="Avatar LG">
+            <i class="avatar-presence offline"></i>
+          </figure>
+
+          <!-- Size medium (md) -->
+          <figure class="avatar">
+            <img src="img/avatar-3.png" alt="Avatar MD">
+            <i class="avatar-presence offline"></i>
+          </figure>
+
+          <!-- Size small (sm) -->
+          <figure class="avatar avatar-sm">
+            <img src="img/avatar-4.png" alt="Avatar SM">
+            <i class="avatar-presence offline"></i>
+          </figure>
+
+          <!-- Size extra small (xs) -->
+          <figure class="avatar avatar-xs">
+            <img src="img/avatar-5.png" alt="Avatar XS">
+            <i class="avatar-presence offline"></i>
+          </figure>
+
+    +docs-subheading('presence-online', 'Avatar presence - Online', { slug, tag: 'h5' })
+    p
+      | Add #[code online] class for online status colors.
+    .docs-demo.columns
+      .column.col-12.col-xs-12
+        figure.avatar.avatar-xl.mr-2(data-initial="xl")
+          i.avatar-presence.online
+        figure.avatar.avatar-lg.mr-2(data-initial="lg")
+          i.avatar-presence.online
+        figure.avatar.mr-2(data-initial="md")
+          i.avatar-presence.online
+        figure.avatar.avatar-sm.mr-2(data-initial="sm")
+          i.avatar-presence.online
+        figure.avatar.avatar-xs.mr-2(data-initial="xs")
+          i.avatar-presence.online
+
+        figure.avatar.avatar-xl.mr-2(data-initial="xl")
+          img(src="../img/avatar-1.png" alt="Avatar XL")
+          i.avatar-presence.online
+        figure.avatar.avatar-lg.mr-2(data-initial="lg")
+          img(src="../img/avatar-2.png" alt="Avatar LG")
+          i.avatar-presence.online
+        figure.avatar.mr-2(data-initial="md")
+          img(src="../img/avatar-3.png" alt="Avatar MD")
+          i.avatar-presence.online
+        figure.avatar.avatar-sm.mr-2(data-initial="sm")
+          img(src="../img/avatar-4.png" alt="Avatar SM")
+          i.avatar-presence.online
+        figure.avatar.avatar-xs.mr-2(data-initial="xs")
+          img(src="../img/avatar-5.png" alt="Avatar XS")
+          i.avatar-presence.online
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Size extra large (xl) -->
+          <figure class="avatar avatar-xl" data-initial="xl">
             <i class="avatar-presence online"></i>
           </figure>
+
+          <!-- Size large (lg) -->
+          <figure class="avatar avatar-lg" data-initial="lg">
+            <i class="avatar-presence online"></i>
+          </figure>
+
+          <!-- Size medium (md) -->
+          <figure class="avatar" data-initial="md">
+            <i class="avatar-presence online"></i>
+          </figure>
+
+          <!-- Size small (sm) -->
+          <figure class="avatar avatar-sm" data-initial="sm">
+            <i class="avatar-presence online"></i>
+          </figure>
+
+          <!-- Size extra small (xs) -->
+          <figure class="avatar avatar-xs" data-initial="xs">
+            <i class="avatar-presence online"></i>
+          </figure>
+
+          <!-- With profile picture -->
+
+          <!-- Size extra large (xl) -->
+          <figure class="avatar avatar-xl">
+            <img src="img/avatar-1.png" alt="Avatar XL">
+            <i class="avatar-presence online"></i>
+          </figure>
+
+          <!-- Size large (lg) -->
+          <figure class="avatar avatar-lg">
+            <img src="img/avatar-2.png" alt="Avatar LG">
+            <i class="avatar-presence online"></i>
+          </figure>
+
+          <!-- Size medium (md) -->
+          <figure class="avatar">
+            <img src="img/avatar-3.png" alt="Avatar MD">
+            <i class="avatar-presence online"></i>
+          </figure>
+
+          <!-- Size small (sm) -->
+          <figure class="avatar avatar-sm">
+            <img src="img/avatar-4.png" alt="Avatar SM">
+            <i class="avatar-presence online"></i>
+          </figure>
+
+          <!-- Size extra small (xs) -->
+          <figure class="avatar avatar-xs">
+            <img src="img/avatar-5.png" alt="Avatar XS">
+            <i class="avatar-presence online"></i>
+          </figure>
+
 
     +docs-pagination({path: 'accordions', name: 'Accordions'}, {path: 'badges', name: 'Badges'})
 
