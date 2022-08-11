@@ -59,7 +59,7 @@
   border-top-right-radius: var(--s-border-radius);
   display: flex;
   font-size: var(--s-font-size-lg);
-  padding: calc(var(--s-layout-spacing) * var(--s-layout-spacing-unit));
+  padding: calc(var(--s-layout-spacing) * var(--s-layout-spacing-unit)) ;
 }
 .calendar .calendar-header,
 .calendar .calendar-body,
@@ -68,7 +68,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: calc(var(--s-layout-spacing) * var(--s-layout-spacing-unit)) 0;
+  padding: calc(var(--s-layout-spacing) * var(--s-layout-spacing-unit)) var(--s-unit-0) ;
 }
 .calendar .calendar-header .calendar-date,
 .calendar .calendar-body .calendar-date,
@@ -81,6 +81,7 @@
 .s-calendar .calendar-header {
   background: hsla(calc(var(--s-bg-color-h) + 0deg), calc(var(--s-bg-color-s) + 0%), calc(var(--s-bg-color-l) + 0%), calc(var(--s-bg-color-a) * 1));
   border-bottom: var(--s-border-width) solid hsla(calc(var(--s-border-color-h) + 0deg), calc(var(--s-border-color-s) + 0%), calc(var(--s-border-color-l) + 0%), calc(var(--s-border-color-a) * 1));
+  border-radius: var(--s-border-radius);
   color: hsla(calc(var(--s-gray-color-h) + 0deg), calc(var(--s-gray-color-s) + 0%), calc(var(--s-gray-color-l) + 0%), calc(var(--s-gray-color-a) * 1));
   font-size: var(--s-font-size-sm);
   text-align: center;
@@ -92,7 +93,7 @@
 .calendar .calendar-date,
 .s-calendar .calendar-date {
   border: 0;
-  padding: var(--s-unit-1);
+  padding: var(--s-unit-1) ;
 }
 .calendar .calendar-date .date-item,
 .s-calendar .calendar-date .date-item {
@@ -106,7 +107,7 @@
   height: var(--s-unit-7);
   line-height: var(--s-unit-5);
   outline: none;
-  padding: var(--s-unit-h);
+  padding: var(--s-unit-h) ;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -207,7 +208,9 @@
 .calendar.calendar-lg .calendar-body .calendar-date,
 .s-calendar.calendar-lg .calendar-body .calendar-date {
   border-bottom: var(--s-border-width) solid hsla(calc(var(--s-border-color-h) + 0deg), calc(var(--s-border-color-s) + 0%), calc(var(--s-border-color-l) + 0%), calc(var(--s-border-color-a) * 1));
+  border-radius: var(--s-border-radius);
   border-right: var(--s-border-width) solid hsla(calc(var(--s-border-color-h) + 0deg), calc(var(--s-border-color-s) + 0%), calc(var(--s-border-color-l) + 0%), calc(var(--s-border-color-a) * 1));
+  border-radius: var(--s-border-radius);
   display: flex;
   flex-direction: column;
   height: 5.5rem;
@@ -246,7 +249,7 @@
   flex-grow: 1;
   line-height: 1;
   overflow-y: auto;
-  padding: calc(var(--s-layout-spacing-sm) * var(--s-layout-spacing-unit));
+  padding: calc(var(--s-layout-spacing-sm) * var(--s-layout-spacing-unit)) ;
 }
 .calendar.calendar-lg .calendar-event,
 .s-calendar.calendar-lg .calendar-event {
@@ -336,7 +339,7 @@
   display: block;
   flex: 1 0 auto;
   height: var(--s-unit-8);
-  margin: var(--s-unit-1);
+  margin: var(--s-unit-1) ;
   max-width: 2.5rem;
   position: relative;
 }
@@ -344,7 +347,7 @@
   background: currentColor;
   content: "";
   display: block;
-  height: var(--s-unit-h);
+  height: var(--s-unit-unit-h);
   position: absolute;
   top: 0.5rem;
   width: 100%;
@@ -464,7 +467,7 @@
   background: hsla(calc(var(--s-dark-color-h) + 0deg), calc(var(--s-dark-color-s) + 0%), calc(var(--s-dark-color-l) + 0%), calc(var(--s-dark-color-a) * 0.5));
   bottom: var(--s-unit-4);
   color: hsla(calc(var(--s-light-color-h) + 0deg), calc(var(--s-light-color-s) + 0%), calc(var(--s-light-color-l) + 0%), calc(var(--s-light-color-a) * 1));
-  padding: var(--s-unit-1) var(--s-unit-2);
+  padding: var(--s-unit-1) var(--s-unit-2) ;
   position: absolute;
   user-select: none;
 }
@@ -496,7 +499,7 @@
 }
 
 .filter .filter-nav {
-  margin: calc(var(--s-layout-spacing) * var(--s-layout-spacing-unit)) 0;
+  margin: calc(var(--s-layout-spacing) * var(--s-layout-spacing-unit)) var(--s-0) ;
 }
 .filter .filter-body {
   display: flex;
@@ -592,7 +595,8 @@
 .s-off-canvas .off-canvas-content {
   flex: 1 1 auto;
   height: 100%;
-  padding: calc(var(--s-layout-spacing) * var(--s-layout-spacing-unit)) calc(var(--s-layout-spacing) * var(--s-layout-spacing-unit)) calc(var(--s-layout-spacing) * var(--s-layout-spacing-unit)) 4rem;
+  padding: calc(var(--s-layout-spacing) * var(--s-layout-spacing-unit)) ;
+  padding-left: 4rem;
 }
 .off-canvas .off-canvas-overlay,
 .s-off-canvas .off-canvas-overlay {
@@ -899,7 +903,7 @@
 }
 .slider::-webkit-slider-runnable-track,
 .s-slider::-webkit-slider-runnable-track {
-  background: hsla(calc(var(--s-bg-color-h) + 0deg), calc(var(--s-bg-color-s) + 0%), calc(var(--s-bg-color-l) + 0%), calc(var(--s-bg-color-a) * 1));
+  background: hsla(calc(var(--s-bg-color-dark-h) + 0deg), calc(var(--s-bg-color-dark-s) + 0%), calc(var(--s-bg-color-dark-l) + 0%), calc(var(--s-bg-color-dark-a) * 1));
   border-radius: var(--s-border-radius);
   height: var(--s-unit-h);
   width: 100%;
@@ -946,7 +950,7 @@
 .timeline .timeline-item .timeline-content,
 .s-timeline .timeline-item .timeline-content {
   flex: 1 1 auto;
-  padding: 2px 0 2px calc(var(--s-layout-spacing-lg) * var(--s-layout-spacing-unit));
+  padding: 2px 0 2px var(--s-layout-spacing-lg);
 }
 .timeline .timeline-item .timeline-icon,
 .s-timeline .timeline-item .timeline-icon {
