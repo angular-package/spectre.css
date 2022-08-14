@@ -1,8 +1,8 @@
-@use '../../mixins/color/set-derived-color.mixin' as *;
+@use '../../mixins/color/set-color.mixin' as *;
 
-// Spectre.css gray colors. Alphabetical order.
+// Spectre.css gray colors.
 :root, :host {
-  @include set-derived-color('gray-color', 'dark-color', $lightness: +55%); // lighten($dark-color, 55%)
-  @include set-derived-color('gray-color-dark', 'gray-color', $lightness: -30%); // darken($gray-color, 30%)
-  @include set-derived-color('gray-color-light', 'gray-color', $lightness: +20%); // lighten($gray-color, 20%)
+  @include set-color('gray-color', 'dark-color', $lightness: +55%); // lighten($dark-color, 55%)
+  @include set-color('gray-color-dark', 'gray-color', $lightness: -30%); // darken($gray-color, 30%)
+  @include set-color('gray-color-light', 'gray-color', $lightness: +20%); // lighten($gray-color, 20%)
 }

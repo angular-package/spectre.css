@@ -1,8 +1,8 @@
-@use '../../mixins/color/set-derived-color.mixin' as *;
+@use '../../mixins/color/set-color.mixin' as *;
 
-// Spectre.css bg colors. Alphabetical order.
+// Spectre.css bg colors.
 :root, :host {
-  @include set-derived-color('bg-color', 'dark-color', $lightness: +75%); // lighten($dark-color, 75%)
-  @include set-derived-color('bg-color-dark', 'bg-color', $lightness: -3%); // darken($bg-color, 3%)
-  @include set-derived-color('bg-color-light', 'light-color'); // $light-color
+  @include set-color('bg-color', 'dark-color', $lightness: +75%); // lighten($dark-color, 75%)
+  @include set-color('bg-color-dark', 'bg-color', $lightness: -3%); // darken($bg-color, 3%)
+  @include set-color('bg-color-light', 'light-color'); // $light-color
 }

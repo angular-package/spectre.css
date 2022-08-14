@@ -1,7 +1,9 @@
-@use '../../mixins/color/set-color.mixin' as *;
 @use '../../variables' as *;
 
-// Spectre.css control colors. Alphabetical order.
+// Mixins.
+@use '../../mixins/color/set-color.mixin' as *;
+
+// Spectre.css control colors.
 :root, :host {
   @include set-color('disabled-color', $disabled-color); // $bg-color-dark
   @include set-color('error-color', $error-color); // #e85600

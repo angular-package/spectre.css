@@ -2,7 +2,7 @@
 @use '../../mixins/color/set-derived-color.mixin' as *;
 @use '../../variables' as *;
 
-// Spectre.css core colors. Alphabetical order.
+// Spectre.css core colors.
 :root, :host {
   // Accent.
   @include set-color('accent-color', $accent-color); // #9932CC
@@ -15,11 +15,18 @@
 
   // Primary.
   @include set-color('primary-color', $primary-color); // #5755d9
-  @include set-derived-color('primary-color-dark', 'primary-color', $lightness: -3%); // darken($primary-color, 3%)
-  @include set-derived-color('primary-color-light', 'primary-color', $lightness: +3%); // lighten($primary-color, 3%)
+  // @include set-derived-color('primary-color-dark', 'primary-color', $lightness: -3%); // darken($primary-color, 3%)
 
-// Secondary.
-  @include set-derived-color('secondary-color', 'primary-color', $lightness: +37.5%); // lighten($primary-color, 37.5%) !default;
-  @include set-derived-color('secondary-color-dark', 'secondary-color', $lightness: -3%); // darken($secondary-color, 3%) !default;
-  @include set-derived-color('secondary-color-light', 'secondary-color', $lightness: +3%); // lighten($secondary-color, 3%) !default;
+  // @include set-derived-color('primary-color-dark', 'primary-color', $lightness: -3%); // darken($primary-color, 3%)
+  @include set-color('primary-color-dark', 'primary-color', $lightness: -3%); // darken($primary-color, 3%)
+  // @include set-derived-color('primary-color-light', 'primary-color', $lightness: +3%); // lighten($primary-color, 3%)
+  @include set-color('primary-color-light', 'primary-color', $lightness: +3%); // lighten($primary-color, 3%)
+
+  // Secondary.
+  // @include set-derived-color('secondary-color', 'primary-color', $lightness: +37.5%); // lighten($primary-color, 37.5%) !default;
+  @include set-color('secondary-color', 'primary-color', $lightness: +37.5%); // lighten($primary-color, 37.5%) !default;
+  // @include set-derived-color('secondary-color-dark', 'secondary-color', $lightness: -3%); // darken($secondary-color, 3%) !default;
+  @include set-color('secondary-color-dark', 'secondary-color', $lightness: -3%); // darken($secondary-color, 3%) !default;
+  // @include set-derived-color('secondary-color-light', 'secondary-color', $lightness: +3%); // lighten($secondary-color, 3%) !default;
+  @include set-color('secondary-color-light', 'secondary-color', $lightness: +3%); // lighten($secondary-color, 3%) !default;
 }

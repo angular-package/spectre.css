@@ -1,8 +1,8 @@
-@use '../../mixins/color/set-derived-color.mixin' as *;
+@use '../../mixins/color/set-color.mixin' as *;
 
-// Spectre.css link colors. Alphabetical order.
+// Spectre.css link colors.
 :root, :host {
-  @include set-derived-color('link-color', 'primary-color'); // $primary-color
-  @include set-derived-color('link-color-dark', 'link-color', $lightness: -10%); // darken($link-color, 10%)
-  @include set-derived-color('link-color-light', 'link-color', $lightness: +10%); // lighten($link-color, 10%)
+  @include set-color('link-color', 'primary-color'); // $primary-color
+  @include set-color('link-color-dark', 'link-color', $lightness: -10%); // darken($link-color, 10%)
+  @include set-color('link-color-light', 'link-color', $lightness: +10%); // lighten($link-color, 10%)
 }

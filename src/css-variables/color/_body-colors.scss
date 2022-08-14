@@ -1,9 +1,9 @@
 @use '../../mixins/color/set-color.mixin' as *;
-@use '../../mixins/color/set-derived-color.mixin' as *;
+@use '../../mixins/color/set-color.mixin' as *;
 @use '../../variables' as *;
 
-// Spectre.css body colors. Alphabetical order.
+// Spectre.css body colors.
 :root, :host {
   @include set-color('body-bg-color', $body-bg-color); // $body-bg-color
-  @include set-derived-color('body-font-color', 'dark-color', $lightness: +5%); // lighten($dark-color, 5%)
+  @include set-color('body-font-color', 'dark-color', $lightness: +5%); // lighten($dark-color, 5%)
 }

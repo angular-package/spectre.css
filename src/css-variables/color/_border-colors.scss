@@ -1,8 +1,8 @@
-@use '../../mixins/color/set-derived-color.mixin' as *;
+@use '../../mixins/color/set-color.mixin' as *;
 
-// Spectre.css border colors. Alphabetical order.
+// Spectre.css border colors.
 :root, :host {
-  @include set-derived-color('border-color', 'dark-color', $lightness: +65%); // lighten($dark-color, 65%)
-  @include set-derived-color('border-color-dark', 'border-color', $lightness: -10%); // darken($border-color, 10%)
-  @include set-derived-color('border-color-light', 'border-color', $lightness: +8%); // lighten($border-color, 8%)
+  @include set-color('border-color', 'dark-color', $lightness: +65%); // lighten($dark-color, 65%)
+  @include set-color('border-color-dark', 'border-color', $lightness: -10%); // darken($border-color, 10%)
+  @include set-color('border-color-light', 'border-color', $lightness: +8%); // lighten($border-color, 8%)
 }

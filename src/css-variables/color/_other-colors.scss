@@ -1,7 +1,7 @@
-@use '../../mixins/color/set-color.mixin' as *;
 @use '../../variables' as *;
+@use '../../mixins/color/set-color.mixin' as *;
 
-// Spectre.css other colors. Alphabetical order.
+// Spectre.css other colors.
 :root, :host {
   @include set-color('code-color', $code-color); // #d73e48
   @include set-color('highlight-color', $highlight-color); // #ffe9b3
