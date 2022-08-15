@@ -12,19 +12,11 @@ $var-hue: 'h' !default; // Suffix for the hue CSS variable's name. @new
 $var-saturation: 's' !default; // Suffix for the saturation CSS variable's name. // @new
 $var-lightness: 'l' !default;// Suffix for the lightness CSS variable's name. @new
 
-// - CSS variable name's parameters for the `rgba()` color.
-$var-red: 'r' !default;
-$var-green: 'g' !default;
-$var-blue: 'b' !default;
-
 // - CSS variable name for the both colors opacity.
 $var-alpha: 'a' !default;
 
 // color-scheme - https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
 $color-scheme: normal !default;
-
-// color-format 'rgba' | 'hsla'
-$color-format: 'hsla' !default; // @new 'rgba' is not working, yet.
 
 //Transition duration.
 $transition-duration: 0.2s !default; // --#{$var-prefix}-transition-duration.
