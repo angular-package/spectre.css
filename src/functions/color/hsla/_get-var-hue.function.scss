@@ -1,7 +1,10 @@
 @use '../../../variables' as *;
+
+// Functions.
+@use '../../get-var' as *;
 @use '../get-color-name.function' as *;
 
 // The function returns the CSS variable hue color of the given `$name` and `$prefix`.
 @function get-var-hue($name, $prefix: $var-prefix) {
-  @return var(--#{$prefix}-#{get-color-name($name)}-#{$var-hue});
+  @return get-var(get-color-name($name), $suffix: $var-hue);
 }
