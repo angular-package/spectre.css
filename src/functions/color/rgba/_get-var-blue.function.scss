@@ -1,6 +1,0 @@
-@use '../../../variables' as *;
-
-// The function returns the CSS variable blue color of the given `$name` and `$prefix`.
-@function get-var-blue($name, $prefix: $var-prefix) {
-  @return var(--#{$prefix}-#{$name}-#{$var-blue});
-}
