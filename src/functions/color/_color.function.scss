@@ -1,10 +1,7 @@
-// Sass.
-@use 'sass:list';
-
-// Internal.
 @use '../../variables' as *;
+
+// Functions.
 @use 'hsla/get-hsla-color.function' as *;
-@use 'rgba/get-rgba-color.function' as *;
 
 // The function `color()` returns the `hsla()` color from a CSS variables of the given `$name`.
 // The `$name` parameter can be passed as two-index list, where the second item is the `$lightness`,
@@ -17,18 +14,12 @@
   $alpha: 1,
   $prefix: $var-prefix
 ) {
-  @if ($color-format == 'hsla') {
-    @return get-hsla-color(
-      $name,
-      $hue,
-      $saturation,
-      $lightness,
-      $alpha,
-      $prefix
-    );
-  } @else if ($color-format == 'rgba') {
-    // TODO: rgba color format.
-  } @else {
-    @warn 'Select proper color format \'rgba\' or \'hsla\', selected: \'#{$color-format}\'';
-  }
+  @return get-hsla-color(
+    $name,
+    $hue,
+    $saturation,
+    $lightness,
+    $alpha,
+    $prefix
+  );
 }
