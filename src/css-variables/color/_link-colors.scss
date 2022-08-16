@@ -1,8 +1,33 @@
+@use 'sass:map';
+
+// Variables.
+@use '../../variables/colors/theme' as *;
+
+// Mixins.
 @use '../../mixins/color/set-color.mixin' as *;
 
 // Spectre.css link colors.
-:root, :host {
-  @include set-color('link-color', 'primary-color'); // $primary-color
-  @include set-color('link-color-dark', 'link-color', $lightness: -10%); // darken($link-color, 10%)
-  @include set-color('link-color-light', 'link-color', $lightness: +10%); // lighten($link-color, 10%)
+@media (prefers-color-scheme: dark) {
+  :root, :host {
+    // @include set-color('link-color', 'primary-color'); // $primary-color
+    @include set-color('link-color', map.get($theme-dark, 'link-color')); // $primary-color
+
+    // @include set-color('link-color-dark', 'link-color', $lightness: -10%); // darken($link-color, 10%)
+    @include set-color('link-color-dark', map.get($theme-dark, 'link-color-dark')); // darken($link-color, 10%)
+
+    // @include set-color('link-color-light', 'link-color', $lightness: +10%); // lighten($link-color, 10%)
+    @include set-color('link-color-light', map.get($theme-dark, 'link-color-light')); // lighten($link-color, 10%)
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root, :host {
+    // @include set-color('link-color', 'primary-color'); // $primary-color
+    @include set-color('link-color', map.get($theme-light, 'link-color')); // $primary-color
+
+    // @include set-color('link-color-dark', 'link-color', $lightness: -10%); // darken($link-color, 10%)
+    @include set-color('link-color-dark', map.get($theme-light, 'link-color-dark')); // darken($link-color, 10%)
+
+    // @include set-color('link-color-light', 'link-color', $lightness: +10%); // lighten($link-color, 10%)
+    @include set-color('link-color-light', map.get($theme-light, 'link-color-light')); // lighten($link-color, 10%)
+  }
 }

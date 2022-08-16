@@ -1,13 +1,45 @@
-@use '../../variables' as *;
+@use 'sass:map';
+
+// Variables.
+@use '../../variables/colors/theme' as *;
 
 // Mixins.
 @use '../../mixins/color/set-color.mixin' as *;
 
 // Spectre.css control colors.
-:root, :host {
-  @include set-color('disabled-color', $disabled-color); // $bg-color-dark
-  @include set-color('error-color', $error-color); // #e85600
-  @include set-color('info-color', $info-color); // #d9edf7
-  @include set-color('success-color', $success-color); // #32b643
-  @include set-color('warning-color', $warning-color); // #ffb700
+@media (prefers-color-scheme: dark) {
+  :root, :host {
+    // @include set-color('disabled-color', $disabled-color); // $bg-color-dark
+    @include set-color('disabled-color', map.get($theme-dark, 'disabled-color')); // $bg-color-dark
+
+    // @include set-color('error-color', $error-color); // #e85600
+    @include set-color('error-color', map.get($theme-dark, 'error-color')); // #e85600
+
+    // @include set-color('info-color', $info-color); // #d9edf7
+    @include set-color('info-color', map.get($theme-dark, 'info-color')); // #d9edf7
+
+    // @include set-color('success-color', $success-color); // #32b643
+    @include set-color('success-color', map.get($theme-dark, 'success-color')); // #32b643
+
+    // @include set-color('warning-color', $warning-color); // #ffb700
+    @include set-color('warning-color', map.get($theme-dark, 'warning-color')); // #ffb700
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root, :host {
+    // @include set-color('disabled-color', $disabled-color); // $bg-color-dark
+    @include set-color('disabled-color', map.get($theme-light, 'disabled-color')); // $bg-color-dark
+
+    // @include set-color('error-color', $error-color); // #e85600
+    @include set-color('error-color', map.get($theme-light, 'error-color')); // #e85600
+
+    // @include set-color('info-color', $info-color); // #d9edf7
+    @include set-color('info-color', map.get($theme-light, 'info-color')); // #d9edf7
+
+    // @include set-color('success-color', $success-color); // #32b643
+    @include set-color('success-color', map.get($theme-light, 'success-color')); // #32b643
+
+    // @include set-color('warning-color', $warning-color); // #ffb700
+    @include set-color('warning-color', map.get($theme-light, 'warning-color')); // #ffb700
+  }
 }

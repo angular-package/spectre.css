@@ -1,9 +1,27 @@
+@use 'sass:map';
+
+// Variables.
+@use '../../variables/colors/theme' as *;
+
+// Mixins.
 @use '../../mixins/color/set-color.mixin' as *;
-@use '../../mixins/color/set-color.mixin' as *;
-@use '../../variables' as *;
 
 // Spectre.css body colors.
-:root, :host {
-  @include set-color('body-bg-color', $body-bg-color); // $body-bg-color
-  @include set-color('body-font-color', 'dark-color', $lightness: +5%); // lighten($dark-color, 5%)
+@media (prefers-color-scheme: dark) {
+  :root, :host {
+    // @include set-color('body-bg-color', $body-bg-color); // $body-bg-color
+    @include set-color('body-bg-color', map.get($theme-dark, 'body-bg-color')); // $body-bg-color
+
+    // @include set-color('body-font-color', 'dark-color', $lightness: +5%); // lighten($dark-color, 5%)
+    @include set-color('body-font-color', map.get($theme-dark, 'body-font-color')); // lighten($dark-color, 5%)
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root, :host {
+    // @include set-color('body-bg-color', $body-bg-color); // $body-bg-color
+    @include set-color('body-bg-color', map.get($theme-light, 'body-bg-color')); // $body-bg-color
+
+    // @include set-color('body-font-color', 'dark-color', $lightness: +5%); // lighten($dark-color, 5%)
+    @include set-color('body-font-color', map.get($theme-light, 'body-font-color')); // lighten($dark-color, 5%)
+  }
 }

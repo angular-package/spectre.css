@@ -1,8 +1,33 @@
+@use 'sass:map';
+
+// Variables.
+@use '../../variables/colors/theme' as *;
+
+// Mixins.
 @use '../../mixins/color/set-color.mixin' as *;
 
 // Spectre.css border colors.
-:root, :host {
-  @include set-color('border-color', 'dark-color', $lightness: +65%); // lighten($dark-color, 65%)
-  @include set-color('border-color-dark', 'border-color', $lightness: -10%); // darken($border-color, 10%)
-  @include set-color('border-color-light', 'border-color', $lightness: +8%); // lighten($border-color, 8%)
+@media (prefers-color-scheme: dark) {
+  :root, :host {
+    // @include set-color('border-color', 'dark-color', $lightness: +65%); // lighten($dark-color, 65%)
+    @include set-color('border-color', map.get($theme-dark, 'border-color')); // lighten($dark-color, 65%)
+
+    // @include set-color('border-color-dark', 'border-color', $lightness: -10%); // darken($border-color, 10%)
+    @include set-color('border-color-dark', map.get($theme-dark, 'border-color-dark')); // darken($border-color, 10%)
+
+    // @include set-color('border-color-light', 'border-color', $lightness: +8%); // lighten($border-color, 8%)
+    @include set-color('border-color-light', map.get($theme-dark, 'border-color-light')); // lighten($border-color, 8%)
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root, :host {
+    // @include set-color('border-color', 'dark-color', $lightness: +65%); // lighten($dark-color, 65%)
+    @include set-color('border-color', map.get($theme-light, 'border-color')); // lighten($dark-color, 65%)
+
+    // @include set-color('border-color-dark', 'border-color', $lightness: -10%); // darken($border-color, 10%)
+    @include set-color('border-color-dark', map.get($theme-light, 'border-color-dark')); // darken($border-color, 10%)
+
+    // @include set-color('border-color-light', 'border-color', $lightness: +8%); // lighten($border-color, 8%)
+    @include set-color('border-color-light', map.get($theme-light, 'border-color-light')); // lighten($border-color, 8%)
+  }
 }
