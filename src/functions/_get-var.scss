@@ -2,12 +2,20 @@
 @use 'sass:list';
 @use 'sass:string';
 
+// Variables.
 @use '../variables' as *;
 
 // Functions.
-@use './var-negative' as *;
+@use 'var-negative' as *;
+@use 'get-from-list.function' as *;
+@use './map-get-default.function' as *;
 
-// The function returns the CSS var function or calc function with the specified name, prefix, optional suffix, or unit. Unit is used for variables with a separated unit from the value.
+// The function returns the CSS var function or calc function with the specified name, prefix, optional suffix, or unit.
+// Unit is used for variables with a separated unit from the value.
+// $name: (string, ('negative': true, 'prefix': 'spectre', 'suffix': 'sm', 'unit': true))
+// Interchangeably:
+// $name: (string, true, 5) translates -> (name, unit, adjust)
+// $name: (string, 3, false) translates -> (name, adjust, unit)
 @function get-var(
   $name,
   $adjust: null,
@@ -15,53 +23,76 @@
   $prefix: $var-prefix,
   $suffix: '',
 ) {
-  // Get `$unit` from the `$name`.
-  @if list.length($name) > 1 {
-    @if type-of(list.nth($name, 2)) == 'map' {
-      @if (map.has-key(list.nth($name, 2), 'negative')) {
-        $negative: map.get(list.nth($name, 2), 'negative');
-      }
+  $var: get-from-list($name, 'name',
+  ('unit': 'boolean', 'adjust': 'number'),
+  ('unit': 'boolean', 'adjust': 'number'),
+  'negative', 'prefix', 'suffix');
 
-      @if (map.has-key(list.nth($name, 2), 'prefix')) {
-        $prefix: map.get(list.nth($name, 2), 'prefix');
-      }
+  // // Get `$unit` from the `$name`.
+  // @if list.length($name) > 1 {
+  //   // If the second list index is the map then.
+  //   @if type-of(list.nth($name, 2)) == 'map' {
+  //     // Set `$negative` value if the `negative` key exists.
+  //     @if (map.has-key(list.nth($name, 2), 'negative')) {
+  //       $negative: map.get(list.nth($name, 2), 'negative');
+  //     }
+  //     // Set `$prefix` value if the key `prefix` exists.
+  //     @if (map.has-key(list.nth($name, 2), 'prefix')) {
+  //       $prefix: map.get(list.nth($name, 2), 'prefix');
+  //     }
+  //     // Set `$suffix` value if the key `suffix` exists.
+  //     @if (map.has-key(list.nth($name, 2), 'suffix')) {
+  //       $suffix: map.get(list.nth($name, 2), 'suffix');
+  //     }
+  //     // Set `$unit` value if the key `unit` exists.
+  //     @if (map.has-key(list.nth($name, 2), 'unit')) {
+  //       $unit: map.get(list.nth($name, 2), 'unit');
+  //     }
+  //   // Otherwise.
+  //   } @else {
+  //     // If the second index is the boolean then it's sets the `$unit`.
+  //     @if list.nth($name, 2) == true or list.nth($name, 2) == false {
+  //       $unit: list.nth($name, 2);
 
-      @if (map.has-key(list.nth($name, 2), 'suffix')) {
-        $suffix: map.get(list.nth($name, 2), 'suffix');
-      }
-
-      @if (map.has-key(list.nth($name, 2), 'unit')) {
-        $unit: map.get(list.nth($name, 2), 'unit');
-      }
-    } @else {
-      @if list.nth($name, 2) == true or list.nth($name, 2) == false {
-        $unit: list.nth($name, 2);
-      } @else if type-of(list.nth($name, 2)) == 'number' {
-        $adjust: list.nth($name, 2);
-      }
-      @if list.length($name) == 3 {
-        @if type-of(list.nth($name, 3)) == 'boolean' {
-          $unit: list.nth($name, 3);
-        } @else if type-of(list.nth($name, 3)) == 'number' {
-          $adjust: list.nth($name, 3);
-        }
-      }
-    }
-    $name: list.nth($name, 1);
-  }
+  //     // else if the second index is the number then it's sets the `$adjust`.
+  //     } @else if type-of(list.nth($name, 2)) == 'number' {
+  //       $adjust: list.nth($name, 2);
+  //     }
+  //     @if list.length($name) == 3 {
+  //       @if type-of(list.nth($name, 3)) == 'boolean' {
+  //         $unit: list.nth($name, 3);
+  //       } @else if type-of(list.nth($name, 3)) == 'number' {
+  //         $adjust: list.nth($name, 3);
+  //       }
+  //     }
+  //   }
+  //   $name: list.nth($name, 1);
+  // }
   @if string.length($suffix) > 0 {
     $suffix: '-#{$suffix}';
   }
 
+  // @if $unit == true {
+  //   @if $adjust != null {
+  //     @return calc((var(--#{$prefix}-#{$name}#{$suffix}) * var(--#{$prefix}-#{$name}-unit)) + #{$adjust});
+  //   }
+  //   @return calc(var(--#{$prefix}-#{$name}#{$suffix}) * var(--#{$prefix}-#{$name}-unit));
+  // } @else {
+  //   @if $adjust != null {
+  //     @return calc(var(--#{$prefix}-#{$name}#{$suffix}) + #{$adjust});
+  //   }
+  //   @return var(--#{$prefix}-#{$name}#{$suffix});
+  // }
+
   @if $unit == true {
     @if $adjust != null {
-      @return calc((var(--#{$prefix}-#{$name}#{$suffix}) * var(--#{$prefix}-#{$name}-unit)) + #{$adjust});
+      @return calc((var(--#{map-get-default($var, 'prefix', $prefix)}-#{map.get($var, 'name')}#{map-get-default($var, 'suffix', $suffix)}) * var(--#{map-get-default($var, 'prefix', $prefix)}-#{$name}-unit)) + #{map-get-default($var, 'adjust', $adjust)});
     }
-    @return calc(var(--#{$prefix}-#{$name}#{$suffix}) * var(--#{$prefix}-#{$name}-unit));
+    @return calc(var(--#{map-get-default($var, 'prefix', $prefix)}-#{map.get($var, 'name')}#{map-get-default($var, 'suffix', $suffix)}) * var(--#{map-get-default($var, 'prefix', $prefix)}-#{map.get($var, 'name')}-unit));
   } @else {
     @if $adjust != null {
-      @return calc(var(--#{$prefix}-#{$name}#{$suffix}) + #{$adjust});
+      @return calc(var(--#{map-get-default($var, 'prefix', $prefix)}-#{map.get($var, 'name')}#{map-get-default($var, 'suffix', $suffix)}) + #{map-get-default($var, 'adjust', $adjust)});
     }
-    @return var(--#{$prefix}-#{$name}#{$suffix});
+    @return var(--#{map-get-default($var, 'prefix', $prefix)}-#{map.get($var, 'name')}#{map-get-default($var, 'suffix', $suffix)});
   }
 }
