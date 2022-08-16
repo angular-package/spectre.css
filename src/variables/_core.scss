@@ -16,7 +16,7 @@ $var-lightness: 'l' !default;// Suffix for the lightness CSS variable's name. @n
 $var-alpha: 'a' !default;
 
 // color-scheme - https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
-$color-scheme: normal !default;
+$color-scheme: light dark !default;
 
 //Transition duration.
 $transition-duration: 0.2s !default; // --#{$var-prefix}-transition-duration.
