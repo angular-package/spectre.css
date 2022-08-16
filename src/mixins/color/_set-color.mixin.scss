@@ -1,8 +1,9 @@
-@use 'hsla/set-hsla-color.mixin' as *;
-@use 'hsla/set-hsla-color.mixin' as *;
 @use '../../variables' as *;
 
-// The mixin sets CSS variable color in `hsla()` and `rgba()` forms, by splitting it into four CSS variables for each form.
+// Mixins.
+@use 'hsla/set-hsla-color.mixin' as *;
+
+// The mixin sets CSS variable color in `hsla()` format, by splitting it into four CSS variables.
 @mixin set-color(
   $name,
   $color,
