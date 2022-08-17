@@ -2,7 +2,7 @@
 @use 'color-focus.mixin' as *;
 @use 'color-hover.mixin' as *;
 @use 'color-visited.mixin' as *;
-@use '../../functions/color' as *;
+@use '../../functions/color/color.function' as *;
 @use '../../variables' as *;
 
 // Text color utility mixin
