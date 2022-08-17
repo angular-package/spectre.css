@@ -1,0 +1,9 @@
+
+
+@function typeof($value) {
+  @if $value == true or $value == false {
+    @return 'boolean';
+  } @else {
+    @return type-of($value);
+  }
+}
