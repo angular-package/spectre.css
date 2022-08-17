@@ -1,8 +1,8 @@
 // Functions.
 @use '../functions/color' as *;
-@use '../functions/get-var' as *;
-@use '../functions/get-var-unit.function' as *;
-@use '../functions/var-negative' as *;
+@use '../functions/var/get-var.function' as *;
+@use '../functions/var/unit-var.function' as *;
+@use '../functions/var/var-negative.function' as *;
 
 // Mixins.
 @use '../mixins/border/border' as *;
