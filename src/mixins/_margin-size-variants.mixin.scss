@@ -1,23 +1,24 @@
-@use '../functions/get-var' as *;
+@use '../functions/var/get-var.function' as *;
+@use '../functions/var/unit-var.function' as *;
 
 @mixin margin-size-variants($name: margin) {
   &.#{$name}-xs {
-    margin: calc(get-var('control-padding-y', $suffix: 'sm') + get-var('unit-1')) calc(get-var('control-padding-x', $suffix: 'sm') + get-var('unit-1'));
+    margin: calc(get-var('control-padding-y', $suffix: 'sm') + unit-var('1')) calc(get-var('control-padding-x', $suffix: 'sm') + unit-var('1'));
   }
 
   &.#{$name}-sm {
-    margin: calc(get-var('control-padding-y', $suffix: 'sm') + get-var('unit-2')) calc(get-var('control-padding-x', $suffix: 'sm') + get-var('unit-2'));
+    margin: calc(get-var('control-padding-y', $suffix: 'sm') + unit-var('2')) calc(get-var('control-padding-x', $suffix: 'sm') + unit-var('2'));
   }
 
   &.#{$name}-md {
-    margin: calc(get-var('control-padding-y') + get-var('unit-2')) calc(get-var('control-padding-x') + get-var('unit-2'));
+    margin: calc(get-var('control-padding-y') + unit-var('2')) calc(get-var('control-padding-x') + unit-var('2'));
   }
 
   &.#{$name}-lg {
-    margin: calc(get-var('control-padding-y', $suffix: 'lg') + get-var('unit-2')) calc(get-var('control-padding-x', $suffix: 'lg') + get-var('unit-2'));
+    margin: calc(get-var('control-padding-y', $suffix: 'lg') + unit-var('2')) calc(get-var('control-padding-x', $suffix: 'lg') + unit-var('2'));
   }
 
   &.#{$name}-xl {
-    margin: calc(get-var('control-padding-y', $suffix: 'lg') + get-var('unit-4')) calc(get-var('control-padding-x', $suffix: 'lg') + get-var('unit-4'));
+    margin: calc(get-var('control-padding-y', $suffix: 'lg') + unit-var('4')) calc(get-var('control-padding-x', $suffix: 'lg') + unit-var('4'));
   }
 }
