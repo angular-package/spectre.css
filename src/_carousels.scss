@@ -1,8 +1,8 @@
 
 // Functions.
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'functions/get-var-unit.function' as *;
+@use 'functions/color/color.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
@@ -136,7 +136,7 @@ $carousel-number: 8;
       flex: 1 0 auto;
       // height: $unit-8; // old spectre.css
       // height: get-var('unit-8'); // old @angular-package/spectre.css
-      height: get-var-unit('8');
+      height: unit-var('8');
       // margin: $unit-1; // old spectre.css
       // margin: get-var('unit-1'); // old @angular-package/spectre.css
       @include margin('unit-1');
@@ -149,7 +149,7 @@ $carousel-number: 8;
         display: block;
         // height: $unit-h; // old spectre.css
         // height: get-var('unit-h'); // old @angular-package/spectre.css
-        height: get-var-unit('unit-h');
+        height: unit-var('unit-h');
         position: absolute;
         top: 0.5rem;
         width: 100%;

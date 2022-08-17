@@ -1,8 +1,8 @@
 // Functions.
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'functions/get-var-unit.function' as *;
-@use 'functions/var-negative' as *;
+@use 'functions/color/color.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
+@use 'functions/var/var-negative.function' as *;
 
 // Mixins.
 @use 'mixins/border/border' as *;
@@ -476,17 +476,17 @@ textarea.form-input {
     background-clip: padding-box;
     // border-radius: $unit-2 + $border-width; // old spectre.css
     // border-radius: calc(get-var('unit-2') + get-var('border-width')); // @angular-package/spectre.css
-    border-radius: calc(get-var-unit('2') + get-var('border-width'));
+    border-radius: calc(unit-var('2') + get-var('border-width'));
     // height: $unit-4 + $border-width * 2; // old spectre.css
     // height: calc(get-var('unit-4') + get-var('border-width') * 2); // @angular-package/spectre.css
-    height: calc(get-var-unit('4') + get-var('border-width') * 2);
+    height: calc(unit-var('4') + get-var('border-width') * 2);
     left: 0;
     // top: ($control-size-sm - $unit-4) / 2 - $border-width; // old spectre.css
     // top: calc((get-var('control-size', $suffix: 'sm') - get-var('unit-4')) / 2 - get-var('border-width')); // @angular-package/spectre.css
-    top: calc((get-var('control-size', $suffix: 'sm') - get-var-unit('4')) / 2 - get-var('border-width'));
+    top: calc((get-var('control-size', $suffix: 'sm') - unit-var('4')) / 2 - get-var('border-width'));
     // width: $unit-8; // old spectre.css
     // width: get-var('unit-8'); // @angular-package/spectre.css
-    width: get-var-unit('8');
+    width: unit-var('8');
     &::before {
       // background: $bg-color-light; // old spectre.css
       // background: color('bg-color-light'); // @angular-package/spectre.css
@@ -496,7 +496,7 @@ textarea.form-input {
       display: block;
       // height: $unit-4; // old spectre.css
       // height: get-var('unit-4'); // @angular-package/spectre.css
-      height: get-var-unit('4');
+      height: unit-var('4');
       left: 0;
       position: absolute;
       top: 0;
@@ -509,7 +509,7 @@ textarea.form-input {
       @include transition(background, border, box-shadow, color, left);
       // width: $unit-4; // old spectre.css
       // width: get-var('unit-4'); // @angular-package/spectre.css
-      width: get-var-unit('4');
+      width: unit-var('4');
     }
   }
 

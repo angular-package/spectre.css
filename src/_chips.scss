@@ -1,10 +1,10 @@
 @use 'variables' as *;
 
 // Functions.
-// @use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'functions/get-var-unit.function' as *;
-@use 'functions/var-negative' as *;
+// @use 'functions/color/color.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
+@use 'functions/var/var-negative.function' as *;
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
@@ -24,10 +24,10 @@
   font-size: 90%;
   // height: $unit-6; // old spectre.css
   // height: get-var('unit-6'); // old @angular-package/spectre.css
-  height: get-var-unit('6');
+  height: unit-var('6');
   // line-height: $unit-4; // old spectre.css
   // line-height: get-var('unit-4'); // old @angular-package/spectre.css
-  line-height: get-var-unit('4');
+  line-height: unit-var('4');
   // margin: $unit-h; // old spectre.css
   // margin: get-var('unit-h'); // old @angular-package/spectre.css
   @include margin('unit-h');

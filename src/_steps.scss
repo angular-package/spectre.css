@@ -1,9 +1,9 @@
 @use 'variables' as *;
 
 // Functions.
-// @use 'functions/color' as *; // @angular-package/spectre.css
-@use 'functions/get-var' as *;
-@use 'functions/get-var-unit.function' as *;
+// @use 'functions/color/color.function' as *; // @angular-package/spectre.css
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
@@ -64,16 +64,16 @@
         display: block;
         // height: $unit-3; // old spectre.css
         // height: get-var('unit-3'); // old @angular-package/spectre.css
-        height: get-var-unit('3');
+        height: unit-var('3');
         left: 50%;
         position: absolute;
         // top: $unit-1; // old spectre.css
         // top: get-var('unit-1'); // old @angular-package/spectre.css
-        top: get-var-unit('1');
+        top: unit-var('1');
         transform: translateX(-50%);
         // width: $unit-3; // old spectre.css
         // width: get-var('unit-3'); // old @angular-package/spectre.css
-        width: get-var-unit('3');
+        width: unit-var('3');
         // z-index: $zindex-0; // old spectre.css
         // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
         @include z-index('0');

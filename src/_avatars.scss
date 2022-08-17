@@ -2,8 +2,8 @@
 @use 'variables' as *;
 
 // Functions.
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
+@use 'functions/color/color.function' as *;
+@use 'functions/var/get-var.function' as *;
 
 // Mixins.
 @use 'mixins/avatar' as *;

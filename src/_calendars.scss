@@ -1,9 +1,9 @@
 @use 'variables' as *;
 
 // Functions.
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'functions/get-var-unit.function' as *;
+@use 'functions/color/color.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
 
 // Mixins.
 @use 'mixins/border/border' as *;
@@ -97,10 +97,10 @@
       font-size: get-var('font-size', $suffix: 'sm');
       // height: $unit-7; // old spectre.css
       // height: get-var('unit-7'); // old @angular-package/spectre.css
-      height: get-var-unit('7');
+      height: unit-var('7');
       // line-height: $unit-5; // old spectre.css
       // line-height: get-var('unit-5'); // old @angular-package/spectre.css
-      line-height: get-var-unit('5');
+      line-height: unit-var('5');
       outline: none;
       // padding: $unit-h; // old spectre.css
       // padding: get-var('unit-h'); // old @angular-package/spectre.css
@@ -118,7 +118,7 @@
       white-space: nowrap;
       // width: $unit-7; // old spectre.css
       // width: get-var('unit-7'); // old @angular-package/spectre.css
-      width: get-var-unit('7');
+      width: unit-var('7');
 
       &.date-today {
         // border-color: $secondary-color-dark; // old spectre.css
@@ -199,7 +199,7 @@
       content: '';
       // height: $unit-7; // old spectre.css
       // height: get-var('unit-7'); // old @angular-package/spectre.css
-      height: get-var-unit('7');
+      height: unit-var('7');
       left: 0;
       position: absolute;
       right: 0;
@@ -269,7 +269,7 @@
       align-self: flex-end;
       // height: $unit-7; // old spectre.css
       // height: get-var('unit-7'); // old @angular-package/spectre.css
-      height: get-var-unit('7');
+      height: unit-var('7');
       // margin-right: $layout-spacing-sm; // old spectre.css
       // margin-right: get-var('layout-spacing', $suffix: 'sm', $unit: true); // old @angular-package/spectre.css
       @include margin-right(('layout-spacing', ('unit': true, 'suffix': 'sm')));
@@ -312,7 +312,7 @@
       display: block;
       // margin: $unit-h auto; // old spectre.css
       // margin: get-var('unit-h') auto; // old @angular-package/spectre.css
-      margin: get-var-unit('h') auto;
+      margin: unit-var('h') auto;
       overflow: hidden;
       padding: 3px 4px;
       text-overflow: ellipsis;

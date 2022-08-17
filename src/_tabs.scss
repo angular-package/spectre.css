@@ -1,10 +1,10 @@
 @use 'variables' as *;
 
 // Functions.
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'functions/get-var-unit.function' as *;
-@use 'functions/var-negative' as *;
+@use 'functions/color/color.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
+@use 'functions/var/var-negative.function' as *;
 
 // Mixins.
 @use 'mixins/border/border' as *;
@@ -66,7 +66,7 @@
     .btn-clear {
       // margin-top: -$unit-1; // old spectre.css
       // margin-top: var-negative(get-var('unit-1')); // old @angular-package/spectre.css
-      margin-top: var-negative(get-var-unit('1'));
+      margin-top: var-negative(unit-var('1'));
     }
   }
 
@@ -84,10 +84,10 @@
           position: absolute;
           // right: $unit-h; // old spectre.css
           // right: get-var('unit-h'); // old @angular-package/spectre.css
-          right: get-var-unit('h');
+          right: unit-var('h');
           // top: $unit-h; // old spectre.css
           // top: get-var('unit-h'); // old @angular-package/spectre.css
-          top: get-var-unit('h');
+          top: unit-var('h');
           transform: translate(0, 0);
         }
       }

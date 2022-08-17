@@ -1,7 +1,7 @@
 // Functions.
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'functions/get-var-unit.function' as *;
+@use 'functions/color/color.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
 
 // Mixins.
 @use 'mixins/border/border' as *;
@@ -92,7 +92,7 @@ mark {
   @include label-variant('body-font', 'highlight');
   // border-bottom: $unit-o solid darken($highlight-color, 15%); // old spectre.css
   // border-bottom: get-var('unit-o') solid color('highlight-color', $lightness: -15%); // TODO: border unit-o
-  border-bottom: get-var-unit('o') solid color('highlight', $lightness: -15%);
+  border-bottom: unit-var('o') solid color('highlight', $lightness: -15%);
   // border-radius: $border-radius; // old spectre.css
   border-radius: get-var('border-radius');
   // padding: $unit-o $unit-h 0; // old spectre.css

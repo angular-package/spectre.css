@@ -1,8 +1,8 @@
 @use 'variables' as *;
 
 // Functions.
-// @use 'functions/color' as *; // @angular-package/spectre.css
-@use 'functions/get-var' as *;
+// @use 'functions/color/color.function' as *; // @angular-package/spectre.css
+@use 'functions/var/get-var.function' as *;
 
 // Mixins.
 @use 'mixins/color/color.mixin' as *;

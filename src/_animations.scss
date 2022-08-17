@@ -1,6 +1,6 @@
-@use 'functions/get-var' as *;
-@use 'functions/get-var-unit.function' as *;
-@use 'functions/var-negative' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
+@use 'functions/var/var-negative.function' as *;
 
 // Animations
 @keyframes loading {
@@ -16,7 +16,7 @@
   0% {
     opacity: 0;
     // transform: translateY(-$unit-8); // old spectre.css
-    transform: translateY(var-negative(get-var-unit('8')));
+    transform: translateY(var-negative(unit-var('8'))); // TODO: negative
   }
   100% {
     opacity: 1;

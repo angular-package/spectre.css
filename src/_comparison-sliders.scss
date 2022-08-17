@@ -1,9 +1,9 @@
 @use 'variables' as *;
 
 // Functions.
-// @use 'functions/color' as *; // old @angular-package/spectre.css
-// @use 'functions/get-var' as *; // old @angular-package/spectre.css
-@use 'functions/get-var-unit.function' as *;
+// @use 'functions/color/color.function' as *; // old @angular-package/spectre.css
+// @use 'functions/var/get-var.function' as *; // old @angular-package/spectre.css
+@use 'functions/var/unit-var.function' as *;
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
@@ -46,7 +46,7 @@
     .comparison-label {
       // right: $unit-4; // old spectre.css
       // right: get-var('unit-4'); // old @angular-package/spectre.css
-      right: get-var-unit('4');
+      right: unit-var('4');
     }
   }
 
@@ -64,7 +64,7 @@
       position: absolute;
       // right: $unit-4; // old spectre.css
       // right: get-var('unit-4'); // old @angular-package/spectre.css
-      right: get-var-unit('4');
+      right: unit-var('4');
       top: 0;
       // z-index: $zindex-0; // old spectre.css
       // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
@@ -84,7 +84,7 @@
       position: absolute;
       // right: $unit-2; // old spectre.css
       // right: get-var('unit-2'); // old @angular-package/spectre.css
-      right: get-var-unit('2');
+      right: unit-var('2');
       top: 50%;
       transform: translate(50%, -50%);
       width: 3px;
@@ -93,7 +93,7 @@
     .comparison-label {
       // left: $unit-4; // old spectre.css
       // left: get-var('unit-4'); // old @angular-package/spectre.css
-      left: get-var-unit('4');
+      left: unit-var('4');
     }
   }
 
@@ -102,12 +102,12 @@
     cursor: ew-resize;
     // height: $unit-4; // old spectre.css
     // height: get-var('unit-4'); // old @angular-package/spectre.css
-    height: get-var-unit('4');
+    height: unit-var('4');
     left: 0;
     max-width: 100%;
     // min-width: $unit-4; // old spectre.css
     // min-width: get-var('unit-4'); // old @angular-package/spectre.css
-    min-width: get-var-unit('4');
+    min-width: unit-var('4');
     opacity: 0;
     outline: none;
     position: relative;
@@ -123,7 +123,7 @@
     @include background('dark', $alpha: 0.5);
     // bottom: $unit-4; // old spectre.css
     // bottom: get-var('unit-4'); // old @angular-package/spectre.css
-    bottom: get-var-unit('4');
+    bottom: unit-var('4');
     // color: $light-color; // old spectre.css
     // color: color('light-color'); // old @angular-package/spectre.css
     @include color('light');
@@ -142,17 +142,17 @@
   25% {
     // width: $unit-12; // old spectre.css
     // width: get-var('unit-12'); // old @angular-package/spectre.css
-    width: get-var-unit('12');
+    width: unit-var('12');
   }
   50% {
     // width: $unit-4; // old spectre.css
     // width: get-var('unit-4'); // old @angular-package/spectre.css
-    width: get-var-unit('4');
+    width: unit-var('4');
   }
   75% {
     // width: $unit-6; // old spectre.css
-    // width: get-var-unit('6'); // old @angular-package/spectre.css
-    width: get-var-unit('6');
+    // width: unit-var('6'); // old @angular-package/spectre.css
+    width: unit-var('6');
   }
   100% {
     width: 0;

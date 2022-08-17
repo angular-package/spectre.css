@@ -1,7 +1,7 @@
 @use 'variables' as *;
 
 // Functions.
-@use 'functions/get-var' as *;
+@use 'functions/var/get-var.function' as *;
 
 // Optimized for East Asian CJK
 html:lang(zh),

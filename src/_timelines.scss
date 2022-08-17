@@ -1,9 +1,9 @@
 @use 'variables' as *;
 
 // Functions.
-// @use 'functions/color' as *; // old @angular-package/spectre.css
-@use 'functions/get-var' as *;
-@use 'functions/get-var-unit.function' as *;
+// @use 'functions/color/color.function' as *; // old @angular-package/spectre.css
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
 
 // Mixins.
 @use 'mixins/border/border' as *;
@@ -30,7 +30,7 @@
       position: absolute;
       // top: $unit-6; // old spectre.css
       // top: get-var('unit-6'); // old @angular-package/spectre.css
-      top: get-var-unit('6');
+      top: unit-var('6');
       width: 2px;
     }
 
@@ -54,12 +54,12 @@
       display: flex;
       // height: $unit-6; // old spectre.css
       // height: get-var('unit-6'); // old @angular-package/spectre.css
-      height: get-var-unit('6');
+      height: unit-var('6');
       justify-content: center;
       text-align: center;
       // width: $unit-6; // old spectre.css
       // width: get-var('unit-6'); // old @angular-package/spectre.css
-      width: get-var-unit('6');
+      width: unit-var('6');
       &::before {
         // border: $border-width-lg solid $primary-color; // old spectre.css
         // border: get-var('border-width', $suffix: 'lg') solid color('primary-color'); // old @angular-package/spectre.css
@@ -69,17 +69,17 @@
         display: block;
         // height: $unit-2; // old spectre.css
         // height: get-var('unit-2'); // old @angular-package/spectre.css
-        height: get-var-unit('2');
+        height: unit-var('2');
         // left: $unit-2; // old spectre.css
         // left: get-var('unit-2'); // old @angular-package/spectre.css
-        left: get-var-unit('2');
+        left: unit-var('2');
         position: absolute;
         // top: $unit-2; // old spectre.css
         // top: get-var('unit-2'); // old @angular-package/spectre.css
-        top: get-var-unit('2');
+        top: unit-var('2');
         // width: $unit-2; // old spectre.css
         // width: get-var('unit-2'); // old @angular-package/spectre.css
-        width: get-var-unit('2');
+        width: unit-var('2');
       }
 
       &.icon-lg {

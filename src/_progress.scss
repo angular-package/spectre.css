@@ -2,8 +2,8 @@
 
 // Functions.
 @use 'functions/color/color.function' as *;
-@use 'functions/get-var' as *;
-@use 'functions/get-var-unit.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
@@ -25,7 +25,7 @@
   @include color('primary');
   // height: $unit-1; // old spectre.css
   // height: get-var('unit-1'); // @angular-package/spectre.css
-  height: get-var-unit('1');
+  height: unit-var('1');
   position: relative;
   width: 100%;
 

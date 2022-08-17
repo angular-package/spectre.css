@@ -1,10 +1,10 @@
 @use 'variables' as *;
 
 // Functions.
-// @use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'functions/get-var-unit.function' as *;
-@use 'functions/var-negative' as *;
+// @use 'functions/color/color.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
+@use 'functions/var/var-negative.function' as *;
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
@@ -44,7 +44,7 @@
     text-overflow: ellipsis;
     // transform: translate(-50%, $unit-2); // old spectre.css
     // transform: translate(-50%, get-var('unit-2')); // old @angular-package/spectre.css
-    transform: translate(-50%, get-var-unit('2'));
+    transform: translate(-50%, unit-var('2'));
     // transition: opacity 0.2s, transform 0.2s; // old spectre.css
     // transition: opacity get-var('transition-duration'), transform get-var('transition-duration'); // old @angular-package/spectre.css
     @include transition(opacity, transform);
@@ -59,7 +59,7 @@
       opacity: 1;
       // transform: translate(-50%, -$unit-1); // old spectre.css
       // transform: translate(-50%, var-negative(get-var('unit-1'))); // old @angular-package/spectre.css
-      transform: translate(-50%, var-negative(get-var-unit('1')));
+      transform: translate(-50%, var-negative(unit-var('1')));
     }
   }
   &[disabled],
@@ -73,14 +73,14 @@
       left: 100%;
       // transform: translate(-$unit-1, 50%); // old spectre.css
       // transform: translate(var-negative(get-var('unit-1')), 50%); // old @angular-package/spectre.css
-      transform: translate(var-negative(get-var-unit('1')), 50%);
+      transform: translate(var-negative(unit-var('1')), 50%);
     }
     &:focus,
     &:hover {
       &::after {
         // transform: translate($unit-1, 50%); // old spectre.css
         // transform: translate(get-var('unit-1'), 50%); // old @angular-package/spectre.css
-        transform: translate(get-var-unit('1'), 50%);
+        transform: translate(unit-var('1'), 50%);
       }
     }
   }
@@ -91,14 +91,14 @@
       top: 100%;
       // transform: translate(-50%, -$unit-2); // old spectre.css
       // transform: translate(-50%, var-negative(get-var('unit-2'))); // old @angular-package/spectre.css
-      transform: translate(-50%, var-negative(get-var-unit('2')));
+      transform: translate(-50%, var-negative(unit-var('2')));
     }
     &:focus,
     &:hover {
       &::after {
         // transform: translate(-50%, $unit-1); // old spectre.css
         // transform: translate(-50%, get-var('unit-1')); // old @angular-package/spectre.css
-        transform: translate(-50%, get-var-unit('1'));
+        transform: translate(-50%, unit-var('1'));
       }
     }
   }
@@ -110,14 +110,14 @@
       right: 100%;
       // transform: translate($unit-2, 50%); // old spectre.css
       // transform: translate(get-var('unit-2'), 50%); // old @angular-package/spectre.css
-      transform: translate(get-var-unit('2'), 50%);
+      transform: translate(unit-var('2'), 50%);
     }
     &:focus,
     &:hover {
       &::after {
         // transform: translate(-$unit-1, 50%); // old spectre.css
         // transform: translate(var-negative(get-var('unit-1')), 50%); // old @angular-package/spectre.css
-        transform: translate(var-negative(get-var-unit('1')), 50%); // old @angular-package/spectre.css
+        transform: translate(var-negative(unit-var('1')), 50%); // old @angular-package/spectre.css
       }
     }
   }

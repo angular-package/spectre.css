@@ -1,6 +1,6 @@
 // Functions.
-// @use 'functions/color' as *; // old @angular-package/spectre.css
-@use 'functions/get-var' as *;
+// @use 'functions/color/color.function' as *; // old @angular-package/spectre.css
+@use 'functions/var/get-var.function' as *;
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;

@@ -1,9 +1,9 @@
 @use 'variables' as *;
 
 // Functions.
-// @use 'functions/color' as *; // @angular-package/spectre.css
-@use 'functions/get-var' as *;
-@use 'functions/get-var-unit.function' as *;
+// @use 'functions/color/color.function' as *; // @angular-package/spectre.css
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
@@ -24,7 +24,7 @@
   width: 100%;
   // height: $unit-4; // old spectre.css
   // height: get-var('unit-4'); // old @angular-package/spectre.css
-  height: get-var-unit('4');
+  height: unit-var('4');
 
   &::-webkit-meter-inner-element {
     display: block;

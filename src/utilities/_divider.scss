@@ -71,7 +71,7 @@
   display: block;
   // padding: $unit-4; // old spectre.css
   // padding: get-var('unit-4'); // old @angular-package/spectre.css
-  padding: get-var-unit('4');
+  padding: unit-var('4');
 
   &::before {
     // border-left: $border-width solid $border-color; // old spectre.css
@@ -80,14 +80,14 @@
 
     // bottom: $unit-2; // old spectre.css
     // bottom: get-var('unit-2'); // old @angular-package/spectre.css
-    bottom: get-var-unit('2');
+    bottom: unit-var('2');
     content: '';
     display: block;
     left: 50%;
     position: absolute;
     // top: $unit-2; // old spectre.css
     // top: get-var('unit-2'); // old @angular-package/spectre.css
-    top: get-var-unit('2');
+    top: unit-var('2');
     transform: translateX(-50%);
   }
 

@@ -1,9 +1,9 @@
 @use 'variables' as *;
 
 // Functions.
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'functions/get-var-unit.function' as *;
+@use 'functions/color/color.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
 
 // Mixins.
 @use 'mixins/color/color.mixin' as *;
@@ -23,13 +23,13 @@
   flex-wrap: nowrap;
   // height: $unit-4; // old spectre.css
   // height: get-var('unit-4'); // old @angular-package/spectre.css
-  height: get-var-unit('4');
+  height: unit-var('4');
   width: 100%;
 
   &.bar-sm {
     // height: $unit-1; // old spectre.css
     // height: get-var('unit-1'); // old @angular-package/spectre.css
-    height: get-var-unit('1');
+    height: unit-var('1');
   }
 
   // TODO: attr() support
@@ -46,7 +46,7 @@
     flex-shrink: 0;
     // line-height: $unit-4; // old spectre.css
     // line-height: get-var('unit-4'); // old @angular-package/spectre.css
-    line-height: get-var-unit('4'); // old @angular-package/spectre.css
+    line-height: unit-var('4'); // old @angular-package/spectre.css
     height: 100%;
     position: relative;
     text-align: center;
@@ -100,7 +100,7 @@
     border-radius: 50%;
     // height: $unit-3; // old spectre.css
     // height: get-var('unit-3'); // old @angular-package/spectre.css
-    height: get-var-unit('3'); // old @angular-package/spectre.css
+    height: unit-var('3'); // old @angular-package/spectre.css
     padding: 0;
     position: absolute;
     right: 0;
@@ -108,7 +108,7 @@
     transform: translate(50%, -50%);
     // width: $unit-3; // old spectre.css
     // width: get-var('unit-3'); // old @angular-package/spectre.css
-    width: get-var-unit('3');
+    width: unit-var('3');
 
     &:active {
       // box-shadow: 0 0 0 .1rem $primary-color; // old spectre.css
