@@ -1,6 +1,0 @@
-@use 'sass:string';
-
-// The function `var-negative()` returns CSS calc function with the given `$value` multiplied by `-1`.
-@function var-negative($value) {
-  @return calc((#{$value}) * -1);
-}
