@@ -1,11 +1,11 @@
 @use '../variables' as *;
 
-// Functions.
-// @use 'functions/get-var' as *; // old @angular-package/spectre.css
-
 // Mixins.
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/color/color.mixin' as *;
 @use 'mixins/margin.mixins' as *;
 @use 'mixins/padding.mixins' as *;
+@use 'mixins/shadow' as *;
 @use 'mixins/transition.mixin' as *;
 
 // Accordions
@@ -54,5 +54,46 @@
 summary.accordion-header {
   &::-webkit-details-marker {
     display: none;
+  }
+}
+
+.accordion,
+#{$var-prefix}-accordion {
+  &.accordion-menu {
+    .menu {
+      .menu-item {
+        a {
+          @media (prefers-color-scheme: dark) {
+            @include color('gray-dark');
+          }
+          @media (prefers-color-scheme: light) {
+            @include color('gray-dark');
+          }
+
+          &:hover,
+          &.active {
+            @media (prefers-color-scheme: dark) {
+              @include background('secondary-light');
+              @include color('body-font-color');
+            }
+            @media (prefers-color-scheme: light) {
+              @include background('secondary');
+              @include color('primary');
+            }
+          }
+          &.active {
+            @media (prefers-color-scheme: dark) {
+              @include control-shadow('secondary-light');
+            }
+            @media (prefers-color-scheme: light) {
+              @include background('secondary');
+            }
+          }
+
+          border-radius: get-var('border-radius');
+          @include transition(background, color, box-shadow);
+        }
+      }
+    }
   }
 }
