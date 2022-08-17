@@ -1,5 +1,0 @@
-@use 'get-var' as *;
-
-@function get-var-unit($size) {
-  @return get-var('unit-#{$size}');
-}
