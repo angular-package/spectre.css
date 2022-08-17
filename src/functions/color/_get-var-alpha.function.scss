@@ -1,7 +1,0 @@
-@use '../../variables' as *;
-@use 'get-color-name.function' as *;
-
-// The function returns the CSS variable alpha color of the given `$name` and `$prefix`.
-@function get-var-alpha($name, $prefix: $var-prefix) {
-  @return var(--#{$prefix}-#{get-color-name($name)}-#{$var-alpha});
-}
