@@ -1,8 +1,8 @@
 @use '../variables' as *;
 
 // Functions.
-@use '../functions/get-var' as *;
-@use '../functions/var-negative' as *;
+@use '../functions/var/get-var.function' as *;
+@use '../functions/var/var-negative.function' as *;
 
 // Mixins.
 @use '../mixins/z-index.mixin' as *;
