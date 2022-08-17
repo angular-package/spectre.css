@@ -1,20 +1,19 @@
-@use '../../variables' as *;
+// Variables.
+@use '../../variables/core' as *;
 
 // Functions.
-@use 'hsla/get-hsla-color.function' as *;
+@use 'hsla/hsla-color.function' as *;
 
 // The function `color()` returns the `hsla()` color from a CSS variables of the given `$name`.
-// The `$name` parameter can be passed as two-index list, where the second item is the `$lightness`,
-// or can be passed as three-index list, where the third item is the `$alpha`.
 @function color(
   $name,
   $hue: 0deg,
   $saturation: 0%,
   $lightness: 0%,
-  $alpha: 1,
+  $alpha: 0,
   $prefix: $var-prefix
 ) {
-  @return get-hsla-color(
+  @return hsla-color(
     $name,
     $hue,
     $saturation,
