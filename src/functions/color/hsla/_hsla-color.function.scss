@@ -15,8 +15,6 @@
 @use 'saturation-var.function' as *;
 
 // The function `get-hsla-color()` returns the `hsla()` color from a CSS variables of the given `$name`.
-// The `$name` parameter can be passed as two-index list, where the second item is the `$lightness`,
-// or can be passed as three-index list, where the third item is the `$alpha`.
 // ('primary', -35.5%, 0.95);
 // ('primary-dark', ('lightness': -35.5%, 'alpha': 0.95));
 @function hsla-color(
