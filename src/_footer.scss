@@ -1,0 +1,43 @@
+@use 'variables' as *;
+
+// Mixins.
+@use 'mixins/color/color-hover.mixin' as *;
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/margin.mixins' as *;
+@use 'mixins/transition.mixin' as *;
+
+@mixin s-footer() {
+  .footer,
+  .#{$var-prefix}-footer {
+    h5 {
+      @include margin-bottom('unit-6');
+    }
+
+    // Font color.
+    @media (prefers-color-scheme: dark) {
+      @include color('gray-dark');
+    }
+    @media (prefers-color-scheme: light) {
+      @include color('gray');
+    }
+  
+    a {
+      @media (prefers-color-scheme: dark) {
+        @include color('gray');
+      }
+      @media (prefers-color-scheme: light) {
+        @include color('gray-dark');
+      }
+    }
+  
+    ul {
+      li {
+        a {
+          text-decoration: none !important;      
+          @include color-hover('primary');
+          @include transition(color);
+        }
+      }
+    }
+  }
+}
