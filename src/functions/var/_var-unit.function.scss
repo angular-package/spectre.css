@@ -1,0 +1,11 @@
+@use '../../variables/core' as *;
+@use 'css-var.function' as *;
+
+// The function `var-unit()` returns CSS calc function with the given `$value` multiplied by CSS variable unit.
+@function var-unit($name, $unit: false, $prefix: $var-prefix, $suffix: null) {
+  $var: css-var($name, $prefix, $suffix);
+  @if $unit == true {
+    @return calc($var * css-var($name, $prefix, 'unit'));
+  }
+  @return $var;
+}
