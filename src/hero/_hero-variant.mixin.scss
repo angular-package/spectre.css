@@ -9,7 +9,7 @@
 @use '../mixins/color/background-color.mixin' as *;
 
 // - Functions.
-@use '../functions/get-var' as *;
+@use '../functions/var/get-var.function' as *;
 
 // Hero.
 @use 'hero-size-variants.mixin' as *;

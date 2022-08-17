@@ -1,5 +1,5 @@
 // General.
-@use '../functions/get-var' as *;
+@use '../functions/var/get-var.function' as *;
 
 @mixin hero-size-variant($name: 'hero-size', $size) {
   &.#{$name}-#{$size} {
