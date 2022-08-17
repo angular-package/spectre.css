@@ -1,0 +1,15 @@
+@use '../../variables/core' as *;
+@use './css-var.function' as *;
+
+// The function `var-adjust()` returns CSS calc function with the given `$value` adjusted.
+@function var-adjust($var, $adjust: null) {
+  @if $adjust != null {
+    @if $adjust > 0 {
+      $adjust: '+ #{$adjust}';
+    } @else {
+      $adjust: '- #{$adjust}';      
+    }
+    @return calc(#{$var} #{$adjust});
+  }
+  @return $var;
+}
