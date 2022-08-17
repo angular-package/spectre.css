@@ -2,8 +2,8 @@
 @use '../../variables/core' as *;
 
 // Functions.
-@use 'color-name.function' as *;
 @use '../var/css-var.function' as *;
+@use 'color-name.function' as *;
 
 // The function returns the CSS variable alpha color of the given `$name` and `$prefix`.
 @function alpha-var($name, $prefix: $var-prefix) {
