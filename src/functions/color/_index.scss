@@ -2,5 +2,8 @@
 @forward 'hsla';
 
 // Function.
+@forward 'alpha-var.function';
+@forward 'color-name.function';
 @forward 'color.function';
-@forward 'get-var-alpha.function';
+@forward 'lightness-var.function';
+
