@@ -1,17 +1,18 @@
-@use '../functions/get-var' as *;
+@use '../functions/var/get-var.function' as *;
+@use '../functions/var/var-unit.function' as *;
 
 @mixin padding-size-variants($name: padding) {
   &.#{$name}-xs {
-    padding: calc(get-var('control-padding-y', $suffix: 'sm') + get-var('unit-1')) calc(get-var('control-padding-x', $suffix: 'sm') + get-var('unit-1'));
+    padding: calc(get-var('control-padding-y', $suffix: 'sm') + unit-var('1')) calc(get-var('control-padding-x', $suffix: 'sm') + unit-var('1'));
   }
 
   &.#{$name}-sm {
     // padding: $control-padding-y-sm + $unit-2 $control-padding-x-sm + $unit-2;
-    padding: calc(get-var('control-padding-y', $suffix: 'sm') + get-var('unit-2')) calc(get-var('control-padding-x', $suffix: 'sm') + get-var('unit-2'));
+    padding: calc(get-var('control-padding-y', $suffix: 'sm') + unit-var('2')) calc(get-var('control-padding-x', $suffix: 'sm') + unit-var('2'));
   }
 
   &.#{$name}-md {
-    padding: calc(get-var('control-padding-y') + get-var('unit-2')) calc(get-var('control-padding-x') + get-var('unit-2'));
+    padding: calc(get-var('control-padding-y') + unit-var('2')) calc(get-var('control-padding-x') + unit-var('2'));
   }
 
   &.#{$name}-none {
@@ -20,11 +21,11 @@
 
   &.#{$name}-lg {
     // padding: $control-padding-y-lg + $unit-2 $control-padding-x-lg + $unit-2;
-    padding: calc(get-var('control-padding-y', $suffix: 'lg') + get-var('unit-2')) calc(get-var('control-padding-x', $suffix: 'lg') + get-var('unit-2'));
+    padding: calc(get-var('control-padding-y', $suffix: 'lg') + unit-var('2')) calc(get-var('control-padding-x', $suffix: 'lg') + unit-var('2'));
   }
 
   &.#{$name}-xl {
     // padding: $control-padding-y-lg + $unit-4 $control-padding-x-lg + $unit-4;
-    padding: calc(get-var('control-padding-y', $suffix: 'lg') + get-var('unit-4')) calc(get-var('control-padding-x', $suffix: 'lg') + get-var('unit-4'));
+    padding: calc(get-var('control-padding-y', $suffix: 'lg') + unit-var('4')) calc(get-var('control-padding-x', $suffix: 'lg') + unit-var('4'));
   }
 }
