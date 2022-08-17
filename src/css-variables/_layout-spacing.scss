@@ -1,7 +1,7 @@
 @use '../variables' as *;
 
 // Functions.
-@use '../functions/strip-unit' as *;
+@use '../functions/strip-unit.function' as *;
 
 // Mixins.
 @use '../mixins/set-var' as *;

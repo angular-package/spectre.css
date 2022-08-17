@@ -1,5 +1,5 @@
-@use '../functions/get-var' as *;
-@use '../functions/strip-unit' as *;
+@use '../functions/var/get-var.function' as *;
+@use '../functions/strip-unit.function' as *;
 @use '../mixins/set-var' as *;
 @use '../variables' as *;
 
