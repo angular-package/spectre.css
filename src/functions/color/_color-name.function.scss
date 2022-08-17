@@ -1,0 +1,20 @@
+// Sass.
+@use 'sass:string';
+
+// The function returns the proper color if the given `$name` was the color code.
+@function color-name($name) {
+  @if string.length($name) > 0 {
+    @if string.index($name, '-') == null {
+      $name: string.insert($name, '-color', string.length($name) + 1);
+    } @else if string.index($name, 'color') == null {
+      @if string.index($name, 'dark') != null {
+        $name: #{string.insert(string.slice($name, 1, string.index($name, 'dark') - 1), 'color-dark', string.index($name, 'dark'))};
+      } @else if string.index($name, 'light') != null {
+        $name: #{string.insert(string.slice($name, 1, string.index($name, 'light') - 1), 'color-light', string.index($name, 'light'))};
+      } @else {
+        $name: string.insert($name, '-color', string.length($name) + 1);
+      }
+    }
+  }
+  @return $name;
+}
