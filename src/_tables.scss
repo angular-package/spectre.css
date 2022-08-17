@@ -1,10 +1,10 @@
 @use 'variables' as *;
 
 // Functions.
-@use 'functions/get-var' as *;
+@use 'functions/var/get-var.function' as *;
 
 // Mixins.
-@use 'mixins/border/border' as *;
+@use 'mixins/border/border.mixin' as *;
 @use 'mixins/color/background.mixin' as *;
 @use 'mixins/color/color.mixin' as *;
 @use 'mixins/padding.mixins' as *;
@@ -84,7 +84,7 @@
       @include color('body-font');
     }
     @include color('body-font');
-    @include background('light');
+    // @include background('light');
     @include border($side: right);
   }
 }
