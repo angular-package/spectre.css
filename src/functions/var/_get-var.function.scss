@@ -49,9 +49,9 @@
         map.get($var, 'name'),
         map-get-default($var, 'unit', $unit),
         map-get-default($var, 'prefix', $prefix),
-        map.get($var, 'suffix')
+        map-get-default($var, 'suffix', $suffix)
       ),
-      map.get($var, 'adjust')
+      map-get-default($var, 'adjust', $adjust)
     ),
     map.get($var, 'negative')
   );
