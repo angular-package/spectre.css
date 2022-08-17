@@ -1,6 +1,6 @@
 @use 'sass:string';
-@use 'border' as *;
-@use '../../variables' as *;
+@use 'border.mixin' as *;
+@use '../../variables/core' as *;
 
 @mixin border-class-variant(
   $name,

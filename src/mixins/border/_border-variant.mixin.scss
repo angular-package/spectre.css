@@ -1,5 +1,5 @@
 @use 'sass:string';
-@use 'border' as *;
+@use 'border.mixin' as *;
 
 @mixin border-variant(
   $size,

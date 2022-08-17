@@ -1,6 +1,6 @@
 @use 'sass:string';
 
-@use '../../functions/get-border' as *;
+@use '../../functions/get-border.function' as *;
 @use '../../functions/var/get-var.function' as *;
 
 @mixin border(

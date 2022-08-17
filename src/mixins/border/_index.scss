@@ -1,3 +1,4 @@
-@forward 'border-class-variant';
-@forward 'border-variant';
-@forward 'border';
+@forward 'border.mixin';
+@forward 'border-class-variant.mixin';
+@forward 'border-hover.mixin';
+@forward 'border-variant.mixin';

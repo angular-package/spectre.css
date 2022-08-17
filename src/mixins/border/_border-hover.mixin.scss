@@ -1,4 +1,4 @@
-@use 'border' as *;
+@use 'border.mixin' as *;
 
 @mixin border-hover(
   $width: '',
