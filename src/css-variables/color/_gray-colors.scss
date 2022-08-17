@@ -9,25 +9,15 @@
 // Spectre.css gray colors.
 @media (prefers-color-scheme: dark) {
   :root, :host {
-    // @include set-color('gray-color', 'dark-color', $lightness: +55%); // lighten($dark-color, 55%)
     @include set-color('gray-color', map.get($theme-dark, 'gray-color')); // lighten($dark-color, 55%)
-
-    // @include set-color('gray-color-dark', 'gray-color', $lightness: -30%); // darken($gray-color, 30%)
     @include set-color('gray-color-dark', map.get($theme-dark, 'gray-color-dark')); // darken($gray-color, 30%)
-
-    // @include set-color('gray-color-light', 'gray-color', $lightness: +20%); // lighten($gray-color, 20%)
     @include set-color('gray-color-light', map.get($theme-dark, 'gray-color-light')); // lighten($gray-color, 20%)
   }
 }
 @media (prefers-color-scheme: light) {
   :root, :host {
-    // @include set-color('gray-color', 'dark-color', $lightness: +55%); // lighten($dark-color, 55%)
     @include set-color('gray-color', map.get($theme-light, 'gray-color')); // lighten($dark-color, 55%)
-
-    // @include set-color('gray-color-dark', 'gray-color', $lightness: -30%); // darken($gray-color, 30%)
     @include set-color('gray-color-dark', map.get($theme-light, 'gray-color-dark')); // darken($gray-color, 30%)
-
-    // @include set-color('gray-color-light', 'gray-color', $lightness: +20%); // lighten($gray-color, 20%)
     @include set-color('gray-color-light', map.get($theme-light, 'gray-color-light')); // lighten($gray-color, 20%)
   }
 }

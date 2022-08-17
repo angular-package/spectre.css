@@ -9,19 +9,13 @@
 // Spectre.css other colors.
 @media (prefers-color-scheme: dark) {
   :root, :host {
-    // @include set-color('code-color', $code-color); // #d73e48
     @include set-color('code-color', map.get($theme-dark, 'code-color')); // #d73e48
-
-    // @include set-color('highlight-color', $highlight-color); // #ffe9b3
     @include set-color('highlight-color', map.get($theme-dark, 'highlight-color')); // #ffe9b3
   }
 }
 @media (prefers-color-scheme: light) {
   :root, :host {
-    // @include set-color('code-color', $code-color); // #d73e48
     @include set-color('code-color', map.get($theme-light, 'code-color')); // #d73e48
-
-    // @include set-color('highlight-color', $highlight-color); // #ffe9b3
     @include set-color('highlight-color', map.get($theme-light, 'highlight-color')); // #ffe9b3
   }
 }

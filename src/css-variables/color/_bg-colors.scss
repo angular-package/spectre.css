@@ -9,25 +9,15 @@
 // Spectre.css bg colors.
 @media (prefers-color-scheme: dark) {
   :root, :host {
-    // @include set-color('bg-color', 'dark-color', $lightness: +75%); // lighten($dark-color, 75%)
     @include set-color('bg-color', map.get($theme-dark, 'bg-color')); // lighten($dark-color, 75%)
-
-    // @include set-color('bg-color-dark', 'bg-color', $lightness: -3%); // darken($bg-color, 3%)
     @include set-color('bg-color-dark', map.get($theme-dark, 'bg-color-dark')); // darken($bg-color, 3%)
-
-    // @include set-color('bg-color-light', 'light-color'); // $light-color
     @include set-color('bg-color-light', map.get($theme-dark, 'bg-color-light')); // $light-color
   }
 }
 @media (prefers-color-scheme: light) {
   :root, :host {
-    // @include set-color('bg-color', 'dark-color', $lightness: +75%); // lighten($dark-color, 75%)
     @include set-color('bg-color', map.get($theme-light, 'bg-color')); // lighten($dark-color, 75%)
-
-    // @include set-color('bg-color-dark', 'bg-color', $lightness: -3%); // darken($bg-color, 3%)
     @include set-color('bg-color-dark', map.get($theme-light, 'bg-color-dark')); // darken($bg-color, 3%)
-
-    // @include set-color('bg-color-light', 'light-color'); // $light-color
     @include set-color('bg-color-light', map.get($theme-light, 'bg-color-light')); // $light-color
   }
 }
