@@ -1,4 +1,4 @@
-@use '../functions/get-var' as *;
+@use '../functions/var/get-var.function' as *;
 
 // Avatar mixin
 // @mixin avatar-base($size: $unit-8) { // old spectre.css

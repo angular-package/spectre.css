@@ -7,7 +7,7 @@
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
-@use 'mixins/border/border' as *;
+@use 'mixins/border/border.mixin' as *;
 @use 'mixins/color/color.mixin' as *;
 @use 'mixins/margin.mixins' as *;
 @use 'mixins/z-index.mixin' as *;

@@ -1,7 +1,7 @@
 @use '../variables' as *;
 
 // Functions.
-@use '../functions/color' as *;
+@use '../functions/color/color.function' as *;
 
 // Mixins.
 @use '../mixins/button' as *;

@@ -4,7 +4,7 @@
 @use 'functions/var/unit-var.function' as *;
 
 // Mixins.
-@use 'mixins/border/border' as *;
+@use 'mixins/border/border.mixin' as *;
 @use 'mixins/label' as *;
 @use 'mixins/margin.mixins' as *;
 @use 'mixins/padding.mixins' as *;

@@ -1,4 +1,4 @@
-@use '../functions/get-var' as *;
+@use '../functions/var/get-var.function' as *;
 
 // Margin utility mixin
 // @mixin margin-variant($id: 1, $size: $unit-1) { // old spectre.css

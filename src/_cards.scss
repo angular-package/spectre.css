@@ -6,7 +6,7 @@
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
-@use 'mixins/border/border' as *;
+@use 'mixins/border/border.mixin' as *;
 @use 'mixins/color/color-picker.mixin' as *;
 @use 'mixins/padding.mixins' as *;
 @use 'mixins/shadow' as *;

@@ -1,7 +1,7 @@
 @use 'sass:list';
 
 // Functions.
-@use '../functions/get-var' as *;
+@use '../functions/var/get-var.function' as *;
 
 @mixin transition($properties...) {
   $transition: '';

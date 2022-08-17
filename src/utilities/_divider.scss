@@ -1,13 +1,12 @@
 @use '../variables' as *;
 
 // Functions.
-@use '../functions/color' as *;
 @use '../functions/var/get-var.function' as *;
 @use '../functions/var/unit-var.function' as *;
 @use '../functions/var/var-negative.function' as *;
 
 // Mixins.
-@use '../mixins/border/border' as *;
+@use '../mixins/border/border.mixin' as *;
 @use '../mixins/color/background.mixin' as *;
 @use '../mixins/color/color.mixin' as *;
 @use '../mixins/margin.mixins' as *;

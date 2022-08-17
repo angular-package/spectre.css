@@ -1,7 +1,7 @@
 @use 'sass:list';
 
 // Functions.
-@use '../functions/color' as *;
+@use '../functions/color/color.function' as *;
 
 // Mixins.
 @use '../mixins/color/background.mixin' as *;
