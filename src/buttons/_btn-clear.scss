@@ -1,7 +1,7 @@
 @use '../variables' as *;
 
 // Functions.
-@use '../functions/get-var-unit.function' as *;
+@use '../functions/var/unit-var.function' as *;
 
 // Mixins.
 @use '../mixins/color/background.mixin' as *;
@@ -18,10 +18,10 @@
     color: currentColor;
     // height: $unit-5; // old spectre.css
     // height: get-var('unit-5'); // old @angular-package/spectre.css
-    height: get-var-unit('5');
+    height: unit-var('5');
     // line-height: $unit-4; // old spectre.css
     // line-height: get-var('unit-4'); // old @angular-package/spectre.css
-    line-height: get-var-unit('4');
+    line-height: unit-var('4');
     // margin-left: $unit-1; // old spectre.css
     // margin-left: get-var('unit-1'); // old @angular-package/spectre.css
     @include margin-left('unit-1');
@@ -33,7 +33,7 @@
     text-decoration: none;
     // width: $unit-5; // old spectre.css
     // width: get-var('unit-5'); // old @angular-package/spectre.css
-    width: get-var-unit('5');
+    width: unit-var('5');
 
     &:focus,
     &:hover {
