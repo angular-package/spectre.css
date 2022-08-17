@@ -1,7 +1,7 @@
 // Functions.
-// @use 'functions/color' as *; // old @angular-package/spectre.css
-@use 'functions/get-var' as *;
-@use 'functions/get-var-unit.function' as *;
+// @use 'functions/color/color.function' as *; // old @angular-package/spectre.css
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
@@ -16,7 +16,13 @@ code {
   @include color('code');
 
   // background: color(('code-color', 42.5%)); // old @angular-package/spectre.css
-  @include background(('code', 42.5%));
+  @media (prefers-color-scheme: light) {
+    @include background(('code', 42.5%));
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @include background(('code', -42.5%));
+  }
   font-size: 85%;
 }
 
@@ -40,7 +46,7 @@ code {
     right: get-var(('layout-spacing', true));
     // top: $unit-h; // old spectre.css
     // top: get-var('unit-h'); // old @angular-package/spectre.css
-    top: get-var-unit('h');
+    top: unit-var('h');
   }
 
   code {
