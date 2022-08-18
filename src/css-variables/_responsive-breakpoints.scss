@@ -1,9 +1,10 @@
-@use '../mixins/set-var' as *;
-@use '../variables' as *;
+// Variables.
+@use '../variables/responsive-breakpoints' as *;
 
-/*
-  Responsive breakpoints. Alphabetical order.
-*/
+// Mixins.
+@use '../mixins/set-var' as *;
+
+// Responsive breakpoints. Alphabetical order.
 :root, :host {
   @include set-var('size-2x', $size-2x); // 1440px
   @include set-var('size-lg', $size-lg); // 960px

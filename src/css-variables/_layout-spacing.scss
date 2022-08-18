@@ -1,4 +1,5 @@
-@use '../variables' as *;
+// Variables.
+@use '../variables/layout-spacing' as *;
 
 // Functions.
 @use '../functions/strip-unit.function' as *;
@@ -6,7 +7,7 @@
 // Mixins.
 @use '../mixins/set-var' as *;
 
-// Layout spacing. Alphabetical order.
+// Layout spacing.
 :root, :host {
   @include set-var('layout-spacing', strip-unit($layout-spacing)); // $unit-2
   @include set-var('layout-spacing', strip-unit($layout-spacing-lg), $suffix: 'lg'); // $unit-4

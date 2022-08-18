@@ -1,9 +1,14 @@
-@use '../functions/var/get-var.function' as *;
-@use '../functions/strip-unit.function' as *;
-@use '../mixins/set-var' as *;
-@use '../variables' as *;
+// Variables.
+@use '../variables/control' as *;
 
-// Control padding. Alphabetical order.
+// Functions.
+@use '../functions/strip-unit.function' as *;
+@use '../functions/var/get-var.function' as *;
+
+// Mixins.
+@use '../mixins/set-var' as *;
+
+// Control padding.
 :root, :host {
   // padding-x
   @include set-var('control-padding-x', $control-padding-x); // $unit-2

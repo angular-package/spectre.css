@@ -1,9 +1,10 @@
-@use '../mixins/set-var' as *;
-@use '../variables' as *;
+// Variables.
+@use '../variables/unit-sizes' as *;
 
-/*
-  Unit sizes. Alphabetical order.
-*/
+// Mixins.
+@use '../mixins/set-var' as *;
+
+// Unit sizes.
 :root, :host {
   @include set-var('unit-o', $unit-o); // 0.05rem
   @include set-var('unit-h', $unit-h); // 0.1rem
