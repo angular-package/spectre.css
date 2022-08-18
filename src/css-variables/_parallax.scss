@@ -3,9 +3,9 @@
 
 // Mixins.
 @use '../mixins/color/set-color.mixin' as *;
-@use '../mixins/set-var' as *;
+@use '../mixins/set-var.mixin' as *;
 
-// Parallax. 
+// Parallax.
 :root, :host {
   @include set-var('parallax-deg', $parallax-deg); // 3deg
   @include set-color('parallax-fade-color', $parallax-fade-color, $alpha: 0.35); // rgba(255, 255, 255, 0.35)

@@ -2,7 +2,7 @@
 @use '../variables/core' as *;
 
 // Mixins.
-@use '../mixins/set-var' as *;
+@use '../mixins/set-var.mixin' as *;
 
 // Transition duration.
 :root, :host {

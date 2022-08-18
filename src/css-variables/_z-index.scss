@@ -2,7 +2,7 @@
 @use '../variables/z-index' as *;
 
 // Mixins.
-@use '../mixins/set-var' as *;
+@use '../mixins/set-var.mixin' as *;
 
 // z-index.
 :root, :host {

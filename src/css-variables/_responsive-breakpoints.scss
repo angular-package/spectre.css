@@ -2,7 +2,7 @@
 @use '../variables/responsive-breakpoints' as *;
 
 // Mixins.
-@use '../mixins/set-var' as *;
+@use '../mixins/set-var.mixin' as *;
 
 // Responsive breakpoints. Alphabetical order.
 :root, :host {

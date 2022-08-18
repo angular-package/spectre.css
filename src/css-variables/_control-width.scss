@@ -2,7 +2,7 @@
 @use '../variables/control' as *;
 
 // Mixins.
-@use '../mixins/set-var' as *;
+@use '../mixins/set-var.mixin' as *;
 
 // Control width.
 :root, :host {

@@ -1,6 +1,6 @@
 @use '../functions/var/get-var.function' as *;
 @use '../variables' as *;
-@use 'set-var' as *;
+@use 'set-var.mixin' as *;
 
 // @deprecated
 // Defines a color based on the specified CSS variable and its lightness.

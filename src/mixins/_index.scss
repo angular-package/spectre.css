@@ -9,9 +9,9 @@
 
 @forward 'define-color-based-on'; // @deprecated 1.0.0-beta
 @forward 'define-color'; // @deprecated 1.0.0-beta
-@forward 'disabled';
+@forward 'disabled.mixin';
 
-@forward 'hide-scrollbar'; // @new 1.0.0-beta
+@forward 'hide-scrollbar.mixin'; // @new 1.0.0-beta
 @forward 'label';
 @forward 'margin.mixins'; // @new 1.0.0-beta
 @forward 'margin-size-variants.mixin';
@@ -19,8 +19,8 @@
 @forward 'padding-size-variants.mixin';
 @forward 'position';
 @forward 'property.mixin';
-@forward 'set-var';
-@forward 'set-vars'; // @new 1.0.0-beta
+@forward 'set-var.mixin';
+@forward 'set-vars.mixin'; // @new 1.0.0-beta
 @forward 'shadow';
 @forward 'text';
 @forward 'toast';

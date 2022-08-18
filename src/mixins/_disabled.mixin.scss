@@ -1,0 +1,9 @@
+@mixin disabled($name: '', $opacity: 0.5) {
+  &.disabled,
+  &:disabled,
+  &.#{$name}-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: $opacity;
+  }
+}

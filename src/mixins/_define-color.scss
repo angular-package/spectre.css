@@ -1,5 +1,5 @@
 @use '../variables' as *;
-@use 'set-var' as *;
+@use 'set-var.mixin' as *;
 
 // @deprecated
 // The mixin defines CSS variable color in hsla form, by splitting it in four CSS variables.

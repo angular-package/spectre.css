@@ -2,7 +2,7 @@
 @use '../variables/border' as *;
 
 // Mixins.
-@use '../mixins/set-var' as *;
+@use '../mixins/set-var.mixin' as *;
 
 // Border width.
 :root, :host {

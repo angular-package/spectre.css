@@ -5,7 +5,7 @@
 @use '../functions/strip-unit.function' as *;
 
 // Mixins.
-@use '../mixins/set-var' as *;
+@use '../mixins/set-var.mixin' as *;
 
 // Layout spacing.
 :root, :host {

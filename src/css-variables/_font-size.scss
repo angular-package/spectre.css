@@ -1,8 +1,9 @@
 // Variables.
 @use '../variables/font-sizes' as *;
+@use '../variables/line-height' as *;
 
 // Mixins.
-@use '../mixins/set-var' as *;
+@use '../mixins/set-var.mixin' as *;
 
 // Font size and line height.
 :root, :host {

@@ -2,7 +2,7 @@
 @use '../variables/unit-sizes' as *;
 
 // Mixins.
-@use '../mixins/set-var' as *;
+@use '../mixins/set-var.mixin' as *;
 
 // Unit sizes.
 :root, :host {
