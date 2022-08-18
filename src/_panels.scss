@@ -1,8 +1,5 @@
+// Variables.
 @use 'variables' as *;
-
-// Functions.
-// @use 'functions/color/color.function' as *;
-// @use 'functions/var/get-var.function' as *; // @angular-package/spectre.css
 
 // Mixins.
 @use 'mixins/border/border.mixin' as *;
@@ -11,10 +8,6 @@
 // Panels
 .panel,
 .#{$var-prefix}-panel {
-  // border: $border-width solid $border-color; // old spectre.css
-  // border: get-var('border-width') solid color('border-color'); // old @angular-package/spectre.css
-  // border-radius: $border-radius; // old spectre.css
-  // border-radius: get-var('border-radius');
   @include border();
   display: flex;
   flex-direction: column;
@@ -22,8 +15,6 @@
   .panel-header,
   .panel-footer {
     flex: 0 0 auto;
-    // padding: $layout-spacing-lg; // old spectre.css
-    // padding: get-var('layout-spacing', $suffix: 'lg', $unit: true); // old @angular-package/spectre.css
     @include padding(('layout-spacing', ('suffix': 'lg', 'unit': true)));
   }
 
@@ -34,8 +25,6 @@
   .panel-body {
     flex: 1 1 auto;
     overflow-y: auto;
-    // padding: 0 $layout-spacing-lg; // old spectre.css
-    // padding: 0 get-var('layout-spacing', $suffix: 'lg', $unit: true); // old @angular-package/spectre.css
     @include padding('unit-0', ('layout-spacing', ('suffix': 'lg', 'unit': true)));
   }
 }

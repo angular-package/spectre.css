@@ -7,7 +7,6 @@
 // Functions.
 @use 'functions/var/get-var.function' as *;
 @use 'functions/var/size-var.function' as *;
-// @use 'functions/strip-unit' as *; // @angular-package/spectre.css
 @use 'functions/var/var-negative.function' as *;
 
 // Mixins.
@@ -23,41 +22,27 @@
 .#{$var-prefix}-container {
   margin-left: auto;
   margin-right: auto;
-  // padding-left: $layout-spacing; // old spectre.css
-  // padding-left: get-var('layout-spacing', $unit: true); // old @angular-package/spectre.css
   @include padding-left(('layout-spacing', true));
-
-  // padding-right: $layout-spacing; // old spectre.css
-  // padding-right: get-var('layout-spacing', $unit: true); // old @angular-package/spectre.css
   @include padding-right(('layout-spacing', true));
   width: 100%;
 
-  // $grid-spacing: ($layout-spacing / ($layout-spacing * 0 + 1)) * $html-font-size; // old spectre.css
-  // $grid-spacing: math.div($layout-spacing, $layout-spacing * 0 + 1) * $html-font-size; // old @angular-package/spectre.css
-  // $grid-spacing: strip-unit($layout-spacing) * $html-font-size; // ? Not used.
-
   &.grid-xl {
-    // max-width: $grid-spacing * 2 + $size-xl; // old spectre.css
     max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + size-var('xl'));
   }
 
   &.grid-lg {
-    // max-width: $grid-spacing * 2 + $size-lg; // old spectre.css
     max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + size-var('lg'));
   }
 
   &.grid-md {
-    // max-width: $grid-spacing * 2 + $size-md; // old spectre.css
     max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + size-var('md'));
   }
 
   &.grid-sm {
-    // max-width: $grid-spacing * 2 + $size-sm; // old spectre.css
     max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + size-var('sm'));
   }
 
   &.grid-xs {
-    // max-width: $grid-spacing * 2 + $size-xs; // old spectre.css
     max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + size-var('xs'));
   }
 }
@@ -76,10 +61,8 @@
 .columns {
   display: flex;
   flex-wrap: wrap;
-  // margin-left: -$layout-spacing; // old spectre.css
-  margin-left: var-negative(get-var(('layout-spacing', true))); // TODO: Negative get-var()
-  // margin-right: -$layout-spacing; // old spectre.css
-  margin-right: var-negative(get-var(('layout-spacing', true))); // TODO: Negative get-var()
+  margin-left: get-var(('layout-spacing', true, 0, true)); // DONE: Negative get-var()
+  margin-right: get-var(('layout-spacing', true, 0, true)); // DONE: Negative get-var()
 
   &.col-gapless {
     margin-left: 0;

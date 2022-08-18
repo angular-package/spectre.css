@@ -1,3 +1,4 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
@@ -15,33 +16,24 @@
 .tab,
 .#{$var-prefix}-tab {
   align-items: center;
-  // border-bottom: $border-width solid $border-color; // old spectre.css
-  // border-bottom: get-var('border-width') solid color('border-color'); // old @angular-package/spectre.css
   @include border($side: bottom);
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  // margin: $unit-1 0 ($unit-1 - $border-width) 0; // old spectre.css
-  margin: get-var('unit-1') 0 calc(get-var('unit-1') - get-var('border-width')) 0; // old @angular-package/spectre.css
+  margin: get-var('unit-1') 0 calc(get-var('unit-1') - get-var('border-width')) 0; // TODO: Use the margin
 
   .tab-item {
     margin-top: 0;
     a {
-      // border-bottom: $border-width-lg solid transparent; // old spectre.css
       border-bottom: get-var('border-width', $suffix: 'lg') solid transparent;
       color: inherit;
       display: block;
-      // margin: 0 $unit-2 0 0; // old spectre.css
-      // margin: 0 get-var('unit-2') 0 0; // old @angular-package/spectre.css
       @include margin('unit-0', 'unit-2', 'unit-0', 'unit-0');
-      // padding: $unit-2 $unit-1 $unit-2 - $border-width-lg $unit-1; // old spectre.css
       padding: get-var('unit-2') get-var('unit-1') calc(get-var('unit-2') - get-var('border-width', $suffix: 'lg')) get-var('unit-1');
       text-decoration: none;
 
       &:focus,
       &:hover {
-        // color: $link-color; // old spectre.css
-        // color: color('link-color'); // old @angular-package/spectre.css
         @include color('link');
       }
       // TODO: color focus.
@@ -50,11 +42,7 @@
     }
     &.active a,
     a.active {
-      // border-bottom-color: $primary-color; // old spectre.css
-      // border-bottom-color: color('primary-color'); // old @angular-package/spectre.css
       border-bottom-color: color('primary');
-      // color: $link-color; // old spectre.css
-      // color: color('link'); // old @angular-package/spectre.css
       @include color('link');
     }
 
@@ -64,8 +52,6 @@
     }
 
     .btn-clear {
-      // margin-top: -$unit-1; // old spectre.css
-      // margin-top: var-negative(get-var('unit-1')); // old @angular-package/spectre.css
       margin-top: var-negative(unit-var('1'));
     }
   }
@@ -82,11 +68,7 @@
       .badge {
         &[data-badge]::after {
           position: absolute;
-          // right: $unit-h; // old spectre.css
-          // right: get-var('unit-h'); // old @angular-package/spectre.css
           right: unit-var('h');
-          // top: $unit-h; // old spectre.css
-          // top: get-var('unit-h'); // old @angular-package/spectre.css
           top: unit-var('h');
           transform: translate(0, 0);
         }

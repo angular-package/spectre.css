@@ -1,8 +1,7 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
-// @use 'functions/color/color.function' as *; // old @angular-package/spectre.css
-// @use 'functions/var/get-var.function' as *; // old @angular-package/spectre.css
 @use 'functions/var/unit-var.function' as *;
 
 // Mixins.
@@ -44,8 +43,6 @@
     z-index: 1;
 
     .comparison-label {
-      // right: $unit-4; // old spectre.css
-      // right: get-var('unit-4'); // old @angular-package/spectre.css
       right: unit-var('4');
     }
   }
@@ -62,12 +59,8 @@
       height: 100%;
       left: 0;
       position: absolute;
-      // right: $unit-4; // old spectre.css
-      // right: get-var('unit-4'); // old @angular-package/spectre.css
       right: unit-var('4');
       top: 0;
-      // z-index: $zindex-0; // old spectre.css
-      // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
       @include z-index('0');
     }
 
@@ -75,15 +68,11 @@
       background: currentColor;
       border-radius: 50%;
       box-shadow: 0 -5px, 0 5px;
-      // color: $light-color; // old spectre.css
-      // color: color('light-color'); // old @angular-package/spectre.css
       @include color('light');
       content: '';
       height: 3px;
       pointer-events: none;
       position: absolute;
-      // right: $unit-2; // old spectre.css
-      // right: get-var('unit-2'); // old @angular-package/spectre.css
       right: unit-var('2');
       top: 50%;
       transform: translate(50%, -50%);
@@ -91,8 +80,6 @@
     }
 
     .comparison-label {
-      // left: $unit-4; // old spectre.css
-      // left: get-var('unit-4'); // old @angular-package/spectre.css
       left: unit-var('4');
     }
   }
@@ -100,13 +87,9 @@
   .comparison-resizer {
     animation: first-run 1.5s 1 ease-in-out;
     cursor: ew-resize;
-    // height: $unit-4; // old spectre.css
-    // height: get-var('unit-4'); // old @angular-package/spectre.css
     height: unit-var('4');
     left: 0;
     max-width: 100%;
-    // min-width: $unit-4; // old spectre.css
-    // min-width: get-var('unit-4'); // old @angular-package/spectre.css
     min-width: unit-var('4');
     opacity: 0;
     outline: none;
@@ -118,17 +101,9 @@
   }
 
   .comparison-label {
-    // background: rgba($dark-color, .5); // old spectre.css
-    // background: color('dark-color', $alpha: 0.5); // old @angular-package/spectre.css
     @include background('dark', $alpha: 0.5);
-    // bottom: $unit-4; // old spectre.css
-    // bottom: get-var('unit-4'); // old @angular-package/spectre.css
     bottom: unit-var('4');
-    // color: $light-color; // old spectre.css
-    // color: color('light-color'); // old @angular-package/spectre.css
     @include color('light');
-    // padding: $unit-1 $unit-2; // old spectre.css
-    // padding: get-var('unit-1') get-var('unit-2'); // old @angular-package/spectre.css
     @include padding('unit-1', 'unit-2');
     position: absolute;
     user-select: none;
@@ -140,18 +115,12 @@
     width: 0;
   }
   25% {
-    // width: $unit-12; // old spectre.css
-    // width: get-var('unit-12'); // old @angular-package/spectre.css
     width: unit-var('12');
   }
   50% {
-    // width: $unit-4; // old spectre.css
-    // width: get-var('unit-4'); // old @angular-package/spectre.css
     width: unit-var('4');
   }
   75% {
-    // width: $unit-6; // old spectre.css
-    // width: unit-var('6'); // old @angular-package/spectre.css
     width: unit-var('6');
   }
   100% {

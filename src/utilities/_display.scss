@@ -1,4 +1,5 @@
-@use '../mixins/hide-scrollbar' as *;
+// Mixins.
+@use '../mixins/hide-scrollbar.mixin' as *;
 
 // Display
 .d-block {

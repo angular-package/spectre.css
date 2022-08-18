@@ -1,3 +1,4 @@
+// Variables.
 @use 'variables' as *;
 
 // Mixins.
@@ -12,11 +13,7 @@
 .#{$var-prefix}-label {
   @include label-base();
   display: inline-block;
-  // @include label-variant(lighten($body-font-color, 5%), $bg-color-dark); // old spectre.css
-  // @include label--variant(color('body-font-color', $lightness: +5%), color('bg-color-dark')); // old @angular-package/spectre.css
-  // background: color('bg-color-dark'); // old @angular-package/spectre.css
   @include background('bg-dark');
-  // color: color(('body-font-color', +5%)); // old @angular-package/spectre.css
   @include color(('body-font', +5%));
 
   // Label rounded
@@ -31,19 +28,12 @@
 
   // Label color variants.
   // - Shades.
-  // &.label-dark { @include label-variant('light-color', 'dark-color'); } // old @angular-package/spectre.css
   @include label-variant('dark', 'dark-color', 'light-color');
-  // &.label-light { @include label-variant('dark-color', 'light-color'); } // old @angular-package/spectre.css
   @include label-variant('light', 'light-color', 'dark-color');
 
   // - Core colors.
   // -- Accent.
-  // &.label-accent { @include label-variant('light-color', 'accent-color'); } // old @angular-package/spectre.css
   @include label-variant('accent', 'accent-color', 'light-color');
-  // &.label-primary {
-    // @include label-variant($light-color, $primary-color); // old spectre.css
-    // @include label-variant('light-color', 'primary-color'); // old @angular-package/spectre.css
-  // }
 
   // -- Primary.
   @include label-variant('primary', 'primary-color', 'light-color');
@@ -51,10 +41,6 @@
   @include label-variant('primary-light', 'primary-color-light', ('primary-color-light', 40%)); // ! New label color variant.
 
   // -- Secondary.
-  // &.label-secondary {
-    // @include label-variant($primary-color, $secondary-color); // old spectre.css
-    // @include label-variant('primary-color', 'secondary-color'); // old @angular-package/spectre.css
-  // }
   @include label-variant('secondary', 'secondary-color', ('secondary-color', -40%));
   @include label-variant('secondary-dark', 'secondary-color-dark', ('secondary-color-dark', -40%)); // ! New label color variant.
   @include label-variant('secondary-light', 'secondary-color-light', ('secondary-color-light', -40%)); // ! New label color variant.
@@ -80,29 +66,10 @@
   @include label-variant('link-light', 'link-color-light', ('link-color-light', 30%)); // ! New label color variant.
 
   // - Control colors.
-  // &.label-disabled {
-    // background-color: color('disabled-color'); // old @angular-package/spectre.css
-    // color: color('disabled-color', $lightness: -10%);
-  // }
-  // @include label-variant('disabled', 'disabled-color', 'disabled-color'); // old @angular-package/spectre.css
   @include label-variant('disabled', 'disabled-color', ('disabled-color', -10%));
-
-  // &.label-error {
-    // @include label-variant($light-color, $error-color); // old spectre.css
-    // @include label-variant('light-color', 'error-color'); // old @angular-package/spectre.css
-  // }
   @include label-variant('error', 'error-color', 'light-color');
   @include label-variant('info', 'info-color', ('info-color', -50%));
-
-  // &.label-success {
-    // @include label-variant($light-color, $success-color); // old spectre.css
-    // @include label-variant('light-color', 'success-color'); // old @angular-package/spectre.css
-  // }
   @include label-variant('success', 'success-color', 'light-color');
-  // &.label-warning {
-    // @include label-variant($light-color, $warning-color); // old spectre.css
-    // @include label-variant('light-color', 'warning-color'); // old @angular-package/spectre.css
-  // }
   @include label-variant('warning', 'warning-color', 'light-color');
 
   // - Body colors.

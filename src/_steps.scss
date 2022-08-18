@@ -1,7 +1,7 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
-// @use 'functions/color/color.function' as *; // @angular-package/spectre.css
 @use 'functions/var/get-var.function' as *;
 @use 'functions/var/unit-var.function' as *;
 
@@ -18,8 +18,6 @@
   display: flex;
   flex-wrap: nowrap;
   list-style: none;
-  // margin: $unit-1 0; // old spectre.css
-  // margin: get-var('unit-1') 0; // old @angular-package/spectre.css
   @include margin('unit-1', 'unit-0');
   width: 100%;
 
@@ -31,8 +29,6 @@
     position: relative;
 
     &:not(:first-child)::before {
-      // background: $primary-color; // old spectre.css
-      // background: color('primary-color'); // old @angular-package/spectre.css
       @include background('primary');
       content: '';
       height: 2px;
@@ -43,8 +39,6 @@
     }
 
     a {
-      // color: $primary-color; // old spectre.css
-      // color: color('primary-color'); // old @angular-package/spectre.css
       @include color('primary');
       display: inline-block;
       padding: 20px 10px 0;
@@ -52,30 +46,17 @@
 
       &::before {
         border-radius: 50%;
-
-        // background: $primary-color; // old spectre.css
-        // background: color('primary-color'); // old @angular-package/spectre.css
         @include background('primary');
-        // border: $border-width-lg solid $light-color; // old spectre.css
-        // border: get-var('border-width', $suffix: 'lg') solid color('light-color'); // old @angular-package/spectre.css
         @include border('lg', solid, 'light', false);
 
         content: '';
         display: block;
-        // height: $unit-3; // old spectre.css
-        // height: get-var('unit-3'); // old @angular-package/spectre.css
         height: unit-var('3');
         left: 50%;
         position: absolute;
-        // top: $unit-1; // old spectre.css
-        // top: get-var('unit-1'); // old @angular-package/spectre.css
         top: unit-var('1');
         transform: translateX(-50%);
-        // width: $unit-3; // old spectre.css
-        // width: get-var('unit-3'); // old @angular-package/spectre.css
         width: unit-var('3');
-        // z-index: $zindex-0; // old spectre.css
-        // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
         @include z-index('0');
       }
     }
@@ -83,30 +64,20 @@
     &.active {
       a {
         &::before {
-          // background: $light-color; // old spectre.css
-          // background: color('light-color'); // old @angular-package/spectre.css
           @include background('light');
-          // border: $border-width-lg solid $primary-color; // old spectre.css
-          // border: get-var('border-width', $suffix: 'lg') solid color('primary-color'); // old @angular-package/spectre.css
           @include border('lg', solid, 'primary', false);
         }
       }
 
       & ~ .step-item {
         &::before {
-          // background: $border-color; // old spectre.css
-          // background: color('border-color'); // old @angular-package/spectre.css
           @include background('border');
         }
 
         a {
-          // color: $gray-color; // old spectre.css
-          // color: color('gray-color'); // old @angular-package/spectre.css
           @include color('gray');
 
           &::before {
-            // background: $border-color; // old spectre.css
-            // background: color('border-color'); // old @angular-package/spectre.css
             @include background('border');
           }
         }

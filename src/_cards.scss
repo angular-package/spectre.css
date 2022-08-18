@@ -15,13 +15,7 @@
 // Cards
 .card,
 .#{$var-prefix}-card {
-  // background: $bg-color-light; // old spectre.css
-  // background: color('bg-color-light'); // old @angular-package/spectre.css
   @include background('bg-light');
-  // border: $border-width solid $border-color; // old spectre.css
-  // border: get-var('border-width') solid color('border-color'); // old @angular-package/spectre.css
-  // border-radius: $border-radius; // old spectre.css
-  // border-radius: get-var('border-radius'); // old @angular-package/spectre.css
   @include border();
   display: flex;
   flex-direction: column;
@@ -29,14 +23,10 @@
   .card-header,
   .card-body,
   .card-footer {
-    // padding: $layout-spacing-lg; // old spectre.css
-    // padding: get-var('layout-spacing', $suffix: 'lg', $unit: true); // old @angular-package/spectre.css
     @include padding(('layout-spacing', ('suffix': 'lg', 'unit': true)));
     padding-bottom: 0;
 
     &:last-child {
-      // padding-bottom: $layout-spacing-lg; // old spectre.css
-      // padding-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: true); // old @angular-package/spectre.css
       @include padding-bottom(('layout-spacing', ('suffix': 'lg', 'unit': true)));
     }
   }
@@ -46,26 +36,20 @@
   }
 
   .card-image {
-    // padding-top: $layout-spacing-lg; // old spectre.css
-    // padding-top: get-var('layout-spacing', $suffix: 'lg', $unit: true); // old @angular-package/spectre.css
     @include padding-top(('layout-spacing', ('suffix': 'lg', 'unit': true)));
 
     &:first-child {
       padding-top: 0;
 
       img {
-        // border-top-left-radius: $border-radius; // old spectre.css
         border-top-left-radius: get-var('border-radius');
-        // border-top-right-radius: $border-radius; // old spectre.css
         border-top-right-radius: get-var('border-radius');
       }
     }
 
     &:last-child {
       img {
-        // border-bottom-left-radius: $border-radius; // old spectre.css
         border-bottom-left-radius: get-var('border-radius');
-        // border-bottom-right-radius: $border-radius; // old spectre.css
         border-bottom-right-radius: get-var('border-radius');
       }
     }

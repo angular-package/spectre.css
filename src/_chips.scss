@@ -1,7 +1,7 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
-// @use 'functions/color/color.function' as *;
 @use 'functions/var/get-var.function' as *;
 @use 'functions/var/unit-var.function' as *;
 @use 'functions/var/var-negative.function' as *;
@@ -16,26 +16,15 @@
 .chip,
 .#{$var-prefix}-chip {
   align-items: center;
-  // background: $bg-color-dark; // old spectre.css
-  // background: color('bg-color-dark'); // old @angular-package/spectre.css
   @include background('bg-dark');
   border-radius: 5rem;
   display: inline-flex;
   font-size: 90%;
-  // height: $unit-6; // old spectre.css
-  // height: get-var('unit-6'); // old @angular-package/spectre.css
   height: unit-var('6');
-  // line-height: $unit-4; // old spectre.css
-  // line-height: get-var('unit-4'); // old @angular-package/spectre.css
   line-height: unit-var('4');
-  // margin: $unit-h; // old spectre.css
-  // margin: get-var('unit-h'); // old @angular-package/spectre.css
   @include margin('unit-h');
-  // max-width: $control-width-sm; // old spectre.css
   max-width: get-var('control-width', $suffix: 'sm');
   overflow: hidden;
-  // padding: $unit-1 $unit-2; // old spectre.css
-  // padding: get-var('unit-1') get-var('unit-2'); // old @angular-package/spectre.css
   @include padding('unit-1', 'unit-2');
   text-decoration: none;
   text-overflow: ellipsis;
@@ -43,20 +32,13 @@
   white-space: nowrap;
 
   &.active {
-    // background: $primary-color; // old spectre.css
-    // background: color('primary-color'); // old @angular-package/spectre.css
     @include background('primary');
-    // color: $light-color; // old spectre.css
-    // color: color('light-color'); // old @angular-package/spectre.css
     @include color('light');
   }
 
   .avatar {
-    // margin-left: -$unit-2; // old spectre.css
     // TODO: margin-left mixin should work with the negative.
     margin-left: var-negative(get-var('unit-2')); // old @angular-package/spectre.css
-    // margin-right: $unit-1; // old spectre.css
-    // margin-right: get-var('unit-1'); // old @angular-package/spectre.css
     @include margin-right('unit-1');
   }
 

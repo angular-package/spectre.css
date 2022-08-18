@@ -1,7 +1,7 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
-// @use 'functions/color/color.function' as *; // old @angular-package/spectre.css
 @use 'functions/var/get-var.function' as *;
 @use 'functions/var/unit-var.function' as *;
 
@@ -16,20 +16,14 @@
 .#{$var-prefix}-timeline {
   .timeline-item {
     display: flex;
-    // margin-bottom: $unit-6; // old spectre.css
-    // margin-bottom: get-var('unit-6'); // old @angular-package/spectre.css
     @include margin-bottom('unit-6');
     position: relative;
     &::before {
-      // background: $border-color; // old spectre.css
-      // background: color('border-color'); // old @angular-package/spectre.css
       @include background('border');
       content: '';
       height: 100%;
       left: 11px;
       position: absolute;
-      // top: $unit-6; // old spectre.css
-      // top: get-var('unit-6'); // old @angular-package/spectre.css
       top: unit-var('6');
       width: 2px;
     }
@@ -40,53 +34,32 @@
 
     .timeline-content {
       flex: 1 1 auto;
-      // padding: 2px 0 2px $layout-spacing-lg; // old spectre.css
-      // padding: 2px 0 2px get-var('layout-spacing', $suffix: 'lg', $unit: true); // old @angular-package/spectre.css
       padding: 2px 0 2px get-var('layout-spacing', $suffix: 'lg');
     }
 
     .timeline-icon {
       align-items: center;
       border-radius: 50%;
-      // color: $light-color; // old spectre.css
-      // color: color('light-color'); // old @angular-package/spectre.css
       @include color('light');
       display: flex;
-      // height: $unit-6; // old spectre.css
-      // height: get-var('unit-6'); // old @angular-package/spectre.css
       height: unit-var('6');
       justify-content: center;
       text-align: center;
-      // width: $unit-6; // old spectre.css
-      // width: get-var('unit-6'); // old @angular-package/spectre.css
       width: unit-var('6');
       &::before {
-        // border: $border-width-lg solid $primary-color; // old spectre.css
-        // border: get-var('border-width', $suffix: 'lg') solid color('primary-color'); // old @angular-package/spectre.css
         @include border('lg', solid, 'primary', false);
         border-radius: 50%;
         content: '';
         display: block;
-        // height: $unit-2; // old spectre.css
-        // height: get-var('unit-2'); // old @angular-package/spectre.css
         height: unit-var('2');
-        // left: $unit-2; // old spectre.css
-        // left: get-var('unit-2'); // old @angular-package/spectre.css
         left: unit-var('2');
         position: absolute;
-        // top: $unit-2; // old spectre.css
-        // top: get-var('unit-2'); // old @angular-package/spectre.css
         top: unit-var('2');
-        // width: $unit-2; // old spectre.css
-        // width: get-var('unit-2'); // old @angular-package/spectre.css
         width: unit-var('2');
       }
 
       &.icon-lg {
-        // background: $primary-color; // old spectre.css
-        // background: color('primary-color'); // old @angular-package/spectre.css
         @include background('primary');
-        // line-height: $line-height; // old spectre.css
         line-height: get-var('line-height');
         &::before {
           content: none;

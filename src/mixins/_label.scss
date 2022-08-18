@@ -8,7 +8,6 @@
 
 // Label base style
 @mixin label-base() {
-  // border-radius: $border-radius; // old spectre.css
   border-radius: get-var('border-radius');
   line-height: 1.25;
   padding: 0.1rem 0.2rem;
@@ -24,24 +23,22 @@
   $color: 'light',
 ) {
   &.label-#{$name} {
-    // background: $bg-color; // old spectre.css
-    // background: color($bg-color);
     @include background($bg-color);
-    // color: $color; // old spectre.css
-    // color: color($color);
     @include color($color);
   }
 }
 
+// @deprecated
 // The mixin contains `color` and `background` color of the given respectively `$color` and `$bg-color` sass variables.
 // It is created to pass color by using the `color()` function, to have the ability to customize all color parameters.
-// @mixin label--variant(
-//   $color: color('light-color'),
-//   $bg-color: color('primary-color')
-// ) {
-//   color: $color;
-//   background: $bg-color;
-// }
+@mixin label--variant(
+  $color: color('light-color'),
+  $bg-color: color('primary-color')
+) {
+  @warn "The label--variant() mixin is deprecated to simplify the spectre.css";
+  color: $color;
+  background: $bg-color;
+}
 
 // @deprecated
 // The mixin contains an extending class of the name prefixed with `label-` with the given color `$name` that includes a label variant of the given CSS variable names `$color` and `$bg-color`.

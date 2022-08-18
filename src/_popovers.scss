@@ -1,3 +1,4 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
@@ -18,19 +19,12 @@
   .popover-container {
     left: 50%;
     opacity: 0;
-    // padding: $layout-spacing; // old spectre.css
-    // padding: get-var('layout-spacing', $unit: true); // old @angular-package/spectre.css
     @include padding(('layout-spacing', true));
     position: absolute;
     top: 0;
     transform: translate(-50%, -50%) scale(0);
-    // transition: transform 0.2s; // old spectre.css
-    // transition: transform get-var('transition-duration'); // old @angular-package/spectre.css
     @include transition(transform);
-    // width: $control-width-sm; // old spectre.css
     width: get-var('control-width', $suffix: 'sm');
-    // z-index: $zindex-3; // old spectre.css
-    // z-index: get-var('z-index-3'); // old @angular-package/spectre.css
     @include z-index('3');
   }
 

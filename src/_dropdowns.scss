@@ -1,3 +1,4 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
@@ -35,9 +36,7 @@
   // Fix dropdown-toggle border radius in button groups
   .btn-group {
     .dropdown-toggle:nth-last-child(2) {
-      // border-bottom-right-radius: $border-radius; // old spectre.css
       border-bottom-right-radius: get-var('border-radius'); // old spectre.css
-      // border-top-right-radius: $border-radius; // old spectre.css
       border-top-right-radius: get-var('border-radius');
     }
   }

@@ -1,4 +1,3 @@
-
 // Functions.
 @use 'functions/color/color.function' as *;
 @use 'functions/var/get-var.function' as *;
@@ -18,28 +17,20 @@ $carousel-number: 8;
 %carousel-image-checked {
   animation: carousel-slidein 0.75s ease-in-out 1;
   opacity: 1;
-  // z-index: $zindex-1; // old spectre.css
-  // z-index: get-var('z-index-1'); // old @angular-package/spectre.css
   @include z-index('1');
 }
 
 %carousel-nav-checked {
-  // color: $gray-color-light; // old spectre.css
-  // color: color('gray-color-light'); // old @angular-package/spectre.css
   @include color('gray-light');
 }
 
 .carousel {
-  // background: $bg-color; // old spectre.css
-  // background: color('bg-color'); // old @angular-package/spectre.css
   @include background('bg');
   display: block;
   overflow: hidden;
   position: relative;
   width: 100%;
   -webkit-overflow-scrolling: touch;
-  // z-index: $zindex-0; // old spectre.css
-  // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
   @include z-index('0');
 
   .carousel-container {
@@ -72,25 +63,15 @@ $carousel-number: 8;
 
     .item-prev,
     .item-next {
-      // background: rgba($gray-color-light, .25); // old spectre.css
-      // background: color('gray-color-light', $alpha: 0.25); // old @angular-package/spectre.css
       @include background('gray-light', $alpha: 0.25);
-      // border-color: rgba($gray-color-light, .5); // old spectre.css
-      // border-color: color('gray-color-light', $alpha: 0.5); // old @angular-package/spectre.css
       border-color: color('gray-light', $alpha: 0.5);
-      // color: $gray-color-light; // old spectre.css
-      // color: color('gray-color-light'); // old @angular-package/spectre.css
       @include color('gray-light');
       opacity: 0;
       position: absolute;
       top: 50%;
-      // transition: all 0.4s; // old spectre.css
-      // transition: all calc(get-var('transition-duration') + 0.2s); // old @angular-package/spectre.css
       @include transition((all, 0.2s));
 
       transform: translateY(-50%);
-      // z-index: $zindex-1; // old spectre.css
-      // z-index: get-var('z-index-1'); // old @angular-package/spectre.css
       @include z-index('1');
     }
     .item-prev {
@@ -116,7 +97,6 @@ $carousel-number: 8;
   }
 
   .carousel-nav {
-    // bottom: $layout-spacing; // old spectre.css
     bottom: get-var('layout-spacing', $unit: true);
     display: flex;
     justify-content: center;
@@ -124,21 +104,13 @@ $carousel-number: 8;
     position: absolute;
     transform: translateX(-50%);
     width: 10rem;
-    // z-index: $zindex-1; // old spectre.css
-    // z-index: get-var('z-index-1'); // old @angular-package/spectre.css
     @include z-index('1');
 
     .nav-item {
-      // color: rgba($gray-color-light, 0.5); // old spectre.css
-      // color: color('gray-color-light', $alpha: 0.5); // old @angular-package/spectre.css
       @include color('gray-light', $alpha: 0.5);
       display: block;
       flex: 1 0 auto;
-      // height: $unit-8; // old spectre.css
-      // height: get-var('unit-8'); // old @angular-package/spectre.css
       height: unit-var('8');
-      // margin: $unit-1; // old spectre.css
-      // margin: get-var('unit-1'); // old @angular-package/spectre.css
       @include margin('unit-1');
       max-width: 2.5rem;
       position: relative;
@@ -147,8 +119,6 @@ $carousel-number: 8;
         background: currentColor;
         content: '';
         display: block;
-        // height: $unit-h; // old spectre.css
-        // height: get-var('unit-h'); // old @angular-package/spectre.css
         height: unit-var('unit-h');
         position: absolute;
         top: 0.5rem;

@@ -1,3 +1,4 @@
+// Variables.
 @use '../variables' as *;
 
 // Mixins.
@@ -27,25 +28,17 @@
 
   .accordion-header {
     display: block;
-    // padding: $unit-1 $unit-2; // old spectre.css
-    // padding: get-var('unit-1') get-var('unit-2'); // old @angular-package/spectre.css
     @include padding('unit-1', 'unit-2');
 
     .icon {
-      // transition: transform 0.25s; // old spectre.css
-      // transition: transform calc(get-var('transition-duration') + 0.05s); // old @angular-package/spectre.css
       @include transition((transform, 0.05s));
     }
   }
 
   .accordion-body {
-    // margin-bottom: $layout-spacing; // old spectre.css
-    // margin-bottom: get-var('layout-spacing', $unit: true); // old @angular-package/spectre.css
     @include margin-bottom(('layout-spacing', true));
     max-height: 0;
     overflow: hidden;
-    // transition: max-height 0.25s; // old spectre.css
-    // transition: max-height calc(get-var('transition-duration') + 0.05s); // old @angular-package/spectre.css
     @include transition((max-height, 0.05s));
   }
 }

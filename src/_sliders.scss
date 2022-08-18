@@ -1,7 +1,7 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
-// @use 'functions/color/color.function' as *; // @angular-package/spectre.css
 @use 'functions/var/get-var.function' as *;
 @use 'functions/var/unit-var.function' as *;
 @use 'functions/var/var-negative.function' as *;
@@ -19,7 +19,6 @@
   background: transparent;
   display: block;
   width: 100%;
-  // height: $unit-6; // old spectre.css
   height: unit-var('6'); // old @angular-package/spectre.css
 
   &:focus {
@@ -36,54 +35,28 @@
   // Slider Thumb
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
-    // background: $primary-color; // old spectre.css
-    // background: color('primary-color'); // @angular-package/spectre.css
     @include background('primary');
     border: 0;
     border-radius: 50%;
-    // height: $unit-3; // old spectre.css
-    // height: get-var('unit-3'); // @angular-package/spectre.css
     height: unit-var('3');
-    // margin-top: -($unit-3 - $unit-h) / 2; // old spectre.css
-    // margin-top: calc(var-negative(get-var('unit-3') - get-var('unit-h')) / 2); // old @angular-package/spectre.css
     margin-top: calc(var-negative(unit-var('3') - unit-var('h')) / 2);
-    // transition: transform 0.2s; // old spectre.css
-    // transition: transform get-var('transition-duration'); // @angular-package/spectre.css
     @include transition(transform);
-    // width: $unit-3; // old spectre.css
-    // width: get-var('unit-3'); // @angular-package/spectre.css
     width: unit-var('3');
   }
   &::-moz-range-thumb {
-    // background: $primary-color; // old spectre.css
-    // background: color('primary-color'); // @angular-package/spectre.css
     @include background('primary');
     border: 0;
     border-radius: 50%;
-    // height: $unit-3; // old spectre.css
-    // height: get-var('unit-3'); // @angular-package/spectre.css
     height: unit-var('3');
-    // transition: transform 0.2s; // old spectre.css
-    // transition: transform get-var('transition-duration'); // @angular-package/spectre.css
     @include transition(transform);
-    // width: $unit-3; // old spectre.css
-    // width: get-var('unit-3'); // @angular-package/spectre.css
     width: unit-var('3');
   }
   &::-ms-thumb {
-    // background: $primary-color; // old spectre.css
-    // background: color('primary-color'); // @angular-package/spectre.css
     @include background('primary');
     border: 0;
     border-radius: 50%;
-    // height: $unit-3; // old spectre.css
-    // height: get-var('unit-3'); // @angular-package/spectre.css
     height: unit-var('3');
-    // transition: transform 0.2s; // old spectre.css
-    // transition: transform get-var('transition-duration'); // @angular-package/spectre.css
     @include transition(transform);
-    // width: $unit-3; // old spectre.css
-    // width: get-var('unit-3'); // @angular-package/spectre.css
     width: unit-var('3');
   }
 
@@ -102,21 +75,15 @@
   &:disabled,
   &.disabled {
     &::-webkit-slider-thumb {
-      // background: $gray-color-light; // old spectre.css
-      // background: color('gray-color-light'); // @angular-package/spectre.css
       @include background('gray-light');
 
       transform: scale(1);
     }
     &::-moz-range-thumb {
-      // background: $gray-color-light; // old spectre.css
-      // background: color('gray-color-light'); // @angular-package/spectre.css
       @include background('gray-light');
       transform: scale(1);
     }
     &::-ms-thumb {
-      // background: $gray-color-light; // old spectre.css
-      // background: color('gray-color-light'); // @angular-package/spectre.css
       @include background('gray-light');
       transform: scale(1);
     }
@@ -124,41 +91,24 @@
 
   // Slider Track
   &::-webkit-slider-runnable-track {
-    // background: $bg-color-dark; // old spectre.css
-    // background: color('bg-color-dark'); // @angular-package/spectre.css
     @include background('bg-dark');
-    // border-radius: $border-radius; // old spectre.css
     border-radius: get-var('border-radius');
-    // height: $unit-h; // old spectre.css
-    // height: get-var('unit-h'); // @angular-package/spectre.css
     height: unit-var('h');
     width: 100%;
   }
   &::-moz-range-track {
-    // background: $bg-color-dark; // old spectre.css
-    // background: color('bg-color-dark'); // @angular-package/spectre.css
     @include background('bg-dark');
-    // border-radius: $border-radius; // old spectre.css
     border-radius: get-var('border-radius');
-    // height: $unit-h; // old spectre.css
-    // height: get-var('unit-h'); // @angular-package/spectre.css
     height: unit-var('h');
     width: 100%;
   }
   &::-ms-track {
-    // background: $bg-color-dark; // old spectre.css
-    // background: color('bg-color-dark'); // @angular-package/spectre.css
     @include background('bg-dark');
-    // border-radius: $border-radius; // old spectre.css
     border-radius: get-var('border-radius');
-    // height: $unit-h; // old spectre.css
-    // height: get-var('unit-h'); // @angular-package/spectre.css
     height: unit-var('h');
     width: 100%;
   }
   &::-ms-fill-lower {
-    // background: $primary-color; // old spectre.css
-    // background: color('primary-color'); // @angular-package/spectre.css
     @include background('primary');
   }
 }

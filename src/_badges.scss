@@ -1,3 +1,4 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
@@ -18,15 +19,10 @@
   &[data-badge],
   &:not([data-badge]) {
     &::after {
-      // background: $primary-color; // old spectre.css
-      // background: color('primary-color'); // old @angular-package/spectre.css
       @include background('primary');
       background-clip: padding-box;
       border-radius: 0.5rem;
-      // box-shadow: 0 0 0 .1rem $bg-color-light; // old spectre.css
       box-shadow: 0 0 0 0.1rem color('bg-color-light');
-      // color: $light-color; // old spectre.css
-      // color: color('light-color'); // old @angular-package/spectre.css
       @include color('light');
       content: attr(data-badge);
       display: inline-block;
@@ -35,7 +31,6 @@
   }
   &[data-badge] {
     &::after {
-      // font-size: $font-size-sm; // old spectre.css
       font-size: get-var('font-size', $suffix: 'sm');
       height: 0.9rem;
       line-height: 1;
@@ -72,8 +67,6 @@
       top: 14.64%;
       right: 14.64%;
       transform: translate(50%, -50%);
-      // z-index: $zindex-1; // old spectre.css
-      // z-index: get-var('z-index-1'); // old @angular-package/spectre.css
       @include z-index('1');
     }
   }

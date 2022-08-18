@@ -1,3 +1,4 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
@@ -18,30 +19,21 @@
 
 html {
   box-sizing: border-box;
-  // font-size: $html-font-size; // old spectre.css
   font-size: get-var('html-font-size');
-  // line-height: $html-line-height; // old spectre.css
   line-height: get-var('html-line-height');
   -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  // background: $body-bg; // old spectre.css
-  // background: color('body-bg-color'); // old @angular-package/spectre.css
   @include background('body-bg');
-  // color: $body-font-color; // old spectre.css
-  // color: color('body-font-color'); // old @angular-package/spectre.css
   @include color('body-font');
   font-family: $body-font-family;
-  // font-size: $font-size; // old spectre.css
   font-size: get-var('font-size');
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
 }
 
 a {
-  // color: $link-color; // old spectre.css
-  // color: color('link-color'); // old @angular-package/spectre.css
   @include color('link');
   outline: none;
   text-decoration: none;
@@ -54,15 +46,11 @@ a {
   &:hover,
   &:active,
   &.active {
-    // color: $link-color-dark; // old spectre.css
-    // color: color('link-color-dark'); // old @angular-package/spectre.css
     @include color('link-dark');
     text-decoration: underline;
   }
 
   &:visited {
-    // color: $link-color-light; // old spectre.css
-    // color: color('link-color-light'); // old @angular-package/spectre.css
     @include color('link-light');
   }
 }

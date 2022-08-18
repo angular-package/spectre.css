@@ -16,18 +16,13 @@
   $font-color: 'light',
 ) {
   &.toast-#{$name} {
-    // background: rgba($color, .95); // old spectre.css
-    // background: color($color);
     @include background($color, $alpha: 0.95);
-    // border-color: $color; // old spectre.css
     border-color: color($color);
     // Font color.
-    // color: color($font-color);
     @include color($font-color);
     a:active,
     a:visited,
     a:link {
-      // color: color($font-color); // old @angular-package/spectre.css
       @include color($font-color);
     }
   }

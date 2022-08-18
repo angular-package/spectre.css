@@ -1,8 +1,8 @@
-@use 'variables' as *;
+// Variables.
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/color/color.function' as *;
-// @use 'functions/var/get-var.function' as *; // old @angular-package/spectre.css
 @use 'functions/var/unit-var.function' as *;
 
 // Mixins.
@@ -20,17 +20,11 @@
     display: flex;
     flex-wrap: wrap;
     height: auto;
-    // min-height: $unit-8; // old spectre.css
-    // min-height: get-var('unit-8'); // old @angular-package/spectre.css
     min-height: unit-var('8');
-    // padding: $unit-h; // old spectre.css
-    // padding: get-var('unit-h'); // old @angular-package/spectre.css
     @include padding('unit-h');
 
     &.is-focused {
       @include control-shadow();
-      // border-color: $primary-color; // old spectre.css
-      // border-color: color('primary-color'); // old @angular-package/spectre.css
       border-color: color('primary');
     }
 
@@ -39,14 +33,8 @@
       box-shadow: none;
       display: inline-block;
       flex: 1 0 auto;
-      // height: $unit-6; // old spectre.css
-      // height: get-var('unit-6'); // old @angular-package/spectre.css
       height: unit-var('6');
-      // line-height: $unit-4; // old spectre.css
-      // line-height: get-var('unit-4'); // old @angular-package/spectre.css
       line-height: unit-var('4');
-      // margin: $unit-h; // old spectre.css
-      // margin: get-var('unit-h'); // old @angular-package/spectre.css
       @include margin('unit-h');
       width: auto;
     }

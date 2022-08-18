@@ -1,3 +1,4 @@
+// Variables.
 @use 'variables' as *;
 
 // Mixins.
@@ -20,7 +21,7 @@
     @media (prefers-color-scheme: light) {
       @include color('gray');
     }
-  
+
     a {
       @media (prefers-color-scheme: dark) {
         @include color('gray');
@@ -29,11 +30,11 @@
         @include color('gray-dark');
       }
     }
-  
+
     ul {
       li {
         a {
-          text-decoration: none !important;      
+          text-decoration: none !important;
           @include color-hover('primary');
           @include transition(color);
         }

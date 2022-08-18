@@ -1,3 +1,4 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
@@ -13,34 +14,22 @@
 // Empty states (or Blank slates)
 .empty,
 .#{$var-prefix}-empty {
-  // background: $bg-color; // old spectre.css
-  // background: color('bg-color'); // old @angular-package/spectre.css
   @include background('bg');
-  // border-radius: $border-radius; // old spectre.css
   border-radius: get-var('border-radius');
-  // color: $gray-color-dark; // old spectre.css
-  // color: color('gray-color-dark'); // old @angular-package/spectre.css
   @include color('gray-dark');
   text-align: center;
-  // padding: $unit-16 $unit-8; // old spectre.css
-  // padding: get-var('unit-16') get-var('unit-8'); // old @angular-package/spectre.css
   @include padding('unit-16', 'unit-8');
 
   .empty-icon {
-    // margin-bottom: $layout-spacing-lg; // old spectre.css
-    // margin-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: true); // old @angular-package/spectre.css
     @include margin-bottom(('layout-spacing', ('suffix': 'lg', 'unit': true)));
   }
 
   .empty-title,
   .empty-subtitle {
-    // margin: $layout-spacing auto; // old spectre.css
     margin: get-var('layout-spacing', $unit: true) auto; // TODO: margin auto.
   }
 
   .empty-action {
-    // margin-top: $layout-spacing-lg; // old spectre.css
-    // margin-top: get-var('layout-spacing', $suffix: 'lg', $unit: true); // old @angular-package/spectre.css
     @include margin-top(('layout-spacing', ('suffix': 'lg', 'unit': true)));
   }
 }

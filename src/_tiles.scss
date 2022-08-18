@@ -1,3 +1,4 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
@@ -21,20 +22,15 @@
   .tile-content {
     flex: 1 1 auto;
     &:not(:first-child) {
-      // padding-left: $unit-2; // old spectre.css
-      // padding-left: get-var('unit-2'); // old @angular-package/spectre.css
       @include padding-left('unit-2');
 
     }
     &:not(:last-child) {
-      // padding-right: $unit-2; // old spectre.css
-      // padding-right: get-var('unit-2'); // old @angular-package/spectre.css
       @include padding-right('unit-2');
     }
   }
   .tile-title,
   .tile-subtitle {
-    // line-height: $line-height; // old spectre.css
     line-height: get-var('line-height');
   }
 

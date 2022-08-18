@@ -1,19 +1,17 @@
 // Sass.
 @use 'sass:list';
 
+// Variables.
 @use '../variables' as *;
 
-// General.
-// - Mixins.
-@use '../mixins/color/color.mixin' as *;
+// Mixins.
 @use '../mixins/color/background-color.mixin' as *;
-
-// - Functions.
-@use '../functions/var/get-var.function' as *;
-
-// Hero.
+@use '../mixins/color/color.mixin' as *;
 @use 'hero-size-variants.mixin' as *;
 @use 'set-hero-vars.mixin' as *;
+
+// Functions.
+@use '../functions/var/get-var.function' as *;
 
 @mixin hero-variant(
   $name,

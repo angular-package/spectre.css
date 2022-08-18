@@ -1,5 +1,7 @@
+// Variables.
 @use 'variables' as *;
 
+// Functions.
 @use 'functions/var/get-var.function' as *;
 
 // Navbar
@@ -27,7 +29,6 @@
   }
 
   .navbar-brand {
-    // font-size: $font-size-lg; // old spectre.css
     font-size: get-var('font-size', $suffix: 'lg');
     text-decoration: none;
   }

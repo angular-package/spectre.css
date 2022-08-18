@@ -1,7 +1,7 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
-// @use 'functions/color/color.function' as *; // @angular-package/spectre.css
 @use 'functions/var/get-var.function' as *;
 
 // Mixins.
@@ -25,38 +25,24 @@ $off-canvas-breakpoint: $size-lg !default;
   .off-canvas-toggle {
     display: block;
     position: absolute;
-    // top: $layout-spacing; // old spectre.css
-    // top: get-var('layout-spacing', $unit: true); // old @angular-package/spectre.css
     top: get-var(('layout-spacing', true));
     transition: none;
-    // z-index: $zindex-0; // old spectre.css
-    // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
     @include z-index('0');
     @if $rtl == true {
-      // right: $layout-spacing; // old spectre.css
-      // right: get-var('layout-spacing', $unit: true); // old @angular-package/spectre.css
       right: get-var(('layout-spacing', true));
     } @else {
-      // left: $layout-spacing; // old spectre.css
-      // left: get-var('layout-spacing', $unit: true); // old @angular-package/spectre.css
       left: get-var(('layout-spacing', true));
     }
   }
 
   .off-canvas-sidebar {
-    // background: $bg-color; // old spectre.css
-    // background: color('bg-color');
     @include background('bg');
     bottom: 0;
     min-width: 10rem;
     overflow-y: auto;
     position: fixed;
     top: 0;
-    // transition: transform 0.25s; // old spectre.css
-    // transition: transform calc(get-var('transition-duration') + 0.05s ); // old @angular-package/spectre.css
     @include transition((transform, 0.05s));
-    // z-index: $zindex-2; // old spectre.css
-    // z-index: get-var('z-index-2'); // old @angular-package/spectre.css
     @include z-index('2');
     @if $rtl == true {
       right: 0;
@@ -70,15 +56,11 @@ $off-canvas-breakpoint: $size-lg !default;
   .off-canvas-content {
     flex: 1 1 auto;
     height: 100%;
-    // padding: $layout-spacing $layout-spacing $layout-spacing 4rem; // old spectre.css
-    // padding: get-var('layout-spacing', $unit: true) get-var('layout-spacing', $unit: true) get-var('layout-spacing', $unit: true) 4rem; // old @angular-package/spectre.css
     @include padding(('layout-spacing', true)); // TODO: Check.
     padding-left: 4rem;
   }
 
   .off-canvas-overlay {
-    // background: rgba($dark-color, .1); // old spectre.css
-    // background: color('dark-color', $alpha: 0.1); // old @angular-package/spectre.css
     @include background('dark', $alpha: 0.1);
     border-color: transparent;
     border-radius: 0;
@@ -101,8 +83,6 @@ $off-canvas-breakpoint: $size-lg !default;
     &:target ~ .off-canvas-overlay,
     &.active ~ .off-canvas-overlay {
       display: block;
-      // z-index: $zindex-1; // old spectre.css
-      // z-index: get-var('z-index-1'); // old @angular-package/spectre.css
       @include z-index('1');
     }
   }

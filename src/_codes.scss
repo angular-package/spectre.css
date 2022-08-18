@@ -11,11 +11,8 @@
 // Codes
 code {
   @include label-base();
-  // @include label-variant($code-color, lighten($code-color, 42.5%)); // old spectre.css
-  // color: color('code-color'); // old @angular-package/spectre.css
   @include color('code');
 
-  // background: color(('code-color', 42.5%)); // old @angular-package/spectre.css
   @media (prefers-color-scheme: light) {
     @include background(('code', 42.5%));
   }
@@ -27,31 +24,20 @@ code {
 }
 
 .code {
-  // border-radius: $border-radius; // old spectre.css
   border-radius: get-var('border-radius');
-  // color: $body-font-color; // old spectre.css
-  // color: color('body-font-color'); // old @angular-package/spectre.css
   @include color('body-font');
   position: relative;
 
   &::before {
-    // color: $gray-color; // old spectre.css
-    // color: color('gray-color'); // old @angular-package/spectre.css
     @include color('gray');
     content: attr(data-lang);
-    // font-size: $font-size-sm; // old spectre.css
     font-size: get-var('font-size', $suffix: 'sm');
     position: absolute;
-    // right: $layout-spacing; // old spectre.css
     right: get-var(('layout-spacing', true));
-    // top: $unit-h; // old spectre.css
-    // top: get-var('unit-h'); // old @angular-package/spectre.css
     top: unit-var('h');
   }
 
   code {
-    // background: $bg-color; // old spectre.css
-    // background: color('bg-color'); // old @angular-package/spectre.css
     @include background('bg');
     color: inherit;
     display: block;

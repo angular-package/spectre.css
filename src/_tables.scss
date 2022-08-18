@@ -1,3 +1,4 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
@@ -24,8 +25,6 @@
   &.table-striped {
     tbody {
       tr:nth-of-type(odd) {
-        // background: $bg-color; // old spectre.css
-        // background: color('bg-color'); // old @angular-package/spectre.css
         @include background('bg');
       }
     }
@@ -36,8 +35,6 @@
     tbody {
       tr {
         &.active {
-          // background: $bg-color-dark; // old spectre.css
-          // background: color('bg-color-dark'); // old @angular-package/spectre.css
           @include background('bg-dark');
         }
       }
@@ -48,8 +45,6 @@
     tbody {
       tr {
         &:hover {
-          // background: $bg-color-dark; // old spectre.css
-          // background: color('bg-color-dark'); // old @angular-package/spectre.css
           @include background('bg-dark');
         }
       }
@@ -67,16 +62,10 @@
   thead > tr > th,
   tbody > tr > td,
   tbody > tr > th {
-    // border-bottom: $border-width solid $border-color; // old spectre.css
-    // border-bottom: get-var('border-width') solid color('border-color');
     @include border($side: bottom, $radius: false);
-    // padding: $unit-3 $unit-2; // old spectre.css
-    // padding: get-var('unit-3') get-var('unit-2'); // old @angular-package/spectre.css
     @include padding('unit-3', 'unit-2');
   }
   thead > tr > th {
-    // border-bottom-width: $border-width-lg; // old spectre.css
-    // border-bottom-width: get-var('border-width', $suffix: 'lg');
     @include border($side: bottom, $radius: false);
   }
   tbody > tr > th {
@@ -84,7 +73,6 @@
       @include color('body-font');
     }
     @include color('body-font');
-    // @include background('light');
     @include border($side: right);
   }
 }

@@ -1,8 +1,5 @@
+// Variables.
 @use 'variables' as *;
-
-// Functions.
-// @use 'functions/color/color.function' as *; // old @angular-package/spectre.css
-// @use 'functions/var/get-var.function' as *; // old @angular-package/spectre.css
 
 // Mixins.
 @use 'mixins/color/color.mixin' as *;
@@ -13,44 +10,28 @@
 .breadcrumb,
 .#{$var-prefix}-breadcrumb {
   list-style: none;
-  // margin: $unit-1 0; // old spectre.css
-  // margin: get-var('unit-1') 0; // old @angular-package/spectre.css
   @include margin('unit-1', 'unit-0');
-  // padding: $unit-1 0; // old spectre.css
-  // padding: get-var('unit-1') 0; // old @angular-package/spectre.css
   @include padding('unit-1', 'unit-0');
 
 
   .breadcrumb-item {
-    // color: $gray-color-dark; // old spectre.css
-    // color: color('gray-color-dark'); // old @angular-package/spectre.css
     @include color('gray-dark');
     display: inline-block;
     margin: 0;
-    // padding: $unit-1 0; // old spectre.css
-    // padding: get-var('unit-1') 0; // old @angular-package/spectre.css
     @include padding('unit-1', 'unit-0');
 
     &:not(:last-child) {
-      // margin-right: $unit-1; // old spectre.css
-      // margin-right: get-var('unit-1'); // old @angular-package/spectre.css
       @include margin-right('unit-1');
 
       a {
-        // color: $gray-color-dark; // old spectre.css
-        // color: color('gray-color-dark'); // old @angular-package/spectre.css
         @include color('gray-dark');
       }
     }
 
     &:not(:first-child) {
       &::before {
-        // color: $gray-color-dark; // old spectre.css
-        // color: color('gray-color-dark'); // old @angular-package/spectre.css
         @include color('gray-dark');
         content: '/';
-        // padding-right: $unit-2; // old spectre.css
-        // padding-right: get-var('unit-2'); // old @angular-package/spectre.css
         @include padding-right('unit-2');
       }
     }

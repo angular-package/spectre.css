@@ -1,9 +1,11 @@
-// General.
-@use '../functions/var/get-var.function' as *;
+// Variables.
 @use '../variables' as *;
 
+// Functions.
+@use '../functions/var/get-var.function' as *;
+
 // Hero.
-@use './hero-size-variant.mixin' as *;
+@use 'hero-size-variant.mixin' as *;
 
 @mixin hero-size-variants($name: 'hero-size', $sizes: $hero-size) {
   @each $size, $value in $sizes {

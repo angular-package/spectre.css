@@ -1,3 +1,4 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
@@ -17,28 +18,17 @@
 // Calendars
 .calendar,
 .#{$var-prefix}-calendar {
-  // border: $border-width solid $border-color; // old spectre.css
-  // border: get-var('border-width') solid color('border-color'); // old @angular-package/spectre.css
-  // border-radius: $border-radius; // old spectre.css
-  // border-radius: get-var('border-radius'); // old @angular-package/spectre.css
   @include border();
   display: block;
   min-width: 280px;
 
   .calendar-nav {
     align-items: center;
-    // background: $bg-color; // old spectre.css
-    // background: color('bg-color'); // old @angular-package/spectre.css
     @include background('bg');
-    // border-top-left-radius: $border-radius; // old spectre.css
     border-top-left-radius: get-var('border-radius');
-    // border-top-right-radius: $border-radius; // old spectre.css
     border-top-right-radius: get-var('border-radius');
     display: flex;
-    // font-size: $font-size-lg; // old spectre.css
     font-size: get-var('font-size', $suffix: 'lg');
-    // padding: $layout-spacing; // old spectre.css
-    // padding: get-var('layout-spacing', $unit: true); // old @angular-package/spectre.css
     @include padding(('layout-spacing', true));
   }
 
@@ -47,8 +37,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    // padding: $layout-spacing 0; // old spectre.css
-    // padding: get-var('layout-spacing', $unit: true) 0; // old @angular-package/spectre.css
     @include padding(('layout-spacing', true), 'unit-0');
 
     .calendar-date {
@@ -58,30 +46,19 @@
   }
 
   .calendar-header {
-    // background: $bg-color; // old spectre.css
-    // background: color('bg-color'); // old @angular-package/spectre.css
     @include background('bg');
-    // border-bottom: $border-width solid $border-color; // old spectre.css
-    // border-bottom: get-var('border-width') solid color('border-color'); // old @angular-package/spectre.css
     @include border($side: 'bottom');
-    // color: $gray-color; // old spectre.css
-    // color: color('gray-color'); // old @angular-package/spectre.css
     @include color('gray');
-    // font-size: $font-size-sm; // old spectre.css
     font-size: get-var('font-size', $suffix: 'sm');
     text-align: center;
   }
 
   .calendar-body {
-    // color: $gray-color-dark; // old spectre.css
-    // color: color('gray-color-dark'); // old @angular-package/spectre.css
     @include color('gray-dark');
   }
 
   .calendar-date {
     border: 0;
-    // padding: $unit-1; // old spectre.css
-    // padding: get-var('unit-1'); // old @angular-package/spectre.css
     @include padding('unit-1');
 
     .date-item {
@@ -89,43 +66,23 @@
       background: transparent;
       border: get-var('border-width') solid transparent;
       border-radius: 50%;
-      // color: $gray-color-dark; // old spectre.css
-      // color: color('gray-color-dark'); // old @angular-package/spectre.css
       @include color('gray-dark');
       cursor: pointer;
-      // font-size: $font-size-sm; // old spectre.css
       font-size: get-var('font-size', $suffix: 'sm');
-      // height: $unit-7; // old spectre.css
-      // height: get-var('unit-7'); // old @angular-package/spectre.css
       height: unit-var('7');
-      // line-height: $unit-5; // old spectre.css
-      // line-height: get-var('unit-5'); // old @angular-package/spectre.css
       line-height: unit-var('5');
       outline: none;
-      // padding: $unit-h; // old spectre.css
-      // padding: get-var('unit-h'); // old @angular-package/spectre.css
       @include padding('unit-h');
       position: relative;
       text-align: center;
       text-decoration: none;
-      // transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s; // old spectre.css
-      // transition: background get-var('transition-duration'),
-      //   border get-var('transition-duration'),
-      //   box-shadow get-var('transition-duration'),
-      //   color get-var('transition-duration');
       @include transition(background, border, box-shadow, color);
       vertical-align: middle;
       white-space: nowrap;
-      // width: $unit-7; // old spectre.css
-      // width: get-var('unit-7'); // old @angular-package/spectre.css
       width: unit-var('7');
 
       &.date-today {
-        // border-color: $secondary-color-dark; // old spectre.css
-        // border-color: color('secondary-color-dark'); // old @angular-package/spectre.css
         border-color: color('secondary-dark');
-        // color: $primary-color; // old spectre.css
-        // color: color('primary-color'); // old @angular-package/spectre.css
         @include color('primary');
       }
 
@@ -135,27 +92,15 @@
 
       &:focus,
       &:hover {
-        // background: $secondary-color-light; // old spectre.css
-        // background: color('secondary-color-light'); // old @angular-package/spectre.css
         @include background('secondary-light');
-        // border-color: $secondary-color-dark; // old spectre.css
-        // border-color: color('secondary-color-dark'); // old @angular-package/spectre.css
         border-color: color('secondary-dark');
-        // color: $primary-color; // old spectre.css
-        // color: color('primary-color'); // old @angular-package/spectre.css
         @include color('primary');
         text-decoration: none;
       }
       &:active,
       &.active {
-        // background: $primary-color-dark; // old spectre.css
-        // background: color('primary-color-dark'); // old @angular-package/spectre.css
         @include background('primary-dark');
-        // border-color: darken($primary-color-dark, 5%); // old spectre.css
-        // border-color: color('primary-color-dark', $lightness: -5%); // old @angular-package/spectre.css
         border-color: color('primary-dark', $lightness: -5%);
-        // color: $light-color; // old spectre.css
-        // color: color('light-color'); // old @angular-package/spectre.css
         @include color('light');
       }
 
@@ -193,12 +138,8 @@
     position: relative;
 
     &::before {
-      // background: $secondary-color; // old spectre.css
-      // background: color('secondary-color'); // old @angular-package/spectre.css
       @include background('secondary');
       content: '';
-      // height: $unit-7; // old spectre.css
-      // height: get-var('unit-7'); // old @angular-package/spectre.css
       height: unit-var('7');
       left: 0;
       position: absolute;
@@ -220,21 +161,13 @@
     &.range-start,
     &.range-end {
       .date-item {
-        // background: $primary-color-dark; // old spectre.css
-        // background: color('primary-color-dark'); // old @angular-package/spectre.css
         @include background('primary-dark');
-        // border-color: darken($primary-color-dark, 5%); // old spectre.css
-        // border-color: color('primary-color-dark', $lightness: -5%);
         border-color: color('primary-dark', $lightness: -5%); // old @angular-package/spectre.css
-        // color: $light-color; // old spectre.css
-        // color: color('light-color'); // old @angular-package/spectre.css
         @include color('light');
       }
     }
 
     .date-item {
-      // color: $primary-color; // old spectre.css
-      // color: color('primary-color'); // old @angular-package/spectre.css
       @include color('primary');
     }
   }
@@ -245,11 +178,7 @@
       padding: 0;
 
       .calendar-date {
-        // border-bottom: $border-width solid $border-color; // old spectre.css
-        // border-bottom: get-var('border-width') solid color('border-color'); // old @angular-package/spectre.css
         @include border($side: 'bottom');
-        // border-right: $border-width solid $border-color; // old spectre.css
-        // border-right: get-var('border-width') solid color('border-color'); // old @angular-package/spectre.css
         @include border($side: 'right');
         display: flex;
         flex-direction: column;
@@ -267,14 +196,8 @@
 
     .date-item {
       align-self: flex-end;
-      // height: $unit-7; // old spectre.css
-      // height: get-var('unit-7'); // old @angular-package/spectre.css
       height: unit-var('7');
-      // margin-right: $layout-spacing-sm; // old spectre.css
-      // margin-right: get-var('layout-spacing', $suffix: 'sm', $unit: true); // old @angular-package/spectre.css
       @include margin-right(('layout-spacing', ('unit': true, 'suffix': 'sm')));
-      // margin-top: $layout-spacing-sm; // old spectre.css
-      // margin-top: get-var('layout-spacing', $suffix: 'sm', $unit: true); // old @angular-package/spectre.css
       @include margin-top(('layout-spacing', ('unit': true, 'suffix': 'sm')));
     }
 
@@ -299,19 +222,13 @@
       flex-grow: 1;
       line-height: 1;
       overflow-y: auto;
-      // padding: $layout-spacing-sm; // old spectre.css
-      // padding: get-var('layout-spacing', $suffix: 'sm', $unit: true); // old @angular-package/spectre.css
       @include padding(('layout-spacing', ('unit': true, 'suffix': 'sm')));
     }
 
     .calendar-event {
-      // border-radius: $border-radius; // old spectre.css
       border-radius: get-var('border-radius');
-      // font-size: $font-size-sm; // old spectre.css
       font-size: get-var('font-size', $suffix: 'sm');
       display: block;
-      // margin: $unit-h auto; // old spectre.css
-      // margin: get-var('unit-h') auto; // old @angular-package/spectre.css
       margin: unit-var('h') auto;
       overflow: hidden;
       padding: 3px 4px;

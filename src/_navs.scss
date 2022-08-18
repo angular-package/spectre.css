@@ -1,7 +1,7 @@
+// Variables.
 @use 'variables' as *;
 
 // Functions.
-// @use 'functions/color/color.function' as *; // @angular-package/spectre.css
 @use 'functions/var/get-var.function' as *;
 
 // Mixins.
@@ -15,36 +15,24 @@
   display: flex;
   flex-direction: column;
   list-style: none;
-  // margin: $unit-1 0; // old spectre.css
-  // margin: get-var('unit-1') 0; // old @angular-package/spectre.css
   @include margin('unit-1', 'unit-0');
 
   .nav-item {
     a {
-      // color: $gray-color-dark; // old spectre.css
-      // color: color('gray-color-dark'); // old @angular-package/spectre.css
       @include color('gray-dark');
-      // padding: $unit-1 $unit-2; // old spectre.css
-      // padding: get-var('unit-1') get-var('unit-2'); // old @angular-package/spectre.css
       @include padding('unit-1', 'unit-2');
       text-decoration: none;
       &:focus,
       &:hover {
-        // color: $primary-color; // old spectre.css
-        // color: color('primary-color'); // old @angular-package/spectre.css
         @include color('primary');
       }
     }
     &.active {
       & > a {
-        // color: darken($gray-color-dark, 10%); // old spectre.css
-        // color: color('gray-color-dark', $lightness: -10%); // old @angular-package/spectre.css
         @include color('gray-dark', $lightness: -10%);
         font-weight: bold;
         &:focus,
         &:hover {
-          // color: $primary-color; // old spectre.css
-          // color: color('primary-color'); // old @angular-package/spectre.css
           @include color('primary');
         }
       }
@@ -52,11 +40,7 @@
   }
 
   & .nav {
-    // margin-bottom: $unit-2; // old spectre.css
-    // margin-bottom: get-var('unit-2'); // old @angular-package/spectre.css
     @include margin-bottom('unit-2');
-    // margin-left: $unit-4; // old spectre.css
-    // margin-left: get-var('unit-4'); // old @angular-package/spectre.css
     @include margin-left('unit-4');
   }
 }
