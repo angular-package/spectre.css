@@ -15,7 +15,6 @@
     background: transparent;
   }
   &::-webkit-scrollbar-thumb {
-    // background-color: color($bg-color);
     @include background-color($bg-color);
     border-radius: 20px;
     border: transparent;
