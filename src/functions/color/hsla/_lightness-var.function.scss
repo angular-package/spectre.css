@@ -1,0 +1,11 @@
+@use '../../../variables/core' as *;
+
+// Functions.
+@use '../../var/css-var.function' as *;
+@use '../../var/var-adjust.function' as *;
+@use '../color-name.function' as *;
+
+// The function returns the CSS variable lightness color of the given `$name` and `$prefix`.
+@function lightness-var($name, $lightness: 0%, $prefix: $var-prefix) {
+  @return var-adjust(css-var(color-name($name), $prefix, $var-lightness), $lightness);
+}

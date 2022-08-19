@@ -1,10 +1,12 @@
+// Variables.
 @use '../../../variables/core' as *;
 
 // Functions.
 @use '../../var/css-var.function' as *;
+@use '../../var/var-adjust.function' as *;
 @use '../color-name.function' as *;
 
 // The function returns the CSS variable hue color of the given `$name` and `$prefix`.
-@function hue-var($name, $prefix: $var-prefix) {
-  @return css-var(color-name($name), $suffix: $var-hue);
+@function hue-var($name, $hue: 0deg, $prefix: $var-prefix) {
+  @return var-adjust(css-var(color-name($name), $suffix: $var-hue), $hue);
 }
