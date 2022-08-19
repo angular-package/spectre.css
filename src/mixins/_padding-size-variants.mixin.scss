@@ -1,6 +1,6 @@
 // Functions.
 @use '../functions/var/get-var.function' as *;
-@use '../functions/var/var-unit.function' as *;
+@use '../functions/var/unit-var.function' as *;
 
 @mixin padding-size-variants($name: padding) {
   &.#{$name}-xs {
