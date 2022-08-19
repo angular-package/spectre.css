@@ -1,4 +1,7 @@
+// Variables.
 @use '../../variables' as *;
+
+// Mixins.
 @use 'background.mixin' as *;
 @use 'color.mixin' as *;
 
@@ -10,16 +13,8 @@
 @mixin bg-color-variant($name, $color, $hex-color, $prefix: $var-prefix) {
   .bg-#{$name},
   .#{$prefix}-bg-#{$name} {
-    // background: $color !important; // old spectre.
-    // background: color($color) !important;
     @include background($color, $important: !important);
-
-    // old spectre.
-    // @if (lightness($color) < 60) {
-    // color: $light-color;
-    // }
     @if (lightness($hex-color) < 60) {
-      // color: color('light-color');
       @include color('light');
     }
   }

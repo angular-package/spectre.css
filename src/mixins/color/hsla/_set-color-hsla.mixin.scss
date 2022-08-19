@@ -4,12 +4,11 @@
 @use '../../../variables' as *;
 
 // Functions.
-// @use '../../../functions/var/get-var.function' as *;
 @use '../../../functions/get-from-list.function' as *;
 @use '../../../functions/map-get-default.function' as *;
 
 // Mixins.
-@use '../../set-var' as *;
+@use '../../set-var.mixin' as *;
 @use '../set-var-alpha.mixin' as *;
 @use 'set-var-hue.mixin' as *;
 @use 'set-var-lightness.mixin' as *;
@@ -29,17 +28,13 @@
   $color: get-from-list($color, 'name', 'lightness', 'alpha');
 
   // Sets the CSS variable hue.
-  // @include set-var($name, hue($color), $prefix, 'h'); // old @angular-package/spectre.css
   @include set-var-hue($name, map.get($color, 'name'), $prefix);
 
   // Sets the CSS variable saturation.
-  // @include set-var($name, saturation($color), $prefix, 's'); // old @angular-package/spectre.css
   @include set-var-saturation($name, map.get($color, 'name'), $prefix);
 
   // Sets the CSS variable lightness.
   @include set-var-lightness($name, map.get($color, 'name'), calc(map-get-default($color, 'lightness', 0%) + $lightness), $prefix);
-  // @include set-var($name, calc(lightness($color) + get-var($name, $suffix: 'l-l')), $prefix, 'l');
-  // @include set-var($name, $lightness, $prefix, 'l-l');
 
   // Sets the alpha.
   @include set-var-alpha($name, map.get($color, 'name'), calc(map-get-default($color, 'alpha', 0) + $alpha), $prefix);

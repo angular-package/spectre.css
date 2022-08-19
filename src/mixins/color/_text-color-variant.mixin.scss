@@ -1,9 +1,14 @@
+// Variables.
+@use '../../variables' as *;
+
+// Mixins.
 @use 'color.mixin' as *;
 @use 'color-focus.mixin' as *;
 @use 'color-hover.mixin' as *;
 @use 'color-visited.mixin' as *;
+
+// Functions.
 @use '../../functions/color/color.function' as *;
-@use '../../variables' as *;
 
 // Text color utility mixin
 // The mixin contains the twp CSS classes, the class of the name prefixed with `text-`, and prefixed `#{$prefix}-text-` with the given color `$name`
@@ -12,8 +17,6 @@
 @mixin text-color-variant($name, $color, $prefix: $var-prefix) {
   .text-#{$name},
   .#{$prefix}-text-#{$name} {
-    // color: $color !important; // old spectre.
-    // color: color($color) !important;
     @include color($color, $important: true);
   }
 
@@ -22,14 +25,5 @@
     @include color-focus($color, $lightness: -5%);
     @include color-hover($color, $lightness: -5%);
     @include color-visited($color, $lightness: 5%);
-    // &:focus,
-    // &:hover {
-    // color: darken($color, 5%); // old spectre.
-    // color: color($color, $lightness: -5%);
-    // }
-    // &:visited {
-    // color: lighten($color, 5%);
-    // color: color($color, $lightness: 5%);
-    // }
   }
 }
