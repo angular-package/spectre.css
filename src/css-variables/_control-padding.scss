@@ -3,24 +3,24 @@
 
 // Functions.
 @use '../functions/strip-unit.function' as *;
-@use '../functions/var/get-var.function' as *;
+@use '../functions/var/css-var.function' as *;
 
 // Mixins.
-@use '../mixins/set-var' as *;
+@use '../mixins/set-var.mixin' as *;
 
 // Control padding.
 :root, :host {
   // padding-x
   @include set-var('control-padding-x', $control-padding-x); // $unit-2
   // padding-x-lg
-  @include set-var('control-padding-x', calc(get-var('control-padding-x') * 1.5), $suffix: 'lg'); // $unit-2 * 1.5
+  @include set-var('control-padding-x', calc(css-var('control-padding-x') * 1.5), $suffix: 'lg'); // $unit-2 * 1.5
   // padding-x-sm
-  @include set-var('control-padding-x', calc(get-var('control-padding-x') * 0.75), $suffix: 'sm'); // $unit-2 * 0.75
+  @include set-var('control-padding-x', calc(css-var('control-padding-x') * 0.75), $suffix: 'sm'); // $unit-2 * 0.75
 
   // padding-y
-  @include set-var('control-padding-y', calc((get-var('control-size') - get-var('line-height')) * 0.5 - get-var('border-width'))); // ($control-size - $line-height) * 0.5 - $border-width
+  @include set-var('control-padding-y', calc((css-var('control-size') - css-var('line-height')) * 0.5 - css-var('border-width'))); // ($control-size - $line-height) * 0.5 - $border-width
   // padding-y-lg
-  @include set-var('control-padding-y', calc((get-var('control-size', $suffix: 'lg') - get-var('line-height')) * 0.5 - get-var('border-width')), $suffix: 'lg'); // ($control-size-lg - $line-height) * 0.5 - $border-width
+  @include set-var('control-padding-y', calc((css-var('control-size', $suffix: 'lg') - css-var('line-height')) * 0.5 - css-var('border-width')), $suffix: 'lg'); // ($control-size-lg - $line-height) * 0.5 - $border-width
   // padding-y-sm
-  @include set-var('control-padding-y', calc((get-var('control-size', $suffix: 'sm') - get-var('line-height')) * 0.5 - get-var('border-width')), $suffix: 'sm'); // ($control-size-sm - $line-height) * 0.5 - $border-width
+  @include set-var('control-padding-y', calc((css-var('control-size', $suffix: 'sm') - css-var('line-height')) * 0.5 - css-var('border-width')), $suffix: 'sm'); // ($control-size-sm - $line-height) * 0.5 - $border-width
 }
