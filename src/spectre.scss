@@ -1,8 +1,10 @@
-// Variables and mixins
+// Variables
 @forward 'variables';
-@forward 'mixins';
 @forward 'css-variables';
 @use 'variables' as *;
+
+// Mixins.
+@forward 'mixins';
 
 /*! Spectre.css v#{$version} | MIT License | github.com/angular-package/spectre.css */
 // Reset and dependencies
@@ -20,9 +22,10 @@
 @forward 'media';
 
 // Layout
+@forward 'columns-order';
+@forward 'footer'; // @new
 @forward 'hero'; // Updated.
 @forward 'layout';
-@forward 'columns-order';
 @forward 'navbar';
 
 // Components
@@ -51,6 +54,15 @@
 @forward 'animations';
 @forward 'utilities';
 
+
 // Initialize mixins.
-// @use 'hero' as *;
-// @include hero;
+@use 'buttons' as *;
+@use 'footer' as *;
+@use 'hero' as *;
+@use 'pagination' as *;
+
+
+@include s-button-clear();
+@include s-footer();
+// @include s-hero;
+@include s-pagination();
