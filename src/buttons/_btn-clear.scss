@@ -10,41 +10,31 @@
 
 // Button Clear
 // Button color variants
-.btn,
-.#{$var-prefix}-btn {
-  &.btn-clear {
-    background: transparent;
-    border: 0;
-    color: currentColor;
-    // height: $unit-5; // old spectre.css
-    // height: get-var('unit-5'); // old @angular-package/spectre.css
-    height: unit-var('5');
-    // line-height: $unit-4; // old spectre.css
-    // line-height: get-var('unit-4'); // old @angular-package/spectre.css
-    line-height: unit-var('4');
-    // margin-left: $unit-1; // old spectre.css
-    // margin-left: get-var('unit-1'); // old @angular-package/spectre.css
-    @include margin-left('unit-1');
-    margin-right: -2px;
-    opacity: 1;
-    // padding: $unit-h; // old spectre.css
-    // padding: get-var('unit-h'); // old @angular-package/spectre.css
-    @include padding('unit-h');
-    text-decoration: none;
-    // width: $unit-5; // old spectre.css
-    // width: get-var('unit-5'); // old @angular-package/spectre.css
-    width: unit-var('5');
+@mixin s-button-clear() {
+  .btn,
+  .#{$var-prefix}-btn {
+    &.btn-clear {
+      background: transparent;
+      border: 0;
+      color: currentColor;
+      height: unit-var('5');
+      line-height: unit-var('4');
+      @include margin-left('unit-1');
+      margin-right: -2px;
+      opacity: 1;
+      @include padding('unit-h');
+      text-decoration: none;
+      width: unit-var('5');
 
-    &:focus,
-    &:hover {
-      // background: rgba($bg-color, .5); // old spectre.css
-      // background: color('bg-color', $alpha: 0.5); // old @angular-package/spectre.css
-      @include background('bg', $alpha: 0.5);
-      opacity: 0.95;
-    }
+      &:focus,
+      &:hover {
+        @include background('bg', $alpha: 0.5);
+        opacity: 0.95;
+      }
 
-    &::before {
-      content: '\2715';
+      &::before {
+        content: '\2715';
+      }
     }
   }
 }
