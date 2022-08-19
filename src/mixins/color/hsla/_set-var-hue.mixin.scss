@@ -1,7 +1,17 @@
-@use '../../../variables' as *;
-@use '../../set-var' as *;
+@use 'sass:string';
 
-// The mixin sets CSS variable hue for the hsla form from the given hex `$color`.
+// Variables.
+@use '../../../variables/core' as *;
+
+// Functions.
+@use '../../../functions/var/css-var.function' as *;
+@use '../../set-var.mixin' as *;
+
+// The mixin sets CSS variable hue for the hsla form from the given hex `$color` or derived CSS variable name.
 @mixin set-var-hue($name, $color, $prefix: $var-prefix, $suffix: $var-hue) {
-  @include set-var($name, hue($color), $prefix, $suffix);
+  @if type-of($color) != 'string' {
+    @include set-var($name, hue($color), $prefix, $suffix);
+  } @else {
+    @include set-var($name, css-var($color, $suffix: $suffix), $prefix, $suffix);
+  }
 }
