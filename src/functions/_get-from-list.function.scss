@@ -34,8 +34,8 @@
             }
           } @else {
             @each $k, $type in $key {
-              @if typeof(map.get($value, $key)) == $type {
-                $map: map.set($map, $k, map.get($value, $key));
+              @if typeof(map.get($value, $k)) == $type {
+                $map: map.set($map, $k, map.get($value, $k));
               }
             }              
           }
