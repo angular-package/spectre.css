@@ -1,5 +1,11 @@
+@use 'sass:string';
+
+// Variables.
 @use '../../../variables' as *;
-@use '../../set-var' as *;
+
+// Functions.
+@use '../../../functions/var/css-var.function' as *;
+@use '../../set-var.mixin' as *;
 
 // The mixin sets CSS variable saturation for the hsla color form from the given hex `$color`.
 @mixin set-var-saturation(
@@ -8,5 +14,9 @@
   $prefix: $var-prefix,
   $suffix: $var-saturation
 ) {
-  @include set-var($name, saturation($color), $prefix, $suffix);
+  @if type-of($color) != 'string' {
+    @include set-var($name, saturation($color), $prefix, $suffix);
+  } @else {
+    @include set-var($name, css-var($color, $suffix: $suffix), $prefix, $suffix);
+  }
 }
