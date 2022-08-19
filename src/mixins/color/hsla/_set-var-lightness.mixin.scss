@@ -4,6 +4,7 @@
 @use '../../../variables' as *;
 
 // Functions.
+@use '../../../functions/color/color-name.function' as *;
 @use '../../../functions/var/css-var.function' as *;
 @use '../../../functions/var/var-adjust.function' as *;
 @use '../../set-var.mixin' as *;
@@ -19,7 +20,7 @@
   @if type-of($color) != 'string' {
     @include set-var($name, calc(lightness($color) + $lightness), $prefix, $suffix);
   } @else {
-    @include set-var($name, var-adjust(css-var($color, $suffix: $suffix), $lightness), $prefix, $suffix);
+    @include set-var($name, var-adjust(css-var(color-name($color), $suffix: $suffix), $lightness), $prefix, $suffix);
   }
   // Lightness level.
   @include set-var($name, 0%, $prefix, '#{$suffix}-l');

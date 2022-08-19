@@ -2,6 +2,7 @@
 @use '../../variables' as *;
 
 // Functions.
+@use '../../functions/color/color-name.function' as *;
 @use '../../functions/var/css-var.function' as *;
 @use '../../functions/var/var-adjust.function' as *;
 @use '../set-var.mixin' as *;
@@ -17,6 +18,6 @@
   @if type-of($color) != 'string' {
     @include set-var($name, alpha($color), $prefix, $suffix);
   } @else {
-    @include set-var($name, var-adjust(css-var($color, $suffix: $suffix), $alpha), $prefix, $suffix);
+    @include set-var($name, var-adjust(css-var(color-name($color), $suffix: $suffix), $alpha), $prefix, $suffix);
   }
 }
