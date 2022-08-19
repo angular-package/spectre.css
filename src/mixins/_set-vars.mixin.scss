@@ -1,11 +1,12 @@
+// Variables.
 @use '../variables' as *;
 
 // Mixins.
-@use '../mixins/set-var' as *;
+@use '../mixins/set-var.mixin' as *;
 
-// The mixin TODO: description.
+// The `set-vars()` mixin set the CSS variables from the given `$values`.
 @mixin set-vars($name, $values, $prefix: $var-prefix) {
   @each $suffix, $value in $values {
-    @include set-var($name, $value: $value, $suffix: $suffix, $prefix: $prefix);
+    @include set-var($name, $value, $prefix, $suffix);
   }
 }
