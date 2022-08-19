@@ -1,6 +1,12 @@
-@use '../../../functions/get-var' as *;
+@use 'sass:string';
+
+// Variables.
 @use '../../../variables' as *;
-@use '../../set-var' as *;
+
+// Functions.
+@use '../../../functions/var/css-var.function' as *;
+@use '../../../functions/var/var-adjust.function' as *;
+@use '../../set-var.mixin' as *;
 
 // The mixin sets CSS variable lightness for the hsla form from the given hex `$color`.
 @mixin set-var-lightness(
@@ -10,7 +16,11 @@
   $prefix: $var-prefix,
   $suffix: $var-lightness
 ) {
-  // @include set-var($name, lightness($color), $prefix, $suffix);
-  @include set-var($name, calc(lightness($color) + get-var($name, $suffix:  '#{$suffix}-l')), $prefix, $suffix);
-  @include set-var($name, $lightness, $prefix, '#{$suffix}-l');
+  @if type-of($color) != 'string' {
+    @include set-var($name, calc(lightness($color) + $lightness), $prefix, $suffix);
+  } @else {
+    @include set-var($name, var-adjust(css-var($color, $suffix: $suffix), $lightness), $prefix, $suffix);
+  }
+  // Lightness level.
+  @include set-var($name, 0%, $prefix, '#{$suffix}-l');
 }
