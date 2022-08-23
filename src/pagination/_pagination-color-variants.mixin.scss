@@ -1,0 +1,14 @@
+// Variables.
+@use '../variables/core' as *;
+
+// Mixins.
+@use './pagination-color-variant.mixin' as *;
+
+@mixin s-pagination-variants($colors...) {
+  .pagination,
+  .#{$var-prefix}-pagination {
+    @each $color in $colors {
+      @include s-pagination-color-variant($color);
+    }
+  }
+}
