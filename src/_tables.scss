@@ -68,11 +68,22 @@
   thead > tr > th {
     @include border($side: bottom, $radius: false);
   }
-  tbody > tr > th {
-    a {
-      @include color('body-font');
+
+  tbody {
+    tr {
+      th {
+        a {
+          @include color('body-font');
+        }
+        @include color('body-font');
+        @include border($side: right);
+      }
+
+      &:last-child {
+        td, th {
+          border-bottom: none;
+        }
+      }
     }
-    @include color('body-font');
-    @include border($side: right);
   }
 }
