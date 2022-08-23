@@ -1,11 +1,16 @@
 // Variables.
 @use 'variables' as *;
 
+// Functions.
+@use 'functions/color/color.function' as *;
+@use 'functions/var/css-var.function' as *;
+
 // Mixins.
 @use 'mixins/border/border-hover.mixin' as *;
 @use 'mixins/border/border.mixin' as *;
 @use 'mixins/color/background.mixin' as *;
 @use 'mixins/color/color.mixin' as *;
+@use 'mixins/disabled.mixin' as *;
 @use 'mixins/margin.mixins' as *;
 @use 'mixins/padding.mixins' as *;
 @use 'mixins/transition.mixin' as *;
@@ -16,12 +21,121 @@
   .#{$prefix}-pagination {
     display: flex;
     list-style: none;
+    @include disabled('pagination');
     @include margin('unit-1', 'unit-0');
     @include padding('unit-1', 'unit-0');
 
+    // Common page item.
+    .page-item {
+      @include disabled('page-item');
+      @include padding('unit-1', 'unit-o'); // ! Changed from margin to padding.
+
+      a {
+        display: inline-block;
+        @include padding('unit-1', 'unit-2');
+        border-radius: css-var('border-radius');
+        text-decoration: none;
+        &:focus,
+        &:hover {
+          @include color('primary');
+        }
+      }
+
+      &.active {
+        a {
+          @include background('primary');
+          @include color('light');
+        }
+      }
+
+      // Page previous and next common.
+      &.page-prev,
+      &.page-next {
+        flex: 1 0 50%;
+        @include padding('unit-1', 'unit-0');
+
+        a {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          height: 4rem;
+          @include padding('unit-1', 'unit-4');
+
+          span {
+            display: flex;
+            flex-direction: column;
+            &.page-item-subtitle {
+              font-size: small;
+            }
+            &.page-item-title {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+
+      // Page previous.
+      &.page-prev {
+        @include padding-right('unit-o');
+        text-align: left;
+        a {
+          align-items: start;
+        }
+      }
+
+      // Page next.
+      &.page-next {
+        @include padding-left('unit-o');
+        text-align: right;
+        a {
+          align-items: end;
+        }
+      }
+
+      // Page item title.
+      .page-item-title {
+        margin: 0;
+      }
+
+      // Page item subtitle.
+      .page-item-subtitle {
+        margin: 0;
+        opacity: 0.5;
+      }
+    }
+
+    // Pagination previous and next buttons.
+    // Pagination container is active.
+    &.active,
+    &.pagination-active {
+      .page-item {
+        &.page-prev,
+        &.page-next {
+          a, a:hover, a:focus {
+            @include background('primary');
+            @include color('light');
+          }
+        }
+      }
+    }
+
+    // Pagination previous and next buttons.
     // Pagination border.
     &.pagination-border {
-      > li.page-item {
+      // Active & Border.
+      &.active,
+      &.pagination-active {
+        .page-item {
+          &.page-prev,
+          &.page-next {
+            a, a:hover, a:focus {
+              border-color: color('primary');
+            }
+          }
+        }
+      }
+      // Page item.
+      .page-item {
         a {
           width: 100%;
 
@@ -36,64 +150,49 @@
           }
 
           @include border-hover($color: 'primary');
-          @include transition((border, 0.2s));
+          @include transition((border, 0.2s), color);
+
           &:focus {
             box-shadow: none;
           }
         }
+        // Single page item active.
+        &.page-prev,
+        &.page-next {
+          &.active {
+            a, a:hover, a:focus {
+              border-color: color('primary');
+            }
+          }
+        }
+
       }
     }
 
-    .page-item {
-      @include padding('unit-1', 'unit-o'); // ! Changed from margin to padding.
-
-      span {
-        display: inline-block;
-        @include padding('unit-1', 'unit-1');
+    // Hide icons - font awesome.
+    &:not(.pagination-icon) {
+      svg {
+        display: none;
       }
+    }
 
-      a {
-        border-radius: get-var('border-radius');
-        display: inline-block;
-        @include padding('unit-1', 'unit-2');
-        text-decoration: none;
-        &:focus,
-        &:hover {
-          @include color('primary');
+    // Pagination prev & next with icons.
+    &.pagination-icon {
+      .page-item {
+        &.page-prev,
+        &.page-next {
+          a {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+          }
         }
-      }
-
-      &.disabled {
-        a {
-          cursor: default;
-          opacity: 0.5;
-          pointer-events: none;
+        &.page-prev {
+          text-align: right;
         }
-      }
-
-      &.active {
-        a {
-          @include background('primary');
-          @include color('light');
+        &.page-next {
+          text-align: left;
         }
-      }
-
-      &.page-prev,
-      &.page-next {
-        flex: 1 0 50%;
-      }
-
-      &.page-next {
-        text-align: right;
-      }
-
-      .page-item-title {
-        margin: 0;
-      }
-
-      .page-item-subtitle {
-        margin: 0;
-        opacity: 0.5;
       }
     }
   }
