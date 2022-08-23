@@ -31,10 +31,11 @@
 }
 
 .docs-navbar .btns {
+  flex-direction: row;
   position: absolute;
   right: 1.5rem;
   top: 1rem;
-  width: 14rem;
+  /* width: 14rem; */
 }
 
 .docs-navbar .algolia-autocomplete {
@@ -57,14 +58,14 @@
 }
 
 .docs-sidebar .accordion input ~ .accordion-header {
-  color: #455060;
+  /* color: #455060; */
   font-size: .65rem;
   font-weight: 600;
   text-transform: uppercase;
 }
 
 .docs-sidebar .accordion input:checked ~ .accordion-header {
-  color: #505c6e;
+  /* color: #505c6e; */
 }
 
 .docs-sidebar .accordion .menu .menu-item {
@@ -74,7 +75,7 @@
 
 .docs-sidebar .accordion .menu .menu-item > a {
   background: transparent;
-  color: #66758c;
+  /* color: #66758c; */
   display: inline-block;
 }
 
@@ -123,7 +124,7 @@
   }
   .docs-content .s-title::before,
   .docs-content .s-subtitle::before {
-    background: #fff;
+    background: hsla(var(--s-body-bg-color-h), var(--s-body-bg-color-s), var(--s-body-bg-color-l), var(--s-body-bg-color-a));
     bottom: 0;
     content: "";
     display: block;
@@ -330,25 +331,6 @@
   margin-right: .3rem;
 }
 
-.docs-footer {
-  color: #bcc3ce;
-  padding: .5rem;
-}
-
-.docs-footer a {
-  color: #66758c;
-}
-
-.docs-footer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.docs-footer ul li a {
-  font-size: 0.75rem;
-}
-
 .docs-ad {
   background: #f7f8f9;
   border-radius: .1rem;
@@ -405,6 +387,7 @@
 }
 
 .section-updates .card {
+  height: 100%;
   border: 0;
   margin-bottom: 1rem;
 }
@@ -455,10 +438,11 @@
 }
 
 .grid-hero .card {
+  height: 100%;
+  padding: .5rem;
   background: none;
   border: 0;
   color: #5b687d;
-  padding: .5rem;
 }
 
 .grid-hero .card .card-title {
@@ -1076,7 +1060,7 @@
 
 
 
-
+/* Docs menu */
 .docs-menu {
   /* Position */
   position: fixed;
@@ -1105,23 +1089,79 @@
   padding-bottom: 1rem;
 }
 
-.docs-sidebar .accordion .menu .menu-item {
-  margin-bottom: calc(var(--s-unit-2) - 0.1rem);
-}
-.docs-sidebar .accordion .menu .menu-item a {
-  border-radius: var(--s-border-radius);
-}
-.docs-sidebar .accordion .menu .menu-item a:hover,
-.docs-sidebar .accordion .menu .menu-item a.active {
-  background-color: hsla(calc(var(--s-secondary-color-h) + 0deg),calc(var(--s-secondary-color-s) + 0%),calc(var(--s-secondary-color-l) + 0%),calc(var(--s-secondary-color-a) * 1));
-}
-.docs-sidebar .accordion .menu .menu-item a.active {
-  box-shadow: 0 0 0 0.1rem hsla(calc(var(--s-primary-color-h) + 0deg),calc(var(--s-primary-color-s) + 0%),calc(var(--s-primary-color-l) + 0%),calc(var(--s-primary-color-a) * .2));
+
+/* Docs footer */
+.off-canvas-content .docs-footer {
+  width: calc(100vw - 20rem);
+  max-width: 800px;
+  margin-left: 4rem;
 }
 
-.table tbody > tr:last-child > td,
-.table tbody > tr:last-child > th {
-  border-bottom: none !important;
+.off-canvas-content .docs-footer .columns {
+  margin-left: 0rem;
+  margin-right: 0rem;
+}
+
+.docs-footer {
+  padding: .5rem;
+  /* color: #bcc3ce; */
+}
+
+.docs-footer a {
+  /* color: #66758c; */
+}
+
+.docs-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.docs-footer div.columns:first-child div.column {
+  margin-bottom: 2rem;
+}
+
+.docs-footer ul li a {
+  font-size: 0.75rem;
+}
+.off-canvas-content .docs-footer .columns {
+  max-width: 800px;
+}
+
+@media (max-width: 960px) {
+  .off-canvas-content .docs-footer {
+    width: calc(100vw - 3.00rem);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .docs-footer .columns .column:last-child {
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .off-canvas-content .docs-footer {
+    width: calc(100vw - 1rem);
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 
+/* Text */
+.text-fl-uppercase::first-letter {
+  text-transform: uppercase;
+}
+
+/* Top Button https://www.w3schools.com/howto/howto_js_scroll_to_top.asp */
+#top-button {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  left: 53rem; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+}
+
+@media (max-width: 960px) {
+  
+}
