@@ -9,7 +9,6 @@
 
 // The mixin includes an extension class of name prefixed with `toast-` with a given color name that includes a toast variant of the given `$color`.
 // The mixin includes toast `background` and `border` of a given `$color` CSS variable name.
-// @mixin toast-variant($color: $dark-color) { // old spectre.css
 @mixin toast-variant(
   $name: 'dark',
   $color: 'dark',
