@@ -1,10 +1,5 @@
-@use 'bg' as *;
-@use 'body' as *;
-@use 'border' as *;
 @use 'control' as *;
 @use 'core' as *;
-@use 'gray' as *;
-@use 'link' as *;
 @use 'other' as *;
 
 $theme-dark: (
@@ -29,7 +24,7 @@ $theme-dark: (
   // Gray colors.
   'gray-color': ('dark-color', +75%),
   'gray-color-dark': ('gray-color', -30%),
-  'gray-color-light':('gray-color', +20%),
+  'gray-color-light': ('gray-color', +20%),
 
   // Bg colors.
   'bg-color': ('dark-color', +9%),
