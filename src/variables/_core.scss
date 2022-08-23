@@ -22,4 +22,4 @@ $color-scheme: light dark !default;
 $transition-duration: 0.2s !default; // --#{$var-prefix}-transition-duration.
 
 // Max Columns number.
-$columns-count: 4;
+$columns-count: 4 !default;
