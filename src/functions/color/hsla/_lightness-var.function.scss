@@ -7,5 +7,5 @@
 
 // The function returns the CSS variable lightness color of the given `$name` and `$prefix`.
 @function lightness-var($name, $lightness: 0%, $prefix: $var-prefix) {
-  @return var-adjust(css-var(color-name($name), $prefix, $var-lightness), $lightness);
+  @return var-adjust(calc(css-var(color-name($name), $prefix, $var-lightness) + css-var(color-name($name), $prefix, '#{$var-lightness}-l')), $lightness);
 }
