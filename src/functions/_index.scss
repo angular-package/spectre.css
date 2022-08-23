@@ -3,7 +3,9 @@
 @forward 'var';
 
 // Functions.
-@forward 'get-border';
+@forward 'get-border.function';
 @forward 'get-from-list.function';
+@forward 'important.function';
 @forward 'map-get-default.function';
 @forward 'strip-unit.function';
+@forward 'typeof.function';
