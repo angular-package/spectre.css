@@ -1,6 +1,11 @@
 // Variables.
 @use 'variables' as *;
 
+// Functions.
+@use 'functions/var/css-var.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/size-var.function' as *;
+
 // Mixins.
 @use 'mixins/color/color-hover.mixin' as *;
 @use 'mixins/color/color.mixin' as *;
@@ -10,6 +15,32 @@
 @mixin s-footer() {
   .footer,
   .#{$var-prefix}-footer {
+    width: 100%;
+
+    &.columns {
+      margin: 0;
+    }
+
+    &.footer-xl {
+      max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('xl'));
+    }
+  
+    &.footer-lg {
+      max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('lg'));
+    }
+  
+    &.footer-md {
+      max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('md'));
+    }
+  
+    &.footer-sm {
+      max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('sm'));
+    }
+  
+    &.footer-xs {
+      max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('xs'));
+    }
+  
     h5 {
       @include margin-bottom('unit-6');
     }
@@ -32,9 +63,13 @@
     }
 
     ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
       li {
         a {
           text-decoration: none !important;
+          font-size: 0.75rem;
           @include color-hover('primary');
           @include transition(color);
         }
