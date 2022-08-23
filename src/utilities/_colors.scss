@@ -8,10 +8,7 @@
 
 // Text colors
 // - Shades.
-// @include text-color-variant('.text-dark', $body-font-color); // old spectre.css
-// @include text-color-variant('.text-dark', 'body-font-color'); // old @angular-package/spectre.css
 @include text-color-variant('dark', 'dark-color');
-// @include text-color-variant('.text-light', $light-color); // old spectre.css
 @include text-color-variant('light', 'light-color');
 
 // - Core colors.
@@ -19,31 +16,25 @@
 @include text-color-variant('accent', 'accent-color'); // ! New text color variant.
 
 // -- Primary
-// @include text-color-variant('.text-primary', $primary-color); // old spectre.css
 @include text-color-variant('primary', 'primary-color');
 @include text-color-variant('primary-dark', 'primary-color-dark');
 @include text-color-variant('primary-light', 'primary-color-light');
 
 // -- Secondary
-// @include text-color-variant('.text-secondary', $secondary-color-dark); // old spectre.css
 @include text-color-variant('secondary', 'secondary-color-dark');
 @include text-color-variant('secondary-dark', 'secondary-color-dark');
 @include text-color-variant('secondary-light', 'secondary-color-light');
 
 // - Gray colors.
-// @include text-color-variant('.text-gray', $gray-color); // old spectre.css
 @include text-color-variant('gray', 'gray-color');
 @include text-color-variant('gray-dark', 'gray-color-dark');
 @include text-color-variant('gray-light', 'gray-color-light');
 
 // - Control colors.
 @include text-color-variant('disabled', 'disabled-color');
-// @include text-color-variant('.text-error', $error-color); // old spectre.css
 @include text-color-variant('error', 'error-color');
 @include text-color-variant('info', 'info-color');
-// @include text-color-variant('.text-success', $success-color); // old spectre.css
 @include text-color-variant('success', 'success-color');
-// @include text-color-variant('.text-warning', $warning-color); // old spectre.css
 @include text-color-variant('warning', 'warning-color');
 
 // - Link colors.
@@ -69,7 +60,6 @@
 
 // Background colors
 // - Shades.
-// @include bg-color-variant('.bg-dark', $dark-color); // old.spectre.css
 @include bg-color-variant('dark', 'dark-color', $dark-color);
 @include bg-color-variant('light', 'light-color', $light-color);
 
@@ -78,25 +68,21 @@
 @include bg-color-variant('accent', 'accent-color', $accent-color);
 
 // -- Primary.
-// @include bg-color-variant('.bg-primary', $primary-color); // old spectre.css
 @include bg-color-variant('primary', 'primary-color', $primary-color);
 @include bg-color-variant('primary-dark', 'primary-color-dark', $primary-color-dark);
 @include bg-color-variant('primary-light', 'primary-color-light', $primary-color-light);
 
 // -- Secondary.
-// @include bg-color-variant('.bg-secondary', $secondary-color); // old.spectre.css
 @include bg-color-variant('secondary', 'secondary-color', $secondary-color);
 @include bg-color-variant('secondary-dark', 'secondary-color-dark', $secondary-color-dark);
 @include bg-color-variant('secondary-light', 'secondary-color-light', $secondary-color-light);
 
 // - Gray colors.
-// @include bg-color-variant('.bg-gray', $bg-color); // old.spectre.css
 @include bg-color-variant('gray', 'gray-color', $gray-color);
 @include bg-color-variant('gray-dark', 'gray-color-dark', $gray-color-dark);
 @include bg-color-variant('gray-light', 'gray-color-light', $gray-color-light);
 
 // - Bg colors
-// @include bg-color-variant('.bg', 'bg-color', $bg-color); // @deprecated
 @include bg-color-variant('bg', 'bg-color', $bg-color);
 @include bg-color-variant('bg-dark', 'bg-color-dark', $bg-color-dark);
 @include bg-color-variant('bg-light', 'bg-color-light', $bg-color-light);
@@ -112,12 +98,9 @@
 
 // - Control colors.
 @include bg-color-variant('disabled', 'disabled-color', $disabled-color);
-// @include bg-color-variant('.bg-error', $error-color); // old.spectre.css
 @include bg-color-variant('error', 'error-color', $error-color);
 @include bg-color-variant('info', 'info-color', $info-color);
-// @include bg-color-variant('.bg-success', $success-color); // old.spectre.css
 @include bg-color-variant('success', 'success-color', $success-color);
-// @include bg-color-variant('.bg-warning', $warning-color); // old.spectre.css
 @include bg-color-variant('warning', 'warning-color', $warning-color);
 
 // - Link colors.
