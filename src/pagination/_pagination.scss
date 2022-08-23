@@ -33,8 +33,10 @@
       a {
         display: inline-block;
         @include padding('unit-1', 'unit-2');
+        @include color('body-font');
         border-radius: css-var('border-radius');
         text-decoration: none;
+        @include transition((border, 0.2s), color);
         &:focus,
         &:hover {
           @include color('primary');
@@ -150,7 +152,6 @@
           }
 
           @include border-hover($color: 'primary');
-          @include transition((border, 0.2s), color);
 
           &:focus {
             box-shadow: none;
