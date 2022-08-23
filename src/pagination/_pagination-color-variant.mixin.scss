@@ -1,0 +1,81 @@
+// Variables.
+@use '../variables' as *;
+
+// Functions.
+@use '../functions/color/color.function' as *;
+
+// Mixins.
+@use '../mixins/border/border-hover.mixin' as *;
+@use '../mixins/color/background.mixin' as *;
+@use '../mixins/color/color.mixin' as *;
+
+@mixin s-pagination-color-variant($color: 'accent') {
+  // Pagination
+  &.pagination-#{$color} {
+    // Page item.
+    .page-item {
+      a {
+        &:focus,
+        &:hover {
+          @include color($color);
+        }
+      }
+
+      &.active {
+        a {
+          @include background($color);
+          @include color('light');
+        }
+      }
+    }
+
+    // Pagination previous and next buttons.
+    // Pagination container is active.
+    &.active,
+    &.pagination-active {
+      .page-item {
+        &.page-prev,
+        &.page-next {
+          a, a:hover, a:focus {
+            @include background($color);
+            @include color('light');
+          }
+        }
+      }
+    }
+
+    // Pagination previous and next buttons.
+    // Pagination border.
+    &.pagination-border {
+      // Active & Border.
+      &.active,
+      &.pagination-active {
+        .page-item {
+          &.page-prev,
+          &.page-next {
+            a, a:hover, a:focus {
+              border-color: color($color);
+            }
+          }
+        }
+      }
+      // Page item.
+      .page-item {
+        a {
+          @include border-hover($color: $color);
+        }
+        // Single page item active.
+        &.page-prev,
+        &.page-next {
+          &.active {
+            a, a:hover, a:focus {
+              border-color: color($color);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  }
+}
