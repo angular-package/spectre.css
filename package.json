@@ -7,7 +7,9 @@
   "main": "dist/spectre.min.scss",
   "scripts": {
     "sass:dev": "sass --no-source-map --style=expanded src:dist && exit",
-    "sass:docs": "sass --no-source-map --style=compressed docs/dist/docs.css:docs/dist/docs.min.css && exit",
+    "sass:docs": "npm run sass:docs:dev & npm run sass:docs:prod && exit",
+    "sass:docs:dev": "sass --no-source-map --style=expanded docs/src/scss/docs.scss:docs/dist/docs.css && exit",
+    "sass:docs:prod": "sass --no-source-map --style=compressed docs/src/scss/docs.scss:docs/dist/docs.min.css && exit",
     "sass:prod": "npm run sass:prod:spectre & npm run sass:prod:spectre:exp & npm run sass:prod:spectre:icons && exit",
     "sass:prod:spectre": "sass --no-source-map --style=compressed src/spectre.scss:dist/spectre.min.css && exit",
     "sass:prod:spectre:exp": "sass --no-source-map --style=compressed src/spectre-exp.scss:dist/spectre-exp.min.css && exit",
