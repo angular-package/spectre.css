@@ -1,8 +1,8 @@
-@use 'variables' as *;
+// Variables.
+@use 'variables/core' as *;
 
 // Functions.
-// @use 'functions/color/color.function' as *;
-@use 'functions/var/get-var.function' as *;
+@use 'functions/var/css-var.function' as *;
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
@@ -10,15 +10,14 @@
 @use 'mixins/color/color-picker.mixin' as *;
 @use 'mixins/padding.mixins' as *;
 @use 'mixins/shadow' as *;
-@use 'mixins/transition.mixin' as *;
+@use 'mixins/transition.mixin' as *; // TODO: transition
 
 // Cards
-.card,
-.#{$var-prefix}-card {
-  @include background('bg-light');
-  @include border();
+.#{$class-prefix}card {
   display: flex;
   flex-direction: column;
+  @include border();
+  @include background('bg-light');
 
   .card-header,
   .card-body,
@@ -42,29 +41,32 @@
       padding-top: 0;
 
       img {
-        border-top-left-radius: get-var('border-radius');
-        border-top-right-radius: get-var('border-radius');
+        border-top-left-radius: css-var('border-radius');
+        border-top-right-radius: css-var('border-radius');
       }
     }
 
     &:last-child {
       img {
-        border-bottom-left-radius: get-var('border-radius');
-        border-bottom-right-radius: get-var('border-radius');
+        border-bottom-left-radius: css-var('border-radius');
+        border-bottom-right-radius: css-var('border-radius');
       }
     }
   }
 
   &.card-shadow {
-    @include shadow-variant(0.1rem);
     border: 0;
+    @include shadow-variant(0.1rem);
   }
 }
 
 .card {
   // Color card.
   &.card-color {
+    // Position.
     position: relative;
+
+    // Display.
     flex-direction: column;
     justify-content: end;
 

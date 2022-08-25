@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/var/css-var.function' as *;
@@ -10,37 +10,44 @@
 @use 'mixins/color/color-hover.mixin' as *;
 @use 'mixins/color/color.mixin' as *;
 @use 'mixins/margin.mixins' as *;
+@use 'mixins/padding.mixins' as *;
 @use 'mixins/transition.mixin' as *;
 
-@mixin s-footer() {
-  .footer,
-  .#{$var-prefix}-footer {
+@mixin s-footer($prefix: $class-prefix) {
+  .#{$prefix}footer {
     width: 100%;
 
-    &.columns {
+    .columns {
       margin: 0;
+
+      .column {
+        @include padding-top('unit-0');
+        @include padding-right(('layout-spacing', true));
+        @include padding-bottom('unit-0');
+        @include padding-left(('layout-spacing', true));
+      }
     }
 
     &.footer-xl {
       max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('xl'));
     }
-  
+
     &.footer-lg {
       max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('lg'));
     }
-  
+
     &.footer-md {
       max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('md'));
     }
-  
+
     &.footer-sm {
       max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('sm'));
     }
-  
+
     &.footer-xs {
       max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('xs'));
     }
-  
+
     h5 {
       @include margin-bottom('unit-6');
     }
@@ -68,9 +75,9 @@
       margin: 0;
       li {
         a {
-          text-decoration: none !important;
-          font-size: 0.75rem;
           @include color-hover('primary');
+          font-size: 0.75rem;
+          text-decoration: none !important;
           @include transition(color);
         }
       }

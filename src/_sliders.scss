@@ -1,8 +1,8 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
-@use 'functions/var/get-var.function' as *;
+@use 'functions/var/css-var.function' as *;
 @use 'functions/var/unit-var.function' as *;
 @use 'functions/var/var-negative.function' as *;
 
@@ -13,17 +13,20 @@
 
 // Sliders
 // Credit: https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
-.slider,
-.#{$var-prefix}-slider {
+.#{$class-prefix}slider {
+  // Display.
   appearance: none;
-  background: transparent;
   display: block;
+
+  // Size.
   width: 100%;
   height: unit-var('6'); // old @angular-package/spectre.css
 
+  background: transparent;
+
   &:focus {
-    @include control-shadow();
     outline: none;
+    @include control-shadow();
   }
 
   &.tooltip:not([data-tooltip]) {
@@ -35,29 +38,44 @@
   // Slider Thumb
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
-    @include background('primary');
+
+    // Size.
+    width: unit-var('3');
+    height: unit-var('3');
+
+    // Position.
+    margin-top: calc(var-negative(unit-var('3') - unit-var('h')) / 2);
+
+    // Border.
     border: 0;
     border-radius: 50%;
-    height: unit-var('3');
-    margin-top: calc(var-negative(unit-var('3') - unit-var('h')) / 2);
+
+    @include background('primary');
     @include transition(transform);
-    width: unit-var('3');
   }
   &::-moz-range-thumb {
-    @include background('primary');
+    // Size.
+    width: unit-var('3');
+    height: unit-var('3');
+
+    // Border.
     border: 0;
     border-radius: 50%;
-    height: unit-var('3');
+
+    @include background('primary');
     @include transition(transform);
-    width: unit-var('3');
   }
   &::-ms-thumb {
-    @include background('primary');
+    // Size.
+    width: unit-var('3');
+    height: unit-var('3');
+
+    // Border.
     border: 0;
     border-radius: 50%;
-    height: unit-var('3');
+
+    @include background('primary');
     @include transition(transform);
-    width: unit-var('3');
   }
 
   &:active {
@@ -76,7 +94,6 @@
   &.disabled {
     &::-webkit-slider-thumb {
       @include background('gray-light');
-
       transform: scale(1);
     }
     &::-moz-range-thumb {
@@ -91,22 +108,30 @@
 
   // Slider Track
   &::-webkit-slider-runnable-track {
-    @include background('bg-dark');
-    border-radius: get-var('border-radius');
-    height: unit-var('h');
+    // Size.
     width: 100%;
+    height: unit-var('h');
+
+    border-radius: css-var('border-radius');
+    @include background('bg-dark');
   }
   &::-moz-range-track {
-    @include background('bg-dark');
-    border-radius: get-var('border-radius');
-    height: unit-var('h');
+    // Size.
     width: 100%;
+    height: unit-var('h');
+
+    // Border.
+    border-radius: css-var('border-radius');
+    @include background('bg-dark');
   }
   &::-ms-track {
-    @include background('bg-dark');
-    border-radius: get-var('border-radius');
-    height: unit-var('h');
+    // Size.
     width: 100%;
+    height: unit-var('h');
+
+    // Border.
+    border-radius: css-var('border-radius');
+    @include background('bg-dark');
   }
   &::-ms-fill-lower {
     @include background('primary');

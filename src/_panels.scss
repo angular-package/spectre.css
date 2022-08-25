@@ -1,16 +1,18 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Mixins.
 @use 'mixins/border/border.mixin' as *;
 @use 'mixins/padding.mixins' as *;
 
 // Panels
-.panel,
-.#{$var-prefix}-panel {
-  @include border();
+.#{$class-prefix}panel {
+  // Display.
   display: flex;
   flex-direction: column;
+
+  // Border.
+  @include border();
 
   .panel-header,
   .panel-footer {

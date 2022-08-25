@@ -8,9 +8,9 @@
 
 // Label base style
 @mixin label-base() {
-  border-radius: get-var('border-radius');
-  line-height: 1.25;
   padding: 0.1rem 0.2rem;
+  line-height: 1.25;
+  border-radius: get-var('border-radius');
 }
 
 // The mixin contains the `color` and `background` style of the values given respectively by `$color` and `$bg-color` CSS variable name.

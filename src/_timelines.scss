@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/var/get-var.function' as *;
@@ -12,20 +12,27 @@
 @use 'mixins/margin.mixins' as *;
 
 // Timelines
-.timeline,
-.#{$var-prefix}-timeline {
+.#{$class-prefix}timeline {
   .timeline-item {
-    display: flex;
-    @include margin-bottom('unit-6');
+    // Position.
     position: relative;
+    @include margin-bottom('unit-6');
+
+    // Display.
+    display: flex;
+
     &::before {
-      @include background('border');
-      content: '';
-      height: 100%;
-      left: 11px;
+      // Position.
       position: absolute;
       top: unit-var('6');
+      left: 11px;
+
+      content: '';
+      // Size.
       width: 2px;
+      height: 100%;
+
+      @include background('border');
     }
 
     .timeline-left {
@@ -34,33 +41,43 @@
 
     .timeline-content {
       flex: 1 1 auto;
-      padding: 2px 0 2px get-var('layout-spacing', $suffix: 'lg');
+      padding: 2px 0 2px get-var(('layout-spacing', ('unit': true, 'suffix': 'lg')));
     }
 
     .timeline-icon {
+      // Display.
+      display: flex;
       align-items: center;
+      justify-content: center;
+
+      // Size.
+      width: unit-var('6');
+      height: unit-var('6');
+
       border-radius: 50%;
       @include color('light');
-      display: flex;
-      height: unit-var('6');
-      justify-content: center;
+
       text-align: center;
-      width: unit-var('6');
       &::before {
-        @include border('lg', solid, 'primary', false);
-        border-radius: 50%;
-        content: '';
-        display: block;
-        height: unit-var('2');
-        left: unit-var('2');
+        // Position.
         position: absolute;
         top: unit-var('2');
+        left: unit-var('2');
+
+        // Display.
+        content: '';
+        display: block;
         width: unit-var('2');
+        height: unit-var('2');
+
+        // Border.
+        @include border('lg', solid, 'primary', false);
+        border-radius: 50%;
       }
 
       &.icon-lg {
-        @include background('primary');
         line-height: get-var('line-height');
+        @include background('primary');
         &::before {
           content: none;
         }

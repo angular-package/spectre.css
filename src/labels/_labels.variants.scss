@@ -5,8 +5,7 @@
 @use '../mixins/label' as *;
 
 // Labels
-.label,
-.#{$var-prefix}-label {
+.#{$class-prefix}label {
   @media (prefers-color-scheme: dark) {
     // Label color variants.
     // - Shades.

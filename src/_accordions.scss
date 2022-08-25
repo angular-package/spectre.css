@@ -1,5 +1,5 @@
 // Variables.
-@use '../variables' as *;
+@use 'variables/core' as *;
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
@@ -10,9 +10,7 @@
 @use 'mixins/transition.mixin' as *;
 
 // Accordions
-.accordion,
-#{$var-prefix}-accordion {
-
+.#{$class-prefix}accordion {
   input:checked ~,
   &[open] {
     & .accordion-header > {
@@ -36,9 +34,9 @@
   }
 
   .accordion-body {
-    @include margin-bottom(('layout-spacing', true));
     max-height: 0;
     overflow: hidden;
+    @include margin-bottom(('layout-spacing', true));
     @include transition((max-height, 0.05s));
   }
 }
@@ -50,8 +48,7 @@ summary.accordion-header {
   }
 }
 
-.accordion,
-#{$var-prefix}-accordion {
+.#{$class-prefix}accordion {
   &.accordion-menu {
     .menu {
       .menu-item {

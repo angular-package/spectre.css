@@ -10,9 +10,8 @@
 // that includes the `background` color of the given `$color` CSS variable name, and `color` style equal to `light-color`
 // depending on whether the given SCSS variable `$hex-color` lightness is below `60`.
 // By default, $prefix is equal to the globally customizable $var-prefix.
-@mixin bg-color-variant($name, $color, $hex-color, $prefix: $var-prefix) {
-  .bg-#{$name},
-  .#{$prefix}-bg-#{$name} {
+@mixin bg-color-variant($name, $color, $hex-color, $prefix: $class-prefix) {
+  .#{$prefix}bg-#{$name} {
     @include background($color, $important: !important);
     @if (lightness($hex-color) < 60) {
       @include color('light');

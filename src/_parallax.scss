@@ -1,4 +1,5 @@
-@use 'variables' as *;
+// Variables.
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/color/color.function' as *;
@@ -14,61 +15,83 @@
 
 // Mixin: Parallax direction
 @mixin parallax-dir() {
-  height: 50%;
-  outline: none;
-  position: absolute;
-  width: 50%;
   @include z-index('1');
+  position: absolute;
+
+  width: 50%;
+  height: 50%;
+
+  outline: none;
 }
 
-.parallax,
-.#{$var-prefix}-parallax {
-  display: block;
-  height: auto;
+.#{$class-prefix}parallax {
   position: relative;
+
+  // Display.
+  display: block;
+
+  // Size.
   width: auto;
+  height: auto;
 
   .parallax-content {
-    @include shadow-variant(1rem);
+    // Size.
+    width: 100%;
     height: auto;
+
     transform: perspective(get-var('parallax-perspective'));
     transform-style: preserve-3d;
+
+    @include shadow-variant(1rem);
     @include transition(('all', 0.2s, ease));
 
-    width: 100%;
-
     &::before {
-      content: '';
-      display: block;
-      height: 100%;
-      left: 0;
+      // Position.
       position: absolute;
       top: 0;
+      left: 0;
+
+      // Display.
+      content: '';
+      display: block;
+
+      // Size.
       width: 100%;
+      height: 100%;
     }
   }
 
   .parallax-front {
-    align-items: center;
-    @include color('light');
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    left: 0;
+    // Position.
+    @include z-index('0');
     position: absolute;
+    top: 0;
+    left: 0;
+
+    // Display.
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // Size.
+    width: 100%;
+    height: 100%;
+
+    transform: translateZ(get-var('parallax-offset-z')) scale(get-var('parallax-scale'));
+
+    @include color('light');
+
+    // Text.
     text-align: center;
     text-shadow: 0 0 20px color('dark', $alpha: 0.75);
-    top: 0;
-    transform: translateZ(get-var('parallax-offset-z')) scale(get-var('parallax-scale'));
+
     @include transition((transform, 0.2s));
-    width: 100%;
-    @include z-index('0');
   }
 
   .parallax-top-left {
     @include parallax-dir();
-    left: 0;
     top: 0;
+    left: 0;
 
     &:focus ~ .parallax-content,
     &:hover ~ .parallax-content {
@@ -85,8 +108,8 @@
 
   .parallax-top-right {
     @include parallax-dir();
-    right: 0;
     top: 0;
+    right: 0;
 
     &:focus ~ .parallax-content,
     &:hover ~ .parallax-content {
@@ -123,8 +146,8 @@
 
   .parallax-bottom-right {
     @include parallax-dir();
-    bottom: 0;
     right: 0;
+    bottom: 0;
 
     &:focus ~ .parallax-content,
     &:hover ~ .parallax-content {

@@ -17,11 +17,11 @@ h3,
 h4,
 h5,
 h6 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
   color: inherit;
   font-weight: 500;
-  line-height: 1.2;
-  margin-bottom: 0.5em;
-  margin-top: 0;
 }
 .h1,
 .h2,
@@ -69,8 +69,8 @@ u {
 }
 
 abbr[title] {
-  @include border($style: 'dotted', $side: 'bottom');
   cursor: help;
+  @include border($style: 'dotted', $side: 'bottom');
   text-decoration: none;
 }
 
@@ -83,15 +83,15 @@ kbd {
 mark {
   @include label-variant('body-font', 'highlight');
   border-bottom: unit-var('o') solid color('highlight', $lightness: -15%); // TODO: border unit-o
-  border-radius: get-var('border-radius');
   @include padding('unit-o', 'unit-h', 'unit-0');
+  border-radius: get-var('border-radius');
 }
 
 // Blockquote
 blockquote {
-  @include border('lg', $side: left);
   margin-left: 0;
   @include padding('unit-2', 'unit-4');
+  @include border('lg', $side: left);
 
   p:last-child {
     margin-bottom: 0;

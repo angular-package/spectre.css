@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/var/get-var.function' as *;
@@ -12,40 +12,48 @@
 @use 'mixins/z-index.mixin' as *;
 
 // Modals
-.modal,
-.#{$var-prefix}-modal {
-  align-items: center;
-  bottom: 0;
-  display: none;
-  justify-content: center;
-  left: 0;
-  opacity: 0;
-  overflow: hidden;
-  @include padding(('layout-spacing', true));
+.#{$class-prefix}modal {
+  // Position.
   position: fixed;
-  right: 0;
   top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  // Display.
+  opacity: 0;
+  display: none;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+
+  // Size.
+  @include padding(('layout-spacing', true));
 
   &:target,
   &.active {
-    display: flex;
-    opacity: 1;
     @include z-index('4');
+    opacity: 1;
+    display: flex;
 
     .modal-overlay {
-      @include background('bg', $alpha: 0.75); // TODO: Check.
-      bottom: 0;
-      cursor: default;
-      display: block;
-      left: 0;
+      // Position.
       position: absolute;
-      right: 0;
       top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      // Display.
+      display: block;
+      cursor: default;
+
+      @include background('bg', $alpha: 0.75); // TODO: Check.
     }
 
     .modal-container {
-      animation: slide-down 0.2s ease 1;
       @include z-index('0');
+      animation: slide-down 0.2s ease 1;
     }
   }
 
@@ -62,36 +70,40 @@
     }
 
     .modal-container {
-      box-shadow: none;
       max-width: get-var('control-width', $suffix: 'lg');
+      box-shadow: none;
     }
   }
 }
 
 .modal-container {
-  @include shadow-variant(0.2rem);
-  @include background('bg-light');
-  border-radius: get-var('border-radius');
+  // Display.
   display: flex;
   flex-direction: column;
-  max-height: 75vh;
-  max-width: get-var('control-width', $suffix: 'md');
-  @include padding('unit-0', 'unit-4');
+
+  // Size.
   width: 100%;
+  max-width: get-var('control-width', $suffix: 'md');
+  max-height: 75vh;
+  @include padding('unit-0', 'unit-4');
+
+  border-radius: get-var('border-radius');
+  @include background('bg-light');
+  @include shadow-variant(0.2rem);
 
   &.modal-fullheight {
     max-height: 100vh;
   }
 
   .modal-header {
-    @include color('dark');
     @include padding('unit-4');
+    @include color('dark');
   }
 
   .modal-body {
+    position: relative;
     overflow-y: auto;
     @include padding('unit-4');
-    position: relative;
   }
 
   .modal-footer {

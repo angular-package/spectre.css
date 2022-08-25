@@ -1,19 +1,19 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
-@use 'functions/var/get-var.function' as *;
+@use 'functions/var/css-var.function' as *;
 
 // Mixins.
 @use 'mixins/padding.mixins' as *;
 @use 'mixins/text.scss' as *;
 
 // Tiles
-.tile,
-.#{$var-prefix}-tile {
+.#{$class-prefix}tile {
+  // Display.
+  display: flex;
   align-content: space-between;
   align-items: flex-start;
-  display: flex;
 
   .tile-icon,
   .tile-action {
@@ -31,7 +31,7 @@
   }
   .tile-title,
   .tile-subtitle {
-    line-height: get-var('line-height');
+    line-height: css-var('line-height');
   }
 
   &.tile-centered {
@@ -43,8 +43,8 @@
 
     .tile-title,
     .tile-subtitle {
-      @include text-ellipsis();
       margin-bottom: 0;
+      @include text-ellipsis();
     }
   }
 }

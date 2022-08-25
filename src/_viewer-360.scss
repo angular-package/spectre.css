@@ -2,7 +2,7 @@
 @use 'sass:math';
 
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // 360 Degree Viewer
 
@@ -15,10 +15,9 @@
   }
 }
 
-.viewer-360,
-.#{$var-prefix}-viewer-360 {
-  align-items: center;
+.#{$class-prefix}viewer-360 {
   display: flex;
+  align-items: center;
   flex-direction: column;
 
   // Copy and add more numbers if you need
@@ -26,16 +25,16 @@
 
   .viewer-slider {
     cursor: ew-resize;
+    width: 60%;
     margin: 1rem;
     order: 2;
-    width: 60%;
   }
 
   .viewer-image {
+    max-width: 100%;
+    order: 1;
     background-position-y: 0;
     background-repeat: no-repeat;
     background-size: 100%;
-    max-width: 100%;
-    order: 1;
   }
 }

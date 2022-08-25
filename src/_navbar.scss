@@ -1,21 +1,21 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/var/get-var.function' as *;
 
 // Navbar
-.navbar,
-.#{$var-prefix}-navbar {
-  align-items: stretch;
+.#{$class-prefix}navbar {
+  // Display.
   display: flex;
   flex-wrap: wrap;
+  align-items: stretch;
   justify-content: space-between;
 
   .navbar-section {
-    align-items: center;
     display: flex;
     flex: 1 0 0;
+    align-items: center;
 
     &:not(:first-child):last-child {
       justify-content: flex-end;
@@ -23,9 +23,9 @@
   }
 
   .navbar-center {
-    align-items: center;
     display: flex;
     flex: 0 0 auto;
+    align-items: center;
   }
 
   .navbar-brand {

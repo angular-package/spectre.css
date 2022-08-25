@@ -1,23 +1,22 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/var/get-var.function' as *;
 
 // Dropdown
-.dropdown,
-.#{$var-prefix}-dropdown {
-  display: inline-block;
+.#{$class-prefix}dropdown {
   position: relative;
+  display: inline-block;
 
   .menu {
-    animation: slide-down .15s ease 1;
-    display: none;
-    left: 0;
-    max-height: 50vh;
-    overflow-y: auto;
     position: absolute;
     top: 100%;
+    left: 0;
+    display: none;
+    overflow-y: auto;
+    max-height: 50vh;
+    animation: slide-down .15s ease 1;
   }
 
   &.dropdown-right {

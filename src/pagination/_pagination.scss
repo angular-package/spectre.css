@@ -15,14 +15,13 @@
 @use '../mixins/padding.mixins' as *;
 @use '../mixins/transition.mixin' as *;
 
-@mixin s-pagination($prefix: $var-prefix) {
+@mixin s-pagination($prefix: $class-prefix) {
   // Pagination
-  .pagination,
-  .#{$prefix}-pagination {
+  .#{$prefix}pagination {
+    @include margin('unit-1', 'unit-0');
     display: flex;
     list-style: none;
     @include disabled('pagination');
-    @include margin('unit-1', 'unit-0');
     @include padding('unit-1', 'unit-0');
 
     // Common page item.
@@ -33,8 +32,8 @@
       a {
         display: inline-block;
         @include padding('unit-1', 'unit-2');
-        @include color('body-font');
         border-radius: css-var('border-radius');
+        @include color('body-font');
         text-decoration: none;
         @include transition((border, 0.2s), color);
         &:focus,

@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/var/get-var.function' as *;
@@ -13,19 +13,18 @@
 @use 'mixins/padding.mixins' as *;
 
 // Chips
-.chip,
-.#{$var-prefix}-chip {
-  align-items: center;
-  @include background('bg-dark');
-  border-radius: 5rem;
+.#{$class-prefix}chip {
   display: inline-flex;
-  font-size: 90%;
-  height: unit-var('6');
-  line-height: unit-var('4');
-  @include margin('unit-h');
-  max-width: get-var('control-width', $suffix: 'sm');
   overflow: hidden;
+  align-items: center;
+  max-width: get-var('control-width', $suffix: 'sm');
+  height: unit-var('6');
   @include padding('unit-1', 'unit-2');
+  @include margin('unit-h');
+  border-radius: 5rem;
+  @include background('bg-dark');
+  font-size: 90%;
+  line-height: unit-var('4');
   text-decoration: none;
   text-overflow: ellipsis;
   vertical-align: middle;
@@ -43,7 +42,7 @@
   }
 
   .btn-clear {
-    border-radius: 50%;
     transform: scale(.75);
+    border-radius: 50%;
   }
 }

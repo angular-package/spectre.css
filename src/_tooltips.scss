@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/var/get-var.function' as *;
@@ -9,34 +9,51 @@
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
 @use 'mixins/color/color.mixin' as *;
+@use 'mixins/disabled.mixin' as *;
 @use 'mixins/padding.mixins' as *;
 @use 'mixins/transition.mixin' as *;
 @use 'mixins/z-index.mixin' as *;
 
 // Tooltips
-.tooltip,
-.#{$var-prefix}-tooltip {
+.#{$class-prefix}tooltip {
   position: relative;
+
   &::after {
-    @include background('dark', $alpha: 0.95);
-    border-radius: get-var('border-radius');
-    bottom: 100%;
-    @include color('light');
-    content: attr(data-tooltip);
-    display: block;
-    font-size: get-var('font-size', $suffix: 'sm');
-    left: 50%;
-    max-width: get-var('control-width', $suffix: 'sm');
-    opacity: 0;
-    overflow: hidden;
-    @include padding('unit-1', 'unit-2');
-    pointer-events: none;
-    position: absolute;
-    text-overflow: ellipsis;
-    transform: translate(-50%, unit-var('2'));
-    @include transition(opacity, transform);
-    white-space: pre;
+    // Position.
     @include z-index('3');
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+
+    // Display.
+    content: attr(data-tooltip);
+    opacity: 0;
+    display: block;
+    pointer-events: none;
+    overflow: hidden;
+
+    // Size.
+    max-width: get-var('control-width', $suffix: 'sm');
+
+    transform: translate(-50%, unit-var('2'));
+
+    @media (prefers-color-scheme: dark) {
+      @include background('dark', $alpha: 0.95);
+      @include color('light');
+    }
+
+    @media (prefers-color-scheme: light) {
+      @include background('dark', $alpha: 0.95);
+      @include color('light');
+    }
+    border-radius: get-var('border-radius');
+
+    @include padding('unit-1', 'unit-2');
+    @include transition(opacity, transform);
+
+    font-size: get-var('font-size', $suffix: 'sm');
+    text-overflow: ellipsis;
+    white-space: pre;
   }
   &:focus,
   &:hover {
@@ -45,11 +62,10 @@
       transform: translate(-50%, var-negative(unit-var('1')));
     }
   }
-  &[disabled],
-  &.disabled {
-    pointer-events: auto;
-  }
 
+  @include disabled('tooltip');
+
+  // Directions.
   &.tooltip-right {
     &::after {
       bottom: 50%;
@@ -66,8 +82,8 @@
 
   &.tooltip-bottom {
     &::after {
-      bottom: auto;
       top: 100%;
+      bottom: auto;
       transform: translate(-50%, var-negative(unit-var('2')));
     }
     &:focus,
@@ -80,9 +96,9 @@
 
   &.tooltip-left {
     &::after {
+      right: 100%;
       bottom: 50%;
       left: auto;
-      right: 100%;
       transform: translate(unit-var('2'), 50%);
     }
     &:focus,

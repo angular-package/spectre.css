@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/color/color.function' as *;
@@ -12,36 +12,40 @@
 
 // Progress
 // Credit: https://css-tricks.com/html5-progress-element/
-.progress,
-.#{$var-prefix}-progress {
+.#{$class-prefix}progress {
+  position: relative;
   appearance: none;
-  @include background('bg-dark');
+
+  // Size.
+  width: 100%;
+  height: unit-var('1');
+
+  // Border.
   border: 0;
   border-radius: get-var('border-radius');
+
+  @include background('bg-dark');
   @include color('primary');
-  height: unit-var('1');
-  position: relative;
-  width: 100%;
 
   &::-webkit-progress-bar {
-    background: transparent;
     border-radius: get-var('border-radius');
+    background: transparent;
   }
 
   &::-webkit-progress-value {
-    @include background('primary');
     border-radius: get-var('border-radius');
+    @include background('primary');
   }
 
   &::-moz-progress-bar {
-    @include background('primary');
     border-radius: get-var('border-radius');
+    @include background('primary');
   }
 
   &:indeterminate {
-    animation: progress-indeterminate 1.5s linear infinite;
     // TODO: Gradient.
     background: color('bg-dark') linear-gradient(to right, color('primary') 30%, color('bg-dark') 30%) top left / 150% 150% no-repeat;
+    animation: progress-indeterminate 1.5s linear infinite;
 
     &::-moz-progress-bar {
       background: transparent;

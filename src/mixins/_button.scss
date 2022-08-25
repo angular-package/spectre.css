@@ -12,11 +12,10 @@
 @use 'shadow' as *;
 
 // Button variant mixin
-// @mixin button-variant($color: $primary-color) { // old spectre.css
 @mixin button-variant($name, $bg-color, $color: 'light', $lightness: -2%) {
   &.btn-#{$name} {
-    @include background($bg-color);
     border-color: color($bg-color, $lightness: $lightness - 1%);
+    @include background($bg-color);
     @include color($color);
     @include color-visited($color);
     &:focus {
@@ -48,22 +47,22 @@
 
 @mixin button-outline-variant($name, $color: 'primary', $lightness: -2%) {
   &.btn-#{$name} {
-    @include background('light');
     border-color: color($color);
+    @include background('light');
     @include color($color);
     &:focus {
       @include control-shadow($color);
     }
     &:focus,
     &:hover {
-      @include background($color);
       border-color: color($color, $lightness: $lightness);
+      @include background($color);
       @include color($color, $lightness: 100%);
     }
     &:active,
     &.active {
-      @include background($color);
       border-color: color($color, $lightness: $lightness - 3%);
+      @include background($color);
       @include background($color, $lightness: 100%);
     }
     &.loading {

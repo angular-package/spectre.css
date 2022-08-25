@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/color/color.function' as *;
@@ -13,14 +13,13 @@
 @use 'mixins/z-index.mixin' as *;
 
 // Bars
-.bar,
-.#{$var-prefix}-bar {
-  @include background('bg-dark');
-  border-radius: get-var('border-radius');
+.#{$class-prefix}bar {
   display: flex;
   flex-wrap: nowrap;
-  height: unit-var('4');
   width: 100%;
+  height: unit-var('4');
+  border-radius: get-var('border-radius');
+  @include background('bg-dark');
 
   &.bar-sm {
     height: unit-var('1');
@@ -28,57 +27,63 @@
 
   // TODO: attr() support
   .bar-item {
+    position: relative;
+    display: block;
+    flex-shrink: 0;
+    width: 0;
+    height: 100%;
+    line-height: unit-var('4'); // old @angular-package/spectre.css
     @include background('primary');
     @include color('light');
-    display: block;
     font-size: get-var('font-size', $suffix: 'sm');
-    flex-shrink: 0;
-    line-height: unit-var('4'); // old @angular-package/spectre.css
-    height: 100%;
-    position: relative;
     text-align: center;
-    width: 0;
 
     &:first-child {
       border-bottom-left-radius: get-var('border-radius');
       border-top-left-radius: get-var('border-radius');
     }
     &:last-child {
+      flex-shrink: 1;
       border-bottom-right-radius: get-var('border-radius');
       border-top-right-radius: get-var('border-radius');
-      flex-shrink: 1;
     }
   }
 }
 
 // Slider bar
 .bar-slider {
+  position: relative;
   height: get-var('border-width', $suffix: 'lg');
   @include margin(('layout-spacing', true), 'unit-0');
 
-  position: relative;
-
   .bar-item {
+    position: absolute;
     left: 0;
     padding: 0;
-    position: absolute;
     &:not(:last-child):first-child {
-      @include background('bg-dark');
       @include z-index('0');
+      @include background('bg-dark');
     }
   }
 
   .bar-slider-btn {
-    @include background('primary');
-    border: 0;
-    border-radius: 50%;
+    // Position.
+    position: absolute;
+    top: 50%;
+    right: 0;
+
+    // Size.
+    width: unit-var('3');
     height: unit-var('3'); // old @angular-package/spectre.css
     padding: 0;
-    position: absolute;
-    right: 0;
-    top: 50%;
+
     transform: translate(50%, -50%);
-    width: unit-var('3');
+
+    // Border.
+    border: 0;
+    border-radius: 50%;
+
+    @include background('primary');
 
     &:active {
       box-shadow: 0 0 0 0.1rem color('primary');

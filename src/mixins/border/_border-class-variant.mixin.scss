@@ -1,22 +1,25 @@
+// Sass.
 @use 'sass:string';
-@use 'border.mixin' as *;
+
+// Variables.
 @use '../../variables/core' as *;
+
+// Mixins.
+@use 'border.mixin' as *;
 
 @mixin border-class-variant(
   $name,
   $size,
   $color: 'border-color-light',
   $radius: 'border-radius',
-  $prefix: $var-prefix
+  $prefix: $class-prefix
 ) {
   @if (string.length($size) > 0) {
-    .#{$name}-border-#{$size},
-    .#{$prefix}-#{$name}-border-#{$size} {
+    .#{$prefix}#{$name}-border-#{$size} {
       @include border(border-width-#{$size}, solid, $color, $radius);
     }
   } @else {
-    .#{$name}-border,
-    .#{$prefix}-#{$name}-border {
+    .#{$prefix}#{$name}-border {
       @include border(border-width, solid, $color, $radius);
     }
   }

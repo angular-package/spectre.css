@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/color/color.function' as *;
@@ -16,20 +16,19 @@
 @use 'mixins/transition.mixin' as *;
 
 // Calendars
-.calendar,
-.#{$var-prefix}-calendar {
-  @include border();
+.#{$class-prefix}calendar {
   display: block;
   min-width: 280px;
+  @include border();
 
   .calendar-nav {
+    display: flex;
     align-items: center;
-    @include background('bg');
+    @include padding(('layout-spacing', true));
     border-top-left-radius: get-var('border-radius');
     border-top-right-radius: get-var('border-radius');
-    display: flex;
+    @include background('bg');
     font-size: get-var('font-size', $suffix: 'lg');
-    @include padding(('layout-spacing', true));
   }
 
   .calendar-header,
@@ -46,8 +45,8 @@
   }
 
   .calendar-header {
-    @include background('bg');
     @include border($side: 'bottom');
+    @include background('bg');
     @include color('gray');
     font-size: get-var('font-size', $suffix: 'sm');
     text-align: center;
@@ -58,28 +57,35 @@
   }
 
   .calendar-date {
-    border: 0;
     @include padding('unit-1');
+    border: 0;
 
     .date-item {
+      position: relative;
       appearance: none;
-      background: transparent;
+      cursor: pointer;
+
+      // Size.
+      width: unit-var('7');
+      height: unit-var('7');
+      @include padding('unit-h');
+
+      // Border.
       border: get-var('border-width') solid transparent;
       border-radius: 50%;
-      @include color('gray-dark');
-      cursor: pointer;
-      font-size: get-var('font-size', $suffix: 'sm');
-      height: unit-var('7');
-      line-height: unit-var('5');
       outline: none;
-      @include padding('unit-h');
-      position: relative;
+
+      background: transparent;
+      @include color('gray-dark');
+
+      font-size: get-var('font-size', $suffix: 'sm');
+      line-height: unit-var('5');
       text-align: center;
       text-decoration: none;
-      @include transition(background, border, box-shadow, color);
       vertical-align: middle;
       white-space: nowrap;
-      width: unit-var('7');
+
+      @include transition(background, border, box-shadow, color);
 
       &.date-today {
         border-color: color('secondary-dark');
@@ -92,15 +98,15 @@
 
       &:focus,
       &:hover {
-        @include background('secondary-light');
         border-color: color('secondary-dark');
+        @include background('secondary-light');
         @include color('primary');
         text-decoration: none;
       }
       &:active,
       &.active {
-        @include background('primary-dark');
         border-color: color('primary-dark', $lightness: -5%);
+        @include background('primary-dark');
         @include color('light');
       }
 
@@ -119,9 +125,9 @@
     .calendar-event {
       &:disabled,
       &.disabled {
-        cursor: default;
         opacity: 0.25;
         pointer-events: none;
+        cursor: default;
       }
     }
 
@@ -138,14 +144,14 @@
     position: relative;
 
     &::before {
-      @include background('secondary');
+      position: absolute;
+      top: 50%;
+      right: 0;
+      left: 0;
       content: '';
       height: unit-var('7');
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 50%;
       transform: translateY(-50%);
+      @include background('secondary');
     }
     &.range-start {
       &::before {
@@ -161,8 +167,8 @@
     &.range-start,
     &.range-end {
       .date-item {
+        border-color: color('primary-dark', $lightness: -5%);
         @include background('primary-dark');
-        border-color: color('primary-dark', $lightness: -5%); // old @angular-package/spectre.css
         @include color('light');
       }
     }
@@ -178,12 +184,12 @@
       padding: 0;
 
       .calendar-date {
-        @include border($side: 'bottom');
-        @include border($side: 'right');
         display: flex;
         flex-direction: column;
         height: 5.5rem;
         padding: 0;
+        @include border($side: 'right');
+        @include border($side: 'bottom');
 
         &:nth-child(7n) {
           border-right: 0;
@@ -197,8 +203,8 @@
     .date-item {
       align-self: flex-end;
       height: unit-var('7');
-      @include margin-right(('layout-spacing', ('unit': true, 'suffix': 'sm')));
       @include margin-top(('layout-spacing', ('unit': true, 'suffix': 'sm')));
+      @include margin-right(('layout-spacing', ('unit': true, 'suffix': 'sm')));
     }
 
     .calendar-range {
@@ -207,8 +213,8 @@
       }
       &.range-start {
         &::before {
-          left: auto;
           width: 19px;
+          left: auto;
         }
       }
       &.range-end {
@@ -220,18 +226,18 @@
 
     .calendar-events {
       flex-grow: 1;
-      line-height: 1;
       overflow-y: auto;
       @include padding(('layout-spacing', ('unit': true, 'suffix': 'sm')));
+      line-height: 1;
     }
 
     .calendar-event {
-      border-radius: get-var('border-radius');
-      font-size: get-var('font-size', $suffix: 'sm');
       display: block;
-      margin: unit-var('h') auto;
       overflow: hidden;
       padding: 3px 4px;
+      margin: unit-var('h') auto;
+      border-radius: get-var('border-radius');
+      font-size: get-var('font-size', $suffix: 'sm');
       text-overflow: ellipsis;
       white-space: nowrap;
     }

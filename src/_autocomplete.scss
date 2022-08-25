@@ -11,39 +11,46 @@
 @use 'mixins/shadow' as *;
 
 // Autocomplete
-.form-autocomplete,
-.#{$var-prefix}-form-autocomplete {
+.#{$class-prefix}form-autocomplete {
   position: relative;
 
   .form-autocomplete-input {
-    align-content: flex-start;
+    // Display.
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
+
+    // Size.
     height: auto;
     min-height: unit-var('8');
     @include padding('unit-h');
 
     &.is-focused {
-      @include control-shadow();
       border-color: color('primary');
+      @include control-shadow();
     }
 
     .form-input {
-      border-color: transparent;
-      box-shadow: none;
+      // Display.
       display: inline-block;
       flex: 1 0 auto;
-      height: unit-var('6');
-      line-height: unit-var('4');
-      @include margin('unit-h');
+
+      // Size.
       width: auto;
+      height: unit-var('6');
+
+      @include margin('unit-h');
+      border-color: transparent;
+      box-shadow: none;
+
+      line-height: unit-var('4');
     }
   }
 
   .menu {
-    left: 0;
     position: absolute;
     top: 100%;
+    left: 0;
     width: 100%;
   }
 

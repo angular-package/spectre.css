@@ -1,21 +1,18 @@
 // Variables.
-@use '../variables' as *;
+@use '../variables/core' as *;
 
 // Mixins.
 @use '../mixins/border' as *;
 
 // Default border.
-.border,
-.#{$var-prefix}-border {
+.#{$class-prefix}border {
   @include border();
 }
 
 // Default border size large.
-.border-lg,
-.#{$var-prefix}-border-lg {
+.#{$class-prefix}border-lg {
   @include border('lg');
 }
-
 
 // TODO: Add colors.
 // Border dark color.

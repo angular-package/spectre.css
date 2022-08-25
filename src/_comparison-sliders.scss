@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/var/unit-var.function' as *;
@@ -12,35 +12,39 @@
 
 // Image comparison slider
 // Credit: http://codepen.io/solipsistacp/pen/Gpmaq
-.comparison-slider,
-.#{$var-prefix}-comparison-slider {
-  height: 50vh;
-  overflow: hidden;
+.#{$class-prefix}comparison-slider {
   position: relative;
+  overflow: hidden;
   width: 100%;
+  height: 50vh;
   -webkit-overflow-scrolling: touch;
 
   .comparison-before,
   .comparison-after {
-    height: 100%;
-    left: 0;
-    margin: 0;
-    overflow: hidden;
+    // Position.
     position: absolute;
     top: 0;
+    left: 0;
+    margin: 0;
+
+    // Display.
+    overflow: hidden;
+
+    // Size.
+    height: 100%;
 
     img {
+      position: absolute;
+      width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: left center;
-      position: absolute;
-      width: 100%;
     }
   }
 
   .comparison-before {
-    width: 100%;
     z-index: 1;
+    width: 100%;
 
     .comparison-label {
       right: unit-var('4');
@@ -48,35 +52,35 @@
   }
 
   .comparison-after {
+    z-index: 2;
     max-width: 100%;
     min-width: 0;
-    z-index: 2;
 
     &::before {
-      background: transparent;
+      @include z-index('0');
+      position: absolute;
+      top: 0;
+      right: unit-var('4');
+      left: 0;
       content: '';
       cursor: default;
       height: 100%;
-      left: 0;
-      position: absolute;
-      right: unit-var('4');
-      top: 0;
-      @include z-index('0');
+      background: transparent;
     }
 
     &::after {
-      background: currentColor;
-      border-radius: 50%;
-      box-shadow: 0 -5px, 0 5px;
-      @include color('light');
-      content: '';
-      height: 3px;
-      pointer-events: none;
       position: absolute;
-      right: unit-var('2');
       top: 50%;
-      transform: translate(50%, -50%);
+      right: unit-var('2');
+      content: '';
+      pointer-events: none;
       width: 3px;
+      height: 3px;
+      transform: translate(50%, -50%);
+      border-radius: 50%;
+      background: currentColor;
+      @include color('light');
+      box-shadow: 0 -5px, 0 5px;
     }
 
     .comparison-label {
@@ -85,28 +89,28 @@
   }
 
   .comparison-resizer {
-    animation: first-run 1.5s 1 ease-in-out;
-    cursor: ew-resize;
-    height: unit-var('4');
+    position: relative;
+    top: 50%;
     left: 0;
+    opacity: 0;
+    cursor: ew-resize;
+    resize: horizontal;
     max-width: 100%;
     min-width: unit-var('4');
-    opacity: 0;
-    outline: none;
-    position: relative;
-    resize: horizontal;
-    top: 50%;
-    transform: translateY(-50%) scaleY(30);
+    height: unit-var('4');
     width: 0;
+    transform: translateY(-50%) scaleY(30);
+    outline: none;
+    animation: first-run 1.5s 1 ease-in-out;
   }
 
   .comparison-label {
-    @include background('dark', $alpha: 0.5);
-    bottom: unit-var('4');
-    @include color('light');
-    @include padding('unit-1', 'unit-2');
     position: absolute;
+    bottom: unit-var('4');
     user-select: none;
+    @include padding('unit-1', 'unit-2');
+    @include background('dark', $alpha: 0.5);
+    @include color('light');
   }
 }
 

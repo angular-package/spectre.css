@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/var/get-var.function' as *;
@@ -15,17 +15,21 @@
 @use 'mixins/z-index.mixin' as *;
 
 // Menus
-.menu,
-.#{$var-prefix}-menu {
-  @include shadow-variant(0.05rem);
-  // @include background('bg-light'); // ! Removed background.
-  border-radius: get-var('border-radius');
-  list-style: none;
+.#{$class-prefix}menu {
+  // Position.
+  @include z-index('3');
   margin: 0;
+  // Display.
+  list-style: none;
+  // Size.
   min-width: get-var('control-width', $suffix: 'xs');
   @include padding('unit-2');
+  // Transform.
   transform: translateY(get-var('layout-spacing', $suffix: 'sm', $unit: true));
-  @include z-index('3');
+  // Border.
+  border-radius: get-var('border-radius');
+  // @include background('bg-light'); // ! Removed background.
+  @include shadow-variant(0.05rem);
 
   &.menu-nav {
     background: transparent;
@@ -33,17 +37,22 @@
   }
 
   .menu-item {
-    margin-top: 0;
-    @include padding('unit-0', 'unit-2');
+    // Position.
     position: relative;
+    margin-top: 0;
+    // Size.
+    @include padding('unit-0', 'unit-2');
+    // Text.
     text-decoration: none;
 
     & > a {
+      margin: 0 var-negative(get-var('unit-2')); // TODO: Include margin with the negative
+
+      // Display.
+      display: block;
+      @include padding('unit-1', 'unit-2');
       border-radius: get-var('border-radius');
       color: inherit;
-      display: block;
-      margin: 0 var-negative(get-var('unit-2')); // TODO: Include margin with the negative
-      @include padding('unit-1', 'unit-2');
       text-decoration: none;
       &:focus,
       &:hover {
@@ -80,12 +89,15 @@
   }
 
   .menu-badge {
-    align-items: center;
-    display: flex;
-    height: 100%;
+    // Position.
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
+    // Display.
+    display: flex;
+    align-items: center;
+    // Size.
+    height: 100%;
 
     .label {
       @include margin-right('unit-2');

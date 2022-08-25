@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/color/color.function' as *;
@@ -11,31 +11,30 @@
 @use 'mixins/z-index.mixin' as *;
 
 // Badges
-.badge,
-.#{$var-prefix}-badge {
+.#{$class-prefix}badge {
   position: relative;
   white-space: nowrap;
 
   &[data-badge],
   &:not([data-badge]) {
     &::after {
-      @include background('primary');
-      background-clip: padding-box;
-      border-radius: 0.5rem;
-      box-shadow: 0 0 0 0.1rem color('bg-color-light');
-      @include color('light');
-      content: attr(data-badge);
       display: inline-block;
+      content: attr(data-badge);
       transform: translate(-0.05rem, -0.5rem);
+      border-radius: 0.5rem;
+      background-clip: padding-box;
+      @include background('primary');
+      @include color('light');
+      box-shadow: 0 0 0 0.1rem color('bg-color-light');
     }
   }
   &[data-badge] {
     &::after {
-      font-size: get-var('font-size', $suffix: 'sm');
+      min-width: 0.9rem;
       height: 0.9rem;
       line-height: 1;
-      min-width: 0.9rem;
       padding: 0.1rem 0.2rem;
+      font-size: get-var('font-size', $suffix: 'sm');
       text-align: center;
       white-space: nowrap;
     }
@@ -43,10 +42,10 @@
   &:not([data-badge]),
   &[data-badge=''] {
     &::after {
-      height: 6px;
-      min-width: 6px;
-      padding: 0;
       width: 6px;
+      min-width: 6px;
+      height: 6px;
+      padding: 0;
     }
   }
 
@@ -63,11 +62,11 @@
   // Badges for Avatars
   &.avatar {
     &::after {
+      @include z-index('1');
       position: absolute;
       top: 14.64%;
       right: 14.64%;
       transform: translate(50%, -50%);
-      @include z-index('1');
     }
   }
 }

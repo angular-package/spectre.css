@@ -1,22 +1,21 @@
+// Folder
+@forward 'border';
+@forward 'color';
+
 // Mixins
 @forward 'avatar';
-@forward 'border';
 @forward 'box-shadow-side';
 @forward 'button';
 @forward 'clearfix';
-@forward 'color';
-
-
-@forward 'define-color-based-on'; // @deprecated 1.0.0-beta
 @forward 'define-color'; // @deprecated 1.0.0-beta
+@forward 'define-color-based-on'; // @deprecated 1.0.0-beta
 @forward 'disabled.mixin';
-
 @forward 'hide-scrollbar.mixin'; // @new 1.0.0-beta
 @forward 'label';
-@forward 'margin.mixins'; // @new 1.0.0-beta
 @forward 'margin-size-variants.mixin';
-@forward 'padding.mixins'; // @new 1.0.0-beta
+@forward 'margin.mixins'; // @new 1.0.0-beta
 @forward 'padding-size-variants.mixin';
+@forward 'padding.mixins'; // @new 1.0.0-beta
 @forward 'position';
 @forward 'property.mixin';
 @forward 'set-var.mixin';

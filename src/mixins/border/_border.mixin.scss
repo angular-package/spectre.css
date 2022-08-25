@@ -1,5 +1,7 @@
+// Sass.
 @use 'sass:string';
 
+// Functions.
 @use '../../functions/get-border.function' as *;
 @use '../../functions/var/get-var.function' as *;
 

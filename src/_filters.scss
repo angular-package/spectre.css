@@ -1,3 +1,6 @@
+// Variables.
+@use 'variables/core' as *;
+
 // Functions.
 @use 'functions/var/get-var.function' as *;
 
@@ -19,7 +22,7 @@ $filter-number: 8 !default;
   display: none;
 }
 
-.filter {
+.#{$class-prefix}filter {
   .filter-nav {
     @include margin(('layout-spacing', true), 0);
   }

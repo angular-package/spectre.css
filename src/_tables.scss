@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/var/get-var.function' as *;
@@ -11,16 +11,17 @@
 @use 'mixins/padding.mixins' as *;
 
 // Tables
-.table,
-.#{$var-prefix}-table {
-  border-collapse: collapse;
-  border-spacing: 0;
+.#{$class-prefix}table {
   width: 100%;
+
   @if $rtl == true {
     text-align: right;
   } @else {
     text-align: left;
   }
+
+  border-collapse: collapse;
+  border-spacing: 0;
 
   &.table-striped {
     tbody {
@@ -62,8 +63,8 @@
   thead > tr > th,
   tbody > tr > td,
   tbody > tr > th {
-    @include border($side: bottom, $radius: false);
     @include padding('unit-3', 'unit-2');
+    @include border($side: bottom, $radius: false);
   }
   thead > tr > th {
     @include border($side: bottom, $radius: false);
@@ -75,8 +76,8 @@
         a {
           @include color('body-font');
         }
-        @include color('body-font');
         @include border($side: right);
+        @include color('body-font');
       }
 
       &:last-child {

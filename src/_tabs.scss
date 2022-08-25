@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/color/color.function' as *;
@@ -13,25 +13,31 @@
 @use 'mixins/margin.mixins' as *;
 
 // Tabs
-.tab,
-.#{$var-prefix}-tab {
-  align-items: center;
-  @include border($side: bottom);
+.#{$class-prefix}tab {
+  // Display.
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   list-style: none;
+
+  // Position.
   margin: get-var('unit-1') 0 calc(get-var('unit-1') - get-var('border-width')) 0; // TODO: Use the margin
+
+  // Border.
+  @include border($side: bottom);
 
   .tab-item {
     margin-top: 0;
     a {
+      // Position.
+      @include margin('unit-0', 'unit-2', 'unit-0', 'unit-0');
+      // Display.
+      display: block;
+      // Size.
+      padding: get-var('unit-2') get-var('unit-1') calc(get-var('unit-2') - get-var('border-width', $suffix: 'lg')) get-var('unit-1');
       border-bottom: get-var('border-width', $suffix: 'lg') solid transparent;
       color: inherit;
-      display: block;
-      @include margin('unit-0', 'unit-2', 'unit-0', 'unit-0');
-      padding: get-var('unit-2') get-var('unit-1') calc(get-var('unit-2') - get-var('border-width', $suffix: 'lg')) get-var('unit-1');
       text-decoration: none;
-
       &:focus,
       &:hover {
         @include color('link');
@@ -68,8 +74,8 @@
       .badge {
         &[data-badge]::after {
           position: absolute;
-          right: unit-var('h');
           top: unit-var('h');
+          right: unit-var('h');
           transform: translate(0, 0);
         }
       }

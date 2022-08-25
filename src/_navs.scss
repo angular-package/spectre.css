@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/var/get-var.function' as *;
@@ -10,17 +10,19 @@
 @use 'mixins/padding.mixins' as *;
 
 // Navs
-.nav,
-.#{$var-prefix}-nav {
+.#{$class-prefix}nav {
+  // Position.
+  @include margin('unit-1', 'unit-0');
+
+  // Display.
   display: flex;
   flex-direction: column;
   list-style: none;
-  @include margin('unit-1', 'unit-0');
 
   .nav-item {
     a {
-      @include color('gray-dark');
       @include padding('unit-1', 'unit-2');
+      @include color('gray-dark');
       text-decoration: none;
       &:focus,
       &:hover {

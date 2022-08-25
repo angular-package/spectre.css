@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/fonts' as *;
 
 // Functions.
 @use 'functions/color/color.function' as *;
@@ -18,24 +18,24 @@
 }
 
 html {
-  box-sizing: border-box;
-  font-size: get-var('html-font-size');
   line-height: get-var('html-line-height');
+  font-size: get-var('html-font-size');
   -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
 }
 
 body {
+  overflow-x: hidden;
   @include background('body-bg');
   @include color('body-font');
   font-family: $body-font-family;
   font-size: get-var('font-size');
-  overflow-x: hidden;
   text-rendering: optimizeLegibility;
 }
 
 a {
-  @include color('link');
   outline: none;
+  @include color('link');
   text-decoration: none;
 
   &:focus {

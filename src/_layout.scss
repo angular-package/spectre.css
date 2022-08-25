@@ -2,7 +2,8 @@
 @use 'sass:math';
 
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
+@use 'variables/responsive-breakpoints' as *;
 
 // Functions.
 @use 'functions/var/get-var.function' as *;
@@ -18,13 +19,10 @@
 
 
 // Layout
-.container,
-.#{$var-prefix}-container {
-  margin-left: auto;
-  margin-right: auto;
+.#{$class-prefix}container {
+  width: 100%;
   @include padding-left(('layout-spacing', true));
   @include padding-right(('layout-spacing', true));
-  width: 100%;
 
   &.grid-xl {
     max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + size-var('xl'));
@@ -45,6 +43,9 @@
   &.grid-xs {
     max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + size-var('xs'));
   }
+
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Responsive breakpoint system
@@ -82,12 +83,7 @@
 .column {
   flex: 1;
   max-width: 100%;
-  // padding-left: $layout-spacing; // old spectre.css
-  // padding-left: get-var('layout-spacing'); // old @angular-package/spectre.css
   @include padding-left(('layout-spacing', true));
-
-  // padding-right: $layout-spacing; // old spectre.css
-  // padding-right: get-var('layout-spacing'); // old @angular-package/spectre.css
   @include padding-right(('layout-spacing', true));
 
 

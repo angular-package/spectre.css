@@ -1,5 +1,7 @@
+// Variables.
+@use 'variables/core' as *;
+
 // Functions.
-// @use 'functions/color/color.function' as *; // old @angular-package/spectre.css
 @use 'functions/var/get-var.function' as *;
 @use 'functions/var/unit-var.function' as *;
 
@@ -23,27 +25,27 @@ code {
   font-size: 85%;
 }
 
-.code {
+.#{$class-prefix}code {
+  position: relative;
   border-radius: get-var('border-radius');
   @include color('body-font');
-  position: relative;
 
   &::before {
-    @include color('gray');
-    content: attr(data-lang);
-    font-size: get-var('font-size', $suffix: 'sm');
     position: absolute;
-    right: get-var(('layout-spacing', true));
     top: unit-var('h');
+    right: get-var(('layout-spacing', true));
+    content: attr(data-lang);
+    @include color('gray');
+    font-size: get-var('font-size', $suffix: 'sm');
   }
 
   code {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+    padding: 1rem;
     @include background('bg');
     color: inherit;
-    display: block;
     line-height: 1.5;
-    overflow-x: auto;
-    padding: 1rem;
-    width: 100%;
   }
 }

@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/var/get-var.function' as *;
@@ -10,15 +10,19 @@
 
 // Meters
 // Credit: https://css-tricks.com/html5-meter-element/
-.meter,
-.#{$var-prefix}-meter {
+.#{$class-prefix}meter {
   // appearance: none; // ! disabled
-  @include background('bg');
-  border: 0;
-  border-radius: get-var('border-radius');
   display: block;
+
+  // Size.
   width: 100%;
   height: unit-var('4');
+
+  // Border.
+  border: 0;
+  border-radius: get-var('border-radius');
+
+  @include background('bg');
 
   &::-webkit-meter-inner-element {
     display: block;

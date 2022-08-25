@@ -13,15 +13,13 @@
 // Text color utility mixin
 // The mixin contains the twp CSS classes, the class of the name prefixed with `text-`, and prefixed `#{$prefix}-text-` with the given color `$name`
 // that includes the `color` style of the given `$color` CSS variable name, also the class of the same name assigned to tag `a`.
-// By default, `$prefix` is equal to the globally customizable `$var-prefix`.
-@mixin text-color-variant($name, $color, $prefix: $var-prefix) {
-  .text-#{$name},
-  .#{$prefix}-text-#{$name} {
+// By default, `$prefix` is equal to the globally customizable `$class-prefix`.
+@mixin text-color-variant($name, $color, $prefix: $class-prefix) {
+  .#{$prefix}text-#{$name} {
     @include color($color, $important: true);
   }
 
-  a.text-#{$name},
-  a.#{$prefix}-text-#{$name} {
+  a.#{$prefix}text-#{$name} {
     @include color-focus($color, $lightness: -5%);
     @include color-hover($color, $lightness: -5%);
     @include color-visited($color, $lightness: 5%);

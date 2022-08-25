@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/var/get-var.function' as *;
@@ -13,59 +13,69 @@
 @use 'mixins/z-index.mixin' as *;
 
 // Steps
-.step,
-.#{$var-prefix}-step {
+.#{$class-prefix}step {
+  // Display.
   display: flex;
   flex-wrap: nowrap;
   list-style: none;
-  @include margin('unit-1', 'unit-0');
+
   width: 100%;
 
+  @include margin('unit-1', 'unit-0');
+
   .step-item {
-    flex: 1 1 0;
+    position: relative;
     margin-top: 0;
+    flex: 1 1 0;
     min-height: 1rem;
     text-align: center;
-    position: relative;
 
     &:not(:first-child)::before {
-      @include background('primary');
-      content: '';
-      height: 2px;
-      left: -50%;
       position: absolute;
       top: 9px;
+      left: -50%;
+
+      content: '';
       width: 100%;
+      height: 2px;
+
+      @include background('primary');
     }
 
     a {
-      @include color('primary');
       display: inline-block;
       padding: 20px 10px 0;
+      @include color('primary');
       text-decoration: none;
 
       &::before {
-        border-radius: 50%;
-        @include background('primary');
-        @include border('lg', solid, 'light', false);
-
-        content: '';
-        display: block;
-        height: unit-var('3');
-        left: 50%;
+        // Position.
+        @include z-index('0');
         position: absolute;
         top: unit-var('1');
-        transform: translateX(-50%);
+        left: 50%;
+
+        // Display.
+        content: '';
+        display: block;
         width: unit-var('3');
-        @include z-index('0');
+        height: unit-var('3');
+
+        transform: translateX(-50%);
+
+        // Border.
+        @include border('lg', solid, 'light', false);
+        border-radius: 50%;
+
+        @include background('primary');
       }
     }
 
     &.active {
       a {
         &::before {
-          @include background('light');
           @include border('lg', solid, 'primary', false);
+          @include background('light');
         }
       }
 

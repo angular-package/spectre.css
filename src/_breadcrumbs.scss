@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Mixins.
 @use 'mixins/color/color.mixin' as *;
@@ -7,18 +7,18 @@
 @use 'mixins/padding.mixins' as *;
 
 // Breadcrumbs
-.breadcrumb,
-.#{$var-prefix}-breadcrumb {
-  list-style: none;
+.#{$class-prefix}breadcrumb {
   @include margin('unit-1', 'unit-0');
+  list-style: none;
   @include padding('unit-1', 'unit-0');
 
 
   .breadcrumb-item {
-    @include color('gray-dark');
-    display: inline-block;
     margin: 0;
+    display: inline-block;
     @include padding('unit-1', 'unit-0');
+
+    @include color('gray-dark');
 
     &:not(:last-child) {
       @include margin-right('unit-1');
@@ -30,9 +30,9 @@
 
     &:not(:first-child) {
       &::before {
-        @include color('gray-dark');
         content: '/';
         @include padding-right('unit-2');
+        @include color('gray-dark');
       }
     }
   }

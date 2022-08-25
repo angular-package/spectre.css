@@ -1,4 +1,7 @@
+// Sass.
 @use 'sass:string';
+
+// Mixin.
 @use 'border.mixin' as *;
 
 @mixin border-variant(

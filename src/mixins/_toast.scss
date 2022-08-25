@@ -15,9 +15,8 @@
   $font-color: 'light',
 ) {
   &.toast-#{$name} {
-    @include background($color, $alpha: 0.95);
     border-color: color($color);
-    // Font color.
+    @include background($color, $alpha: 0.95);
     @include color($font-color);
     a:active,
     a:visited,

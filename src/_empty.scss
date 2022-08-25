@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/color/color.function' as *;
@@ -12,13 +12,12 @@
 @use 'mixins/padding.mixins' as *;
 
 // Empty states (or Blank slates)
-.empty,
-.#{$var-prefix}-empty {
-  @include background('bg');
+.#{$class-prefix}empty {
+  @include padding('unit-16', 'unit-8');
   border-radius: get-var('border-radius');
+  @include background('bg');
   @include color('gray-dark');
   text-align: center;
-  @include padding('unit-16', 'unit-8');
 
   .empty-icon {
     @include margin-bottom(('layout-spacing', ('suffix': 'lg', 'unit': true)));

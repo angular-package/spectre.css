@@ -29,48 +29,49 @@ fieldset {
 }
 
 legend {
+  @include margin-bottom(('layout-spacing', ('suffix': 'lg', unit: true)));
   font-size: get-var('font-size', $suffix: 'lg');
   font-weight: 500;
-  @include margin-bottom(('layout-spacing', ('suffix': 'lg', unit: true)));
 }
 
 // Form element: Label
 .form-label {
   display: block;
-  line-height: get-var('line-height');
   padding: calc(get-var('control-padding-y') + get-var('border-width')) 0; // TODO: use adjust / update adjust to use CSS vars
+  line-height: get-var('line-height');
 
   &.label-sm {
-    font-size: get-var('font-size', $suffix: 'sm');
     padding: calc(get-var('control-padding-y', $suffix: 'sm') + get-var('border-width')) 0;
+    font-size: get-var('font-size', $suffix: 'sm');
   }
 
   &.label-lg {
-    font-size: get-var('font-size', $suffix: 'lg');
     padding: calc(get-var('control-padding-y', $suffix: 'lg') + get-var('border-width')) 0;
+    font-size: get-var('font-size', $suffix: 'lg');
   }
 }
 
 // Form element: Input
 .form-input {
+  position: relative;
   appearance: none;
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: get-var('control-size');
+  @include padding('control-padding-y', 'control-padding-x');
+  @include border($color: 'border-dark');
+  outline: none;
   @include background('bg-light');
   background-image: none;
-  @include border($color: 'border-dark');
   @include color('body-font');
-  display: block;
   font-size: get-var('font-size');
-  height: get-var('control-size');
   line-height: get-var('line-height');
-  max-width: 100%;
-  outline: none;
-  @include padding('control-padding-y', 'control-padding-x');
-  position: relative;
   @include transition(background, border, box-shadow, color);
-  width: 100%;
+
   &:focus {
-    @include control-shadow();
     border-color: color('primary');
+    @include control-shadow();
   }
   &::placeholder {
     @include color('gray');
@@ -78,21 +79,21 @@ legend {
 
   // Input sizes
   &.input-sm {
-    font-size: get-var('font-size', $suffix: 'sm');
     height: get-var('control-size', $suffix: 'sm');
     @include padding('control-padding-y-sm', 'control-padding-x-sm');
+    font-size: get-var('font-size', $suffix: 'sm');
   }
 
   &.input-lg {
-    font-size: get-var('font-size', $suffix: 'lg');
     height: get-var('control-size', $suffix: 'lg');
     @include padding('control-padding-y-lg', 'control-padding-x-lg');
+    font-size: get-var('font-size', $suffix: 'lg');
   }
 
   &.input-inline {
     display: inline-block;
-    vertical-align: middle;
     width: auto;
+    vertical-align: middle;
   }
 
   // Input types
@@ -112,9 +113,9 @@ textarea.form-input {
 
 // Form element: Input hint
 .form-input-hint {
+  @include margin-top('unit-1');
   @include color('gray');
   font-size: get-var('font-size', $suffix: 'sm');
-  @include margin-top('unit-1');
 
   .has-success &,
   .is-success + & {
@@ -130,20 +131,21 @@ textarea.form-input {
 // Form element: Select
 .form-select {
   appearance: none;
+  width: 100%;
+  height: get-var('control-size');
+  @include padding('control-padding-y', 'control-padding-x');
   @include border($color: 'border-dark');
   border-radius: get-var('border-radius');
+  outline: none;
+  @include background('bg-light');
   color: inherit;
   font-size: get-var('font-size');
-  height: get-var('control-size');
   line-height: get-var('line-height');
-  outline: none;
-  @include padding('control-padding-y', 'control-padding-x');
   vertical-align: middle;
-  width: 100%;
-  @include background('bg-light');
+
   &:focus {
-    @include control-shadow();
     border-color: color('primary');
+    @include control-shadow();
   }
   &::-ms-expand {
     display: none;
@@ -151,15 +153,15 @@ textarea.form-input {
 
   // Select sizes
   &.select-sm {
-    font-size: get-var('font-size', $suffix: 'sm');
     height: get-var('control-size', $suffix: 'sm');
     padding: get-var('control-padding-y', $suffix: 'sm') calc(get-var('control-icon-size') + get-var('control-padding-x', $suffix: 'sm')) get-var('control-padding-y', $suffix: 'sm') get-var('control-padding-x', $suffix: 'sm'); // TODO: Use the padding mixin
+    font-size: get-var('font-size', $suffix: 'sm');
   }
 
   &.select-lg {
-    font-size: get-var('font-size', $suffix: 'lg');
     height: get-var('control-size', $suffix: 'lg');
     padding: get-var('control-padding-y', $suffix: 'lg') calc(get-var('control-icon-size') + get-var('control-padding-x', $suffix: 'lg')) get-var('control-padding-y', $suffix: 'lg') get-var('control-padding-x', $suffix: 'lg');
+    font-size: get-var('font-size', $suffix: 'lg');
   }
 
   // Multiple select
@@ -173,8 +175,8 @@ textarea.form-input {
     }
   }
   &:not([multiple]):not([size]) {
-    background: color('bg-color-light') url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23667189'%20d='M2%200L0%202h4zm0%205L0%203h4z'/%3E%3C/svg%3E") no-repeat right 0.35rem center / 0.4rem 0.5rem;
     padding-right: calc(get-var('control-icon-size') + get-var('control-padding-x')); // TODO: Use the padding mixin
+    background: color('bg-color-light') url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23667189'%20d='M2%200L0%202h4zm0%205L0%203h4z'/%3E%3C/svg%3E") no-repeat right 0.35rem center / 0.4rem 0.5rem;
   }
 }
 
@@ -184,13 +186,13 @@ textarea.form-input {
   position: relative;
 
   .form-icon {
-    height: get-var('control-icon-size');
-    @include margin('unit-0', 'control-padding-y');
+    @include z-index('0', 1);
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    @include margin('unit-0', 'control-padding-y');
     width: get-var('control-icon-size');
-    @include z-index('0', 1);
+    height: get-var('control-icon-size');
+    transform: translateY(-50%);
   }
 }
 
@@ -218,58 +220,60 @@ textarea.form-input {
 .form-checkbox,
 .form-radio,
 .form-switch {
-  display: block;
-  line-height: get-var('line-height');
-  margin: calc((get-var('control-size') - get-var('control-size', $suffix: 'sm')) * 0.5) 0;
-  min-height: get-var('control-size', $suffix: 'sm');
-  padding: calc((get-var('control-size', $suffix: 'sm') - get-var('line-height')) / 2) get-var('control-padding-x') calc((get-var('control-size', $suffix: 'sm') - get-var('line-height')) / 2) calc(get-var('control-icon-size') + get-var('control-padding-x')); // old spectre.css
   position: relative;
+  margin: calc((get-var('control-size') - get-var('control-size', $suffix: 'sm')) * 0.5) 0;
+
+  display: block;
+  min-height: get-var('control-size', $suffix: 'sm');
+  line-height: get-var('line-height');
+  padding: calc((get-var('control-size', $suffix: 'sm') - get-var('line-height')) / 2) get-var('control-padding-x') calc((get-var('control-size', $suffix: 'sm') - get-var('line-height')) / 2) calc(get-var('control-icon-size') + get-var('control-padding-x')); // old spectre.css
 
   input {
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
+    position: absolute;
     margin: -1px;
     overflow: hidden;
-    position: absolute;
     width: 1px;
+    height: 1px;
+    clip: rect(0, 0, 0, 0);
+
     &:focus + .form-icon {
-      @include control-shadow();
       border-color: ('primary');
+      @include control-shadow();
     }
     &:checked + .form-icon {
-      @include background('primary');
       border-color: color('primary');
+      @include background('primary');
     }
   }
 
   .form-icon {
-    @include border($color: 'border-dark');
-    cursor: pointer;
-    display: inline-block;
     position: absolute;
+    display: inline-block;
+    cursor: pointer;
+    @include border($color: 'border-dark');
     @include transition(background, border, box-shadow, color);
   }
 
   // Input checkbox, radio and switch sizes
   &.input-sm {
-    font-size: get-var('font-size', $suffix: 'sm');
     margin: 0;
+    font-size: get-var('font-size', $suffix: 'sm');
   }
 
   &.input-lg {
-    font-size: get-var('font-size', $suffix: 'lg');
     margin: calc((get-var('control-size', $suffix: 'lg') - get-var('control-size', $suffix: 'sm')) / 2) 0;
+    font-size: get-var('font-size', $suffix: 'lg');
   }
 }
 
 .form-checkbox,
 .form-radio {
   .form-icon {
-    @include background('bg-light');
-    height: get-var('control-icon-size');
-    left: 0;
     top: calc((get-var('control-size', $suffix: 'sm') - get-var('control-icon-size')) / 2); // TODO: Use the var-adjust.
+    left: 0;
     width: get-var('control-icon-size');
+    height: get-var('control-icon-size');
+    @include background('bg-light');
   }
 
   input {
@@ -286,34 +290,34 @@ textarea.form-input {
   input {
     &:checked + .form-icon {
       &::before {
-        background-clip: padding-box;
-        @include border('lg', $color: 'light');
-        border-left-width: 0;
-        border-top-width: 0;
-        content: "";
-        height: 9px;
+        position: absolute;
+        top: 50%;
         left: 50%;
         margin-left: -3px;
         margin-top: -6px;
-        position: absolute;
-        top: 50%;
-        transform: rotate(45deg);
+        content: "";
         width: 6px;
+        height: 9px;
+        transform: rotate(45deg);
+        @include border('lg', $color: 'light');
+        border-left-width: 0;
+        border-top-width: 0;
+        background-clip: padding-box;
       }
     }
     &:indeterminate + .form-icon {
-      @include background('primary');
       border-color: color('primary');
+      @include background('primary');
       &::before {
-        @include background('bg-light');
-        content: "";
-        height: 2px;
+        position: absolute;
+        top: 50%;
         left: 50%;
         margin-left: -5px;
         margin-top: -1px;
-        position: absolute;
-        top: 50%;
+        content: "";
         width: 10px;
+        height: 2px;
+        @include background('bg-light');
       }
     }
   }
@@ -326,15 +330,15 @@ textarea.form-input {
   input {
     &:checked + .form-icon {
       &::before {
-        @include background('bg-light');
-        border-radius: 50%;
-        content: "";
-        height: 6px;
-        left: 50%;
         position: absolute;
         top: 50%;
-        transform: translate(-50%, -50%);
+        left: 50%;
+        content: "";
         width: 6px;
+        height: 6px;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        @include background('bg-light');
       }
     }
   }
@@ -345,24 +349,28 @@ textarea.form-input {
   padding-left: calc(get-var('unit-8') + get-var('control-padding-x')); // TODO: Use the padding mixin
 
   .form-icon {
+    top: calc((get-var('control-size', $suffix: 'sm') - unit-var('4')) / 2 - get-var('border-width'));
+    left: 0;
+    width: unit-var('8');
+    height: calc(unit-var('4') + get-var('border-width') * 2);
+    border-radius: calc(unit-var('2') + get-var('border-width'));
     @include background('gray');
     background-clip: padding-box;
-    border-radius: calc(unit-var('2') + get-var('border-width'));
-    height: calc(unit-var('4') + get-var('border-width') * 2);
-    left: 0;
-    top: calc((get-var('control-size', $suffix: 'sm') - unit-var('4')) / 2 - get-var('border-width'));
-    width: unit-var('8');
     &::before {
-      @include background('bg-light');
-      border-radius: 50%;
-      content: "";
-      display: block;
-      height: unit-var('4');
-      left: 0;
+      // Position.
       position: absolute;
       top: 0;
-      @include transition(background, border, box-shadow, color, left);
+      left: 0;
+
+      // Display.
+      content: "";
+      display: block;
       width: unit-var('4');
+      height: unit-var('4');
+
+      border-radius: 50%;
+      @include background('bg-light');
+      @include transition(background, border, box-shadow, color, left);
     }
   }
 
@@ -385,22 +393,21 @@ textarea.form-input {
   display: flex;
 
   .input-group-addon {
-    @include background('bg');
-    @include border($color: 'border-dark');
-    border-radius: get-var('border-radius');
-    line-height: get-var('line-height');
     @include padding('control-padding-y', 'control-padding-x');
-
+    border-radius: get-var('border-radius');
+    @include border($color: 'border-dark');
+    @include background('bg');
+    line-height: get-var('line-height');
     white-space: nowrap;
 
     &.addon-sm {
-      font-size: get-var('font-size', $suffix: 'sm');
       @include padding('control-padding-y-sm', 'control-padding-x-sm');
+      font-size: get-var('font-size', $suffix: 'sm');
     }
 
     &.addon-lg {
-      font-size: get-var('font-size', $suffix: 'lg');
       @include padding('control-padding-y-lg', 'control-padding-x-lg');
+      font-size: get-var('font-size', $suffix: 'lg');
     }
   }
 
@@ -423,13 +430,13 @@ textarea.form-input {
       border-top-right-radius: 0;
     }
     &:not(:first-child):not(:last-child) {
-      border-radius: 0;
       margin-left: var-negative(get-var('border-width'));
+      border-radius: 0;
     }
     &:last-child:not(:first-child) {
+      margin-left: var-negative(get-var('border-width'));
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
-      margin-left: var-negative(get-var('border-width'));
     }
     &:focus {
       @include z-index('0', 1);
@@ -450,8 +457,8 @@ textarea.form-input {
 .form-select {
   .has-success &,
   &.is-success {
-    @include background('success', $lightness: +53%);
     border-color: color('success');
+    @include background('success', $lightness: +53%);
     &:focus {
       @include control-shadow('success');
     }
@@ -459,8 +466,8 @@ textarea.form-input {
 
   .has-error &,
   &.is-error {
-    @include background('error', $lightness: +53%);
     border-color: color('error');
+    @include background('error', $lightness: +53%);
     &:focus {
       @include control-shadow('error');
     }
@@ -478,13 +485,13 @@ textarea.form-input {
 
     input {
       &:checked + .form-icon {
-        @include background('error');
         border-color: color('error');
+        @include background('error');
       }
 
       &:focus + .form-icon {
-        @include control-shadow('error');
         border-color: color('error');
+        @include control-shadow('error');
       }
     }
   }
@@ -495,8 +502,8 @@ textarea.form-input {
   &.is-error {
     input {
       &:indeterminate + .form-icon {
-        @include background('error');
         border-color: color('error');
+        @include background('error');
       }
     }
   }
@@ -508,8 +515,8 @@ textarea.form-input {
     &:invalid {
       border-color: color('error');
       &:focus {
-        @include control-shadow('error');
         @include background('error', $lightness: +53%);
+        @include control-shadow('error');
       }
 
       & + .form-input-hint {
@@ -524,9 +531,9 @@ textarea.form-input {
 .form-select {
   &:disabled,
   &.disabled {
-    @include background-color('disabled');
-    cursor: not-allowed;
     opacity: .5;
+    cursor: not-allowed;
+    @include background-color('disabled');
   }
 }
 
@@ -540,9 +547,9 @@ input {
   &:disabled,
   &.disabled {
     & + .form-icon {
-      @include background-color('disabled');
-      cursor: not-allowed;
       opacity: .5;
+      cursor: not-allowed;
+      @include background-color('disabled');
     }
   }
 }

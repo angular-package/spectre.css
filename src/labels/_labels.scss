@@ -9,8 +9,7 @@
 @use '../mixins/padding-size-variants.mixin' as *;
 
 // Labels
-.label,
-.#{$var-prefix}-label {
+.#{$class-prefix}label {
   display: inline-block;
 
   @include label-base();
@@ -19,9 +18,9 @@
 
   // Label rounded
   &.label-rounded {
-    border-radius: 5rem;
     padding-left: 0.4rem;
     padding-right: 0.4rem;
+    border-radius: 5rem;
   }
 
   // Padding size

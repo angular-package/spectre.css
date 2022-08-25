@@ -1,5 +1,5 @@
 // Variables.
-@use 'variables' as *;
+@use 'variables/core' as *;
 
 // Functions.
 @use 'functions/color/color.function' as *;
@@ -13,18 +13,17 @@
 @use 'mixins/z-index.mixin' as *;
 
 // Avatars
-.avatar,
-.#{$var-prefix}-avatar {
+.#{$class-prefix}avatar {
   @include avatar-base();
-  @include background('primary');
-  border-radius: 50%;
-  @include color('light', $alpha: 0.85);
+  position: relative;
   display: inline-block;
-  font-weight: 300;
   line-height: 1.25;
   margin: 0;
-  position: relative;
   vertical-align: middle;
+  border-radius: 50%;
+  @include background('primary');
+  @include color('light', $alpha: 0.85);
+  font-weight: 300;
 
   &.avatar-xs {
     @include avatar-base('unit-4');
@@ -40,33 +39,36 @@
   }
 
   img {
-    border-radius: 50%;
-    height: 100%;
+    @include z-index('0');
     position: relative;
     width: 100%;
-    @include z-index('0');
+    height: 100%;
+    border-radius: 50%;
   }
 
   .avatar-icon,
   .avatar-presence {
-    @include background('bg');
+    // Position.
+    @include z-index('0', 1);
+    position: absolute;
+    right: 14.64%;
     bottom: 14.64%;
+
+    // Size.
+    width: 50%;
     height: 50%;
     @include padding('border-width-lg');
 
-    position: absolute;
-    right: 14.64%;
     transform: translate(50%, 50%);
-    width: 50%;
-    @include z-index('0', 1);
+    @include background('bg');
   }
 
   .avatar-presence {
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 50%;
     @include background('gray');
     box-shadow: 0 0 0 get-var('border-width', $suffix: 'lg') color('light');
-    border-radius: 50%;
-    height: 0.5em;
-    width: 0.5em;
 
     &.online {
       @include background('success');
@@ -82,12 +84,12 @@
   }
 
   &[data-initial]::before {
-    color: currentColor;
-    content: attr(data-initial);
-    left: 50%;
+    @include z-index('0');
     position: absolute;
     top: 50%;
+    left: 50%;
+    content: attr(data-initial);
     transform: translate(-50%, -50%);
-    @include z-index('0');
+    color: currentColor;
   }
 }
