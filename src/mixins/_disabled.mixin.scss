@@ -1,4 +1,6 @@
+// The `disabled()` mixin extends the given element with the disabled attribute, pseudo selector, class, and class with the prefix given name.
 @mixin disabled($name, $opacity: 0.5) {
+  &[disabled],
   &.disabled,
   &:disabled,
   &.#{$name}-disabled {
