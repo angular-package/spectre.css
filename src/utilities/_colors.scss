@@ -1,5 +1,5 @@
 // Variables.
-@use '../variables' as *;
+@use '../variables/colors' as *;
 
 // Mixins.
 @use '../mixins/color/bg-color-variant.mixin' as *;
@@ -30,6 +30,21 @@
 @include text-color-variant('gray-dark', 'gray-color-dark');
 @include text-color-variant('gray-light', 'gray-color-light');
 
+// - Bg colors.
+@include text-color-variant('bg', 'bg-color');
+@include text-color-variant('bg-dark', 'bg-color-dark');
+@include text-color-variant('bg-light', 'bg-color-light');
+
+// - Border colors.
+@include text-color-variant('border', 'border-color');
+@include text-color-variant('border-dark', 'border-color-dark');
+@include text-color-variant('border-light', 'border-color-light');
+
+// - Link colors.
+@include text-color-variant('link', 'link-color');
+@include text-color-variant('link-dark', 'link-color-dark');
+@include text-color-variant('link-light', 'link-color-light');
+
 // - Control colors.
 @include text-color-variant('disabled', 'disabled-color');
 @include text-color-variant('error', 'error-color');
@@ -37,26 +52,13 @@
 @include text-color-variant('success', 'success-color');
 @include text-color-variant('warning', 'warning-color');
 
-// - Link colors.
-@include text-color-variant('link', 'link-color');
-@include text-color-variant('link-dark', 'link-color-dark');
-@include text-color-variant('link-light', 'link-color-light');
+// - Body colors.
+@include text-color-variant('body-bg', 'body-bg-color');
+@include text-color-variant('body-font', 'body-font-color');
 
 // - Other colors.
 @include text-color-variant('code', 'code-color');
 @include text-color-variant('highlight', 'highlight-color');
-
-
-// Text color hover
-@include text-color-hover-variant('bg-dark', 'bg-color-dark');
-
-@include text-color-hover-variant('accent', 'accent-color');
-
-@include text-color-hover-variant('primary', 'primary-color');
-
-
-// - Body colors.
-@include text-color-variant('body-font', 'body-font-color');
 
 // Background colors
 // - Shades.
@@ -96,17 +98,17 @@
 @include bg-color-variant('border-dark', 'border-color-dark', $border-color-dark);
 @include bg-color-variant('border-light', 'border-color-light', $border-color-light);
 
+// - Link colors.
+@include bg-color-variant('link', 'link-color', $link-color);
+@include bg-color-variant('link-dark', 'link-color-dark', $link-color-dark);
+@include bg-color-variant('link-light', 'link-color-light', $link-color-light);
+
 // - Control colors.
 @include bg-color-variant('disabled', 'disabled-color', $disabled-color);
 @include bg-color-variant('error', 'error-color', $error-color);
 @include bg-color-variant('info', 'info-color', $info-color);
 @include bg-color-variant('success', 'success-color', $success-color);
 @include bg-color-variant('warning', 'warning-color', $warning-color);
-
-// - Link colors.
-@include bg-color-variant('link', 'link-color', $link-color);
-@include bg-color-variant('link-dark', 'link-color-dark', $link-color-dark);
-@include bg-color-variant('link-light', 'link-color-light', $link-color-light);
 
 // - Body colors.
 @include bg-color-variant('body', 'body-bg-color', $body-bg-color); // @deprecated
