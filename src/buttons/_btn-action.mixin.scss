@@ -1,0 +1,25 @@
+// Variables.
+@use '../variables/core' as *;
+
+// Functions.
+@use '../functions/var/css-var.function' as *;
+
+// Button Action
+@mixin s-button-action($prefix: $class-prefix) {
+  .#{$prefix}btn {
+    &.btn-action {
+      // Size.
+      width: css-var('control-size');
+      padding-left: 0;
+      padding-right: 0;
+
+      &.btn-sm {
+        width: css-var('control-size', $suffix: 'sm');
+      }
+
+      &.btn-lg {
+        width: css-var('control-size', $suffix: 'lg');
+      }
+    }
+  }
+}

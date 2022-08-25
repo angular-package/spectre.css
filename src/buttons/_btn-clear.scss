@@ -1,4 +1,4 @@
-@use '../variables' as *;
+@use '../variables/core' as *;
 
 // Functions.
 @use '../functions/var/unit-var.function' as *;
@@ -10,26 +10,31 @@
 
 // Button Clear
 // Button color variants
-@mixin s-button-clear() {
-  .btn,
-  .#{$var-prefix}-btn {
+@mixin s-button-clear($prefix: $class-prefix) {
+  .#{$prefix}btn {
     &.btn-clear {
-      background: transparent;
-      border: 0;
-      color: currentColor;
+      // Display.
+      opacity: 1;
+
+      // Size.
+      width: unit-var('5');
       height: unit-var('5');
+      @include padding('unit-h');
       line-height: unit-var('4');
+
+      // Position.
       @include margin-left('unit-1');
       margin-right: -2px;
-      opacity: 1;
-      @include padding('unit-h');
+
+      border: 0;
+      background: transparent;
+      color: currentColor;
       text-decoration: none;
-      width: unit-var('5');
 
       &:focus,
       &:hover {
-        @include background('bg', $alpha: 0.5);
         opacity: 0.95;
+        @include background('bg', $alpha: 0.5);
       }
 
       &::before {

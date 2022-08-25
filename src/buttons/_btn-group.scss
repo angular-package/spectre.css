@@ -1,4 +1,4 @@
-@use '../variables' as *;
+@use '../variables/core' as *;
 
 // Functions.
 @use '../functions/var/get-var.function' as *;
@@ -8,8 +8,7 @@
 @use '../mixins/z-index.mixin' as *;
 
 // Button groups
-.btn-group,
-.#{$var-prefix}-btn-group {
+.#{$class-prefix}btn-group {
   display: inline-flex;
   flex-wrap: wrap;
 
@@ -20,22 +19,18 @@
       border-top-right-radius: 0;
     }
     &:not(:first-child):not(:last-child) {
-      border-radius: 0;
-      // margin-left: -$border-width; // old spectre.css
       margin-left: var-negative(get-var('border-width'));
+      border-radius: 0;
     }
     &:last-child:not(:first-child) {
+      margin-left: var-negative(get-var('border-width'));
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
-      // margin-left: -$border-width; // old spectre.css
-      margin-left: var-negative(get-var('border-width'));
     }
     &:focus,
     &:hover,
     &:active,
     &.active {
-      // z-index: $zindex-0; // old spectre.css
-      // z-index: get-var('z-index-0'); // old @angular-package/spectre.css
       @include z-index('0');
     }
   }

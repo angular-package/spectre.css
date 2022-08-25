@@ -1,31 +1,22 @@
-@use '../variables' as *;
+@use '../variables/core' as *;
 
 // Functions.
-@use '../functions/var/get-var.function' as *;
+@use '../functions/var/css-var.function' as *;
 
 // Mixins.
 @use '../mixins/padding.mixins' as *;
 
 // Button Sizes
-.btn,
-.#{$var-prefix}-btn {
+.#{$class-prefix}btn {
   &.btn-sm {
-    // font-size: $font-size-sm; // old spectre.css
-    font-size: get-var('font-size', $suffix: 'sm');
-    // height: $control-size-sm; // old spectre.css
-    height: get-var('control-size', $suffix: 'sm');
-    // padding: $control-padding-y-sm $control-padding-x-sm; // old spectre.css
-    // padding: get-var('control-padding-y', $suffix: 'sm') get-var('control-padding-x', $suffix: 'sm'); // old @angular-package/spectre.css
+    height: css-var('control-size', $suffix: 'sm');
     @include padding('control-padding-y-sm', 'control-padding-x-sm');
+    font-size: css-var('font-size', $suffix: 'sm');
   }
 
   &.btn-lg {
-    // font-size: $font-size-lg; // old spectre.css
-    font-size: get-var('font-size', $suffix: 'lg');
-    // height: $control-size-lg; // old spectre.css
-    height: get-var('control-size', $suffix: 'lg');
-    // padding: $control-padding-y-lg $control-padding-x-lg; // old spectre.css
-    // padding: get-var('control-padding-y', $suffix: 'lg') get-var('control-padding-x', $suffix: 'lg'); // old @angular-package/spectre.css
+    height: css-var('control-size', $suffix: 'lg');
     @include padding('control-padding-y-lg', 'control-padding-x-lg');
+    font-size: css-var('font-size', $suffix: 'lg');
   }
 }
