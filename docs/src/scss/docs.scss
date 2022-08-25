@@ -36,10 +36,11 @@
   z-index: $zindex-1;
 
   .btns {
+    flex-direction: row;
     position: absolute;
     right: 1.5rem;
     top: 1rem;
-    width: 14rem;
+    // width: 14rem;
   }
 
   .algolia-autocomplete {
@@ -63,7 +64,7 @@
 
     input {
       & ~ .accordion-header {
-        color: lighten($dark-color, 10%);
+        // color: lighten($dark-color, 10%);
         font-size: .65rem;
         font-weight: 600;
         text-transform: uppercase;
@@ -71,7 +72,7 @@
 
       &:checked {
         & ~ .accordion-header {
-          color: lighten($dark-color, 15%);
+          // color: lighten($dark-color, 15%); //
         }
       }
     }
@@ -83,7 +84,7 @@
 
         & > a {
           background: transparent;
-          color: $gray-color-dark;
+          // color: $gray-color-dark;
           display: inline-block;
         }
       }
@@ -128,7 +129,8 @@
       z-index: $zindex-1 - 1;
 
       &::before {
-        background: $light-color;
+        // background: $light-color; old spectre.css
+        @include background('body-bg');
         bottom: 0;
         content: "";
         display: block;
@@ -398,6 +400,7 @@
   padding: 4.5rem .5rem 2.5rem .5rem;
 
   .card {
+    height: 100%;
     border: 0;
     margin-bottom: 1rem;
   }
@@ -448,10 +451,12 @@
   }
 
   .card {
+    height: 100%;
+    padding: .5rem;
     background: none;
     border: 0;
-    color: lighten($body-font-color, 15%);
-    padding: .5rem;
+    // color: lighten($body-font-color, 15%); // old spectre.css
+    @include color(('body-font', 15%));
 
     .card-title {
       color: $primary-color;
@@ -482,7 +487,7 @@
 
     .docs-nav {
       margin-top: 1rem;
-      position: static;
+      // position: static; // old spectre.css
     }
 
     .menu .menu-item > a {
@@ -1084,4 +1089,100 @@
       }
     }
   }
+}
+
+
+// Docs menu
+.docs-menu {
+  // Position
+  position: fixed;
+  top: 4rem;
+  margin-left: 42rem;
+  // Size
+  min-width: 12rem;
+  height: 100%;
+  max-height: calc(100vh - 7rem);
+
+  h5 {
+    @include padding('unit-0', 'unit-4');
+  }
+  ul {
+    max-height: inherit;
+    box-shadow: none;
+    > li {
+      &.divider:first-child {
+        display: contents;
+      }
+      &.h5 {
+        padding-bottom: 1rem;
+      }
+    }
+  }
+}
+
+// Docs footer
+.off-canvas-content {
+  .docs-footer {
+    width: calc(100vw - 20rem);
+    max-width: 800px;
+    padding: .5rem;
+    margin-left: 4rem;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        a {
+          font-size: 0.75rem;
+        }
+      }
+    }
+
+    .columns {
+      max-width: 800px;
+      margin-left: 0rem;
+      margin-right: 0rem;
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .off-canvas-content {
+    .docs-footer {
+      width: calc(100vw - 3.00rem);
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .off-canvas-content {
+    .docs-footer {
+      width: calc(100vw - 1rem);
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+
+/* Text */
+.text-fl-uppercase::first-letter {
+  text-transform: uppercase;
+}
+
+/* Top Button https://www.w3schools.com/howto/howto_js_scroll_to_top.asp */
+#top-button-container {
+  display: flex;
+  justify-content: end;
+  @include padding-right('unit-2');
+}
+
+#top-button {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  z-index: 99; /* Make sure it does not overlap */
 }
