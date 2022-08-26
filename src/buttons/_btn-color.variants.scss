@@ -2,6 +2,7 @@
 @use '../variables' as *;
 
 // Mixins.
+@use 'button-link.mixins' as *;
 @use 'button-outline-variant.mixin' as *;
 @use 'button-variant.mixin' as *;
 
