@@ -5,7 +5,7 @@ $version: '1.0.0-beta';
 $rtl: false !default;
 
 // Class names prefix.
-$class-prefix: 's-';
+$class-prefix: '';
 
 // Global CSS variable's name prefix.
 $var-prefix: 's' !default; // It's used to make CSS variable names unique. --#{var-prefix}-#{name}
