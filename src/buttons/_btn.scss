@@ -14,6 +14,8 @@
 
 // Buttons
 .#{$class-prefix}btn {
+  user-select: none;
+
   // Display.
   display: inline-block;
   appearance: none;
@@ -22,21 +24,19 @@
 
   // Height & Line height.
   height: css-var('control-size');
-  line-height: css-var('line-height');
 
   // Padding.
   @include padding('control-padding-y', 'control-padding-x');
 
   // Border.
-  outline: none;
   @include border();
+  outline: none;
 
   // Text & Font.
   font-size: get-var('font-size');
+  line-height: css-var('line-height');
   text-align: center;
   text-decoration: none;
-
-  user-select: none;
   vertical-align: middle;
   white-space: nowrap;
 
