@@ -9,10 +9,13 @@
 @use '../mixins/padding.mixins' as *;
 
 // Button Clear
-// Button color variants
 @mixin s-button-clear($prefix: $class-prefix) {
   .#{$prefix}btn {
     &.btn-clear {
+      // Position.
+      @include margin-left('unit-1');
+      margin-right: -2px;
+
       // Display.
       opacity: 1;
 
@@ -20,15 +23,12 @@
       width: unit-var('5');
       height: unit-var('5');
       @include padding('unit-h');
-      line-height: unit-var('4');
-
-      // Position.
-      @include margin-left('unit-1');
-      margin-right: -2px;
 
       border: 0;
       background: transparent;
       color: currentColor;
+
+      line-height: unit-var('4');
       text-decoration: none;
 
       &:focus,
