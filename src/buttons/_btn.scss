@@ -20,7 +20,7 @@
   display: inline-block;
   appearance: none;
   cursor: pointer;
-  @include disabled('btn');
+  @include disabled('button');
 
   // Height & Line height.
   height: css-var('control-size');
