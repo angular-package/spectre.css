@@ -17,13 +17,13 @@
   @include avatar-base();
   position: relative;
   display: inline-block;
-  line-height: 1.25;
   margin: 0;
-  vertical-align: middle;
   border-radius: 50%;
   @include background('primary');
   @include color('light', $alpha: 0.85);
   font-weight: 300;
+  line-height: 1.25;
+  vertical-align: middle;
 
   &.avatar-xs {
     @include avatar-base('unit-4');
