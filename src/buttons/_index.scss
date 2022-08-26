@@ -1,6 +1,11 @@
+// Mixins.
+@forward 'button-action.mixin';
+@forward 'button-clear.mixin';
+@forward 'button-link.mixins';
+@forward 'button-outline-variant.mixin';
+@forward 'button-variant.mixin';
+
 @forward 'btn-color.variants';
 @forward 'btn-group';
-@forward 'btn-clear';
 @forward 'btn-size.variants';
-@forward 'btn-action.mixin';
 @forward 'btn';
