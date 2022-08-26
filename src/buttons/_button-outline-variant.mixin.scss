@@ -1,0 +1,37 @@
+// Functions.
+@use '../functions/color/color.function' as *;
+
+// Mixins.
+@use '../mixins/color/background.mixin' as *;
+@use '../mixins/color/color.mixin' as *;
+@use '../mixins/shadow' as *;
+
+// Button outline variant mixin
+@mixin button-outline-variant($name, $color: 'primary', $lightness: -2%) {
+  &.btn-#{$name} {
+    border-color: color($color);
+    @include background('light');
+    @include color($color);
+    &:focus {
+      @include control-shadow($color);
+    }
+    &:focus,
+    &:hover {
+      border-color: color($color, $lightness: $lightness);
+      @include background($color);
+      @include color($color, $lightness: 100%);
+    }
+    &:active,
+    &.active {
+      border-color: color($color, $lightness: $lightness - 3%);
+      @include background($color);
+      @include background($color, $lightness: 100%);
+    }
+    &.loading {
+      &::after {
+        border-bottom-color: color($color);
+        border-left-color: color($color);
+      }
+    }
+  }
+}
