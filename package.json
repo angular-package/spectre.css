@@ -40,8 +40,15 @@
     "url": "https://github.com/angular-package/spectre.css/issues"
   },
   "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-csscomb": "^3.1.0",
+    "gulp-pug": "^5.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
     "jstransformer-highlight": "^2.0.0",
-    "jstransformer-markdown-it": "^2.1.0",
+    "jstransformer-markdown-it": "^3.0.0",
     "tslib": "^2.3.0",
     "tslint": "^6.1.3"
   }
