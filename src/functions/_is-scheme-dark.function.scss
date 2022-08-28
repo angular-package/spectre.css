@@ -1,0 +1,5 @@
+@use '../variables/core' as *;
+
+@function is-scheme-dark() {
+  @return $color-scheme == dark or ($color-scheme != light and $color-scheme != normal);
+}
