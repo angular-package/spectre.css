@@ -21,6 +21,9 @@ $var-alpha: 'a' !default;
 // color-scheme - https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
 $color-scheme: light dark !default;
 
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color
+$theme-color: #5755d9;
+
 //Transition duration.
 $transition-duration: 0.2s !default; // --#{$var-prefix}-transition-duration.
 
