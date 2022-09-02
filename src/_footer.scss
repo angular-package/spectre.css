@@ -2,6 +2,8 @@
 @use 'variables/core' as *;
 
 // Functions.
+@use 'functions/is-scheme-dark.function' as *;
+@use 'functions/is-scheme-light.function' as *;
 @use 'functions/var/css-var.function' as *;
 @use 'functions/var/get-var.function' as *;
 @use 'functions/var/size-var.function' as *;
@@ -13,7 +15,7 @@
 @use 'mixins/padding.mixins' as *;
 @use 'mixins/transition.mixin' as *;
 
-@mixin s-footer($prefix: $class-prefix) {
+@mixin footer($prefix: $class-prefix) {
   .#{$prefix}footer {
     width: 100%;
 
@@ -48,24 +50,32 @@
       max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('xs'));
     }
 
-    h5 {
+    h5, h6 {
       @include margin-bottom('unit-6');
     }
 
     // Font color.
-    @media (prefers-color-scheme: dark) {
-      @include color('gray-dark');
+    @if is-scheme-dark() == true {
+      @media (prefers-color-scheme: dark) {
+        @include color('gray-dark');
+      }
     }
-    @media (prefers-color-scheme: light) {
-      @include color('gray');
+    @if is-scheme-light() == true or $color-scheme == normal {
+      @media (prefers-color-scheme: light) {
+        @include color('gray');
+      }
     }
 
     a {
-      @media (prefers-color-scheme: dark) {
-        @include color('gray');
+      @if is-scheme-dark() == true {
+        @media (prefers-color-scheme: dark) {
+          @include color('gray');
+        }
       }
-      @media (prefers-color-scheme: light) {
-        @include color('gray-dark');
+      @if is-scheme-light() == true or $color-scheme == normal {
+        @media (prefers-color-scheme: light) {
+          @include color('gray-dark');
+        }
       }
     }
 
