@@ -25,7 +25,7 @@
       background-clip: padding-box;
       @include background('primary');
       @include color('light');
-      box-shadow: 0 0 0 0.1rem color('bg-color-light');
+      box-shadow: 0 0 0 0.1rem color('bg-light');
     }
   }
   &[data-badge] {
