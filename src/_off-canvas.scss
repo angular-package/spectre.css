@@ -110,11 +110,9 @@ $off-canvas-breakpoint: $size-lg !default;
       display: block;
     }
   }
-}
 
-// Responsive layout
-@media (min-width: $off-canvas-breakpoint) {
-  .off-canvas {
+  // Responsive layout
+  @media (min-width: $off-canvas-breakpoint) {
     &.off-canvas-sidebar-show {
       .off-canvas-toggle {
         display: none;
