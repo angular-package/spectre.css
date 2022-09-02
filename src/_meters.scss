@@ -2,7 +2,7 @@
 @use 'variables/core' as *;
 
 // Functions.
-@use 'functions/var/get-var.function' as *;
+@use 'functions/var/css-var.function' as *;
 @use 'functions/var/unit-var.function' as *;
 
 // Mixins.
@@ -20,7 +20,7 @@
 
   // Border.
   border: 0;
-  border-radius: get-var('border-radius');
+  border-radius: css-var('border-radius');
 
   @include background('bg');
 
@@ -32,7 +32,7 @@
   &::-webkit-meter-optimum-value,
   &::-webkit-meter-suboptimum-value,
   &::-webkit-meter-even-less-good-value {
-    border-radius: get-var('border-radius');
+    border-radius: css-var('border-radius');
   }
 
   &::-webkit-meter-bar {
@@ -55,7 +55,7 @@
   &:-moz-meter-optimum,
   &:-moz-meter-sub-optimum,
   &:-moz-meter-sub-sub-optimum {
-    border-radius: get-var('border-radius');
+    border-radius: css-var('border-radius');
   }
 
   &:-moz-meter-optimum::-moz-meter-bar {
