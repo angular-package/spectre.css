@@ -2,7 +2,7 @@
 @use 'variables/core' as *;
 
 // Functions.
-@use 'functions/var/get-var.function' as *;
+@use 'functions/var/css-var.function' as *;
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
@@ -59,7 +59,7 @@
 
   &.modal-sm {
     .modal-container {
-      max-width: get-var('control-width', $suffix: 'sm');
+      max-width: css-var('control-width', $suffix: 'sm');
       @include padding('unit-0', 'unit-2');
     }
   }
@@ -70,7 +70,7 @@
     }
 
     .modal-container {
-      max-width: get-var('control-width', $suffix: 'lg');
+      max-width: css-var('control-width', $suffix: 'lg');
       box-shadow: none;
     }
   }
@@ -83,11 +83,11 @@
 
   // Size.
   width: 100%;
-  max-width: get-var('control-width', $suffix: 'md');
+  max-width: css-var('control-width', $suffix: 'md');
   max-height: 75vh;
   @include padding('unit-0', 'unit-4');
 
-  border-radius: get-var('border-radius');
+  border-radius: css-var('border-radius');
   @include background('bg-light');
   @include shadow-variant(0.2rem);
 
