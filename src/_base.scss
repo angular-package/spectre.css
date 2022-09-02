@@ -3,7 +3,7 @@
 
 // Functions.
 @use 'functions/color/color.function' as *;
-@use 'functions/var/get-var.function' as *;
+@use 'functions/var/css-var.function' as *;
 
 // Mixins.
 @use 'mixins/color/color.mixin' as *;
@@ -18,8 +18,8 @@
 }
 
 html {
-  line-height: get-var('html-line-height');
-  font-size: get-var('html-font-size');
+  line-height: css-var('html-line-height');
+  font-size: css-var('html-font-size');
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
 }
@@ -29,7 +29,7 @@ body {
   @include background('body-bg');
   @include color('body-font');
   font-family: $body-font-family;
-  font-size: get-var('font-size');
+  font-size: css-var('font-size');
   text-rendering: optimizeLegibility;
 }
 
