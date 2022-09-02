@@ -6,7 +6,7 @@
 
 // Mixins.
 @use 'mixins/padding.mixins' as *;
-@use 'mixins/text.scss' as *;
+@use 'text/mixins/text-ellipsis.mixin' as *;
 
 // Tiles
 .#{$class-prefix}tile {
