@@ -2,12 +2,15 @@
 @use 'variables/core' as *;
 
 // Functions.
+@use 'functions/is-scheme-dark.function' as *;
+@use 'functions/is-scheme-light.function' as *;
 @use 'functions/var/get-var.function' as *;
 @use 'functions/var/var-negative.function' as *;
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
 @use 'mixins/color/color.mixin' as *;
+@use 'mixins/disabled.mixin' as *;
 @use 'mixins/margin.mixins' as *;
 @use 'mixins/padding.mixins' as *;
 @use 'mixins/shadow' as *;
@@ -18,7 +21,7 @@
 .#{$class-prefix}menu {
   // Position.
   @include z-index('3');
-  margin: 0;
+  @include margin('unit-0');
   // Display.
   list-style: none;
   // Size.
@@ -28,18 +31,37 @@
   transform: translateY(get-var('layout-spacing', $suffix: 'sm', $unit: true));
   // Border.
   border-radius: get-var('border-radius');
-  // @include background('bg-light'); // ! Removed background.
+  @include background('body-bg');
   @include shadow-variant(0.05rem);
 
+  // Menu nav.
   &.menu-nav {
+    @include padding-left('unit-0');
+    @include padding-right('unit-h');
     background: transparent;
     box-shadow: none;
-  }
+    .menu-item {
+      @include margin-left('unit-h');
+      @include margin-right('unit-h');
 
+      @include padding-left('unit-0');
+      @include padding-right('unit-0');
+
+      font-size: .7rem;
+      > a {
+        @include margin('unit-0');
+        display: flex;
+        @include padding-left('unit-3');
+      }
+    }
+  }
+  
   .menu-item {
     // Position.
     position: relative;
-    margin-top: 0;
+    @include margin-top('unit-0');
+    // Display.
+    @include disabled(('class'));
     // Size.
     @include padding('unit-0', 'unit-2');
     // Text.
@@ -52,26 +74,34 @@
       display: block;
       @include padding('unit-1', 'unit-2');
       border-radius: get-var('border-radius');
-      color: inherit;
+      @include color('gray-dark');
       text-decoration: none;
+
+      // Color schemes.
+      &:active,
+      &.active,
       &:focus,
       &:hover {
-        // Dark theme.
-        @media (prefers-color-scheme: dark) {
-          @include background('secondary-light');
-          @include color('body-font-color');
+        // Dark.
+        @if is-scheme-dark() == true {
+          @media (prefers-color-scheme: dark) {
+            @include background('secondary-light');
+            @include color('body-font-color');
+          }
         }
 
-        // Light theme.
-        @media (prefers-color-scheme: light) {
+        // Light.
+        @if is-scheme-light() == true {
+          @media (prefers-color-scheme: light) {
+            @include background('secondary');
+            @include color('primary');
+          }
+        }
+
+        @if $color-scheme == normal {
           @include background('secondary');
           @include color('primary');
         }
-      }
-      &:active,
-      &.active {
-        @include background('secondary');
-        @include color('primary');
       }
       // Transition.
       @include transition(background, color, box-shadow);
