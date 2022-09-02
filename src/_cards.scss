@@ -54,13 +54,6 @@
     }
   }
 
-  &.card-shadow {
-    border: 0;
-    @include shadow-variant(0.1rem);
-  }
-}
-
-.card {
   // Color card.
   &.card-color {
     // Position.
@@ -94,5 +87,10 @@
       border-color: transparent;
       @include color-picker;
     }
+  }
+
+  &.card-shadow {
+    border: 0;
+    @include shadow-variant(0.1rem);
   }
 }
