@@ -3,7 +3,7 @@
 
 // Functions.
 @use 'functions/color/color.function' as *;
-@use 'functions/var/get-var.function' as *;
+@use 'functions/var/css-var.function' as *;
 @use 'functions/var/unit-var.function' as *;
 
 // Mixins.
@@ -22,23 +22,23 @@
 
   // Border.
   border: 0;
-  border-radius: get-var('border-radius');
+  border-radius: css-var('border-radius');
 
   @include background('bg-dark');
   @include color('primary');
 
   &::-webkit-progress-bar {
-    border-radius: get-var('border-radius');
+    border-radius: css-var('border-radius');
     background: transparent;
   }
 
   &::-webkit-progress-value {
-    border-radius: get-var('border-radius');
+    border-radius: css-var('border-radius');
     @include background('primary');
   }
 
   &::-moz-progress-bar {
-    border-radius: get-var('border-radius');
+    border-radius: css-var('border-radius');
     @include background('primary');
   }
 
