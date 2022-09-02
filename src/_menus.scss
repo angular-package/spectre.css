@@ -5,7 +5,6 @@
 @use 'functions/is-scheme-dark.function' as *;
 @use 'functions/is-scheme-light.function' as *;
 @use 'functions/var/get-var.function' as *;
-@use 'functions/var/var-negative.function' as *;
 
 // Mixins.
 @use 'mixins/color/background.mixin' as *;
