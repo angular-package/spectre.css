@@ -36,8 +36,7 @@
   }
 
   .avatar {
-    // TODO: margin-left mixin should work with the negative.
-    margin-left: var-negative(get-var('unit-2')); // old @angular-package/spectre.css
+    @include margin-left(('unit-2', ('negative': true)));
     @include margin-right('unit-1');
   }
 
