@@ -68,7 +68,7 @@
     text-decoration: none;
 
     & > a {
-      margin: 0 var-negative(get-var('unit-2')); // TODO: Include margin with the negative
+      @include margin('unit-0', ('unit-2', ('negative': true)));
 
       // Display.
       display: block;
