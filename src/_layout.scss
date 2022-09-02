@@ -6,6 +6,7 @@
 @use 'variables/responsive-breakpoints' as *;
 
 // Functions.
+@use 'functions/var/css-var.function' as *;
 @use 'functions/var/get-var.function' as *;
 @use 'functions/var/size-var.function' as *;
 @use 'functions/var/var-negative.function' as *;
@@ -25,23 +26,23 @@
   @include padding-right(('layout-spacing', true));
 
   &.grid-xl {
-    max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + size-var('xl'));
+    max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('xl'));
   }
 
   &.grid-lg {
-    max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + size-var('lg'));
+    max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('lg'));
   }
 
   &.grid-md {
-    max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + size-var('md'));
+    max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('md'));
   }
 
   &.grid-sm {
-    max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + size-var('sm'));
+    max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('sm'));
   }
 
   &.grid-xs {
-    max-width: calc(get-var(('layout-spacing', false)) * get-var('html-font-size') * 2 + size-var('xs'));
+    max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('xs'));
   }
 
   margin-left: auto;
@@ -62,16 +63,18 @@
 .columns {
   display: flex;
   flex-wrap: wrap;
-  margin-left: get-var(('layout-spacing', true, 0, true)); // DONE: Negative get-var()
-  margin-right: get-var(('layout-spacing', true, 0, true)); // DONE: Negative get-var()
+  @include margin-left(('layout-spacing', true, 0, true)); // unit, adjust, negative
+  @include margin-right(('layout-spacing', true, 0, true)); // unit, adjust, negative
 
   &.col-gapless {
+    @include margin-left('unit-0');
+    @include margin-right('unit-0');
     margin-left: 0;
     margin-right: 0;
 
     & > .column {
-      padding-left: 0;
-      padding-right: 0;
+      @include padding-left('unit-0');
+      @include padding-right('unit-0');
     }
   }
   &.col-oneline {
