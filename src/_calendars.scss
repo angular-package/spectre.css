@@ -3,7 +3,7 @@
 
 // Functions.
 @use 'functions/color/color.function' as *;
-@use 'functions/var/get-var.function' as *;
+@use 'functions/var/css-var.function' as *;
 @use 'functions/var/unit-var.function' as *;
 
 // Mixins.
@@ -25,10 +25,10 @@
     display: flex;
     align-items: center;
     @include padding(('layout-spacing', true));
-    border-top-left-radius: get-var('border-radius');
-    border-top-right-radius: get-var('border-radius');
+    border-top-left-radius: css-var('border-radius');
+    border-top-right-radius: css-var('border-radius');
     @include background('bg');
-    font-size: get-var('font-size', $suffix: 'lg');
+    font-size: css-var('font-size', $suffix: 'lg');
   }
 
   .calendar-header,
@@ -48,7 +48,7 @@
     @include border($side: 'bottom');
     @include background('bg');
     @include color('gray');
-    font-size: get-var('font-size', $suffix: 'sm');
+    font-size: css-var('font-size', $suffix: 'sm');
     text-align: center;
   }
 
@@ -71,14 +71,14 @@
       @include padding('unit-h');
 
       // Border.
-      border: get-var('border-width') solid transparent;
+      border: css-var('border-width') solid transparent;
       border-radius: 50%;
       outline: none;
 
       background: transparent;
       @include color('gray-dark');
 
-      font-size: get-var('font-size', $suffix: 'sm');
+      font-size: css-var('font-size', $suffix: 'sm');
       line-height: unit-var('5');
       text-align: center;
       text-decoration: none;
@@ -236,8 +236,8 @@
       overflow: hidden;
       padding: 3px 4px;
       margin: unit-var('h') auto;
-      border-radius: get-var('border-radius');
-      font-size: get-var('font-size', $suffix: 'sm');
+      border-radius: css-var('border-radius');
+      font-size: css-var('font-size', $suffix: 'sm');
       text-overflow: ellipsis;
       white-space: nowrap;
     }
