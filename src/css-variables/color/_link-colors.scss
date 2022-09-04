@@ -1,23 +1,38 @@
 @use 'sass:map';
 
 // Variables.
+@use '../../variables/colors/link' as *;
 @use '../../variables/colors/theme' as *;
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../../functions/is-scheme-dark.function' as *;
+@use '../../functions/is-scheme-light.function' as *;
 
 // Mixins.
 @use '../../mixins/color/set-color.mixin' as *;
 
 // Spectre.css link colors.
-@media (prefers-color-scheme: dark) {
-  :root, :host {
-    @include set-color('link-color', map.get($theme-dark, 'link-color')); // $primary-color
-    @include set-color('link-color-dark', map.get($theme-dark, 'link-color-dark')); // darken($link-color, 10%)
-    @include set-color('link-color-light', map.get($theme-dark, 'link-color-light')); // lighten($link-color, 10%)
-  }
-}
-@media (prefers-color-scheme: light) {
-  :root, :host {
-    @include set-color('link-color', map.get($theme-light, 'link-color')); // $primary-color
-    @include set-color('link-color-dark', map.get($theme-light, 'link-color-dark')); // darken($link-color, 10%)
-    @include set-color('link-color-light', map.get($theme-light, 'link-color-light')); // lighten($link-color, 10%)
-  }
-}
+// :root, :host {
+//   @if is-scheme-dark() == true {
+//     @media (prefers-color-scheme: dark) {
+//       @include set-color('link-color', map.get($theme-dark, 'link-color')); // $primary-color
+//       @include set-color('link-color-dark', map.get($theme-dark, 'link-color-dark')); // darken($link-color, 10%)
+//       @include set-color('link-color-light', map.get($theme-dark, 'link-color-light')); // lighten($link-color, 10%)
+//     }
+//   }
+
+//   @if is-scheme-light() == true {
+//     @media (prefers-color-scheme: light) {
+//       @include set-color('link-color', map.get($theme-light, 'link-color')); // $primary-color
+//       @include set-color('link-color-dark', map.get($theme-light, 'link-color-dark')); // darken($link-color, 10%)
+//       @include set-color('link-color-light', map.get($theme-light, 'link-color-light')); // lighten($link-color, 10%)
+//     }
+//   }
+
+//   @if $color-scheme == normal {
+//     @include set-color('link-color', $link-color); // $primary-color
+//     @include set-color('link-color-dark', $link-color-dark); // darken($link-color, 10%)
+//     @include set-color('link-color-light', $link-color-light); // lighten($link-color, 10%)
+//   }
+// }

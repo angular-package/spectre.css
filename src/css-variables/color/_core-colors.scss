@@ -1,59 +1,90 @@
 @use 'sass:map';
 
 // Variables.
+@use '../../variables/colors/core' as *;
 @use '../../variables/colors/theme' as *;
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../../functions/is-scheme-dark.function' as *;
+@use '../../functions/is-scheme-light.function' as *;
 
 // Mixins.
 @use '../../mixins/color/set-color.mixin' as *;
 
 // Spectre.css core colors.
-@media (prefers-color-scheme: dark) {
-  :root, :host {
-    // Accent.
-    @include set-color('accent-color', map.get($theme-dark, 'accent-color')); // #9932CC
+// :root, :host {
+//   @if is-scheme-dark() == true {
+//     @media (prefers-color-scheme: dark) {
+//       // Accent.
+//       @include set-color('accent-color', map.get($theme-dark, 'accent-color')); // #9932CC
 
-    // Dark.
-    @include set-color('dark-color', map.get($theme-dark, 'dark-color')); // #303742
+//       // Dark.
+//       @include set-color('dark-color', map.get($theme-dark, 'dark-color')); // #303742
 
-    // Light.
-    @include set-color('light-color', map.get($theme-dark, 'light-color')); // #303742
+//       // Light.
+//       @include set-color('light-color', map.get($theme-dark, 'light-color')); // #303742
 
-    // Primary.
-    @include set-color('primary-color', map.get($theme-dark, 'primary-color')); // #5755d9
-    @include set-color('primary-color-dark', map.get($theme-dark, 'primary-color-dark')); // darken($primary-color, 3%)
-    @include set-color('primary-color-light', map.get($theme-dark, 'primary-color-light')); // lighten($primary-color, 3%)
+//       // Primary.
+//       @include set-color('primary-color', map.get($theme-dark, 'primary-color')); // #5755d9
+//       @include set-color('primary-color-dark', map.get($theme-dark, 'primary-color-dark')); // darken($primary-color, 3%)
+//       @include set-color('primary-color-light', map.get($theme-dark, 'primary-color-light')); // lighten($primary-color, 3%)
 
-    // Secondary.
-    @include set-color('secondary-color', map.get($theme-dark, 'secondary-color')); // lighten($primary-color, 37.5%)
-    @include set-color('secondary-color-dark', map.get($theme-dark, 'secondary-color-dark')); // darken($secondary-color, 3%)
-    @include set-color('secondary-color-light', map.get($theme-dark, 'secondary-color-light')); // lighten($secondary-color, 3%)
+//       // Secondary.
+//       @include set-color('secondary-color', map.get($theme-dark, 'secondary-color')); // lighten($primary-color, 37.5%)
+//       @include set-color('secondary-color-dark', map.get($theme-dark, 'secondary-color-dark')); // darken($secondary-color, 3%)
+//       @include set-color('secondary-color-light', map.get($theme-dark, 'secondary-color-light')); // lighten($secondary-color, 3%)
 
-    // Theme.
-    @include set-color('theme-color', map.get($theme-dark, 'theme-color')); // #9932CC
-  }
-}
-@media (prefers-color-scheme: light) {
-  :root, :host {
-    // Accent.
-    @include set-color('accent-color', map.get($theme-light, 'accent-color')); // #9932CC
+//       // Theme.
+//       @include set-color('theme-color', map.get($theme-dark, 'theme-color'));  // #9932CC
+//     }
+//   }
+//   @if is-scheme-light() == true {
+//     @media (prefers-color-scheme: light) {
+//       // Accent.
+//       @include set-color('accent-color', map.get($theme-light, 'accent-color')); // #9932CC
 
-    // Dark.
-    @include set-color('dark-color', map.get($theme-light, 'dark-color')); // #303742
+//       // Dark.
+//       @include set-color('dark-color', map.get($theme-light, 'dark-color')); // #303742
 
-    // Light.
-    @include set-color('light-color', map.get($theme-light, 'light-color')); // #ffffff
+//       // Light.
+//       @include set-color('light-color', map.get($theme-light, 'light-color')); // #ffffff
 
-    // Primary.
-    @include set-color('primary-color', map.get($theme-light, 'primary-color')); // #5755d9
-    @include set-color('primary-color-dark', map.get($theme-light, 'primary-color-dark')); // darken($primary-color, 3%)
-    @include set-color('primary-color-light', map.get($theme-light, 'primary-color-light')); // lighten($primary-color, 3%)
+//       // Primary.
+//       @include set-color('primary-color', map.get($theme-light, 'primary-color')); // #5755d9
+//       @include set-color('primary-color-dark', map.get($theme-light, 'primary-color-dark')); // darken($primary-color, 3%)
+//       @include set-color('primary-color-light', map.get($theme-light, 'primary-color-light')); // lighten($primary-color, 3%)
 
-    // Secondary.
-    @include set-color('secondary-color', map.get($theme-light, 'secondary-color')); // lighten($primary-color, 37.5%)
-    @include set-color('secondary-color-dark', map.get($theme-light, 'secondary-color-dark')); // darken($secondary-color, 3%)
-    @include set-color('secondary-color-light', map.get($theme-light, 'secondary-color-light')); // lighten($secondary-color, 3%)
+//       // Secondary.
+//       @include set-color('secondary-color', map.get($theme-light, 'secondary-color')); // lighten($primary-color, 37.5%)
+//       @include set-color('secondary-color-dark', map.get($theme-light, 'secondary-color-dark')); // darken($secondary-color, 3%)
+//       @include set-color('secondary-color-light', map.get($theme-light, 'secondary-color-light')); // lighten($secondary-color, 3%)
 
-    // Theme.
-    @include set-color('theme-color', map.get($theme-light, 'theme-color')); // #9932CC
-  }
-}
+//       // Theme.
+//       @include set-color('theme-color', map.get($theme-light, 'theme-color')); // #9932CC
+//     }
+//   }
+//   @if $color-scheme == normal {
+//     // Accent.
+//     @include set-color('accent-color', $accent-color); // #9932CC
+
+//     // Dark.
+//     @include set-color('dark-color', $dark-color); // #303742
+
+//     // Light.
+//     @include set-color('light-color', $light-color); // #303742
+
+//     // Primary.
+//     @include set-color('primary-color', $primary-color); // #5755d9
+//     @include set-color('primary-color-dark', $primary-color-dark); // darken($primary-color, 3%)
+//     @include set-color('primary-color-light', $primary-color-light); // lighten($primary-color, 3%)
+
+//     // Secondary.
+//     @include set-color('secondary-color', $secondary-color); // lighten($primary-color, 37.5%)
+//     @include set-color('secondary-color-dark', $secondary-color-dark); // darken($secondary-color, 3%)
+//     @include set-color('secondary-color-light', $secondary-color-light); // lighten($secondary-color, 3%)
+
+//     // Theme.
+//     @include set-color('theme-color', $theme-color);  // #9932CC
+//   }
+// }

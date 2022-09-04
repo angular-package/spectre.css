@@ -1,23 +1,35 @@
 @use 'sass:map';
 
 // Variables.
-@use '../../variables/colors/theme' as *;
+@use '../../variables/colors' as *;
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../../functions/is-scheme-dark.function' as *;
+@use '../../functions/is-scheme-light.function' as *;
 
 // Mixins.
 @use '../../mixins/color/set-color.mixin' as *;
 
 // Spectre.css bg colors.
-@media (prefers-color-scheme: dark) {
-  :root, :host {
-    @include set-color('bg-color', map.get($theme-dark, 'bg-color')); // lighten($dark-color, 75%)
-    @include set-color('bg-color-dark', map.get($theme-dark, 'bg-color-dark')); // darken($bg-color, 3%)
-    @include set-color('bg-color-light', map.get($theme-dark, 'bg-color-light')); // $light-color
-  }
-}
-@media (prefers-color-scheme: light) {
-  :root, :host {
-    @include set-color('bg-color', map.get($theme-light, 'bg-color')); // lighten($dark-color, 75%)
-    @include set-color('bg-color-dark', map.get($theme-light, 'bg-color-dark')); // darken($bg-color, 3%)
-    @include set-color('bg-color-light', map.get($theme-light, 'bg-color-light')); // $light-color
-  }
-}
+// :root, :host {
+//   @if is-scheme-dark() == true {
+//     @media (prefers-color-scheme: dark) {
+//       @include set-color('bg-color', map.get($theme-dark, 'bg-color')); // lighten($dark-color, 75%)
+//       @include set-color('bg-color-dark', map.get($theme-dark, 'bg-color-dark')); // darken($bg-color, 3%)
+//       @include set-color('bg-color-light', map.get($theme-dark, 'bg-color-light')); // $light-color
+//     }
+//   }
+//   @if is-scheme-light() == true {
+//     @media (prefers-color-scheme: light) {
+//       @include set-color('bg-color', map.get($theme-light, 'bg-color')); // lighten($dark-color, 75%)
+//       @include set-color('bg-color-dark', map.get($theme-light, 'bg-color-dark')); // darken($bg-color, 3%)
+//       @include set-color('bg-color-light', map.get($theme-light, 'bg-color-light')); // $light-color
+//     }
+//   }
+//   @if $color-scheme == normal {
+//     @include set-color('bg-color', $bg-color); // lighten($dark-color, 75%)
+//     @include set-color('bg-color-dark', $bg-color-dark); // darken($bg-color, 3%)
+//     @include set-color('bg-color-light', $bg-color-light); // $light-color
+//   }
+// }

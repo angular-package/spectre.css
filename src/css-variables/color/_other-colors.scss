@@ -1,21 +1,35 @@
 @use 'sass:map';
 
 // Variables.
+@use '../../variables/colors/other' as *;
 @use '../../variables/colors/theme' as *;
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../../functions/is-scheme-dark.function' as *;
+@use '../../functions/is-scheme-light.function' as *;
 
 // Mixins.
 @use '../../mixins/color/set-color.mixin' as *;
 
 // Spectre.css other colors.
-@media (prefers-color-scheme: dark) {
-  :root, :host {
-    @include set-color('code-color', map.get($theme-dark, 'code-color')); // #d73e48
-    @include set-color('highlight-color', map.get($theme-dark, 'highlight-color')); // #ffe9b3
-  }
-}
-@media (prefers-color-scheme: light) {
-  :root, :host {
-    @include set-color('code-color', map.get($theme-light, 'code-color')); // #d73e48
-    @include set-color('highlight-color', map.get($theme-light, 'highlight-color')); // #ffe9b3
-  }
-}
+// :root, :host {
+//   @if is-scheme-dark() == true {
+//     @media (prefers-color-scheme: dark) {
+//       @include set-color('code-color', map.get($theme-dark, 'code-color')); // #d73e48
+//       @include set-color('highlight-color', map.get($theme-dark, 'highlight-color')); // #ffe9b3
+//     }
+//   }
+
+//   @if is-scheme-light() == true {
+//     @media (prefers-color-scheme: light) {
+//       @include set-color('code-color', map.get($theme-light, 'code-color')); // #d73e48
+//       @include set-color('highlight-color', map.get($theme-light, 'highlight-color')); // #ffe9b3
+//     }
+//   }
+
+//   @if $color-scheme == normal {
+//     @include set-color('code-color', $code-color); // #d73e48
+//     @include set-color('highlight-color', $highlight-color); // #ffe9b3
+//   }
+// }
