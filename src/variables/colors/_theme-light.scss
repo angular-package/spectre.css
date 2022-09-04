@@ -49,7 +49,7 @@ $theme-light: (
   'body-font-color': ('dark-color', +5%),
 
   // Control colors.
-  'disabled-color': 'bg-color-dark',
+  'disabled-color': $disabled-color,
   'error-color': $error-color,
   'info-color': $info-color,
   'success-color': $success-color,
