@@ -1,0 +1,21 @@
+// Sass.
+@use 'sass:list';
+
+// Variables.
+@use '../../variables/core' as *;
+
+// Mixins.
+@use 'label-color-variant.mixin' as *;
+
+// Standard, not outline.
+@mixin label-color-variants($colors...) {
+  @each $row in $colors {
+    @each $name, $color in $row {
+      @if list.length($color) > 1 {
+        @include label-color-variant($name, list.nth($color, 1), list.nth($color, 2));
+      } @else {
+        @include label-color-variant($name, list.nth($color, 1));
+      }
+    }
+  }
+}
