@@ -1,22 +1,17 @@
 // Functions.
-@use '../functions/color/color.function' as *;
+@use '../../functions/color/color.function' as *;
 
 // Mixins.
-@use '../mixins/color/background.mixin' as *;
-@use '../mixins/color/color-active.mixin' as *;
-@use '../mixins/color/color-focus.mixin' as *;
-@use '../mixins/color/color-hover.mixin' as *;
-@use '../mixins/color/color-visited.mixin' as *;
-@use '../mixins/color/color.mixin' as *;
-@use '../mixins/shadow' as *;
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/color/color.mixin' as *;
+@use '../../mixins/shadow' as *;
 
 // Button variant mixin
-@mixin button-variant($name, $bg-color, $color: 'light', $lightness: -2%) {
+@mixin button-color-variant($name, $bg-color, $color: 'light', $lightness: -2%) {
   &.btn-#{$name} {
     border-color: color($bg-color, $lightness: $lightness - 1%);
     @include background($bg-color);
     @include color($color);
-    @include color-visited($color);
     &:focus {
       @include control-shadow($bg-color);
     }
@@ -24,17 +19,17 @@
     &:hover {
       border-color: color($bg-color, $lightness: $lightness - 3%);
       @include background($bg-color, $lightness: $lightness);
+      color: color($color);
     }
-    @include color-focus($color);
-    @include color-hover($color);
-
     &:active,
     &.active {
       border-color: color($bg-color, $lightness: $lightness - 8%);
       @include background($bg-color, $lightness: $lightness - 5%);
+      color: color($color);
     }
-    @include color-active($color);
+    @include color($color, $selector: (':visited'));
 
+    // If the color is different than the light change the loading color.
     &.loading {
       &::after {
         border-bottom-color: color($color);
