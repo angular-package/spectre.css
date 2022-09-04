@@ -1,0 +1,22 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Variables.
+@use '../../variables' as *;
+
+// Button variables.
+@use '../variables' as *;
+
+// Function.
+@use '../../functions/color/get-theme-colors.function' as *;
+
+// Button mixins.
+@use 'button-color-variants.mixin' as *;
+
+// Initialize mixins.
+@mixin button-theme-normal($colors...) {
+  @if $color-scheme == normal {
+    @include button-color-variants(get-theme-colors($button-theme-normal, $colors...)...);
+  }
+}
