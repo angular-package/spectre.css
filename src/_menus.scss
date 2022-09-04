@@ -60,7 +60,7 @@
     position: relative;
     @include margin-top('unit-0');
     // Display.
-    @include disabled(('class'));
+    @include disabled(('.'));
     // Size.
     @include padding('unit-0', 'unit-2');
     // Text.
