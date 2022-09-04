@@ -1,15 +1,15 @@
-@use '../variables/core' as *;
+@use '../../variables/core' as *;
 
 // Functions.
-@use '../functions/var/unit-var.function' as *;
+@use '../../functions/var/unit-var.function' as *;
 
 // Mixins.
-@use '../mixins/color/background.mixin' as *;
-@use '../mixins/margin.mixins' as *;
-@use '../mixins/padding.mixins' as *;
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/margin.mixins' as *;
+@use '../../mixins/padding.mixins' as *;
 
 // Button Clear
-@mixin s-button-clear($prefix: $class-prefix) {
+@mixin button-clear($prefix: $class-prefix) {
   .#{$prefix}btn {
     &.btn-clear {
       // Position.
