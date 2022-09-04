@@ -1,2 +1,6 @@
-@forward 'labels';
-@forward 'labels.variants';
+// Directory.
+@forward 'mixins';
+@forward 'variables';
+
+// File.
+@forward 'label';
