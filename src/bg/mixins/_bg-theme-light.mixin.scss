@@ -1,0 +1,21 @@
+@use 'sass:list';
+@use 'sass:map';
+
+// Bg variables.
+@use '../variables' as *;
+
+// Functions.
+@use '../../functions/color/get-theme-colors.function' as *;
+@use '../../functions/is-scheme-light.function' as *;
+
+// Bg mixins.
+@use 'bg-color-variants.mixin' as *;
+
+// Initialize mixins.
+@mixin bg-theme-light($colors...) {
+  @if is-scheme-light() == true {
+    @media (prefers-color-scheme: light) {
+      @include bg-color-variants(get-theme-colors($bg-theme-light, $colors...)...);
+    }
+  }
+}

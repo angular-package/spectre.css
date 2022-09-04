@@ -1,0 +1,20 @@
+@use 'sass:map';
+
+// - Text variables.
+@use '../variables' as *;
+
+// Functions.
+@use '../../functions/color/get-theme-colors.function' as *;
+@use '../../functions/is-scheme-light.function' as *;
+
+// Text mixins.
+@use 'text-color-variants.mixin' as *;
+
+// Initialize mixins.
+@mixin text-theme-light($colors...) {
+  @if is-scheme-light() == true {
+    @media (prefers-color-scheme: light) {
+      @include text-color-variants(get-theme-colors($text-theme-light, $colors...)...);
+    }
+  }
+}

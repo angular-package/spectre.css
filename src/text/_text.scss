@@ -1,7 +1,11 @@
 // Mixins.
-@use '../mixins/text' as *;
+@use 'mixins/text-ellipsis.mixin' as *;
+@use 'mixins/text-theme.mixin' as *;
 
 // Text
+// Text colors.
+@include text-theme;
+
 // Text alignment utilities
 .text-left {
   text-align: left;

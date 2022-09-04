@@ -1,0 +1,20 @@
+// Variables.
+@use '../../variables' as *;
+
+// Mixins.
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/color/color.mixin' as *;
+
+// Background color utility mixin
+// The mixin contains the CSS class of the name prefixed with `bg-` and prefixed `#{$prefix}-bg-` with the given `$name`
+// that includes the `background` color of the given `$color` CSS variable name, and `color` style equal to `light-color`
+// depending on whether the given SCSS variable `$hex-color` lightness is below `60`.
+// By default, $prefix is equal to the globally customizable $class-prefix.
+@mixin bg-color-variant($name, $bg-color, $color, $prefix: $class-prefix) {
+  .#{$prefix}bg-#{$name} {
+    @include background($bg-color, $important: !important);
+    @if $color {
+      @include color($color);
+    }
+  }
+}
