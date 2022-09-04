@@ -1,0 +1,24 @@
+// Variables.
+@use '../variables/core' as *;
+
+// Mixins.
+@use 'mixins/button-link.mixins' as *;
+
+// Button color variants
+.#{$class-prefix}btn {
+  // Standard, not outline.
+  &:not(.btn-outline) {
+    // - Link colors.
+    @include button-link-variant; // Default.
+    @include button-link-variant('link-dark', 'link-color-dark'); // Link dark.
+    @include button-link-variant('link-light', 'link-color-light'); // Link light.
+  }
+
+  // Outline variants // ! New color variant.
+  &.btn-outline {
+    // - Link colors.
+    @include button-link-outline-variant; // Default.
+    @include button-link-outline-variant('link-dark', 'link-color-dark'); // .btn-link-dark
+    @include button-link-outline-variant('link-light', 'link-color-light'); // .btn-link-light
+  }
+}
