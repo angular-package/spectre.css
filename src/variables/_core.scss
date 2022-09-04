@@ -5,7 +5,7 @@ $version: '1.0.0-beta';
 $rtl: false !default;
 
 // Class names prefix.
-$class-prefix: '';
+$class-prefix: '' !default;
 
 // Global CSS variable's name prefix.
 $var-prefix: 's' !default; // It's used to make CSS variable names unique. --#{var-prefix}-#{name}
@@ -20,9 +20,6 @@ $var-alpha: 'a' !default;
 
 // color-scheme - https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
 $color-scheme: normal !default;
-
-// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color
-$theme-color: #5755d9;
 
 //Transition duration.
 $transition-duration: 0.2s !default; // --#{$var-prefix}-transition-duration.
