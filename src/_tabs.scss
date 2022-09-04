@@ -38,13 +38,7 @@
       border-bottom: get-var('border-width', $suffix: 'lg') solid transparent;
       color: inherit;
       text-decoration: none;
-      &:focus,
-      &:hover {
-        @include color('link');
-      }
-      // TODO: color focus.
-      // @include color-focus('link');
-      // @include color-hover('link');
+      @include color('link', $selector: (':focus', ':hover'));
     }
     &.active a,
     a.active {
