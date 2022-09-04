@@ -1,9 +1,7 @@
-@use 'sass:map';
-
 // Variables.
-@use '../../variables/colors/core' as *;
-@use '../../variables/colors/theme' as *;
-@use '../../variables/core' as *;
+@use '../variables/colors/core' as *;
+@use '../variables/colors/theme' as *;
+@use '../variables/core' as *;
 
 // Functions.
 @use '../functions/is-scheme-dark.function' as *;
@@ -16,20 +14,20 @@
 :root, :host {
   @if is-scheme-dark() == true {
     @media (prefers-color-scheme: dark) {
-      @each $name, $color in map.get($theme-dark) {
+      @each $name, $color in $theme-dark {
         @include set-color($name, $color);
       }
     }
   }
   @if is-scheme-light() == true {
     @media (prefers-color-scheme: light) {
-      @each $name, $color in map.get($theme-light) {
+      @each $name, $color in $theme-light {
         @include set-color($name, $color);
       }
     }
   }
   @if $color-scheme == normal {
-    @each $name, $color in map.get($theme-normal) {
+    @each $name, $color in $theme-normal {
       @include set-color($name, $color);
     }
   }
