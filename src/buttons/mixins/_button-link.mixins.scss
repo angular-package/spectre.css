@@ -1,23 +1,21 @@
 // Functions.
-@use '../functions/color/color.function' as *;
+@use '../../functions/color/color.function' as *;
 
 // Mixins.
-@use '../mixins/color/background.mixin' as *;
-@use '../mixins/color/color.mixin' as *;
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/color/color.mixin' as *;
 
 @mixin button-link($color: 'link', $hover-color: 'link-dark') {
   border-color: transparent;
   background: transparent;
   color: color($color);
-  &:visited,
-  &:focus,
-  &:hover,
-  &:active,
-  &.active {
-    border-color: transparent;
-    background: transparent;
-    @include color($hover-color);
-  }
+  @include color($hover-color, $selector: (
+    ':visited',
+    ':focus',
+    ':hover',
+    ':active',
+    '.active'
+  ));
 }
 
 @mixin button-link-variant(
