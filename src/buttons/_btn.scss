@@ -2,15 +2,21 @@
 @use '../variables/core' as *;
 
 // Functions.
+@use '../functions/color/color.function' as *;
 @use '../functions/var/css-var.function' as *;
 @use '../functions/var/get-var.function' as *;
 
 // Mixins.
-@use '../mixins/disabled.mixin' as *;
 @use '../mixins/border/border.mixin' as *;
+@use '../mixins/color/background.mixin' as *;
+@use '../mixins/color/color.mixin' as *;
+@use '../mixins/disabled.mixin' as *;
 @use '../mixins/padding.mixins' as *;
 @use '../mixins/shadow' as *;
 @use '../mixins/transition.mixin' as *;
+
+@use 'mixins/button-theme.mixin' as *;
+@use 'mixins/button-outline-theme.mixin' as *;
 
 // Buttons
 .#{$class-prefix}btn {
@@ -20,17 +26,19 @@
   display: inline-block;
   appearance: none;
   cursor: pointer;
-  @include disabled('button');
 
-  // Height & Line height.
+  // Size.
   height: css-var('control-size');
-
-  // Padding.
   @include padding('control-padding-y', 'control-padding-x');
 
   // Border.
-  @include border();
+  @include border($color: 'primary');
+  border-radius: css-var('border-radius');
   outline: none;
+
+  // Background.
+  @include background('body-bg');
+  @include color('primary');
 
   // Text & Font.
   font-size: get-var('font-size');
@@ -47,11 +55,21 @@
     @include control-shadow();
   }
   &:focus,
-  &:hover,
-  &:active,
-  &.active {
+  &:hover {
+    border-color: color('primary-dark');
+    @include background('secondary-color');
     text-decoration: none;
   }
+  &:active,
+  &.active {
+    border-color: color(('primary-dark', -5%));
+    @include background('primary');
+    @include color('light');
+    text-decoration: none;
+  }
+  @include color('primary-dark', $selector: (':visited'));
+  // - Disabled.
+  @include disabled();
 
   // Button Block
   &.btn-block {
@@ -62,5 +80,23 @@
   // Button raised
   &.btn-raised { // TODO: button raised
     @include shadow-variant(0.05rem);
+  }
+
+  // Button color variants.
+  &:not(.btn-outline) {
+    @include button-theme;
+
+    // Button loading.
+    &.loading {
+      &::after {
+        border-bottom-color: color('primary');
+        border-left-color: color('primary');
+      }
+    }
+  }
+
+  // Button outline color variants.
+  &.btn-outline {
+    @include button-outline-theme;
   }
 }
