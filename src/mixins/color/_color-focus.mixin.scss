@@ -1,8 +1,0 @@
-@use 'color.mixin' as *;
-
-@mixin color-focus($color, $lightness: 0%) {
-  .focus,
-  &:focus {
-    @include color($color, $lightness);
-  }
-}

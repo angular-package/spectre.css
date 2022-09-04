@@ -1,7 +1,0 @@
-@use 'color.mixin' as *;
-
-@mixin color-visited($color, $lightness: 0%) {
-  &:visited {
-    @include color($color, $lightness);
-  }
-}

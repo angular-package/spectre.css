@@ -1,8 +1,0 @@
-@use 'color.mixin' as *;
-
-@mixin color-active($color, $lightness: 0%) {
-  .active,
-  &:active {
-    @include color($color, $lightness);
-  }
-}
