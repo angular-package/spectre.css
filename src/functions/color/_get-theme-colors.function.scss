@@ -1,0 +1,10 @@
+@use 'sass:list';
+@use 'sass:map';
+
+@function get-theme-colors($theme, $colors...) {
+  $theme-colors: ();
+  @each $value in $colors {
+    $theme-colors: list.append($theme-colors, map.get($theme, $value));
+  }
+  @return $theme-colors;
+}
