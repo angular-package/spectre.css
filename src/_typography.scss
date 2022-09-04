@@ -4,8 +4,8 @@
 @use 'functions/var/unit-var.function' as *;
 
 // Mixins.
+@use 'labels/mixins' as *;
 @use 'mixins/border/border.mixin' as *;
-@use 'mixins/label' as *;
 @use 'mixins/margin.mixins' as *;
 @use 'mixins/padding.mixins' as *;
 
@@ -76,12 +76,12 @@ abbr[title] {
 
 kbd {
   @include label-base();
-  @include label-variant('light', 'dark');
+  @include label-color-variant('light', 'dark');
   font-size: get-var('font-size', $suffix: 'sm');
 }
 
 mark {
-  @include label-variant('body-font', 'highlight');
+  @include label-color-variant('body-font', 'highlight');
   border-bottom: unit-var('o') solid color('highlight', $lightness: -15%); // TODO: border unit-o
   @include padding('unit-o', 'unit-h', 'unit-0');
   border-radius: get-var('border-radius');
