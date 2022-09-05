@@ -1,32 +1,36 @@
 // Variables.
-@use '../variables' as *;
+@use '../../variables' as *;
 
 // Functions.
-@use '../functions/color/color.function' as *;
-@use '../functions/var/css-var.function' as *;
+@use '../../functions/color/color.function' as *;
+@use '../../functions/is-scheme-dark.function' as *;
+@use '../../functions/is-scheme-light.function' as *;
+@use '../../functions/var/css-var.function' as *;
 
 // Mixins.
-@use '../mixins/border/border-hover.mixin' as *;
-@use '../mixins/border/border.mixin' as *;
-@use '../mixins/color/background.mixin' as *;
-@use '../mixins/color/color.mixin' as *;
-@use '../mixins/disabled.mixin' as *;
-@use '../mixins/margin.mixins' as *;
-@use '../mixins/padding.mixins' as *;
-@use '../mixins/transition.mixin' as *;
+@use '../../mixins/border/border-hover.mixin' as *;
+@use '../../mixins/border/border.mixin' as *;
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/color/color.mixin' as *;
+@use '../../mixins/disabled.mixin' as *;
+@use '../../mixins/margin.mixins' as *;
+@use '../../mixins/padding.mixins' as *;
+@use '../../mixins/transition.mixin' as *;
 
-@mixin s-pagination($prefix: $class-prefix) {
+@use 'pagination-theme.mixin' as *;
+
+@mixin pagination($prefix: $class-prefix) {
   // Pagination
   .#{$prefix}pagination {
     @include margin('unit-1', 'unit-0');
     display: flex;
     list-style: none;
-    @include disabled('pagination');
+    @include disabled(('[]', '.'));
     @include padding('unit-1', 'unit-0');
 
     // Common page item.
     .page-item {
-      @include disabled('page-item');
+      @include disabled(('[]', '.'));
       @include padding('unit-1', 'unit-o'); // ! Changed from margin to padding.
 
       a {
@@ -107,8 +111,7 @@
 
     // Pagination previous and next buttons.
     // Pagination container is active.
-    &.active,
-    &.pagination-active {
+    &.active {
       .page-item {
         &.page-prev,
         &.page-next {
@@ -124,8 +127,7 @@
     // Pagination border.
     &.pagination-border {
       // Active & Border.
-      &.active,
-      &.pagination-active {
+      &.active {
         .page-item {
           &.page-prev,
           &.page-next {
@@ -140,14 +142,16 @@
         a {
           width: 100%;
 
-          // Dark theme.
-          @media (prefers-color-scheme: dark) {
-            @include border($color: 'border-light');
+          @if is-scheme-dark() == true {
+            @media (prefers-color-scheme: dark) {
+              @include border($color: 'border-light');
+            }
           }
 
-          // Light theme.
-          @media (prefers-color-scheme: light) {
-            @include border($color: 'border');
+          @if is-scheme-light() == true or $color-scheme == normal {
+            @media (prefers-color-scheme: light) {
+              @include border($color: 'border');
+            }
           }
 
           @include border-hover($color: 'primary');
@@ -165,7 +169,6 @@
             }
           }
         }
-
       }
     }
 
@@ -196,4 +199,7 @@
       }
     }
   }
+
+  // Pagination theme colors.
+  @include pagination-theme();
 }

@@ -1,15 +1,15 @@
 // Variables.
-@use '../variables' as *;
+@use '../../variables' as *;
 
 // Functions.
-@use '../functions/color/color.function' as *;
+@use '../../functions/color/color.function' as *;
 
 // Mixins.
-@use '../mixins/border/border-hover.mixin' as *;
-@use '../mixins/color/background.mixin' as *;
-@use '../mixins/color/color.mixin' as *;
+@use '../../mixins/border/border-hover.mixin' as *;
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/color/color.mixin' as *;
 
-@mixin s-pagination-color-variant($color: 'accent') {
+@mixin pagination-color-variant($color: 'accent') {
   // Pagination
   &.pagination-#{$color} {
     // Page item.
