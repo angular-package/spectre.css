@@ -1,9 +1,28 @@
+@use 'sass:list';
+
 // The `disabled()` mixin extends the given element with the disabled attribute, pseudo selector, class, and class with the prefix given name.
-@mixin disabled($name, $opacity: 0.5) {
-  &[disabled],
-  &.disabled,
-  &:disabled,
-  &.#{$name}-disabled {
+@mixin disabled($selector: (all), $name: null, $opacity: 0.5) {
+  $class: '';
+  $types: (
+    '.disabled',
+    '[disabled]',
+    ':disabled',
+    '.#{$name}-disabled',
+  );
+  @if list.index($selector, '.') != null or $selector == all {
+    $class: $class + '&#{list.nth($types, 1)}, ';
+  }
+  @if list.index($selector, '[]') != null or $selector == all {
+    $class: $class + '&#{list.nth($types, 2)}, ';
+  }
+  @if list.index($selector, ':') != null or $selector == all {
+    $class: $class + '&#{list.nth($types, 3)}, ';
+  }
+  @if $name != null {
+    $class: $class + '&#{list.nth($types, 4)}, ';
+  }
+
+  #{$class} {
     cursor: not-allowed;
     pointer-events: none;
     opacity: $opacity;
