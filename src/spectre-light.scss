@@ -1,0 +1,5 @@
+// Variables
+@use 'variables/core' as *;
+$color-scheme: light;
+
+@forward 'spectre';
