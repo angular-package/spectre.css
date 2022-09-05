@@ -1,0 +1,9 @@
+@use 'border-color-variant.mixin' as *;
+
+@mixin border-color-variants($colors...) {
+  @if $colors {
+    @each $color in $colors {
+      @include border-color-variant($color);
+    }
+  }
+}
