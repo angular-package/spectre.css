@@ -1,0 +1,9 @@
+@use '../../variables' as *;
+
+$color-scheme: normal;
+
+@use '../mixins/hero-theme-normal.mixin' as *;
+
+.#{$class-prefix}hero {
+  @include hero-theme-normal('core-colors');
+}
