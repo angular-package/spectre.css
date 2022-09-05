@@ -1,5 +1,5 @@
 $hero-theme: (
-  'dark': ('core-colors', 'control-colors'),
-  'light': ('core-colors', 'control-colors'),
-  'normal': ('core-colors', 'control-colors')
+  'dark': ('control-colors', 'core-colors'),
+  'light': ('control-colors', 'core-colors'),
+  'normal': ('control-colors', 'core-colors')
 );
