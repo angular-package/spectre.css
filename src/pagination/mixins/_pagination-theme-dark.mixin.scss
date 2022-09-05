@@ -1,0 +1,24 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../../variables' as *;
+
+// - Pagination.
+@use '../variables' as *;
+
+// Functions.
+@use '../../functions/color/get-theme-colors.function' as *;
+@use '../../functions/is-scheme-dark.function' as *;
+
+// Pagination mixins.
+@use 'pagination-color-variants.mixin' as *;
+
+// Initialize mixins.
+@mixin pagination-theme-dark($colors...) {
+  @if is-scheme-dark() == true {
+    @media (prefers-color-scheme: dark) {
+      @include pagination-color-variants(get-theme-colors($pagination-theme-dark, $colors...)...);
+    }
+  }
+}
