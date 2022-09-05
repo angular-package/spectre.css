@@ -11,7 +11,7 @@
   $name,
   $size,
   $color: 'border-color-light',
-  $radius: 'border-radius',
+  $radius: false,
   $prefix: $class-prefix
 ) {
   @if (string.length($size) > 0) {

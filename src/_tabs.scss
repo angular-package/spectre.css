@@ -24,7 +24,7 @@
   margin: get-var('unit-1') 0 calc(get-var('unit-1') - get-var('border-width')) 0; // TODO: Use the margin
 
   // Border.
-  @include border($side: bottom);
+  @include border($side: bottom, $radius: 'border-radius');
 
   .tab-item {
     margin-top: 0;

@@ -64,10 +64,10 @@
   tbody > tr > td,
   tbody > tr > th {
     @include padding('unit-3', 'unit-2');
-    @include border($side: bottom, $radius: false);
+    @include border($side: bottom);
   }
   thead > tr > th {
-    @include border($side: bottom, $radius: false);
+    @include border($side: bottom);
   }
 
   tbody {

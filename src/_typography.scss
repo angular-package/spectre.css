@@ -70,7 +70,7 @@ u {
 
 abbr[title] {
   cursor: help;
-  @include border($style: 'dotted', $side: 'bottom');
+  @include border($style: 'dotted', $side: 'bottom', $radius: 'border-radius');
   text-decoration: none;
 }
 
@@ -91,7 +91,7 @@ mark {
 blockquote {
   margin-left: 0;
   @include padding('unit-2', 'unit-4');
-  @include border('lg', $side: left);
+  @include border('lg', $side: left, $radius: 'border-radius');
 
   p:last-child {
     margin-bottom: 0;

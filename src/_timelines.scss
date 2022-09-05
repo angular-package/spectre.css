@@ -71,7 +71,7 @@
         height: unit-var('2');
 
         // Border.
-        @include border('lg', solid, 'primary', false);
+        @include border('lg', solid, 'primary');
         border-radius: 50%;
       }
 

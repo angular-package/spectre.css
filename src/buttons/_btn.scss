@@ -32,8 +32,7 @@
   @include padding('control-padding-y', 'control-padding-x');
 
   // Border.
-  @include border($color: 'primary');
-  border-radius: css-var('border-radius');
+  @include border($color: 'primary', $radius: 'border-radius');
   outline: none;
 
   // Background.

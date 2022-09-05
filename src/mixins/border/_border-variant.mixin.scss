@@ -8,7 +8,7 @@
   $size,
   $style: solid,
   $color: 'border',
-  $radius: 'border-radius',
+  $radius: false
 ) {
   @if (string.length($size) > 0) {
     &.border-#{$size} {

@@ -20,7 +20,7 @@
   @include padding(('layout-spacing', true));
 
   // Theme.
-  @include border($color: 'dark');
+  @include border($color: 'dark', $radius: 'border-radius');
   @include background('dark');
   @include color('light');
 

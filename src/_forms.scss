@@ -60,7 +60,7 @@ legend {
   width: 100%;
   height: get-var('control-size');
   @include padding('control-padding-y', 'control-padding-x');
-  @include border($color: 'border-dark');
+  @include border($color: 'border-dark', $radius: 'border-radius');
   outline: none;
   @include background('bg-light');
   background-image: none;
@@ -134,8 +134,7 @@ textarea.form-input {
   width: 100%;
   height: get-var('control-size');
   @include padding('control-padding-y', 'control-padding-x');
-  @include border($color: 'border-dark');
-  border-radius: get-var('border-radius');
+  @include border($color: 'border-dark', $radius: 'border-radius');
   outline: none;
   @include background('bg-light');
   color: inherit;
@@ -299,7 +298,7 @@ textarea.form-input {
         width: 6px;
         height: 9px;
         transform: rotate(45deg);
-        @include border('lg', $color: 'light');
+        @include border('lg', $color: 'light', $radius: 'border-radius');
         border-left-width: 0;
         border-top-width: 0;
         background-clip: padding-box;
@@ -394,8 +393,7 @@ textarea.form-input {
 
   .input-group-addon {
     @include padding('control-padding-y', 'control-padding-x');
-    border-radius: get-var('border-radius');
-    @include border($color: 'border-dark');
+    @include border($color: 'border-dark', $radius: 'border-radius');
     @include background('bg');
     line-height: get-var('line-height');
     white-space: nowrap;

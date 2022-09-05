@@ -16,7 +16,7 @@
 .#{$class-prefix}card {
   display: flex;
   flex-direction: column;
-  @include border();
+  @include border($radius: 'border-radius');
   @include background('bg-light');
 
   .card-header,

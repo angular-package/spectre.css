@@ -64,7 +64,7 @@
         transform: translateX(-50%);
 
         // Border.
-        @include border('lg', solid, 'light', false);
+        @include border('lg', solid, 'light');
         border-radius: 50%;
 
         @include background('primary');
@@ -74,7 +74,7 @@
     &.active {
       a {
         &::before {
-          @include border('lg', solid, 'primary', false);
+          @include border('lg', solid, 'primary');
           @include background('light');
         }
       }

@@ -19,7 +19,7 @@
 .#{$class-prefix}calendar {
   display: block;
   min-width: 280px;
-  @include border();
+  @include border($radius: 'border-radius');
 
   .calendar-nav {
     display: flex;
