@@ -3,7 +3,6 @@
 
 // Shapes
 .s-rounded {
-  // border-radius: $border-radius; // old spectre.css
   border-radius: get-var('border-radius');
 }
 
