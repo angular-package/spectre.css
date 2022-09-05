@@ -1,16 +1,18 @@
 // Sass.
+@use 'sass:list';
 @use 'sass:string';
 
 // Functions.
 @use '../../functions/get-border.function' as *;
-@use '../../functions/var/get-var.function' as *;
+@use '../../functions/var/css-var.function' as *;
 
 @mixin border(
   $size: '',
   $style: solid,
   $color: 'border',
-  $radius: 'border-radius',
-  $side: 'all'
+  $radius: null,
+  $side: 'all',
+  $selector: ()
 ) {
   // Size.
   $width: 'border-width';
@@ -18,17 +20,28 @@
     $width: '#{$width}-#{$size}';
   }
 
-  // Side.
   @if $side == all {
-    border: get-border($width, $style, $color);
+    $side: '';
   } @else if $side == bottom or $side == left or $side == right or $side == top {
-    border-#{$side}: get-border($width, $style, $color);
+    $side: '-#{$side}';
   } @else {
     @error "Unknown side #{$side}.";
   }
 
+  @if list.length($selector) > 0 {
+    $selectors: '';
+    @each $value in $selector {
+      $selectors: $selectors + '&#{$value}, ';
+    }
+    #{$selectors} {
+      border#{$side}: get-border($width, $style, $color);
+    }
+  } @else {
+    border#{$side}: get-border($width, $style, $color);
+  }
+
   // Radius.
   @if $radius {
-    border-radius: get-var($radius);
+    border-radius: css-var($radius);
   }
 }
