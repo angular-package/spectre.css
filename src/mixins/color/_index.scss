@@ -4,17 +4,9 @@
 // Files.
 @forward 'background-color.mixin';
 @forward 'background.mixin';
-@forward 'bg-color-variant.mixin';
 
-@forward 'color-active.mixin';
-@forward 'color-focus.mixin';
-@forward 'color-hover.mixin';
 @forward 'color-picker.mixin';
-@forward 'color-visited.mixin';
 @forward 'color.mixin';
 
 @forward 'set-color.mixin';
 @forward 'set-var-alpha.mixin';
-
-@forward 'text-color-hover-variant.mixin';
-@forward 'text-color-variant.mixin';
