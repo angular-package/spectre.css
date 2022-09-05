@@ -2,6 +2,8 @@
 @use 'variables/core' as *;
 
 // Functions.
+@use 'functions/is-scheme-dark.function' as *;
+@use 'functions/is-scheme-light.function' as *;
 @use 'functions/var/get-var.function' as *;
 @use 'functions/var/unit-var.function' as *;
 @use 'functions/var/var-negative.function' as *;
@@ -17,6 +19,7 @@
 // Tooltips
 .#{$class-prefix}tooltip {
   position: relative;
+  @include disabled(('.'));
 
   &::after {
     // Position.
@@ -34,21 +37,28 @@
 
     // Size.
     max-width: get-var('control-width', $suffix: 'sm');
+    @include padding('unit-1', 'unit-2');
 
     transform: translate(-50%, unit-var('2'));
 
-    @media (prefers-color-scheme: dark) {
-      @include background('dark', $alpha: 0.95);
-      @include color('light');
-    }
-
-    @media (prefers-color-scheme: light) {
-      @include background('dark', $alpha: 0.95);
-      @include color('light');
-    }
     border-radius: get-var('border-radius');
+    @if is-scheme-dark() == true {
+      @media (prefers-color-scheme: dark) {
+        @include background('dark', $alpha: 0.95);
+        @include color('light');
+      }
+    }
+    @if is-scheme-light() == true {
+      @media (prefers-color-scheme: light) {
+        @include background('dark', $alpha: 0.95);
+        @include color('light');
+      }
+    }
+    @if $color-scheme == normal {
+      @include background('dark', $alpha: 0.95);
+      @include color('light');
+    }
 
-    @include padding('unit-1', 'unit-2');
     @include transition(opacity, transform);
 
     font-size: get-var('font-size', $suffix: 'sm');
@@ -62,8 +72,6 @@
       transform: translate(-50%, var-negative(unit-var('1')));
     }
   }
-
-  @include disabled('tooltip');
 
   // Directions.
   &.tooltip-right {
