@@ -1,0 +1,20 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// - Toast.
+@use '../variables' as *;
+
+// Functions.
+@use '../../functions/color/get-theme-colors.function' as *;
+@use '../../functions/is-scheme-light.function' as *;
+
+// Toast mixins.
+@use 'toast-color-variants.mixin' as *;
+
+// Initialize mixins.
+@mixin toast-theme-light($colors...) {
+  @if is-scheme-light() == true {
+    @include toast-color-variants(get-theme-colors($toast-theme-light, $colors...)...);
+  }
+}

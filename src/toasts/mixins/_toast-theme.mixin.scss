@@ -1,0 +1,23 @@
+@use 'sass:map';
+
+@use '../variables/toast-theme.var' as *;
+
+@use 'toast-theme-dark.mixin' as *;
+@use 'toast-theme-light.mixin' as *;
+@use 'toast-theme-normal.mixin' as *;
+
+@mixin toast-theme(
+  $dark: map.get($toast-theme, 'dark'),
+  $light: map.get($toast-theme, 'light'),
+  $normal: map.get($toast-theme, 'normal')
+) {
+  @if $dark {
+    @include toast-theme-dark($dark...);
+  }
+  @if $light {
+    @include toast-theme-light($light...);
+  }
+  @if $normal {
+    @include toast-theme-normal($normal...);
+  }
+}

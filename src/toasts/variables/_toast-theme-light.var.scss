@@ -1,0 +1,58 @@
+$toast-theme-light: (
+  'core-colors': (
+    'dark': ('dark-color', 'light-color'),
+    'light': ('light-color', 'dark-color'),
+
+    'accent': ('accent-color', 'light-color'),
+
+    'primary': ('primary-color', 'light-color'),
+    'primary-dark': ('primary-color-dark', ('primary-color-dark', 40%)),
+    'primary-light': ('primary-color-light', ('primary-color-light', 40%)),
+
+    'secondary': ('secondary-color', ('secondary-color', -40%)),
+    'secondary-dark': ('secondary-color-dark', ('secondary-color-dark', -40%)),
+    'secondary-light': ('secondary-color-light', ('secondary-color-light', -40%))
+  ),
+
+  'gray-colors': (
+    'gray': ('gray-color', ('gray-color', 20%)),
+    'gray-dark': ('gray-color-dark', 'gray-color-light'),
+    'gray-light': ('gray-color-light', 'gray-color-dark')
+  ),
+
+  'bg-colors': (
+    'bg': ('bg-color', 'body-font-color'),
+    'bg-dark': ('bg-color-dark', ('bg-color-dark', -50%)),
+    'bg-light': ('bg-color-light', ('bg-color-light', -50%))
+  ),
+
+  'border-colors': (
+    'border': ('border-color', ('border-color', -40%)),
+    'border-dark': ('border-color-dark', ('border-color-dark', 40%)),
+    'border-light': ('border-color-light', ('border-color-light', -40%))
+  ),
+
+  'link-colors': (
+    'link': ('link-color', ('link-color', 40%)),
+    'link-dark': ('link-color-dark', ('link-color-dark', 60%)),
+    'link-light': ('link-color-light', ('link-color-light', 30%))
+  ),
+
+  'control-colors': (
+    'disabled': ('disabled-color', ('disabled-color', -10%)),
+    'error': ('error-color', 'light-color'),
+    'info': ('info-color', ('info-color', -50%)),
+    'success': ('success-color', 'light-color'),
+    'warning': ('warning-color', 'light-color')
+  ),
+
+  'body-colors': (
+    'body-bg': ('body-bg-color', 'body-font-color'),
+    'body-font': ('body-font-color', 'body-bg-color')
+  ),
+
+  'other-colors': (
+    'code': ('code-color', ('code-color', 50%)),
+    'highlight': ('highlight-color', ('highlight-color', -50%))
+  )
+) !default;
