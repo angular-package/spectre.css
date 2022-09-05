@@ -18,11 +18,11 @@
   $selector: ()
 ) {
   @if list.length($selector) > 0 {
-    $class: '';
+    $selectors: '';
     @each $value in $selector {
-      $class: $class + '&#{$value}, ';
+      $selectors: $selectors + '&#{$value}, ';
     }
-    #{$class} {
+    #{$selectors} {
       color: color($color, $lightness: $lightness, $alpha: $alpha, $prefix: $prefix)
       important($important);
     }
