@@ -9,7 +9,6 @@
 @use 'functions/var/size-var.function' as *;
 
 // Mixins.
-@use 'mixins/color/color-hover.mixin' as *;
 @use 'mixins/color/color.mixin' as *;
 @use 'mixins/margin.mixins' as *;
 @use 'mixins/padding.mixins' as *;
@@ -60,10 +59,13 @@
         @include color('gray-dark');
       }
     }
-    @if is-scheme-light() == true or $color-scheme == normal {
+    @if is-scheme-light() == true {
       @media (prefers-color-scheme: light) {
         @include color('gray');
       }
+    }
+    @if $color-scheme == normal {
+      @include color('gray');
     }
 
     a {
@@ -72,10 +74,13 @@
           @include color('gray');
         }
       }
-      @if is-scheme-light() == true or $color-scheme == normal {
+      @if is-scheme-light() == true {
         @media (prefers-color-scheme: light) {
           @include color('gray-dark');
         }
+      }
+      @if $color-scheme == normal {
+        @include color('gray-dark');
       }
     }
 
@@ -85,7 +90,7 @@
       margin: 0;
       li {
         a {
-          @include color-hover('primary');
+          @include color('primary', $selector: (':hover'));
           font-size: 0.75rem;
           text-decoration: none !important;
           @include transition(color);
