@@ -1,8 +1,8 @@
 // Variables.
-@use '../variables' as *;
+@use '../../variables' as *;
 
 // Functions.
-@use '../functions/var/get-var.function' as *;
+@use '../../functions/var/get-var.function' as *;
 
 // Hero.
 @use 'hero-size-variant.mixin' as *;

@@ -2,7 +2,7 @@
 @use 'sass:string';
 
 // General.
-@use '../mixins/border' as *;
+@use '../../mixins/border' as *;
 
 // The mixin contains extending class
 @mixin hero-border-variant(

@@ -1,0 +1,8 @@
+// Functions.
+@use '../../mixins/padding.mixins' as *;
+
+@mixin hero-size-variant($name: 'hero', $size) {
+  &.#{$name}-#{$size} {
+    @include padding(('#{$name}-size', ('suffix': $size)), 'unit-0');
+  }
+}
