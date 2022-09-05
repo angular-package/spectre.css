@@ -14,7 +14,6 @@
 @use 'set-var-lightness.mixin' as *;
 @use 'set-var-saturation.mixin' as *;
 
-
 // The mixin sets CSS variable color in hsla form, by splitting it in four CSS variables.
 @mixin set-color-hsla(
   $name,
@@ -24,7 +23,7 @@
   $prefix: $var-prefix
 ) {
   // Example.
-  // ('primary-dark, +5%, 0.5)
+  // ('primary-dark', +5%, 0.5)
   $color: get-from-list($color, 'name', 'lightness', 'alpha');
 
   // Sets the CSS variable hue.
