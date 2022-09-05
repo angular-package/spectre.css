@@ -1,3 +1,7 @@
+// Sass.
+@use 'sass:list';
+
+// Variables.
 @use '../../variables' as *;
 
 // Functions.
@@ -10,13 +14,31 @@
   $lightness: 0%,
   $alpha: 0,
   $important: false,
-  $prefix: $var-prefix
+  $prefix: $var-prefix,
+  $selector: ()
 ) {
-  background-color: color(
+  @if list.length($selector) > 0 {
+    $class: '';
+    @each $value in $selector {
+      $class: $class + '&#{$value}, ';
+    }
+    #{$class} {
+      background-color: color(
+        $color,
+        $lightness: $lightness,
+        $alpha: $alpha,
+        $prefix: $prefix
+      )
+      important($important);
+    }
+  } @else {
+    background-color: color(
       $color,
       $lightness: $lightness,
       $alpha: $alpha,
       $prefix: $prefix
     )
     important($important);
+  }
+
 }
