@@ -1,0 +1,20 @@
+@use 'sass:map';
+
+// Hero variables.
+@use '../variables' as *;
+
+// Functions.
+@use '../../functions/color/get-theme-colors.function' as *;
+@use '../../functions/is-scheme-dark.function' as *;
+
+// Hero mixins.
+@use '../mixins/hero-color-variants.mixin' as *;
+
+// Initialize mixins.
+@mixin hero-theme-dark($colors...) {
+  @if is-scheme-dark() == true {
+    @media (prefers-color-scheme: dark) {
+      @include hero-color-variants(get-theme-colors($hero-theme-dark, $colors...)...);
+    }
+  }
+}
