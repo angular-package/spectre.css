@@ -1,0 +1,13 @@
+// Variables.
+@use '../variables' as *;
+
+// Mixins.
+@use '../../mixins/set-var.mixin' as *;
+
+// Border width.
+:root,
+:host {
+  @each $size, $value in $hero-size {
+    @include set-var('hero-size', $value, $suffix: $size);
+  }
+}
