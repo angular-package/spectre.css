@@ -8,7 +8,6 @@
 @use '../../functions/var/css-var.function' as *;
 
 // Mixins.
-@use '../../mixins/border/border-hover.mixin' as *;
 @use '../../mixins/border/border.mixin' as *;
 @use '../../mixins/color/background.mixin' as *;
 @use '../../mixins/color/color.mixin' as *;
@@ -30,7 +29,6 @@
 
     // Common page item.
     .page-item {
-      @include disabled(('[]', '.'));
       @include padding('unit-1', 'unit-o'); // ! Changed from margin to padding.
 
       a {
@@ -38,20 +36,12 @@
         @include padding('unit-1', 'unit-2');
         border-radius: css-var('border-radius');
         @include color('body-font');
+        @include color('primary', $selector: (':hover'));
         text-decoration: none;
         @include transition((border, 0.2s), color);
-        &:focus,
-        &:hover {
-          @include color('primary');
-        }
       }
 
-      &.active {
-        a {
-          @include background('primary');
-          @include color('light');
-        }
-      }
+      @include disabled(('[]', '.'));
 
       // Page previous and next common.
       &.page-prev,
@@ -84,7 +74,7 @@
         @include padding-right('unit-o');
         text-align: left;
         a {
-          align-items: start;
+          align-items: flex-start;
         }
       }
 
@@ -93,7 +83,7 @@
         @include padding-left('unit-o');
         text-align: right;
         a {
-          align-items: end;
+          align-items: flex-end;
         }
       }
 
@@ -110,33 +100,8 @@
     }
 
     // Pagination previous and next buttons.
-    // Pagination container is active.
-    &.active {
-      .page-item {
-        &.page-prev,
-        &.page-next {
-          a, a:hover, a:focus {
-            @include background('primary');
-            @include color('light');
-          }
-        }
-      }
-    }
-
-    // Pagination previous and next buttons.
     // Pagination border.
     &.pagination-border {
-      // Active & Border.
-      &.active {
-        .page-item {
-          &.page-prev,
-          &.page-next {
-            a, a:hover, a:focus {
-              border-color: color('primary');
-            }
-          }
-        }
-      }
       // Page item.
       .page-item {
         a {
@@ -148,27 +113,28 @@
             }
           }
 
-          @if is-scheme-light() == true or $color-scheme == normal {
+          @if is-scheme-light() == true {
             @media (prefers-color-scheme: light) {
               @include border($color: 'border');
             }
           }
 
-          @include border-hover($color: 'primary');
+          @if $color-scheme == normal {
+            @include border($color: 'border');
+          }
 
-          &:focus {
-            box-shadow: none;
+          &:hover {
+            border-color: color('primary');
           }
         }
-        // Single page item active.
-        &.page-prev,
-        &.page-next {
-          &.active {
-            a, a:hover, a:focus {
-              border-color: color('primary');
-            }
-          }
-        }
+      }
+    }
+
+    .page-item.active, &.active .page-item {
+      a {
+        border-color: color('primary');
+        @include background('primary');
+        @include color('light');
       }
     }
 
