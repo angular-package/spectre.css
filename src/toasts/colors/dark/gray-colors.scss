@@ -1,0 +1,9 @@
+// Variables.
+@use '../../../variables' as *;
+
+// Set the color scheme to normal.
+$color-scheme: dark;
+
+@use '../../mixins/toast-theme-dark.mixin' as *;
+
+// @include toast-theme-dark('gray-colors');

@@ -1,0 +1,11 @@
+// Variables.
+@use '../../variables' as *;
+
+// Set the color scheme to normal.
+$color-scheme: normal;
+
+@use '../mixins/toast-theme-normal.mixin' as *;
+
+.#{$class-prefix}toast {
+  @include toast-theme-normal('core-colors');
+}
