@@ -3,27 +3,65 @@
 ##### v1.0.0-beta [#](https://github.com/angular-package/spectre.css/releases/tag/v1.0.0-beta)
 
 - Update Spectre.css documentation.
-- Functions
-  - Add `get-from-list()` function to obtain values from the `list` argument.
-  - Add `important()` function to provide the `!important`.
-  - Add `map-get-default()` to get value from the map with default value if null.
-  - Add `css-var()` function to return CSS `var()` function with `$prefix` `$suffix`.
-  - Update the `get-var()` function to have the ability to adjust the value and to pass the `$name` parameter as a `list`.
-  - Add `size-var()` function to return the CSS variable from sizes.
-  - Add `unit-var()` function to return the CSS variables from units.
-  - Add `var-adjust()` to return calculated variable by given `$operator`.
-  - Update the `var-negative()` function by adding `$calculate` parameter to have ability to calculate on demand.
-  - Add `var-unit()` function to return the CSS variables multiplied by the unit.
-  - Add the `typeof` function to check whether the given value is a `boolean` type `true` or `false`.
-- Colors
-  - Add dark/light/normal color themes (mixins, functions) depending on the `$color-scheme`.
+- Add dark/light/normal color themes (mixins, functions) depending on the `$color-scheme` Sass variable.
   - Add `spectre-dark.scss` `spectre-light.scss` with dark and light color schemes.
-  - Add `is-scheme-dark()` `is-scheme-light()` `is-scheme-normal()` functions to determine selected `$color-scheme`.
-  - CSS color variables are set by the `set-color()` mixin in the one file `_colors.scss` from the `$theme-dark` `$theme-light` `$theme-normal` Sass variables giving the ability to add new colors to the themes.
+
+- CSS variables.
+
+  - CSS color variables are set from the `$theme-dark` `$theme-light` `$theme-normal` Sass variables by the `set-color()` mixin in the one file `_colors.scss` giving the ability to add new colors to the themes.
     - Dark theme CSS variables are set under the `prefers-color-scheme: dark` on `$color-scheme` Sass variable set to `dark` or `light dark`.
     - Light theme CSS variables are set under the `prefers-color-scheme: light` on `$color-scheme` Sass variable set to `light` or `light dark`.
-    - Normal theme CSS variables are set when dark and light theme is not set on the `$color-scheme` Sass variable set to `normal`.
-  - Reorder `color()` function parameters to be consistent with the `hsla()` function. [d4423be]
+    - Normal theme CSS variables are set when the dark and light theme is not set and the `$color-scheme` Sass variable is set to `normal`.
+
+- Variables
+  - Move Sass variables from the `_variables.scss` file to the `variables` directory and separate files.
+  - Add `$class-prefix` Sass variable with the default value `''` to set prefix for primary CSS classes.
+  - Add `$theme-dark` `$theme-light` and `$theme-normal` Sass variables with color configuration.
+  - Update the Sass variables of derived colors to be set as `list` to have `darken()` or `lighten()` CSS variables.
+
+- Functions
+  - Color
+    - Move the `color()` Sass function to the `color` directory, and add `hsla` subdirectory.
+    - Add `alpha-var()` function to obtain the CSS color alpha variable by using `var()` function.
+    - Add the `color-name()` function to have the ability to provide code instead of a full color name.
+    - Add the` get-theme-colors()` function to append colors from the given map to the returned list.
+    - Add `hue-var()` function to obtain the CSS color hue variable by using `var()` function.
+    - Add `lightness-level-var()` function to obtain the CSS color lightness level variable by using `var()` function.
+    - Add `lightness-var()` function to obtain the CSS color lightness variable by using `var()` function.
+    - Add `saturation-var()` function to obtain the CSS color saturation variable by using `var()` function.
+    - Add `hsa-color()` function to return the `hsla()` color.
+    - Reorder `color()` function parameters to be consistent with the `hsla()` function and use the `hsla-color()` function to return the color. [d4423be]
+  - Var
+    - Move the `get-var()` `var-negative()` to the subdirectory `var`.
+    - Update the `get-var()` function by adding `$adjust` parameter to adjust the CSS variable by `+` operator.
+    - Update the `get-var()` function to use `get-from-list()` function to obtain values from the `$name` parameter of `list` type.
+    - Update the `get-var()` function by changing the `$unit` parameter to `boolean` type.
+    - Add `size-var()` function to return the CSS variable from sizes `--s-size-xl`.
+    - Add `unit-var()` function to return the CSS variables from units for example `--s-unit-1`.
+    - Add `var-adjust()` to return calculated variable by given `$operator` by default `+`.
+    - Add `var-name()` to return the given name with the `$prefix` and `$suffix`.
+    - Add `css-var()` function to obtain the CSS variable by using `var` function without checking the `$name` parameter against the `list` type.
+    - Update the `var-negative()` function by adding `$calculate` parameter to have ability to calculate on demand (`true`).
+    - Add `var-unit()` function to return the CSS variables multiplied by the unit.
+  - Add `get-from-list()` function to obtain values from the `list` argument.
+  - Add `important()` function to provide the `!important`.
+  - Add `is-scheme-dark()` `is-scheme-light()` `is-scheme-normal()` functions to determine selected `$color-scheme`.
+  - Add `map-get-default()` to get value from the map with default value if null.
+  - Add the `typeof` function to check whether the given value is a `boolean` type `true` or `false`.
+
+- Mixins
+  - Add and use the `color()` `background()` `background-color()` mixins in styles instead of the `color()` function.
+  - Deprecate mixins `label--variant()` `label-class-variant()` and `label-class--variant()`.
+  - Add `disabled()` to extend the style with disabled by `.disabled`, `[disabled]`, `:disabled`, `.#{$name}-disabled`.
+  - Add `margin-size-variants()` and `padding-size-variants()` mixins to extend the style with predefined sizes from `xs` to `xl`.
+  - Add `padding` `margin` mixins to use with the CSS variables and use them in styles.
+  - Add `hide-scrollbar()` mixin to hide the scrollbar or minimize its size.
+  - Add `set-var()` mixin to set the CSS variable and `set-vars()` to set multiple CSS variables and use them in styles.
+  - Replace the `define-color()` and `define-color-based-on()` with the `set-color()` mixin and deprecate `define-color()` and `define-color-based-on()`.
+  - Add `set-color()` `set-var-alpha()` `set-color-hsla()` `set-var-hue()` `set-var-lightness()` and `set-var-saturation()` to set the CSS variables for the `hsla()` color.
+  - Add `transition()` mixin to set multiple transitions of the transition duration from the `transition-duration` CSS variable.
+  - Add `z-index()` mixin to set `z-index` with the CSS variable `--s-z-index-1` and use it in styles.
+
 - Background styles moved to the separate folder with mixins, variables, and styles with CSS color variants.
   - Update the `bg-color-variant()` mixin to no longer supports the `$hex-color` to calculate its lightness, because of the new way of providing the colors and adding the `$prefix`.
   - Add `bg-color-variants()` to set the background color variants from the predefined Sass variables `$bg-theme-dark`, `$bg-theme-light`, `$bg-theme-normal`.
@@ -74,14 +112,6 @@
   - Add two parameters `$name` and `$bg-color` to the `toast-color-variant()`.
   - Add `$toast-theme-dark` `$toast-theme-light` `$toast-theme-normal` `$toast-theme` Sass variables to set color variants.
   - Add the `colors` subdirectory to have separate CSS color variants.
-Mixins
-  - Add `padding` `margin` `disabled()` `hide-scrollbar()` `set-var()` `set-vars()` `z-index()` mixins and use them in styles.
-  - Replace the `define-color()` and `define-color-based-on()` with `set-color()` mixin.
-  - Use the `color()` `background()` mixins in styles.
-  - Add color `background()` `background-color()` `color()` `color-picker()` `set-color()` `set-var-alpha()` `set-color-hsla()` `set-var-hue()` `set-var-lightness()` and `set-var-saturation()`  mixins.
-  - Deprecated mixins `label--variant()` `label-class-variant()` and `label-class--variant()`.
-Variables
-  - Add `$class-prefix` Sass variable with the default value `''` to set prefix for primary CSS classes.
 - Remove unnecessary import `@use 'variables' as *` and comments. [f745fbf]
 
 [afcb5b8]: https://github.com/angular-package/spectre.css/commit/afcb5b8640263a57ccaa5b59d6ca59f2b7b9c90b
