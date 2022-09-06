@@ -1,10 +1,98 @@
-# Spectre.css changelog
+#### Spectre.css changelog
 
-## v1.0.0-alpha.3.0.1
+##### v1.0.0-beta [#](https://github.com/angular-package/spectre.css/releases/tag/v1.0.0-beta)
 
-- Remove unnecessary ignore files.
+- Update Spectre.css documentation.
+- Functions
+  - Add `get-from-list()` function to obtain values from the `list` argument.
+  - Add `important()` function to provide the `!important`.
+  - Add `map-get-default()` to get value from the map with default value if null.
+  - Add `css-var()` function to return CSS `var()` function with `$prefix` `$suffix`.
+  - Update the `get-var()` function to have the ability to adjust the value and to pass the `$name` parameter as a `list`.
+  - Add `size-var()` function to return the CSS variable from sizes.
+  - Add `unit-var()` function to return the CSS variables from units.
+  - Add `var-adjust()` to return calculated variable by given `$operator`.
+  - Update the `var-negative()` function by adding `$calculate` parameter to have ability to calculate on demand.
+  - Add `var-unit()` function to return the CSS variables multiplied by the unit.
+  - Add the `typeof` function to check whether the given value is a `boolean` type `true` or `false`.
+- Colors
+  - Add dark/light/normal color themes (mixins, functions) depending on the `$color-scheme`.
+  - Add `spectre-dark.scss` `spectre-light.scss` with dark and light color schemes.
+  - Add `is-scheme-dark()` `is-scheme-light()` `is-scheme-normal()` functions to determine selected `$color-scheme`.
+  - CSS color variables are set by the `set-color()` mixin in the one file `_colors.scss` from the `$theme-dark` `$theme-light` `$theme-normal` Sass variables giving the ability to add new colors to the themes.
+    - Dark theme CSS variables are set under the `prefers-color-scheme: dark` on `$color-scheme` Sass variable set to `dark` or `light dark`.
+    - Light theme CSS variables are set under the `prefers-color-scheme: light` on `$color-scheme` Sass variable set to `light` or `light dark`.
+    - Normal theme CSS variables are set when dark and light theme is not set on the `$color-scheme` Sass variable set to `normal`.
+  - Reorder `color()` function parameters to be consistent with the `hsla()` function. [d4423be]
+- Background styles moved to the separate folder with mixins, variables, and styles with CSS color variants.
+  - Update the `bg-color-variant()` mixin to no longer supports the `$hex-color` to calculate its lightness, because of the new way of providing the colors and adding the `$prefix`.
+  - Add `bg-color-variants()` to set the background color variants from the predefined Sass variables `$bg-theme-dark`, `$bg-theme-light`, `$bg-theme-normal`.
+  - Add `bg-theme-dark()` `bg-theme-light()` `bg-theme-normal()` `bg-theme()` mixins to handle the dark/light/normal themes.
+  - Add the `$bg-theme` Sass variable to indicate which group colors of `$bg-theme-dark` `$bg-theme-light` `$bg-theme-normal` should be used.
+- Add border styles in the separate folder with mixins, variables, and styles with CSS color variants.
+  - Add `get-border()` Sass function to return the border with specified `$width` `$style` and `$color`. [db793b2] [14bd4b3] [afcb5b8]
+  - Add `border-color-variant()` `border-color-variants()` `border-size-variant()` `border-size-variants()` and `border()` mixins.
+  - Add `$border-colors` Sass variable to indicate the border color variants.
+- Button styles moved to the separate `buttons` folder with mixins, variables, and styles with CSS color variants.
+  - Add button outline variant colors.
+  - Add `button-theme-dark()` `button-theme-light()` `button-theme-normal()` and `button-theme()` mixins to handle the dark/light/normal color themes.
+  - Add `button-outline-theme-dark()` `button-outline-theme-light()` `button-outline-theme-normal()` and `button-outline-theme()` mixins to handle the dark/light/normal color themes of the outline button.
+  - Add `$button-theme-dark` `$button-theme-light` `$button-theme-normal` and `$button-theme` Sass variables.
+  - Add `$button-outline-theme-dark` `$button-outline-theme-light` `$button-outline-theme-normal` and `$button-outline-theme` Sass variables for outline buttons.
+  - Add `button-color-variants()` `button-outline-color-variants()` mixins.
+  - Update the `button-color-variant()` `button-outline-color-variant()` mixins.
+  - Add the `colors` subdirectory to have separate CSS color variants.
+- Hero styles moved to the separate `hero` folder with mixins, variables, and styles with CSS color variants.
+  - Add `hero-theme-dark()` `hero-theme-light()` `hero-theme-normal()` and `hero-theme()` to handle dark/light/normal color themes.
+  - Add `hero-color-variants()` used in the theme mixins and `hero-size-variant()` `hero-size-variants()` mixins to have different padding sizes.
+  - Add `$class-prefix` to the classname.
+  - Add `$hero-size` `$hero-theme-dark` `$hero-theme-light` `$hero-theme-normal` and `$hero-theme` Sass variables.
+  - Add CSS variables for the hero sizes initiated by the Sass `$hero-size`.
+  - Add the `colors` subdirectory to have separate CSS color variants.
+- Label styles moved to the separate `labels` folder with mixins, variables, and styles with CSS color variants.
+  - Add `label-theme-dark()` `label-theme-light()` `label-theme-normal()` and `label-theme()` to handle dark/light/normal color themes.
+  - Add `label-color-variants()` used in the theme mixins and `label-size-variants()` mixin to have different padding sizes.
+  - Add `$class-prefix` to the classname.
+  - Add `$label-theme-dark` `$label-theme-light` `$label-theme-normal` and `$label-theme` Sass variables.
+  - Add the `colors` subdirectory to have separate CSS color variants.
+- Pagination styles moved to the separate `pagination` folder with mixins, variables, and styles with CSS color variants.
+  - Add `pagination-border` to have bordered page and next buttons.
+  - Add `pagination-theme-dark()` `pagination-theme-light()` `pagination-theme-normal()` and `pagination-theme()` to handle dark/light/normal color themes.
+  - Add `pagination-color-variants()` used in the theme mixins.
+  - Add `$class-prefix` to the classname.
+  - Add `$pagination-theme-dark` `$pagination-theme-light` `$pagination-theme-normal` and `$pagination-theme` Sass variables.
+  - Add the `colors` subdirectory to have separate CSS color variants.
+- Text styles moved to the separate `text` folder with mixins, variables, and styles with CSS color variants.
+  - Add `text-theme-dark()` `text-theme-light()` `text-theme-normal()` and `text-theme()` to handle dark/light/normal color themes.
+  - Add `text-color-variants()` used in the theme mixins.
+  - Add `$class-prefix` to the classname.
+  - Add `$text-theme-dark` `$text-theme-light` `$text-theme-normal` and `$text-theme` Sass variables.
+- Toast styles moved to the separate `toasts` folder with mixins, variables, and colors.
+  - Add `toast-theme-dark()` `toast-theme-light()` `toast-theme-normal()` `toast-theme()` mixins to handle the dark/light/normal themes.
+  - Add `toast-color-variants()` used in the theme mixins.
+  - Remove `toast-class-variant()`.
+  - Add two parameters `$name` and `$bg-color` to the `toast-color-variant()`.
+  - Add `$toast-theme-dark` `$toast-theme-light` `$toast-theme-normal` `$toast-theme` Sass variables to set color variants.
+  - Add the `colors` subdirectory to have separate CSS color variants.
+Mixins
+  - Add `padding` `margin` `disabled()` `hide-scrollbar()` `set-var()` `set-vars()` `z-index()` mixins and use them in styles.
+  - Replace the `define-color()` and `define-color-based-on()` with `set-color()` mixin.
+  - Use the `color()` `background()` mixins in styles.
+  - Add color `background()` `background-color()` `color()` `color-picker()` `set-color()` `set-var-alpha()` `set-color-hsla()` `set-var-hue()` `set-var-lightness()` and `set-var-saturation()`  mixins.
+  - Deprecated mixins `label--variant()` `label-class-variant()` and `label-class--variant()`.
+Variables
+  - Add `$class-prefix` Sass variable with the default value `''` to set prefix for primary CSS classes.
+- Remove unnecessary import `@use 'variables' as *` and comments. [f745fbf]
 
-## v1.0.0-alpha.3
+[afcb5b8]: https://github.com/angular-package/spectre.css/commit/afcb5b8640263a57ccaa5b59d6ca59f2b7b9c90b
+[14bd4b3]: https://github.com/angular-package/spectre.css/commit/14bd4b3da2630eb4d769a7e0021876884c949f9e
+[db793b2]: https://github.com/angular-package/spectre.css/commit/db793b2e78a7048b403915fce1e2a053732dce9f
+[d4423be]: https://github.com/angular-package/spectre.css/commit/d4423be0ec65abb0746cdbf1ff24f3529375130d
+[f745fbf]: https://github.com/angular-package/spectre.css/commit/f745fbf9aa4ff17ca2baeace2e2ea8267f41ca99
+
+##### v1.0.0-alpha.3.0.1 [#](https://github.com/angular-package/spectre.css/releases/tag/v1.0.0-alpha.3.0.1)
+
+##### v1.0.0-alpha.3
 
 - Add new `toast-class-variant()` and `label-class-variant()` mixins. [87ebe64] [e6d2ac8] [921dc86] [fdbe64b]
 - Add sass variable `$transition-duration` and css variable `transition-duration` of the default value equal to `0.2s` and use in styles. [1db668c]
@@ -26,7 +114,7 @@
 [845c528]: https://github.com/angular-package/spectre.css/commit/845c5287983b7054e158df491dd708f0a44f3466
 [cc720f9]: https://github.com/angular-package/spectre.css/commit/cc720f9d3bc67e617d190611f20684e6805fda42
 
-## v1.0.0-alpha.2
+##### v1.0.0-alpha.2
 
 - Update `define-color()` mixin by adding `$alpha` parameter. [5a4f317]
 - Update CSS variable `body-bg-color` to use SCSS variable `$body-bg-color` instead of basing on `bg-color-light`. [c529aa9]
