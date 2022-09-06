@@ -3,6 +3,7 @@
 ##### v1.0.0-beta [#](https://github.com/angular-package/spectre.css/releases/tag/v1.0.0-beta)
 
 - Update Spectre.css documentation.
+- Update `spectre.scss` by adding `$color-scheme` and include mixins. [1f8c8ed]
 - Add dark/light/normal color themes (mixins, functions) depending on the `$color-scheme` Sass variable.
   - Add `spectre-dark.scss` `spectre-light.scss` with dark and light color schemes.
 
@@ -12,25 +13,31 @@
     - Dark theme CSS variables are set under the `prefers-color-scheme: dark` on `$color-scheme` Sass variable set to `dark` or `light dark`.
     - Light theme CSS variables are set under the `prefers-color-scheme: light` on `$color-scheme` Sass variable set to `light` or `light dark`.
     - Normal theme CSS variables are set when the dark and light theme is not set and the `$color-scheme` Sass variable is set to `normal`.
+  Related commits: [e368c80]
 
 - Variables
   - Move Sass variables from the `_variables.scss` file to the `variables` directory and separate files.
   - Add `$class-prefix` Sass variable with the default value `''` to set prefix for primary CSS classes.
-  - Add `$theme-dark` `$theme-light` and `$theme-normal` Sass variables with color configuration.
-  - Update the Sass variables of derived colors to be set as `list` to have `darken()` or `lighten()` CSS variables.
+  - Add `$theme-color` Sass variable [https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color)
+  - Add `$theme-dark` `$theme-light` and `$theme-normal` Sass variables with theme color configurations. [b71e475]
+  - Move the `$columns-count` Sass variable from responsive breakpoints to the core. [7729a60]
+  - Update the Sass derived color variables to `list` instead of `darken()` or `lighten()`.
+  - Remove the `_variables.scss` in favor of folder `variables` with `_index.scss`. [36903a7]
+  Related commits: [e0a1326] [e29a8ed] [e404a0c] [66d08f5] [fb16cee] [baa8ca6] [a4562ad] [7923cdc] [b71e475] [7729a60] [36903a7]
 
 - Functions
   - Color
     - Move the `color()` Sass function to the `color` directory, and add `hsla` subdirectory.
     - Add `alpha-var()` function to obtain the CSS color alpha variable by using `var()` function.
     - Add the `color-name()` function to have the ability to provide code instead of a full color name.
-    - Add the` get-theme-colors()` function to append colors from the given map to the returned list.
+    - Add the`get-theme-colors()` function to append colors from the given map to the returned list. [bcef08e]
     - Add `hue-var()` function to obtain the CSS color hue variable by using `var()` function.
     - Add `lightness-level-var()` function to obtain the CSS color lightness level variable by using `var()` function.
     - Add `lightness-var()` function to obtain the CSS color lightness variable by using `var()` function.
     - Add `saturation-var()` function to obtain the CSS color saturation variable by using `var()` function.
     - Add `hsa-color()` function to return the `hsla()` color.
     - Reorder `color()` function parameters to be consistent with the `hsla()` function and use the `hsla-color()` function to return the color. [d4423be]
+
   - Var
     - Move the `get-var()` `var-negative()` to the subdirectory `var`.
     - Update the `get-var()` function by adding `$adjust` parameter to adjust the CSS variable by `+` operator.
@@ -45,9 +52,10 @@
     - Add `var-unit()` function to return the CSS variables multiplied by the unit.
   - Add `get-from-list()` function to obtain values from the `list` argument.
   - Add `important()` function to provide the `!important`.
-  - Add `is-scheme-dark()` `is-scheme-light()` `is-scheme-normal()` functions to determine selected `$color-scheme`.
-  - Add `map-get-default()` to get value from the map with default value if null.
+  - Add `is-scheme-dark()` `is-scheme-light()` `is-scheme-normal()` functions to determine selected `$color-scheme`. [9e5fc54]
+  - Add `map-get-default()` to get value from the map with default value if null. [93597eb]
   - Add the `typeof` function to check whether the given value is a `boolean` type `true` or `false`.
+  Related commits: [bcef08e] [9e5fc54] [6b3d888] [93597eb]
 
 - Mixins
   - Add and use the `color()` `background()` `background-color()` mixins in styles instead of the `color()` function.
@@ -67,10 +75,12 @@
   - Add `bg-color-variants()` to set the background color variants from the predefined Sass variables `$bg-theme-dark`, `$bg-theme-light`, `$bg-theme-normal`.
   - Add `bg-theme-dark()` `bg-theme-light()` `bg-theme-normal()` `bg-theme()` mixins to handle the dark/light/normal themes.
   - Add the `$bg-theme` Sass variable to indicate which group colors of `$bg-theme-dark` `$bg-theme-light` `$bg-theme-normal` should be used.
+
 - Add border styles in the separate folder with mixins, variables, and styles with CSS color variants.
   - Add `get-border()` Sass function to return the border with specified `$width` `$style` and `$color`. [db793b2] [14bd4b3] [afcb5b8]
   - Add `border-color-variant()` `border-color-variants()` `border-size-variant()` `border-size-variants()` and `border()` mixins.
   - Add `$border-colors` Sass variable to indicate the border color variants.
+
 - Button styles moved to the separate `buttons` folder with mixins, variables, and styles with CSS color variants.
   - Add button outline variant colors.
   - Add `button-theme-dark()` `button-theme-light()` `button-theme-normal()` and `button-theme()` mixins to handle the dark/light/normal color themes.
@@ -80,6 +90,9 @@
   - Add `button-color-variants()` `button-outline-color-variants()` mixins.
   - Update the `button-color-variant()` `button-outline-color-variant()` mixins.
   - Add the `colors` subdirectory to have separate CSS color variants.
+
+- Add border styles [fa43d59] [e5efce1] [3c14107] [9cfb7f5] [7d12788] [74f4a29]
+
 - Hero styles moved to the separate `hero` folder with mixins, variables, and styles with CSS color variants.
   - Add `hero-theme-dark()` `hero-theme-light()` `hero-theme-normal()` and `hero-theme()` to handle dark/light/normal color themes.
   - Add `hero-color-variants()` used in the theme mixins and `hero-size-variant()` `hero-size-variants()` mixins to have different padding sizes.
@@ -87,24 +100,29 @@
   - Add `$hero-size` `$hero-theme-dark` `$hero-theme-light` `$hero-theme-normal` and `$hero-theme` Sass variables.
   - Add CSS variables for the hero sizes initiated by the Sass `$hero-size`.
   - Add the `colors` subdirectory to have separate CSS color variants.
-- Label styles moved to the separate `labels` folder with mixins, variables, and styles with CSS color variants.
+
+- Label styles moved to the separate `labels` folder with mixins, variables, and styles with CSS color variants. 
   - Add `label-theme-dark()` `label-theme-light()` `label-theme-normal()` and `label-theme()` to handle dark/light/normal color themes.
   - Add `label-color-variants()` used in the theme mixins and `label-size-variants()` mixin to have different padding sizes.
   - Add `$class-prefix` to the classname.
   - Add `$label-theme-dark` `$label-theme-light` `$label-theme-normal` and `$label-theme` Sass variables.
   - Add the `colors` subdirectory to have separate CSS color variants.
+  Related commits: [0f4c16d] [88ad2f3] [cdbc6d5] [d4dee37] [92cd276] [a9882d1] [9a1aa50] [e598f46] [d43529a] [18484a7] [26a5a2c]
+
 - Pagination styles moved to the separate `pagination` folder with mixins, variables, and styles with CSS color variants.
-  - Add `pagination-border` to have bordered page and next buttons.
+  - Add `pagi nation-border` to have bordered page and next buttons.
   - Add `pagination-theme-dark()` `pagination-theme-light()` `pagination-theme-normal()` and `pagination-theme()` to handle dark/light/normal color themes.
   - Add `pagination-color-variants()` used in the theme mixins.
   - Add `$class-prefix` to the classname.
   - Add `$pagination-theme-dark` `$pagination-theme-light` `$pagination-theme-normal` and `$pagination-theme` Sass variables.
   - Add the `colors` subdirectory to have separate CSS color variants.
+
 - Text styles moved to the separate `text` folder with mixins, variables, and styles with CSS color variants.
   - Add `text-theme-dark()` `text-theme-light()` `text-theme-normal()` and `text-theme()` to handle dark/light/normal color themes.
   - Add `text-color-variants()` used in the theme mixins.
   - Add `$class-prefix` to the classname.
   - Add `$text-theme-dark` `$text-theme-light` `$text-theme-normal` and `$text-theme` Sass variables.
+
 - Toast styles moved to the separate `toasts` folder with mixins, variables, and colors.
   - Add `toast-theme-dark()` `toast-theme-light()` `toast-theme-normal()` `toast-theme()` mixins to handle the dark/light/normal themes.
   - Add `toast-color-variants()` used in the theme mixins.
@@ -114,6 +132,49 @@
   - Add the `colors` subdirectory to have separate CSS color variants.
 - Remove unnecessary import `@use 'variables' as *` and comments. [f745fbf]
 
+<!-- Borders -->
+[74f4a29]: https://github.com/angular-package/spectre.css/commit/74f4a292aaec82b5cdc6b87cf83c1e6fd94e6317
+[7d12788]: https://github.com/angular-package/spectre.css/commit/7d127881013f0bea3abd23ae0d29a7cff192a2e7
+[9cfb7f5]: https://github.com/angular-package/spectre.css/commit/9cfb7f5ceeb122e98c31ab2faa4b16cc039cc04b
+[3c14107]: https://github.com/angular-package/spectre.css/commit/3c141073f29b1c557f332cd7a12ec6a46c29fc75
+[fa43d59]: https://github.com/angular-package/spectre.css/commit/fa43d5920bcce701b88d4ecb2db103d8a8ab33e0
+
+<!-- Functions -->
+[93597eb]: https://github.com/angular-package/spectre.css/commit/93597ebb3201f1d9a6115217fdf41c224ecef076
+[6b3d888]: https://github.com/angular-package/spectre.css/commit/6b3d88827923e1c7803a1eac90da5456c8700f94
+[9e5fc54]: https://github.com/angular-package/spectre.css/commit/9e5fc5416802547f4f02c5c8212b04dea7b0b65d
+[bcef08e]: https://github.com/angular-package/spectre.css/commit/bcef08ef11ef76ec37b7e5a7c67c2955503ac778
+
+<!-- Labels -->
+[26a5a2c]: https://github.com/angular-package/spectre.css/commit/26a5a2c6e806db7081aae8e459a720368224b28f
+[18484a7]: https://github.com/angular-package/spectre.css/commit/18484a70cfa0695dd97b16594c52df0365f6c1f8
+[d43529a]: https://github.com/angular-package/spectre.css/commit/d43529ad033d39800d7149f603bde0d6cb249a7a
+[e598f46]: https://github.com/angular-package/spectre.css/commit/e598f46a97abe2b65bed8c352956ba69a5f8442d
+[9a1aa50]: https://github.com/angular-package/spectre.css/commit/9a1aa50074254ea7862d4c7cf9458bdeb9982bbc
+[a9882d1]: https://github.com/angular-package/spectre.css/commit/a9882d1cee6cdbccfcb0b2abb48f0da1f204ca9e
+[92cd276]: https://github.com/angular-package/spectre.css/commit/92cd2765c81b81726094976f56f4aacab2fe01b1
+[d4dee37]: https://github.com/angular-package/spectre.css/commit/d4dee37e936e1ad0e5efc414bf9094f93e779914
+[cdbc6d5]: https://github.com/angular-package/spectre.css/commit/cdbc6d5d75e3603be0800803539f691e33d633aa
+[88ad2f3]: https://github.com/angular-package/spectre.css/commit/88ad2f3b5e3196c29afc58d2a06a44701b0c783c
+[0f4c16d]: https://github.com/angular-package/spectre.css/commit/0f4c16d2247b1729089bc6a58e9fe10edf1dad02
+
+<!-- CSS Variables -->
+[e368c80]: https://github.com/angular-package/spectre.css/commit/e368c80b44f95d6940176efefe56b2ec38215278
+
+<!-- Variables -->
+[36903a7]: https://github.com/angular-package/spectre.css/commit/36903a74d8cbdcff837616578c26d78adc2e6141
+[7729a60]: https://github.com/angular-package/spectre.css/commit/7729a6014ecb84c0fc5a3af430147f54028328cf
+[b71e475]: https://github.com/angular-package/spectre.css/commit/b71e47584df1b24556bc9c81fb9f7d6bfbbf09cd
+[7923cdc]: https://github.com/angular-package/spectre.css/commit/7923cdc39d4da5e8b5f8fa0652ad3129f0baa6e7
+[a4562ad]: https://github.com/angular-package/spectre.css/commit/a4562ad25ed06d8100fd3f8394c3a6c64c071425
+[baa8ca6]: https://github.com/angular-package/spectre.css/commit/baa8ca69a65fd62b76b82cb36b57d4d1983a2f3c
+[fb16cee]: https://github.com/angular-package/spectre.css/commit/fb16cee7e6f9740d3cd603ceb603aa55f208e57e
+[66d08f5]: https://github.com/angular-package/spectre.css/commit/66d08f59e7409a5830ef50e0493f3fdbd2115655
+[e404a0c]: https://github.com/angular-package/spectre.css/commit/e404a0ce0ae457c97978d6d8a8a438a52d3d94b4
+[e29a8ed]: https://github.com/angular-package/spectre.css/commit/e29a8edf5423f14508a791a63e1f5adf92ea79ce
+[e0a1326]: https://github.com/angular-package/spectre.css/commit/e0a1326cb0d4023334b81f086ba9fc967c728dcb
+
+[1f8c8ed]: https://github.com/angular-package/spectre.css/commit/1f8c8edec0c90531b9ea83d089f3624c6e5a3462
 [afcb5b8]: https://github.com/angular-package/spectre.css/commit/afcb5b8640263a57ccaa5b59d6ca59f2b7b9c90b
 [14bd4b3]: https://github.com/angular-package/spectre.css/commit/14bd4b3da2630eb4d769a7e0021876884c949f9e
 [db793b2]: https://github.com/angular-package/spectre.css/commit/db793b2e78a7048b403915fce1e2a053732dce9f
@@ -132,7 +193,9 @@
 - Add label colors, `accent`, `dark`, `light`, `disabled`, `info`. [ed96a91]
 - Add missing mixins and add new. [845c528] [cc720f9]
 
+[e5efce1]: https://github.com/angular-package/spectre.css/commit/e5efce1136e7bf134f3266f71b776f2d92ba079b
 [fdbe64b]: https://github.com/angular-package/spectre.css/commit/fdbe64b7c57b27da26f2aba3e0a16f4a1a5653a6
+
 [921dc86]: https://github.com/angular-package/spectre.css/commit/921dc86e2e1ca9ddf299948235e4bd55f4626505
 [e6d2ac8]: https://github.com/angular-package/spectre.css/commit/e6d2ac8e1d6991e30d75193b685b3cee6c12667f
 [87ebe64]: https://github.com/angular-package/spectre.css/commit/87ebe641e4d61d8d89caa5f6856b96da01013d1f
