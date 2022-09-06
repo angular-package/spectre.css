@@ -13,7 +13,8 @@
     - Dark theme CSS variables are set under the `prefers-color-scheme: dark` on `$color-scheme` Sass variable set to `dark` or `light dark`.
     - Light theme CSS variables are set under the `prefers-color-scheme: light` on `$color-scheme` Sass variable set to `light` or `light dark`.
     - Normal theme CSS variables are set when the dark and light theme is not set and the `$color-scheme` Sass variable is set to `normal`.
-  Related commits: [e368c80]
+
+Related commits: [e368c80]
 
 - Variables
   - Move Sass variables from the `_variables.scss` file to the `variables` directory and separate files.
@@ -23,7 +24,8 @@
   - Move the `$columns-count` Sass variable from responsive breakpoints to the core. [7729a60]
   - Update the Sass derived color variables to `list` instead of `darken()` or `lighten()`.
   - Remove the `_variables.scss` in favor of folder `variables` with `_index.scss`. [36903a7]
-  Related commits: [e0a1326] [e29a8ed] [e404a0c] [66d08f5] [fb16cee] [baa8ca6] [a4562ad] [7923cdc] [b71e475] [7729a60] [36903a7]
+
+Related commits: [e0a1326] [e29a8ed] [e404a0c] [66d08f5] [fb16cee] [baa8ca6] [a4562ad] [7923cdc] [b71e475] [7729a60] [36903a7]
 
 - Functions
   - Color
@@ -55,7 +57,8 @@
   - Add `is-scheme-dark()` `is-scheme-light()` `is-scheme-normal()` functions to determine selected `$color-scheme`. [9e5fc54]
   - Add `map-get-default()` to get value from the map with default value if null. [93597eb]
   - Add the `typeof` function to check whether the given value is a `boolean` type `true` or `false`.
-  Related commits: [bcef08e] [9e5fc54] [6b3d888] [93597eb]
+
+Related commits: [bcef08e] [9e5fc54] [6b3d888] [93597eb]
 
 - Mixins
   - Add and use the `color()` `background()` `background-color()` mixins in styles instead of the `color()` function.
@@ -107,7 +110,8 @@
   - Add `$class-prefix` to the classname.
   - Add `$label-theme-dark` `$label-theme-light` `$label-theme-normal` and `$label-theme` Sass variables.
   - Add the `colors` subdirectory to have separate CSS color variants.
-  Related commits: [0f4c16d] [88ad2f3] [cdbc6d5] [d4dee37] [92cd276] [a9882d1] [9a1aa50] [e598f46] [d43529a] [18484a7] [26a5a2c]
+
+Related commits: [0f4c16d] [88ad2f3] [cdbc6d5] [d4dee37] [92cd276] [a9882d1] [9a1aa50] [e598f46] [d43529a] [18484a7] [26a5a2c]
 
 - Pagination styles moved to the separate `pagination` folder with mixins, variables, and styles with CSS color variants.
   - Add `pagi nation-border` to have bordered page and next buttons.
