@@ -25,12 +25,10 @@ function build() {
 
 function build_colors(cb) {
   const modules = [
-    'bg',
     'buttons',
     'hero',
     'labels',
     'pagination',
-    'text',
     'toasts'
   ];
 
