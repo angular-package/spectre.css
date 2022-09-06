@@ -7,29 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="Color utilities are used for changing colors for text, link and background. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.">
-    <meta name="author" content="Yan Zhu">
+    <meta name="author" content="Yan Zhu &amp; @angular-package">
+    <meta name="theme-color" content="hsla(var(--s-theme-color-h), var(--s-theme-color-s), var(--s-theme-color-l), var(--s-theme-color-a))">
     <meta property="og:url" content="https://angular-package.github.io/spectre.css/utilities/colors.html">
     <meta property="og:title" content="Color utilities - Utilities - Spectre.css CSS Framework">
     <meta property="og:description" content="Color utilities are used for changing colors for text, link and background. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@angularpackage">
     <meta name="twitter:creator" content="@angularpackage">
+    <link rel="stylesheet" type="text/css" href="../assets/logo/flaticon.css">
     <link rel="shortcut icon" href="../img/favicons/favicon.ico">
     <link rel="icon" href="../img/favicons/favicon.png">
     <link rel="stylesheet" href="../dist/spectre.min.css">
+    <!-- Buttons.-->
     <link rel="stylesheet" href="../dist/spectre-icons.min.css">
     <link rel="stylesheet" href="../dist/spectre-exp.min.css">
     <link rel="stylesheet" href="../dist/docs.min.css">
     <link rel="canonical" href="https://angular-package.github.io/spectre.css/utilities/colors.html">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2335983386025442" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f067824cbf.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="docs-container off-canvas off-canvas-sidebar-show">
       <div class="docs-navbar"><a class="off-canvas-toggle btn btn-link btn-action" href="#sidebar"><i class="icon icon-menu"></i></a>
-        <div class="btns d-flex">
-          <input class="docs-search form-input" type="text" placeholder="Search Docs"><a class="btn btn-link btn-outline ml-1" href="https://www.npmjs.com/package/@angular-package/spectre.css" target="_blank"><i class="fa-brands fa-npm fa-fw fa-xl"></i></a><a class="btn btn-link btn-outline ml-1" href="https://github.com/angular-package/spectre.css" target="_blank"><i class="fa-brands fa-github fa-fw fa-xl"></i></a>
-        </div>
+        <div class="btns d-flex"><a class="btn disabled btn-link btn-outline tooltip tooltip-bottom" data-tooltip="Search documentation"><i class="fa-solid fa-magnifying-glass fa-fw"></i></a><a class="disabled btn btn-link btn-outline ml-2 tooltip tooltip-bottom" id="theme-switcher" data-tooltip="Switch theme dark/light"><i class="fa-solid fa-moon fa-fw"></i></a><a class="btn btn-link btn-outline ml-2 tooltip tooltip-bottom" data-tooltip="See on the npm" href="https://www.npmjs.com/package/@angular-package/spectre.css" target="_blank"><i class="fa-brands fa-npm fa-fw"></i></a><a class="btn btn-link btn-outline ml-2 tooltip tooltip-bottom" data-tooltip="See on the GitHub" href="https://github.com/angular-package/spectre.css" target="_blank"><i class="fa-brands fa-github fa-fw"></i></a></div>
       </div>
       <div class="docs-sidebar off-canvas-sidebar bg-body" id="sidebar">
         <div class="docs-brand"><a class="docs-logo" href="../index.html"><img src="../img/spectre-logo.svg" alt="Spectre.css CSS Framework">
@@ -37,7 +37,7 @@
         </div>
         <div class="docs-nav hide-scrollbar bg-body">
           <div class="accordion-container">
-            <div class="accordion">
+            <div class="accordion accordion-menu">
               <input id="accordion-getting-started" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
               <label class="accordion-header c-hand" for="accordion-getting-started">Getting started</label>
               <div class="accordion-body">
@@ -55,7 +55,7 @@
                 </ul>
               </div>
             </div>
-            <div class="accordion">
+            <div class="accordion accordion-menu">
               <input id="accordion-elements" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
               <label class="accordion-header c-hand" for="accordion-elements">Elements</label>
               <div class="accordion-body">
@@ -79,7 +79,7 @@
                 </ul>
               </div>
             </div>
-            <div class="accordion">
+            <div class="accordion accordion-menu">
               <input id="accordion-layout" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
               <label class="accordion-header c-hand" for="accordion-layout">Layout</label>
               <div class="accordion-body">
@@ -97,7 +97,7 @@
                 </ul>
               </div>
             </div>
-            <div class="accordion">
+            <div class="accordion accordion-menu">
               <input id="accordion-components" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
               <label class="accordion-header c-hand" for="accordion-components">Components</label>
               <div class="accordion-body">
@@ -143,12 +143,12 @@
                 </ul>
               </div>
             </div>
-            <div class="accordion">
+            <div class="accordion accordion-menu">
               <input id="accordion-utilities" type="checkbox" name="docs-accordion-checkbox" hidden="" checked="checked"/>
               <label class="accordion-header c-hand" for="accordion-utilities">Utilities</label>
               <div class="accordion-body">
                 <ul class="menu menu-nav">
-                  <li class="menu-item"><a class="active" href="../utilities/colors.html">Colors</a>
+                  <li class="active  menu-item"><a class="active " href="../utilities/colors.html">Colors</a>
                   </li>
                   <li class="menu-item"><a href="../utilities/cursors.html">Cursors</a>
                   </li>
@@ -160,8 +160,6 @@
                   </li>
                   <li class="menu-item"><a href="../utilities/position.html">Position</a>
                   </li>
-                  <li class="menu-item"><a href="../utilities/scrollbars.html">Scrollbars</a>
-                  </li>
                   <li class="menu-item"><a href="../utilities/shapes.html">Shapes</a>
                   </li>
                   <li class="menu-item"><a href="../utilities/text.html">Text</a>
@@ -169,7 +167,7 @@
                 </ul>
               </div>
             </div>
-            <div class="accordion">
+            <div class="accordion accordion-menu">
               <input id="accordion-experimentals" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
               <label class="accordion-header c-hand" for="accordion-experimentals">Experimentals</label>
               <div class="accordion-body">
@@ -216,12 +214,18 @@
             <div class="docs-menu">
               <h5>Colors</h5>
               <ul class="menu hide-scrollbar">
-                <li class="divider divider-no-border divider-size-xs"></li>
-                <li>
-                  <div class="divider" data-content="Text"></div>
-                </li>
-                <li class="menu-item"><a href="../utilities/colors.html#colors-undefined-available-text-colors">Available</a></li>
-                <li class="divider divider-no-border divider-size-xs"></li>
+                <li class="menu-item"><a href="../utilities/colors.html#colors-available">Available</a></li>
+                <li class="menu-item"><a href="../utilities/colors.html#colors-shades">Shades</a></li>
+                <li class="menu-item"><a href="../utilities/colors.html#colors-accent">Accent</a></li>
+                <li class="menu-item"><a href="../utilities/colors.html#colors-primary">Primary</a></li>
+                <li class="menu-item"><a href="../utilities/colors.html#colors-secondary">Secondary</a></li>
+                <li class="menu-item"><a href="../utilities/colors.html#colors-gray">Gray</a></li>
+                <li class="menu-item"><a href="../utilities/colors.html#colors-bg">Bg</a></li>
+                <li class="menu-item"><a href="../utilities/colors.html#colors-border">Border</a></li>
+                <li class="menu-item"><a href="../utilities/colors.html#colors-link">Link</a></li>
+                <li class="menu-item"><a href="../utilities/colors.html#colors-control">Control</a></li>
+                <li class="menu-item"><a href="../utilities/colors.html#colors-body">Body</a></li>
+                <li class="menu-item"><a href="../utilities/colors.html#colors-other">Other</a></li>
               </ul>
             </div>
             <div class="docs-ad">
@@ -235,600 +239,730 @@
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
               </div>
             </div>
-            <p>Color utilities are used for changing colors for text, link and background.</p>
+            <p>
+              Color utilities are used for changing colors for text, link and background.This page contains CSS classes to change the text, link and background color.</p>
             <p><a class="btn btn-accent" href="https://angular-package.dev/ui-kit/utility/color" target="_blank">Demonstration</a></p>
-            <div class="divider divider-no-border divider-size-xl"></div>
-            <h4 class="s-subtitle" id="colors-text">Text colors<a class="anchor" href="#colors-text" aria-hidden="true">#</a></h4>
-            <p>This section contains CSS classes to change the text color.</p>
-            <h5 class="s-subtitle" id="colors-available-text-colors">Available text colors<a class="anchor" href="#colors-available-text-colors" aria-hidden="true">#</a></h5>
-            <p><strong>Spectre.css</strong> has CSS classes prefixed with <code>text</code> and suffixed by the specified color.</p>
+            <div class="divider divider-no-border divider-xl"></div>
+            <h4 class="s-subtitle" id="colors-available">Available colors<a class="anchor" href="#colors-available" aria-hidden="true">#</a></h4>
+            <p><strong>Spectre.css</strong> has CSS classes prefixed with <code>.text</code> and <code>.bg</code> suffixed by the specified color and the following table contains color suffixes for them.
+              If the color shade <code>dark</code> is available then add <code>-dark</code> suffix to the class name, and if has <code>light</code> is available add <code>-light</code> suffix to the class name.
+              For example gray color shade dark is available then to use the text of this color add class <code>.text-gray-dark</code>.
+            </p>
             <div class="docs-demo columns">
               <div class="column col-12">
                 <table class="docs-table table table-striped text-center">
                   <thead>
                     <tr>
-                      <th></th>
+                      <th width="160"></th>
+                      <th class="text-left">Code</th>
                       <th>Available</th>
                       <th>Dark </th>
                       <th>Light</th>
-                      <th>Outline</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="text-left"><a href="#shades">dark</a></td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
-                      </td>
+                      <th class="text-left"><a href="#colors-shades">Dark</a></th>
+                      <td class="text-left"><code>dark</code></td>
                       <td> 
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left"><a href="#shades">light</a></td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
-                      </td>
+                      <th class="text-left"><a href="#colors-shades">Light</a></th>
+                      <td class="text-left"><code>light</code></td>
                       <td> 
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left"><a href="#accent-color">accent</a></td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
-                      </td>
+                      <th class="text-left"><a href="#colors-accent">Accent</a></th>
+                      <td class="text-left"><code>accent</code></td>
                       <td> 
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="text-left"><a href="#primary-colors">primary</a></td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
-                      </td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
-                      </td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
-                      </td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left"><a href="#secondary-colors">secondary</a></td>
+                      <th class="text-left"><a href="#colors-primary">Primary</a></th>
+                      <td class="text-left"><code>primary</code></td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
-                      </td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left"><a href="#gray-colors">gray</a></td>
+                      <th class="text-left"><a href="#colors-secondary">Secondary</a></th>
+                      <td class="text-left"><code>secondary</code></td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
-                      </td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left"><a href="#bg-colors">bg</a></td>
+                      <th class="text-left"><a href="#colors-gray">Gray</a></th>
+                      <td class="text-left"><code>gray</code></td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
-                      </td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left"><a href="#border-colors">border</a></td>
+                      <th class="text-left"><a href="#colors-bg">Background</a></th>
+                      <td class="text-left"><code>bg</code></td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
-                      </td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left"><a href="#control-colors">link</a></td>
+                      <th class="text-left"><a href="#colors-border">Border</a></th>
+                      <td class="text-left"><code>border</code></td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
-                      </td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left"><a href="#control-colors">disabled</a></td>
+                      <th class="text-left"><a href="#colors-control">Link</a></th>
+                      <td class="text-left"><code>link</code></td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
-                      </td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left"><a href="#control-colors">error</a></td>
+                      <th class="text-left"><a href="#colors-control">Disabled</a></th>
+                      <td class="text-left"><code>disabled</code></td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
-                      </td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left"><a href="#control-colors">info</a></td>
+                      <th class="text-left"><a href="#colors-control">Error</a></th>
+                      <td class="text-left"><code>error</code></td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
-                      </td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left"><a href="#control-colors">success</a></td>
+                      <th class="text-left"><a href="#colors-control">Info</a></th>
+                      <td class="text-left"><code>info</code></td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
-                      </td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left"><a href="#body-colors">body-bg</a></td>
+                      <th class="text-left"><a href="#colors-control">Success</a></th>
+                      <td class="text-left"><code>success</code></td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
-                      </td>
-                      <td>
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left"><a href="#body-colors">body-font</a></td>
+                      <th class="text-left"><a href="#colors-body">Body background</a></th>
+                      <td class="text-left"><code>body-bg</code></td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
-                      </td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left"><a href="#other-colors">code</a></td>
+                      <th class="text-left"><a href="#colors-body">Body font</a></th>
+                      <td class="text-left"><code>body-font</code></td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
-                      </td>
-                      <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left"><a href="#other-colors">highlight</a></td>
+                      <th class="text-left"><a href="#colors-other">Code</a></th>
+                      <td class="text-left"><code>code</code></td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                       <td>
-                        <div class="bg-secondary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-left"><a href="#colors-other">Highlight</a></th>
+                      <td class="text-left"><code>highlight</code></td>
+                      <td>
+                        <div class="bg-primary docs-dot tooltip" data-tooltip="Is available"></div>
                       </td>
                       <td>
-                        <div class="bg-primary docs-dot"></div>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
+                      </td>
+                      <td>
+                        <div class="bg-secondary docs-dot tooltip" data-tooltip="Not available"></div>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
+            <div class="divider divider-no-border divider-xl"></div>
+            <h4 class="s-subtitle" id="colors-shades">Shades<a class="anchor" href="#colors-shades" aria-hidden="true">#</a></h4>
             <div class="docs-demo columns">
               <div class="column col-12">
-                <p><span class="text-accent">accent color</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-primary"</span>&gt;</span>primary color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><span class="text-primary">primary color</span></p>
-                <p><span class="text-primary-dark">primary color dark</span></p>
-                <p><span class="text-primary-light">primary color light</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-primary"</span>&gt;</span>primary color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-primary-dark"</span>&gt;</span>primary color dark<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-primary-light"</span>&gt;</span>primary color light<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><span class="text-secondary">secondary color</span></p>
-                <p><span class="text-secondary-dark">secondary color dark</span></p>
-                <p><span class="text-secondary-light bg-primary p-1 rounded">secondary color light</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-secondary"</span>&gt;</span>secondary color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-secondary-dark"</span>&gt;</span>secondary color dark<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-secondary-light"</span>&gt;</span>secondary color light<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><span class="text-dark">dark color</span></p>
-                <p><span class="text-light bg-dark p-1 rounded">light color</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-dark"</span>&gt;</span>dark color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-light"</span>&gt;</span>light color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><span class="text-gray">gray color</span></p>
-                <p><span class="text-gray-dark">gray color dark</span></p>
-                <p><span class="text-gray-light bg-gray-dark p-1 rounded">gray color light</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-gray"</span>&gt;</span>gray color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-gray-dark"</span>&gt;</span>gray color dark<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-gray-light"</span>&gt;</span>gray color light<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><span class="text-link">link color</span></p>
-                <p><span class="text-link-dark">link color dark</span></p>
-                <p><span class="text-link-light">link color light</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-link"</span>&gt;</span>link color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-link-dark"</span>&gt;</span>link color dark<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-link-light"</span>&gt;</span>link color light<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><span class="text-body-font">body font color</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-body-font"</span>&gt;</span>body font color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><span class="text-disabled">disabled color</span></p>
-                <p><span class="text-error">error color</span></p>
-                <p><span class="text-info">info color</span></p>
-                <p><span class="text-success">success color</span></p>
-                <p><span class="text-warning">warning color</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-disabled"</span>&gt;</span>disabled color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-error"</span>&gt;</span>error color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-info"</span>&gt;</span>info color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-success"</span>&gt;</span>success color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-warning"</span>&gt;</span>warning color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><span class="text-code">code color</span></p>
-                <p><span class="text-highlight">highlight color</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-code"</span>&gt;</span>code color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-highlight"</span>&gt;</span>highlight color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-</code></pre>
+                <p><span class="text-dark">text dark color</span></p>
+                <p><span class="text-light bg-dark rounded">text light color</span></p>
               </div>
             </div>
-            <div class="divider divider-no-border divider-size-xl"></div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Text dark/light colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-dark"</span>&gt;</span>text dark color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-light bg-dark"</span>&gt;</span>text light color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><a class="text-dark" href="#colors-shades">dark link</a></p>
+                <p><a class="text-light bg-dark rounded" href="#colors-shades">light link</a></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Link dark/light colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-dark"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>dark link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-light bg-dark"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>light link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="bg-dark rounded">dark bg</span></p>
+                <p><span class="bg-light rounded">light bg</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Shades --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-dark"</span>&gt;</span>dark bg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-light"</span>&gt;</span>light bg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="divider divider-no-border divider-xl"></div>
+            <h4 class="s-subtitle" id="colors-accent">Accent color<a class="anchor" href="#colors-accent" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="text-accent">text accent color</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Text accent color --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-accent"</span>&gt;</span>text accent color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><a class="text-accent" href="#colors-accent">accent link</a></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Link accent color --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-accent"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-accent"</span>&gt;</span>accent link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="bg-accent rounded">accent bg</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-accent"</span>&gt;</span>accent bg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="divider divider-no-border divider-xl"></div>
+            <h4 class="s-subtitle" id="colors-primary">Primary colors<a class="anchor" href="#colors-primary" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="text-primary">text primary color</span></p>
+                <p><span class="text-primary-dark">text primary color dark</span></p>
+                <p><span class="text-primary-light">text primary color light</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Text primary colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-primary"</span>&gt;</span>text primary color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-primary-dark"</span>&gt;</span>text primary color dark<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-primary-light"</span>&gt;</span>text primary color light<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><a class="text-primary" href="#colors-primary">primary link</a></p>
+                <p><a class="text-primary-dark" href="#colors-primary">primary link dark</a></p>
+                <p><a class="text-primary-light" href="#colors-primary">primary link light</a></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Link primary colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-primary"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-primary"</span>&gt;</span>primary link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-primary-dark"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-primary"</span>&gt;</span>primary link dark<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-primary-light bg-primary"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-primary"</span>&gt;</span>primary link light<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="bg-primary rounded">primary bg</span></p>
+                <p><span class="bg-primary-dark rounded">primary bg dark</span></p>
+                <p><span class="bg-primary-light text-secondary-light rounded">primary bg light</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Primary colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-primary"</span>&gt;</span>primary bg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-primary-dark"</span>&gt;</span>primary bg dark<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-primary-light text-secondary-light"</span>&gt;</span>primary bg light<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="divider divider-no-border divider-xl"></div>
+            <h4 class="s-subtitle" id="colors-secondary">Secondary colors<a class="anchor" href="#colors-secondary" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="text-secondary">text secondary color</span></p>
+                <p><span class="text-secondary-dark">text secondary color dark</span></p>
+                <p><span class="text-secondary-light bg-primary rounded">text secondary color light</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Text secondary colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-secondary"</span>&gt;</span>text secondary color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-secondary-dark"</span>&gt;</span>text secondary color dark<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-secondary-light bg-primary"</span>&gt;</span>text secondary color light<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><a class="text-secondary" href="#colors-secondary">secondary link</a></p>
+                <p><a class="text-secondary-dark" href="#colors-secondary">secondary link dark</a></p>
+                <p><a class="text-secondary-light bg-primary" href="#colors-secondary">secondary link light</a></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Link secondary colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-secondary"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>secondary color<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-secondary-dark"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>secondary color dark<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-secondary-light"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>secondary color light<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="bg-secondary text-primary rounded">secondary bg</span></p>
+                <p><span class="bg-secondary-dark text-primary rounded">secondary bg dark</span></p>
+                <p><span class="bg-secondary-light text-primary rounded">secondary bg light</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Secondary colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-secondary text-primary"</span>&gt;</span>secondary bg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-secondary-dark text-primary"</span>&gt;</span>secondary bg dark<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-secondary-light text-primary"</span>&gt;</span>secondary bg light<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="divider divider-no-border divider-xl"></div>
+            <h4 class="s-subtitle" id="colors-gray">Gray colors<a class="anchor" href="#colors-gray" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="text-gray">text gray color</span></p>
+                <p><span class="text-gray-dark">text gray color dark</span></p>
+                <p><span class="text-gray-light bg-gray-dark rounded">text gray color light</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Text gray colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-gray"</span>&gt;</span>text gray color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-gray-dark"</span>&gt;</span>text gray color dark<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-gray-light bg-gray-dark p-1 rounded"</span>&gt;</span>text gray color light<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><a class="text-gray" href="#colors-gray">gray link</a></p>
+                <p><a class="text-gray-dark" href="#colors-gray">gray link dark</a></p>
+                <p><a class="text-gray-light bg-gray-dark" href="#colors-gray">gray link light</a></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Link gray colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-gray"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-gray"</span>&gt;</span>gray link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-gray-dark"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-gray"</span>&gt;</span>gray link dark<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-gray-light bg-gray-dark"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-gray"</span>&gt;</span>gray link light<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="bg-gray rounded">gray bg</span></p>
+                <p><span class="bg-gray-dark rounded">gray bg dark</span></p>
+                <p><span class="bg-gray-light rounded">gray bg light</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Gray colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-gray"</span>&gt;</span>gray bg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-gray-dark"</span>&gt;</span>gray bg dark<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-gray-light"</span>&gt;</span>gray bg light<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="divider divider-no-border divider-xl"></div>
+            <h4 class="s-subtitle" id="colors-bg">Bg colors<a class="anchor" href="#colors-bg" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="text-bg">text bg color</span></p>
+                <p><span class="text-bg-dark">text bg color dark</span></p>
+                <p><span class="text-bg-light">text bg color light</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-bg"</span>&gt;</span>text bg color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-bg-dark"</span>&gt;</span>text bg color dark<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-bg-light"</span>&gt;</span>text bg color light<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><a class="text-bg" href="#colors-bg">bg link</a></p>
+                <p><a class="text-bg-dark" href="#colors-bg">bg link dark</a></p>
+                <p><a class="text-bg-light bg-gray-dark" href="#colors-bg">bg link light</a></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Link bg colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-bg"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-bg"</span>&gt;</span>bg link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-bg-dark"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-bg"</span>&gt;</span>bg link dark<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-bg-light bg-gray-dark"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-bg"</span>&gt;</span>bg link light<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="bg-bg text-body-font rounded">bg bg</span></p>
+                <p><span class="bg-bg-dark text-body-font rounded">bg bg dark</span></p>
+                <p><span class="bg-bg-light text-body-font rounded">bg bg light</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Bg colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-bg text-body-font"</span>&gt;</span>bg bg<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-bg-dark text-body-font"</span>&gt;</span>bg bg dark<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-bg-light text-body-font"</span>&gt;</span>bg bg light<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+            <div class="divider divider-no-border divider-xl"></div>
+            <h4 class="s-subtitle" id="colors-border">Border colors<a class="anchor" href="#colors-border" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="text-border">text border color</span></p>
+                <p><span class="text-border-dark">text border color dark</span></p>
+                <p><span class="text-border-light">text border color light</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-border"</span>&gt;</span>text border color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-border-dark"</span>&gt;</span>text border color dark<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-border-light"</span>&gt;</span>text border color light<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><a class="text-border" href="#colors-border">link color</a></p>
+                <p><a class="text-border-dark" href="#colors-border">link color dark</a></p>
+                <p><a class="text-border-light" href="#colors-border">link color light</a></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Link border colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-border"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-border"</span>&gt;</span>border link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-border-dark"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-border"</span>&gt;</span>border link dark<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-border-light bg-gray-dark"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-border"</span>&gt;</span>border link light<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="bg-border rounded">border bg</span></p>
+                <p><span class="bg-border-dark rounded">border bg dark</span></p>
+                <p><span class="bg-border-light rounded">border bg light</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Bg border colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-border"</span>&gt;</span>border bg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-border-dark"</span>&gt;</span>border bg dark<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-border-light"</span>&gt;</span>border bg light<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="divider divider-no-border divider-xl"></div>
             <h4 class="s-subtitle" id="colors-link">Link colors<a class="anchor" href="#colors-link" aria-hidden="true">#</a></h4>
             <div class="docs-demo columns">
               <div class="column col-12">
-                <p><a class="text-accent p-1" href="#colors">accent link</a></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Accent color --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-accent"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>accent color<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><a class="text-primary p-1" href="#colors">primary link</a></p>
-                <p><a class="text-primary-dark p-1" href="#colors">primary link dark</a></p>
-                <p><a class="text-primary-light p-1" href="#colors">primary link light</a></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Primary colors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-primary"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>primary color<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-primary-dark"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>primary color dark<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-primary-light bg-primary"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>primary color light<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><a class="text-secondary p-1" href="#colors">secondary link</a></p>
-                <p><a class="text-secondary-dark p-1" href="#colors">secondary link dark</a></p>
-                <p><a class="text-secondary-light bg-primary p-1" href="#colors">secondary link light</a></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Secondary colors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-secondary"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>secondary color<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-secondary-dark"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>secondary color dark<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-secondary-light"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>secondary color light<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><a class="text-dark p-1" href="#colors">dark link</a></p>
-                <p><a class="text-light bg-dark p-1 rounded" href="#colors">light link</a></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Shades --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-dark"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>dark color<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-light bg-dark"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>light color<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><a class="text-gray p-1" href="#colors">gray link</a></p>
-                <p><a class="text-gray-dark p-1" href="#colors">gray link dark</a></p>
-                <p><a class="text-gray-light bg-gray-dark p-1" href="#colors">gray link light</a></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Gray colors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-gray"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>gray color<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-gray-dark"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>gray color dark<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-gray-light bg-gray-dark"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>gray color light<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><a class="text-link p-1" href="#colors">link</a></p>
-                <p><a class="text-link-dark p-1" href="#colors">link dark</a></p>
-                <p><a class="text-link-light p-1" href="#colors">link light</a></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Link colors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-link"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>link color<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-link-dark"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>link color dark<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-link-light"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>link color light<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><a class="text-body-font p-1" href="#colors">body font link</a></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Body colors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-body-font"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>body font color<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><a class="text-disabled p-1" href="#colors">disabled link</a></p>
-                <p><a class="text-error p-1" href="#colors">error link</a></p>
-                <p><a class="text-info p-1" href="#colors">info link</a></p>
-                <p><a class="text-success p-1" href="#colors">success link</a></p>
-                <p><a class="text-warning p-1" href="#colors">warning link</a></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Control colors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-disabled"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>disabled color<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-error"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>error color<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-info"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>info color<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-success"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>success color<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-warning"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>warning color<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><a class="text-code p-1" href="#colors">code link</a></p>
-                <p><a class="text-highlight p-1" href="#colors">highlight link</a></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Other colors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-code "</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>code color<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-highlight"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>highlight color<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-</code></pre>
+                <p><span class="text-link">text link color</span></p>
+                <p><span class="text-link-dark">text link color dark</span></p>
+                <p><span class="text-link-light">text link color light</span></p>
               </div>
             </div>
-            <div class="divider divider-no-border divider-size-xl"></div>
-            <h4 class="s-subtitle" id="colors-background">Background colors<a class="anchor" href="#colors-background" aria-hidden="true">#</a></h4>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Text link colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-link"</span>&gt;</span>text link color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-link-dark"</span>&gt;</span>text link color dark<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-link-light"</span>&gt;</span>text link color light<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
             <div class="docs-demo columns">
               <div class="column col-12">
-                <p><span class="bg-accent p-1 rounded">accent bg</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-accent"</span>&gt;</span>accent bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><span class="bg-primary p-1 rounded">primary bg</span></p>
-                <p><span class="bg-primary-dark p-1 rounded">primary bg dark</span></p>
-                <p><span class="bg-primary-light text-secondary-light p-1 rounded">primary bg light</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Primary colors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-primary"</span>&gt;</span>primary bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-primary-dark"</span>&gt;</span>primary bg dark<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-primary-light text-secondary-light"</span>&gt;</span>primary bg light<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><span class="bg-secondary text-primary p-1 rounded">secondary bg</span></p>
-                <p><span class="bg-secondary-dark text-primary p-1 rounded">secondary bg dark</span></p>
-                <p><span class="bg-secondary-light text-primary p-1 rounded">secondary bg light</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Secondary colors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-secondary text-primary"</span>&gt;</span>secondary bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-secondary-dark text-primary"</span>&gt;</span>secondary bg dark<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-secondary-light text-primary"</span>&gt;</span>secondary bg light<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><span class="bg-dark p-1 rounded">dark bg</span></p>
-                <p><span class="bg-light p-1 rounded">light bg</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Shades --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-dark"</span>&gt;</span>dark bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-light"</span>&gt;</span>light bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><span class="bg-gray p-1 rounded">gray bg</span></p>
-                <p><span class="bg-gray-dark p-1 rounded">gray bg dark</span></p>
-                <p><span class="bg-gray-light p-1 rounded">gray bg light</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Gray colors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-gray"</span>&gt;</span>gray bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-gray-dark"</span>&gt;</span>gray bg dark<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-gray-light"</span>&gt;</span>gray bg light<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><span class="bg-link p-1 rounded">link bg</span></p>
-                <p><span class="bg-link-dark p-1 rounded">link bg dark</span></p>
-                <p><span class="bg-link-light p-1 rounded">link bg light</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Link colors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-link"</span>&gt;</span>link bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-link-dark"</span>&gt;</span>link bg dark<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-link-light"</span>&gt;</span>link bg light<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><span class="bg text-body-font p-1 rounded">bg</span></p>
-                <p><span class="bg-bg text-body-font p-1 rounded">bg bg</span></p>
-                <p><span class="bg-bg-dark text-body-font p-1 rounded">bg bg dark</span></p>
-                <p><span class="bg-bg-light text-body-font p-1 rounded">bg bg light</span></p>
-                <p><span class="bg-body text-body-font p-1 rounded">body bg</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Bg colors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg text-body-font"</span>&gt;</span>bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-bg text-body-font"</span>&gt;</span>bg bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-bg-dark text-body-font"</span>&gt;</span>bg bg dark<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-bg-light text-body-font"</span>&gt;</span>bg bg light<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-body-bg text-body-font"</span>&gt;</span>bg body bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
-              </div>
-              <div class="column col-12">
-                <p><span class="bg-disabled p-1 rounded">disabled bg</span></p>
-                <p><span class="bg-error p-1 rounded">error bg</span></p>
-                <p><span class="bg-success p-1 rounded">success bg</span></p>
-                <p><span class="bg-warning p-1 rounded">warning bg</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Control colors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-disabled"</span>&gt;</span>disabled bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-error"</span>&gt;</span>error bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-info"</span>&gt;</span>info bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-success"</span>&gt;</span>success bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-warning"</span>&gt;</span>warning bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
-                <p><span class="bg-code p-1 rounded">code bg</span></p>
-                <p><span class="bg-highlight text-warning p-1 rounded">highlight bg</span></p>
-                <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Other colors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-code"</span>&gt;</span>code bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bg-highlight text-warning"</span>&gt;</span>highlight bg<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-</code></pre>
+                <p><a class="text-link" href="#colors-link">link</a></p>
+                <p><a class="text-link-dark" href="#colors-link">link dark</a></p>
+                <p><a class="text-link-light" href="#colors-link">link light</a></p>
               </div>
             </div>
-            <div class="divider divider-no-border divider-size-xl"></div>
-            <ul class="pagination pagination-border">
-              <li class="page-item page-prev"><a href="../utilities.html">
-                  <div class="page-item-subtitle">Previous</div>
-                  <div class="page-item-title">
-                    <h5>Utilities</h5>
-                  </div></a>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Link link colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-link"</span>&gt;</span>link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-link-dark"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-link"</span>&gt;</span>link dark<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-link-light"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-link"</span>&gt;</span>link light<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="bg-link rounded">link bg</span></p>
+                <p><span class="bg-link-dark rounded">link bg dark</span></p>
+                <p><span class="bg-link-light rounded">link bg light</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Link colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-link"</span>&gt;</span>link bg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-link-dark"</span>&gt;</span>link bg dark<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-link-light"</span>&gt;</span>link bg light<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="divider divider-no-border divider-xl"></div>
+            <h4 class="s-subtitle" id="colors-control">Control colors<a class="anchor" href="#colors-control" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="text-disabled">text disabled color</span></p>
+                <p><span class="text-error">text error color</span></p>
+                <p><span class="text-info">text info color</span></p>
+                <p><span class="text-success">text success color</span></p>
+                <p><span class="text-warning">text warning color</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Text control colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-disabled"</span>&gt;</span>text disabled color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-error"</span>&gt;</span>text error color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-info"</span>&gt;</span>text info color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-success"</span>&gt;</span>text success color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-warning"</span>&gt;</span>text warning color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><a class="text-disabled" href="#colors-control">disabled link</a></p>
+                <p><a class="text-error" href="#colors-control">error link</a></p>
+                <p><a class="text-info" href="#colors-control">info link</a></p>
+                <p><a class="text-success" href="#colors-control">success link</a></p>
+                <p><a class="text-warning" href="#colors-control">warning link</a></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Link control colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-disabled"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-control"</span>&gt;</span>disabled link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-error"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-control"</span>&gt;</span>error link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-info"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-control"</span>&gt;</span>info link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-success"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-control"</span>&gt;</span>success link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-warning"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-control"</span>&gt;</span>warning link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="bg-disabled rounded">disabled bg</span></p>
+                <p><span class="bg-error rounded">error bg</span></p>
+                <p><span class="bg-success rounded">success bg</span></p>
+                <p><span class="bg-warning rounded">warning bg</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Control colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-disabled"</span>&gt;</span>disabled bg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-error"</span>&gt;</span>error bg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-info"</span>&gt;</span>info bg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-success"</span>&gt;</span>success bg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-warning"</span>&gt;</span>warning bg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="divider divider-no-border divider-xl"></div>
+            <h4 class="s-subtitle" id="colors-body">Body colors<a class="anchor" href="#colors-body" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="text-bg">text body bg color</span></p>
+                <p><span class="text-body-font">body font color</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Text body colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-body-bg"</span>&gt;</span>text body bg color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-body-font"</span>&gt;</span>text body font color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><a class="text-body-bg" href="#colors-body">body bg link</a></p>
+                <p><a class="text-body-font" href="#colors-body">body font link</a></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Link body colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-body-bg"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-body"</span>&gt;</span>body bg color<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-body-font"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#colors-body"</span>&gt;</span>body font color<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="bg-body-bg rounded">bg body bg</span></p>
+                <p><span class="bg-body-font rounded">bg body font</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Body colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-body-bg"</span>&gt;</span>bg body bg<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-body-font"</span>&gt;</span>bg body font<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+            <div class="divider divider-no-border divider-xl"></div>
+            <h4 class="s-subtitle" id="colors-other">Other colors<a class="anchor" href="#colors-other" aria-hidden="true">#</a></h4>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="text-code">code color</span></p>
+                <p><span class="text-highlight">highlight color</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Text other colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-code"</span>&gt;</span>code color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-highlight"</span>&gt;</span>highlight color<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><a class="text-code" href="#colors">code link</a></p>
+                <p><a class="text-highlight" href="#colors">highlight link</a></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Link other colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-code "</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>code color<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-highlight"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>highlight color<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+            <div class="docs-demo columns">
+              <div class="column col-12">
+                <p><span class="bg-code rounded">code bg</span></p>
+                <p><span class="bg-highlight text-warning rounded">highlight bg</span></p>
+              </div>
+            </div>
+            <pre class="code" data-lang="HTML"><code><span class="hljs-comment">&lt;!-- Other colors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-code"</span>&gt;</span>code bg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-highlight text-warning"</span>&gt;</span>highlight bg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <div class="divider divider-no-border divider-xl"></div>
+            <ul class="pagination pagination-border pagination-icon">
+              <li class="page-item page-prev"><a href="../utilities.html"><i class="fa-solid fa-arrow-left-long"></i><span><span class="page-item-subtitle">
+                      <div class="text-fl-uppercase">utilities - Previous</div></span><span class="page-item-title">Utilities</span></span></a>
               </li>
-              <li class="page-item page-next"><a href="../utilities/cursors.html">
-                  <div class="page-item-subtitle">Next</div>
-                  <div class="page-item-title">
-                    <h5>Cursors</h5>
-                  </div></a>
+              <li class="page-item page-next"><a href="../utilities/cursors.html"><span><span class="page-item-subtitle">
+                      <div style="display: inline-flex">Next -&nbsp;<font class="text-fl-uppercase">utilities</font></div></span><span class="page-item-title">Cursors</span></span><i class="fa-solid fa-arrow-right-long"></i></a>
               </li>
             </ul>
           </div>
-          <div class="docs-footer container grid-lg" id="copyright">
-            <div class="columns">
-              <div class="column col-5">
-                          <h5 class="text-gray-dark">Documentation</h5>
-                          <ul>
-                            <li> <a href="../getting-started.html">Getting started</a>
-                            </li>
-                            <li> <a href="../elements.html">Elements</a>
-                            </li>
-                            <li> <a href="../layout.html">Layout</a>
-                            </li>
-                            <li> <a href="../components.html">Components</a>
-                            </li>
-                            <li> <a href="../utilities.html">Utilities</a>
-                            </li>
-                            <li> <a href="../experimentals.html">Experimentals</a>
-                            </li>
-                          </ul>
-              </div>
-              <div class="column col-4">
-                          <h5 class="text-gray-dark">Community</h5>
-                          <ul>
-                            <li> <a href="https://gettr.com/user/angularpackage" target="_blank"><i class="mr-1 fa-solid fa-fw fa-broom"></i>Gettr</a>
-                            </li>
-                            <li> <a href="https://twitter.com/angularpackage" target="_blank"><i class="mr-1 fa-brands fa-fw fa-twitter"></i>Twitter</a>
-                            </li>
-                            <li> <a href="https://www.youtube.com/channel/UC_AfUapk36KbBoROeA8a_lg" target="_blank"><i class="mr-1 fa-brands fa-fw fa-youtube"></i>YouTube</a>
-                            </li>
-                            <li> <a href="https://discord.com/channels/925168966098386944/998970323607228436" target="_blank"><i class="mr-1 fa-brands fa-fw fa-discord"></i>Discord</a>
-                            </li>
-                            <li> <a href="https://gitter.im/angularpackage/Lobby" target="_blank"><i class="mr-1 fa-brands fa-fw fa-gitter"></i>Gitter</a>
-                            </li>
-                          </ul>
-              </div>
-              <div class="column col-3 text-left">
-                          <h5 class="text-gray-dark">Donate</h5>
-                          <ul>
-                            <li> <a href="https://www.paypal.me/picturepan2" target="_blank"><i class="mr-1 fa-brands fa-fw fa-paypal"></i>PayPal</a>
-                            </li>
-                            <li> <a href="https://www.patreon.com/spectrecss" target="_blank"><i class="mr-1 fa-brands fa-fw fa-patreon"></i>Patreon</a>
-                            </li>
-                          </ul>
-              </div>
+        </div>
+        <footer class="docs-footer footer container footer-lg mb-6" id="copyright">
+          <div class="columns mb-10">
+            <div class="column col-12" id="top-button-container">
+              <button class="btn btn-raised btn-action btn-primary btn-lg s-circle tooltip tooltip-left" data-tooltip="Go to top" onclick="topFunction()" id="top-button"><i class="fa-solid fa-chevron-up fa-fw"></i></button>
             </div>
-            <div class="columns">
-              <div class="column col-12">Designed and built with <span class="text-error">&hearts; </span>by <a href="https://twitter.com/picturepan2" target="_blank">Yan Zhu</a>. Modified by the <a href="https://angular-package.dev" target="_blank">@angular-package</a>. </div>
+            <div class="column col-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-4">
+                      <h6 class="text-gray-dark">Documentation</h6>
+                      <ul>
+                        <li> <a href="../getting-started.html">Getting started</a>
+                        </li>
+                        <li> <a href="../elements.html">Elements</a>
+                        </li>
+                        <li> <a href="../layout.html">Layout</a>
+                        </li>
+                        <li> <a href="../components.html">Components</a>
+                        </li>
+                        <li> <a href="../utilities.html">Utilities</a>
+                        </li>
+                        <li> <a href="../experimentals.html">Experimentals</a>
+                        </li>
+                      </ul>
             </div>
-            <div class="divider"></div>
-            <div class="columns">
-              <div class="column col-12">Version <span class="version"></span>. Licensed under the <a href="https://github.com/angular-package/spectre.css/blob/master/LICENSE" target="_blank">MIT License</a></div>
+            <div class="column col-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-4">
+                      <h6 class="text-gray-dark">Project</h6>
+                      <ul>
+                        <li> <a href="https://angular-package.dev/ui-kit/dashboard" target="_blank"><i class="mr-1 fa-solid fa-fw fa-shield"></i>Demonstration</a>
+                        </li>
+                        <li> <a href="https://www.npmjs.com/package/@angular-package/spectre.css" target="_blank"><i class="mr-1 fa-brands fa-fw fa-npm"></i>npm</a>
+                        </li>
+                        <li> <a href="https://github.com/angular-package/spectre.css" target="_blank"><i class="mr-1 fa-brands fa-fw fa-github"></i>GitHub</a>
+                        </li>
+                      </ul>
+            </div>
+            <div class="column col-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-4">
+                      <h6 class="text-gray-dark">Community</h6>
+                      <ul>
+                        <li> <a href="https://gettr.com/user/angularpackage" target="_blank"><i class="mr-1 fa-solid fa-fw fa-broom"></i>Gettr</a>
+                        </li>
+                        <li> <a href="https://twitter.com/angularpackage" target="_blank"><i class="mr-1 fa-brands fa-fw fa-twitter"></i>Twitter</a>
+                        </li>
+                        <li> <a href="https://www.youtube.com/channel/UC_AfUapk36KbBoROeA8a_lg" target="_blank"><i class="mr-1 fa-brands fa-fw fa-youtube"></i>YouTube</a>
+                        </li>
+                        <li> <a href="https://discord.com/channels/925168966098386944/998970323607228436" target="_blank"><i class="mr-1 fa-brands fa-fw fa-discord"></i>Discord</a>
+                        </li>
+                        <li> <a href="https://gitter.im/angularpackage/Lobby" target="_blank"><i class="mr-1 fa-brands fa-fw fa-gitter"></i>Gitter</a>
+                        </li>
+                      </ul>
+            </div>
+            <div class="column col-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-4">
+                      <h6 class="text-gray-dark">Donate</h6>
+                      <ul>
+                        <li> <a href="https://www.paypal.me/picturepan2" target="_blank"><i class="mr-1 fa-brands fa-fw fa-paypal"></i>PayPal Yan Zhu</a>
+                        </li>
+                        <li> <a href="https://www.patreon.com/spectrecss" target="_blank"><i class="mr-1 fa-brands fa-fw fa-patreon"></i>Patreon Yan Zhu</a>
+                        </li>
+                        <li> <a href="https://spectrecss.angular-package.dev/donate/usd-fiat" target="_blank"><i class="mr-1 fa-solid fa-fw fa-dollar-sign"></i>angular package</a>
+                        </li>
+                      </ul>
             </div>
           </div>
-        </div>
+          <div class="columns">
+            <div class="column col-12">Designed and built with <span class="text-error">&hearts; </span>by <a href="https://twitter.com/picturepan2" target="_blank">Yan Zhu</a>. Modified with <span class="text-error">&hearts;</span> by the <a href="https://angular-package.dev" target="_blank">angular-package</a>. </div>
+          </div>
+          <div class="divider"></div>
+          <div class="columns">
+            <div class="column col-12">Version <span class="version"></span>. Licensed under the <a href="https://github.com/angular-package/spectre.css/blob/master/LICENSE" target="_blank">MIT License</a></div>
+          </div>
+        </footer>
       </div>
     </div>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-    <script>
-      docsearch({ 
-      apiKey: 'bede06373c5a1fa3c1bbe8401e24c653', 
-      indexName: 'picturepan2_spectre', 
-      inputSelector: '.docs-search', 
-      debug: true
-      }); 
-    </script>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-2702768-8', 'auto');
-      ga('send', 'pageview');
-    </script>
+    <script type="text/javascript" src="../js/spectre-docs.js"></script>
   </body>
 </html>

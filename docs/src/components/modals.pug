@@ -9,11 +9,7 @@ block variables
 block docs-content
   +docs-heading(slug, 'Modals', {parent, name: 'Components'})
     +docs-menu('Modals', {parent, slug},
-      {
-        items: [
-          { anchor: 'modals-size', name: 'Sizes' },
-        ]
-      }
+      { anchor: 'size', name: 'Sizes' }
     )
     include ../_layout/_ad-g.pug
 
@@ -79,7 +75,7 @@ block docs-content
             </div>
           </div>
           
-    +docs-subheading('modals-sizes', 'Modal sizes')
+    +docs-subheading('sizes', 'Modal sizes', {slug})
 
     .docs-demo.columns
       .column.col-6.col-xs-12

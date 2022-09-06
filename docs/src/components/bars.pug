@@ -9,11 +9,7 @@ block variables
 block docs-content
   +docs-heading(slug, 'Bars', {parent, name: 'Components'})
     +docs-menu('Bars', {parent, slug},
-      {
-        items: [
-          { anchor: 'bars-slider', name: 'Slider' },
-        ]
-      }
+      { anchor: 'slider', name: 'Slider' }
     )
     include ../_layout/_ad-g.pug
 
@@ -58,7 +54,7 @@ block docs-content
             <div class="bar-item" style="width:15%;background:#818bd5;">15%</div>
           </div>
 
-    +docs-subheading('bars-slider', 'Slider bars')
+    +docs-subheading('slider', 'Slider bars', {slug})
 
     .docs-demo.columns
       .column.col-8.col-xs-12

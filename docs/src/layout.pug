@@ -29,6 +29,15 @@ block docs-content
       .column.col-6.col-xs-12
         .card
           .card-header
+            .card-title.h5 Footer
+          .card-body
+            | Footer is a document page footer that includes a flexbox-based responsive grid system with 12 columns
+          .card-footer
+            a.btn.btn-primary(href="layout/footer.html") View
+
+      .column.col-6.col-xs-12
+        .card
+          .card-header
             .card-title.h5 Hero
           .card-body
             | Container for key featured content or information
@@ -52,5 +61,7 @@ block docs-content
             | Responsive layout grid system and responsive visibility utilities
           .card-footer
             a.btn.btn-primary(href="layout/responsive.html") View
+
+    +docs-pagination({ parent: 'elements', path:'typography', name: 'Typography' }, { path: 'layout', path: 'grid', name: 'Flexbox grid'})
 
     include _layout/_ad-c.pug

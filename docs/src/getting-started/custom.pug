@@ -13,22 +13,48 @@ block docs-content
       { anchor: 'compiling', name: 'Compiling CSS' },
       { anchor: 'importing' , name: 'Importing Sass' },
       {
-        anchor: 'customizable',
-        name: 'Customizable',
+        anchor: 'colors',
+        name: 'Colors',
         items: [
-          { anchor: 'prefix', name: 'Prefix' },
-          { anchor: 'borders', name: 'Borders - mixins' },
-          { anchor: 'buttons' , name: 'Buttons - mixins' },
-          { anchor: 'heros' , name: 'Heros - mixins and variables' },
-          { anchor: 'labels' , name: 'Labels - mixins' },
-          { anchor: 'toasts' , name: 'Toasts - mixins' },
+          { anchor: 'hex', name: 'Hex' },
+          { anchor: 'derived', name: 'Derived' },
         ]
       },
       {
+        anchor: 'theme',
+        name: 'Theme',
         items: [
-          { anchor: 'folders', name: 'Folder structure' }
+          { anchor: 'property-types', name: 'Property types' },
+          { anchor: 'color-scheme', name: 'Color scheme' },
+          { anchor: 'light', name: 'Light' },
+          { anchor: 'dark', name: 'Dark' },
         ]
-      }
+      },
+      {
+        anchor: 'customizable',
+        name: 'Customizable',
+        items: [
+          { anchor: 'var-prefix', name: 'Var prefix' },
+          { anchor: 'class-prefix', name: 'Class prefix' },
+          { anchor: 'color-hue', name: 'Hue' },
+          { anchor: 'color-saturation', name: 'Saturation' },
+          { anchor: 'color-lightness', name: 'Lightness' },
+          { anchor: 'color-alpha', name: 'Alpha' },
+          { anchor: 'color-summary', name: 'Summary' },
+        ]
+      },
+      {
+        anchor: 'variants',
+        name: 'Variants',
+        items: [
+          { anchor: 'borders', name: 'Borders' },
+          { anchor: 'buttons' , name: 'Buttons' },
+          { anchor: 'heros' , name: 'Heros' },
+          { anchor: 'labels' , name: 'Labels' },
+          { anchor: 'toasts' , name: 'Toasts' },
+        ]
+      },
+      { anchor: 'folders', name: 'Folder structure' }
     )
     include ../_layout/_ad-g.pug
     
@@ -129,13 +155,15 @@ block docs-content
       code
         :highlight(lang="scss")
           // Example of project-name.scss
-          // Define variables to override default ones
-          $primary-color: #2e5bec;
-          $dark-color: #3e396b;
 
-          // Import full Spectre source code
+          // Import Spectre core source code
           @use 'node_modules/@angular-package/spectre.css/spectre' as *;
 
+          // Import Spectre icons source code 
+          @use 'node_modules/@angular-package/spectre.css/spectre-icons' as *;
+
+          // Import Spectre experimental source code 
+          @use 'node_modules/@angular-package/spectre.css/spectre-exp' as *;
     p
       | Alternatively, you can create custom 
       code _variables.scss
@@ -154,9 +182,249 @@ block docs-content
           @use 'node_modules/@angular-package/spectre.css/src/buttons';
           @use 'node_modules/@angular-package/spectre.css/src/forms';
 
-    +docs-subheading('customizable-prefix', 'Custom prefix', {slug})
+    .docs-demo.columns
+      .column.col-12
+        .video-responsive
+          iframe(width="560" height="315" src="https://www.youtube.com/embed/u2wHzD4Y6r0" allowfullscreen="")
+
+
+    +docs-subheading('colors-hex', 'Custom - Hex colors', {slug})
     p
-      | You can have CSS variables with a different prefix, by changing the Sass #[code $var-prefix] variable.
+      | To override the default hex colors import by using the #[code @use] Sass variables and then load spectre styles.
+    div.toast.toast-success
+      i.fa-regular.fa-circle-check.fa-fw.fa-lg
+      span.ml-1 The following colors are used in both dark and light themes.
+
+    //- importing
+    pre.code(data-lang='Sass')
+      code
+        :highlight(lang="scss")
+          // Example of project-name.scss
+          @use 'node_modules/@angular-package/spectre.css/variables' as *;
+
+          // Define variables to override default ones
+          $accent-color: #9932CC;
+          $code-color: #d73e48;
+          $error-color: #e85600;
+          $highlight-color: #ffe9b3;
+          $info-color: #d9edf7;
+          $primary-color: #5755d9;
+          $success-color: #32b643;
+          $warning-color: #ffb700;
+
+          // Import Spectre core source code
+          @use 'node_modules/@angular-package/spectre.css/spectre' as *;
+
+          // Import Spectre icons source code 
+          @use 'node_modules/@angular-package/spectre.css/spectre-icons' as *;
+
+          // Import Spectre experimental source code 
+          @use 'node_modules/@angular-package/spectre.css/spectre-exp' as *;
+    p
+      a.btn.btn-primary.btn-outline.ml-1(href='variables.html#variables-theme-light' target="_blank")
+        i.fa-brands.fa-youtube
+        |  Watch on YouTube
+
+    +docs-subheading('colors-derived', 'Custom - Derived colors', {slug})
+    p
+      | To override the default derived colors import by using the #[code @use] Sass variables and then load spectre styles.
+
+    div.toast.toast-info
+      i.fa-solid.fa-circle-info.fa-fw.fa-lg
+      span.ml-1 Derived colors are not used in the themes.
+
+    pre.code(data-lang='Sass')
+      code
+        :highlight(lang="scss")
+          // Example of project-name.scss
+          @use 'node_modules/@angular-package/spectre.css/variables' as *;
+
+          // Define variables to override default ones
+          $bg-color: darken($dark-color, 55%); // original lighten($dark-color, 75%);
+          $bg-color-dark: darken($bg-color, 3%);
+          $bg-color-light: $light-color;
+          $body-bg-color: $bg-color-light;
+          $body-font-color: lighten($dark-color, 5%);
+          $border-color: lighten($dark-color, 65%);
+          $border-color-dark: darken($border-color, 10%);
+          $border-color-light: lighten($border-color, 8%);
+          $disabled-color: $bg-color-dark;
+          $gray-color: lighten($dark-color, 55%);
+
+          // Import Spectre core source code
+          @use 'node_modules/@angular-package/spectre.css/spectre' as *;
+
+          // Import Spectre icons source code 
+          @use 'node_modules/@angular-package/spectre.css/' as *;
+
+          // Import Spectre experimental source code 
+          @use 'node_modules/@angular-package/spectre.css/spectre-exp' as *;
+    p
+      a.btn.btn-primary.btn-outline.ml-1(href='variables.html#variables-theme-light' target="_blank")
+        i.fa-brands.fa-youtube
+        |  Watch on YouTube
+
+    +docs-subheading('theme', 'Custom - Theme', {slug})
+
+    p There are dark and light themes, that can be overridden to customize Spectre.css version.
+    p Before you start the customization, find out what properties you can customize and what type of these properties can be in both dark and light themes.
+
+    +docs-subheading('theme-property-types', 'Custom - Theme property types', {slug, tag: 'h5'})
+
+    p CSS color variables are being defined based on given properties of the #[code $theme-dark] and #[code $theme-light] and they can take the values as follows: 
+
+    p The hex color, setting a #[strong base] color.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          $theme-dark: (
+            ...
+            'dark-color': #020202,
+            ...
+          );
+
+    p The hex color from the other Sass variable, setting a #[strong base] color.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          $dark-color: #020202;
+
+          $theme-dark: (
+            ...
+            'dark-color': $dark-color,
+            ...
+          );
+
+    p The hex color from the other Sass variable adjusted by #[code lighten()] or #[code darken()] Sass function, variable setting a #[strong base] color.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          $dark-color: #020202;
+
+          $theme-dark: (
+            ...
+            'dark-color': lighten($dark-color, 5%),
+            ...
+          );
+
+    p The color name or color code of #[strong string] type, setting a #[strong derived] color.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          $dark-color: lighten(#020202, 15%);
+
+          $theme-dark: (
+            ...
+            'dark-color': $dark-color,
+            'gray-color': 'dark-color',
+            'gray-color-second': 'dark',
+            ...
+          );
+
+    p The Sass list, setting the #[strong derived] color, where the first parameter is the color name or color code, the second is color lightness base plus/minus, and third is the plus/minus transparency.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          $theme-dark: (
+            ...
+            'dark-color': #020202,
+            'dark-color-darker': ('dark', -15%),
+
+            'light-color': $light-color,
+            'light-color-lighter': ('light-color', +15%),
+            ...
+          );
+
+    +docs-subheading('theme-color-scheme', 'Custom - Color scheme', {slug, tag: 'h5'})
+    p
+      | To override the #[code $color-scheme] import by using the #[code @use] file #[code node_modules/@angular-package/spectre.css/variables], override the #[code $color-scheme], and then load spectre styles.
+
+    pre.code(data-lang='Sass')
+      code
+        :highlight(lang="scss")
+          // Example of project-name.scss
+          @use 'node_modules/@angular-package/spectre.css/variables' as *;
+
+          // Override the $color-scheme
+          $color-scheme: light;
+
+          // Import Spectre core source code
+          @use 'node_modules/@angular-package/spectre.css/spectre' as *;
+
+          // Import Spectre icons source code 
+          @use 'node_modules/@angular-package/spectre.css/spectre-icons' as *;
+
+          // Import Spectre experimental source code 
+          @use 'node_modules/@angular-package/spectre.css/spectre-exp' as *;
+
+    p
+      a.btn.btn-primary.btn-outline.ml-1(href='variables.html#variables-theme-light' target="_blank")
+        i.fa-brands.fa-youtube
+        |  Watch on YouTube
+
+    +docs-subheading('theme-light', 'Custom - Theme light', {slug, tag: 'h5'})
+    p
+      | To override the default theme light colors import by using the #[code @use] Sass #[code $theme-light] map variable, Sass module #[code sass:map], 
+      | set specific property in the #[code $theme-light] by using the #[code map.set()], override the #[code $theme-light] with updated value, and then load 
+      | spectre styles.
+
+    pre.code(data-lang='Sass')
+      code
+        :highlight(lang="scss")
+          // Example of project-name.scss
+          @use 'sass:map';
+          @use 'node_modules/@angular-package/spectre.css/variables' as *;
+
+          // Define the new $theme-light to override default ones
+          $theme-light: map.set($theme-light, 'primary-color-dark', ('gray-dark', +5%));
+
+          // Import Spectre core source code
+          @use 'node_modules/@angular-package/spectre.css/spectre' as *;
+
+          // Import Spectre icons source code 
+          @use 'node_modules/@angular-package/spectre.css/spectre-icons' as *;
+
+          // Import Spectre experimental source code 
+          @use 'node_modules/@angular-package/spectre.css/spectre-exp' as *;
+
+    p
+      a.btn.btn-primary.btn-outline.ml-1(href='variables.html#variables-theme-light' target="_blank")
+        i.fa-brands.fa-youtube
+        |  Watch on YouTube
+
+    +docs-subheading('theme-dark', 'Custom - Theme dark', {slug, tag: 'h5'})
+    p
+      | To override the default theme dark colors import by using the #[code @use] Sass #[code $theme-dark] map variable from the #[code node_modules/@angular-package/spectre.css/variables], Sass module #[code sass:map], 
+      | set specific property in the #[code $theme-dark] by using the #[code map.set()], override the #[code $theme-dark] with updated value, and then load 
+      | spectre styles.
+
+    pre.code(data-lang='Sass')
+      code
+        :highlight(lang="scss")
+          // Example of project-name.scss
+          @use 'sass:map';
+          @use 'node_modules/@angular-package/spectre.css/variables' as *;
+
+          // Define the new $theme-dark to override default ones
+          $theme-dark: map.set($theme-dark, 'primary-color-light', ('gray-light', -5%));
+
+          // Import Spectre core source code
+          @use 'node_modules/@angular-package/spectre.css/spectre' as *;
+
+          // Import Spectre icons source code 
+          @use 'node_modules/@angular-package/spectre.css/spectre-icons' as *;
+
+          // Import Spectre experimental source code 
+          @use 'node_modules/@angular-package/spectre.css/spectre-exp' as *;
+
+    p
+      a.btn.btn-primary.btn-outline.ml-1(href='variables.html#variables-theme-light' target="_blank")
+        i.fa-brands.fa-youtube
+        |  Watch on YouTube
+
+    +docs-subheading('customizable-prefix', 'Custom - Prefix', {slug})
+    p
+      | You can have CSS variable names with a different prefix by changing the sass #[code $var-prefix] variable.
 
     pre.code(data-lang='Scss')
       code
@@ -170,69 +438,193 @@ block docs-content
           // Use the spectre.
           @use 'node_modules/@angular-package/spectre.css/spectre' as *;
 
-    p Then, for example the #[code $border-color] Sass variable has CSS variable 
+    p Then, for example, the #[code $border-color] sass variable has CSS variable name related to saturation defined as follows:
     pre.code(data-lang='Css')
       code
         :highlight(lang="css")
-          --spectre-border-color: #F7F8F9;
+          --spectre-border-color-s: var(--spectre-dark-color-s);
 
-    p The feature replaces in some minimal way custom prefixes for all classes with the gulp.
-      |  Some primary classes are defined with the #[code $var-prefix], for example:
-    pre.code(data-lang='Sass')
+    +docs-subheading('customizable-class-prefix', 'Custom - Class prefix', {slug})
+    p
+      | You can customize the CSS class name by adding the prefix through the sass #[code $class-prefix] variable.
+
+    pre.code(data-lang='Scss')
       code
         :highlight(lang="scss")
-          .btn, .#{$var-prefix}-btn { ... }
+          // Get variables.
+          @use 'node_modules/@angular-package/spectre.css/variables' as *;
 
-    p Then, CSS file is compiled with 
+          // Change the $class-prefix
+          $class-prefix: 'spectre-';
+
+          // Use the spectre.
+          @use 'node_modules/@angular-package/spectre.css/spectre' as *;
+
+    p Then, for example, the #[code .avatar] class CSS variable name is compiled as follows:
     pre.code(data-lang='Css')
       code
         :highlight(lang="css")
-          .btn, .spectre-btn { ... }
+          .spectre-avatar { ... }
 
-    div.toast.toast-error 
-      | There is no gulp here so the feature is not working.
+    // Custom color name hsla
+    +docs-subheading('customizable-color-name', 'Custom - Color name', {slug})
     p
-    p
-      | There is also a way to add custom prefix to all CSS classes. You can use 
-      a(href='https://www.npmjs.com/package/gulp-css-prefix', target='_blank') gulp-css-prefix
-      |  plugin and add a new Gulp task to enable it.
+      | You can have a CSS variable color name with a different prefix, as above, and different #[code hue], #[code saturation], #[code lightness] and #[code alpha] by changing the related #[b sass] variables.
 
-    //- custom prefix
-    pre.code(data-lang='Bash')
+    // -- Hue
+    +docs-subheading('customizable-color-hue', 'Custom - Color name hue', {slug, tag: 'h5'})
+
+    p
+      | To have a different name of the CSS variable related to the color #[strong hue] change the #[code $var-hue] sass variable.
+
+    pre.code(data-lang='Scss')
       code
-        :highlight(lang="Bash")
-          npm install gulp-css-prefix
-    p
-      | To add 
-      code spectre-
-      |  to all classes, you can add the Gulp task to 
-      code gulpfile.js
-      |  file.
+        :highlight(lang="scss")
+          // Get variables.
+          @use 'node_modules/@angular-package/spectre.css/variables' as *;
 
-    //- custom prefix
-    pre.code
+          // Change the $var-prefix
+          $var-prefix: 'spectre';
+
+          // Change the $var-hue
+          $var-hue: 'hue';
+
+          // Use the spectre.
+          @use 'node_modules/@angular-package/spectre.css/spectre' as *;
+
+    p Then, for example, the #[code $accent-color] sass variable has the CSS variable name related to #[strong saturation] set as follows:
+    pre.code(data-lang='Css')
       code
-        :highlight(lang="JavaScript")
-          var cssPrefix = require('gulp-css-prefix');
-      
-          function prefix() {
-            return gulp
-              .src('./dist/*.css')
-              .pipe(cssPrefix('spectre-'))
-              .pipe(gulp.dest('./dist'));
-          }
+        :highlight(lang="css")
+          --spectre-accent-color-hue: 280.1298701299deg;
 
-          exports.prefix = prefix;
+    // -- Saturation
+    +docs-subheading('customizable-color-saturation', 'Custom - Color name saturation', {slug, tag: 'h5'})
 
     p
-      | After you compile your version of #[b Spectre.css] in the /dist, run 
-      code gulp prefix
-      |  in the directory of #[b Spectre.css].
+      | To have a different name of the CSS variable related to the color #[strong saturation] change the #[code $var-saturation] sass variable.
 
+    pre.code(data-lang='Scss')
+      code
+        :highlight(lang="scss")
+          // Get variables.
+          @use 'node_modules/@angular-package/spectre.css/variables' as *;
 
-    +docs-subheading('customizable-borders', 'Customizable borders - Border mixins', {slug})
+          // Change the $var-prefix
+          $var-prefix: 'spectre';
 
-    +docs-subheading('customizable-buttons', 'Customizable buttons - Button mixins', {slug})
+          // Change the $var-saturation
+          $var-saturation: 'saturation';
+
+          // Use the spectre.
+          @use 'node_modules/@angular-package/spectre.css/spectre' as *;
+
+    p Then, for example, the #[code $accent-color] sass variable has the CSS variable name related to #[strong saturation] set as follows:
+    pre.code(data-lang='Css')
+      code
+        :highlight(lang="css")
+          --spectre-accent-color-saturation: 60.6299212598%;
+
+    // -- Lightness
+    +docs-subheading('customizable-color-lightness', 'Custom - Color name lightness', {slug, tag: 'h5'})
+
+    p
+      | To have a different name of the CSS variable related to the color #[strong lightness] change the #[code $var-lightness] sass variable.
+
+    pre.code(data-lang='Scss')
+      code
+        :highlight(lang="scss")
+          // Get variables.
+          @use 'node_modules/@angular-package/spectre.css/variables' as *;
+
+          // Change the $var-prefix
+          $var-prefix: 'spectre';
+
+          // Change the $var-lightness
+          $var-lightness: 'lightness';
+
+          // Use the spectre.
+          @use 'node_modules/@angular-package/spectre.css/spectre' as *;
+
+    p Then, for example, the #[code $accent-color] sass variable has the CSS variable name related to #[strong lightness] set as follows:
+    pre.code(data-lang='Css')
+      code
+        :highlight(lang="css")
+          --spectre-accent-color-lightness: 49.8039215686%;
+
+    // -- Alpha
+    +docs-subheading('customizable-color-alpha', 'Custom - Color name alpha', {slug, tag: 'h5'})
+
+    p
+      | To have a different name of the CSS variable related to the color #[strong alpha] change the #[code $var-alpha] sass variable.
+
+    pre.code(data-lang='Scss')
+      code
+        :highlight(lang="scss")
+          // Get variables.
+          @use 'node_modules/@angular-package/spectre.css/variables' as *;
+
+          // Change the $var-prefix
+          $var-prefix: 'spectre';
+
+          // Change the $var-alpha
+          $var-alpha: 'alpha';
+
+          // Use the spectre.
+          @use 'node_modules/@angular-package/spectre.css/spectre' as *;
+
+    p Then, for example, the #[code $accent-color] sass variable has the CSS variable name related to #[strong alpha] set as follows:
+    pre.code(data-lang='Css')
+      code
+        :highlight(lang="css")
+          --spectre-accent-color-alpha: 1;
+
+    // -- Summary
+    +docs-subheading('customizable-color-summary', 'Custom - Color name summary', {slug, tag: 'h5'})
+
+    p
+      | All changed CSS variables above:
+
+    pre.code(data-lang='Scss')
+      code
+        :highlight(lang="scss")
+          // Get variables.
+          @use 'node_modules/@angular-package/spectre.css/variables' as *;
+
+          // Change the $var-prefix
+          $var-prefix: 'spectre';
+
+          // Change the $var-hue
+          $var-hue: 'hue';
+
+          // Change the $var-saturation
+          $var-saturation: 'saturation';
+
+          // Change the $var-lightness
+          $var-lightness: 'lightness';
+
+          // Change the $var-alpha
+          $var-alpha: 'alpha';
+
+          // Use the spectre.
+          @use 'node_modules/@angular-package/spectre.css/spectre' as *;
+
+    p
+      | Give the result of the CSS variables being set for the sass #[code $accent-color] as follows:
+
+    pre.code(data-lang='Css')
+      code
+        :highlight(lang="css")
+          --spectre-accent-color-hue: 280.1298701299deg;
+          --spectre-accent-color-saturation: 60.6299212598%;
+          --spectre-accent-color-lightness: 49.8039215686%;
+          --spectre-accent-color-alpha: 1;
+
+    +docs-subheading('variants-borders', 'Custom - Borders', {slug})
+
+    div.toast.toast-error Section is not ready.
+
+    +docs-subheading('variants-buttons', 'Custom - Buttons', {slug})
 
     div.toast.toast-info 
       | Instead of passing the Sass variable #[code $primary-color] there is a need to provide CSS variable color name #[code 'primary-color'] cause #[code button-variant()] and #[code button-outline-variant()] mixins are modified to use #[code color()] function.
@@ -275,15 +667,17 @@ block docs-content
             @include button-outline-variant('success-color');
           }
 
-    +docs-subheading('customizable-heros', 'Customizable heros - Hero mixins and variables', {slug})
+    +docs-subheading('variants-heros', 'Custom - Hero', {slug})
 
-    +docs-subheading('customizable-labels', 'Customizable labels - Labels mixins', {slug})
+    div.toast.toast-error Section is not ready.
 
-    p
+    +docs-subheading('variants-labels', 'Custom - Labels', {slug})
 
-    +docs-subheading('customizable-toasts', 'Customizable toasts - Toast mixins', {slug})
+    div.toast.toast-error Section is not ready.
 
-    p 
+    +docs-subheading('variants-toasts', 'Custom - Toasts', {slug})
+
+    div.toast.toast-error Section is not ready.
 
     +docs-subheading('folders', 'Folder structure', {slug})
 
@@ -315,7 +709,7 @@ block docs-content
           │   │   │   └── docs.scss
           │   │   ├── index.pug               // Docs Pug files
           │   │   └── ...
-          │   ├── examples/                   // Example tempalte
+          │   ├── examples/                   // Example template
           │   │   └── starter.html
           │   ├── ../
           │   ├── index.html

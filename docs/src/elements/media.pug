@@ -9,11 +9,17 @@ block variables
 
 block docs-content
   +docs-heading(slug, name, { parent, name: 'Elements' })
+    +docs-menu(name, {parent, slug},
+      {anchor: 'images', name: 'Images'},
+      {anchor: 'figure', name: 'Figure'},
+      {anchor: 'video', name: 'Video'}
+    )
+
     include ../_layout/_ad-g.pug
 
     p Media includes responsive images, figures and video classes.
 
-    +docs-subheading('media-images', 'Images')
+    +docs-subheading('images', 'Images', {slug})
 
     p
       | Add the #[code img-responsive] class to #{'<img>'} elements. The images will scale with the parent sizes.
@@ -49,11 +55,11 @@ block docs-content
           <img src="img/osx-el-capitan.jpg" class="img-fit-contain ..." alt="...">
           <img src="img/osx-el-capitan.jpg" class="img-fit-cover ..." alt="...">
 
-    +docs-subheading('media-figure', 'Figure')
+    +docs-subheading('figure', 'Figure', {slug})
 
     p
-      | You can use the element #{'<figure>'} for an image with a caption.
-      | Add the #[code figure] class to #{'<figure>'} element.
+      | You can use the element #[code #{'<figure>'}] for an image with a caption.
+      | Add the #[code figure] class to #[code #{'<figure>'}] element.
       | The images with the #[code img-responsive] class will be responsive.
       | And the included class #[code figure-caption] will provide basic style for caption.
       | Also, you can use #[code text-left], #[code text-center] and #[code text-right] for caption alignment.
@@ -72,7 +78,7 @@ block docs-content
             <figcaption class="figure-caption text-center">macOS Yosemite wallpaper</figcaption>
           </figure>
 
-    +docs-subheading('media-video', 'Video')
+    +docs-subheading('video', 'Video', {slug})
 
     p
       | For responsive video, add a container with the #[code video-responsive] class. 
@@ -83,7 +89,7 @@ block docs-content
     .docs-demo.columns
       .column.col-12
         .video-responsive
-          iframe(width="560" height="315" src="https://www.youtube.com/embed/7DbslbKsQSk" allowfullscreen="")
+          iframe(width="560" height="315" src="https://www.youtube.com/embed/eNyURoQwUHM" allowfullscreen="")
 
     p
       | For responsive #{'<video>'} elements, you can add the #[code video-responsive] class directly.

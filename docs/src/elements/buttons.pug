@@ -84,7 +84,8 @@ block docs-content
     table.docs-table.table.table-striped.text-center
       thead
         tr
-          th
+          th(width='160')
+          th.text-left Code
           th Available
           th Dark 
           th Light
@@ -93,193 +94,227 @@ block docs-content
         tr
           th.text-left
             a(href="#buttons-colors-dark") Dark
+          td.text-left
+            code btn-dark
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td 
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
         tr
           th.text-left
             a(href="#buttons-colors-light") Light
+          td.text-left
+            code btn-light
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td 
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
         tr
           th.text-left
             a(href="#buttons-colors-accent") Accent
+          td.text-left
+            code btn-dark
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td 
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
         tr
           th.text-left
             a(href="#buttons-colors-primary") Primary
+          td.text-left
+            code btn-primary
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
         tr
           th.text-left
             a(href="#buttons-colors-secondary") Secondary
+          td.text-left
+            code btn-secondary
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
         tr
           th.text-left
             a(href="#buttons-colors-gray") Gray
+          td.text-left
+            code btn-gray
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
         tr
           th.text-left
             a(href="#buttons-colors-bg") Bg
+          td.text-left
+            code btn-bg
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
         tr
           th.text-left
             a(href="#buttons-colors-border") Border
+          td.text-left
+            code btn-border
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
         tr
           th.text-left
             a(href="#buttons-colors-link") Link
+          td.text-left
+            code btn-link
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
         tr
           th.text-left
             a(href="#buttons-colors-control") Disabled
+          td.text-left
+            code btn-disabled
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
         tr
           th.text-left
             a(href="#buttons-colors-control") Error
+          td.text-left
+            code btn-error
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
         tr
           th.text-left
             a(href="#buttons-colors-control") Info
+          td.text-left
+            code btn-info
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
         tr
           th.text-left
             a(href="#buttons-colors-control") Success
+          td.text-left
+            code btn-success
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
         tr
           th.text-left
-            a(href="#buttons-colors-body") Body-bg
+            a(href="#buttons-colors-body") Body bg
+          td.text-left
+            code btn-body-bg
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
         tr
           th.text-left
-            a(href="#buttons-colors-body") Body-font
+            a(href="#buttons-colors-body") Body font
+          td.text-left
+            code btn-body-font
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
         tr
           th.text-left
             a(href="#buttons-colors-other") Code
+          td.text-left
+            code btn-code
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
         tr
           th.text-left
             a(href="#buttons-colors-other") Highlight
+          td.text-left
+            code btn-highlight
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-secondary.docs-dot
+            +docs-dot(false)
           td
-            .bg-primary.docs-dot
+            +docs-dot(true)
 
   
-    div.divider.divider-no-border.divider-size-xl
+    div.divider.divider-no-border.divider-xl
 
     +docs-subheading('colors-dark', 'Dark color', { slug, tag: 'h5' })
     p
@@ -287,17 +322,19 @@ block docs-content
     .docs-demo.columns
       .column.col-12
         button.btn.btn-dark Dark button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-dark">dark button</button>
-        p
-          | Add the #[code btn-outline] class for the #[b outline] button style.
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-dark">dark button</button>
+    p
+      | Add the #[code btn-outline] class for the #[b outline] button style.
+    .docs-demo.columns
+      .column.col-12
         button.btn.btn-dark.btn-outline dark outline button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-dark btn-outline">dark outline button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-dark btn-outline">dark outline button</button>
 
     +docs-subheading('colors-light', 'Light color', { slug, tag: 'h5' })
     p
@@ -305,10 +342,10 @@ block docs-content
     .docs-demo.columns
       .column.col-12
         button.btn.btn-light Light button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-light">light button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-light">light button</button>
 
     +docs-subheading('colors-accent', 'Accent color', { slug, tag: 'h5' })
     p
@@ -316,17 +353,19 @@ block docs-content
     .docs-demo.columns
       .column.col-12
         button.btn.btn-accent accent button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-accent">accent button</button>
-        p
-          | Add the #[code btn-outline] class for the #[b outline] button style.
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-accent">accent button</button>
+    p
+      | Add the #[code btn-outline] class for the #[b outline] button style.
+    .docs-demo.columns
+      .column.col-12
         button.btn.btn-accent.btn-outline accent outline button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-accent btn-outline">accent outline button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-accent btn-outline">accent outline button</button>
 
     +docs-subheading('colors-primary', 'Primary colors', { slug, tag: 'h5' })
     p
@@ -336,23 +375,25 @@ block docs-content
         button.btn.btn-primary primary button
         button.btn.btn-primary-dark primary button dark
         button.btn.btn-primary-light primary button light
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-primary">primary button</button>
-              <button class="btn btn-primary-dark">primary button dark</button>
-              <button class="btn btn-primary-light">primary button light</button>
-        p
-          | Add the #[code btn-outline] class for the #[b outline] button style.
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-primary">primary button</button>
+          <button class="btn btn-primary-dark">primary button dark</button>
+          <button class="btn btn-primary-light">primary button light</button>
+    p
+      | Add the #[code btn-outline] class for the #[b outline] button style.
+    .docs-demo.columns
+      .column.col-12
         button.btn.btn-primary.btn-outline primary outline button
         button.btn.btn-primary-dark.btn-outline primary outline button dark
         button.btn.btn-primary-light.btn-outline primary outline button light
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-primary btn-outline">primary outline button</button>
-              <button class="btn btn-primary-dark btn-outline">primary outline button dark</button>
-              <button class="btn btn-primary-light btn-outline">primary outline button light</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-primary btn-outline">primary outline button</button>
+          <button class="btn btn-primary-dark btn-outline">primary outline button dark</button>
+          <button class="btn btn-primary-light btn-outline">primary outline button light</button>
 
     +docs-subheading('colors-secondary', 'Secondary colors', { slug, tag: 'h5' })
     p
@@ -362,23 +403,25 @@ block docs-content
         button.btn.btn-secondary secondary button
         button.btn.btn-secondary-dark secondary button dark
         button.btn.btn-secondary-light secondary button light
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-secondary">secondary button</button>
-              <button class="btn btn-secondary-dark">secondary button dark</button>
-              <button class="btn btn-secondary-light">secondary button light</button>
-        p
-          | Add the #[code btn-outline] class for the #[b outline] button style.
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-secondary">secondary button</button>
+          <button class="btn btn-secondary-dark">secondary button dark</button>
+          <button class="btn btn-secondary-light">secondary button light</button>
+    p
+      | Add the #[code btn-outline] class for the #[b outline] button style.
+    .docs-demo.columns
+      .column.col-12
         button.btn.btn-secondary.btn-outline secondary outline button
         button.btn.btn-secondary-dark.btn-outline secondary outline button dark
         button.btn.btn-secondary-light.btn-outline secondary outline button light
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-secondary btn-outline">secondary outline button</button>
-              <button class="btn btn-secondary-dark btn-outline">secondary outline button dark</button>
-              <button class="btn btn-secondary-light btn-outline">secondary outline button light</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-secondary btn-outline">secondary outline button</button>
+          <button class="btn btn-secondary-dark btn-outline">secondary outline button dark</button>
+          <button class="btn btn-secondary-light btn-outline">secondary outline button light</button>
 
     +docs-subheading('colors-gray', 'Gray colors', { slug, tag: 'h5' })
     p
@@ -388,74 +431,80 @@ block docs-content
         button.btn.btn-gray gray button
         button.btn.btn-gray-dark gray button dark
         button.btn.btn-gray-light gray button light
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-gray">gray button</button>
-              <button class="btn btn-gray-dark">gray button dark</button>
-              <button class="btn btn-gray-light">gray button light</button>
-        p
-          | Add the #[code btn-outline] class for the #[b outline] button style.
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-gray">gray button</button>
+          <button class="btn btn-gray-dark">gray button dark</button>
+          <button class="btn btn-gray-light">gray button light</button>
+    p
+      | Add the #[code btn-outline] class for the #[b outline] button style.
+    .docs-demo.columns
+      .column.col-12
         button.btn.btn-gray.btn-outline gray outline button
         button.btn.btn-gray-dark.btn-outline gray outline button dark
         button.btn.btn-gray-light.btn-outline gray outline button light
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-gray btn-outline">gray outline button</button>
-              <button class="btn btn-gray-dark btn-outline">gray outline button dark</button>
-              <button class="btn btn-gray-light btn-outline">gray outline button light</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-gray btn-outline">gray outline button</button>
+          <button class="btn btn-gray-dark btn-outline">gray outline button dark</button>
+          <button class="btn btn-gray-light btn-outline">gray outline button light</button>
 
     +docs-subheading('colors-bg', 'Bg colors', { slug, tag: 'h5' })
     p
       | Add the #[code btn-bg], #[code btn-bg-dark] or #[code btn-bg-light] class for the button color of CSS variable #[code --s-bg-color] and its shades.
     .docs-demo.columns
       .column.col-12
-        p
-          button.btn.btn-bg.btn-text-dark-10 bg button
-          button.btn.btn-bg-dark.btn-text-dark-10 bg button dark
-          button.btn.btn-bg-light.btn-text-dark-10 bg button light
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-bg">bg button</button>
-              <button class="btn btn-bg-dark">bg button dark</button>
-              <button class="btn btn-bg-light">bg button light</button>
-        p
-          | Add the #[code text-gray] class to have the button font color of CSS variable #[code --s-gray-color].
-        p
-          button.btn.btn-bg.btn-text-dark-10 bg button
-          button.btn.btn-bg-dark.btn-text-dark-10 bg button dark
-          button.btn.btn-bg-light.btn-text-dark-10 bg button light
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-bg btn-text-dark-10">bg button</button>
-              <button class="btn btn-bg-dark btn-text-dark-10">bg button dark</button>
-              <button class="btn btn-bg-light btn-text-dark-10">bg button light</button>
-        p
-          | Add the #[code text-gray-dark] class to have the button font color of CSS variable #[code --s-gray-color-dark].
-        p
-          button.btn.btn-bg.text-gray-dark bg button
-          button.btn.btn-bg-dark.text-gray-dark bg button dark
-          button.btn.btn-bg-light.text-gray-dark bg button light
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-bg text-gray-dark">bg button</button>
-              <button class="btn btn-bg-dark text-gray-dark">bg button dark</button>
-              <button class="btn btn-bg-light text-gray-dark">bg button light</button>
-        p
-          | Add the #[code btn-outline] class for the #[b outline] button style.
+        button.btn.btn-bg.btn-text-dark-10 bg button
+        button.btn.btn-bg-dark.btn-text-dark-10 bg button dark
+        button.btn.btn-bg-light.btn-text-dark-10 bg button light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-bg">bg button</button>
+          <button class="btn btn-bg-dark">bg button dark</button>
+          <button class="btn btn-bg-light">bg button light</button>
+    p
+      | Add the #[code text-gray] class to have the button font color of CSS variable #[code --s-gray-color].
+    .docs-demo.columns
+      .column.col-12
+        button.btn.btn-bg.btn-text-dark-10 bg button
+        button.btn.btn-bg-dark.btn-text-dark-10 bg button dark
+        button.btn.btn-bg-light.btn-text-dark-10 bg button light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-bg btn-text-dark-10">bg button</button>
+          <button class="btn btn-bg-dark btn-text-dark-10">bg button dark</button>
+          <button class="btn btn-bg-light btn-text-dark-10">bg button light</button>
+
+    p
+      | Add the #[code text-gray-dark] class to have the button font color of CSS variable #[code --s-gray-color-dark].
+    .docs-demo.columns
+      .column.col-12
+        button.btn.btn-bg.text-gray-dark bg button
+        button.btn.btn-bg-dark.text-gray-dark bg button dark
+        button.btn.btn-bg-light.text-gray-dark bg button light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-bg text-gray-dark">bg button</button>
+          <button class="btn btn-bg-dark text-gray-dark">bg button dark</button>
+          <button class="btn btn-bg-light text-gray-dark">bg button light</button>
+    p
+      | Add the #[code btn-outline] class for the #[b outline] button style.
+    .docs-demo.columns
+      .column.col-12
         button.btn.btn-bg.btn-outline bg outline button
         button.btn.btn-bg-dark.btn-outline bg outline button dark
         button.btn.btn-bg-light.btn-outline bg outline button light
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-bg btn-outline">bg outline button</button>
-              <button class="btn btn-bg-dark btn-outline">bg outline button dark</button>
-              <button class="btn btn-bg-light btn-outline">bg outline button light</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-bg btn-outline">bg outline button</button>
+          <button class="btn btn-bg-dark btn-outline">bg outline button dark</button>
+          <button class="btn btn-bg-light btn-outline">bg outline button light</button>
 
     +docs-subheading('colors-border', 'Border colors', { slug, tag: 'h5' })
     p
@@ -465,23 +514,25 @@ block docs-content
         button.btn.btn-border border button
         button.btn.btn-border-dark border button dark
         button.btn.btn-border-light border button light
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-border">border button</button>
-              <button class="btn btn-border-dark">border button dark</button>
-              <button class="btn btn-border-light">border button light</button>
-        p
-          | Add the #[code btn-outline] class for the #[b outline] button style.
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-border">border button</button>
+          <button class="btn btn-border-dark">border button dark</button>
+          <button class="btn btn-border-light">border button light</button>
+    p
+      | Add the #[code btn-outline] class for the #[b outline] button style.
+    .docs-demo.columns
+      .column.col-12
         button.btn.btn-border.btn-outline border outline button
         button.btn.btn-border-dark.btn-outline border outline button dark
         button.btn.btn-border-light.btn-outline border outline button light
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-border btn-outline">border outline button</button>
-              <button class="btn btn-border-dark btn-outline">border outline button dark</button>
-              <button class="btn btn-border-light btn-outline">border outline button light</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-border btn-outline">border outline button</button>
+          <button class="btn btn-border-dark btn-outline">border outline button dark</button>
+          <button class="btn btn-border-light btn-outline">border outline button light</button>
 
     +docs-subheading('colors-link', 'Link colors', { slug, tag: 'h5' })
     p
@@ -491,23 +542,25 @@ block docs-content
         button.btn.btn-link link button
         button.btn.btn-link-dark link button dark
         button.btn.btn-link-light link button light
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-link">link button</button>
-              <button class="btn btn-link-dark">link button dark</button>
-              <button class="btn btn-link-light">link button light</button>
-        p
-          | Add the #[code btn-outline] class for the #[b outline] button style.
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-link">link button</button>
+          <button class="btn btn-link-dark">link button dark</button>
+          <button class="btn btn-link-light">link button light</button>
+    p
+      | Add the #[code btn-outline] class for the #[b outline] button style.
+    .docs-demo.columns
+      .column.col-12
         button.btn.btn-link.btn-outline link button
         button.btn.btn-link-dark.btn-outline link button dark
         button.btn.btn-link-light.btn-outline link button light
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-link btn-outline">link button</button>
-              <button class="btn btn-link-dark btn-outline">link button dark</button>
-              <button class="btn btn-link-light btn-outline">link button light</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-link btn-outline">link button</button>
+          <button class="btn btn-link-dark btn-outline">link button dark</button>
+          <button class="btn btn-link-light btn-outline">link button light</button>
 
     +docs-subheading('colors-control', 'Control colors', { slug, tag: 'h5' })
     p
@@ -519,29 +572,31 @@ block docs-content
         button.btn.btn-info info button
         button.btn.btn-success success button
         button.btn.btn-warning warning button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-disabled">disabled button</button>
-              <button class="btn btn-error">error button</button>
-              <button class="btn btn-info">info button</button>
-              <button class="btn btn-success">success button</button>
-              <button class="btn btn-warning">warning button</button>
-        p
-          | Add the #[code btn-outline] class for the #[b outline] button style.
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-disabled">disabled button</button>
+          <button class="btn btn-error">error button</button>
+          <button class="btn btn-info">info button</button>
+          <button class="btn btn-success">success button</button>
+          <button class="btn btn-warning">warning button</button>
+    p
+      | Add the #[code btn-outline] class for the #[b outline] button style.
+    .docs-demo.columns
+      .column.col-12
         button.btn.btn-disabled.btn-outline disabled outline button
         button.btn.btn-error.btn-outline error outline button
         button.btn.btn-info.btn-outline info outline button
         button.btn.btn-success.btn-outline success outline button
         button.btn.btn-warning.btn-outline warning outline button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-disabled btn-outline">disabled outline button</button>
-              <button class="btn btn-error btn-outline">error outline button dark</button>
-              <button class="btn btn-info btn-outline">info outline button dark</button>
-              <button class="btn btn-success btn-outline">success outline button dark</button>
-              <button class="btn btn-warning btn-outline">warning outline button dark</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-disabled btn-outline">disabled outline button</button>
+          <button class="btn btn-error btn-outline">error outline button dark</button>
+          <button class="btn btn-info btn-outline">info outline button dark</button>
+          <button class="btn btn-success btn-outline">success outline button dark</button>
+          <button class="btn btn-warning btn-outline">warning outline button dark</button>
 
     +docs-subheading('colors-body', 'Body colors', { slug, tag: 'h5' })
     p
@@ -550,18 +605,20 @@ block docs-content
       .column.col-12
         button.btn.btn-body-bg body-bg button
         button.btn.btn-body-font body-font button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-body-bg">body-bg button</button>
-              <button class="btn btn-body-font">body-font button</button>
-        p
-          | Add the #[code btn-outline] class for the #[b outline] button style.
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-body-bg">body-bg button</button>
+          <button class="btn btn-body-font">body-font button</button>
+    p
+      | Add the #[code btn-outline] class for the #[b outline] button style.
+    .docs-demo.columns
+      .column.col-12
         button.btn.btn-body-font.btn-outline body-font outline button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-body-font btn-outline">body-font outline button dark</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-body-font btn-outline">body-font outline button dark</button>
 
     +docs-subheading('colors-other', 'Other colors', { slug, tag: 'h5' })
     p
@@ -570,20 +627,22 @@ block docs-content
       .column.col-12
         button.btn.btn-code code button
         button.btn.btn-highlight highlight button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-code">code button</button>
-              <button class="btn btn-highlight">highlight button</button>
-        p
-          | Add the #[code btn-outline] class for the #[b outline] button style.
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-code">code button</button>
+          <button class="btn btn-highlight">highlight button</button>
+    p
+      | Add the #[code btn-outline] class for the #[b outline] button style.
+    .docs-demo.columns
+      .column.col-12
         button.btn.btn-code.btn-outline code outline button
         button.btn.btn-highlight.btn-outline highlight outline button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-code btn-outline">code outline button</button>
-              <button class="btn btn-highlight btn-outline">highlight outline button dark</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-code btn-outline">code outline button</button>
+          <button class="btn btn-highlight btn-outline">highlight outline button dark</button>
 
     p
       | If you need more button colors, please use 
@@ -606,17 +665,17 @@ block docs-content
           tbody
             tr
               td
-                .bg-secondary.docs-dot
+                +docs-dot(false)
               td
-                .bg-primary.docs-dot
+                +docs-dot(true)
               td
-                .bg-primary.docs-dot
+                +docs-dot(true)
               td
-                .bg-primary.docs-dot
+                +docs-dot(true)
               td
-                .bg-secondary.docs-dot
+                +docs-dot(false)
               td
-                .bg-secondary.docs-dot
+                +docs-dot(false)
 
     .docs-demo.columns
       .column.col-12
@@ -655,7 +714,7 @@ block docs-content
     p
       | Please note that you could use the #[code btn-action] class for a square button, or add another #[code s-circle] class for a round button, which is often used as a Float Action Button (FAB).
 
-    +docs-subheading('sizes-large', 'Button sizes - Large button', {slug})
+    +docs-subheading('sizes-large', 'Button sizes - Large', {slug})
 
     +docs-subheading('sizes-large-colors-primary', 'Large button - Primary colors', { slug, tag: 'h5' })
     .docs-demo.columns
@@ -663,12 +722,12 @@ block docs-content
         button.btn.btn-primary.btn-lg large primary button
         button.btn.btn-primary-dark.btn-lg large primary dark button
         button.btn.btn-primary-light.btn-lg large primary light button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-primary btn-lg">large primary button</button>
-              <button class="btn btn-primary-dark btn-lg">large primary dark button</button>
-              <button class="btn btn-primary-light btn-lg">large primary light button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-primary btn-lg">large primary button</button>
+          <button class="btn btn-primary-dark btn-lg">large primary dark button</button>
+          <button class="btn btn-primary-light btn-lg">large primary light button</button>
 
     +docs-subheading('sizes-large-colors-secondary', 'Large button - Secondary colors', { slug, tag: 'h5' })
     .docs-demo.columns
@@ -676,12 +735,12 @@ block docs-content
         button.btn.btn-secondary.btn-lg large secondary button
         button.btn.btn-secondary-dark.btn-lg large secondary dark button
         button.btn.btn-secondary-light.btn-lg large secondary light button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-secondary btn-lg">large secondary button</button>
-              <button class="btn btn-secondary-dark btn-lg">large secondary dark button</button>
-              <button class="btn btn-secondary-light btn-lg">large secondary light button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-secondary btn-lg">large secondary button</button>
+          <button class="btn btn-secondary-dark btn-lg">large secondary dark button</button>
+          <button class="btn btn-secondary-light btn-lg">large secondary light button</button>
 
     +docs-subheading('sizes-large-colors-gray', 'Large button - Gray colors', { slug, tag: 'h5' })
     .docs-demo.columns
@@ -689,12 +748,12 @@ block docs-content
         button.btn.btn-gray.btn-lg large gray button
         button.btn.btn-gray-dark.btn-lg large gray dark button
         button.btn.btn-gray-light.btn-lg large gray light button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-gray btn-lg">large gray button</button>
-              <button class="btn btn-gray-dark btn-lg">large gray dark button</button>
-              <button class="btn btn-gray-light btn-lg">large gray light button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-gray btn-lg">large gray button</button>
+          <button class="btn btn-gray-dark btn-lg">large gray dark button</button>
+          <button class="btn btn-gray-light btn-lg">large gray light button</button>
 
     +docs-subheading('sizes-large-colors-bg', 'Large button - Bg colors', { slug, tag: 'h5' })
     .docs-demo.columns
@@ -702,12 +761,12 @@ block docs-content
         button.btn.btn-bg.btn-lg large bg button
         button.btn.btn-bg-dark.btn-lg large bg dark button
         button.btn.btn-bg-light.btn-lg large bg light button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-bg btn-lg">large bg button</button>
-              <button class="btn btn-bg-dark btn-lg">large bg dark button</button>
-              <button class="btn btn-bg-light btn-lg">large bg light button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-bg btn-lg">large bg button</button>
+          <button class="btn btn-bg-dark btn-lg">large bg dark button</button>
+          <button class="btn btn-bg-light btn-lg">large bg light button</button>
 
     +docs-subheading('sizes-large-colors-other', 'Large button - Control colors', { slug, tag: 'h5' })
     .docs-demo.columns
@@ -717,27 +776,27 @@ block docs-content
         button.btn.btn-info.btn-lg large info button
         button.btn.btn-success.btn-lg large success button
         button.btn.btn-warning.btn-lg large warning button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-disabled btn-lg">large disabled button</button>
-              <button class="btn btn-error btn-lg">large error button</button>
-              <button class="btn btn-info btn-lg">large info button</button>
-              <button class="btn btn-success btn-lg">large success button</button>
-              <button class="btn btn-warning btn-lg">large warning button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-disabled btn-lg">large disabled button</button>
+          <button class="btn btn-error btn-lg">large error button</button>
+          <button class="btn btn-info btn-lg">large info button</button>
+          <button class="btn btn-success btn-lg">large success button</button>
+          <button class="btn btn-warning btn-lg">large warning button</button>
 
     +docs-subheading('sizes-large-colors-other', 'Large button - Other colors', { slug, tag: 'h5' })
     .docs-demo.columns
       .column.col-12
         button.btn.btn-code.btn-lg large disabled button
         button.btn.btn-highlight.btn-lg large highlight button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-code btn-lg">large code button</button>
-              <button class="btn btn-highlight btn-lg">large highlight button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-code btn-lg">large code button</button>
+          <button class="btn btn-highlight btn-lg">large highlight button</button>
 
-    +docs-subheading('sizes-small', 'Button sizes - Small button', { slug, tag: 'h5' })
+    +docs-subheading('sizes-small', 'Button sizes - Small', { slug, tag: 'h5' })
 
     +docs-subheading('sizes-small-colors-primary', 'Small button - Primary colors', { slug, tag: 'h5' })
     .docs-demo.columns
@@ -745,12 +804,12 @@ block docs-content
         button.btn.btn-primary.btn-sm small primary button
         button.btn.btn-primary-dark.btn-sm small primary dark button
         button.btn.btn-primary-light.btn-sm small primary light button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-primary btn-sm">small primary button</button>
-              <button class="btn btn-primary-dark btn-sm">small primary dark button</button>
-              <button class="btn btn-primary-light btn-sm">small primary light button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-primary btn-sm">small primary button</button>
+          <button class="btn btn-primary-dark btn-sm">small primary dark button</button>
+          <button class="btn btn-primary-light btn-sm">small primary light button</button>
 
     +docs-subheading('sizes-small-colors-secondary', 'Small button - Secondary colors', { slug, tag: 'h5' })
     .docs-demo.columns
@@ -758,12 +817,12 @@ block docs-content
         button.btn.btn-secondary.btn-sm small secondary button
         button.btn.btn-secondary-dark.btn-sm small secondary dark button
         button.btn.btn-secondary-light.btn-sm small secondary light button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-secondary btn-sm">small secondary button</button>
-              <button class="btn btn-secondary-dark btn-sm">small secondary dark button</button>
-              <button class="btn btn-secondary-light btn-sm">small secondary light button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-secondary btn-sm">small secondary button</button>
+          <button class="btn btn-secondary-dark btn-sm">small secondary dark button</button>
+          <button class="btn btn-secondary-light btn-sm">small secondary light button</button>
 
     +docs-subheading('sizes-small-colors-gray', 'Small button - Gray colors', { slug, tag: 'h5' })
     .docs-demo.columns
@@ -771,12 +830,12 @@ block docs-content
         button.btn.btn-gray.btn-sm small gray button
         button.btn.btn-gray-dark.btn-sm small gray dark button
         button.btn.btn-gray-light.btn-sm small gray light button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-gray btn-sm">small gray button</button>
-              <button class="btn btn-gray-dark btn-sm">small gray dark button</button>
-              <button class="btn btn-gray-light btn-sm">small gray light button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-gray btn-sm">small gray button</button>
+          <button class="btn btn-gray-dark btn-sm">small gray dark button</button>
+          <button class="btn btn-gray-light btn-sm">small gray light button</button>
 
     +docs-subheading('sizes-small-colors-bg', 'Small button - Bg colors', { slug, tag: 'h5' })
     .docs-demo.columns
@@ -784,14 +843,14 @@ block docs-content
         button.btn.btn-bg.btn-sm small bg button
         button.btn.btn-bg-dark.btn-sm small bg dark button
         button.btn.btn-bg-light.btn-sm small bg light button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-bg btn-sm">small bg button</button>
-              <button class="btn btn-bg-dark btn-sm">small bg dark button</button>
-              <button class="btn btn-bg-light btn-sm">small bg light button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-bg btn-sm">small bg button</button>
+          <button class="btn btn-bg-dark btn-sm">small bg dark button</button>
+          <button class="btn btn-bg-light btn-sm">small bg light button</button>
 
-    +docs-subheading('sizes-small-control-colors', 'Small button - Control colors', { slug, tag: 'h5' })
+    +docs-subheading('sizes-small-colors-control', 'Small button - Control colors', { slug, tag: 'h5' })
     .docs-demo.columns
       .column.col-12
         button.btn.btn-disabled.btn-sm small disabled button
@@ -799,25 +858,25 @@ block docs-content
         button.btn.btn-info.btn-sm small info button
         button.btn.btn-success.btn-sm small success button
         button.btn.btn-warning.btn-sm small warning button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-disabled btn-sm">small disabled button</button>
-              <button class="btn btn-error btn-sm">small error button</button>
-              <button class="btn btn-info btn-sm">small info button</button>
-              <button class="btn btn-success btn-sm">small success button</button>
-              <button class="btn btn-warning btn-sm">small warning button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-disabled btn-sm">small disabled button</button>
+          <button class="btn btn-error btn-sm">small error button</button>
+          <button class="btn btn-info btn-sm">small info button</button>
+          <button class="btn btn-success btn-sm">small success button</button>
+          <button class="btn btn-warning btn-sm">small warning button</button>
 
     +docs-subheading('sizes-small-colors-other', 'Other colors', { slug, tag: 'h5' })
     .docs-demo.columns
       .column.col-12
         button.btn.btn-code.btn-sm small disabled button
         button.btn.btn-highlight.btn-sm small highlight button
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-code btn-sm">small code button</button>
-              <button class="btn btn-highlight btn-sm">small highlight button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-code btn-sm">small code button</button>
+          <button class="btn btn-highlight btn-sm">small highlight button</button>
 
     +docs-subheading('sizes-full-width', 'Button sizes - Full-width button', { slug, tag: 'h5' })
 
@@ -826,63 +885,80 @@ block docs-content
         button.btn.btn-primary.btn-block Confirm
         button.btn.btn-link.btn-block.btn-sm Cancel
         button.btn.btn-disabled.btn-block.btn-lg Disabled
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-primary btn-block">
-                Confirm
-              </button>
-              <button class="btn btn-link btn-block btn-sm">
-                Cancel
-              </button>
-              <button class="btn btn-disabled btn-block btn-lg">
-                Disabled
-              </button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-primary btn-block">
+            Confirm
+          </button>
+          <button class="btn btn-link btn-block btn-sm">
+            Cancel
+          </button>
+          <button class="btn btn-disabled btn-block btn-lg">
+            Disabled
+          </button>
 
     +docs-subheading('sizes-action', 'Button sizes - Action button', {slug})
 
     .docs-demo.columns
       .column.col-xs-12
         button.btn.btn-action.btn-primary.btn-lg
-          i.icon.icon-menu
+          i.fa-solid.fa-bars.fa-fw
         button.btn.btn-action.btn-primary
-          i.icon.icon-menu
+          i.fa-solid.fa-bars.fa-fw
         button.btn.btn-action.btn-primary.btn-sm
-          i.icon.icon-menu
+          i.fa-solid.fa-bars.fa-fw
       .column.col-xs-12
         button.btn.btn-action.btn-primary.btn-lg.s-circle
-          i.icon.icon-arrow-up
+          i.fa-solid.fa-chevron-up.fa-fw
         button.btn.btn-action.btn-primary.s-circle
-          i.icon.icon-arrow-up
+          i.fa-solid.fa-chevron-up.fa-fw
         button.btn.btn-action.btn-primary.btn-sm.s-circle
-          i.icon.icon-arrow-up
-      .column.col-xs-12
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <button class="btn btn-action"><i class="icon icon-arrow-left"></i></button>
-              <button class="btn btn-action s-circle"><i class="icon icon-arrow-left"></i></button>
+          i.fa-solid.fa-chevron-up.fa-fw
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <button class="btn btn-action btn-primary btn-lg">
+            <i class="fa-solid fa-bars fa-fw"></i>
+          </button>
+          <button class="btn btn-action btn-primary">
+            <i class="fa-solid fa-bars fa-fw"></i>
+          </button>
+          <button class="btn btn-action btn-primary btn-sm">
+            <i class="fa-solid fa-bars fa-fw"></i>
+          </button>
+
+          <button class="btn btn-action btn-primary btn-lg s-circle">
+            <i class="fa-solid fa-chevron-up fa-fw"></i>
+          </button>
+          <button class="btn btn-action btn-primary s-circle">
+            <i class="fa-solid fa-chevron-up fa-fw"></i>
+          </button>
+          <button class="btn btn-action btn-primary btn-sm s-circle">
+            <i class="fa-solid fa-chevron-up fa-fw"></i>
+          </button>
 
     +docs-subheading('states', 'Button states', {slug})
+
+    +docs-subheading('states-active', 'Button states - active', { slug, tag: 'h5' })
 
     p
       | Add the #[code active] class for active button state style.
 
-    +docs-subheading('states-active', 'Button states - active', { slug, tag: 'h5' })
     .docs-demo.columns
       .column.col-12
         button.btn.active default active
         button.btn.btn-accent.active accent active
         button.btn.btn-primary.active primary active
         button.btn.btn-link.active link active
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <!-- buttons with active state -->
-              <button class="btn btn-active" tabindex="-1">default active</button>
-              <button class="btn btn-accent btn-active" tabindex="-1">accent active</button>
-              <button class="btn btn-primary btn-active" tabindex="-1">primary active</button>
-              <button class="btn btn-link btn-active" tabindex="-1">link active</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- buttons with active state -->
+          <button class="btn btn-active" tabindex="-1">default active</button>
+          <button class="btn btn-accent btn-active" tabindex="-1">accent active</button>
+          <button class="btn btn-primary btn-active" tabindex="-1">primary active</button>
+          <button class="btn btn-link btn-active" tabindex="-1">link active</button>
 
     p
       | Add the #[code disabled] class or the #[code disabled] attribute for disabled button state style.
@@ -894,14 +970,14 @@ block docs-content
         button.btn.disabled(tabindex="-1") default disabled
         button.btn.btn-primary(disabled="" tabindex="-1") primary disabled
         button.btn.btn-link(disabled="" tabindex="-1") link disabled
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <!-- buttons with disabled state -->
-              <button class="btn btn-accent disabled" tabindex="-1">accent disabled</button>
-              <button class="btn" disabled tabindex="-1">default button</button>
-              <button class="btn btn-primary disabled" tabindex="-1">primary button</button>
-              <button class="btn btn-link disabled" tabindex="-1">link button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- buttons with disabled state -->
+          <button class="btn btn-accent disabled" tabindex="-1">accent disabled</button>
+          <button class="btn" disabled tabindex="-1">default button</button>
+          <button class="btn btn-primary disabled" tabindex="-1">primary button</button>
+          <button class="btn btn-link disabled" tabindex="-1">link button</button>
 
     p
       | A button with the #[code loading] class can show loading indicator.
@@ -913,12 +989,12 @@ block docs-content
         button.btn.btn-primary.loading primary button
         button.btn.btn-link.loading link button
 
-        pre.code(data-lang='HTML')
-          code
-            :highlight(lang="html")
-              <!-- buttons with loading state -->
-              <button class="btn loading">button</button>
-              <button class="btn btn-primary loading">primary button</button>
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- buttons with loading state -->
+          <button class="btn loading">button</button>
+          <button class="btn btn-primary loading">primary button</button>
 
     +docs-subheading('groups', 'Button groups', {slug})
 

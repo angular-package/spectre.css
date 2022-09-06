@@ -7,12 +7,16 @@ block content
       a.off-canvas-toggle.btn.btn-link.btn-action(href='#sidebar')
         i.icon.icon-menu
       .btns.d-flex
-        input.docs-search.form-input(type="text" placeholder="Search Docs")
+        //- input.docs-search.form-input(type="text" placeholder="Search Docs")
         //- a.btn.ml-1(href='https://www.paypal.me/picturepan2' target='_blank') PayPal
-        a.btn.btn-link.btn-outline.ml-1(href='https://www.npmjs.com/package/@angular-package/spectre.css' target='_blank')
-          i.fa-brands.fa-npm.fa-fw.fa-xl
-        a.btn.btn-link.btn-outline.ml-1(href='https://github.com/angular-package/spectre.css' target='_blank')
-          i.fa-brands.fa-github.fa-fw.fa-xl
+        a.btn.disabled.btn-link.btn-outline.tooltip.tooltip-bottom(data-tooltip="Search documentation")
+          i.fa-solid.fa-magnifying-glass.fa-fw
+        a#theme-switcher.disabled.btn.btn-link.btn-outline.ml-2.tooltip.tooltip-bottom(data-tooltip="Switch theme dark/light")
+          i.fa-solid.fa-moon.fa-fw
+        a.btn.btn-link.btn-outline.ml-2.tooltip.tooltip-bottom(data-tooltip="See on the npm" href='https://www.npmjs.com/package/@angular-package/spectre.css' target='_blank')
+          i.fa-brands.fa-npm.fa-fw
+        a.btn.btn-link.btn-outline.ml-2.tooltip.tooltip-bottom(data-tooltip="See on the GitHub" href='https://github.com/angular-package/spectre.css' target='_blank')
+          i.fa-brands.fa-github.fa-fw
 
     #sidebar.docs-sidebar.off-canvas-sidebar.bg-body
       .docs-brand
@@ -51,7 +55,7 @@ block content
           )
           +docs-accordion('layout', 'Layout',
             {url: 'grid', name: 'Flexbox grid'},
-            {url: 'footer', name: 'Footer', disabled: true},
+            {url: 'footer', name: 'Footer'},
             {url: 'hero', name: 'Hero'},
             {url: 'navbar', name: 'Navbar'},
             {url: 'responsive', name: 'Responsive'}
@@ -88,7 +92,6 @@ block content
             {url: 'divider', name: 'Divider'},
             {url: 'loading', name: 'Loading'},
             {url: 'position', name: 'Position'},
-            {url: 'scrollbars', name: 'Scrollbars'},
             {url: 'shapes', name: 'Shapes'},
             {url: 'text', name: 'Text'}
           )
@@ -116,11 +119,12 @@ block content
 
       include ../_layout/_footer.pug
 
-  script(type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js")
-  script.
-    docsearch({ 
-    apiKey: 'bede06373c5a1fa3c1bbe8401e24c653', 
-    indexName: 'picturepan2_spectre', 
-    inputSelector: '.docs-search', 
-    debug: true
-    }); 
+
+  //- script(type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js")
+  //- script.
+  //-   docsearch({ 
+  //-   apiKey: 'bede06373c5a1fa3c1bbe8401e24c653', 
+  //-   indexName: 'picturepan2_spectre', 
+  //-   inputSelector: '.docs-search', 
+  //-   debug: true
+  //-   }); 

@@ -9,12 +9,8 @@ block variables
 block docs-content
   +docs-heading(slug, 'Tabs', {parent, name: 'Components'})
     +docs-menu('Tabs', {parent, slug},
-      {
-        items: [
-          { anchor: 'tabs-badges', name: 'Badges' },
-          { anchor: 'tabs-buttons-search', name: 'Tab buttons & search' },
-        ]
-      }
+      { anchor: 'badges', name: 'Badges' },
+      { anchor: 'buttons-search', name: 'Tab buttons & search' }
     )
     include ../_layout/_ad-g.pug
 
@@ -71,7 +67,7 @@ block docs-content
             </li>
           </ul>
 
-    +docs-subheading('tabs-badges', 'Tab badges')
+    +docs-subheading('badges', 'Tab badges', {slug})
 
     p
       | If you need #[code badges] on tabs, you can add badge class to the element within #[code tab-item].
@@ -111,7 +107,7 @@ block docs-content
                 </li>
               </ul>
 
-    +docs-subheading('tabs-buttons-search', 'Tab buttons & search')
+    +docs-subheading('buttons-search', 'Tab buttons & search', {slug})
 
     p
       | You could add a search box or buttons inside a tab.

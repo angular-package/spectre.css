@@ -9,11 +9,7 @@ block variables
 block docs-content
   +docs-heading(slug, 'Tiles', {parent, name: 'Components'})
     +docs-menu('Tiles', {parent, slug},
-      {
-        items: [
-          { anchor: 'tiles-compact', name: 'Compact' },
-        ]
-      }
+      { anchor: 'tiles-compact', name: 'Compact' }
     )
     include ../_layout/_ad-g.pug
 
@@ -69,7 +65,7 @@ block docs-content
             </div>
           </div>
 
-    +docs-subheading('tiles-compact', 'Compact tiles')
+    +docs-subheading('compact', 'Compact tiles', {slug})
 
     p
       | There is compact version of Tiles component, which is often used as contact and file info blocks.

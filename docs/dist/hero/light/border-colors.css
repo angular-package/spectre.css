@@ -1,0 +1,14 @@
+@media (prefers-color-scheme: light) {
+  .hero.hero-border {
+    background-color: hsla(var(--s-border-color-h), var(--s-border-color-s), calc(var(--s-border-color-l) + var(--s-border-color-l-l)), var(--s-border-color-a));
+    color: hsla(var(--s-border-color-dark-h), var(--s-border-color-dark-s), calc(var(--s-border-color-dark-l) + var(--s-border-color-dark-l-l)), var(--s-border-color-dark-a));
+  }
+  .hero.hero-border-dark {
+    background-color: hsla(var(--s-border-color-dark-h), var(--s-border-color-dark-s), calc(var(--s-border-color-dark-l) + var(--s-border-color-dark-l-l)), var(--s-border-color-dark-a));
+    color: hsla(var(--s-border-color-light-h), var(--s-border-color-light-s), calc(var(--s-border-color-light-l) + var(--s-border-color-light-l-l)), var(--s-border-color-light-a));
+  }
+  .hero.hero-border-light {
+    background-color: hsla(var(--s-border-color-light-h), var(--s-border-color-light-s), calc(var(--s-border-color-light-l) + var(--s-border-color-light-l-l)), var(--s-border-color-light-a));
+    color: hsla(var(--s-border-color-dark-h), var(--s-border-color-dark-s), calc(var(--s-border-color-dark-l) + var(--s-border-color-dark-l-l)), var(--s-border-color-dark-a));
+  }
+}

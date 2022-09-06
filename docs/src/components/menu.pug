@@ -8,13 +8,12 @@ block variables
 
 block docs-content
   +docs-heading(slug, 'Menu', {parent, name: 'Components'})
+
     +docs-menu('Tabs', {parent, slug},
-      {
-        items: [
-          { anchor: 'menu-dropdown', name: 'Dropdown' },
-        ]
-      }
+      { anchor: 'dropdown', name: 'Dropdown' }
     )
+    small.label.label-secondary Size optimized
+
     include ../_layout/_ad-g.pug
 
     p Menus are vertical list of links or buttons for actions and navigation.
@@ -123,7 +122,7 @@ block docs-content
             </li>
           </ul>
             
-    +docs-subheading('menu-dropdown', 'Dropdown menu')
+    +docs-subheading('dropdown', 'Dropdown menu', {slug})
 
     p The dropdown is a combination of buttons and menus.
 

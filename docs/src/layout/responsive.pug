@@ -9,13 +9,9 @@ block variables
 block docs-content
   +docs-heading(slug, 'Responsive', {parent, name: 'Layout'})
     +docs-menu('Responsive', {parent, slug},
-      {
-        items: [
-          { anchor: 'responsive-container', name: 'Container' },
-          { anchor: 'responsive-visibility', name: 'Visibility' },
-          { anchor: 'responsive-resizer', name: 'Resizer' },
-        ]
-      }
+      { anchor: 'container', name: 'Container' },
+      { anchor: 'visibility', name: 'Visibility' },
+      { anchor: 'resizer', name: 'Resizer' }
     )
     include ../_layout/_ad-g.pug
 
@@ -69,7 +65,7 @@ block docs-content
             </div>
           </div>
 
-    +docs-subheading('responsive-container', 'Responsive container')
+    +docs-subheading('container', 'Responsive container', {slug})
 
     p
       | The responsive layout also provides fixed-width containers.
@@ -85,7 +81,7 @@ block docs-content
             </div>
           </div>
 
-    +docs-subheading('responsive-visibility', 'Responsive visibility')
+    +docs-subheading('visibility', 'Responsive visibility', {slug})
 
     p The responsive visibility utilities help show and hide elements on specific viewport sizes.
 
@@ -265,7 +261,7 @@ block docs-content
       li
         | #[code show-xl] shows elements when the window width is smaller than or equal to #[strong 1280px].
 
-    +docs-subheading('responsive-resizer', 'Responsive Resizer')
+    +docs-subheading('resizer', 'Responsive Resizer', {slug})
 
     p
       | Spectre also has a responsive web test tool Responsive Resizer. 

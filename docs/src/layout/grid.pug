@@ -9,14 +9,10 @@ block variables
 block docs-content
   +docs-heading(slug, 'Flexbox grid', {parent, name: 'Layout'})
     +docs-menu('Flexbox grid', {parent, slug},
-      {
-        items: [
-          { anchor: 'grid-gapless', name: 'Gapless grid' },
-          { anchor: 'grid-nesting', name: 'Grid nesting' },
-          { anchor: 'grid-offset', name: 'Column offset' },
-          { anchor: 'column-auto', name: 'Auto width column' },
-        ]
-      }
+      { anchor: 'gapless', name: 'Gapless grid' },
+      { anchor: 'nesting', name: 'Grid nesting' },
+      { anchor: 'offset', name: 'Column offset' },
+      { anchor: 'column-auto', name: 'Auto width column' }
     )
     include ../_layout/_ad-g.pug
 
@@ -79,7 +75,7 @@ block docs-content
       | And add any element you want with the #[code column] class inside the container. These columns will take up the space equally.
       | You can specify the width of each column by adding class #[code col-#{'<1-12>'}].
 
-    +docs-subheading('grid-gapless', 'Gapless grid')
+    +docs-subheading('gapless', 'Gapless grid', {slug})
 
     p
       | And you can add the #[code col-gapless] class to the #[code columns] to have gapless columns.
@@ -117,7 +113,7 @@ block docs-content
             <div class="column col-8">col-8</div>
           </div>
 
-    +docs-subheading('grid-nesting', 'Grid nesting')
+    +docs-subheading('nesting', 'Grid nesting', {slug})
 
     p
       | To nest grids, add the new #[code columns] and #[code column] structure within an existing column.
@@ -149,7 +145,7 @@ block docs-content
             </div>
           </div>
 
-    +docs-subheading('grid-offset', 'Column offset')
+    +docs-subheading('offset', 'Column offset', {slug})
 
     p
       | The Flexbox grid provides margin auto utilities to set offset.
@@ -195,7 +191,7 @@ block docs-content
             </div>
           </div>
 
-    +docs-subheading('column-auto', 'Auto width column')
+    +docs-subheading('column-auto', 'Auto width column', {slug})
 
     p
       | You can add the #[code col-auto] class to the #[code column] to have auto width columns.
@@ -230,7 +226,7 @@ block docs-content
             </div>
           </div>
 
-    +docs-pagination({parent: 'layout', name: 'Layout'}, {path: 'hero', name: 'Hero'})
+    +docs-pagination({parent: 'layout', name: 'Layout'}, {path: 'footer', name: 'Footer'})
 
     include ../_layout/_ad-c.pug
 

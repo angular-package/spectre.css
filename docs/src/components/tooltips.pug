@@ -8,13 +8,11 @@ block variables
 
 block docs-content
   +docs-heading(slug, 'Tooltips', {parent, name: 'Components'})
+
     +docs-menu('Tooltips', {parent, slug},
-      {
-        items: [
-          { anchor: 'tooltips-multiline', name: 'Multiline' },
-        ]
-      }
+      { anchor: 'multiline', name: 'Multiline' }
     )
+
     include ../_layout/_ad-g.pug
 
     p Tooltips provide context information labels that appear on hover and focus. Tooltips component is built entirely in CSS.
@@ -41,7 +39,7 @@ block docs-content
           <button class="btn tooltip" data-tooltip="Lorem ipsum dolor sit amet">top tooltip</button>
           <button class="btn tooltip tooltip-right" data-tooltip="Lorem ipsum dolor sit amet">right tooltip</button>
 
-    +docs-subheading('tooltips-multiline', 'Multiline tooltips')
+    +docs-subheading('multiline', 'Multiline tooltips', {slug})
 
     .docs-demo.columns
       .column.col-12

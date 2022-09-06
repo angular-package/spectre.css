@@ -1,5 +1,8 @@
+mixin docs-abbr(content, title)
+  abbr(title=title)= content
+
 mixin docs-accordion(id, name, ...pages)
-  .accordion
+  .accordion.accordion-menu
     input(id='accordion-' + id type='checkbox' name='docs-accordion-checkbox' hidden='' checked=(parent === id ? true : false))
     label.accordion-header.c-hand(for='accordion-' + id)= name
     .accordion-body
@@ -7,13 +10,15 @@ mixin docs-accordion(id, name, ...pages)
         each page in pages
           - var active = ''
           if (slug == page.url)
-            - var active = 'active'
-
-          li.menu-item
+            - var active = 'active '
+          - var disabled = ''
+          if (page.disabled == true)
+            - var disabled = ' disabled'
+          li(class=active+disabled).menu-item
             if slug != parent
-              a(class=active  href='../' + id + '/' + page.url + '.html' )= page.name
+              a(class=active+disabled  href='../' + id + '/' + page.url + '.html' )= page.name
             else
-              a(class=active href=id + '/' + page.url + '.html')= page.name
+              a(class=active+disabled href=id + '/' + page.url + '.html')= page.name
 
 mixin docs-dot(available, tooltip = 'available')
   if available == true
@@ -43,7 +48,7 @@ mixin docs-css-variable-color(name, attribute = 'all', prefix = 's')
     code --#{prefix}-#{name}-a
 
 mixin docs-divider(size = 'xl')
-  div.divider.divider-no-border(class='divider-size-' + size)
+  div.divider.divider-no-border(class='divider-' + size)
 
 mixin docs-heading(id, name, category)
   .container(id=id)
@@ -63,20 +68,24 @@ mixin docs-menu(header, path, ...items)
       each item in items
         if item.items
           if item.name
-            li.divider.divider-no-border.divider-size-xs
+            li.divider.divider-no-border.divider-xs
             li
               div.divider(data-content=item.name)
           each subitem in item.items
             li.menu-item
-              a(href='../' + path.parent + '/' + path.slug + '.html#' + path.slug + '-' + item.anchor + '-' + subitem.anchor) #{subitem.name}
-          li.divider.divider-no-border.divider-size-xs
+              if subitem.anchor
+                - var subitemanchor = '-' + subitem.anchor;
+              else
+                - var subitemanchor = '';
+              a(href='../' + path.parent + '/' + path.slug + '.html#' + path.slug + '-' + item.anchor + subitemanchor) #{subitem.name}
+          li.divider.divider-no-border.divider-xs
         else
           li.menu-item
             a(href='../' + path.parent + '/' + path.slug + '.html#' + path.slug + '-' + item.anchor) #{item.name}
 
 mixin docs-pagination(previous, next)
   +docs-divider('xl')
-  ul.pagination.pagination-border
+  ul.pagination.pagination-border.pagination-icon
     if (previous.name)
       li.page-item.page-prev
         +docs-pagination-prev(previous.name, previous)
@@ -96,9 +105,14 @@ mixin docs-pagination-prev(title, previous)
   else if (previous.path)
     - var href = location + parent + '/' + previous.path + '.html'
   a(href=href)
-    div.page-item-subtitle Previous
-    div.page-item-title
-      h5 #{title}
+    i.fa-solid.fa-arrow-left-long
+    span
+      span.page-item-subtitle
+        if previous.parent
+          .text-fl-uppercase #{previous.parent} - Previous
+        else
+          .text-fl-uppercase #{parent} - Previous
+      span.page-item-title= title
 
 mixin docs-pagination-next(title, next)
   - var location = ''
@@ -111,9 +125,16 @@ mixin docs-pagination-next(title, next)
   else if (next.path)
     - var href = location + parent + '/' + next.path + '.html'
   a(href=href)
-    div.page-item-subtitle Next
-    div.page-item-title
-      h5 #{title}
+    span
+      span.page-item-subtitle
+        if next.parent
+          div(style="display: inline-flex") Next -&nbsp;
+            font.text-fl-uppercase  #{next.parent}
+        else
+          div(style="display: inline-flex") Next -&nbsp;
+            font.text-fl-uppercase #{parent}
+      span.page-item-title= title
+    i.fa-solid.fa-arrow-right-long
 
 mixin docs-subheading(id, name, options)
   if options && options.tag
