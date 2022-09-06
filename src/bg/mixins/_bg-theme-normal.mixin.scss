@@ -13,7 +13,6 @@
 // Bg mixins.
 @use 'bg-color-variants.mixin' as *;
 
-// Initialize mixins.
 @mixin bg-theme-normal($colors...) {
   @if $color-scheme == normal {
     @include bg-color-variants(get-theme-colors($bg-theme-normal, $colors...)...);

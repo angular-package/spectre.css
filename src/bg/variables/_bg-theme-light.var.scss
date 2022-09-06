@@ -5,10 +5,10 @@ $bg-theme-light: (
     'dark': ('dark-color', 'light-color'),
     'light': ('light-color', 'dark-color'),
 
-    // -- Accent
+    // - Accent
     'accent': ('accent-color', 'light-color'),
 
-    // -- Primary.
+    // - Primary.
     'primary': ('primary-color', 'light-color'),
     'primary-dark': ('primary-color-dark', ('primary-color-dark', 40%)),
     'primary-light': ('primary-color-light', ('primary-color-light', 40%)),
@@ -18,35 +18,35 @@ $bg-theme-light: (
     'secondary-light': ('secondary-color-light', ('secondary-color-light', -40%))
   ),
 
-  // - Gray colors.
+  // Gray colors.
   'gray-colors': (
     'gray': ('gray-color', ('gray-color', 20%)),
     'gray-dark': ('gray-color-dark', 'gray-color-light'),
     'gray-light': ('gray-color-light', 'gray-color-dark')
   ),
 
-  // - Bg colors.
+  // Bg colors.
   'bg-colors': (
     'bg': ('bg-color', 'body-font'),
     'bg-dark': ('bg-color-dark', 'body-font'),
     'bg-light': ('bg-color-light', 'body-font')
   ),
 
-  // - Border colors.
+  // Border colors.
   'border-colors': (
     'border': ('border-color', ('border-color', -40%)),
     'border-dark': ('border-color-dark', ('border-color-dark', 40%)),
     'border-light': ('border-color-light', ('border-color-light', -40%))
   ),
 
-  // - Link colors.
+  // Link colors.
   'link-colors': (
     'link': ('link-color', ('link-color', 40%)),
     'link-dark': ('link-color-dark', ('link-color-dark', 60%)),
     'link-light': ('link-color-light', ('link-color-light', 30%))
   ),
 
-  // - Control colors.
+  // Control colors.
   'control-colors': (
     'disabled': ('disabled-color', ('disabled-color', -10%)),
     'error': ('error-color', 'light-color'),
@@ -55,13 +55,13 @@ $bg-theme-light: (
     'warning': ('warning-color', 'light-color')
   ),
 
-  // - Body colors.
+  // Body colors.
   'body-colors': (
     'body-bg': ('body-bg-color', 'body-font-color'),
     'body-font': ('body-font-color', 'body-bg-color')
   ),
 
-  // - Other colors.
+  // Other colors.
   'other-colors': (
     'code': ('code-color', ('code-color', 50%)),
     'highlight': ('highlight-color', ('highlight-color', -50%))

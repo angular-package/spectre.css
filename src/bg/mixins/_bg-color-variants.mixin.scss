@@ -2,6 +2,7 @@
 
 @use 'bg-color-variant.mixin' as *;
 
+// $colors... map of colors
 @mixin bg-color-variants($colors...) {
   @each $row in $colors {
     @each $name, $color in $row {

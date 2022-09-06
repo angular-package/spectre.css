@@ -11,7 +11,6 @@
 // Bg mixins.
 @use 'bg-color-variants.mixin' as *;
 
-// Initialize mixins.
 @mixin bg-theme-light($colors...) {
   @if is-scheme-light() == true {
     @media (prefers-color-scheme: light) {
