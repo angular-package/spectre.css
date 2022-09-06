@@ -7,7 +7,10 @@ block variables
   - var description = 'Modals are flexible dialog prompts. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('modals', 'Modals')
+  +docs-heading(slug, 'Modals', {parent, name: 'Components'})
+    +docs-menu('Modals', {parent, slug},
+      { anchor: 'size', name: 'Sizes' }
+    )
     include ../_layout/_ad-g.pug
 
     p Modals are flexible dialog prompts.
@@ -72,7 +75,7 @@ block docs-content
             </div>
           </div>
           
-    +docs-subheading('modals-sizes', 'Modal sizes')
+    +docs-subheading('sizes', 'Modal sizes', {slug})
 
     .docs-demo.columns
       .column.col-6.col-xs-12
@@ -152,6 +155,7 @@ block docs-content
             </div>
           </div>
 
+    +docs-pagination({path: 'menu', name: 'Menu'}, {path: 'nav', name: 'Nav'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

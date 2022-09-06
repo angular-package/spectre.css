@@ -1,6 +1,6 @@
-/*! Spectre.css RTL | MIT License | github.com/picturepan2/spectre */
+/*! Spectre.css RTL | MIT License | github.com/angular-package/spectre.css */
+// Import Spectre
+@use '../../../src/spectre' as *;
 $rtl: true;
 
-// Import Spectre
-@import "../../../src/spectre";
-@import "../../../src/spectre-exp";
+@use '../../../src/spectre-exp' as *;

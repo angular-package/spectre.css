@@ -1,12 +1,19 @@
-@use 'functions/get-var' as *;
-@use 'mixins/text.scss' as *;
-@use 'variables' as *;
+// Variables.
+@use 'variables/core' as *;
+
+// Functions.
+@use 'functions/var/css-var.function' as *;
+
+// Mixins.
+@use 'mixins/padding.mixins' as *;
+@use 'text/mixins/text-ellipsis.mixin' as *;
 
 // Tiles
-.tile {
+.#{$class-prefix}tile {
+  // Display.
+  display: flex;
   align-content: space-between;
   align-items: flex-start;
-  display: flex;
 
   .tile-icon,
   .tile-action {
@@ -15,18 +22,16 @@
   .tile-content {
     flex: 1 1 auto;
     &:not(:first-child) {
-      // padding-left: $unit-2; // old spectre.css
-      padding-left: get-var('unit-2');
+      @include padding-left('unit-2');
+
     }
     &:not(:last-child) {
-      // padding-right: $unit-2; // old spectre.css
-      padding-right: get-var('unit-2');
+      @include padding-right('unit-2');
     }
   }
   .tile-title,
   .tile-subtitle {
-    // line-height: $line-height; // old spectre.css
-    line-height: get-var('line-height');
+    line-height: css-var('line-height');
   }
 
   &.tile-centered {
@@ -38,8 +43,8 @@
 
     .tile-title,
     .tile-subtitle {
-      @include text-ellipsis();
       margin-bottom: 0;
+      @include text-ellipsis();
     }
   }
 }

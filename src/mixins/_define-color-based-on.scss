@@ -1,17 +1,13 @@
+@use '../functions/var/get-var.function' as *;
 @use '../variables' as *;
-@use '../functions/get-var' as *;
-@use 'set-var' as *;
+@use 'set-var.mixin' as *;
 
+// @deprecated
 // Defines a color based on the specified CSS variable and its lightness.
 @mixin define-color-based-on($name, $color, $lightness: 0%, $prefix: $var-prefix) {
+  @warn 'define-color-based-on() mixin is deprecated in favor of set-color()';
   @include set-var($name, get-var($color, $suffix: 'h'), $prefix, 'h');
   @include set-var($name, get-var($color, $suffix: 's'), $prefix, 's');
   @include set-var($name, calc(var(--#{$prefix}-#{$color}-l) + #{$lightness}), $prefix, 'l');
   @include set-var($name, get-var($color, $suffix: 'a'), $prefix, 'a');
 }
-
-// Old @angular-package/spectre.css
-// --s-#{$name}-h: var(--s-#{$color}-h);
-// --s-#{$name}-s: var(--s-#{$color}-s);
-// --s-#{$name}-l: calc(var(--s-#{$color}-l) + #{$lightness});
-// --s-#{$name}-a: var(--s-#{$color}-a);

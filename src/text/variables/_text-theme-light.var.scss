@@ -1,0 +1,57 @@
+$text-theme-light: (
+  'core-colors': (
+    'dark': 'dark-color',
+    'light': 'light-color',
+    'accent': 'accent-color',
+
+    'primary': 'primary-color',
+    'primary-dark': 'primary-color-dark',
+    'primary-light': 'primary-color-light',
+
+    'secondary': 'secondary-color',
+    'secondary-dark': 'secondary-color-dark',
+    'secondary-light': 'secondary-color-light'
+  ),
+
+  'gray-colors': (
+    'gray': 'gray-color',
+    'gray-dark': 'gray-color-dark',
+    'gray-light': 'gray-color-light'
+  ),
+
+  'bg-colors': (
+    'bg': 'bg-color',
+    'bg-dark': 'bg-color-dark',
+    'bg-light': 'bg-color-light'
+  ),
+
+  'border-colors': (
+    'border': 'border-color',
+    'border-dark': 'border-color-dark',
+    'border-light': 'border-color-light'
+  ),
+
+  'link-colors': (
+    'link': 'link-color',
+    'link-dark': 'link-color-dark',
+    'link-light': 'link-color-light'
+  ),
+
+  'control-colors': (
+    'disabled': 'disabled-color',
+    'error': 'error-color',
+    'info': ('info-color', -50%),
+    'success': 'success-color',
+    'warning': 'warning-color'
+  ),
+
+  'body-colors': (
+    'body-bg': 'body-bg-color',
+    'body-font': 'body-font-color'
+  ),
+
+  'other-colors': (
+    'code': 'code-color',
+    'highlight': 'highlight-color'
+  )
+) !default;

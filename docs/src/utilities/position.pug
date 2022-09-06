@@ -7,12 +7,21 @@ block variables
   - var description = 'Position utilities are used for useful layout and position things, including clearfix, float, position and margin/padding utilities. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('position', 'Position utilities')
+  +docs-heading(slug, 'Position utilities', {parent, name: 'Utilities'})
+
+    +docs-menu('Position', {parent, slug},
+      { anchor: 'clear', name: 'Clear' },
+      { anchor: 'position', name: 'Position' },
+      { anchor: 'margin', name: 'Margin' },
+      { anchor: 'padding', name: 'Padding' }
+    )
+
     include ../_layout/_ad-g.pug
 
     p
       | Position utilities are used for useful layout and position things, including clearfix, float, position and margin/padding utilities.
 
+    +docs-subheading('clear', 'Clear', {slug})
     pre.code(data-lang='HTML')
       code
         :highlight(lang="html")
@@ -21,6 +30,11 @@ block docs-content
           <!-- float: left and right -->
           <div class="float-left"></div>
           <div class="float-right"></div>
+
+    +docs-subheading('position', 'Position', {slug})
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
           <!-- position: relative, absolute, fixed and sticky -->
           <div class="p-relative"></div>
           <div class="p-absolute"></div>
@@ -29,6 +43,10 @@ block docs-content
           <!-- centered block -->
           <div class="p-centered"></div>
 
+    +docs-subheading('margin', 'Margin', {slug})
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
           <!-- m-1 {margin: 4px;} m-2 {margin: 8px;} -->
           <div class="m-1"></div>
           <div class="m-2"></div>
@@ -40,6 +58,11 @@ block docs-content
           <div class="mx-2"></div>
           <div class="my-1"></div>
           <div class="my-2"></div>
+
+    +docs-subheading('padding', 'Padding', {slug})
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
           <!-- p-1 {padding: 4px;} p-2 {padding: 8px;} -->
           <div class="p-1"></div>
           <div class="p-2"></div>
@@ -52,6 +75,7 @@ block docs-content
           <div class="py-1"></div>
           <div class="py-2"></div>
 
+    +docs-pagination({path: 'loading', name: 'Loading'}, {path: 'shapes', name: 'Shapes'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

@@ -1,0 +1,50 @@
+// Variables.
+@use '../variables/core' as *;
+
+// Mixins.
+@use '../borders/mixins/border.mixin' as *;
+@use '../mixins/color/background.mixin' as *;
+@use '../mixins/color/color.mixin' as *;
+@use '../mixins/margin.mixins' as *;
+@use '../mixins/padding.mixins' as *;
+
+@use 'mixins/toast-theme.mixin' as *;
+
+// Toasts
+.#{$class-prefix}toast {
+  // Display.
+  display: block;
+
+  // Size.
+  width: 100%;
+  @include padding(('layout-spacing', true));
+
+  // Theme.
+  @include border($color: 'dark', $radius: 'border-radius');
+  @include background('dark');
+  @include color('light');
+
+  a {
+    @include color('light');
+    text-decoration: underline;
+    @include color(
+      'light',
+      $alpha: 0.75,
+      $selector: ('.active', ':active', ':focus', ':hover')
+    );
+  }
+
+  // Button clear.
+  .btn-clear {
+    @include margin('unit-h');
+  }
+
+  p {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Includes the toast themes.
+  @include toast-theme();
+}

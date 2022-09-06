@@ -1,0 +1,232 @@
+extends ../_layout/_docs-layout.pug
+
+block variables
+  - var slug = 'footer'
+  - var parent = 'layout'
+  - var title = 'Footer - Layout - Spectre.css CSS Framework'
+  - var description = 'Footer includes flexbox based responsive grid system with 12 columns. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
+
+block docs-content
+  +docs-heading(slug, 'Footer', {parent, name: 'Layout'})
+    +docs-menu('Footer', {parent, slug}, 
+      {anchor: 'columns', name: 'Columns'}
+    )
+
+    include ../_layout/_ad-g.pug
+
+    p
+      | Footer is a document page footer that includes a flexbox-based responsive grid system with 12 columns.
+
+    p Add the #[code .footer] class to a container #[code div] or #[code footer], add the element inside with the #[code .columns] class. 
+      | And add any element you want with the #[code column] class inside the container. These columns will take up the space equally.
+      | You can specify the width of each column by adding class #[code col-#{'<1-12>'}].
+
+    .docs-demo
+      footer.footer.footer-lg
+        .columns
+          .column.col-3.text-center
+            a(href='' target='_blank') Portfolio
+          .column.col-3.text-center
+            a(href='' target='_blank') About
+          .column.col-3.text-center
+            a(href='' target='_blank') Pricing
+          .column.col-3.text-center
+            a(href='' target='_blank') Contact
+
+        div.divider.divider-no-border.divider-xs
+
+        .columns
+          .column.col-12.text-center
+            | Be sure to take a look at our #[a(href="") Terms] of Use and #[a(href="") Privacy Policy]
+
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <footer class="footer footer-lg">
+            <div class="columns">
+              <div class="column col-3 text-center">
+                <a href="" target="_blank">Portfolio</a>
+              </div>
+              <div class="column col-3 text-center">
+                <a href="" target="_blank">About</a>
+              </div>
+              <div class="column col-3 text-center">
+                <a href="" target="_blank">Pricing</a>
+              </div>
+              <div class="column col-3 text-center">
+                <a href="" target="_blank">Contact</a>
+              </div>
+            </div>
+            <div class="divider divider-no-border divider-xs"></div>
+            <div class="columns">
+              <div class="column col-12 text-center">
+                Be sure to take a look at our 
+                <a href="">Terms</a> of Use and <a href="">Privacy Policy</a>
+              </div>
+            </div>
+          </footer>
+
+    +docs-subheading('columns', 'Footer - columns', {slug})
+
+    p
+      | Add the list to each element with the #[code column] class to have footer.
+
+    .docs-demo.columns
+      footer.footer.footer-lg
+        .columns
+          .column.col-3.col-xs-12.col-sm-6.col-md-6.col-lg-3.col-xl-4
+            h5.text-gray-dark Documentation
+            ul
+              li 
+                a(href="" target="_blank") Getting started
+              li 
+                a(href="" target="_blank") Elements
+              li 
+                a(href="" target="_blank") Layout
+              li 
+                a(href="" target="_blank") Components
+              li 
+                a(href="" target="_blank") Utilities
+              li 
+                a(href="" target="_blank") Experimentals
+
+          .column.col-3.col-xs-12.col-sm-6.col-md-6.col-lg-3.col-xl-4
+            h5.text-gray-dark Project
+            ul
+              li 
+                a(href="https://angular-package.dev/ui-kit/dashboard" target="_blank")
+                  i.mr-1(class="fa-solid fa-fw fa-shield")
+                  | Demonstration
+              li 
+                a(href="https://www.npmjs.com/package/@angular-package/spectre.css" target="_blank")
+                  i.mr-1(class="fa-brands fa-fw fa-npm")
+                  | npm
+              li 
+                a(href="https://github.com/angular-package/spectre.css" target="_blank")
+                  i.mr-1(class="fa-brands fa-fw fa-github")
+                  | GitHub
+
+          .column.col-3.col-xs-12.col-sm-6.col-md-6.col-lg-3.col-xl-4
+            h5.text-gray-dark Community
+            ul
+              li 
+                a(href="https://gettr.com/user/angularpackage" target="_blank")
+                  i.mr-1(class="fa-solid fa-fw fa-broom")
+                  | Gettr
+              li 
+                a(href="https://twitter.com/angularpackage" target="_blank")
+                  i.mr-1(class="fa-brands fa-fw fa-twitter")
+                  | Twitter
+              li 
+                a(href="https://twitter.com/angularpackage" target="_blank")
+                  i.mr-1(class="fa-brands fa-fw fa-youtube")
+                  | YouTube
+              li 
+                a(href="https://discord.com/channels/925168966098386944/998970323607228436" target="_blank")
+                  i.mr-1(class="fa-brands fa-fw fa-discord")
+                  | Discord
+              li 
+                a(href="https://gitter.im/angularpackage/Lobby" target="_blank")
+                  i.mr-1(class="fa-brands fa-fw fa-gitter")
+                  | Gitter
+
+          .column.col-3.col-xs-12.col-sm-6.col-md-6.col-lg-3.col-xl-4
+            h5.text-gray-dark Donate
+            ul
+              li 
+                a(href="https://www.paypal.me/picturepan2" target="_blank")
+                  i.mr-1(class="fa-brands fa-fw fa-paypal")
+                  | PayPal Yan Zhu
+              li 
+                a(href="https://www.patreon.com/spectrecss" target="_blank")
+                  i.mr-1(class="fa-brands fa-fw fa-patreon")
+                  | Patreon Yan Zhu
+              li 
+                a(href="https://spectrecss.angular-package.dev/donate/usd-fiat" target="_blank")
+                  i.mr-1(class="fa-solid fa-fw fa-dollar-sign")
+                  | angular package
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <footer class="footer footer-lg">
+            <div class="columns">
+              <div class="column col-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-4">
+                <h5 class="text-gray-dark">Documentation</h5>
+                <ul>
+                  <li><a href="" target="_blank">Getting started</a></li>
+                  <li><a href="" target="_blank">Elements</a></li>
+                  <li><a href="" target="_blank">Layout</a></li>
+                  <li><a href="" target="_blank">Components</a></li>
+                  <li><a href="" target="_blank">Utilities</a></li>
+                  <li><a href="" target="_blank">Experimentals</a></li>
+                </ul>
+              </div>
+              <div class="column col-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-4">
+                <h5 class="text-gray-dark">Project</h5>
+                <ul>
+                  <li>
+                    <a href="https://angular-package.dev/ui-kit/dashboard" target="_blank">
+                      <i class="mr-1 fa-solid fa-fw fa-shield"></i> Demonstration</a>
+                    </li>
+                  <li>
+                    <a href="https://www.npmjs.com/package/@angular-package/spectre.css" target="_blank">
+                      <i class="mr-1 fa-brands fa-fw fa-npm"></i> npm</a>
+                    </li>
+                  <li>
+                    <a href="https://github.com/angular-package/spectre.css" target="_blank">
+                      <i class="mr-1 fa-brands fa-fw fa-github"></i> GitHub</a>
+                    </li>
+                </ul>
+              </div>
+              <div class="column col-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-4">
+                <h5 class="text-gray-dark">Community</h5>
+                <ul>
+                  <li>
+                    <a href="https://gettr.com/user/angularpackage" target="_blank">
+                      <i class="mr-1 fa-solid fa-fw fa-broom"></i> Gettr
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/angularpackage" target="_blank">
+                      <i class="mr-1 fa-brands fa-fw fa-twitter"></i> Twitter</a>
+                    </li>
+                  <li>
+                    <a href="https://twitter.com/angularpackage" target="_blank">
+                      <i class="mr-1 fa-brands fa-fw fa-youtube"></i> YouTube</a>
+                    </li>
+                  <li>
+                    <a href="https://discord.com/channels/925168966098386944/998970323607228436" target="_blank">
+                      <i class="mr-1 fa-brands fa-fw fa-discord"></i> Discord</a>
+                    </li>
+                  <li>
+                    <a href="https://gitter.im/angularpackage/Lobby" target="_blank">
+                      <i class="mr-1 fa-brands fa-fw fa-gitter"></i> Gitter</a>
+                    </li>
+                </ul>
+              </div>
+              <div class="column col-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-4">
+                <h5 class="text-gray-dark">Donate</h5>
+                <ul>
+                  <li><a href="https://www.paypal.me/picturepan2" target="_blank">
+                    <i class="mr-1 fa-brands fa-fw fa-paypal"></i> PayPal Yan Zhu</a>
+                  </li>
+                  <li>
+                    <a href="https://www.patreon.com/spectrecss" target="_blank">
+                      <i class="mr-1 fa-brands fa-fw fa-patreon"></i> Patreon Yan Zhu</a>
+                    </li>
+                  <li>
+                    <a href="https://spectrecss.angular-package.dev/donate/usd-fiat" target="_blank">
+                      <i class="mr-1 fa-solid fa-fw fa-dollar-sign"></i> angular package
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </footer>
+
+    +docs-pagination({path: 'grid', name: 'Flexbox grid'}, {path: 'hero', name: 'Hero'})
+
+    include ../_layout/_ad-c.pug
+

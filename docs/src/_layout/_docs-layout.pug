@@ -7,11 +7,18 @@ block content
       a.off-canvas-toggle.btn.btn-link.btn-action(href='#sidebar')
         i.icon.icon-menu
       .btns.d-flex
-        input.docs-search.form-input(type="text" placeholder="Search Docs")
-        a.btn.ml-1(href='https://www.paypal.me/picturepan2' target='_blank') PayPal
-        a.btn.btn-primary.ml-1(href='https://github.com/picturepan2/spectre' target='_blank') GitHub
+        //- input.docs-search.form-input(type="text" placeholder="Search Docs")
+        //- a.btn.ml-1(href='https://www.paypal.me/picturepan2' target='_blank') PayPal
+        a.btn.disabled.btn-link.btn-outline.tooltip.tooltip-bottom(data-tooltip="Search documentation")
+          i.fa-solid.fa-magnifying-glass.fa-fw
+        a#theme-switcher.disabled.btn.btn-link.btn-outline.ml-2.tooltip.tooltip-bottom(data-tooltip="Switch theme dark/light")
+          i.fa-solid.fa-moon.fa-fw
+        a.btn.btn-link.btn-outline.ml-2.tooltip.tooltip-bottom(data-tooltip="See on the npm" href='https://www.npmjs.com/package/@angular-package/spectre.css' target='_blank')
+          i.fa-brands.fa-npm.fa-fw
+        a.btn.btn-link.btn-outline.ml-2.tooltip.tooltip-bottom(data-tooltip="See on the GitHub" href='https://github.com/angular-package/spectre.css' target='_blank')
+          i.fa-brands.fa-github.fa-fw
 
-    #sidebar.docs-sidebar.off-canvas-sidebar
+    #sidebar.docs-sidebar.off-canvas-sidebar.bg-body
       .docs-brand
         if slug != parent
           a.docs-logo(href='../index.html')
@@ -23,12 +30,13 @@ block content
             img(src='img/spectre-logo.svg' alt='Spectre.css CSS Framework')
             h2 SPECTRE
             small.label.label-secondary.text-bold DOCS
-      .docs-nav
+      .docs-nav.hide-scrollbar.bg-body
         .accordion-container
           +docs-accordion(
             'getting-started',
             'Getting started',
             {url: 'installation', name: 'Installation'},
+            {url: 'variables', name: 'Variables'},
             {url: 'custom', name: 'Custom version'},
             {url: 'browsers', name: 'Browser support'},
             {url: 'whatsnew', name: 'What\'s new'}
@@ -36,22 +44,21 @@ block content
           +docs-accordion(
             'elements',
             'Elements',
-            {url: 'typography', name: 'Typography'},
-            {url: 'tables', name: 'Tables'},
             {url: 'buttons', name: 'Buttons'},
-            {url: 'forms', name: 'Forms'},
-            {url: 'icons', name: 'Icons.css'},
-            {url: 'labels', name: 'Labels'},
             {url: 'code', name: 'Code'},
-            {url: 'media', name: 'Media'}
+            {url: 'forms', name: 'Forms'},
+            {url: 'icons', name: 'Icons'},
+            {url: 'labels', name: 'Labels'},
+            {url: 'media', name: 'Media'},
+            {url: 'tables', name: 'Tables'},
+            {url: 'typography', name: 'Typography'}
           )
-          +docs-accordion(
-            'layout',
-            'Layout',
+          +docs-accordion('layout', 'Layout',
             {url: 'grid', name: 'Flexbox grid'},
-            {url: 'responsive', name: 'Responsive'},
+            {url: 'footer', name: 'Footer'},
             {url: 'hero', name: 'Hero'},
-            {url: 'navbar', name: 'Navbar'}
+            {url: 'navbar', name: 'Navbar'},
+            {url: 'responsive', name: 'Responsive'}
           )
           +docs-accordion(
             'components',
@@ -110,11 +117,14 @@ block content
       #content.docs-content
         block docs-content
 
-  script(type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js")
-  script.
-    docsearch({ 
-    apiKey: 'bede06373c5a1fa3c1bbe8401e24c653', 
-    indexName: 'picturepan2_spectre', 
-    inputSelector: '.docs-search', 
-    debug: true
-    }); 
+      include ../_layout/_footer.pug
+
+
+  //- script(type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js")
+  //- script.
+  //-   docsearch({ 
+  //-   apiKey: 'bede06373c5a1fa3c1bbe8401e24c653', 
+  //-   indexName: 'picturepan2_spectre', 
+  //-   inputSelector: '.docs-search', 
+  //-   debug: true
+  //-   }); 

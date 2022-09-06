@@ -2,12 +2,36 @@ extends ../_layout/_docs-layout.pug
 
 block variables
   - var slug = 'labels'
+  - var name = 'Labels'
   - var parent = 'elements'
   - var title = 'Labels - Elements - Spectre.css CSS Framework'
   - var description = 'Labels are formatted text tags for highlighted, informative information. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('labels', 'Labels')
+  +docs-heading(slug, name, { parent, name: 'Elements' })
+    +docs-menu(name, {parent, slug},
+      {
+        anchor: 'colors',
+        name: 'Colors',
+        items: [
+          { anchor: 'available', name: 'Available colors' },
+          { anchor: 'accent' , name: 'Accent' },
+          { anchor: 'primary', name: 'Primary' },
+          { anchor: 'secondary', name: 'Secondary' },
+          { anchor: 'gray', name: 'Gray' },
+          { anchor: 'bg' , name: 'Bg' },
+          { anchor: 'border', name: 'Border' },
+          { anchor: 'link' , name: 'Link' },
+          { anchor: 'control', name: 'Control' },
+          { anchor: 'body', name: 'Body' },
+          { anchor: 'other', name: 'Other' }
+        ]
+      },
+      { anchor: 'sizes' , name: 'Sizes' },
+      { anchor: 'rounded' , name: 'Rounded' },
+      { anchor: 'bordered' , name: 'Bordered' }
+    )
+
     include ../_layout/_ad-g.pug
 
     p Labels are formatted text tags for highlighted, informative information.
@@ -15,32 +39,434 @@ block docs-content
     .docs-demo.columns
       .column
         span.label.mr-1 default label
-        span.label.label-primary.mr-1 primary label
-        span.label.label-secondary.mr-1 secondary label
-        span.label.label-success.mr-1 success label
-        span.label.label-warning.mr-1 warning label
-        span.label.label-error error label
-      
-    p
-      | Add the #[code label] class to #{'<span>'} or #{'<small>'} elements.
-      | You can add another class #[code label-primary], #[code label-secondary], #[code label-success], #[code label-warning] and #[code label-error] for colored labels.
+
+    p Add the #[code label] class to <code>#{'<span>'}</code> or <code>#{'<small>'}</code> elements.
+
+    +docs-subheading('colors-available', 'Available label colors', {slug})
+
+    p There are labels of all the #[b Spectre.css] colors, and to use them add the #[code label-] class with a color name, for example #[code label-primary-dark].
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-center
+          thead
+            tr
+              th(width='160')
+              th.text-left Code
+              th Available
+              th Dark 
+              th Light
+          tbody
+            tr
+              th.text-left
+                a(href="#labels-colors-shades") Dark
+              td.text-left
+                code dark
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#labels-colors-shades") Light
+              td.text-left
+                code light
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#labels-colors-accent") Accent
+              td.text-left
+                code accent
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#labels-colors-primary") Primary
+              td.text-left
+                code primary
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+            tr
+              th.text-left
+                a(href="#labels-colors-secondary") Secondary
+              td.text-left
+                code secondary
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+            tr
+              th.text-left
+                a(href="#labels-colors-gray") Gray
+              td.text-left
+                code gray
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+            tr
+              th.text-left
+                a(href="#labels-colors-bg") Bg
+              td.text-left
+                code bg
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+            tr
+              th.text-left
+                a(href="#labels-colors-border") Border
+              td.text-left
+                code border
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+            tr
+              th.text-left
+                a(href="#labels-colors-control") Link
+              td.text-left
+                code link
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#labels-colors-control") Disabled
+              td.text-left
+                code disabled
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#labels-colors-control") Error
+              td.text-left
+                code error
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#labels-colors-control") Info
+              td.text-left
+                code info
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#labels-colors-control") Success
+              td.text-left
+                code success
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#labels-colors-body") Body bg
+              td.text-left
+                code body-bg
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#labels-colors-body") Body font
+              td.text-left
+                code body-font
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#labels-colors-other") Code
+              td.text-left
+                code code
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#labels-colors-other") Highlight
+              td.text-left
+                code highlight
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+
+    +docs-subheading('colors', 'Label colors', {slug})
+
+    +docs-subheading('colors-shades', 'Shades', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column
+        span.label.label-dark.mr-1 dark label
+        span.label.label-light.mr-1 light label
 
     pre.code(data-lang='HTML')
       code
         :highlight(lang="html")
-          <!-- normal labels -->
-          <span class="label">default label</span>
-          <span class="label label-primary">primary label</span>
+          <!-- Dark & Light colors -->
+          <span class="label label-dark">dark label</span>
+          <span class="label label-light">light label</span>
 
-    +docs-subheading('labels-rounded', 'Rounded labels')
-    
+    +docs-subheading('colors-accent', 'Label color - Accent', {slug, tag: 'h5'})
+    .docs-demo.columns
+      .column
+        span.label.label-accent.mr-1 accent label
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Accent color -->
+          <span class="label label-accent">accent label</span>
+
+    +docs-subheading('colors-primary', 'Label color - Primary', {slug, tag: 'h5'})
+    p You can add another class #[code label-primary], #[code label-primary-dark], #[code label-primary-light] for labels colored with primary colors.
+    .docs-demo.columns
+      .column
+        span.label.label-primary.mr-1 primary label
+        span.label.label-primary-dark.mr-1 primary label dark
+        span.label.label-primary-light.mr-1 primary label light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Primary color labels -->
+          <span class="label label-primary">primary label</span>
+          <span class="label label-primary-dark">primary label dark</span>
+          <span class="label label-primary-light">primary label light</span>
+
+    +docs-subheading('colors-secondary', 'Label color - Secondary', {slug, tag: 'h5'})
+    p You can add another class #[code label-secondary], #[code label-secondary-dark], #[code label-secondary-light] for labels colored with secondary colors.
+    .docs-demo.columns
+      .column
+        span.label.label-secondary.mr-1 secondary label
+        span.label.label-secondary-dark.mr-1 secondary label dark
+        span.label.label-secondary-light.mr-1 secondary label light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Secondary color labels -->
+          <span class="label label-secondary">secondary label</span>
+          <span class="label label-secondary-dark">secondary label dark</span>
+          <span class="label label-secondary-light">secondary label light</span>
+
+    +docs-subheading('colors-gray', 'Label color - Gray', {slug, tag: 'h5'})
+    p You can add another class #[code label-gray], #[code label-gray-dark], #[code label-gray-light] for labels colored with gray colors.
+    .docs-demo.columns
+      .column
+        span.label.label-gray.mr-1 gray label
+        span.label.label-gray-dark.mr-1 gray label dark
+        span.label.label-gray-light.mr-1 gray label light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Gray color labels -->
+          <span class="label label-gray">gray label</span>
+          <span class="label label-gray-dark">gray label dark</span>
+          <span class="label label-gray-light">gray label light</span>
+
+    +docs-subheading('colors-bg', 'Label color - Bg', {slug, tag: 'h5'})
+    p You can add another class #[code label-bg], #[code label-bg-dark], #[code label-bg-light] for labels colored with bg colors.
+    .docs-demo.columns
+      .column
+        span.label.label-bg.mr-1 bg label
+        span.label.label-bg-dark.mr-1 bg label dark
+        span.label.label-bg-light.mr-1 bg label light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Bg color labels -->
+          <span class="label label-bg">bg label</span>
+          <span class="label label-bg-dark">bg label dark</span>
+          <span class="label label-bg-light">bg label light</span>
+
+    +docs-subheading('colors-border', 'Label color - Border', {slug, tag: 'h5'})
+    p You can add another class #[code label-border], #[code label-border-dark], #[code label-border-light] for labels colored with border colors.
+    .docs-demo.columns
+      .column
+        span.label.label-border.mr-1 border label
+        span.label.label-border-dark.mr-1 border label dark
+        span.label.label-border-light.mr-1 border label light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Border color labels -->
+          <span class="label label-border">border label</span>
+          <span class="label label-border-dark">border label dark</span>
+          <span class="label label-border-light">border label light</span>
+
+    +docs-subheading('colors-link', 'Label color - Link', {slug, tag: 'h5'})
+    p You can add another class #[code label-link], #[code label-link-dark], #[code label-link-light] for labels colored with link colors.
+    .docs-demo.columns
+      .column
+        span.label.label-link.mr-1 link label
+        span.label.label-link-dark.mr-1 link label dark
+        span.label.label-link-light.mr-1 link label light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Link color labels -->
+          <span class="label label-link">link label</span>
+          <span class="label label-link-dark">link label dark</span>
+          <span class="label label-link-light">link label light</span>
+
+    +docs-subheading('colors-control', 'Label color - Control', {slug, tag: 'h5'})
+    p You can add another class #[code label-disabled], #[code label-error], #[code label-info], #[code label-success] and #[code label-warning] for colored labels.
+    .docs-demo.columns
+      .column
+        span.label.label-disabled.mr-1 disabled label
+        span.label.label-error.mr-1 error label
+        span.label.label-info.mr-1 info label
+        span.label.label-success.mr-1 success label
+        span.label.label-warning.mr-1 warning label
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Control color labels -->
+          <span class="label label-disabled">disabled label</span>
+          <span class="label label-error">error label</span>
+          <span class="label label-info">info label</span>
+          <span class="label label-success">success label</span>
+          <span class="label label-warning">warning label</span>
+
+    +docs-subheading('colors-body', 'Label color - Body', {slug, tag: 'h5'})
+    p You can add another class #[code label-body-bg] or #[code label-body-font] for labels body colors colored.
+    .docs-demo.columns
+      .column
+        span.label.label-body-bg.mr-1 body-bg label
+        span.label.label-body-font.mr-1 body-font label
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Body color labels -->
+          <span class="label label-body-bg">body-bg label</span>
+          <span class="label label-body-font">body-font label</span>
+
+    +docs-subheading('colors-other', 'Label color - Other', {slug, tag: 'h5'})
+    p You can add another class #[code label-code] or #[code label-highlight] for labels colored.
+    .docs-demo.columns
+      .column
+        span.label.label-code.mr-1 code label
+        span.label.label-highlight.mr-1 highlight label
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Other color labels -->
+          <span class="label label-code">link label</span>
+          <span class="label label-highlight">highlight label</span>
+
+    +docs-subheading('sizes', 'Label sizes', {slug})
+
+    p There are labels with the size changed by #[code padding], and to use it add the #[code .label] class with a size, for example #[code .label-sm]. You can mix it with any color above.
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.text-center
+          thead
+            tr
+              th xs 
+              th sm 
+              th md  
+              th lg  
+              th xl 
+              th 2x 
+          tbody
+            tr
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+
+    .docs-demo.columns
+      .column
+        span.label.label-primary.label-xs.mb-1 primary extra small label
+        br
+        span.label.label-primary.label-sm.mb-1 primary small label
+        br
+        span.label.label-primary.label-md.mb-1 primary medium label
+        br
+        span.label.label-primary.label-lg.mb-1 primary large label
+        br
+        span.label.label-primary.label-xl.mb-1 primary extra large label
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Sized labels -->
+          <span class="label label-primary label-xs">primary extra small label</span>
+          <span class="label label-primary label-sm">primary small label</span>
+          <span class="label label-primary label-md">primary medium label</span>
+          <span class="label label-primary label-lg">primary large label</span>
+          <span class="label label-primary label-xl">primary extra large label</span>
+
+    +docs-subheading('rounded', 'Rounded labels', {slug})
+
     .docs-demo.columns
       .column
         span.label.label-rounded.mr-1 default label
         span.label.label-rounded.label-primary primary label
 
     p
-      | Add the #[code label-rounded] class to have rounded labels.
+      | Add the #[code label-rounded] class to have rounded labels. You can mix it with, rounded, any size and color above.
 
     pre.code(data-lang='HTML')
       code
@@ -48,6 +474,75 @@ block docs-content
           <!-- rounded labels -->
           <span class="label label-rounded label-primary">primary label</span>
 
+    +docs-subheading('bordered', 'Bordered labels', {slug})
+
+    p
+      | Add the #[code border] class to have bordered labels. You can mix it with any size and color above.
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.text-center
+          thead
+            tr
+              th xs 
+              th sm 
+              th md  
+              th lg  
+              th xl 
+              th 2x 
+          tbody
+            tr
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+
+    +docs-subheading('bordered-sizes', 'Border sizes', {slug, tag: 'h5'})
+
+    p
+      | Add the #[code border-lg] class to have large border.
+
+    .docs-demo.columns
+      .column
+        span.label.border.mr-1 border label
+        span.label.border-lg.mr-1 border large label
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Bordered labels -->
+          <span class="label border">border label</span>
+          <span class="label border-lg">border large label</span>
+
+    p
+      | Add the #[code border-light] or #[code border-dark] class to have light or dark color border. And also add to each shade #[code -lg] for large size.
+
+    .docs-demo.columns
+      .column
+        span.label.label-border.border-light.mr-1 border light label
+        span.label.label-border.border-light-lg.mr-1 border light large label
+        span.label.label-border-light.border-dark.mr-1 border dark label
+        span.label.label-border-light.border-dark-lg.mr-1 border dark large label
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Bordered labels -->
+          <span class="label label-border border-light">border light label</span>
+          <span class="label label-border border-light-lg">border light large label</span>
+          <span class="label label-border-light border-dark">border dark label</span>
+          <span class="label label-border-light border-dark-lg">border dark large label</span>
+
+    p.toast.toast-info
+      | You can add new border variants with a #[a(href="../getting-started/custom.html#customizable-borders") mixin] or modify border colors by changing #[a(href="../getting-started/variables.html#border-colors") CSS variables], and sizes by changing #[a(href="../getting-started/variables.html#variables-border") CSS variables].
+
+    +docs-pagination({path: 'icons', name: 'Icons.css'}, {path: 'media', name: 'Media'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

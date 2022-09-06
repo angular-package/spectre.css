@@ -1,0 +1,6 @@
+@use 'core' as *;
+
+// Link colors.
+$link-color: 'primary-color' !default; // --#{$var-prefix}-link-color.
+$link-color-dark: ('link-color', -10%) !default; // --#{$var-prefix}-link-color-dark.
+$link-color-light: ('link-color', +10%) !default; // --#{$var-prefix}-link-color-light.

@@ -1,0 +1,24 @@
+// Variables.
+@use '../../variables/core' as *;
+
+// Functions.
+@use 'hsla/hsla-color.function' as *;
+
+// The function `color()` returns the `hsla()` color from a CSS variables of the given `$name`.
+@function color(
+  $name,
+  $hue: 0deg,
+  $saturation: 0%,
+  $lightness: 0%,
+  $alpha: 0,
+  $prefix: $var-prefix
+) {
+  @return hsla-color(
+    $name,
+    $hue,
+    $saturation,
+    $lightness,
+    $alpha,
+    $prefix
+  );
+}

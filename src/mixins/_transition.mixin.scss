@@ -1,0 +1,20 @@
+@use 'sass:list';
+
+// Functions.
+@use '../functions/var/get-var.function' as *;
+
+@mixin transition($properties...) {
+  $transition: '';
+  @each $property in $properties {
+    @if list.length($property) > 1 {
+      $timing-function: '';
+      @if (list.length($property) == 3) {
+        $timing-function: list.nth($property, 3);
+      }
+      $transition: #{$transition}, #{list.nth($property, 1)} calc(get-var('transition-duration') + list.nth($property, 2)) #{$timing-function};
+    } @else {
+      $transition: #{$transition}, #{$property} get-var('transition-duration');
+    }
+  }
+  transition: $transition;
+}

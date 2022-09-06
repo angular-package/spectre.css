@@ -2,14 +2,39 @@ extends ../_layout/_docs-layout.pug
 
 block variables
   - var slug = 'icons'
+  - var name = 'Icons.css'
   - var parent = 'elements'
   - var title = 'Icons - Elements - Spectre.css CSS Framework'
   - var description = 'Icons are single-element, responsive and pure CSS icons. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('icons', 'Icons.css')
+  +docs-heading(slug, name, { parent, name: 'Elements' })
+    +docs-menu(name, {parent, slug},
+      {
+        anchor: 'spectre',
+        name: 'Spectre',
+        items: [
+          { anchor: 'navigation' , name: 'Navigation'},
+          { anchor: 'action', name: 'Action '},
+          { anchor: 'object', name: 'Object'},
+          { anchor: 'sizes', name: 'Icon sizes'}
+        ]
+      },
+      {
+        anchor: 'font-awesome',
+        name: 'Font awesome',
+        items: [
+          { anchor: 'navigation' , name: 'Navigation'},
+          { anchor: 'action', name: 'Action '},
+          { anchor: 'object', name: 'Object'},
+          { anchor: 'emoji', name: 'Emoji'},
+          { anchor: 'rating', name: 'Rating'}
+        ]
+      }
+    )
     p
       small.label.label-secondary CSS ONLY
+      small.label.label-secondary.ml-1 FONT AWESOME
 
     include ../_layout/_ad-g.pug
 
@@ -21,11 +46,11 @@ block docs-content
           |  while Spectre will only include basic icons.
     p
       | Icons.css are single-element, responsive and pure CSS icons.
-      | You can include #[code spectre-icons.css] located in the #[code dist] folder to your web #{'<head>'} to have these CSS icons.
+      | You can include #[code spectre-icons.css] located in the #[code dist] folder to your web #[code #{'<head>'}] to have these CSS icons.
 
-    +docs-subheading('icons-navigation', 'Navigation icons')
+    +docs-subheading('spectre-navigation', 'Navigation icons', {slug, tag: 'h5'})
 
-    .docs-demo.columns
+    .docs-demo.columns.text-center
       .column.col-3.col-md-6
         button.btn.btn-primary.btn-action.btn-lg
           i.icon.icon-arrow-up
@@ -79,9 +104,9 @@ block docs-content
           i.icon.icon-more-vert
         p icon-more-vert
 
-    +docs-subheading('icons-action', 'Action icons')
+    +docs-subheading('spectre-action', 'Action icons', {slug, tag: 'h5'})
 
-    .docs-demo.columns
+    .docs-demo.columns.text-center
       .column.col-3.col-md-6
         button.btn.btn-primary.btn-action.btn-lg
           i.icon.icon-resize-horiz
@@ -155,9 +180,9 @@ block docs-content
           i.icon.icon-copy
         p icon-copy
 
-    +docs-subheading('icons-object', 'Object icons')
+    +docs-subheading('spectre-object', 'Object icons', {slug, tag: 'h5'})
 
-    .docs-demo.columns
+    .docs-demo.columns.text-center
       .column.col-3.col-md-6
         button.btn.btn-primary.btn-action.btn-lg
           i.icon.icon-mail
@@ -191,12 +216,12 @@ block docs-content
           i.icon.icon-emoji
         p icon-emoji
 
-    pre.code(data-lang='HTML')
-      code
-        :highlight(lang="html")
-          <i class="icon icon-menu"></i>
+    //- pre.code(data-lang='HTML')
+    //-   code
+    //-     :highlight(lang="html")
+    //-       <i class="icon icon-menu"></i>
 
-    +docs-subheading('icons-sizes', 'Icon sizes')
+    +docs-subheading('spectre-sizes', 'Icon sizes', {slug, tag: 'h5'})
 
     p
       | Use #[code icon-2x], #[code icon-3x] and #[code icon-4x] classes to increase icon sizes.
@@ -221,6 +246,358 @@ block docs-content
         :highlight(lang="html")
           <i class="icon icon-2x icon-mail"></i>
 
+    +docs-subheading('font-awesome', 'Font awesome icons', {slug})
+
+    .toast.toast-success
+      | Spectre.css icons are using free version of the 
+      a(href='https://fontawesome.com/', target='_blank') Font Awesome
+      | .
+
+    +docs-subheading('font-awesome-navigation', 'Font awesome navigation ', {slug, tag: 'h5'})
+
+    .docs-demo.columns.text-center
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-arrow-up
+        p fa-arrow-up
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-arrow-right
+        p fa-arrow-right
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-arrow-down
+        p fa-arrow-down
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-arrow-left
+        p fa-arrow-left
+
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-angle-up
+        p fa-angle-up
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-angle-right
+        p fa-angle-right
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-angle-down
+        p fa-angle-down
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-angle-left
+        p fa-angle-left
+
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-caret-up
+        p fa-caret-up
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-caret-right
+        p fa-caret-right
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-caret-down
+        p fa-caret-down
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-caret-left
+        p fa-caret-left
+
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-bars
+        p fa-bars
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.icon.icon-apps
+        p icon-apps
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-ellipsis
+        p fa-ellipsis
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-ellipsis-vertical
+        p fa-ellipsis-vertical
+
+    +docs-subheading('font-awesome-action', 'Font awesome action icons', {slug, tag: 'h5'})
+
+    .docs-demo.columns.text-center
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.icon.icon-resize-horiz
+        p icon-resize-horiz
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.icon.icon-resize-vert
+        p icon-resize-vert
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-plus
+        p fa-plus
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-minus
+        p fa-minus
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-xmark
+        p fa-xmark
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-check
+        p fa-check
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-ban
+        p fa-ban
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-power-off
+        p fa-power-off
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-rotate-right
+        p fa-rotate-right
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-magnifying-glass
+        p fa-magnifying-glass
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-flag
+        p fa-flag
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-bookmark
+        p fa-bookmark
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-pencil
+        p fa-pencil
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-trash
+        p fa-trash
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-share
+        p fa-share
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-download
+        p fa-download
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-upload
+        p fa-upload
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-copy
+        p fa-copy
+
+    +docs-subheading('font-awesome-object', 'Font awesome object icons', {slug, tag: 'h5'})
+
+    .docs-demo.columns.text-center
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-envelope
+        p fa-envelope
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-envelope
+        p fa-envelope
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-user
+        p fa-user
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-user
+        p fa-user
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-message
+        p fa-message
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-message
+        p fa-message
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-image
+        p fa-image
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-image
+        p fa-image
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-clock
+        p fa-clock
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-clock
+        p fa-clock
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-location-dot
+        p fa-location-dot
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-location-pin
+        p fa-location-pin
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-link
+        p fa-link
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-link-slash
+        p fa-link-slash
+
+    +docs-subheading('font-awesome-emoji', 'Font awesome emoji icons', {slug, tag: 'h5'})
+
+    .docs-demo.columns.text-center
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-face-rolling-eyes
+        p fa-face-rolling-eyes
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-face-rolling-eyes
+        p fa-face-rolling-eyes
+
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-face-meh
+        p fa-face-meh
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-face-meh
+        p fa-face-meh
+
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-face-meh-blank
+        p fa-face-meh-blank
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-face-meh-blank
+        p fa-face-meh-blank
+
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-face-grin-wink
+        p fa-face-grin-wink
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-face-grin-wink
+        p fa-face-grin-wink
+
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-face-laugh-wink
+        p fa-face-laugh-wink
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-face-laugh-wink
+        p fa-face-laugh-wink
+
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-face-smile
+        p fa-face-smile
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-face-smile
+        p fa-face-smile
+
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-face-smile-wink
+        p fa-face-smile-wink
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-face-smile-wink
+        p fa-face-smile-wink
+
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-face-grin-tongue-wink
+        p fa-face-grin-tongue-wink
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-face-grin-tongue-wink
+        p fa-face-grin-tongue-wink
+
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-face-frown
+        p fa-face-frown
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-face-frown
+        p fa-face-frown
+
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-face-frown-open
+        p fa-face-frown-open
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-face-frown-open
+        p fa-face-frown-open
+
+    +docs-subheading('font-awesome-rating', 'Font awesome rating icons', {slug, tag: 'h5'})
+
+    .docs-demo.columns.text-center
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-thumbs-up
+        p fa-thumbs-up
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-thumbs-up
+        p fa-thumbs-up
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-thumbs-down
+        p fa-thumbs-down
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-thumbs-down
+        p fa-thumbs-down
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-heart
+        p fa-heart
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-heart
+        p fa-heart
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-star
+        p fa-star
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-star
+        p fa-star
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-solid.fa-star-half
+        p fa-star-half
+      .column.col-3.col-md-6
+        button.btn.btn-primary.btn-action.btn-lg
+          i.fa-regular.fa-star-half
+        p fa-star-half
+
+    +docs-pagination({path: 'forms', name: 'Forms'}, {path: 'labels', name: 'Labels'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

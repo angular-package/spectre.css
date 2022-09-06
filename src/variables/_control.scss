@@ -1,0 +1,26 @@
+@use 'border' as *;
+@use 'line-height' as *;
+@use 'unit-sizes' as *;
+
+// Control size.
+$control-size: $unit-9 !default; // --#{$var-prefix}-control-size.
+$control-size-sm: $unit-7 !default; // --#{$var-prefix}-control-size-sm.
+$control-size-lg: $unit-10 !default; // --#{$var-prefix}-control-size-lg.
+
+// Control padding.
+$control-padding-x: $unit-2 !default; // --#{$var-prefix}-control-padding-x.
+$control-padding-x-sm: $unit-2 * 0.75 !default; // --#{$var-prefix}-control-padding-x-sm.
+$control-padding-x-lg: $unit-2 * 1.5 !default; // --#{$var-prefix}-control-padding-x-lg.
+$control-padding-y: ($control-size - $line-height) * 0.5 - $border-width !default; // --#{$var-prefix}-control-padding-y.
+$control-padding-y-sm: ($control-size-sm - $line-height) * 0.5 - $border-width !default; // --#{$var-prefix}-control-padding-y-sm.
+$control-padding-y-lg: ($control-size-lg - $line-height) * 0.5 - $border-width !default; // --#{$var-prefix}-control-padding-y-lg.
+
+// Control icon.
+$control-icon-size: 0.8rem !default; // --#{$var-prefix}-control-icon-size.
+
+// Control width.
+$control-width-xs: 180px !default; // --#{$var-prefix}-control-width-xs.
+$control-width-sm: 320px !default; // --#{$var-prefix}-control-width-sm.
+$control-width-md: 640px !default; // --#{$var-prefix}-control-width-md.
+$control-width-lg: 960px !default; // --#{$var-prefix}-control-width-lg.
+$control-width-xl: 1280px !default; // --#{$var-prefix}-control-width-xl.

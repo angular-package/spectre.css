@@ -1,0 +1,10 @@
+// Mixins.
+@use '../../mixins/color/background-color.mixin' as *;
+@use '../../mixins/color/color.mixin' as *;
+
+@mixin hero-color-variant($name, $bg-color, $color) {
+  &.hero-#{$name} {
+    @include background-color($bg-color);
+    @include color($color);
+  }
+}

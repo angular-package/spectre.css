@@ -7,15 +7,15 @@ block variables
   - var description = 'Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development. Spectre provides basic styles for typography and elements, flexbox based responsive layout system, pure CSS components and utilities with best practice coding and consistent design language.'
 
 block docs-content
-  +docs-heading('browsers', 'Browser support')
+  +docs-heading(slug, 'Browser support', { parent, name: 'Getting Started' })
     include ../_layout/_ad-g.pug
     
     p
-      | Spectre uses 
+      | <b>Spectre.css</b> uses 
       a(href='https://github.com/postcss/autoprefixer', target='_blank') Autoprefixer
       |  to make most styles compatible with earlier browsers and 
       a(href='https://necolas.github.io/normalize.css/', target='_blank') Normalize.css
-      |  for CSS resets. Spectre is designed for modern browsers. For best compatibility, these browsers are recommended:
+      |  for CSS resets. <b>Spectre.css</b> is designed for modern browsers. For best compatibility, these browsers are recommended:
     ul
       li
         | Chrome 
@@ -34,8 +34,9 @@ block docs-content
         small.label.label-success LAST 4
       li Internet Explorer 10+
     p
-      | Spectre supports Internet Explorer 10+, but some HTML5 and CSS3 features are not perfectly supported by Internet Explorer.
+      | <b>Spectre.css</b> supports Internet Explorer 10+, but some HTML5 and CSS3 features are not perfectly supported by Internet Explorer.
     
+    +docs-pagination({ path: 'custom', name: 'Custom version' }, {path: 'whatsnew', name: 'What\'s new'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

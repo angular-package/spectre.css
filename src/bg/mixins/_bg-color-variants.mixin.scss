@@ -1,0 +1,16 @@
+@use 'sass:list';
+
+@use 'bg-color-variant.mixin' as *;
+
+// $colors... map of colors
+@mixin bg-color-variants($colors...) {
+  @each $row in $colors {
+    @each $name, $color in $row {
+      @if list.length($color) > 1 {
+        @include bg-color-variant($name, list.nth($color, 1), list.nth($color, 2));
+      } @else {
+        @include bg-color-variant($name, list.nth($color, 1));
+      }
+    }
+  }
+}

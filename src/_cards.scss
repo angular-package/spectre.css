@@ -1,29 +1,32 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
+// Variables.
+@use 'variables/core' as *;
+
+// Functions.
+@use 'functions/var/css-var.function' as *;
+
+// Mixins.
+@use 'borders/mixins/border.mixin' as *;
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/color/color-picker.mixin' as *;
+@use 'mixins/padding.mixins' as *;
 @use 'mixins/shadow' as *;
-@use 'variables' as *;
+@use 'mixins/transition.mixin' as *; // TODO: transition
 
 // Cards
-.card {
-  // background: $bg-color-light; // old spectre.css
-  background: color('bg-color-light');
-  // border: $border-width solid $border-color; // old spectre.css
-  border: get-var('border-width') solid color('border-color');
-  // border-radius: $border-radius; // old spectre.css
-  border-radius: get-var('border-radius');
+.#{$class-prefix}card {
   display: flex;
   flex-direction: column;
+  @include border($radius: 'border-radius');
+  @include background('bg-light');
 
   .card-header,
   .card-body,
   .card-footer {
-    // padding: $layout-spacing-lg; // old spectre.css
-    padding: get-var('layout-spacing', $suffix: 'lg', $unit: 1);
+    @include padding(('layout-spacing', ('suffix': 'lg', 'unit': true)));
     padding-bottom: 0;
 
     &:last-child {
-      // padding-bottom: $layout-spacing-lg; // old spectre.css
-      padding-bottom: get-var('layout-spacing', $suffix: 'lg', $unit: 1);
+      @include padding-bottom(('layout-spacing', ('suffix': 'lg', 'unit': true)));
     }
   }
 
@@ -32,32 +35,62 @@
   }
 
   .card-image {
-    // padding-top: $layout-spacing-lg; // old spectre.css
-    padding-top: get-var('layout-spacing', $suffix: 'lg', $unit: 1);
+    @include padding-top(('layout-spacing', ('suffix': 'lg', 'unit': true)));
 
     &:first-child {
       padding-top: 0;
 
       img {
-        // border-top-left-radius: $border-radius; // old spectre.css
-        border-top-left-radius: get-var('border-radius');
-        // border-top-right-radius: $border-radius; // old spectre.css
-        border-top-right-radius: get-var('border-radius');
+        border-top-left-radius: css-var('border-radius');
+        border-top-right-radius: css-var('border-radius');
       }
     }
 
     &:last-child {
       img {
-        // border-bottom-left-radius: $border-radius; // old spectre.css
-        border-bottom-left-radius: get-var('border-radius');
-        // border-bottom-right-radius: $border-radius; // old spectre.css
-        border-bottom-right-radius: get-var('border-radius');
+        border-bottom-left-radius: css-var('border-radius');
+        border-bottom-right-radius: css-var('border-radius');
       }
     }
   }
 
+  // Color card.
+  &.card-color {
+    // Position.
+    position: relative;
+
+    // Display.
+    flex-direction: column;
+    justify-content: end;
+
+    // Size.
+    height: fit-content;
+    padding: 5rem 0.5rem 0.75rem;
+
+    // Animations.
+    // @include transition(0.05s); // TODO: transition
+
+    // Color name.
+    .card-color-name {
+      font-weight: 500;
+    }
+
+    .card-color-code {
+      position: absolute;
+      top: 0.25rem;
+      right: 0.5rem;
+      font-size: small;
+    }
+
+    // Color card picker.
+    input[type='color'].card-color-picker {
+      border-color: transparent;
+      @include color-picker;
+    }
+  }
+
   &.card-shadow {
-    @include shadow-variant(0.1rem);
     border: 0;
+    @include shadow-variant(0.1rem);
   }
 }

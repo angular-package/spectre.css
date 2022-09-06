@@ -1,0 +1,33 @@
+// Variables.
+@use '../variables/core' as *;
+
+// Mixins.
+@use '../mixins/color/background.mixin' as *;
+@use '../mixins/color/color.mixin' as *;
+@use '../mixins/padding-size-variants.mixin' as *;
+@use '../mixins/padding.mixins' as *;
+
+@use 'mixins/label-base.mixin' as *;
+@use 'mixins/label-theme.mixin' as *;
+
+// Labels
+.#{$class-prefix}label {
+  display: inline-block;
+
+  @include label-base();
+  @include background('bg-dark');
+  @include color(('body-font', +5%));
+
+  // Label rounded
+  &.label-rounded {
+    @include padding-left('unit-2');
+    @include padding-right('unit-2');
+    border-radius: 5rem;
+  }
+
+  // Label size variants.
+  @include padding-size-variants('label');
+
+  // Label color variants.
+  @include label-theme();
+}

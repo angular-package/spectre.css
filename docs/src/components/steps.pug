@@ -7,7 +7,7 @@ block variables
   - var description = 'Steps are progress indicators of a sequence of task steps. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('steps', 'Steps')
+  +docs-heading(slug, 'Steps', {parent, name: 'Components'})
     include ../_layout/_ad-g.pug
 
     p Steps are progress indicators of a sequence of task steps.
@@ -57,6 +57,7 @@ block docs-content
             </li>
           </ul>
 
+    +docs-pagination({path: 'popovers', name: 'Popovers'}, {path: 'tabs', name: 'Tabs'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

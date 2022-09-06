@@ -1,0 +1,45 @@
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../../functions/var/unit-var.function' as *;
+
+// Mixins.
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/margin.mixins' as *;
+@use '../../mixins/padding.mixins' as *;
+
+// Button Clear
+@mixin button-clear($prefix: $class-prefix) {
+  .#{$prefix}btn {
+    &.btn-clear {
+      // Position.
+      @include margin-left('unit-1');
+      margin-right: -2px;
+
+      // Display.
+      opacity: 1;
+
+      // Size.
+      width: unit-var('5');
+      height: unit-var('5');
+      @include padding('unit-h');
+
+      border: 0;
+      background: transparent;
+      color: currentColor;
+
+      line-height: unit-var('4');
+      text-decoration: none;
+
+      &:focus,
+      &:hover {
+        opacity: 0.95;
+        @include background('bg', $alpha: 0.5);
+      }
+
+      &::before {
+        content: '\2715';
+      }
+    }
+  }
+}

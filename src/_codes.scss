@@ -1,44 +1,60 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'mixins/label' as *;
-@use 'variables' as *;
+// Variables.
+@use 'variables/core' as *;
+
+// Functions.
+@use 'functions/is-scheme-dark.function' as *;
+@use 'functions/is-scheme-light.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
+
+// Mixins.
+@use 'labels/mixins/label-base.mixin' as *;
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/color/color.mixin' as *;
 
 // Codes
 code {
   @include label-base();
-  // @include label-variant($code-color, lighten($code-color, 42.5%)); // old spectre.css
-  @include label--variant(color('code-color'), color('code-color', $lightness: +42.5%));
+  @include color('code');
+
+  @if is-scheme-dark() == true {
+    @media (prefers-color-scheme: dark) {
+      @include background(('code', -42.5%));
+    }
+  }
+  @if is-scheme-light() == true {
+    @media (prefers-color-scheme: light) {
+      @include background(('code', 42.5%));
+    }
+  }
+  @if $color-scheme == normal {
+    @include background(('code', 42.5%));
+  }
+
   font-size: 85%;
 }
 
-.code {
-  // border-radius: $border-radius; // old spectre.css
-  border-radius: get-var('border-radius');
-  // color: $body-font-color; // old spectre.css
-  color: color('body-font-color');
+.#{$class-prefix}code {
   position: relative;
+  border-radius: get-var('border-radius');
+  @include color('body-font');
 
   &::before {
-    // color: $gray-color; // old spectre.css
-    color: color('gray-color');
-    content: attr(data-lang);
-    // font-size: $font-size-sm; // old spectre.css
-    font-size: get-var('font-size', $suffix: 'sm');
     position: absolute;
-    // right: $layout-spacing; // old spectre.css
-    right: get-var('layout-spacing', $unit: 1);
-    // top: $unit-h; // old spectre.css
-    top: get-var('unit-h');
+    top: unit-var('h');
+    right: get-var(('layout-spacing', true));
+    content: attr(data-lang);
+    @include color('gray');
+    font-size: get-var('font-size', $suffix: 'sm');
   }
 
   code {
-    // background: $bg-color; // old spectre.css
-    background: color('bg-color');
-    color: inherit;
     display: block;
-    line-height: 1.5;
     overflow-x: auto;
-    padding: 1rem;
     width: 100%;
+    padding: 1rem;
+    @include background('bg');
+    color: inherit;
+    line-height: 1.5;
   }
 }

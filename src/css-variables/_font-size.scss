@@ -1,9 +1,11 @@
-@use '../mixins/set-var' as *;
-@use '../variables' as *;
+// Variables.
+@use '../variables/font-sizes' as *;
+@use '../variables/line-height' as *;
 
-/*
-  Font size and line height. Alphabetical order.
-*/
+// Mixins.
+@use '../mixins/set-var.mixin' as *;
+
+// Font size and line height.
 :root, :host {
   // Font sizes.
   @include set-var('font-size', $font-size); // 0.8rem

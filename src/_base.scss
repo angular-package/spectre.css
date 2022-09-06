@@ -1,7 +1,14 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
+// Variables.
+@use 'variables/fonts' as *;
+
+// Functions.
+@use 'functions/color/color.function' as *;
+@use 'functions/var/css-var.function' as *;
+
+// Mixins.
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/color/background.mixin' as *;
 @use 'mixins/shadow' as *;
-@use 'variables' as *;
 
 // Base
 *,
@@ -11,30 +18,24 @@
 }
 
 html {
-  box-sizing: border-box;
-  // font-size: $html-font-size; // old spectre.css
-  font-size: get-var('html-font-size');
-  // line-height: $html-line-height; // old spectre.css
-  line-height: get-var('html-line-height');
+  line-height: css-var('html-line-height');
+  font-size: css-var('html-font-size');
   -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
 }
 
 body {
-  // background: $body-bg; // old spectre.css
-  background: color('body-bg-color');
-  // color: $body-font-color; // old spectre.css
-  color: color('body-font-color');
-  font-family: $body-font-family;
-  // font-size: $font-size; // old spectre.css
-  font-size: get-var('font-size');
   overflow-x: hidden;
+  @include background('body-bg');
+  @include color('body-font');
+  font-family: $body-font-family;
+  font-size: css-var('font-size');
   text-rendering: optimizeLegibility;
 }
 
 a {
-  // color: $link-color; // old spectre.css
-  color: color('link-color');
   outline: none;
+  @include color('link');
   text-decoration: none;
 
   &:focus {
@@ -45,13 +46,11 @@ a {
   &:hover,
   &:active,
   &.active {
-    // color: $link-color-dark; // old spectre.css
-    color: color('link-color-dark');
+    @include color('link-dark');
     text-decoration: underline;
   }
 
   &:visited {
-    // color: $link-color-light; // old spectre.css
-    color: color('link-color-light');
+    @include color('link-light');
   }
 }

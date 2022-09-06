@@ -1,7 +1,13 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'mixins/label' as *;
-@use 'variables' as *;
+// Functions.
+@use 'functions/color/color.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
+
+// Mixins.
+@use 'borders/mixins/border.mixin' as *;
+@use 'labels/mixins' as *;
+@use 'mixins/margin.mixins' as *;
+@use 'mixins/padding.mixins' as *;
 
 // Typography
 // Headings
@@ -11,11 +17,11 @@ h3,
 h4,
 h5,
 h6 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
   color: inherit;
   font-weight: 500;
-  line-height: 1.2;
-  margin-bottom: 0.5em;
-  margin-top: 0;
 }
 .h1,
 .h2,
@@ -52,8 +58,7 @@ h6,
 
 // Paragraphs
 p {
-  // margin: 0 0 $line-height; // old spectre.css
-  margin: 0 0 get-var('line-height');
+  @include margin('unit-0', 'unit-0', 'line-height');
 }
 
 // Semantic text elements
@@ -64,38 +69,29 @@ u {
 }
 
 abbr[title] {
-  // border-bottom: $border-width dotted; // old spectre.css
-  border-bottom: get-var('border-width') dotted;
   cursor: help;
+  @include border($style: 'dotted', $side: 'bottom', $radius: 'border-radius');
   text-decoration: none;
 }
 
 kbd {
   @include label-base();
-  // @include label-variant($light-color, $dark-color); // old spectre.css
-  @include label-variant('light-color', 'dark-color');
-  // font-size: $font-size-sm; // old spectre.css
+  @include label-color-variant('light', 'dark');
   font-size: get-var('font-size', $suffix: 'sm');
 }
 
 mark {
-  // @include label-variant($body-font-color, $highlight-color); // old spectre.css
-  @include label-variant('body-font-color', 'highlight-color');
-  // border-bottom: $unit-o solid darken($highlight-color, 15%); // old spectre.css
-  border-bottom: get-var('unit-o') solid color('highlight-color', $lightness: -15%);
-  // border-radius: $border-radius; // old spectre.css
+  @include label-color-variant('body-font', 'highlight');
+  border-bottom: unit-var('o') solid color('highlight', $lightness: -15%); // TODO: border unit-o
+  @include padding('unit-o', 'unit-h', 'unit-0');
   border-radius: get-var('border-radius');
-  // padding: $unit-o $unit-h 0; // old spectre.css
-  padding: get('unit-o') get-var('unit-h') 0;
 }
 
 // Blockquote
 blockquote {
-  // border-left: $border-width-lg solid $border-color; // old spectre.css
-  border-left: get-var('border-width', $suffix: 'lg') solid color('border-color');
   margin-left: 0;
-  // padding: $unit-2 $unit-4; // old spectre.css
-  padding: get-var('unit-2') get-var('unit-4');
+  @include padding('unit-2', 'unit-4');
+  @include border('lg', $side: left, $radius: 'border-radius');
 
   p:last-child {
     margin-bottom: 0;
@@ -105,19 +101,16 @@ blockquote {
 // Lists
 ul,
 ol {
-  // margin: $unit-4 0 $unit-4 $unit-4; // old spectre.css
-  margin: get-var('unit-4') 0 get-var('unit-4') get-var('unit-4');
+  @include margin('unit-4', 'unit-0', 'unit-4', 'unit-4');
   padding: 0;
 
   ul,
   ol {
-    // margin: $unit-4 0 $unit-4 $unit-4; // old spectre.css
-    margin: get-var('unit-4') 0 get-var('unit-4') get-var('unit-4');
+    @include margin('unit-4', 'unit-0', 'unit-4', 'unit-4');
   }
 
   li {
-    // margin-top: $unit-2; // old spectre.css
-    margin-top: get-var('unit-2');
+    @include margin-top('unit-2');
   }
 }
 
@@ -142,7 +135,6 @@ dl {
     font-weight: bold;
   }
   dd {
-    // margin: $unit-2 0 $unit-4 0; // old spectre.css
-    margin: get-var('unit-2') 0 get-var('unit-4') 0; // old spectre.css
+    @include margin('unit-2', 'unit-0', 'unit-4', 'unit-0');
   }
 }

@@ -7,7 +7,7 @@ block variables
   - var description = 'Badges are often used as unread number indicators. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('badges', 'Badges')
+  +docs-heading(slug, 'Badges', {parent, name: 'Components'})
     include ../_layout/_ad-g.pug
 
     p Badges are often used as unread number indicators.
@@ -70,6 +70,7 @@ block docs-content
             <img src="img/avatar-3.png" alt="YZ">
           </figure>
 
+    +docs-pagination({path: 'avatars', name: 'Avatars'}, {path: 'bars', name: 'Bars'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

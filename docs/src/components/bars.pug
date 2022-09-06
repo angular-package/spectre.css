@@ -7,7 +7,10 @@ block variables
   - var description = 'Bars represent the progress of a task or the value within the known range.Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('bars', 'Bars')
+  +docs-heading(slug, 'Bars', {parent, name: 'Components'})
+    +docs-menu('Bars', {parent, slug},
+      { anchor: 'slider', name: 'Slider' }
+    )
     include ../_layout/_ad-g.pug
 
     p
@@ -51,7 +54,7 @@ block docs-content
             <div class="bar-item" style="width:15%;background:#818bd5;">15%</div>
           </div>
 
-    +docs-subheading('bars-slider', 'Slider bars')
+    +docs-subheading('slider', 'Slider bars', {slug})
 
     .docs-demo.columns
       .column.col-8.col-xs-12
@@ -93,6 +96,7 @@ block docs-content
             </div>
           </div>
 
+    +docs-pagination({path: 'badges', name: 'Badges'}, {path: 'breadcrumbs', name: 'Breadcrumbs'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

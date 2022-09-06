@@ -1,20 +1,28 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'variables' as *;
+// Variables.
+@use 'variables/core' as *;
+
+// Functions.
+@use 'functions/var/css-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
+
+// Mixins.
+@use 'mixins/color/background.mixin' as *;
 
 // Meters
 // Credit: https://css-tricks.com/html5-meter-element/
-.meter {
-  appearance: none;
-  // background: $bg-color; // old spectre.css
-  background: color('bg-color');
-  border: 0;
-  // border-radius: $border-radius; // old spectre.css
-  border-radius: get-var('border-radius');
+.#{$class-prefix}meter {
+  // appearance: none; // ! disabled
   display: block;
+
+  // Size.
   width: 100%;
-  // height: $unit-4; // old spectre.css
-  height: get-var('unit-4');
+  height: unit-var('4');
+
+  // Border.
+  border: 0;
+  border-radius: css-var('border-radius');
+
+  @include background('bg');
 
   &::-webkit-meter-inner-element {
     display: block;
@@ -24,50 +32,41 @@
   &::-webkit-meter-optimum-value,
   &::-webkit-meter-suboptimum-value,
   &::-webkit-meter-even-less-good-value {
-    // border-radius: $border-radius; // old spectre.css
-    border-radius: get-var('border-radius');
+    border-radius: css-var('border-radius');
   }
 
   &::-webkit-meter-bar {
-    // background: $bg-color; // old spectre.css
-    background: color('bg-color');
+    @include background('bg');
   }
 
   &::-webkit-meter-optimum-value {
-    // background: $success-color; // old spectre.css
-    background: color('success-color');
+    @include background('success');
   }
 
   &::-webkit-meter-suboptimum-value {
-    // background: $warning-color; // old spectre.css
-    background: color('warning-color');
+    @include background('warning');
   }
 
   &::-webkit-meter-even-less-good-value {
-    // background: $error-color; // old spectre.css
-    background: color('error-color');
+    @include background('error');
   }
 
   &::-moz-meter-bar,
   &:-moz-meter-optimum,
   &:-moz-meter-sub-optimum,
   &:-moz-meter-sub-sub-optimum {
-    // border-radius: $border-radius; // old spectre.css
-    border-radius: get-var('border-radius');
+    border-radius: css-var('border-radius');
   }
 
   &:-moz-meter-optimum::-moz-meter-bar {
-    // background: $success-color; // old spectre.css
-    background: color('success-color');
+    @include background('success');
   }
 
   &:-moz-meter-sub-optimum::-moz-meter-bar {
-    // background: $warning-color; // old spectre.css
-    background: color('warning-color');
+    @include background('warning');
   }
 
   &:-moz-meter-sub-sub-optimum::-moz-meter-bar {
-    // background: $error-color; // old spectre.css
-    background: color('error-color');
+    @include background('error');
   }
 }

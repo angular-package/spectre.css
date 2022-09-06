@@ -3,7 +3,7 @@
 // @forward 'variables';
 @use 'variables' as *;
 
-/*! Spectre.css Experimentals v#{$version} | MIT License | github.com/picturepan2/spectre */
+/*! Spectre.css Experimentals v#{$version} | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 // Experimentals
 @forward 'autocomplete';
 @forward 'calendars';

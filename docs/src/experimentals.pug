@@ -7,7 +7,7 @@ block variables
   - var description = 'Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development. Spectre provides basic styles for typography and elements, flexbox based responsive layout system, pure CSS components and utilities with best practice coding and consistent design language.'
 
 block docs-content
-  +docs-heading('experimentals', 'Experimentals')
+  +docs-heading(slug, 'Experimentals')
     include _layout/_ad-g.pug
 
     p
@@ -123,6 +123,6 @@ block docs-content
           .card-footer
             a.btn.btn-primary(href="experimentals/timelines.html") View
 
-    include _layout/_ad-c.pug
+    +docs-pagination({parent: 'utilities', path: 'text', name: 'Text'}, {path: 'viewer-360', name: '360-Degree Viewer'})
 
-  include _layout/_footer.pug
+    include _layout/_ad-c.pug

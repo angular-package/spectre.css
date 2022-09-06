@@ -1,0 +1,8 @@
+@use '../../variables/core' as *;
+
+@function var-name($prefix: $var-prefix, $name, $suffix: null, $var: null) {
+  @if $suffix == null {
+    @return --#{$prefix}-#{$name};
+  }
+  @return --#{$prefix}-#{$name}-#{$suffix};
+}

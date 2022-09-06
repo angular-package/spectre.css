@@ -7,24 +7,24 @@ block variables
   - var description = 'Cursor utilities specify which mouse cursor to display when mouseover. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('cursors', 'Cursor utilities')
+  +docs-heading(slug, 'Cursor utilities', {parent, name: 'Utilities'})
     include ../_layout/_ad-g.pug
 
     p Cursor utilities specify which mouse cursor to display when mouseover.
 
     .docs-demo.columns
       .column.col-4
-        .bg-gray.docs-block.c-hand c-hand
+        .bg-bg.docs-block.c-hand c-hand
       .column.col-4
-        .bg-gray.docs-block.c-move c-move
+        .bg-bg.docs-block.c-move c-move
       .column.col-4
-        .bg-gray.docs-block.c-zoom-in c-zoom-in
+        .bg-bg.docs-block.c-zoom-in c-zoom-in
       .column.col-4
-        .bg-gray.docs-block.c-zoom-out c-zoom-out
+        .bg-bg.docs-block.c-zoom-out c-zoom-out
       .column.col-4
-        .bg-gray.docs-block.c-not-allowed c-not-allowed
+        .bg-bg.docs-block.c-not-allowed c-not-allowed
       .column.col-4
-        .bg-gray.docs-block.c-auto c-auto
+        .bg-bg.docs-block.c-auto c-auto
 
     pre.code(data-lang='HTML')
       code
@@ -42,6 +42,7 @@ block docs-content
           <!-- cursor: auto; -->
           <div class="c-auto"></div>
 
+    +docs-pagination({path: 'colors', name: 'Colors'}, {path: 'display', name: 'Display'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

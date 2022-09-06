@@ -1,0 +1,27 @@
+@use 'sass:list';
+
+// Functions.
+@use '../functions/var/get-var.function' as *;
+
+// Mixins.
+@use 'property.mixin' as *;
+
+@mixin margin($sides...) {
+  @include property(margin, $sides...)
+}
+
+@mixin margin-bottom($var-name) {
+  margin-bottom: get-var($var-name);
+}
+
+@mixin margin-left($var-name) {
+  margin-left: get-var($var-name);
+}
+
+@mixin margin-right($var-name) {
+  margin-right: get-var($var-name);
+}
+
+@mixin margin-top($var-name) {
+  margin-top: get-var($var-name);
+}

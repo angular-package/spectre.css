@@ -1,0 +1,28 @@
+// Core variables
+$version: '1.0.0-beta';
+
+// Core features
+$rtl: false !default;
+
+// Class names prefix.
+$class-prefix: '' !default;
+
+// Global CSS variable's name prefix.
+$var-prefix: 's' !default; // It's used to make CSS variable names unique. --#{var-prefix}-#{name}
+
+// - CSS variable name's parameters for the `hsla()` color.
+$var-hue: 'h' !default; // Suffix for the hue CSS variable's name. @new
+$var-saturation: 's' !default; // Suffix for the saturation CSS variable's name. // @new
+$var-lightness: 'l' !default;// Suffix for the lightness CSS variable's name. @new
+
+// - CSS variable name for the both colors opacity.
+$var-alpha: 'a' !default;
+
+// color-scheme - https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
+$color-scheme: normal !default;
+
+//Transition duration.
+$transition-duration: 0.2s !default; // --#{$var-prefix}-transition-duration.
+
+// Max Columns number.
+$columns-count: 4 !default;

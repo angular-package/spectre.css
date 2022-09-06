@@ -1,0 +1,33 @@
+// Sass.
+@use 'sass:list';
+
+//  Variables.
+@use '../../variables' as *;
+
+// Functions.
+@use '../../functions/color/color.function' as *;
+@use '../../functions/important.function' as *;
+
+// The mixin contains the `color` style of the given `$color` CSS variable name without the prefix.
+@mixin color(
+  $color,
+  $lightness: 0%,
+  $alpha: 0,
+  $important: false,
+  $prefix: $var-prefix,
+  $selector: ()
+) {
+  @if list.length($selector) > 0 {
+    $selectors: '';
+    @each $value in $selector {
+      $selectors: $selectors + '&#{$value}, ';
+    }
+    #{$selectors} {
+      color: color($color, $lightness: $lightness, $alpha: $alpha, $prefix: $prefix)
+      important($important);
+    }
+  } @else {
+    color: color($color, $lightness: $lightness, $alpha: $alpha, $prefix: $prefix)
+    important($important);
+  }
+}

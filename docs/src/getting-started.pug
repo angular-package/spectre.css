@@ -7,7 +7,7 @@ block variables
   - var description = 'Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development. Spectre provides basic styles for typography and elements, flexbox based responsive layout system, pure CSS components and utilities with best practice coding and consistent design language.'
 
 block docs-content
-  +docs-heading('getting-started', 'Getting started')
+  +docs-heading(slug, 'Getting started')
     include _layout/_ad-g.pug
 
     p 
@@ -22,18 +22,34 @@ block docs-content
           .card-header
             .card-title.h5 Installation
           .card-body
-            | How to install and use Spectre.css
+            | How to install and use #[b Spectre.css]
           .card-footer
-            a.btn.btn-primary(href="getting-started/installation.html") View
-              
+            a.btn.btn-primary(href="getting-started/installation.html")
+              i.fa-solid.fa-magnifying-glass
+              |  View
+
+
+      .column.col-6.col-xs-12
+        .card
+          .card-header
+            .card-title.h5 Variables
+          .card-body
+            | Sass and CSS variables to customize and use #[b Spectre.css]
+          .card-footer
+            a.btn.btn-primary(href="getting-started/variables.html")
+              i.fa-solid.fa-magnifying-glass
+              |  View
+
       .column.col-6.col-xs-12
         .card
           .card-header
             .card-title.h5 Custom version
           .card-body
-            | Customize your version of Spectre.css
+            | Customize your version of #[b Spectre.css]
           .card-footer
-            a.btn.btn-primary(href="getting-started/custom.html") View
+            a.btn.btn-primary(href="getting-started/custom.html")
+              i.fa-solid.fa-magnifying-glass
+              |  View
         
       .column.col-6.col-xs-12
         .card
@@ -42,7 +58,9 @@ block docs-content
           .card-body
             | Browser compatibility and support
           .card-footer
-            a.btn.btn-primary(href="getting-started/browsers.html") View
+            a.btn.btn-primary(href="getting-started/browsers.html")
+              i.fa-solid.fa-magnifying-glass
+              |  View
               
       .column.col-6.col-xs-12
         .card
@@ -51,7 +69,9 @@ block docs-content
           .card-body
             | Changelog and release notes
           .card-footer
-            a.btn.btn-primary(href="getting-started/whatsnew.html") View
+            a.btn.btn-primary(href="getting-started/whatsnew.html")
+              i.fa-solid.fa-magnifying-glass
+              |  View
 
       .column.col-6.col-xs-12
         .card
@@ -60,6 +80,6 @@ block docs-content
           .card-body.text-gray
             | Coming soon
 
-    include _layout/_ad-c.pug
+    +docs-pagination({ parent: 'index', name: 'Spectre.css' }, { path: 'installation', name: 'Installation'})
 
-  include _layout/_footer.pug
+    include _layout/_ad-c.pug

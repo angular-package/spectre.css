@@ -1,0 +1,23 @@
+@use 'sass:map';
+
+@use '../variables/bg-theme.var' as *;
+
+@use 'bg-theme-dark.mixin' as *;
+@use 'bg-theme-light.mixin' as *;
+@use 'bg-theme-normal.mixin' as *;
+
+@mixin bg-theme(
+  $dark: map.get($bg-theme, 'dark'),
+  $light: map.get($bg-theme, 'light'),
+  $normal: map.get($bg-theme, 'normal')
+) {
+  @if $dark {
+    @include bg-theme-dark($dark...);
+  }
+  @if $light {
+    @include bg-theme-light($light...);
+  }
+  @if $normal {
+    @include bg-theme-normal($normal...);
+  }
+}

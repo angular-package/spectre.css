@@ -7,40 +7,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="Shape utilities are used for changing element shapes. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.">
-    <meta name="author" content="Yan Zhu">
-    <meta property="og:url" content="https://picturepan2.github.io/spectre/utilities/shapes.html">
+    <meta name="author" content="Yan Zhu &amp; @angular-package">
+    <meta name="theme-color" content="hsla(var(--s-theme-color-h), var(--s-theme-color-s), var(--s-theme-color-l), var(--s-theme-color-a))">
+    <meta property="og:url" content="https://angular-package.github.io/spectre.css/utilities/shapes.html">
     <meta property="og:title" content="Shape utilities - Utilities - Spectre.css CSS Framework">
     <meta property="og:description" content="Shape utilities are used for changing element shapes. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@spectrecss">
-    <meta name="twitter:creator" content="@picturepan2">
+    <meta name="twitter:site" content="@angularpackage">
+    <meta name="twitter:creator" content="@angularpackage">
+    <link rel="stylesheet" type="text/css" href="../assets/logo/flaticon.css">
     <link rel="shortcut icon" href="../img/favicons/favicon.ico">
     <link rel="icon" href="../img/favicons/favicon.png">
     <link rel="stylesheet" href="../dist/spectre.min.css">
+    <!-- Buttons.-->
     <link rel="stylesheet" href="../dist/spectre-icons.min.css">
     <link rel="stylesheet" href="../dist/spectre-exp.min.css">
     <link rel="stylesheet" href="../dist/docs.min.css">
-    <link rel="canonical" href="https://picturepan2.github.io/spectre/utilities/shapes.html">
+    <link rel="canonical" href="https://angular-package.github.io/spectre.css/utilities/shapes.html">
+    <script src="https://kit.fontawesome.com/f067824cbf.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="docs-container off-canvas off-canvas-sidebar-show">
       <div class="docs-navbar"><a class="off-canvas-toggle btn btn-link btn-action" href="#sidebar"><i class="icon icon-menu"></i></a>
-        <div class="btns d-flex">
-          <input class="docs-search form-input" type="text" placeholder="Search Docs"><a class="btn ml-1" href="https://www.paypal.me/picturepan2" target="_blank">PayPal</a><a class="btn btn-primary ml-1" href="https://github.com/picturepan2/spectre" target="_blank">GitHub</a>
-        </div>
+        <div class="btns d-flex"><a class="btn disabled btn-link btn-outline tooltip tooltip-bottom" data-tooltip="Search documentation"><i class="fa-solid fa-magnifying-glass fa-fw"></i></a><a class="disabled btn btn-link btn-outline ml-2 tooltip tooltip-bottom" id="theme-switcher" data-tooltip="Switch theme dark/light"><i class="fa-solid fa-moon fa-fw"></i></a><a class="btn btn-link btn-outline ml-2 tooltip tooltip-bottom" data-tooltip="See on the npm" href="https://www.npmjs.com/package/@angular-package/spectre.css" target="_blank"><i class="fa-brands fa-npm fa-fw"></i></a><a class="btn btn-link btn-outline ml-2 tooltip tooltip-bottom" data-tooltip="See on the GitHub" href="https://github.com/angular-package/spectre.css" target="_blank"><i class="fa-brands fa-github fa-fw"></i></a></div>
       </div>
-      <div class="docs-sidebar off-canvas-sidebar" id="sidebar">
+      <div class="docs-sidebar off-canvas-sidebar bg-body" id="sidebar">
         <div class="docs-brand"><a class="docs-logo" href="../index.html"><img src="../img/spectre-logo.svg" alt="Spectre.css CSS Framework">
             <h2>SPECTRE</h2><small class="label label-secondary text-bold">DOCS</small></a>
         </div>
-        <div class="docs-nav">
+        <div class="docs-nav hide-scrollbar bg-body">
           <div class="accordion-container">
-            <div class="accordion">
+            <div class="accordion accordion-menu">
               <input id="accordion-getting-started" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
               <label class="accordion-header c-hand" for="accordion-getting-started">Getting started</label>
               <div class="accordion-body">
                 <ul class="menu menu-nav">
                   <li class="menu-item"><a href="../getting-started/installation.html">Installation</a>
+                  </li>
+                  <li class="menu-item"><a href="../getting-started/variables.html">Variables</a>
                   </li>
                   <li class="menu-item"><a href="../getting-started/custom.html">Custom version</a>
                   </li>
@@ -51,47 +55,49 @@
                 </ul>
               </div>
             </div>
-            <div class="accordion">
+            <div class="accordion accordion-menu">
               <input id="accordion-elements" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
               <label class="accordion-header c-hand" for="accordion-elements">Elements</label>
               <div class="accordion-body">
                 <ul class="menu menu-nav">
-                  <li class="menu-item"><a href="../elements/typography.html">Typography</a>
-                  </li>
-                  <li class="menu-item"><a href="../elements/tables.html">Tables</a>
-                  </li>
                   <li class="menu-item"><a href="../elements/buttons.html">Buttons</a>
-                  </li>
-                  <li class="menu-item"><a href="../elements/forms.html">Forms</a>
-                  </li>
-                  <li class="menu-item"><a href="../elements/icons.html">Icons.css</a>
-                  </li>
-                  <li class="menu-item"><a href="../elements/labels.html">Labels</a>
                   </li>
                   <li class="menu-item"><a href="../elements/code.html">Code</a>
                   </li>
+                  <li class="menu-item"><a href="../elements/forms.html">Forms</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/icons.html">Icons</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/labels.html">Labels</a>
+                  </li>
                   <li class="menu-item"><a href="../elements/media.html">Media</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/tables.html">Tables</a>
+                  </li>
+                  <li class="menu-item"><a href="../elements/typography.html">Typography</a>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="accordion">
+            <div class="accordion accordion-menu">
               <input id="accordion-layout" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
               <label class="accordion-header c-hand" for="accordion-layout">Layout</label>
               <div class="accordion-body">
                 <ul class="menu menu-nav">
                   <li class="menu-item"><a href="../layout/grid.html">Flexbox grid</a>
                   </li>
-                  <li class="menu-item"><a href="../layout/responsive.html">Responsive</a>
+                  <li class="menu-item"><a href="../layout/footer.html">Footer</a>
                   </li>
                   <li class="menu-item"><a href="../layout/hero.html">Hero</a>
                   </li>
                   <li class="menu-item"><a href="../layout/navbar.html">Navbar</a>
                   </li>
+                  <li class="menu-item"><a href="../layout/responsive.html">Responsive</a>
+                  </li>
                 </ul>
               </div>
             </div>
-            <div class="accordion">
+            <div class="accordion accordion-menu">
               <input id="accordion-components" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
               <label class="accordion-header c-hand" for="accordion-components">Components</label>
               <div class="accordion-body">
@@ -137,7 +143,7 @@
                 </ul>
               </div>
             </div>
-            <div class="accordion">
+            <div class="accordion accordion-menu">
               <input id="accordion-utilities" type="checkbox" name="docs-accordion-checkbox" hidden="" checked="checked"/>
               <label class="accordion-header c-hand" for="accordion-utilities">Utilities</label>
               <div class="accordion-body">
@@ -154,14 +160,14 @@
                   </li>
                   <li class="menu-item"><a href="../utilities/position.html">Position</a>
                   </li>
-                  <li class="menu-item"><a href="../utilities/shapes.html">Shapes</a>
+                  <li class="active  menu-item"><a class="active " href="../utilities/shapes.html">Shapes</a>
                   </li>
                   <li class="menu-item"><a href="../utilities/text.html">Text</a>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="accordion">
+            <div class="accordion accordion-menu">
               <input id="accordion-experimentals" type="checkbox" name="docs-accordion-checkbox" hidden=""/>
               <label class="accordion-header c-hand" for="accordion-experimentals">Experimentals</label>
               <div class="accordion-body">
@@ -200,14 +206,19 @@
         <div class="docs-content" id="content">
           <div class="container" id="shapes">
             <h3 class="s-title">Shape utilities<a class="anchor" href="#shapes" aria-hidden="true">#</a></h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="../index.html">Spectre.css</a></li>
+              <li class="breadcrumb-item"><a href="../utilities.html">Utilities</a></li>
+              <li class="breadcrumb-item"><a href="../utilities/shapes.html">Shape utilities</a></li>
+            </ul>
             <div class="docs-ad">
               <div class="hide-md text-center">
                 <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- GitHub-lg--><ins class="adsbygoogle mx-auto" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2225124559530218" data-ad-slot="9894180784"></ins>
+                <!-- GitHub-lg--><ins class="adsbygoogle mx-auto" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2335983386025442" data-ad-slot="9894180784"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
               </div>
               <div class="show-md text-center">
-                <!-- GitHub-sm--><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2225124559530218" data-ad-slot="9278881734"></ins>
+                <!-- GitHub-sm--><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2335983386025442" data-ad-slot="9278881734"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
               </div>
             </div>
@@ -225,31 +236,87 @@
 <span class="hljs-comment">&lt;!-- circle element --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"s-circle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
-          </div>
-          <div class="docs-footer container grid-lg" id="copyright">
-            <p><a href="https://github.com/picturepan2/spectre" target="_blank">GitHub</a> · <a href="https://twitter.com/spectrecss" target="_blank">Twitter</a> · <a href="https://www.paypal.me/picturepan2" target="_blank">PayPal Donate</a> · <a href="https://www.patreon.com/spectrecss" target="_blank">Patreon Sponsor</a> · Version <span class="version"></span></p>
-            <p>Designed and built with <span class="text-error">&hearts;</span> by <a href="https://twitter.com/picturepan2" target="_blank">Yan Zhu</a>. Licensed under the <a href="https://github.com/picturepan2/spectre/blob/master/LICENSE" target="_blank">MIT License</a>.</p>
+            <div class="divider divider-no-border divider-xl"></div>
+            <ul class="pagination pagination-border pagination-icon">
+              <li class="page-item page-prev"><a href="../utilities/position.html"><i class="fa-solid fa-arrow-left-long"></i><span><span class="page-item-subtitle">
+                      <div class="text-fl-uppercase">utilities - Previous</div></span><span class="page-item-title">Position</span></span></a>
+              </li>
+              <li class="page-item page-next"><a href="../utilities/text.html"><span><span class="page-item-subtitle">
+                      <div style="display: inline-flex">Next -&nbsp;<font class="text-fl-uppercase">utilities</font></div></span><span class="page-item-title">Text</span></span><i class="fa-solid fa-arrow-right-long"></i></a>
+              </li>
+            </ul>
           </div>
         </div>
+        <footer class="docs-footer footer container footer-lg mb-6" id="copyright">
+          <div class="columns mb-10">
+            <div class="column col-12" id="top-button-container">
+              <button class="btn btn-raised btn-action btn-primary btn-lg s-circle tooltip tooltip-left" data-tooltip="Go to top" onclick="topFunction()" id="top-button"><i class="fa-solid fa-chevron-up fa-fw"></i></button>
+            </div>
+            <div class="column col-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-4">
+                      <h6 class="text-gray-dark">Documentation</h6>
+                      <ul>
+                        <li> <a href="../getting-started.html">Getting started</a>
+                        </li>
+                        <li> <a href="../elements.html">Elements</a>
+                        </li>
+                        <li> <a href="../layout.html">Layout</a>
+                        </li>
+                        <li> <a href="../components.html">Components</a>
+                        </li>
+                        <li> <a href="../utilities.html">Utilities</a>
+                        </li>
+                        <li> <a href="../experimentals.html">Experimentals</a>
+                        </li>
+                      </ul>
+            </div>
+            <div class="column col-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-4">
+                      <h6 class="text-gray-dark">Project</h6>
+                      <ul>
+                        <li> <a href="https://angular-package.dev/ui-kit/dashboard" target="_blank"><i class="mr-1 fa-solid fa-fw fa-shield"></i>Demonstration</a>
+                        </li>
+                        <li> <a href="https://www.npmjs.com/package/@angular-package/spectre.css" target="_blank"><i class="mr-1 fa-brands fa-fw fa-npm"></i>npm</a>
+                        </li>
+                        <li> <a href="https://github.com/angular-package/spectre.css" target="_blank"><i class="mr-1 fa-brands fa-fw fa-github"></i>GitHub</a>
+                        </li>
+                      </ul>
+            </div>
+            <div class="column col-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-4">
+                      <h6 class="text-gray-dark">Community</h6>
+                      <ul>
+                        <li> <a href="https://gettr.com/user/angularpackage" target="_blank"><i class="mr-1 fa-solid fa-fw fa-broom"></i>Gettr</a>
+                        </li>
+                        <li> <a href="https://twitter.com/angularpackage" target="_blank"><i class="mr-1 fa-brands fa-fw fa-twitter"></i>Twitter</a>
+                        </li>
+                        <li> <a href="https://www.youtube.com/channel/UC_AfUapk36KbBoROeA8a_lg" target="_blank"><i class="mr-1 fa-brands fa-fw fa-youtube"></i>YouTube</a>
+                        </li>
+                        <li> <a href="https://discord.com/channels/925168966098386944/998970323607228436" target="_blank"><i class="mr-1 fa-brands fa-fw fa-discord"></i>Discord</a>
+                        </li>
+                        <li> <a href="https://gitter.im/angularpackage/Lobby" target="_blank"><i class="mr-1 fa-brands fa-fw fa-gitter"></i>Gitter</a>
+                        </li>
+                      </ul>
+            </div>
+            <div class="column col-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-4">
+                      <h6 class="text-gray-dark">Donate</h6>
+                      <ul>
+                        <li> <a href="https://www.paypal.me/picturepan2" target="_blank"><i class="mr-1 fa-brands fa-fw fa-paypal"></i>PayPal Yan Zhu</a>
+                        </li>
+                        <li> <a href="https://www.patreon.com/spectrecss" target="_blank"><i class="mr-1 fa-brands fa-fw fa-patreon"></i>Patreon Yan Zhu</a>
+                        </li>
+                        <li> <a href="https://spectrecss.angular-package.dev/donate/usd-fiat" target="_blank"><i class="mr-1 fa-solid fa-fw fa-dollar-sign"></i>angular package</a>
+                        </li>
+                      </ul>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column col-12">Designed and built with <span class="text-error">&hearts; </span>by <a href="https://twitter.com/picturepan2" target="_blank">Yan Zhu</a>. Modified with <span class="text-error">&hearts;</span> by the <a href="https://angular-package.dev" target="_blank">angular-package</a>. </div>
+          </div>
+          <div class="divider"></div>
+          <div class="columns">
+            <div class="column col-12">Version <span class="version"></span>. Licensed under the <a href="https://github.com/angular-package/spectre.css/blob/master/LICENSE" target="_blank">MIT License</a></div>
+          </div>
+        </footer>
       </div>
     </div>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-    <script>
-      docsearch({ 
-      apiKey: 'bede06373c5a1fa3c1bbe8401e24c653', 
-      indexName: 'picturepan2_spectre', 
-      inputSelector: '.docs-search', 
-      debug: true
-      }); 
-    </script>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-2702768-8', 'auto');
-      ga('send', 'pageview');
-    </script>
+    <script type="text/javascript" src="../js/spectre-docs.js"></script>
   </body>
 </html>

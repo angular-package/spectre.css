@@ -1,0 +1,6 @@
+@use 'core' as *;
+
+// Background colors.
+$bg-color: ('dark-color', +75%) !default; // --#{$var-prefix}-bg-color.
+$bg-color-dark: ('bg-color', -3%) !default; // --#{$var-prefix}-bg-color-dark.
+$bg-color-light: 'light-color' !default; // --#{$var-prefix}-bg-color-light.

@@ -1,0 +1,171 @@
+// Variables.
+@use '../../variables' as *;
+
+// Functions.
+@use '../../functions/color/color.function' as *;
+@use '../../functions/is-scheme-dark.function' as *;
+@use '../../functions/is-scheme-light.function' as *;
+@use '../../functions/var/css-var.function' as *;
+
+// Mixins.
+@use '../../borders/mixins/border.mixin' as *;
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/color/color.mixin' as *;
+@use '../../mixins/disabled.mixin' as *;
+@use '../../mixins/margin.mixins' as *;
+@use '../../mixins/padding.mixins' as *;
+@use '../../mixins/transition.mixin' as *;
+
+@use 'pagination-theme.mixin' as *;
+
+@mixin pagination($prefix: $class-prefix) {
+  // Pagination
+  .#{$prefix}pagination {
+    @include margin('unit-1', 'unit-0');
+    display: flex;
+    list-style: none;
+    @include disabled(('[]', '.'));
+    @include padding('unit-1', 'unit-0');
+
+    // Common page item.
+    .page-item {
+      @include padding('unit-1', 'unit-o'); // ! Changed from margin to padding.
+
+      a {
+        display: inline-block;
+        @include padding('unit-1', 'unit-2');
+        border-radius: css-var('border-radius');
+        @include color('body-font');
+        @include color('primary', $selector: (':hover'));
+        text-decoration: none;
+        @include transition((border, 0.2s), color);
+      }
+
+      @include disabled(('[]', '.'));
+
+      // Page previous and next common.
+      &.page-prev,
+      &.page-next {
+        flex: 1 0 50%;
+        @include padding('unit-1', 'unit-0');
+
+        a {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          height: 4rem;
+          @include padding('unit-1', 'unit-4');
+
+          span {
+            display: flex;
+            flex-direction: column;
+            &.page-item-subtitle {
+              font-size: small;
+            }
+            &.page-item-title {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+
+      // Page previous.
+      &.page-prev {
+        @include padding-right('unit-o');
+        text-align: left;
+        a {
+          align-items: flex-start;
+        }
+      }
+
+      // Page next.
+      &.page-next {
+        @include padding-left('unit-o');
+        text-align: right;
+        a {
+          align-items: flex-end;
+        }
+      }
+
+      // Page item title.
+      .page-item-title {
+        margin: 0;
+      }
+
+      // Page item subtitle.
+      .page-item-subtitle {
+        margin: 0;
+        opacity: 0.5;
+      }
+    }
+
+    // Pagination previous and next buttons.
+    // Pagination border.
+    &.pagination-border {
+      // Page item.
+      .page-item {
+        a {
+          width: 100%;
+
+          @if is-scheme-dark() == true {
+            @media (prefers-color-scheme: dark) {
+              @include border($color: 'border-light');
+            }
+          }
+
+          @if is-scheme-light() == true {
+            @media (prefers-color-scheme: light) {
+              @include border($color: 'border');
+            }
+          }
+
+          @if $color-scheme == normal {
+            @include border($color: 'border');
+          }
+
+          &:hover {
+            border-color: color('primary');
+          }
+        }
+      }
+    }
+
+    .page-item.active, &.active .page-item {
+      a {
+        border-color: color('primary');
+        @include background('primary');
+        @include color('light');
+      }
+    }
+
+    // Hide icons - font awesome.
+    &:not(.pagination-icon) {
+      svg {
+        display: none;
+      }
+    }
+
+    // Pagination prev & next with icons.
+    &.pagination-icon {
+      .page-item {
+        &.page-prev,
+        &.page-next {
+          a {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+          }
+        }
+        &.page-prev {
+          text-align: right;
+        }
+        &.page-next {
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  // Pagination theme colors.
+  @include pagination-theme();
+}

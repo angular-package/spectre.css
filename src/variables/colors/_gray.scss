@@ -1,0 +1,6 @@
+@use 'core' as *;
+
+// Gray colors.
+$gray-color: ('dark-color', +55%) !default; // --#{$var-prefix}-gray-color.
+$gray-color-dark: ('gray-color', -30%) !default; // --#{$var-prefix}-gray-color-dark.
+$gray-color-light: ('gray-color', +20%) !default; // --#{$var-prefix}-gray-color-light.

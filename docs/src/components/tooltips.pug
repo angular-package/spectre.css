@@ -7,7 +7,12 @@ block variables
   - var description = 'Tooltips provide context information labels that appear on hover and focus. Tooltips component is built entirely in CSS. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('tooltips', 'Tooltips')
+  +docs-heading(slug, 'Tooltips', {parent, name: 'Components'})
+
+    +docs-menu('Tooltips', {parent, slug},
+      { anchor: 'multiline', name: 'Multiline' }
+    )
+
     include ../_layout/_ad-g.pug
 
     p Tooltips provide context information labels that appear on hover and focus. Tooltips component is built entirely in CSS.
@@ -34,7 +39,7 @@ block docs-content
           <button class="btn tooltip" data-tooltip="Lorem ipsum dolor sit amet">top tooltip</button>
           <button class="btn tooltip tooltip-right" data-tooltip="Lorem ipsum dolor sit amet">right tooltip</button>
 
-    +docs-subheading('tooltips-multiline', 'Multiline tooltips')
+    +docs-subheading('multiline', 'Multiline tooltips', {slug})
 
     .docs-demo.columns
       .column.col-12
@@ -47,7 +52,8 @@ block docs-content
       code
         :highlight(lang="html")
           <button class="btn tooltip" data-tooltip="First Line Tooltip Text \n Second Line Tooltip Text">multiline tooltip</button>
-    
+
+    +docs-pagination({path: 'toasts', name: 'Toasts'}, {parent: 'utilities', name: 'Utilities'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

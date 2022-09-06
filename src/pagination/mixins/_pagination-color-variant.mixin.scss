@@ -1,0 +1,30 @@
+// Variables.
+@use '../../variables' as *;
+
+// Functions.
+@use '../../functions/color/color.function' as *;
+
+// Mixins.
+@use '../../borders/mixins/border.mixin' as *;
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/color/color.mixin' as *;
+
+@mixin pagination-color-variant($bg-color: 'accent', $color: 'light') {
+  // Pagination
+  &.pagination-#{$bg-color} {
+    // Active & Hover.
+    .page-item:hover, .page-item.active, &.active .page-item {
+      a {
+        border-color: color($bg-color);
+        @include color($bg-color);
+      }
+    }
+    // Active.
+    .page-item.active, &.active .page-item {
+      a {
+        @include color($color);
+        @include background($bg-color);
+      }
+    }
+  }
+}

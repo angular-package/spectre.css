@@ -1,0 +1,21 @@
+// // Sass.
+// @use 'sass:string';
+
+// // General.
+// @use '../../mixins/border' as *;
+
+// // The mixin contains extending class
+// @mixin hero-border-variant(
+//   $size: '',
+//   $color: 'border',
+// ) {
+//   @if (string.length($size) > 0) {
+//     &.hero-border-#{$size} {
+//       @include border($size, solid, $color);
+//     }
+//   } @else {
+//     &.hero-border {
+//       @include border($color: $color);
+//     }
+//   }
+// }

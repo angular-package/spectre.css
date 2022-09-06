@@ -1,0 +1,35 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../../../variables/core' as *;
+
+// Functions.
+@use '../../../functions/var/var-adjust.function' as *;
+@use '../../get-from-list.function' as *;
+@use '../../map-get-default.function' as *;
+@use '../alpha-var.function' as *;
+@use 'lightness-var.function' as *;
+@use 'hue-var.function' as *;
+@use 'lightness-level-var.function' as *;
+@use 'saturation-var.function' as *;
+
+// The function `get-hsla-color()` returns the `hsla()` color from a CSS variables of the given `$name`.
+// ('primary', -35.5%, 0.95);
+// ('primary-dark', ('lightness': -35.5%, 'alpha': 0.95));
+@function hsla-color(
+  $name,
+  $hue: 0deg,
+  $saturation: 0%,
+  $lightness: 0%,
+  $alpha: 0,
+  $prefix: $var-prefix
+) {
+  $color: get-from-list($name, 'name', 'lightness', 'alpha', 'hue', 'saturation');
+  @return hsla(
+    hue-var(map.get($color, 'name'), map-get-default($color, 'hue', $hue), $prefix),
+    saturation-var(map.get($color, 'name'), map-get-default($color, 'saturation', $saturation), $prefix),
+    lightness-var(map.get($color, 'name'), calc(map-get-default($color, 'lightness', 0%) + $lightness), $prefix),
+    alpha-var(map.get($color, 'name'), map-get-default($color, 'alpha', $alpha), $prefix)
+  );
+}

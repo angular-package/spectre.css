@@ -1,0 +1,12 @@
+.label.label-gray {
+  background: hsla(var(--s-gray-color-h), var(--s-gray-color-s), calc(var(--s-gray-color-l) + var(--s-gray-color-l-l)), var(--s-gray-color-a));
+  color: hsla(var(--s-gray-color-h), var(--s-gray-color-s), calc(calc(var(--s-gray-color-l) + var(--s-gray-color-l-l)) + 20%), var(--s-gray-color-a));
+}
+.label.label-gray-dark {
+  background: hsla(var(--s-gray-color-dark-h), var(--s-gray-color-dark-s), calc(var(--s-gray-color-dark-l) + var(--s-gray-color-dark-l-l)), var(--s-gray-color-dark-a));
+  color: hsla(var(--s-gray-color-light-h), var(--s-gray-color-light-s), calc(var(--s-gray-color-light-l) + var(--s-gray-color-light-l-l)), var(--s-gray-color-light-a));
+}
+.label.label-gray-light {
+  background: hsla(var(--s-gray-color-light-h), var(--s-gray-color-light-s), calc(var(--s-gray-color-light-l) + var(--s-gray-color-light-l-l)), var(--s-gray-color-light-a));
+  color: hsla(var(--s-gray-color-dark-h), var(--s-gray-color-dark-s), calc(var(--s-gray-color-dark-l) + var(--s-gray-color-dark-l-l)), var(--s-gray-color-dark-a));
+}

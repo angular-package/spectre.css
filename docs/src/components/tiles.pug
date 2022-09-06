@@ -7,7 +7,10 @@ block variables
   - var description = 'Tiles are repeatable or embeddable information blocks. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('tiles', 'Tiles')
+  +docs-heading(slug, 'Tiles', {parent, name: 'Components'})
+    +docs-menu('Tiles', {parent, slug},
+      { anchor: 'tiles-compact', name: 'Compact' }
+    )
     include ../_layout/_ad-g.pug
 
     p Tiles are repeatable or embeddable information blocks.
@@ -62,7 +65,7 @@ block docs-content
             </div>
           </div>
 
-    +docs-subheading('tiles-compact', 'Compact tiles')
+    +docs-subheading('compact', 'Compact tiles', {slug})
 
     p
       | There is compact version of Tiles component, which is often used as contact and file info blocks.
@@ -103,6 +106,7 @@ block docs-content
             </div>
           </div>
 
+    +docs-pagination({path: 'tabs', name: 'Tabs'}, {path: 'toasts', name: 'Toasts'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

@@ -7,7 +7,13 @@ block variables
   - var description = 'Menus are vertical list of links or buttons for actions and navigation. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('menu', 'Menu')
+  +docs-heading(slug, 'Menu', {parent, name: 'Components'})
+
+    +docs-menu('Tabs', {parent, slug},
+      { anchor: 'dropdown', name: 'Dropdown' }
+    )
+    small.label.label-secondary Size optimized
+
     include ../_layout/_ad-g.pug
 
     p Menus are vertical list of links or buttons for actions and navigation.
@@ -116,7 +122,7 @@ block docs-content
             </li>
           </ul>
             
-    +docs-subheading('menu-dropdown', 'Dropdown menu')
+    +docs-subheading('dropdown', 'Dropdown menu', {slug})
 
     p The dropdown is a combination of buttons and menus.
 
@@ -210,6 +216,7 @@ block docs-content
             </div>
           </div>
 
+    +docs-pagination({path: 'empty', name: 'Empty states'}, {path: 'modals', name: 'Modals'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

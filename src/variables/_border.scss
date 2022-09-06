@@ -1,0 +1,8 @@
+@use 'unit-sizes' as *;
+
+// Border radius.
+$border-radius: $unit-h !default; // --#{$var-prefix}-border-radius.
+
+// Border width.
+$border-width: $unit-o !default; // --#{$var-prefix}-border-width.
+$border-width-lg: $unit-h !default; // --#{$var-prefix}-border-width-lg.

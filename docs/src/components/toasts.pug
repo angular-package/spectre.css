@@ -7,7 +7,7 @@ block variables
   - var description = 'Toasts are used to show alert or information to users. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('toasts', 'Toasts')
+  +docs-heading(slug, 'Toasts', {parent, name: 'Components'})
     include ../_layout/_ad-g.pug
 
     p Toasts are used to show alert or information to users.
@@ -52,7 +52,7 @@ block docs-content
         .toast.toast-error
           button.btn.btn-clear.float-right
           p
-            | Toast error
+            | Toast error with, #[a(href='https://jigsaw.w3.org/css-validator/' target="_blank") validate].
 
     p
       | And you can add the #[code toast-primary], #[code toast-success], #[code toast-warning] or #[code toast-error] class for additional toast colors.
@@ -65,6 +65,7 @@ block docs-content
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </div>
 
+    +docs-pagination({path: 'tiles', name: 'Tiles'}, {path: 'tooltips', name: 'Tooltips'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

@@ -1,48 +1,47 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'functions/var-negative' as *;
-@use 'variables' as *;
+// Variables.
+@use 'variables/core' as *;
+
+// Functions.
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
+@use 'functions/var/var-negative.function' as *;
+
+// Mixins.
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/margin.mixins' as *;
+@use 'mixins/padding.mixins' as *;
 
 // Chips
-.chip {
-  align-items: center;
-  // background: $bg-color-dark; // old spectre.css
-  background: color('bg-color-dark');
-  border-radius: 5rem;
+.#{$class-prefix}chip {
   display: inline-flex;
-  font-size: 90%;
-  // height: $unit-6; // old spectre.css
-  height: get-var('unit-6');
-  // line-height: $unit-4; // old spectre.css
-  line-height: get-var('unit-4');
-  // margin: $unit-h; // old spectre.css
-  margin: get-var('unit-h');
-  // max-width: $control-width-sm; // old spectre.css
-  max-width: get-var('control-width', $suffix: 'sm');
   overflow: hidden;
-  // padding: $unit-1 $unit-2; // old spectre.css
-  padding: get-var('unit-1') get-var('unit-2');
+  align-items: center;
+  max-width: get-var('control-width', $suffix: 'sm');
+  height: unit-var('6');
+  @include padding('unit-1', 'unit-2');
+  @include margin('unit-h');
+  border-radius: 5rem;
+  @include background('bg-dark');
+  font-size: 90%;
+  line-height: unit-var('4');
   text-decoration: none;
   text-overflow: ellipsis;
   vertical-align: middle;
   white-space: nowrap;
 
   &.active {
-    // background: $primary-color; // old spectre.css
-    background: color('primary-color');
-    // color: $light-color; // old spectre.css
-    color: color('light-color');
+    @include background('primary');
+    @include color('light');
   }
 
   .avatar {
-    // margin-left: -$unit-2; // old spectre.css
-    margin-left: var-negative(get-var('unit-2'));
-    // margin-right: $unit-1; // old spectre.css
-    margin-right: get-var('unit-1');
+    @include margin-left(('unit-2', ('negative': true)));
+    @include margin-right('unit-1');
   }
 
   .btn-clear {
-    border-radius: 50%;
     transform: scale(.75);
+    border-radius: 50%;
   }
 }

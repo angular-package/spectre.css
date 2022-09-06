@@ -1,9 +1,10 @@
-@use '../mixins/set-var' as *;
-@use '../variables' as *;
+// Variables.
+@use '../variables/z-index' as *;
 
-/*
-  z-index. Alphabetical order.
-*/
+// Mixins.
+@use '../mixins/set-var.mixin' as *;
+
+// z-index.
 :root, :host {
   @include set-var('z-index-0', $zindex-0); // 1
   @include set-var('z-index-1', $zindex-1); // 100

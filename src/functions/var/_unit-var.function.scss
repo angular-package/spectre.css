@@ -1,0 +1,5 @@
+@use 'get-var.function' as *;
+
+@function unit-var($size) {
+  @return get-var('unit', $suffix: $size);
+}

@@ -1,9 +1,10 @@
-@use '../mixins/set-var' as *;
-@use '../variables' as *;
+// Variables.
+@use '../variables/control' as *;
 
-/*
-  Control width. Alphabetical order.
-*/
+// Mixins.
+@use '../mixins/set-var.mixin' as *;
+
+// Control width.
 :root, :host {
   @include set-var('control-width', $control-width-lg, $suffix: 'lg'); // 960px
   @include set-var('control-width', $control-width-md, $suffix: 'md'); // 640px

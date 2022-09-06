@@ -1,44 +1,49 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'functions/var-negative' as *;
-@use 'variables' as *;
+// Variables.
+@use 'variables/core' as *;
+
+// Functions.
+@use 'functions/color/color.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
+@use 'functions/var/var-negative.function' as *;
+
+// Mixins.
+@use 'borders/mixins/border.mixin' as *;
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/margin.mixins' as *;
 
 // Tabs
-.tab {
-  align-items: center;
-  // border-bottom: $border-width solid $border-color; // old spectre.css
-  border-bottom: get-var('border-width') solid color('border-color');
+.#{$class-prefix}tab {
+  // Display.
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   list-style: none;
-  // margin: $unit-1 0 ($unit-1 - $border-width) 0; // old spectre.css
-  margin: get-var('unit-1') 0 calc(get-var('unit-1') - get-var('border-width')) 0;
+
+  // Position.
+  margin: get-var('unit-1') 0 calc(get-var('unit-1') - get-var('border-width')) 0; // TODO: Use the margin
+
+  // Border.
+  @include border($side: bottom, $radius: 'border-radius');
 
   .tab-item {
     margin-top: 0;
-
     a {
-      // border-bottom: $border-width-lg solid transparent; // old spectre.css
+      // Position.
+      @include margin('unit-0', 'unit-2', 'unit-0', 'unit-0');
+      // Display.
+      display: block;
+      // Size.
+      padding: get-var('unit-2') get-var('unit-1') calc(get-var('unit-2') - get-var('border-width', $suffix: 'lg')) get-var('unit-1');
       border-bottom: get-var('border-width', $suffix: 'lg') solid transparent;
       color: inherit;
-      display: block;
-      // margin: 0 $unit-2 0 0; // old spectre.css
-      margin: 0 get-var('unit-2') 0 0;
-      // padding: $unit-2 $unit-1 $unit-2 - $border-width-lg $unit-1; // old spectre.css
-      padding: get-var('unit-2') get-var('unit-1') calc(get-var('unit-2') - get-var('border-width', $suffix: 'lg')) get-var('unit-1');
       text-decoration: none;
-      &:focus,
-      &:hover {
-        // color: $link-color; // old spectre.css
-        color: color('link-color');
-      }
+      @include color('link', $selector: (':focus', ':hover'));
     }
     &.active a,
     a.active {
-      // border-bottom-color: $primary-color; // old spectre.css
-      border-bottom-color: color('primary-color');
-      // color: $link-color; // old spectre.css
-      color: color('link-color');
+      border-bottom-color: color('primary');
+      @include color('link');
     }
 
     &.tab-action {
@@ -47,8 +52,7 @@
     }
 
     .btn-clear {
-      // margin-top: -$unit-1; // old spectre.css
-      margin-top: var-negative(get-var('unit-1'));
+      margin-top: var-negative(unit-var('1'));
     }
   }
 
@@ -64,10 +68,8 @@
       .badge {
         &[data-badge]::after {
           position: absolute;
-          // right: $unit-h; // old spectre.css
-          right: get-var('unit-h');
-          // top: $unit-h; // old spectre.css
-          top: get-var('unit-h');
+          top: unit-var('h');
+          right: unit-var('h');
           transform: translate(0, 0);
         }
       }

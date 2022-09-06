@@ -1,0 +1,21 @@
+// Sass.
+@use 'sass:list';
+
+// Variables.
+@use '../../variables' as *;
+
+// Mixins.
+@use 'button-color-variant.mixin' as *;
+
+// Standard, not outline.
+@mixin button-color-variants($colors...) {
+  @each $row in $colors {
+    @each $name, $color in $row {
+      @if list.length($color) > 1 {
+        @include button-color-variant($name, list.nth($color, 1), list.nth($color, 2));
+      } @else {
+        @include button-color-variant($name, list.nth($color, 1));
+      }
+    }
+  }
+}

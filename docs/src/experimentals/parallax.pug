@@ -7,7 +7,7 @@ block variables
   - var description = 'The Parallax component acts like Apple TV/tvOS hover parallax effect. It is built in pure CSS. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('parallax', 'Parallax')
+  +docs-heading(slug, 'Parallax', {parent, name: 'Experimentals'})
     p
       small.label.label-secondary CSS ONLY
 
@@ -47,7 +47,8 @@ block docs-content
             </div>
           </div>
 
+    +docs-pagination({path: 'off-canvas', name: 'Off-canvas'}, {path: 'progress', name: 'Progress'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug
           

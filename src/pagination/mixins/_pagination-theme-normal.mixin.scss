@@ -1,0 +1,21 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../../variables' as *;
+
+// - Pagination.
+@use '../variables' as *;
+
+// Function.
+@use '../../functions/color/get-theme-colors.function' as *;
+
+// Pagination mixins.
+@use 'pagination-color-variants.mixin' as *;
+
+// Initialize mixins.
+@mixin pagination-theme-normal($colors...) {
+  @if $color-scheme == normal {
+    @include pagination-color-variants(get-theme-colors($pagination-theme-normal, $colors...)...);
+  }
+}

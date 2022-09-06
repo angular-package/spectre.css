@@ -1,19 +1,22 @@
-@use 'functions/get-var' as *;
-@use 'variables' as *;
+// Variables.
+@use 'variables/core' as *;
+
+// Functions.
+@use 'functions/var/css-var.function' as *;
 
 // Dropdown
-.dropdown {
-  display: inline-block;
+.#{$class-prefix}dropdown {
   position: relative;
+  display: inline-block;
 
   .menu {
-    animation: slide-down .15s ease 1;
-    display: none;
-    left: 0;
-    max-height: 50vh;
-    overflow-y: auto;
     position: absolute;
     top: 100%;
+    left: 0;
+    display: none;
+    overflow-y: auto;
+    max-height: 50vh;
+    animation: slide-down .15s ease 1;
   }
 
   &.dropdown-right {
@@ -32,10 +35,8 @@
   // Fix dropdown-toggle border radius in button groups
   .btn-group {
     .dropdown-toggle:nth-last-child(2) {
-      // border-bottom-right-radius: $border-radius; // old spectre.css
-      border-bottom-right-radius: get-var('border-radius'); // old spectre.css
-      // border-top-right-radius: $border-radius; // old spectre.css
-      border-top-right-radius: get-var('border-radius');
+      border-bottom-right-radius: css-var('border-radius');
+      border-top-right-radius: css-var('border-radius');
     }
   }
 }

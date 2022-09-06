@@ -7,7 +7,7 @@ block variables
   - var description = '360-Degree Viewer is an interactive product photo viewer. It is built in pure CSS. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('viewer-360', '360-Degree Viewer')
+  +docs-heading(slug, '360-Degree Viewer', {parent, name: 'Experimentals'})
     p
       small.label.label-secondary CSS ONLY
 
@@ -56,6 +56,7 @@ block docs-content
           @include viewer-slider-size(36);
           @include viewer-slider-size(30);
 
+    +docs-pagination({parent, name: 'Experimentals'}, {path: 'autocomplete', name: 'Autocomplete'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

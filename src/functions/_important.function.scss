@@ -1,0 +1,9 @@
+
+@function important($important: false) {
+  @if $important == true {
+    $important: ' !important';
+  } @else if $important == false {
+    $important: '';
+  }
+  @return #{$important};
+}

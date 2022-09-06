@@ -1,6 +1,17 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'variables' as *;
+// Variables.
+@use 'variables/core' as *;
+
+// Functions.
+@use 'functions/color/color.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
+
+// Mixins.
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/margin.mixins' as *;
+@use 'mixins/z-index.mixin' as *;
+@use 'mixins/transition.mixin' as *;
 
 // Carousels
 // The number of carousel images
@@ -9,30 +20,26 @@ $carousel-number: 8;
 %carousel-image-checked {
   animation: carousel-slidein 0.75s ease-in-out 1;
   opacity: 1;
-  // z-index: $zindex-1; // old spectre.css
-  z-index: get-var('z-index-1');
+  @include z-index('1');
 }
 
 %carousel-nav-checked {
-  // color: $gray-color-light; // old spectre.css
-  color: color('gray-color-light');
+  @include color('gray-light');
 }
 
-.carousel {
-  // background: $bg-color; // old spectre.css
-  background: color('bg-color');
+.#{$class-prefix}carousel {
+  @include z-index('0');
+  position: relative;
   display: block;
   overflow: hidden;
-  position: relative;
   width: 100%;
+  @include background('bg');
   -webkit-overflow-scrolling: touch;
-  // z-index: $zindex-0; // old spectre.css
-  z-index: get-var('z-index-0');
 
   .carousel-container {
+    position: relative;
     height: 100%;
     left: 0;
-    position: relative;
     &::before {
       content: '';
       display: block;
@@ -40,14 +47,14 @@ $carousel-number: 8;
     }
 
     .carousel-item {
-      animation: carousel-slideout 1s ease-in-out 1;
-      height: 100%;
-      left: 0;
-      margin: 0;
-      opacity: 0;
       position: absolute;
       top: 0;
+      left: 0;
+      opacity: 0;
       width: 100%;
+      height: 100%;
+      margin: 0;
+      animation: carousel-slideout 1s ease-in-out 1;
 
       &:hover {
         .item-prev,
@@ -59,20 +66,15 @@ $carousel-number: 8;
 
     .item-prev,
     .item-next {
-      // background: rgba($gray-color-light, .25); // old spectre.css
-      background: color('gray-color-light', $alpha: 0.25);
-      // border-color: rgba($gray-color-light, .5); // old spectre.css
-      border-color: color('gray-color-light', $alpha: 0.5);
-      // color: $gray-color-light; // old spectre.css
-      color: color('gray-color-light');
-      opacity: 0;
+      @include z-index('1');
       position: absolute;
       top: 50%;
-      // transition: all 0.4s; // old spectre.css
-      transition: all calc(get-var('transition-duration') + 0.2s);
+      opacity: 0;
       transform: translateY(-50%);
-      // z-index: $zindex-1; // old spectre.css
-      z-index: get-var('z-index-1');
+      border-color: color('gray-light', $alpha: 0.5);
+      @include background('gray-light', $alpha: 0.25);
+      @include color('gray-light');
+      @include transition((all, 0.2s));
     }
     .item-prev {
       left: 1rem;
@@ -97,38 +99,32 @@ $carousel-number: 8;
   }
 
   .carousel-nav {
-    // bottom: $layout-spacing; // old spectre.css
-    bottom: get-var('layout-spacing', $unit: 1);
+    @include z-index('1');
+    position: absolute;
+    left: 50%;
+    bottom: get-var('layout-spacing', $unit: true);
     display: flex;
     justify-content: center;
-    left: 50%;
-    position: absolute;
-    transform: translateX(-50%);
     width: 10rem;
-    // z-index: $zindex-1; // old spectre.css
-    z-index: get-var('z-index-1');
+    transform: translateX(-50%);
 
     .nav-item {
-      // color: rgba($gray-color-light, 0.5); // old spectre.css
-      color: color('gray-color-light', $alpha: 0.5);
+      position: relative;
+      @include margin('unit-1');
       display: block;
       flex: 1 0 auto;
-      // height: $unit-8; // old spectre.css
-      height: get-var('unit-8');
-      // margin: $unit-1; // old spectre.css
-      margin: get-var('unit-1');
       max-width: 2.5rem;
-      position: relative;
+      height: unit-var('8');
+      @include color('gray-light', $alpha: 0.5);
 
       &::before {
-        background: currentColor;
-        content: '';
-        display: block;
-        // height: $unit-h; // old spectre.css
-        height: get-var('unit-h');
         position: absolute;
         top: 0.5rem;
+        content: '';
+        display: block;
         width: 100%;
+        height: unit-var('unit-h');
+        background: currentColor;
       }
     }
   }

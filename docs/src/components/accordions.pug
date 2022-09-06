@@ -7,7 +7,7 @@ block variables
   - var description = 'Accordions are used to toggle sections of content. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('accordions', 'Accordions')
+  +docs-heading(slug, 'Accordions', {parent, name: 'Components'})
     include ../_layout/_ad-g.pug
     
     p Accordions are used to toggle sections of content.
@@ -124,6 +124,6 @@ block docs-content
             </div>
           </details>
 
-    include ../_layout/_ad-c.pug
+    +docs-pagination({parent, name: 'Components'}, {path: 'avatars', name: 'Avatars'})
 
-  include ../_layout/_footer.pug
+    include ../_layout/_ad-c.pug

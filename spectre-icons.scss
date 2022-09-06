@@ -1,11 +1,1 @@
-// Variables and mixins
-// @forward 'src/mixins';
-// @forward 'src/variables';
-@use 'src/variables' as *;
-
-/*! Spectre.css Icons v#{$version} | MIT License | github.com/picturepan2/spectre */
-// Icons
-@forward 'src/icons/icons-core';
-@forward 'src/icons/icons-navigation';
-@forward 'src/icons/icons-action';
-@forward 'src/icons/icons-object';
+@forward 'src/spectre-icons.scss';

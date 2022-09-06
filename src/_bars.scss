@@ -1,96 +1,92 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'variables' as *;
+// Variables.
+@use 'variables/core' as *;
+
+// Functions.
+@use 'functions/color/color.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/unit-var.function' as *;
+
+// Mixins.
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/color/background.mixin' as *;
+@use 'mixins/margin.mixins' as *;
+@use 'mixins/z-index.mixin' as *;
 
 // Bars
-.bar {
-  // background: $bg-color-dark; // old spectre.css
-  background: color('bg-color-dark');
-  // border-radius: $border-radius; // old spectre.css
-  border-radius: get-var('border-radius');
+.#{$class-prefix}bar {
   display: flex;
   flex-wrap: nowrap;
-  // height: $unit-4; // old spectre.css
-  height: get-var('unit-4');
   width: 100%;
+  height: unit-var('4');
+  border-radius: get-var('border-radius');
+  @include background('bg-dark');
 
   &.bar-sm {
-    // height: $unit-1; // old spectre.css
-    height: get-var('unit-1');
+    height: unit-var('1');
   }
 
   // TODO: attr() support
   .bar-item {
-    // background: $primary-color; // old spectre.css
-    background: color('primary-color');
-    // color: $light-color; // old spectre.css
-    color: color('light-color');
-    display: block;
-    // font-size: $font-size-sm; // old spectre.css
-    font-size: get-var('font-size', $suffix: 'sm');
-    flex-shrink: 0;
-    // line-height: $unit-4; // old spectre.css
-    line-height: get-var('unit-4');
-    height: 100%;
     position: relative;
-    text-align: center;
+    display: block;
+    flex-shrink: 0;
     width: 0;
+    height: 100%;
+    line-height: unit-var('4'); // old @angular-package/spectre.css
+    @include background('primary');
+    @include color('light');
+    font-size: get-var('font-size', $suffix: 'sm');
+    text-align: center;
 
     &:first-child {
-      // border-bottom-left-radius: $border-radius; // old spectre.css
       border-bottom-left-radius: get-var('border-radius');
-      // border-top-left-radius: $border-radius; // old spectre.css
       border-top-left-radius: get-var('border-radius');
     }
     &:last-child {
-      // border-bottom-right-radius: $border-radius; // old spectre.css
-      border-bottom-right-radius: get-var('border-radius');
-      // border-top-right-radius: $border-radius; // old spectre.css
-      border-top-right-radius: get-var('border-radius');
       flex-shrink: 1;
+      border-bottom-right-radius: get-var('border-radius');
+      border-top-right-radius: get-var('border-radius');
     }
   }
 }
 
 // Slider bar
 .bar-slider {
-  // height: $border-width-lg; // old spectre.css
-  height: get-var('border-width', $suffix: 'lg');
-  // margin: $layout-spacing 0; // old spectre.css
-  margin: get-var('layout-spacing', $unit: 1) 0;
   position: relative;
+  height: get-var('border-width', $suffix: 'lg');
+  @include margin(('layout-spacing', true), 'unit-0');
 
   .bar-item {
+    position: absolute;
     left: 0;
     padding: 0;
-    position: absolute;
     &:not(:last-child):first-child {
-      // background: $bg-color-dark; // old spectre.css
-      background: color('bg-color-dark');
-      // z-index: $zindex-0; // old spectre.css
-      z-index: get-var('z-index-0');
-
+      @include z-index('0');
+      @include background('bg-dark');
     }
   }
 
   .bar-slider-btn {
-    // background: $primary-color; // old spectre.css
-    background: color('primary-color');
+    // Position.
+    position: absolute;
+    top: 50%;
+    right: 0;
+
+    // Size.
+    width: unit-var('3');
+    height: unit-var('3'); // old @angular-package/spectre.css
+    padding: 0;
+
+    transform: translate(50%, -50%);
+
+    // Border.
     border: 0;
     border-radius: 50%;
-    // height: $unit-3; // old spectre.css
-    height: get-var('unit-3');
-    padding: 0;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translate(50%, -50%);
-    // width: $unit-3; // old spectre.css
-    width: get-var('unit-3');
+
+    @include background('primary');
 
     &:active {
-      // box-shadow: 0 0 0 .1rem $primary-color; // old spectre.css
-      box-shadow: 0 0 0 0.1rem color('primary-color');
+      box-shadow: 0 0 0 0.1rem color('primary');
     }
   }
 }

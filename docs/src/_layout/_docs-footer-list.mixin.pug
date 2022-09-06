@@ -1,0 +1,21 @@
+mixin docs-footer-list(title, ...items)
+  h6.text-gray-dark #{title}
+  ul
+    each item in items
+      li 
+        if (item.url)
+          a(href=item.url target=item.target)
+            if item.icon
+              i.mr-1(class=item.icon)
+            = item.name
+        else
+          if slug != parent
+              a(href= '../' + item.path + '.html')
+                if item.icon
+                  i(class=item.icon)
+                = item.name
+          else
+              a(href= item.path + '.html')
+                if item.icon
+                  i(class=item.icon)
+                = item.name

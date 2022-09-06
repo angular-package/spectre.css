@@ -1,0 +1,23 @@
+@use 'sass:list';
+@use 'sass:map';
+
+// Button variables.
+@use '../variables' as *;
+
+// Functions.
+@use '../../functions/is-scheme-dark.function' as *;
+
+// Functions.
+@use '../../functions/color/get-theme-colors.function' as *;
+
+// Button mixins.
+@use 'button-outline-color-variants.mixin' as *;
+
+// Initialize mixins.
+@mixin button-outline-theme-dark($colors...) {
+  @if is-scheme-dark() == true {
+    @media (prefers-color-scheme: dark) {
+      @include button-outline-color-variants(get-theme-colors($button-outline-theme-dark, $colors...)...);
+    }
+  }
+}

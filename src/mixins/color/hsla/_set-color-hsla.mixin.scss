@@ -1,0 +1,40 @@
+@use 'sass:map';
+
+// Variables.
+@use '../../../variables' as *;
+
+// Functions.
+@use '../../../functions/get-from-list.function' as *;
+@use '../../../functions/map-get-default.function' as *;
+
+// Mixins.
+@use '../../set-var.mixin' as *;
+@use '../set-var-alpha.mixin' as *;
+@use 'set-var-hue.mixin' as *;
+@use 'set-var-lightness.mixin' as *;
+@use 'set-var-saturation.mixin' as *;
+
+// The mixin sets CSS variable color in hsla form, by splitting it in four CSS variables.
+@mixin set-color-hsla(
+  $name,
+  $color,
+  $lightness: 0%,
+  $alpha: 0,
+  $prefix: $var-prefix
+) {
+  // Example.
+  // ('primary-dark', +5%, 0.5)
+  $color: get-from-list($color, 'name', 'lightness', 'alpha');
+
+  // Sets the CSS variable hue.
+  @include set-var-hue($name, map.get($color, 'name'), $prefix);
+
+  // Sets the CSS variable saturation.
+  @include set-var-saturation($name, map.get($color, 'name'), $prefix);
+
+  // Sets the CSS variable lightness.
+  @include set-var-lightness($name, map.get($color, 'name'), calc(map-get-default($color, 'lightness', 0%) + $lightness), $prefix);
+
+  // Sets the alpha.
+  @include set-var-alpha($name, map.get($color, 'name'), calc(map-get-default($color, 'alpha', 0) + $alpha), $prefix);
+}

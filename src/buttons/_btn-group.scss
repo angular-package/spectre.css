@@ -1,0 +1,45 @@
+@use '../variables/core' as *;
+
+// Functions.
+@use '../functions/var/get-var.function' as *;
+@use '../functions/var/var-negative.function' as *;
+
+// Mixins.
+@use '../mixins/z-index.mixin' as *;
+
+// Button groups
+.#{$class-prefix}btn-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+
+  .btn {
+    flex: 1 0 auto;
+    &:first-child:not(:last-child) {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+    &:not(:first-child):not(:last-child) {
+      margin-left: var-negative(get-var('border-width'));
+      border-radius: 0;
+    }
+    &:last-child:not(:first-child) {
+      margin-left: var-negative(get-var('border-width'));
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+    &:focus,
+    &:hover,
+    &:active,
+    &.active {
+      @include z-index('0');
+    }
+  }
+
+  &.btn-group-block {
+    display: flex;
+
+    .btn {
+      flex: 1 0 0;
+    }
+  }
+}

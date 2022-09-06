@@ -1,0 +1,8 @@
+@use 'sass:map';
+
+@function map-get-default($map, $key, $default-value: null) {
+  @if map.has-key($map, $key) {
+    @return map.get($map, $key);
+  }
+  @return $default-value;
+}

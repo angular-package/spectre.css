@@ -1,0 +1,13 @@
+// Variables.
+@use '../../variables' as *;
+
+// Set the color scheme to normal.
+$color-scheme: normal;
+
+@use '../mixins/button-outline-theme-normal.mixin' as *;
+@use '../mixins/button-theme-normal.mixin' as *;
+
+.#{$class-prefix}btn {
+  @include button-theme-normal('bg-colors');
+  @include button-outline-theme-normal('bg-colors');
+}

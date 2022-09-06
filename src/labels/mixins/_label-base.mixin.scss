@@ -1,0 +1,12 @@
+// Functions.
+@use '../../functions/var/css-var.function' as *;
+
+// Mixins.
+@use '../../mixins/padding.mixins' as *;
+
+// Label base style
+@mixin label-base() {
+  @include padding('unit-h', 'unit-1');
+  line-height: 1.25;
+  border-radius: css-var('border-radius');
+}

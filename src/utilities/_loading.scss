@@ -1,54 +1,58 @@
-@use '../functions/color' as *;
-@use '../functions/get-var' as *;
-@use '../functions/var-negative' as *;
-@use '../variables' as *;
+// Variables.
+@use '../variables/core' as *;
+
+// Functions.
+@use '../functions/color/color.function' as *;
+@use '../functions/var/get-var.function' as *;
+@use '../functions/var/unit-var.function' as *;
+@use '../functions/var/var-negative.function' as *;
+
+// Mixins.
+@use '../borders/mixins/border.mixin' as *;
+@use '../mixins/z-index.mixin' as *;
 
 // Loading
-.loading {
-  color: transparent !important;
-  // min-height: $unit-4; // old spectre.css
-  min-height: get-var('unit-4');
-  pointer-events: none;
+.#{$class-prefix}loading {
   position: relative;
+  pointer-events: none;
+  min-height: unit-var('4');
+  color: transparent !important;
   &::after {
-    animation: loading 500ms infinite linear;
-    background: transparent;
-    // border: $border-width-lg solid $primary-color; // old spectre.css
-    border: get-var('border-width', $suffix: 'lg') solid color('primary-color');
+    // Position.
+    @include z-index('0');
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: var-negative(unit-var('2'));
+    margin-top: var-negative(unit-var('2')); // TODO: var-negative
+
+    // Display.
+    content: '';
+    opacity: 1;
+    display: block;
+
+    // Size.
+    width: unit-var('4');
+    height: unit-var('4');
+    padding: 0;
+
+    // Border.
+    @include border('lg', solid, 'primary');
     border-radius: 50%;
     border-right-color: transparent;
     border-top-color: transparent;
-    content: '';
-    display: block;
-    // height: $unit-4; // old spectre.css
-    height: get-var('unit-4');
-    left: 50%;
-    // margin-left: -$unit-2; // old spectre.css
-    margin-left: var-negative(get-var('unit-2'));
-    // margin-top: -$unit-2; // old spectre.css
-    margin-top: var-negative(get-var('unit-2'));
-    opacity: 1;
-    padding: 0;
-    position: absolute;
-    top: 50%;
-    // width: $unit-4; // old spectre.css
-    width: get-var('unit-4');
-    // z-index: $zindex-0; // old spectre.css
-    z-index: get-var('z-index-0');
+    background: transparent;
+
+    animation: loading 500ms infinite linear;
   }
 
   &.loading-lg {
-    // min-height: $unit-10; // old spectre.css
-    min-height: get-var('unit-10');
+    min-height: unit-var('10');
     &::after {
-      // height: $unit-8; // old spectre.css
-      height: get-var('unit-8');
-      // margin-left: -$unit-4; // old spectre.css
-      margin-left: var-negative(get-var('unit-4'));
-      // margin-top: -$unit-4; // old spectre.css
-      margin-top: var-negative(get-var('unit-4'));
-      // width: $unit-8; // old spectre.css
-      width: get-var('unit-8');
+      width: unit-var('8');
+      height: unit-var('8');
+      margin-left: var-negative(unit-var('4'));
+      margin-top: var-negative(unit-var('4'));
     }
   }
 }

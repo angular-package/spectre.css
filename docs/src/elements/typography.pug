@@ -2,18 +2,29 @@ extends ../_layout/_docs-layout.pug
 
 block variables
   - var slug = 'typography'
+  - var name = 'Typography'
   - var parent = 'elements'
   - var title = 'Typography - Elements - Spectre.css CSS Framework'
   - var description = 'Typography sets default styles for headings, paragraphs, semantic text, blockquote and lists elements. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('typography', 'Typography')
+  +docs-heading(slug, name, { parent, name: 'Elements' })
+
+    +docs-menu(name, {parent, slug},
+      {anchor: 'headings', name: 'Headings'},
+      {anchor: 'paragraphs', name: 'Paragraphs'},
+      {anchor: 'semantic-text', name: 'Semantic text elements'},
+      {anchor: 'east-asian', name: 'Optimized for East Asian fonts'},
+      {anchor: 'blockquote', name: 'Blockquote'},
+      {anchor: 'lists', name: 'Lists'}      
+    )
+
     include ../_layout/_ad-g.pug
 
     p
       | Typography sets default styles for headings, paragraphs, semantic text, blockquote and lists elements.
 
-    +docs-subheading('typography-headings', 'Headings')
+    +docs-subheading('headings', 'Headings', {slug})
 
     .docs-demo.columns
       .column.col-12
@@ -49,7 +60,7 @@ block docs-content
           <h1>H1 Heading <small class="label">40px</small></h1>
           <span class="h1">H1 Heading</span>
 
-    +docs-subheading('typography-paragraphs', 'Paragraphs')
+    +docs-subheading('paragraphs', 'Paragraphs', {slug})
 
     p
       | Lorem ipsum dolor sit amet, consectetur #[a(href='#typography') adipiscing elit].
@@ -64,7 +75,7 @@ block docs-content
           <p>Lorem ipsum dolor sit amet, ...</p>
           <p>...</p>
 
-    +docs-subheading('typography-semantic-text', 'Semantic text elements')
+    +docs-subheading('semantic-text', 'Semantic text elements', {slug})
 
     .docs-demo.columns
       .column.col-6.col-xs-12
@@ -132,7 +143,7 @@ block docs-content
         |  + 2
         code.ml-2 var
 
-    +docs-subheading('typography-east-asian', 'Optimized for East Asian fonts')
+    +docs-subheading('east-asian', 'Optimized for East Asian fonts', {slug})
 
     .docs-demo.columns
       .column
@@ -178,7 +189,7 @@ block docs-content
           <p class="lang-cjk"><u>祇園</u><u>精舎</u>の鐘の声、諸行無常の響きあり。……</p>
           <p lang="ja"><del>祇園</del><del>精舎</del>の鐘の声、諸行無常の響きあり。……</p>
 
-    +docs-subheading('typography-fonts', 'Fonts')
+    +docs-subheading('fonts', 'Fonts', {slug})
 
     p
       | Spectre sets the most common and best #[code font-family] for each OS with fallback support in old systems.
@@ -201,7 +212,7 @@ block docs-content
           /* Korean (lang="ko") targeted */
           font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Malgun Gothic", "Helvetica Neue", sans-serif;
 
-    +docs-subheading('typography-blockquote', 'Blockquote')
+    +docs-subheading('blockquote', 'Blockquote', {slug})
 
     blockquote
       p
@@ -216,7 +227,7 @@ block docs-content
             <cite>- Bill Gates</cite>
           </blockquote>
 
-    +docs-subheading('typography-lists', 'Lists')
+    +docs-subheading('lists', 'Lists', {slug})
 
     .docs-demo.columns
       .column.col-4.col-xs-12
@@ -270,6 +281,7 @@ block docs-content
             <dd>description list description</dd>
           </dl>
 
+    +docs-pagination({path: 'tables', name: 'Tables'}, {parent: 'layout', name: 'Layout'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

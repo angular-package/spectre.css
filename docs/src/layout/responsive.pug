@@ -7,14 +7,19 @@ block variables
   - var description = 'Responsive layout grid system and responsive visibility utilities. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('responsive', 'Responsive')
+  +docs-heading(slug, 'Responsive', {parent, name: 'Layout'})
+    +docs-menu('Responsive', {parent, slug},
+      { anchor: 'container', name: 'Container' },
+      { anchor: 'visibility', name: 'Visibility' },
+      { anchor: 'resizer', name: 'Resizer' }
+    )
     include ../_layout/_ad-g.pug
 
     p Spectre provides a neat responsive layout grid system and responsive visibility utilities.
 
     .docs-demo.columns
       .column.col-10.col-lg-8.col-md-6.col-sm-4
-        .bg-gray.docs-block
+        .bg-bg.docs-block
           .text-primary col-10
           .text-dark.hide-lg col-lg-8
           .text-primary.show-lg col-lg-8
@@ -23,7 +28,7 @@ block docs-content
           .text-dark.hide-sm col-sm-4
           .text-primary.show-sm col-sm-4
       .column.col-2.col-lg-4.col-md-6.col-sm-8
-        .bg-gray.docs-block
+        .bg-bg.docs-block
           .text-primary col-2
           .text-dark.hide-lg col-lg-4
           .text-primary.show-lg col-lg-4
@@ -33,21 +38,21 @@ block docs-content
           .text-primary.show-sm col-sm-8
 
     p
-      | There are #[code col-xs-<1-12>], #[code col-sm-<1-12>], #[code col-md-<1-12>], #[code col-lg-<1-12>] and #[code col-xl-<1-12>] available for flexible grid across mobile, tablet and desktop viewport usage.
+      | There are #[code col-xs-#{'<1-12>'}], #[code col-sm-#{'<1-12>'}], #[code col-md-#{'<1-12>'}], #[code col-lg-#{'<1-12>'}] and #[code col-xl-#{'<1-12>'}] available for flexible grid across mobile, tablet and desktop viewport usage.
 
     ul
       li
-        | #[code col-xs-<1-12>] apply to window width smaller than or equal to #[strong 480px].
+        | #[code col-xs-#{'<1-12>'}] apply to window width smaller than or equal to #[strong 480px].
       li
-        | #[code col-sm-<1-12>] apply to window width smaller than or equal to #[strong 600px].
+        | #[code col-sm-#{'<1-12>'}] apply to window width smaller than or equal to #[strong 600px].
       li
-        | #[code col-md-<1-12>] apply to window width smaller than or equal to #[strong 840px].
+        | #[code col-md-#{'<1-12>'}] apply to window width smaller than or equal to #[strong 840px].
       li
-        | #[code col-lg-<1-12>] apply to window width smaller than or equal to #[strong 960px].
+        | #[code col-lg-#{'<1-12>'}] apply to window width smaller than or equal to #[strong 960px].
       li
-        | #[code col-xl-<1-12>] apply to window width smaller than or equal to #[strong 1280px].
+        | #[code col-xl-#{'<1-12>'}] apply to window width smaller than or equal to #[strong 1280px].
       li
-        | #[code col-<1-12>] apply to all window width, including the width wider than #[strong 1280px].
+        | #[code col-#{'<1-12>'}] apply to all window width, including the width wider than #[strong 1280px].
 
     pre.code(data-lang='HTML')
       code
@@ -60,7 +65,7 @@ block docs-content
             </div>
           </div>
 
-    +docs-subheading('responsive-container', 'Responsive container')
+    +docs-subheading('container', 'Responsive container', {slug})
 
     p
       | The responsive layout also provides fixed-width containers.
@@ -76,7 +81,7 @@ block docs-content
             </div>
           </div>
 
-    +docs-subheading('responsive-visibility', 'Responsive visibility')
+    +docs-subheading('visibility', 'Responsive visibility', {slug})
 
     p The responsive visibility utilities help show and hide elements on specific viewport sizes.
 
@@ -256,7 +261,7 @@ block docs-content
       li
         | #[code show-xl] shows elements when the window width is smaller than or equal to #[strong 1280px].
 
-    +docs-subheading('responsive-resizer', 'Responsive Resizer')
+    +docs-subheading('resizer', 'Responsive Resizer', {slug})
 
     p
       | Spectre also has a responsive web test tool Responsive Resizer. 
@@ -266,6 +271,8 @@ block docs-content
     p
       a.btn.btn-primary(href="https://picturepan2.github.io/responsive-resizer/" target="_blank") Responsive Resizer
 
+
+    +docs-pagination({path: 'navbar', name: 'Navbar'}, {parent: 'components', name: 'Components'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

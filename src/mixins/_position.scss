@@ -1,89 +1,68 @@
-@use '../functions/get-var' as *;
-@use '../variables' as *;
+// Functions.
+@use '../functions/var/get-var.function' as *;
 
 // Margin utility mixin
-// @mixin margin-variant($id: 1, $size: $unit-1) { // old spectre.css
 @mixin margin-variant($id: 1, $size: 'unit-1') {
   .m-#{$id} {
-    // margin: $size !important; // old spectre.css
     margin: get-var($size) !important;
   }
 
   .mb-#{$id} {
-    // margin-bottom: $size !important; // old spectre.css
     margin-bottom: get-var($size) !important;
   }
 
   .ml-#{$id} {
-    // margin-left: $size !important; // old spectre.css
     margin-left: get-var($size) !important;
   }
 
   .mr-#{$id} {
-    // margin-right: $size !important; // old spectre.css
     margin-right: get-var($size) !important;
   }
 
   .mt-#{$id} {
-    // margin-top: $size !important; // old spectre.css
     margin-top: get-var($size) !important;
   }
 
   .mx-#{$id} {
-    // margin-left: $size !important; // old spectre.css
     margin-left: get-var($size) !important;
-    // margin-right: $size !important; // old spectre.css
     margin-right: get-var($size) !important;
   }
 
   .my-#{$id} {
-    // margin-bottom: $size !important; // old spectre.css
     margin-bottom: get-var($size) !important;
-    // margin-top: $size !important; // old spectre.css
     margin-top: get-var($size) !important;
   }
 }
 
 // Padding utility mixin
-// @mixin padding-variant($id: 1, $size: $unit-1) { // old spectre.css
 @mixin padding-variant($id: 1, $size: 'unit-1') {
   .p-#{$id} {
-    // padding: $size !important; // old spectre.css
     padding: get-var($size) !important;
   }
 
   .pb-#{$id} {
-    // padding-bottom: $size !important; // old spectre.css
     padding-bottom: get-var($size) !important;
   }
 
   .pl-#{$id} {
-    // padding-left: $size !important; // old spectre.css
     padding-left: get-var($size) !important;
   }
 
   .pr-#{$id} {
-    // padding-right: $size !important; // old spectre.css
     padding-right: get-var($size) !important;
   }
 
   .pt-#{$id} {
-    // padding-top: $size !important; // old spectre.css
     padding-top: get-var($size) !important;
   }
 
   .px-#{$id} {
-    // padding-left: $size !important; // old spectre.css
     padding-left: get-var($size) !important;
-    // padding-right: $size !important; // old spectre.css
     padding-right: get-var($size) !important;
   }
 
   .py-#{$id} {
-    // padding-bottom: $size !important; // old spectre.css
     padding-bottom: get-var($size) !important;
-
-    // padding-top: $size !important; // old spectre.css
     padding-top: get-var($size) !important;
   }
 }

@@ -2,12 +2,18 @@ extends ../_layout/_docs-layout.pug
 
 block variables
   - var slug = 'tables'
+  - var name = 'Tables'
   - var parent = 'elements'
   - var title = 'Tables - Elements - Spectre.css CSS Framework'
   - var description = 'Tables include default styles for tables and data sets. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('tables', 'Tables')
+  +docs-heading(slug, name, { parent, name: 'Elements' })
+    +docs-menu(name, {parent, slug},
+      {anchor: 'striped', name: 'Striped'},
+      {anchor: 'scroll', name: 'Scroll'}
+    )
+
     include ../_layout/_ad-g.pug
 
     p Tables include default styles for tables and data sets.
@@ -39,7 +45,7 @@ block docs-content
               td 22 September 1995
 
     p
-      | Add the #[code table] class to any #{'<table>'} element. 
+      | Add the #[code table] class to any #[code #{'<table>'}] element. 
       | The class will add padding, border and emphasized table header.
 
     pre.code(data-lang='HTML')
@@ -62,7 +68,7 @@ block docs-content
             </tbody>
           </table>
     
-    +docs-subheading('tables-striped', 'Striped tables')
+    +docs-subheading('striped', 'Striped tables', {slug})
 
     .docs-demo.columns
       .column.col-12
@@ -91,10 +97,10 @@ block docs-content
               td 22 September 1995
 
     p
-      | Use the #[code table-striped] class to #{'<table>'} to add zebra striped style.
+      | Use the #[code table-striped] class to #[code #{'<table>'}] to add zebra striped style.
       | For hoverable table rows, you can add the #[code table-hover] class to enable hover style.
     p
-      | Use the #[code active] class to make #{'<tr>'} element highlighted.
+      | Use the #[code active] class to make #[code #{'<tr>'}] element highlighted.
 
     pre.code(data-lang='HTML')
       code
@@ -116,7 +122,7 @@ block docs-content
             </tbody>
           </table>
 
-    +docs-subheading('tables-scroll', 'Scrollable tables')
+    +docs-subheading('scroll', 'Scrollable tables', {slug})
 
     .docs-demo.columns
       .column.col-12
@@ -160,7 +166,7 @@ block docs-content
               td David Fincher
 
     p
-      | Add the #[code table-scroll] class to #{'<table>'} to have a horizontally scrollable table.
+      | Add the #[code table-scroll] class to #[code #{'<table>'}] to have a horizontally scrollable table.
 
     pre.code(data-lang='HTML')
       code
@@ -169,6 +175,7 @@ block docs-content
             ...
           </table>
 
+    +docs-pagination({path: 'media', name: 'Media'}, {path: 'typography', name: 'Typography'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

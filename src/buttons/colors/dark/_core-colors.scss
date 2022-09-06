@@ -1,0 +1,11 @@
+// Variables.
+@use '../../../variables' as *;
+
+// Set the color scheme to dark.
+$color-scheme: dark;
+
+@use '../../mixins/button-theme-dark.mixin' as *;
+
+.#{$class-prefix}btn {
+  @include button-theme-dark('core-colors');
+}

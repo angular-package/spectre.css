@@ -1,0 +1,33 @@
+@use '../functions/color/color.function' as *;
+@use '../mixins/color/background.mixin' as *;
+
+// Hide scrollbar.
+@mixin hide-scrollbar($width: 0.00rem, $bg-color: 'gray') {
+  /* hide scrollbar but allow scrolling */
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: thin; /* for Firefox */
+  scrollbar-color: color($bg-color);
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    // display: none; /* for Chrome, Safari, and Opera */
+    width: $width;
+  }
+  &:hover {
+    &::-webkit-scrollbar {
+      width: $width + 0.1rem;
+    }
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    @include background($bg-color);
+    border-radius: 20px;
+    border: transparent;
+    background-clip: border-box;
+  }
+  &::-webkit-scrollbar-thumb:active {
+    @include background('primary');
+  }
+}

@@ -1,31 +1,38 @@
-@use 'functions/get-var' as *;
-@use 'variables' as *;
+// Variables.
+@use 'variables/core' as *;
+
+// Mixins.
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/margin.mixins' as *;
 
 // Media
 // Image responsive
-.img-responsive {
+.#{$class-prefix}img-responsive {
   display: block;
-  height: auto;
   max-width: 100%;
+  height: auto;
 }
 
 // object-fit support is coming to Microsoft Edge
 // https://developer.microsoft.com/en-us/microsoft-edge/platform/status/objectfitandobjectposition/
-.img-fit-cover {
+.#{$class-prefix}img-fit-cover {
   object-fit: cover;
 }
 
-.img-fit-contain {
+.#{$class-prefix}img-fit-contain {
   object-fit: contain;
 }
 
 // Video responsive
-.video-responsive {
+.#{$class-prefix}video-responsive {
+  position: relative;
+
   display: block;
   overflow: hidden;
-  padding: 0;
-  position: relative;
+
   width: 100%;
+  padding: 0;
+
   &::before {
     content: '';
     display: block;
@@ -35,47 +42,44 @@
   iframe,
   object,
   embed {
-    border: 0;
-    bottom: 0;
-    height: 100%;
-    left: 0;
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
     width: 100%;
+    height: 100%;
+
+    border: 0;
   }
 }
 
-video.video-responsive {
-  height: auto;
+video.#{$class-prefix}video-responsive {
   max-width: 100%;
-
+  height: auto;
   &::before {
     content: none;
   }
 }
 
-.video-responsive-4-3 {
+.#{$class-prefix}video-responsive-4-3 {
   &::before {
     padding-bottom: 75%; // Ratio 4:3
   }
 }
 
-.video-responsive-1-1 {
+.#{$class-prefix}video-responsive-1-1 {
   &::before {
     padding-bottom: 100%; // Ratio 1:1
   }
 }
 
 // Figure
-.figure {
-  // margin: 0 0 $layout-spacing 0; // old spectre.css
-  margin: 0 0 get-var('layout-spacing', $unit: 1) 0;
-
+.#{$class-prefix}figure {
+  @include margin('unit-0', 'unit-0', ('layout-spacing', true), 'unit-0');
   .figure-caption {
-    // color: $gray-color-dark; // old spectre.css
-    color: color('gray-color-dark');
-    // margin-top: $layout-spacing; // old spectre.css
-    margin-top: get-var('layout-spacing', $unit: 1);
+    @include margin-top(('layout-spacing', true));
+    @include color('gray-dark');
   }
 }

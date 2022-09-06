@@ -7,105 +7,750 @@ block variables
   - var description = 'Color utilities are used for changing colors for text, link and background. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading('colors', 'Color utilities')
+  +docs-heading(slug, 'Color utilities', {parent, name: 'Utilities'})
+    +docs-menu('Colors', {parent, slug},
+      { anchor: 'available', name: 'Available' },
+      { anchor: 'shades', name: 'Shades' },
+      { anchor: 'accent', name: 'Accent' },
+      { anchor: 'primary', name: 'Primary' },
+      { anchor: 'secondary', name: 'Secondary' },
+      { anchor: 'gray', name: 'Gray' },
+      { anchor: 'bg', name: 'Bg' },
+      { anchor: 'border', name: 'Border' },
+      { anchor: 'link', name: 'Link' },
+      { anchor: 'control', name: 'Control' },
+      { anchor: 'body', name: 'Body' },
+      { anchor: 'other', name: 'Other' }
+    )
     include ../_layout/_ad-g.pug
 
     p Color utilities are used for changing colors for text, link and background.
+      | This page contains CSS classes to change the text, link and background color.
+    p
+      a.btn.btn-accent(href='https://angular-package.dev/ui-kit/utility/color', target='_blank') Demonstration
 
-    +docs-subheading('colors-text', 'Text colors')
+
+    +docs-subheading('available', 'Available colors', {slug})
+
+    p
+      | #[strong Spectre.css] has CSS classes prefixed with #[code .text] and #[code .bg] suffixed by the specified color and the following table contains color suffixes for them.
+      | If the color shade #[code dark] is available then add #[code -dark] suffix to the class name, and if has #[code light] is available add #[code -light] suffix to the class name.
+      | For example gray color shade dark is available then to use the text of this color add class #[code .text-gray-dark].
+
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-center
+          thead
+            tr
+              th(width='160')
+              th.text-left Code
+              th Available
+              th Dark 
+              th Light
+          tbody
+            tr
+              th.text-left
+                a(href="#colors-shades") Dark
+              td.text-left
+                code dark
+              td 
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#colors-shades") Light
+              td.text-left
+                code light
+              td 
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#colors-accent") Accent
+              td.text-left
+                code accent
+              td 
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#colors-primary") Primary
+              td.text-left
+                code primary
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+            tr
+              th.text-left
+                a(href="#colors-secondary") Secondary
+              td.text-left
+                code secondary
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+            tr
+              th.text-left
+                a(href="#colors-gray") Gray
+              td.text-left
+                code gray
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+            tr
+              th.text-left
+                a(href="#colors-bg") Background
+              td.text-left
+                code bg
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+            tr
+              th.text-left
+                a(href="#colors-border") Border
+              td.text-left
+                code border
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+            tr
+              th.text-left
+                a(href="#colors-control") Link
+              td.text-left
+                code link
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(true)
+            tr
+              th.text-left
+                a(href="#colors-control") Disabled
+              td.text-left
+                code disabled
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#colors-control") Error
+              td.text-left
+                code error
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#colors-control") Info
+              td.text-left
+                code info
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#colors-control") Success
+              td.text-left
+                code success
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#colors-body") Body background
+              td.text-left
+                code body-bg
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#colors-body") Body font
+              td.text-left
+                code body-font
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#colors-other") Code
+              td.text-left
+                code code
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+            tr
+              th.text-left
+                a(href="#colors-other") Highlight
+              td.text-left
+                code highlight
+              td
+                +docs-dot(true)
+              td
+                +docs-dot(false)
+              td
+                +docs-dot(false)
+
+    +docs-subheading('shades', 'Shades', {slug})
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.text-dark text dark color
+        p
+          span.text-light.bg-dark.rounded text light color
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Text dark/light colors -->
+          <span class="text-dark">text dark color</span>
+          <span class="text-light bg-dark">text light color</span>
 
     .docs-demo.columns
       .column.col-12
         p
-          span.text-primary primary color
+          a.text-dark(href="#colors-shades") dark link
         p
-          span.text-secondary secondary color
-        p
-          span.text-dark dark color
-        p
-          span.text-gray gray color
-        p
-          span.text-light.bg-dark.p-1.rounded light color
-        p
-          span.text-success success color
-        p
-          span.text-warning warning color
-        p
-          span.text-error error color
-
+          a.text-light.bg-dark.rounded(href="#colors-shades") light link
     pre.code(data-lang='HTML')
       code
         :highlight(lang="html")
-          <span class="text-primary">primary color</span>
-          <span class="text-secondary">secondary color</span>
-          <span class="text-dark">dark color</span>
-          <span class="text-gray">gray color</span>
-          <span class="text-light">light color</span>
-          <span class="text-success">success color</span>
-          <span class="text-warning">warning color</span>
-          <span class="text-error">error color</span>
+          <!-- Link dark/light colors -->
+          <a class="text-dark" href="#">dark link</a>
+          <a class="text-light bg-dark" href="#">light link</a>
 
     .docs-demo.columns
       .column.col-12
         p
-          a.text-primary.p-1(href="#colors") primary link
+          span.bg-dark.rounded dark bg
         p
-          a.text-secondary.p-1(href="#colors") secondary link
+          span.bg-light.rounded light bg
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Shades -->
+          <span class="bg-dark">dark bg</span>
+          <span class="bg-light">light bg</span>
+
+    +docs-subheading('accent', 'Accent color', {slug})
+    .docs-demo.columns
+      .column.col-12
         p
-          a.text-dark.p-1(href="#colors") dark link
+          span.text-accent text accent color
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Text accent color -->
+          <span class="text-accent">text accent color</span>
+
+    .docs-demo.columns
+      .column.col-12
         p
-          a.text-gray.p-1(href="#colors") gray link
+          a.text-accent(href="#colors-accent") accent link
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Link accent color -->
+          <a class="text-accent" href="#colors-accent">accent link</a>
+
+    .docs-demo.columns
+      .column.col-12
         p
-          a.text-light.bg-dark.p-1.rounded(href="#colors") light link
+          span.bg-accent.rounded accent bg
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <span class="bg-accent">accent bg</span>
+
+    +docs-subheading('primary', 'Primary colors', {slug})
+    .docs-demo.columns
+      .column.col-12
         p
-          a.text-success.p-1(href="#colors") success link
+          span.text-primary text primary color
         p
-          a.text-warning.p-1(href="#colors") warning link
+          span.text-primary-dark text primary color dark
         p
-          a.text-error.p-1(href="#colors") error link
+          span.text-primary-light text primary color light
 
     pre.code(data-lang='HTML')
       code
         :highlight(lang="html")
-          <a class="text-primary" href="#">primary color</a>
+          <!-- Text primary colors -->
+          <span class="text-primary">text primary color</span>
+          <span class="text-primary-dark">text primary color dark</span>
+          <span class="text-primary-light">text primary color light</span>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          a.text-primary(href="#colors-primary") primary link
+        p
+          a.text-primary-dark(href="#colors-primary") primary link dark
+        p
+          a.text-primary-light(href="#colors-primary") primary link light
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Link primary colors -->
+          <a class="text-primary" href="#colors-primary">primary link</a>
+          <a class="text-primary-dark" href="#colors-primary">primary link dark</a>
+          <a class="text-primary-light bg-primary" href="#colors-primary">primary link light</a>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.bg-primary.rounded primary bg
+        p
+          span.bg-primary-dark.rounded primary bg dark
+        p
+          span.bg-primary-light.text-secondary-light.rounded primary bg light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Primary colors -->
+          <span class="bg-primary">primary bg</span>
+          <span class="bg-primary-dark">primary bg dark</span>
+          <span class="bg-primary-light text-secondary-light">primary bg light</span>
+
+    +docs-subheading('secondary', 'Secondary colors', {slug})
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.text-secondary text secondary color
+        p
+          span.text-secondary-dark text secondary color dark
+        p
+          span.text-secondary-light.bg-primary.rounded text secondary color light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Text secondary colors -->
+          <span class="text-secondary">text secondary color</span>
+          <span class="text-secondary-dark">text secondary color dark</span>
+          <span class="text-secondary-light bg-primary">text secondary color light</span>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          a.text-secondary(href="#colors-secondary") secondary link
+        p
+          a.text-secondary-dark(href="#colors-secondary") secondary link dark
+        p
+          a.text-secondary-light.bg-primary(href="#colors-secondary") secondary link light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Link secondary colors -->
           <a class="text-secondary" href="#">secondary color</a>
-          <a class="text-dark" href="#">dark color</a>
-          <a class="text-gray" href="#">gray color</a>
-          <a class="text-light" href="#">light color</a>
-          <a class="text-success" href="#">success color</a>
-          <a class="text-warning" href="#">warning color</a>
-          <a class="text-error" href="#">error color</a>
-
-    +docs-subheading('colors-background', 'Background colors')
+          <a class="text-secondary-dark" href="#">secondary color dark</a>
+          <a class="text-secondary-light" href="#">secondary color light</a>
 
     .docs-demo.columns
       .column.col-12
         p
-          span.bg-primary.p-1.rounded primary bg
+          span.bg-secondary.text-primary.rounded secondary bg
         p
-          span.bg-secondary.text-primary.p-1.rounded secondary bg
+          span.bg-secondary-dark.text-primary.rounded secondary bg dark
         p
-          span.bg-dark.p-1.rounded dark bg
+          span.bg-secondary-light.text-primary.rounded secondary bg light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Secondary colors -->
+          <span class="bg-secondary text-primary">secondary bg</span>
+          <span class="bg-secondary-dark text-primary">secondary bg dark</span>
+          <span class="bg-secondary-light text-primary">secondary bg light</span>
+
+    +docs-subheading('gray', 'Gray colors', {slug})
+    .docs-demo.columns
+      .column.col-12
         p
-          span.bg-gray.p-1.rounded gray bg
+          span.text-gray text gray color
         p
-          span.bg-success.p-1.rounded success bg
+          span.text-gray-dark text gray color dark
         p
-          span.bg-warning.p-1.rounded warning bg
+          span.text-gray-light.bg-gray-dark.rounded text gray color light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Text gray colors -->
+          <span class="text-gray">text gray color</span>
+          <span class="text-gray-dark">text gray color dark</span>
+          <span class="text-gray-light bg-gray-dark p-1 rounded">text gray color light</span>
+
+    .docs-demo.columns
+      .column.col-12
         p
-          span.bg-error.p-1.rounded error bg
+          a.text-gray(href="#colors-gray") gray link
+        p
+          a.text-gray-dark(href="#colors-gray") gray link dark
+        p
+          a.text-gray-light.bg-gray-dark(href="#colors-gray") gray link light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Link gray colors -->
+          <a class="text-gray" href="#colors-gray">gray link</a>
+          <a class="text-gray-dark" href="#colors-gray">gray link dark</a>
+          <a class="text-gray-light bg-gray-dark" href="#colors-gray">gray link light</a>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.bg-gray.rounded gray bg
+        p
+          span.bg-gray-dark.rounded gray bg dark
+        p
+          span.bg-gray-light.rounded gray bg light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Gray colors -->
+          <span class="bg-gray">gray bg</span>
+          <span class="bg-gray-dark">gray bg dark</span>
+          <span class="bg-gray-light">gray bg light</span>
+
+    +docs-subheading('bg', 'Bg colors', {slug})
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.text-bg text bg color
+        p
+          span.text-bg-dark text bg color dark
+        p
+          span.text-bg-light text bg color light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <span class="text-bg">text bg color</span>
+          <span class="text-bg-dark">text bg color dark</span>
+          <span class="text-bg-light">text bg color light</span>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          a.text-bg(href="#colors-bg") bg link
+        p
+          a.text-bg-dark(href="#colors-bg") bg link dark
+        p
+          a.text-bg-light.bg-gray-dark(href="#colors-bg") bg link light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Link bg colors -->
+          <a class="text-bg" href="#colors-bg">bg link</a>
+          <a class="text-bg-dark" href="#colors-bg">bg link dark</a>
+          <a class="text-bg-light bg-gray-dark" href="#colors-bg">bg link light</a>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.bg-bg.text-body-font.rounded bg bg
+        p
+          span.bg-bg-dark.text-body-font.rounded bg bg dark
+        p
+          span.bg-bg-light.text-body-font.rounded bg bg light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Bg colors -->
+          <div class="bg-bg text-body-font">bg bg</div>
+          <div class="bg-bg-dark text-body-font">bg bg dark</div>
+          <div class="bg-bg-light text-body-font">bg bg light</div>
+
+    +docs-subheading('border', 'Border colors', {slug})
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.text-border text border color
+        p
+          span.text-border-dark text border color dark
+        p
+          span.text-border-light text border color light
 
     pre.code(data-lang='HTML')
       code
         :highlight(lang="html")
-          <div class="bg-primary">primary bg</div>
-          <div class="bg-secondary">secondary bg</div>
-          <div class="bg-dark">dark bg</div>
-          <div class="bg-gray">gray bg</div>
-          <div class="bg-success">success bg</div>
-          <div class="bg-warning">warning bg</div>
-          <div class="bg-error">error bg</div>
+          <span class="text-border">text border color</span>
+          <span class="text-border-dark">text border color dark</span>
+          <span class="text-border-light">text border color light</span>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          a.text-border(href="#colors-border") link color
+        p
+          a.text-border-dark(href="#colors-border") link color dark
+        p
+          a.text-border-light(href="#colors-border") link color light
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Link border colors -->
+          <a class="text-border" href="#colors-border">border link</a>
+          <a class="text-border-dark" href="#colors-border">border link dark</a>
+          <a class="text-border-light bg-gray-dark" href="#colors-border">border link light</a>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.bg-border.rounded border bg
+        p
+          span.bg-border-dark.rounded border bg dark
+        p
+          span.bg-border-light.rounded border bg light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Bg border colors -->
+          <span class="bg-border">border bg</span>
+          <span class="bg-border-dark">border bg dark</span>
+          <span class="bg-border-light">border bg light</span>
+
+    +docs-subheading('link', 'Link colors', {slug})
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.text-link text link color
+        p
+          span.text-link-dark text link color dark
+        p
+          span.text-link-light text link color light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Text link colors -->
+          <span class="text-link">text link color</span>
+          <span class="text-link-dark">text link color dark</span>
+          <span class="text-link-light">text link color light</span>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          a.text-link(href="#colors-link") link
+        p
+          a.text-link-dark(href="#colors-link") link dark
+        p
+          a.text-link-light(href="#colors-link") link light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Link link colors -->
+          <a class="text-link" href="#colors-link">link</a>
+          <a class="text-link-dark" href="#colors-link">link dark</a>
+          <a class="text-link-light" href="#colors-link">link light</a>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.bg-link.rounded link bg
+        p
+          span.bg-link-dark.rounded link bg dark
+        p
+          span.bg-link-light.rounded link bg light
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Link colors -->
+          <span class="bg-link">link bg</span>
+          <span class="bg-link-dark">link bg dark</span>
+          <span class="bg-link-light">link bg light</span>
+
+    +docs-subheading('control', 'Control colors', {slug})
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.text-disabled text disabled color
+        p
+          span.text-error text error color
+        p
+          span.text-info text info color
+        p
+          span.text-success text success color
+        p
+          span.text-warning text warning color
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Text control colors -->
+          <span class="text-disabled">text disabled color</span>
+          <span class="text-error">text error color</span>
+          <span class="text-info">text info color</span>
+          <span class="text-success">text success color</span>
+          <span class="text-warning">text warning color</span>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          a.text-disabled(href="#colors-control") disabled link
+        p
+          a.text-error(href="#colors-control") error link
+        p
+          a.text-info(href="#colors-control") info link
+        p
+          a.text-success(href="#colors-control") success link
+        p
+          a.text-warning(href="#colors-control") warning link
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Link control colors -->
+          <a class="text-disabled" href="#colors-control">disabled link</a>
+          <a class="text-error" href="#colors-control">error link</a>
+          <a class="text-info" href="#colors-control">info link</a>
+          <a class="text-success" href="#colors-control">success link</a>
+          <a class="text-warning" href="#colors-control">warning link</a>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.bg-disabled.rounded disabled bg
+        p
+          span.bg-error.rounded error bg
+        p
+          span.bg-success.rounded success bg
+        p
+          span.bg-warning.rounded warning bg
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Control colors -->
+          <span class="bg-disabled">disabled bg</span>
+          <span class="bg-error">error bg</span>
+          <span class="bg-info">info bg</span>
+          <span class="bg-success">success bg</span>
+          <span class="bg-warning">warning bg</span>
+
+    +docs-subheading('body', 'Body colors', {slug})
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.text-bg text body bg color
+        p
+          span.text-body-font body font color
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Text body colors -->
+          <span class="text-body-bg">text body bg color</span>
+          <span class="text-body-font">text body font color</span>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          a.text-body-bg(href="#colors-body") body bg link
+        p
+          a.text-body-font(href="#colors-body") body font link
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Link body colors -->
+          <a class="text-body-bg" href="#colors-body">body bg color</a>
+          <a class="text-body-font" href="#colors-body">body font color</a>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.bg-body-bg.rounded bg body bg
+        p
+          span.bg-body-font.rounded bg body font
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Body colors -->
+          <div class="bg-body-bg">bg body bg</div>
+          <div class="bg-body-font">bg body font</div>
+
+    +docs-subheading('other', 'Other colors', {slug})
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.text-code code color
+        p
+          span.text-highlight highlight color
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Text other colors -->
+          <span class="text-code">code color</span>
+          <span class="text-highlight">highlight color</span>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          a.text-code(href="#colors") code link
+        p
+          a.text-highlight(href="#colors") highlight link
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Link other colors -->
+          <a class="text-code " href="#">code color</a>
+          <a class="text-highlight" href="#">highlight color</a>
+
+    .docs-demo.columns
+      .column.col-12
+        p
+          span.bg-code.rounded code bg
+        p
+          span.bg-highlight.text-warning.rounded highlight bg
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Other colors -->
+          <span class="bg-code">code bg</span>
+          <span class="bg-highlight text-warning">highlight bg</span>
+
+    +docs-pagination({parent: 'utilities', name: 'Utilities' }, {path: 'cursors', name: 'Cursors'})
 
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

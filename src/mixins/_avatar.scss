@@ -1,13 +1,8 @@
-@use '../functions/get-var' as *;
-@use '../variables' as *;
+@use '../functions/var/get-var.function' as *;
 
 // Avatar mixin
-// @mixin avatar-base($size: $unit-8) { // old spectre.css
 @mixin avatar-base($size: 'unit-8') {
-  // font-size: $size * 0.5; // old spectre.css
   font-size: calc(get-var($size) * 0.5);
-  // height: $size; // old spectre.css
   height: get-var($size);
-  // width: $size; // old spectre.css
   width: get-var($size);
 }

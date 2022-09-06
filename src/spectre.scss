@@ -1,10 +1,42 @@
-// Variables and mixins
-@forward 'variables';
-@forward 'mixins';
-@forward 'css-variables';
+// Sass.
+@use 'sass:map';
+@use 'sass:list';
+
+// Variables
 @use 'variables' as *;
 
-/*! Spectre.css v#{$version} | MIT License | github.com/picturepan2/spectre */
+// Labels themes.
+// - Get variables.
+// @use 'labels/variables' as *;
+
+// Update the `accent` color from the 'core-colors'.
+// $label-theme-normal: map.set($label-theme-normal, 'core-colors', 'accent', 'accent-color');
+
+// Set the `$label-theme` group of colors that you want to use from the specific color scheme.
+// $label-theme: (
+//   'dark': ('control-colors', 'core-colors'),
+//   'light': ('control-colors', 'core-colors'),
+//   'normal': ('control-colors', 'core-colors')
+// );
+
+// Update the core variables.
+// - Experimental variable to add prefix before the names of primary classes.
+// $class-prefix: '';
+
+// - Replaces the CSS variable name prefixes with `spectre`.
+// $var-prefix: 'spectre';
+// $var-hue: 'hue';
+// $var-saturation: 'saturation';
+// $var-lightness: 'lightness';
+// $var-alpha: 'alpha';
+
+@forward 'variables';
+@forward 'css-variables';
+
+// Mixins.
+@forward 'mixins';
+
+/*! Spectre.css v#{$version} | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 // Reset and dependencies
 @forward 'normalize';
 @forward 'base';
@@ -20,9 +52,10 @@
 @forward 'media';
 
 // Layout
-@forward 'hero';
-@forward 'layout';
 @forward 'columns-order';
+@forward 'footer'; // @new
+@forward 'hero'; // Updated.
+@forward 'layout';
 @forward 'navbar';
 
 // Components
@@ -50,3 +83,33 @@
 // Utility classes
 @forward 'animations';
 @forward 'utilities';
+@forward 'bg';
+@forward 'borders';
+@forward 'text';
+
+// Initialize mixins.
+// - Bg.
+@use 'bg' as *;
+
+// - Buttons.
+@use 'buttons' as *;
+
+// - Footer.
+@use 'footer' as *;
+
+// - Pagination.
+@use 'pagination' as *;
+
+// Include mixins.
+// - Bg.
+@include bg-theme();
+
+// - Buttons.
+@include button-action();
+@include button-clear();
+
+// - Footer.
+@include footer();
+
+// - Pagination.
+@include pagination();

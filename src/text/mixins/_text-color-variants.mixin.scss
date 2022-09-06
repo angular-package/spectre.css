@@ -1,0 +1,14 @@
+// Variables.
+@use '../../variables' as *;
+
+// Text.
+@use 'text-color-variant.mixin' as *;
+
+// Text color variants.
+@mixin text-color-variants($colors...) {
+  @each $row in $colors {
+    @each $name, $color in $row {
+      @include text-color-variant($name, $color);
+    }
+  }
+}

@@ -1,21 +1,23 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
-@use 'variables' as *;
+// Variables.
+@use 'variables/core' as *;
+
+// Mixins.
+@use 'borders/mixins/border.mixin' as *;
+@use 'mixins/padding.mixins' as *;
 
 // Panels
-.panel {
-  // border: $border-width solid $border-color; // old spectre.css
-  border: get-var('border-width') solid color('border-color');
-  // border-radius: $border-radius; // old spectre.css
-  border-radius: get-var('border-radius');
+.#{$class-prefix}panel {
+  // Display.
   display: flex;
   flex-direction: column;
+
+  // Border.
+  @include border($radius: 'border-radius');
 
   .panel-header,
   .panel-footer {
     flex: 0 0 auto;
-    // padding: $layout-spacing-lg; // old spectre.css
-    padding: get-var('layout-spacing', $suffix: 'lg', $unit: 1);
+    @include padding(('layout-spacing', ('suffix': 'lg', 'unit': true)));
   }
 
   .panel-nav {
@@ -25,7 +27,6 @@
   .panel-body {
     flex: 1 1 auto;
     overflow-y: auto;
-    // padding: 0 $layout-spacing-lg; // old spectre.css
-    padding: 0 get-var('layout-spacing', $suffix: 'lg', $unit: 1);
+    @include padding('unit-0', ('layout-spacing', ('suffix': 'lg', 'unit': true)));
   }
 }

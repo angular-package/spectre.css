@@ -1,47 +1,56 @@
-@use 'functions/color' as *;
-@use 'functions/get-var' as *;
+// Variables.
+@use 'variables/core' as *;
+
+// Functions.
+@use 'functions/color/color.function' as *;
+@use 'functions/var/unit-var.function' as *;
+
+// Mixins.
+@use 'mixins/margin.mixins' as *;
+@use 'mixins/padding.mixins' as *;
 @use 'mixins/shadow' as *;
-@use 'variables' as *;
 
 // Autocomplete
-.form-autocomplete {
+.#{$class-prefix}form-autocomplete {
   position: relative;
 
   .form-autocomplete-input {
-    align-content: flex-start;
+    // Display.
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
+
+    // Size.
     height: auto;
-    // min-height: $unit-8; // old spectre.css
-    min-height: get-var('unit-8');
-    // padding: $unit-h; // old spectre.css
-    padding: get-var('unit-h');
+    min-height: unit-var('8');
+    @include padding('unit-h');
 
     &.is-focused {
+      border-color: color('primary');
       @include control-shadow();
-      // border-color: $primary-color; // old spectre.css
-      border-color: color('primary-color');
     }
 
     .form-input {
-      border-color: transparent;
-      box-shadow: none;
+      // Display.
       display: inline-block;
       flex: 1 0 auto;
-      // height: $unit-6; // old spectre.css
-      height: get-var('unit-6');
-      // line-height: $unit-4; // old spectre.css
-      line-height: get-var('unit-4');
-      // margin: $unit-h; // old spectre.css
-      margin: get-var('unit-h');
+
+      // Size.
       width: auto;
+      height: unit-var('6');
+
+      @include margin('unit-h');
+      border-color: transparent;
+      box-shadow: none;
+
+      line-height: unit-var('4');
     }
   }
 
   .menu {
-    left: 0;
     position: absolute;
     top: 100%;
+    left: 0;
     width: 100%;
   }
 

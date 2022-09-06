@@ -1,14 +1,12 @@
-@use '../functions/color' as *;
+// Functions.
+@use '../functions/color/color.function' as *;
 
 // Component focus shadow
-// @mixin control-shadow($color: $primary-color) { // old spectre.css
-@mixin control-shadow($color: 'primary-color') {
-  // box-shadow: 0 0 0 .1rem rgba($color, .2); // old spectre.css
+@mixin control-shadow($color: 'primary') {
   box-shadow: 0 0 0 0.1rem color($color, $alpha: 0.2);
 }
 
 // Shadow mixin
 @mixin shadow-variant($offset) {
-  // box-shadow: 0 $offset ($offset + .05rem) * 2 rgba($dark-color, .15); // old spectre.css
-  box-shadow: 0 $offset ($offset + 0.05rem) * 2 color('dark-color', $alpha: 0.15);
+  box-shadow: 0 $offset (($offset + 0.05rem) * 2) color('dark', $alpha: 0.15);
 }

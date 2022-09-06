@@ -1,0 +1,16 @@
+.toast.toast-body-bg {
+  border-color: hsla(var(--s-body-bg-color-h), var(--s-body-bg-color-s), calc(var(--s-body-bg-color-l) + var(--s-body-bg-color-l-l)), var(--s-body-bg-color-a));
+  background: hsla(var(--s-body-bg-color-h), var(--s-body-bg-color-s), calc(var(--s-body-bg-color-l) + var(--s-body-bg-color-l-l)), calc(var(--s-body-bg-color-a) * 0.95));
+  color: hsla(var(--s-body-font-color-h), var(--s-body-font-color-s), calc(var(--s-body-font-color-l) + var(--s-body-font-color-l-l)), var(--s-body-font-color-a));
+}
+.toast.toast-body-bg a:active, .toast.toast-body-bg a:link, .toast.toast-body-bg a:visited {
+  color: hsla(var(--s-body-font-color-h), var(--s-body-font-color-s), calc(var(--s-body-font-color-l) + var(--s-body-font-color-l-l)), var(--s-body-font-color-a));
+}
+.toast.toast-body-font {
+  border-color: hsla(var(--s-body-font-color-h), var(--s-body-font-color-s), calc(var(--s-body-font-color-l) + var(--s-body-font-color-l-l)), var(--s-body-font-color-a));
+  background: hsla(var(--s-body-font-color-h), var(--s-body-font-color-s), calc(var(--s-body-font-color-l) + var(--s-body-font-color-l-l)), calc(var(--s-body-font-color-a) * 0.95));
+  color: hsla(var(--s-body-bg-color-h), var(--s-body-bg-color-s), calc(var(--s-body-bg-color-l) + var(--s-body-bg-color-l-l)), var(--s-body-bg-color-a));
+}
+.toast.toast-body-font a:active, .toast.toast-body-font a:link, .toast.toast-body-font a:visited {
+  color: hsla(var(--s-body-bg-color-h), var(--s-body-bg-color-s), calc(var(--s-body-bg-color-l) + var(--s-body-bg-color-l-l)), var(--s-body-bg-color-a));
+}

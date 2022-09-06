@@ -1,0 +1,101 @@
+// Variables.
+@use 'variables/core' as *;
+
+// Functions.
+@use 'functions/is-scheme-dark.function' as *;
+@use 'functions/is-scheme-light.function' as *;
+@use 'functions/var/css-var.function' as *;
+@use 'functions/var/get-var.function' as *;
+@use 'functions/var/size-var.function' as *;
+
+// Mixins.
+@use 'mixins/color/color.mixin' as *;
+@use 'mixins/margin.mixins' as *;
+@use 'mixins/padding.mixins' as *;
+@use 'mixins/transition.mixin' as *;
+
+@mixin footer($prefix: $class-prefix) {
+  .#{$prefix}footer {
+    width: 100%;
+
+    .columns {
+      margin: 0;
+
+      .column {
+        @include padding-top('unit-0');
+        @include padding-right(('layout-spacing', true));
+        @include padding-bottom('unit-0');
+        @include padding-left(('layout-spacing', true));
+      }
+    }
+
+    &.footer-xl {
+      max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('xl'));
+    }
+
+    &.footer-lg {
+      max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('lg'));
+    }
+
+    &.footer-md {
+      max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('md'));
+    }
+
+    &.footer-sm {
+      max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('sm'));
+    }
+
+    &.footer-xs {
+      max-width: calc(get-var(('layout-spacing', false)) * css-var('html-font-size') * 2 + size-var('xs'));
+    }
+
+    h5, h6 {
+      @include margin-bottom('unit-6');
+    }
+
+    // Font color.
+    @if is-scheme-dark() == true {
+      @media (prefers-color-scheme: dark) {
+        @include color('gray-dark');
+      }
+    }
+    @if is-scheme-light() == true {
+      @media (prefers-color-scheme: light) {
+        @include color('gray');
+      }
+    }
+    @if $color-scheme == normal {
+      @include color('gray');
+    }
+
+    a {
+      @if is-scheme-dark() == true {
+        @media (prefers-color-scheme: dark) {
+          @include color('gray');
+        }
+      }
+      @if is-scheme-light() == true {
+        @media (prefers-color-scheme: light) {
+          @include color('gray-dark');
+        }
+      }
+      @if $color-scheme == normal {
+        @include color('gray-dark');
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        a {
+          @include color('primary', $selector: (':hover'));
+          font-size: 0.75rem;
+          text-decoration: none !important;
+          @include transition(color);
+        }
+      }
+    }
+  }
+}

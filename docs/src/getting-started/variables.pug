@@ -1,0 +1,2944 @@
+extends ../_layout/_docs-layout.pug
+
+block variables
+  - var slug = 'variables'
+  - var parent = 'getting-started'
+  - var title = 'Variables - Getting started - Spectre.css CSS Framework'
+  - var description = 'Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development. Spectre provides basic styles for typography and elements, flexbox based responsive layout system, pure CSS components and utilities with best practice coding and consistent design language.'
+
+block docs-content
+  +docs-heading(slug, 'Variables', { parent, name: 'Getting Started' })
+    +docs-menu('Variables', {parent, slug},
+      {
+        anchor: 'sass-colors',
+        name: 'Sass colors',
+        items: [
+          { anchor: 'hex' , name: 'Hex' },
+          { anchor: 'derived' , name: 'Derived' },
+        ]
+      },
+      {
+        anchor: 'name',
+        name: 'Name',
+        items: [
+          { anchor: 'main', name: 'Main' },
+          { anchor: 'var-prefix' , name: 'Variable prefix' },
+          { anchor: 'class-prefix' , name: 'Class prefix' },
+          { anchor: 'color' , name: 'Color name' },
+          { anchor: 'hue' , name: 'Hue' },
+          { anchor: 'saturation' , name: 'Saturation' },
+          { anchor: 'lightness' , name: 'Lightness' },
+          { anchor: 'alpha' , name: 'Alpha' },
+          { anchor: 'summary' , name: 'Summary' }
+        ]
+      },
+      {
+        anchor: 'theme',
+        name: 'Theme',
+        items: [
+          { anchor: 'color-scheme' , name: 'Color scheme'},
+          { anchor: 'color', name: 'Color' },
+          { anchor: 'dark' , name: 'Dark'},
+          { anchor: 'light' , name: 'Light'}
+        ]
+      },
+      {
+        anchor: 'colors',
+        name: 'Colors',
+        items: [
+          {anchor: 'dark', name: 'Dark'},
+          {anchor: 'light', name: 'Light'},
+          {anchor: 'accent', name: 'Accent'},
+          {anchor: 'primary', name: 'Primary'},
+          {anchor: 'primary-dark', name: 'Primary dark'},
+          {anchor: 'primary-light', name: 'Primary light'}
+        ]
+      },
+      { anchor: 'colors-cards' , name: 'Colors on cards' },
+      { anchor: 'sizes' , name: 'Sizes' },
+      { anchor: 'border', name: 'Border' },
+      {
+        anchor: 'control',
+        name: 'Control',
+        items: [
+          { anchor: 'sizes' , name: 'Sizes' },
+          { anchor: 'padding', name: 'Padding' },
+          { anchor: 'icon-sizes', name: 'Icon sizes' },
+          { anchor: 'width', name: 'Width' }
+        ]
+      },
+      { anchor: 'font-sizes', name: 'Font sizes' },
+      { anchor: 'line-height', name: 'Line height' },
+      { anchor: 'hero-sizes', name: 'Hero sizes' },
+      { anchor: 'layout-spacing', name: 'Layout spacing' },
+      { anchor: 'parallax', name: 'Parallax' },
+      { anchor: 'responsive-breakpoints', name: 'Responsive breakpoints' },
+      { anchor: 'transition-duration', name: 'Transition duration' },
+      { anchor: 'units', name: 'Units' },
+      { anchor: 'z-index', name: 'z-index' }
+    )
+    p
+      small.label.label-secondary CSS Variables
+      small.label.label-secondary.ml-1 Customizable
+      small.label.label-secondary.ml-1 hsla
+
+    //- p
+    //-   small.label.label-secondary ADVANCED CUSTOMIZATION
+
+    //- { name: 'Prefix', url: 'getting-started/variables.html#variables-prefix' }, { name: 'Sizes', url: 'getting-started/variables.html#variables-sizes' }
+
+    include ../_layout/_ad-g.pug
+
+    p #[strong Spectre.css] is designed with consistent design language. You can use your variables to create your new or match an existing design.
+      |  All #[strong Sass] variables defined in the #[code src/variables] folder include the #[code !default] flag. You can redefine the variables to override the values.
+
+    p Almost all #[strong Sass] variables have equivalent CSS variables defined in the same naming pattern as #[strong Sass] variables to persist consistency but with an additional customizable 
+      +docs-abbr('prefix', '$var-prefix') 
+      | . They are used in styles instead of #[strong Sass] variables if possible.
+
+    h5 Good to know:
+    ul(style="list-style: none")
+      li #[span.text-success ✓] Styles are using CSS variables, except in some cases.
+      li #[span.text-success ✓] Sass variables are used mostly only to initialize equivalent CSS variables.
+      li #[span.text-success ✓] CSS variable names are being set in the same Sass variable naming pattern for consistency.
+      li #[span.text-success ✓] CSS variables are set with an additional customizable prefix.
+      li #[span.text-success ✓] There are Sass variables that don't have CSS variables, but they are used in the creation of their names.
+
+      li #[span.text-success ✓] Spectre.css has the first approach to the #[strong Dark] and #[strong light] theme.
+      li #[span.text-success ✓] CSS color variables are created from the property values of the dark and light themes.
+      li #[span.text-success ✓] Hex color has #[strong four] CSS variables with an additional CSS variable for adjusting color base lightness.
+      li #[span.text-success ✓] There are common Sass variable colors for both dark and light themes.
+      li #[span.text-success ✓] When changing the values of the base CSS colors, the derived CSS colors change on the fly.
+      li #[span.text-success ✓] Colors are being inserted by the #[code color()] function in the #[code hsla] form.
+      li #[span.text-success ✓] CSS variable name suffix of the color #[code hue], #[code saturation], #[code lightness], and #[code alpha] are customizable.
+      li #[span.text-success ✓] Derived color variables are only used in the background classes and they exist for backward compatibility.
+
+    // #[span.text-success ✓]
+    // #[span.text-error ✕]
+
+    +docs-subheading('sass-colors-hex', 'Variables - Hex colors', {slug})
+
+    p
+      | #[b Spectre.css] colors are specified under #[strong Sass] variables, some of them with hex values, the rest depends on them through the use of #[code darken()] and #[code lighten()].
+      | The following table contains colors defined with the specific hex.
+
+    p.toast.toast-info
+      | These are the common colors used in the dark and light theme except the #[code $dark-color] and #[code $light-color]. If the #[code $primary-color] is changed then it changes in both dark and light theme.
+      | To change the #[code $primary-color] only for the dark or light theme update the map value of the #[code $theme-dark] or #[code $theme-light].
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Sass variable
+              th Default value
+              th.text-center Dark theme
+              th.text-center Light theme
+              th.text-right Hex
+          tbody
+            tr
+              td
+                code $accent-color
+              td
+                code #9932CC
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-right
+                input(type="color", name="accent-color", value="#9932CC")
+            tr
+              td
+                code $code-color
+              td
+                code #d73e48
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-right
+                input(type="color", name="code-color", value="#d73e48")
+            tr
+              td
+                code $dark-color
+              td
+                code #303742
+              td.text-center 
+                +docs-dot(false, 'used')
+              td.text-center 
+                +docs-dot(false, 'used')
+              td.text-right
+                input(type="color", name="dark-color", value="#303742")
+            tr
+              td
+                code $error-color
+              td
+                code #e85600
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-right
+                input(type="color", name="info-color", value="#e85600")
+            tr
+              td
+                code $light-color
+              td
+                code #FFFFFF
+              td.text-center 
+                +docs-dot(false, 'used')
+              td.text-center 
+                +docs-dot(false, 'used')
+              td.text-right
+                input(type="color", name="light-color", value="#FFFFFF")
+            tr
+              td
+                code $highlight-color
+              td
+                code #ffe9b3
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-right
+                input(type="color", name="highlight-color", value="#ffe9b3")
+            tr
+              td
+                code $info-color
+              td
+                code #d9edf7
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-right
+                input(type="color", name="info-color", value="#d9edf7")
+            tr
+              td
+                code $primary-color
+              td
+                code #5755d9
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-right
+                input(type="color", name="primary-color", value="#5755d9")
+            tr
+              td
+                code $success-color
+              td
+                code #32b643
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-right
+                input(type="color", name="success-color", value="#32b643")
+            tr
+              td
+                code $warning-color
+              td
+                code #ffb700
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-center 
+                +docs-dot(true, 'used')
+              td.text-right
+                input(type="color", name="warning-color", value="#ffb700")
+
+    p Learn how to customize hex colors.
+    p
+      a.btn.btn-primary(href='custom.html#custom-colors-hex') Customize
+
+    +docs-subheading('sass-colors-derived', 'Variables - Derived colors', {slug})
+
+    p Derived colors are the hex colors with modified lightness or darkness by the #[code lighten()] or #[code darken()] function, or directly assigned hex colors. The following table contains derived colors from hex colors.
+
+    p.toast.toast-info
+      | These colors are only used in the background color variants creation for checking the lightness of the specific CSS variable color, to set the #[code color] style with the light color. They are here for backward compatibility.
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Sass variable
+              th Default value
+              th.text-right(style="width: 3rem") Hex
+              th.text-right
+          tbody
+            tr
+              td
+                code $bg-color
+              td
+                code lighten($dark-color, 75%)
+              td.text-right
+                code #f7f8f9
+              td.text-right
+                input(type="color", name="bg-color", value="#f7f8f9")
+            tr
+              td
+                code $bg-color-dark
+              td
+                code darken($bg-color, 3%)
+              td.text-right
+                code #eef0f3
+              td.text-right
+                input(type="color", name="bg-color-dark", value="#eef0f3")
+            tr
+              td
+                code $bg-color-light
+              td
+                code $light-color
+              td.text-right
+                code #ffffff
+              td.text-right
+                input(type="color", name="bg-color-light", value="#ffffff")
+            tr
+              td
+                code $body-bg-color
+              td
+                code $bg-color-light
+              td.text-right
+                code #ffffff
+              td.text-right
+                input(type="color", name="body-bg-color", value="#ffffff")
+            tr
+              td
+                code $body-font-color
+              td
+                code lighten($dark-color, 5%)
+              td.text-right
+                code #3b4351
+              td.text-right
+                input(type="color", name="body-font-color", value="#3b4351")
+            tr
+              td
+                code $border-color
+              td
+                code lighten($dark-color, 65%)
+              td.text-right
+                code #dadee4
+              td.text-right
+                input(type="color", name="border-color", value="#dadee4")
+            tr
+              td
+                code $border-color-dark
+              td
+                code darken($border-color, 10%)
+              td.text-right
+                code #bcc3ce
+              td.text-right
+                input(type="color", name="border-color-dark", value="#bcc3ce")
+            tr
+              td
+                code $border-color-light
+              td
+                code lighten($border-color, 8%)
+              td.text-right
+                code #f1f3f5
+              td.text-right
+                input(type="color", name="border-color-light", value="#f1f3f5")
+            tr
+              td
+                code $disabled-color
+              td
+                code $bg-color-dark
+              td.text-right
+                code #eef0f3
+              td.text-right
+                input(type="color", name="disabled-color", value="#eef0f3")
+            tr
+              td
+                code $gray-color 
+              td
+                code lighten($dark-color, 55%)
+              td.text-right
+                code #bcc3ce
+              td.text-right
+                input(type="color", name="gray-color", value="#bcc3ce")
+            tr
+              td
+                code $gray-color-dark
+              td
+                code darken($gray-color, 30%)
+              td.text-right
+                code #66758c
+              td.text-right
+                input(type="color", name="gray-color-dark", value="#66758c")
+            tr
+              td
+                code $gray-color-light
+              td
+                code lighten($gray-color, 20%)
+              td.text-right
+                code #f7f8f9
+              td.text-right
+                input(type="color", name="gray-color-light", value="#f7f8f9")
+            tr
+              td
+                code $link-color
+              td
+                code $primary-color
+              td.text-right
+                code #5755d9
+              td.text-right
+                input(type="color", name="link-color", value="#5755d9")
+            tr
+              td
+                code $link-color-dark
+              td
+                code darken($link-color, 10%)
+              td.text-right
+                code #302ecd
+              td.text-right
+                input(type="color", name="link-color-dark", value="#302ecd")
+            tr
+              td
+                code $link-color-light 
+              td
+                code lighten($link-color, 10%)
+              td.text-right
+                code #807fe2
+              td.text-right
+                input(type="color", name="link-color-light", value="#807fe2")
+            tr
+              td
+                code $primary-color-dark
+              td
+                code darken($primary-color, 3%)
+              td.text-right
+                code #4b48d6
+              td.text-right
+                input(type="color", name="accent-color", value="#4b48d6")
+            tr
+              td
+                code $primary-color-light
+              td
+                code lighten($primary-color, 3%)
+              td.text-right
+                code #6362dc
+              td.text-right
+                input(type="color", name="primary-color-light", value="#6362dc")
+            tr
+              td
+                code $secondary-color
+              td
+                code lighten($primary-color, 37.5%)
+              td.text-right
+                code #f1f1fc
+              td.text-right
+                input(type="color", name="dark-color", value="#f1f1fc")
+            tr
+              td
+                code $secondary-color-dark 
+              td
+                code darken($secondary-color, 3%)
+              td.text-right
+                code #e5e5f9
+              td.text-right
+                input(type="color", name="secondary-color-dark", value="#e5e5f9")
+            tr
+              td
+                code $secondary-color-light
+              td
+                code lighten($secondary-color, 3%)
+              td.text-right
+                code #fefeff
+              td.text-right
+                input(type="color", name="secondary-color-light", value="#fefeff")
+
+    p Learn how to customize derived colors.
+    p
+      a.btn.btn-primary(href='custom.html#custom-colors-derived') Customize
+
+
+    +docs-subheading('main', 'Variables - Name', {slug})
+
+    p The important thing is to know how the CSS variable names are being built, and what Sass variables are used to do that for further customization.
+
+    +docs-subheading('name-main', 'Variables - Main', {slug, tag: 'h5'})
+
+    p There are main #[strong Sass] variables for the entire project without equivalents in CSS variables, but they are used in the creation of their names. The following table contains all of them.
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th(width="30%")
+              th Sass variable
+              th.text-center CSS variable
+              th.text-right Default value
+          tbody
+            tr
+              th Prefix
+                br
+                small.text-gray-dark CSS variable's name prefix
+              td
+                code $var-prefix
+              td.text-center
+                +docs-dot(false)
+              td.text-right
+                code s
+            tr
+              th Hue
+                br
+                small.text-gray-dark CSS variable's name suffix indicating #[strong hue] of #[code hsla]
+              td
+                code $var-hue
+              td.text-center
+                +docs-dot(false)
+              td.text-right
+                code h
+            tr
+              th Saturation
+                br
+                small.text-gray-dark CSS variable's name suffix indicating #[strong saturation] of #[code hsla]
+              td
+                code $var-saturation
+              td.text-center
+                +docs-dot(false)
+              td.text-right
+                code s
+            tr
+              th Lightness
+                br
+                small.text-gray-dark CSS variable's name suffix indicating #[strong lightness] of #[code hsla]
+              td
+                code $var-lightness
+              td.text-center
+                +docs-dot(false)
+              td.text-right
+                code l
+
+            tr
+              th Alpha
+                br
+                small.text-gray-dark CSS variable's name suffix indicating #[strong alpha] for both #[code hsla] and #[code rgba]
+              td
+                code $var-alpha
+              td.text-center
+                +docs-dot(false)
+              td.text-right
+                code a
+
+    +docs-subheading('name-var-prefix', 'Variables - Variable prefix', {slug, tag: 'h5'})
+
+    p
+      | The customizable prefix mentioned above is the #[code $var-prefix] variable and it's the prefix of all CSS variable names.
+      | The variable is located in the #[a(href="https://github.com/angular-package/spectre.css/blob/1.0.x/src/variables/_core.scss" target="_blank") #[code src/variables/_core.scss]] file and its default value is #[code s].
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          // src/variables/_core.scss
+          // Global CSS variable names prefix.
+          $var-prefix: 's' !default;
+
+    p
+      | General CSS variable name structure is defined as follows.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          --#{$var-prefix}-#{$name}: #{$value}
+
+    p Learn how to customize CSS variable names with #[code $var-prefix].
+    p
+      a.btn.btn-primary(href='custom.html#custom-customizable-var-prefix') Customize
+
+    +docs-subheading('name-class-prefix', 'Variables - Class prefix', {slug, tag: 'h5'})
+
+    p
+      | The Sass variable #[code $class-prefix] is the prefix of main CSS classes replacing in a some minimal way custom prefixes for all classes with the gulp.
+      | The variable is located in the #[a(href="https://github.com/angular-package/spectre.css/blob/1.0.x/src/variables/_core.scss" target="_blank") #[code src/variables/_core.scss]] file and its default value is an empty string.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          // src/variables/_core.scss
+          // Class names prefix.
+          $class-prefix: '';
+    p
+      | Primary CSS class name structure is defined as follows.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          .#{$class-prefix}classname {
+            ...
+          }
+
+    p
+      | For example, the name of the class from cards is defined as follows.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          .#{$class-prefix}card { ... }
+          // Which results in 
+          .card { ... }
+
+    p Learn how to customize CSS primary class names with #[code $class-prefix].
+    p
+      a.btn.btn-primary(href='custom.html#custom-customizable-class-prefix') Customize
+
+    +docs-subheading('name-color', 'Variables - Color name', {slug, tag: 'h5'})
+
+    p Hex colors and derived aren't used in the styles, instead, the #[code color()] function is used, which returns the #[code hsla()] function with four predefined CSS variables. It means, each #[strong hex] and #[strong derived] color has its representation in #[strong four] CSS variables, but there is also an additional CSS lightness variable with the default suffix in the name #[code l-l] for base lightness adjustment.
+    p Hex color has the CSS variable values obtained from itself by using Sass #[code hue], #[code saturation], #[code lightness] and #[code alpha] functions, and derived are being obtained by #[code css-var] function using the CSS variable color name or color code.
+    p Both, CSS variables of the #[strong hex] and #[strong derived] colors are set by the #[code set-color()] mixin, with the ability to adjust the lightness or alpha, and each CSS variable name contains the customizable prefix, and variable name with the suffix #[code h] indicates hue, #[code s] saturation, #[code l] lightness, and #[code a] alpha.
+    p Color name is just Sass variable color without the dollar #[code $] and it's used as the parameter in the #[code color()] function to return #[code hsla()] function with a proper CSS variables. For example:
+    
+    //- p Hex colors and derived aren't used in the styles, instead the #[code color()] function is used, which returns the 
+    //-   a(href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsla" target="_blank") #[code hsla()]
+    //-   |  function with predefined CSS variables. Each #[strong hex] and #[strong derived] color has its representation in #[strong four] CSS variables. Hex color of the values obtained from that color by using Sass 
+    //-   | #[code hue] #[code saturation] #[code lightness] and #[code alpha] functions, and derived by using the CSS variable color name or color code with adjusted lightness or alpha. Both hex and derived color is set by the #[code set-color()] mixin, where each 
+    //-   | CSS variable name contains the prefix, and variable name with the suffix #[code h] indicates hue, #[code s] saturation, #[code l] lightness, and #[code a] alpha. 
+
+    //- p There is a CSS lightness variable with the default suffix #[code l-l] for additional base lightness adjustment.
+    //- p Color name is just Sass variable color without the dollar #[code $] and it's used as the parameter for the #[code color()] function to return proper #[code hsla()]. For example: 
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          @use 'node_modules/@angular-package/spectre.css/src/functions/color/color.function' as *;
+
+          .example {
+            color: color('primary-color');
+            background: color('gray-color-dark');
+          }
+
+    p It's possible to use the color code, which is just a color name without the #[code color] word. For example.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          @use 'node_modules/@angular-package/spectre.css/src/functions/color/color.function' as *;
+
+          .example {
+            color: color('primary');
+            background: color('gray-dark');
+          }
+
+    +docs-subheading('name-hue', 'Variables - Color name hue', {slug, tag: 'h5'})
+    p
+      | The first parameter of the #[code hsla()] function is the #[strong hue], and the #[strong Sass] variable #[code $var-hue] value is the suffix of the CSS variable name that represents it.
+      | The variable is located in the #[a(href="https://github.com/angular-package/spectre.css/blob/1.0.x/src/variables/_core.scss" target="_blank") #[code src/variables/_core.scss]] file and its default value is #[code h].
+
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          // src/variables/_core.scss
+          $var-hue: 'h' !default;
+
+    p
+      | The #[strong hue] CSS variable name structure is defined as follows.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          --#{$var-prefix}-#{$name}-#{$var-hue}: #{$value};
+
+    p
+      | For example, with defaults hue CSS variable name of the #[code primary-color] is set as follows.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          --s-primary-color-h: 240.9090909091deg;
+
+    p Learn how to customize CSS variable name hue with the #[code $var-hue].
+    p
+      a.btn.btn-primary(href='custom.html#custom-customizable-color-hue') Customize
+
+
+    +docs-subheading('name-saturation', 'Variables - Color name saturation', {slug, tag: 'h5'})
+    p
+      | The second parameter of the #[code hsla()] function is the #[strong saturation], and the #[strong Sass] variable #[code $var-saturation] value is the suffix of the CSS variable name that represents it.
+      | The variable is located in the #[a(href="https://github.com/angular-package/spectre.css/blob/1.0.x/src/variables/_core.scss" target="_blank") #[code src/variables/_core.scss]] file and its default value is #[code s].
+
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          // src/variables/_core.scss
+          $var-saturation: 's' !default;
+    p
+      |
+      | The #[strong saturation] CSS variable name structure is defined as follows.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          --#{$var-prefix}-#{$name}-#{$var-saturation}: #{$value};
+
+    p
+      | For example, with defaults #[strong saturation] CSS variable name of the #[code primary-color] is set as follows.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          --s-primary-color-s: 63.4615384615%;
+
+    p Learn how to customize CSS variable name saturation with the #[code $var-saturation].
+    p
+      a.btn.btn-primary(href='custom.html#custom-customizable-color-saturation') Customize
+
+    +docs-subheading('name-lightness', 'Variables - Color name lightness', {slug, tag: 'h5'})
+    p
+      | The third parameter of the #[code hsla()] function is the #[strong lightness], and the #[strong Sass] variable #[code $var-lightness] value is the suffix of the CSS variable name that represents it.
+      | The variable is located in the #[a(href="https://github.com/angular-package/spectre.css/blob/1.0.x/src/variables/_core.scss" target="_blank") #[code src/variables/_core.scss]] file and its default value is #[code l].
+
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          // src/variables/_core.scss
+          $var-lightness: 'l' !default;
+
+    p The #[strong lightness] CSS variable name structure is defined as follows.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          --#{$var-prefix}-#{$name}-#{$var-lightness}: #{$value};
+
+    p Learn how to customize CSS variable name lightness with the #[code $var-lightness].
+    p
+      a.btn.btn-primary(href='custom.html#custom-customizable-color-lightness') Customize
+
+    +docs-subheading('name-alpha', 'Variables - Color name alpha', {slug, tag: 'h5'})
+    p
+      | The fourth parameter of the #[code hsla()] function is the #[strong alpha], and the #[strong Sass] variable #[code $var-alpha] value is the suffix of the CSS variable name that represents it.
+      | The variable is located in the #[a(href="https://github.com/angular-package/spectre.css/blob/1.0.x/src/variables/_core.scss" target="_blank") #[code src/variables/_core.scss]] file and its default value is #[code a].
+
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          // src/variables/_core.scss
+          $var-alpha: 'a' !default;
+
+    p The #[strong alpha] CSS variable name structure is defined as follows.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          --#{$var-prefix}-#{$name}-#{$var-alpha}: #{$value};
+
+    p Learn how to customize CSS variable name alpha with the #[code $var-alpha].
+    p
+      a.btn.btn-primary(href='custom.html#custom-customizable-color-alpha') Customize
+
+    +docs-subheading('name-summary', 'Variables - Color name summary', {slug, tag: 'h5'})
+
+    p In summary, the single CSS variable color is set as follows.
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          --#{$var-prefix}-#{$name}-#{$var-hue}: hue($color)
+          --#{$var-prefix}-#{$name}-#{$var-saturation}: saturation($color)
+          --#{$var-prefix}-#{$name}-#{$var-lightness}: calc(lightness($color) + var(--#{$var-prefix}-#{$name}-#{$var-lightness}-l'))
+          --#{$var-prefix}-#{$name}-#{$var-alpha}: alpha($color)
+
+    p For example, #[code primary-color] with defaults is set as follows.
+    pre.code(data-lang='CSS')
+      code
+        :highlight(lang="css")
+          --s-primary-color-h: 240.9090909091deg;
+          --s-primary-color-s: 63.4615384615%;
+          --s-primary-color-l: calc(59.2156862745% + var(--s-primary-color-l-l));
+          --s-primary-color-l-l: 0%;
+          --s-primary-color-a: 1;
+
+    +docs-subheading('theme-color-scheme', 'Variables - Theme')
+
+    p Spectre.css has the first approach of the dark and light theme. 
+
+    +docs-subheading('theme-color-scheme', 'Variables - Color scheme', {slug, tag: 'h5'})
+    p
+      | The CSS #[code color-scheme] property is set to #[code light dark] in both #[code :root] and #[code :host] elements with the Sass #[code $color-scheme] variable.
+
+    blockquote.text-italic
+      | "The #[code color-scheme] CSS property allows an element to indicate which color schemes it can comfortably be rendered in." - Mozilla.org
+
+    p The variable is located in the #[a(href="https://github.com/angular-package/spectre.css/blob/1.0.x/src/variables/_core.scss" target="_blank") #[code src/variables/_core.scss]] file.
+
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          // src/variables/_core.scss
+          $color-scheme: light dark !default;
+    p
+      a.btn.btn-primary(href='https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme' target="_blank") Read more
+      a.btn.btn-primary.ml-1(href='custom.html#custom-color-scheme') Customize
+
+
+    +docs-subheading('theme-color', 'Variables - Theme color', {slug, tag: 'h5'})
+
+    p Both themes have the property #[code theme-color] dedicated for the meta tag with attribute #[code name='theme-color'] indicating a suggested color that the user agent should use to customize the display of the page or the surrounding user interface.
+    p The property of the #[code $theme-dark] is located in the #[a(href="https://github.com/angular-package/spectre.css/blob/1.0.x/src/variables/colors/_theme-dark.scss" target="_blank") #[code src/variables/_theme-dark.scss]] file 
+      | and of the #[code $theme-light] is located in the #[a(href="https://github.com/angular-package/spectre.css/blob/1.0.x/src/variables/colors/_theme-light.scss" target="_blank") #[code src/variables/_theme-light.scss]] file 
+      | and their default value is Sass variable #[code primary-color].
+
+    p
+      a.btn.btn-primary(href='https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color' target="_blank") Read more
+      a.btn.btn-primary.ml-1(href='custom.html#custom-theme-color') Customize
+
+    +docs-subheading('theme-dark', 'Variables - Dark theme', {slug, tag: 'h5'})
+
+    p
+      | This is a beta feature.
+
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          // src/variables/colors/_theme-dark.scss
+          @use 'control' as *;
+          @use 'core' as *;
+          @use 'other' as *;
+
+          $theme-dark: (
+            // Theme color.
+            'theme-color': $primary-color,
+
+            // Core colors.
+            'dark-color': #020202,
+            'light-color': #e9e9e9,
+
+            'accent-color': $accent-color,
+
+            'primary-color': $primary-color,
+            'primary-color-dark': ('primary-color', -3%),
+            'primary-color-light': ('primary-color', +3%),
+
+            'secondary-color': ('primary-color', -27.5%),
+            'secondary-color-dark': ('secondary-color', -3%),
+            'secondary-color-light': ('secondary-color', +3%),
+
+            // Gray colors.
+            'gray-color': ('dark-color', +75%),
+            'gray-color-dark': ('gray-color', -30%),
+            'gray-color-light':('gray-color', +20%),
+
+            // Bg colors.
+            'bg-color': ('dark-color', +9%),
+            'bg-color-dark': ('bg-color', -3%),
+            'bg-color-light': ('bg-color', +3%),
+
+            // Border colors.
+            'border-color': ('dark-color', +3%), // Original light 65%
+            'border-color-dark': ('border-color', -10%),
+            'border-color-light': ('border-color', +8%),
+
+            // Link colors.
+            'link-color': 'primary-color',
+            'link-color-dark': ('link-color', -10%),
+            'link-color-light': ('link-color', +10%),
+
+            // Body colors.
+            'body-bg-color': #121212,
+            'body-font-color': 'light-color',
+
+            // Control colors.
+            'disabled-color': 'bg-color-dark',
+            'error-color': $error-color,
+            'info-color': $info-color,
+            'success-color': $success-color,
+            'warning-color': $warning-color,
+
+            // Other colors.
+            'code-color': $code-color,
+            'highlight-color': $highlight-color,
+          ) !default;
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Key
+              th Default value
+              th.text-right(style="width: 3rem") Hex
+              th.text-right
+          tbody
+            tr
+              td
+                code theme-color
+              td
+                code $primary-color
+              td.text-right
+                code #5755D9
+              td.text-right
+                input(type="color", name="theme-color", value="#5755D9")
+            tr
+              td
+                code dark-color
+              td
+                code #303742
+              td.text-right
+                code #303742
+              td.text-right
+                input(type="color", name="dark-color", value="#303742")
+            tr
+              td
+                code light-color
+              td
+                code #FFFFFF
+              td.text-right
+                code #FFFFFF
+              td.text-right
+                input(type="color", name="light-color", value="#FFFFFF")
+
+            tr
+              td
+                code accent-color
+              td
+                code $accent-color
+              td.text-right
+                code #9932CC
+              td.text-right
+                input(type="color", name="accent-color", value="#9932CC")
+
+            tr
+              td
+                code primary-color
+              td
+                code $primary-color
+              td.text-right
+                code #5755D9
+              td.text-right
+                input(type="color", name="primary-color", value="#5755D9")
+            tr
+              td
+                code primary-color-dark
+              td
+                code ('primary-color', -3%)
+              td.text-right
+                code #4B49D6
+              td.text-right
+                input(type="color", name="primary-color-dark", value="#4B49D6")
+            tr
+              td
+                code primary-color-light
+              td
+                code ('primary-color', -3%)
+              td.text-right
+                code #6362dc
+              td.text-right
+                input(type="color", name="primary-color-light", value="#6362dc")
+
+            tr
+              td
+                code secondary-color
+              td
+                code ('primary-color', +37.5%)
+              td.text-right
+                code #f1f1fc
+              td.text-right
+                input(type="color", name="secondary-color", value="#f1f1fc")
+            tr
+              td
+                code secondary-color-dark
+              td
+                code ('secondary-color', -3%)
+              td.text-right
+                code #e5e5f9
+              td.text-right
+                input(type="color", name="secondary-color-dark", value="#e5e5f9")
+            tr
+              td
+                code secondary-color-light
+              td
+                code ('secondary-color', -3%)
+              td.text-right
+                code #fefeff
+              td.text-right
+                input(type="color", name="secondary-color-light", value="#fefeff")
+
+            tr
+              td
+                code gray-color
+              td
+                code ('dark-color', +55%)
+              td.text-right
+                code #bcc3ce
+              td.text-right
+                input(type="color", name="gray-color", value="#bcc3ce")
+            tr
+              td
+                code gray-color-dark
+              td
+                code ('gray-color', -30%)
+              td.text-right
+                code #66758c
+              td.text-right
+                input(type="color", name="gray-color-dark", value="#66758c")
+            tr
+              td
+                code gray-color-light
+              td
+                code ('gray-color', +20%)
+              td.text-right
+                code #f7f8f9
+              td.text-right
+                input(type="color", name="gray-color-light", value="#f7f8f9")
+
+            tr
+              td
+                code bg-color
+              td
+                code ('dark-color', +75%)
+              td.text-right
+                code #f7f8f9
+              td.text-right
+                input(type="color", name="bg-color", value="#f7f8f9")
+            tr
+              td
+                code bg-color-dark
+              td
+                code ('bg-color', -3%)
+              td.text-right
+                code #eef0f3
+              td.text-right
+                input(type="color", name="bg-color-dark", value="#eef0f3")
+            tr
+              td
+                code bg-color-light
+              td
+                code light-color
+              td.text-right
+                code #fefeff
+              td.text-right
+                input(type="color", name="bg-color-light", value="#fefeff")
+
+            tr
+              td
+                code border-color
+              td
+                code ('dark-color', +65%)
+              td.text-right
+                code #dadee4
+              td.text-right
+                input(type="color", name="border-color", value="#dadee4")
+            tr
+              td
+                code border-color-dark
+              td
+                code ('border-color', -10%)
+              td.text-right
+                code #bcc3ce
+              td.text-right
+                input(type="color", name="border-color-dark", value="#bcc3ce")
+            tr
+              td
+                code border-color-light
+              td
+                code ('border-color', +8%)
+              td.text-right
+                code #f1f3f5
+              td.text-right
+                input(type="color", name="border-color-light", value="#f1f3f5")
+
+            tr
+              td
+                code link-color
+              td
+                code primary-color'
+              td.text-right
+                code #5755d9
+              td.text-right
+                input(type="color", name="link-color", value="#5755d9")
+            tr
+              td
+                code link-color-dark
+              td
+                code ('link-color', -10%)
+              td.text-right
+                code #302ecd
+              td.text-right
+                input(type="color", name="link-color-dark", value="#302ecd")
+            tr
+              td
+                code link-color-light
+              td
+                code ('link-color', +10%)
+              td.text-right
+                code #807fe2
+              td.text-right
+                input(type="color", name="link-color-light", value="#807fe2")
+
+            tr
+              td
+                code body-bg-color
+              td
+                code bg-color-light
+              td.text-right
+                code #ffffff
+              td.text-right
+                input(type="color", name="body-bg-color", value="#ffffff")
+            tr
+              td
+                code body-font-color
+              td
+                code ('dark-color', +5%)
+              td.text-right
+                code #3b4351
+              td.text-right
+                input(type="color", name="body-font-color", value="#3b4351")
+
+            tr
+              td
+                code disabled-color
+              td
+                code bg-color-dark
+              td.text-right
+                code #eef0f3
+              td.text-right
+                input(type="color", name="disabled-color", value="#eef0f3")
+            tr
+              td
+                code error-color
+              td
+                code $error-color
+              td.text-right
+                code #e85600
+              td.text-right
+                input(type="color", name="error-color", value="#e85600")
+            tr
+              td
+                code info-color
+              td
+                code $info-color
+              td.text-right
+                code #d9edf7
+              td.text-right
+                input(type="color", name="info-color", value="#d9edf7")
+            tr
+              td
+                code success-color
+              td
+                code $success-color
+              td.text-right
+                code #32b643
+              td.text-right
+                input(type="color", name="success-color", value="#32b643")
+            tr
+              td
+                code warning-color
+              td
+                code $warning-color
+              td.text-right
+                code #ffb700
+              td.text-right
+                input(type="color", name="warning-color", value="#ffb700")
+
+            tr
+              td
+                code code-color
+              td
+                code $code-color
+              td.text-right
+                code #d73e48
+              td.text-right
+                input(type="color", name="code-color", value="#d73e48")
+            tr
+              td
+                code highlight-color
+              td
+                code $highlight-color
+              td.text-right
+                code #ffe9b3
+              td.text-right
+                input(type="color", name="highlight-color", value="#ffe9b3")
+
+    p Learn how to customize CSS variables of the dark theme.
+    p
+      a.btn.btn-primary(href='custom.html#custom-theme-dark') Customize
+
+    +docs-subheading('theme-light', 'Variables - Light theme', {slug, tag: 'h5'})
+
+    pre.code(data-lang='SCSS')
+      code
+        :highlight(lang="scss")
+          // src/variables/colors/_theme-light.scss
+          @use 'control' as *;
+          @use 'core' as *;
+          @use 'other' as *;
+
+          $theme-light: (
+            // Theme color.
+            // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color
+            'theme-color': $primary-color,
+
+            // Core colors.
+            'dark-color': #303742,
+            'light-color': #FFFFFF,
+
+            // - Accent color.
+            'accent-color': $accent-color,
+
+            // - Primary colors.
+            'primary-color': $primary-color,
+            'primary-color-dark': ('primary-color', -3%),
+            'primary-color-light': ('primary-color', +3%),
+
+            // - Secondary colors.
+            'secondary-color': ('primary-color', +37.5%),
+            'secondary-color-dark': ('secondary-color', -3%),
+            'secondary-color-light': ('secondary-color', +3%),
+
+            // Gray colors.
+            'gray-color': ('dark-color', +55%),
+            'gray-color-dark': ('gray-color', -30%),
+            'gray-color-light':('gray-color', +20%),
+
+            // Bg colors.
+            'bg-color': ('dark-color', +75%),
+            'bg-color-dark': ('bg-color', -3%),
+            'bg-color-light': 'light-color',
+
+            // Border colors.
+            'border-color': ('dark-color', +65%),
+            'border-color-dark': ('border-color', -10%),
+            'border-color-light': ('border-color', +8%),
+
+            // Link colors.
+            'link-color': 'primary-color',
+            'link-color-dark': ('link-color', -10%),
+            'link-color-light': ('link-color', +10%),
+
+            // Body colors.
+            'body-bg-color': 'bg-color-light',
+            'body-font-color': ('dark-color', +5%),
+
+            // Control colors.
+            'disabled-color': 'bg-color-dark',
+            'error-color': $error-color,
+            'info-color': $info-color,
+            'success-color': $success-color,
+            'warning-color': $warning-color,
+
+            // Other colors.
+            'code-color': $code-color,
+            'highlight-color': $highlight-color,
+          ) !default;
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Key
+              th Default value
+              th.text-right(style="width: 3rem") Hex
+              th.text-right
+          tbody
+            tr
+              td
+                code theme-color
+              td
+                code $primary-color
+              td.text-right
+                code #5755D9
+              td.text-right
+                input(type="color", name="theme-color", value="#5755D9")
+            tr
+              td
+                code dark-color
+              td
+                code #303742
+              td.text-right
+                code #303742
+              td.text-right
+                input(type="color", name="dark-color", value="#303742")
+            tr
+              td
+                code light-color
+              td
+                code #FFFFFF
+              td.text-right
+                code #FFFFFF
+              td.text-right
+                input(type="color", name="light-color", value="#FFFFFF")
+
+            tr
+              td
+                code accent-color
+              td
+                code $accent-color
+              td.text-right
+                code #9932CC
+              td.text-right
+                input(type="color", name="accent-color", value="#9932CC")
+
+            tr
+              td
+                code primary-color
+              td
+                code $primary-color
+              td.text-right
+                code #5755D9
+              td.text-right
+                input(type="color", name="primary-color", value="#5755D9")
+            tr
+              td
+                code primary-color-dark
+              td
+                code ('primary-color', -3%)
+              td.text-right
+                code #4B49D6
+              td.text-right
+                input(type="color", name="primary-color-dark", value="#4B49D6")
+            tr
+              td
+                code primary-color-light
+              td
+                code ('primary-color', -3%)
+              td.text-right
+                code #6362dc
+              td.text-right
+                input(type="color", name="primary-color-light", value="#6362dc")
+
+            tr
+              td
+                code secondary-color
+              td
+                code ('primary-color', +37.5%)
+              td.text-right
+                code #f1f1fc
+              td.text-right
+                input(type="color", name="secondary-color", value="#f1f1fc")
+            tr
+              td
+                code secondary-color-dark
+              td
+                code ('secondary-color', -3%)
+              td.text-right
+                code #e5e5f9
+              td.text-right
+                input(type="color", name="secondary-color-dark", value="#e5e5f9")
+            tr
+              td
+                code secondary-color-light
+              td
+                code ('secondary-color', -3%)
+              td.text-right
+                code #fefeff
+              td.text-right
+                input(type="color", name="secondary-color-light", value="#fefeff")
+
+            tr
+              td
+                code gray-color
+              td
+                code ('dark-color', +55%)
+              td.text-right
+                code #bcc3ce
+              td.text-right
+                input(type="color", name="gray-color", value="#bcc3ce")
+            tr
+              td
+                code gray-color-dark
+              td
+                code ('gray-color', -30%)
+              td.text-right
+                code #66758c
+              td.text-right
+                input(type="color", name="gray-color-dark", value="#66758c")
+            tr
+              td
+                code gray-color-light
+              td
+                code ('gray-color', +20%)
+              td.text-right
+                code #f7f8f9
+              td.text-right
+                input(type="color", name="gray-color-light", value="#f7f8f9")
+
+            tr
+              td
+                code bg-color
+              td
+                code ('dark-color', +75%)
+              td.text-right
+                code #f7f8f9
+              td.text-right
+                input(type="color", name="bg-color", value="#f7f8f9")
+            tr
+              td
+                code bg-color-dark
+              td
+                code ('bg-color', -3%)
+              td.text-right
+                code #eef0f3
+              td.text-right
+                input(type="color", name="bg-color-dark", value="#eef0f3")
+            tr
+              td
+                code bg-color-light
+              td
+                code light-color
+              td.text-right
+                code #fefeff
+              td.text-right
+                input(type="color", name="bg-color-light", value="#fefeff")
+
+            tr
+              td
+                code border-color
+              td
+                code ('dark-color', +65%)
+              td.text-right
+                code #dadee4
+              td.text-right
+                input(type="color", name="border-color", value="#dadee4")
+            tr
+              td
+                code border-color-dark
+              td
+                code ('border-color', -10%)
+              td.text-right
+                code #bcc3ce
+              td.text-right
+                input(type="color", name="border-color-dark", value="#bcc3ce")
+            tr
+              td
+                code border-color-light
+              td
+                code ('border-color', +8%)
+              td.text-right
+                code #f1f3f5
+              td.text-right
+                input(type="color", name="border-color-light", value="#f1f3f5")
+
+            tr
+              td
+                code link-color
+              td
+                code primary-color'
+              td.text-right
+                code #5755d9
+              td.text-right
+                input(type="color", name="link-color", value="#5755d9")
+            tr
+              td
+                code link-color-dark
+              td
+                code ('link-color', -10%)
+              td.text-right
+                code #302ecd
+              td.text-right
+                input(type="color", name="link-color-dark", value="#302ecd")
+            tr
+              td
+                code link-color-light
+              td
+                code ('link-color', +10%)
+              td.text-right
+                code #807fe2
+              td.text-right
+                input(type="color", name="link-color-light", value="#807fe2")
+
+            tr
+              td
+                code body-bg-color
+              td
+                code bg-color-light
+              td.text-right
+                code #ffffff
+              td.text-right
+                input(type="color", name="body-bg-color", value="#ffffff")
+            tr
+              td
+                code body-font-color
+              td
+                code ('dark-color', +5%)
+              td.text-right
+                code #3b4351
+              td.text-right
+                input(type="color", name="body-font-color", value="#3b4351")
+
+            tr
+              td
+                code disabled-color
+              td
+                code bg-color-dark
+              td.text-right
+                code #eef0f3
+              td.text-right
+                input(type="color", name="disabled-color", value="#eef0f3")
+            tr
+              td
+                code error-color
+              td
+                code $error-color
+              td.text-right
+                code #e85600
+              td.text-right
+                input(type="color", name="error-color", value="#e85600")
+            tr
+              td
+                code info-color
+              td
+                code $info-color
+              td.text-right
+                code #d9edf7
+              td.text-right
+                input(type="color", name="info-color", value="#d9edf7")
+            tr
+              td
+                code success-color
+              td
+                code $success-color
+              td.text-right
+                code #32b643
+              td.text-right
+                input(type="color", name="success-color", value="#32b643")
+            tr
+              td
+                code warning-color
+              td
+                code $warning-color
+              td.text-right
+                code #ffb700
+              td.text-right
+                input(type="color", name="warning-color", value="#ffb700")
+
+            tr
+              td
+                code code-color
+              td
+                code $code-color
+              td.text-right
+                code #d73e48
+              td.text-right
+                input(type="color", name="code-color", value="#d73e48")
+            tr
+              td
+                code highlight-color
+              td
+                code $highlight-color
+              td.text-right
+                code #ffe9b3
+              td.text-right
+                input(type="color", name="highlight-color", value="#ffe9b3")
+
+    p Learn how to customize CSS variables of the light theme.
+    p
+      a.btn.btn-primary.ml-1(href='custom.html#custom-theme-light') Customize
+
+    +docs-subheading('colors', 'Variables - Colors', {slug})
+
+    //- p
+    //-   | The table below contains all the #[b Spectre.css] Sass and CSS colors.
+
+    +docs-subheading('colors-theme', 'Variables - Theme color', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-12.col-md-12
+        .card.card-color.bg-primary
+          span.card-color-code theme
+          input(class="color-picker" type="color" name="theme-color" value="#5755D9")
+          span.card-color-name Theme color
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          tbody
+            tr
+              th Code
+              td(colspan="2")
+                code theme
+            tr
+              th Theme key
+              td
+                code theme-color
+              td
+                code $primary-color
+            tr
+              th Hue
+              td 
+                +docs-css-variable-color('theme-color', 'h')
+              td 
+                code 216.6666666667deg
+            tr
+              th Saturation
+              td 
+                +docs-css-variable-color('theme-color', 's')
+              td 
+                code 15.7894736842%
+            tr
+              th Lightness
+              td 
+                +docs-css-variable-color('theme-color', 'l')
+              td 
+                code 22.3529411765%
+            tr
+              th Alpha
+              td 
+                +docs-css-variable-color('theme-color', 'a')
+              td 
+                code 1
+
+    +docs-subheading('colors-dark', 'Variables - Dark color', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-12.col-md-12
+        .card.card-color.bg-dark
+          span.card-color-code dark
+          input(class="color-picker" type="color" name="dark-color" value="#303742")
+          span.card-color-name Dark color
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          tbody
+            tr
+              th Code
+              td(colspan="2")
+                code dark
+            tr
+              th Theme key
+              td
+                code dark-color
+              td 
+                code #020202
+            tr
+              th Hue
+              td 
+                +docs-css-variable-color('dark-color', 'h')
+              td 
+                code 216.6666666667deg
+            tr
+              th Saturation
+              td 
+                +docs-css-variable-color('dark-color', 's')
+              td 
+                code 15.7894736842%
+            tr
+              th Lightness
+              td 
+                +docs-css-variable-color('dark-color', 'l')
+              td 
+                code 22.3529411765%
+            tr
+              th Alpha
+              td 
+                +docs-css-variable-color('dark-color', 'a')
+              td 
+                code 1
+
+
+    +docs-subheading('colors-light', 'Variables - Light color', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-12.col-md-12
+        .card.card-color
+          span.card-color-code light
+          input(class="color-picker" type="color" name="light-color" value="#ffffff")
+          span.card-color-name Light color
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          tbody
+            tr
+              th Code
+              td(colspan="2")
+                code light
+            tr
+              th Sass variable
+              td
+                code $light-color
+              td
+                code #ffffff 
+            tr
+              th Hue
+              td 
+                +docs-css-variable-color('light-color', 'h')
+              td 
+                code 0deg
+            tr
+              th Saturation
+              td 
+                +docs-css-variable-color('light-color', 's')
+              td 
+                code 0%
+            tr
+              th Lightness
+              td 
+                +docs-css-variable-color('light-color', 'l')
+              td 
+                code 100%
+            tr
+              th Alpha
+              td 
+                +docs-css-variable-color('light-color', 'a')
+              td 
+                code 1
+
+    .docs-demo.columns
+      .column.col-4.col-md-6
+        .card.card-color.border
+          span.card-color-code light
+          span.card-color-hex #FFFFFF
+          input(class="color-picker" type="color" name="light-color" value="#FFFFFF")
+          span.card-color-name Light color
+      .column.col-12
+        table.docs-table.table.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Hex
+          tbody
+            tr
+              th.text-left light
+              td.text-left 
+                code $light-color
+              td.text-left 
+                +docs-css-variable-color('light-color')
+              td.text-right 
+                input(type="color", name="light-color", value="#FFFFFF")
+
+    +docs-subheading('colors-accent', 'Variables - Accent color', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Hex
+          tbody
+            tr
+              th.text-left accent
+              td.text-left 
+                code $accent-color
+              td.text-left 
+                +docs-css-variable-color('accent-color')
+              td.text-right
+                input(type="color", name="accent-color", value="#9932CC")
+
+    +docs-subheading('colors-primary', 'Variables - Primary', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Hex
+          tbody
+            tr
+              th.text-left primary
+              td.text-left 
+                code $primary-color
+              td.text-left 
+                +docs-css-variable-color('primary-color')
+              td.text-right
+                input(type="color", name="primary-color", value="#5755D9")
+
+    +docs-subheading('colors-primary-dark', 'Variables - Primary dark', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Hex
+          tbody
+            tr
+              th.text-left primary-dark
+              td.text-left 
+                code $primary-color-dark
+              td.text-left 
+                +docs-css-variable-color('primary-color-dark')
+              td.text-right
+                input(type="color", name="primary-color-dark", value="#4B49D6")
+
+    +docs-subheading('colors-primary-light', 'Variables - Primary light', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Hex
+          tbody
+            tr
+              th.text-left primary-light
+              td.text-left 
+                code $primary-color-light
+              td.text-left 
+                +docs-css-variable-color('primary-color-light')
+              td.text-right
+                input(type="color", name="primary-color-light", value="#6362DC")
+
+    +docs-subheading('colors-secondary', 'Variables - Secondary', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Hex
+          tbody
+            tr
+              th.text-left secondary
+              td.text-left 
+                code $secondary-color
+              td.text-left 
+                +docs-css-variable-color('secondary-color')
+              td.text-right
+                input(type="color", name="secondary", value="#F1F1FC")
+            tr
+              th.text-left secondary-dark
+              td.text-left 
+                code $secondary-color-dark
+              td.text-left 
+                +docs-css-variable-color('secondary-color-dark')
+              td
+                input(type="color", name="secondary-color-dark", value="#E5E5F9")
+            tr
+              th.text-left secondary-light
+              td.text-left 
+                code $secondary-color-light
+              td.text-left 
+                +docs-css-variable-color('secondary-color-light')
+              td
+                input(type="color", name="secondary-color-light", value="#FEFEFF")
+
+            tr
+              td.text-left(colspan=4)
+                h5#gray-colors Gray colors
+            tr
+              th.text-left gray
+              td.text-left 
+                code $gray-color
+              td.text-left 
+                +docs-css-variable-color('gray-color')
+              td
+                input(type="color", name="gray-color", value="#BCC3CE")
+            tr
+              th.text-left gray-dark
+              td.text-left 
+                code $gray-color-dark
+              td.text-left 
+                +docs-css-variable-color('gray-color-dark')
+              td
+                input(type="color", name="gray-color-dark", value="#66758C")
+            tr
+              th.text-left gray-light
+              td.text-left 
+                code $gray-color-light
+              td.text-left
+                +docs-css-variable-color('gray-color-light')
+              td
+                input(type="color", name="gray-color-light", value="#F7F8F9")
+
+            tr
+              td.text-left(colspan=4)
+                h5#bg-colors Bg colors
+            tr
+              th.text-left bg
+              td.text-left 
+                code $bg-color
+              td.text-left 
+                +docs-css-variable-color('bg-color')
+              td
+                input(type="color", name="bg-color", value="#BCC3CE")
+            tr
+              th.text-left bg-dark
+              td.text-left 
+                code $bg-color-dark
+              td.text-left
+                +docs-css-variable-color('bg-color-dark')
+              td
+                input(type="color", name="bg-color-dark", value="#EEF0F3")
+            tr
+              th.text-left bg-light
+              td.text-left 
+                code $bg-color-light
+              td.text-left
+                +docs-css-variable-color('bg-color-light')
+              td
+                input(type="color", name="bg-color-light", value="#FFFFFF")
+
+            tr
+              td.text-left(colspan=4)
+                h5#border-colors Border colors
+            tr
+              th.text-left border
+              td.text-left 
+                code $border-color
+              td.text-left 
+                +docs-css-variable-color('border-color')
+              td
+                input(type="color", name="border-color", value="#DADEE4")
+            tr
+              th.text-left border-dark
+              td.text-left 
+                code $border-color-dark
+              td.text-left 
+                +docs-css-variable-color('border-color-dark')
+              td
+                input(type="color", name="border-color-dark", value="#BCC3CE")
+            tr
+              th.text-left border-light
+              td.text-left 
+                code $border-color-light
+              td.text-left 
+                +docs-css-variable-color('border-color-light')
+              td
+                input(type="color", name="border-color-light", value="#F1F3F5")
+
+            tr
+              td.text-left(colspan=4)
+                h5#link-colors Link colors
+            tr
+              th.text-left link
+              td.text-left 
+                code $link-color
+              td.text-left 
+                +docs-css-variable-color('link-color')
+              td
+                input(type="color", name="link-color", value="#5755D9")
+            tr
+              th.text-left link-dark
+              td.text-left 
+                code $link-color-dark
+              td.text-left 
+                +docs-css-variable-color('link-color-dark')
+              td
+                input(type="color", name="link-color-dark", value="#302ECD")
+            tr
+              th.text-left link-light
+              td.text-left 
+                code $link-color-light
+              td.text-left 
+                +docs-css-variable-color('link-color-light')
+              td
+                input(type="color", name="link-color-light", value="#807FE2")
+
+            tr
+              td.text-left(colspan=4)
+                h5#control-colors Control colors
+            tr
+              th.text-left disabled
+              td.text-left 
+                code $disabled-color
+              td.text-left 
+                +docs-css-variable-color('disabled-color')
+              td
+                input(type="color", name="disabled-color", value="#EEF0F3")
+            tr
+              th.text-left error
+              td.text-left 
+                code $error-color
+              td.text-left 
+                +docs-css-variable-color('error-color')
+              td
+                input(type="color", name="error-color", value="#E85600")
+            tr
+              th.text-left info
+              td.text-left 
+                code $info-color
+              td.text-left 
+                +docs-css-variable-color('info-color')
+              td
+                input(type="color", name="info-color", value="#D9EDF7")
+            tr
+              th.text-left success
+              td.text-left 
+                code $success-color
+              td.text-left
+                +docs-css-variable-color('success-color')
+              td
+                input(type="color", name="success-color", value="#32B643")
+            tr
+              th.text-left warning
+              td.text-left 
+                code $warning-color
+              td.text-left 
+                +docs-css-variable-color('warning-color')
+              td
+                input(type="color", name="warning-color", value="#FFB700")
+
+            tr
+              td.text-left(colspan=4)
+                h5#body-colors Body colors
+            tr
+              td.text-left body-bg
+              td.text-left 
+                code $body-bg-color
+              td.text-left 
+                +docs-css-variable-color('body-bg-color')
+              td
+                input(type="color", name="body-bg-color", value="#FFFFFF")
+            tr
+              th.text-left body-font
+              td.text-left 
+                code $body-font-color
+              td.text-left 
+                +docs-css-variable-color('body-font-color')
+              td
+                input(type="color", name="body-font-color", value="#3B4351")
+
+            tr
+              td.text-left(colspan=4)
+                h5#other-colors Other colors
+            tr
+              th.text-left code
+              td.text-left 
+                code $code-color
+              td.text-left 
+                +docs-css-variable-color('code-color')
+              td
+                input(type="color", name="code-color", value="#D73E48")
+            tr
+              th.text-left highlight
+              td.text-left 
+                code $highlight-color
+              td.text-left 
+                +docs-css-variable-color('highlight-color')
+              td
+                input(type="color", name="highlight-color", value="#FFE9B3")
+            tr
+              th.text-left parallax-fade
+              td.text-left 
+                code $parallax-fade-color
+              td.text-left 
+                +docs-css-variable-color('parallax-fade-color')
+              td
+                input(type="color", name="parallax-fade-color", value="#FFFFFF")
+
+    +docs-subheading('colors-cards', 'Variables - Colors on cards', {slug})
+
+    p Click on the link to see color dependency change.
+    p
+      a.btn.btn-primary(href='https://angular-package.dev/ui-kit/component/theme', target='_blank') Theme demonstration
+
+    .columns
+      .column.col-12
+        .h5 Accent color
+      .column.col-3.col-md-6
+        .docs-color.bg-accent
+          .color-title #9932CC
+          .color-subtitle Accent
+
+    .columns
+      .column.col-12
+        .h5 Primary colors
+      .column.col-3.col-md-6
+        .docs-color.bg-primary
+          .color-title #5755d9
+          .color-subtitle Primary
+      .column.col-3.col-md-6
+        .docs-color.bg-primary-dark
+          .color-title #4b48d6
+          .color-subtitle Primary dark
+      .column.col-3.col-md-6
+        .docs-color.bg-primary-light
+          .color-title #6362dc
+          .color-subtitle Primary light
+
+    .columns
+      .column.col-12
+        .h5 Secondary colors
+      .column.col-3.col-md-6
+        .docs-color.bg-secondary
+          .color-title #f1f1fc
+          .color-subtitle Secondary
+      .column.col-3.col-md-6
+        .docs-color.bg-secondary-dark
+          .color-title #e5e5f9
+          .color-subtitle Secondary dark
+      .column.col-3.col-md-6
+        .docs-color.bg-secondary-light
+          .color-title #fefeff
+          .color-subtitle Secondary light
+
+    .columns
+      .column.col-12
+        .h5 Gray colors
+      .column.col-3.col-md-6
+        .docs-color.bg-gray
+          .color-title #bcc3ce
+          .color-subtitle Gray
+      .column.col-3.col-md-6
+        .docs-color.bg-gray-dark
+          .color-title #66758c
+          .color-subtitle Gray dark
+      .column.col-3.col-md-6
+        .docs-color.bg-gray-light
+          .color-title #f7f8f9
+          .color-subtitle Gray light
+
+    .columns
+      .column.col-12
+        .h5 Bg colors
+      .column.col-3.col-md-6
+        .docs-color.bg-bg
+          .color-title #f7f8f9
+          .color-subtitle Bg
+      .column.col-3.col-md-6
+        .docs-color.bg-bg-dark
+          .color-title #eef0f3
+          .color-subtitle Bg dark
+      .column.col-3.col-md-6
+        .docs-color.bg-bg-light
+          .color-title #ffffff
+          .color-subtitle Bg light
+
+    .columns
+      .column.col-12
+        .h5 Border colors
+      .column.col-3.col-md-6
+        .docs-color.bg-border
+          .color-title #dadee4
+          .color-subtitle Border
+      .column.col-3.col-md-6
+        .docs-color.bg-border-dark
+          .color-title #bcc3ce
+          .color-subtitle Border dark
+      .column.col-3.col-md-6
+        .docs-color.bg-border-light
+          .color-title #f1f3f5
+          .color-subtitle Border light
+
+    .columns
+      .column.col-12
+        .h5 Link colors
+      .column.col-3.col-md-6
+        .docs-color.bg-link
+          .color-title #5755d9
+          .color-subtitle Link
+      .column.col-3.col-md-6
+        .docs-color.bg-link-dark
+          .color-title #302ecd
+          .color-subtitle Link dark
+      .column.col-3.col-md-6
+        .docs-color.bg-link-light
+          .color-title #807fe2
+          .color-subtitle Link light
+
+    .columns
+      .column.col-12
+        .h5 Control colors
+      .column.col-3.col-md-6
+        .docs-color.bg-disabled
+          .color-title #eef0f3
+          .color-subtitle Disabled
+      .column.col-3.col-md-6
+        .docs-color.bg-error
+          .color-title #e85600
+          .color-subtitle Error
+      .column.col-3.col-md-6
+        .docs-color.bg-info
+          .color-title #d9edf7
+          .color-subtitle Info
+      .column.col-3.col-md-6
+        .docs-color.bg-success
+          .color-title #32b643
+          .color-subtitle Success
+      .column.col-3.col-md-6
+        .docs-color.bg-warning
+          .color-title #ffb700
+          .color-subtitle Warning
+
+    .columns
+      .column.col-12
+        .h5 Body colors
+      .column.col-3.col-md-6
+        .docs-color.bg-body
+          .color-title #ffffff
+          .color-subtitle Body background
+      .column.col-3.col-md-6
+        .docs-color.bg-body-font
+          .color-title #3b4351
+          .color-subtitle Body font
+
+    .columns
+      .column.col-12
+        .h5 Other colors
+      .column.col-3.col-md-6
+        .docs-color.bg-code
+          .color-title #d73e48
+          .color-subtitle Code
+      .column.col-3.col-md-6
+        .docs-color.bg-highlight.text-warning
+          .color-title #ffe9b3
+          .color-subtitle Highlight
+
+
+    +docs-subheading('sizes', 'Variables - Sizes', {slug})
+
+    p
+      | The default REM (root em) size in #[b Spectre.css] is 
+      code 20px
+      | .
+    p
+      | Please note in the Chinese/Japanese/Korean version, Chrome uses 12px as default minimum font size. That is why #[b Spectre.css] sets rem default html font size to 
+      code 20px
+      | , which is relatively easy to calculate.
+    p
+      | #[b Spectre.css] uses 
+      code 4px
+      |  as the unit size. Sizes of components are based on the unit size.
+
+
+    +docs-subheading('border', 'Variables - Border', {slug})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td border-radius
+              td
+                code $border-radius
+              td 
+                code --s-border-radius
+              td.text-right
+                code 0.1rem
+            tr
+              td border-width
+              td 
+                code $border-width
+              td
+                code --s-border-width
+              td.text-right
+                code 0.05rem
+            tr
+              td border-width-lg
+              td
+                code $border-width-lg
+              td
+                code --s-border-width-lg
+              td.text-right
+                code 0.1rem
+
+    +docs-subheading('control', 'Variables - Control', {slug})
+
+    +docs-subheading('control-sizes', 'Variables - Control sizes', {slug, tag: 'h5'})
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td control-size
+              td
+                code $control-size
+              td
+                code --s-control-size
+              td.text-right
+                code 1.8rem
+            tr
+              td control-size-sm
+              td
+                code $control-size-sm
+              td
+                code --s-control-size-sm
+              td.text-right
+                code 1.4rem
+            tr
+              td control-size-lg
+              td
+                code $control-size-lg
+              td
+                code --s-control-size-lg
+              td.text-right
+                code 2rem
+
+    +docs-subheading('control-padding', 'Variables - Control padding', {slug, tag: 'h5'})
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td control-padding-x
+              td
+                code $control-padding-x
+              td
+                code --s-control-padding-x
+              td.text-right
+                code 0.4rem
+            tr
+              td control-padding-x-sm
+              td
+                code $control-padding-x-sm
+              td
+                code --s-control-padding-x-sm
+              td.text-right
+                code 0.3rem
+            tr
+              td control-padding-x-lg
+              td
+                code $control-padding-x-lg
+              td
+                code --s-control-padding-x-lg
+              td.text-right
+                code 0.6rem
+            tr
+              td control-padding-y
+              td
+                code $control-padding-y
+              td
+                code --s-control-padding-y
+              td.text-right
+                code 0.25rem
+            tr
+              td control-padding-y-sm
+              td
+                code $control-padding-y-sm
+              td
+                code --s-control-padding-y-sm
+              td.text-right
+                code 0.05rem
+            tr
+              td control-padding-y-lg
+              td
+                code $control-padding-y-lg
+              td
+                code --s-control-padding-y-lg
+              td.text-right
+                code 0.35rem
+
+    +docs-subheading('control-icon-sizes', 'Variables - Control icon sizes', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td control-icon-size
+              td
+                code $control-icon-size
+              td
+                code --s-control-icon-size
+              td.text-right
+                code 0.8rem
+
+    +docs-subheading('control-width', 'Variables - Control width', {slug, tag: 'h5'})
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td control-width-xs
+              td
+                code $control-width-xs
+              td
+                code --s-control-width-xs
+              td.text-right
+                code 180px
+            tr
+              td control-width-sm
+              td
+                code $control-width-sm
+              td
+                code --s-control-width-sm
+              td.text-right
+                code 320px
+            tr
+              td control-width-md
+              td
+                code $control-width-md
+              td
+                code --s-control-width-md
+              td.text-right
+                code 640px
+            tr
+              td control-width-lg
+              td
+                code $control-width-lg
+              td
+                code --s-control-width-lg
+              td.text-right
+                code 960px
+            tr
+              td control-width-xl
+              td
+                code $control-width-xl
+              td
+                code --s-control-width-xl
+              td.text-right
+                code 1280px
+
+    +docs-subheading('font-sizes-line-height', 'Variables - Font sizes and line height', {slug})
+
+
+
+    +docs-subheading('font-sizes', 'Variables - Font sizes', {slug, tag: 'h5'})
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td html-font-size
+              td
+                code $html-font-size
+              td
+                code --s-html-font-size
+              td.text-right
+                code 20px
+            tr
+              td font-size
+              td
+                code $font-size
+              td
+                code --s-font-size
+              td.text-right
+                code 0.8rem
+            tr
+              td font-size
+              td
+                code $font-size-sm
+              td
+                code --s-font-size-sm
+              td.text-right
+                code 0.7rem
+            tr
+              td font-size
+              td
+                code $font-size-lg
+              td
+                code --s-font-size-lg
+              td.text-right
+                code 0.9rem
+
+    +docs-subheading('line-height', 'Variables - Line height', {slug, tag: 'h5'})
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td html-line-height
+              td
+                code $html-line-height
+              td
+                code --s-html-line-height
+              td.text-right
+                code 1.5
+            tr
+              td line-height
+              td
+                code $line-height
+              td
+                code --s-line-height
+              td.text-right
+                code 1.2rem
+
+    +docs-subheading('hero-sizes', 'Variables - Hero sizes', {slug})
+
+    .docs-demo.columns
+      .column.col-12 
+        p These are common variables for the 
+          a(href='../layout/hero.html') #[b hero]
+          |  element defined in the #[code _variables.scss] via the Sass map #[code $hero-size] variable.
+      .column.col-12
+        table.docs-table.table.text-center
+          thead
+            tr
+              th xs 
+              th sm 
+              th md  
+              th lg  
+              th xl 
+              th 2x 
+          tbody
+            tr
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-primary.docs-dot
+              td
+                .bg-secondary.docs-dot
+
+      .column.col-12
+        pre.code(data-lang='SCSS')
+          code
+            :highlight(lang="scss")
+              // src/_variables.scss
+              // Hero sizes.
+              $hero-size: (
+                'xs': 1rem, // --#{$var-prefix}-hero-size-xs.
+                'sm': 2rem, // --#{$var-prefix}-hero-size-sm.
+                'md': 4rem, // --#{$var-prefix}-hero-size-md.
+                'lg': 8rem, // --#{$var-prefix}-hero-size-lg.
+                'xl': 10rem // --#{$var-prefix}-hero-size-xl.
+              ) !default;
+
+        p 
+          | Common hero size Sass and CSS variables list
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Class
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td 
+                code .hero.hero-size-xs
+              td
+                code $hero-size['xs']
+              td
+                code --s-hero-size-xs
+              td.text-right
+                code 1rem
+            tr
+              td
+                code .hero.hero-size-sm
+              td
+                code $hero-size['sm']
+              td
+                code --s-hero-size-sm
+              td.text-right
+                code 2rem
+            tr
+              td
+                code .hero.hero-size-md
+              td
+                code $hero-size['md']
+              td
+                code --s-hero-size-md
+              td.text-right
+                code 4rem
+            tr
+              td
+                code .hero.hero-size-lg
+              td
+                code $hero-size['lg']
+              td
+                code --s-hero-size-lg
+              td.text-right
+                code 8rem
+            tr
+              td
+                code .hero.hero-size-xl
+              td
+                code $hero-size['xl']
+              td
+                code --s-hero-size-xl
+              td.text-right
+                code 10rem
+
+    +docs-subheading('layout-spacing', 'Variables - Layout spacing', {slug})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td layout-spacing
+              td
+                code $layout-spacing
+              td
+                code --s-layout-spacing
+              td.text-right
+                code 0.4
+            tr
+              td layout-spacing-sm
+              td
+                code $layout-spacing-sm
+              td
+                code --s-layout-spacing-sm
+              td.text-right
+                code 0.8
+            tr
+              td layout-spacing
+              td
+                code $layout-spacing-lg
+              td
+                code --s-layout-spacing-lg
+              td.text-right
+                code 0.8
+            tr
+              td layout-spacing-unit
+              td
+                code $layout-spacing-unit
+              td
+                code --s-layout-spacing-unit
+              td.text-right
+                code 1rem
+
+    +docs-subheading('parallax', 'Variables - Parallax', {slug})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td parallax-deg
+              td
+                code $parallax-deg
+              td
+                code --s-parallax-deg
+              td.text-right
+                code 3deg
+            tr
+              td parallax-offset
+              td
+                code $parallax-offset
+              td
+                code --s-parallax-offset
+              td.text-right
+                code 4.5px
+            tr
+              td parallax-offset-z
+              td
+                code $parallax-offset-z
+              td
+                code --s-parallax-offset-z
+              td.text-right
+                code 50px
+            tr
+              td parallax-perspective
+              td
+                code $parallax-perspective
+              td
+                code --s-parallax-perspective
+              td.text-right
+                code 1000px
+            tr
+              td parallax-scale
+              td
+                code $parallax-scale
+              td
+                code --s-parallax-scale
+              td.text-right
+                code 0.95
+            tr
+              td parallax-fade-color
+              td
+                code $parallax-fade-color
+              td
+                code --s-parallax-fade-color
+              td.text-right
+                code #FFFFFF
+
+    +docs-subheading('responsive-breakpoints', 'Variables - Responsive breakpoints', {slug})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td size-xs
+              td
+                code $size-xs
+              td
+                code --s-size-xs
+              td.text-right
+                code 480px
+            tr
+              td size-sm
+              td
+                code $size-sm
+              td
+                code --s-size-sm
+              td.text-right
+                code 600px
+            tr
+              td size-md
+              td
+                code $size-md
+              td
+                code --s-size-md
+              td.text-right
+                code 840px
+            tr
+              td size-lg
+              td
+                code $size-lg
+              td
+                code --s-size-lg
+              td.text-right
+                code 960px
+            tr
+              td size-xl
+              td
+                code $size-xl
+              td
+                code --s-size-xl
+              td.text-right
+                code 1280px
+            tr
+              td size-2x
+              td
+                code $size-2x
+              td
+                code --s-size-2x
+              td.text-right
+                code 1440px
+
+    +docs-subheading('transition-duration', 'Variables - Transition duration', {slug})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th Code
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td transition-duration
+              td
+                code $transition-duration
+              td
+                code --s-transition-duration
+              td.text-right
+                code 0.2s
+
+    +docs-subheading('units', 'Variables - Units', {slug})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td unit-o
+              td
+                code $unit-o
+              td
+                code --s-unit-o
+              td.text-right
+                code 0.05rem
+            tr
+              td unit-h
+              td
+                code $unit-h
+              td
+                code --s-unit-h
+              td.text-right
+                code 0.1rem
+            tr
+              td unit-1
+              td
+                code $unit-1
+              td
+                code --s-unit-1
+              td.text-right
+                code 0.2rem
+            tr
+              td unit-2
+              td
+                code $unit-2
+              td
+                code --s-unit-2
+              td.text-right
+                code 0.4rem
+            tr
+              td unit-3
+              td
+                code $unit-3
+              td
+                code --s-unit-3
+              td.text-right
+                code 0.6rem
+            tr
+              td unit-4
+              td
+                code $unit-4
+              td
+                code --s-unit-4
+              td.text-right
+                code 0.8rem
+            tr
+              td unit-5
+              td
+                code $unit-5
+              td
+                code --s-unit-5
+              td.text-right
+                code 1rem
+            tr
+              td unit-6
+              td
+                code $unit-6
+              td
+                code --s-unit-6
+              td.text-right
+                code 1.2rem
+            tr
+              td unit-7
+              td
+                code $unit-7
+              td
+                code --s-unit-7
+              td.text-right
+                code 1.4rem
+            tr
+              td unit-8
+              td
+                code $unit-8
+              td
+                code --s-unit-8
+              td.text-right
+                code 1.6rem
+            tr
+              td unit-9
+              td
+                code $unit-9
+              td
+                code --s-unit-9
+              td.text-right
+                code 1.8rem
+            tr
+              td unit-10
+              td
+                code $unit-10
+              td
+                code --s-unit-10
+              td.text-right
+                code 2rem
+            tr
+              td unit-12
+              td
+                code $unit-12
+              td
+                code --s-unit-12
+              td.text-right
+                code 2.4rem
+            tr
+              td unit-16
+              td
+                code $unit-16
+              td
+                code --s-unit-16
+              td.text-right
+                code 3.2rem
+
+    +docs-subheading('z-index', 'Variables - z-index', {slug})
+
+    .docs-demo.columns
+      .column.col-12
+        table.docs-table.table.table-striped.text-left
+          thead
+            tr
+              th
+              th Sass variable
+              th CSS variable 
+              th.text-right Default value
+          tbody
+            tr
+              td z-index-0
+              td
+                code $zindex-0
+              td
+                code --s-z-index-0
+              td.text-right
+                code 1
+            tr
+              td z-index-1
+              td
+                code $zindex-1
+              td
+                code --s-z-index-1
+              td.text-right
+                code 100
+            tr
+              td z-index-2
+              td
+                code $zindex-2
+              td
+                code --s-z-index-2
+              td.text-right
+                code 200
+            tr
+              td z-index-3
+              td
+                code $zindex-3
+              td
+                code --s-z-index-3
+              td.text-right
+                code 300
+            tr
+              td z-index-4
+              td
+                code $zindex-4
+              td
+                code --s-z-index-4
+              td.text-right
+                code 400
+
+
+    +docs-pagination({ path: 'installation', name: 'Installation' }, { path: 'custom', name: 'Custom version' })
+
+    include ../_layout/_ad-c.pug
+

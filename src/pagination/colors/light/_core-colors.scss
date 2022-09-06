@@ -1,0 +1,9 @@
+// Variables.
+@use '../../../variables' as *;
+
+// Set the color scheme to light.
+$color-scheme: light;
+
+@use '../../mixins/pagination-theme-light.mixin' as *;
+
+@include pagination-theme-light('core-colors');

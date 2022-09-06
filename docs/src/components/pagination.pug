@@ -7,14 +7,43 @@ block variables
   - var description = 'Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development. Spectre provides basic styles for typography and elements, flexbox based responsive layout system, pure CSS components and utilities with best practice coding and consistent design language.'
 
 block docs-content
-  +docs-heading('pagination', 'Pagination')
+  +docs-heading(slug, 'Pagination', {parent, name: 'Components'})
+    +docs-menu('Pagination', {parent, slug},
+      {
+        anchor: 'previous-next',
+        name: 'Previous & next',
+        items: [
+          { anchor: 'simple', name: 'Simple' },
+          { anchor: 'border', name: 'Border' },
+          { anchor: 'border-icons', name: 'Border and icons' },
+        ]
+      },
+      {
+        anchor: 'state',
+        name: 'State',
+        items: [
+          { anchor: 'active', name: 'Active' },
+          { anchor: 'disabled', name: 'Disabled' }
+        ]
+      },
+      { anchor: 'colors', name: 'Colors' }
+    )
+    p
+      small.label.label-secondary Colors
+
     include ../_layout/_ad-g.pug
+
+    p
+      | Add a container element with the #[code pagination] class.
+      | And add child elements with the #[code page-item] class.
+      | The #[code page-item] with the #[code active] class will be highlighted.
+      | You can add the #[code disabled] class to the #[code page-item] to have unclickable page links.
 
     .docs-demo.columns
       .column.col-xs-12
         ul.pagination
           li.page-item
-            a(href="#pagination") Prev
+            a(href="#pagination") Previous
           li.page-item
             a(href="#pagination") 1
           li.page-item
@@ -31,10 +60,45 @@ block docs-content
             a(href="#pagination") 9
           li.page-item
             a(href="#pagination") Next
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <ul class="pagination">
+            <li class="page-item">
+              <a href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item">
+              <a href="#">1</a>
+            </li>
+            <li class="page-item">
+              <span>...</span>
+            </li>
+            <li class="page-item">
+              <a href="#">4</a>
+            </li>
+            <li class="page-item active">
+              <a href="#">5</a>
+            </li>
+            <li class="page-item">
+              <a href="#">6</a>
+            </li>
+            <li class="page-item">
+              <span>...</span>
+            </li>
+            <li class="page-item">
+              <a href="#">9</a>
+            </li>
+            <li class="page-item">
+              <a href="#">Next</a>
+            </li>
+          </ul>
+
+    .docs-demo.columns
       .column.col-xs-12
         ul.pagination
           li.page-item.disabled
-            a(href="#pagination" tabindex="-1") Prev
+            a(href="#pagination" tabindex="-1") Previous
           li.page-item.active
             a(href="#pagination") 1
           li.page-item
@@ -47,13 +111,6 @@ block docs-content
             a(href="#pagination") 9
           li.page-item
             a(href="#pagination") Next
-
-    p
-      | Add a container element with the #[code pagination] class.
-      | And add child elements with the #[code page-item] class.
-      | The #[code page-item] with the #[code active] class will be highlighted.
-      | You can add the #[code disabled] class to the #[code page-item] to have unclickable page links.
-
     pre.code(data-lang='HTML')
       code
         :highlight(lang="html")
@@ -81,19 +138,21 @@ block docs-content
             </li>
           </ul>
 
+    +docs-subheading('previous-next-simple', 'Previous & next', {slug})
+
+    p You could use previous and next pagination to navigate. 
+
     .docs-demo.columns
       .column.col-12
         ul.pagination
           li.page-item.page-prev
             a(href="#pagination")
-              .page-item-subtitle Previous
-              .page-item-title.h5 Getting started
+              span.page-item-subtitle Previous
+              span.page-item-title Getting started
           li.page-item.page-next
             a(href="#pagination")
-              .page-item-subtitle Next
-              .page-item-title.h5 Layout
-
-    p You could use previous and next pagination to navigate. 
+              span.page-item-subtitle Next
+              span.page-item-title Layout
 
     pre.code(data-lang='HTML')
       code
@@ -101,18 +160,771 @@ block docs-content
           <ul class="pagination">
             <li class="page-item page-prev">
               <a href="#">
-                <div class="page-item-subtitle">Previous</div>
-                <div class="page-item-title h5">Getting started</div>
+                <span class="page-item-subtitle">Previous</span>
+                <span class="page-item-title">Getting started</span>
               </a>
             </li>
             <li class="page-item page-next">
               <a href="#">
-                <div class="page-item-subtitle">Next</div>
-                <div class="page-item-title h5">Layout</div>
+                <span class="page-item-subtitle">Next</span>
+                <span class="page-item-title">Layout</span>
               </a>
             </li>
           </ul>
-          
+
+    +docs-subheading('previous-next-border', 'Previous & next - Border', {slug, tag: 'h5'})
+
+    p Add the #[code pagination-border] class to main element to have border around page items.
+
+    .docs-demo.columns
+      .column.col-12
+        ul.pagination.pagination-border
+          li.page-item.page-prev
+            a(href="#pagination")
+              span.page-item-subtitle Previous - Getting started
+              span.page-item-title Variables
+          li.page-item.page-next
+            a(href="#pagination")
+              span.page-item-subtitle Getting started - Next
+              span.page-item-title Browser support
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <ul class="pagination pagination-border"> <!-- Add .pagination-border class here -->
+            <li class="page-item page-prev">
+              <a href="#">
+                <span class="page-item-subtitle">Previous - Getting started</span>
+                <span class="page-item-title">Variables</span>
+              </a>
+            </li>
+            <li class="page-item page-next">
+              <a href="#">
+                <span class="page-item-subtitle">Getting started - Next</span>
+                <span class="page-item-title">Browser support</span>
+              </a>
+            </li>
+          </ul>
+
+    +docs-subheading('previous-next-border-icons', 'Previous & next - Border with icons', {slug, tag: 'h5'})
+
+    p Add an additional #[code pagination-icon] class to main element and add icon #[code #{'<i class="fa-solid fa-arrow-left-long"></i>'}] in the page item left and 
+      | add item #[code #{'<i class="fa-solid fa-arrow-right-long"></i>'}] in the page item right to have page item with arrows.
+
+    .docs-demo.columns
+      .column.col-12
+        ul.pagination.pagination-border.pagination-icon
+          li.page-item.page-prev
+            a(href="#pagination")
+              i.fa-solid.fa-arrow-left-long
+              span
+                span.page-item-subtitle Getting started - Previous
+                span.page-item-title Variables
+          li.page-item.page-next
+            a(href="#pagination")
+              span
+                span.page-item-subtitle Next - Getting started
+                span.page-item-title Browser support
+              i.fa-solid.fa-arrow-right-long
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <ul class="pagination pagination-border pagination-icon"> <!-- Add .pagination-icon class here -->
+            <li class="page-item page-prev">
+              <a href="#">
+                <i class="fa-solid fa-arrow-left-long"></i>
+                <span>
+                  <span class="page-item-subtitle">Previous</span>
+                  <span class="page-item-title">Getting started</span>
+                </span>
+              </a>
+            </li>
+            <li class="page-item page-next">
+              <a href="#">
+                <span>
+                  <span class="page-item-subtitle">Next</span>
+                  <span class="page-item-title">Layout</span>
+                </span>
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </a>
+            </li>
+          </ul>
+
+    +docs-subheading('state', 'Pagination - State', {slug})
+
+    +docs-subheading('state-active', 'Pagination - State active', {slug, tag: 'h5'})
+
+    p To activate one of the pages add #[code .active] class to the element with the #[code .page-item] class.
+
+    .docs-demo.columns
+      .column.col-xs-12
+        ul.pagination
+          li.page-item
+            a(href="#pagination") Previous
+          li.page-item
+            a(href="#pagination") 1
+          li.page-item
+            span ...
+          li.page-item.active
+            a(href="#pagination") 4
+          li.page-item
+            a(href="#pagination") 5
+          li.page-item
+            a(href="#pagination") 6
+          li.page-item
+            span ...
+          li.page-item
+            a(href="#pagination") 9
+          li.page-item
+            a(href="#pagination") Next
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <ul class="pagination">
+            <li class="page-item">
+              <a href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item">
+              <a href="#">1</a>
+            </li>
+            <li class="page-item">
+              <span>...</span>
+            </li>
+            <li class="page-item active"> <!-- Add active class here -->
+              <a href="#">4</a>
+            </li>
+            <li class="page-item">
+              <a href="#">5</a>
+            </li>
+            <li class="page-item">
+              <a href="#">6</a>
+            </li>
+            <li class="page-item">
+              <span>...</span>
+            </li>
+            <li class="page-item">
+              <a href="#">9</a>
+            </li>
+            <li class="page-item">
+              <a href="#">Next</a>
+            </li>
+          </ul>
+
+    p Activate the left or right page item by adding the #[code .active] class to the #[code .page-prev] or #[code .page-next].
+
+    .docs-demo.columns
+      .column.col-12
+        ul.pagination.pagination-border.pagination-icon
+          li.page-item.page-prev.active
+            a(href="#pagination")
+              i.fa-solid.fa-arrow-left-long
+              span
+                span.page-item-subtitle Getting started - Previous
+                span.page-item-title Variables
+          li.page-item.page-next
+            a(href="#pagination")
+              span
+                span.page-item-subtitle Next - Getting started
+                span.page-item-title Browser support
+              i.fa-solid.fa-arrow-right-long
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <ul class="pagination pagination-border pagination-icon">
+            <li class="page-item page-prev active"> <!-- Add class active here -->
+              <a href="#">
+                <i class="fa-solid fa-arrow-left-long"></i>
+                <span>
+                  <span class="page-item-subtitle">Getting started - Previous</span>
+                  <span class="page-item-title">Variables</span>
+                </span>
+              </a>
+            </li>
+            <li class="page-item page-next">
+              <a href="#">
+                <span>
+                  <span class="page-item-subtitle">Next - Getting started</span>
+                  <span class="page-item-title">Browser support</span>
+                </span>
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </a>
+            </li>
+          </ul>
+
+    p Activate both, the left and right page items by adding the #[code .active] class to the #[code .page-prev] and #[code .page-next], or 
+      | add #[code .active] / #[code .pagination-active] to the container element.
+
+    .docs-demo.columns
+      .column.col-12
+        ul.pagination.pagination-border.pagination-icon.active
+          li.page-item.page-prev
+            a(href="#pagination")
+              i.fa-solid.fa-arrow-left-long
+              span
+                span.page-item-subtitle Getting started - Previous
+                span.page-item-title Variables
+          li.page-item.page-next
+            a(href="#pagination")
+              span
+                span.page-item-subtitle Next - Getting started
+                span.page-item-title Browser support
+              i.fa-solid.fa-arrow-right-long
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <ul class="pagination pagination-border pagination-icon active"> <!-- Add class active here -->
+            <li class="page-item page-prev">
+              <a href="#">
+                <i class="fa-solid fa-arrow-left-long"></i>
+                <span>
+                  <span class="page-item-subtitle">Getting started - Previous</span>
+                  <span class="page-item-title">Variables</span>
+                </span>
+              </a>
+            </li>
+            <li class="page-item page-next">
+              <a href="#">
+                <span>
+                  <span class="page-item-subtitle">Next - Getting started</span>
+                  <span class="page-item-title">Browser support</span>
+                </span>
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </a>
+            </li>
+          </ul>
+
+    +docs-subheading('state-disabled', 'Pagination - Disabled', {slug, tag: 'h5'})
+
+    p To disable one of the pages add #[code .disabled] class to the element with the #[code .page-item] class.
+
+    .docs-demo.columns
+      .column.col-xs-12
+        ul.pagination
+          li.page-item
+            a(href="#pagination") Previous
+          li.page-item
+            a(href="#pagination") 1
+          li.page-item
+            span ...
+          li.page-item.active.disabled
+            a(href="#pagination") 4
+          li.page-item
+            a(href="#pagination") 5
+          li.page-item
+            a(href="#pagination") 6
+          li.page-item
+            span ...
+          li.page-item
+            a(href="#pagination") 9
+          li.page-item
+            a(href="#pagination") Next
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <ul class="pagination">
+            <li class="page-item">
+              <a href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item">
+              <a href="#">1</a>
+            </li>
+            <li class="page-item">
+              <span>...</span>
+            </li>
+            <li class="page-item active disabled"> <!-- Add .disabled class here -->
+              <a href="#">4</a>
+            </li>
+            <li class="page-item">
+              <a href="#">5</a>
+            </li>
+            <li class="page-item">
+              <a href="#">6</a>
+            </li>
+            <li class="page-item">
+              <span>...</span>
+            </li>
+            <li class="page-item">
+              <a href="#">9</a>
+            </li>
+            <li class="page-item">
+              <a href="#">Next</a>
+            </li>
+          </ul>
+
+    p To disable pagination add #[code .disabled] / #[code .pagination-disabled] class to the container element with the #[code pagination].
+
+    .docs-demo.columns
+      .column.col-xs-12
+        ul.pagination.pagination-disabled
+          li.page-item
+            a(href="#pagination") Previous
+          li.page-item
+            a(href="#pagination") 1
+          li.page-item
+            span ...
+          li.page-item
+            a(href="#pagination") 4
+          li.page-item
+            a(href="#pagination") 5
+          li.page-item
+            a(href="#pagination") 6
+          li.page-item
+            span ...
+          li.page-item
+            a(href="#pagination") 9
+          li.page-item
+            a(href="#pagination") Next
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <ul class="pagination pagination-disabled"> <!-- Add .disabled / .pagination-disabled class here -->
+            <li class="page-item">
+              <a href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item">
+              <a href="#">1</a>
+            </li>
+            <li class="page-item">
+              <span>...</span>
+            </li>
+            <li class="page-item active"> <!-- Add .disabled class here -->
+              <a href="#">4</a>
+            </li>
+            <li class="page-item">
+              <a href="#">5</a>
+            </li>
+            <li class="page-item">
+              <a href="#">6</a>
+            </li>
+            <li class="page-item">
+              <span>...</span>
+            </li>
+            <li class="page-item">
+              <a href="#">9</a>
+            </li>
+            <li class="page-item">
+              <a href="#">Next</a>
+            </li>
+          </ul>
+
+    p To disable left or right page item add the #[code .disabled] class to the #[code .page-prev] or #[code .page-next].
+
+    .docs-demo.columns
+      .column.col-12
+        ul.pagination.pagination-border.pagination-icon
+          li.page-item.page-prev.disabled
+            a(href="#pagination")
+              i.fa-solid.fa-arrow-left-long
+              span
+                span.page-item-subtitle Getting started - Previous
+                span.page-item-title Variables
+          li.page-item.page-next
+            a(href="#pagination")
+              span
+                span.page-item-subtitle Next - Getting started
+                span.page-item-title Browser support
+              i.fa-solid.fa-arrow-right-long
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <ul class="pagination pagination-border pagination-icon">
+            <li class="page-item page-prev disabled"> <!-- Add disabled here -->
+              <a href="#">
+                <i class="fa-solid fa-arrow-left-long"></i>
+                <span>
+                  <span class="page-item-subtitle">Getting started - Previous</span>
+                  <span class="page-item-title">Variables</span>
+                </span>
+              </a>
+            </li>
+            <li class="page-item page-next">
+              <a href="#">
+                <span>
+                  <span class="page-item-subtitle">Next - Getting started</span>
+                  <span class="page-item-title">Browser support</span>
+                </span>
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </a>
+            </li>
+          </ul>
+
+    p To disable both, left and right page items add to both #[code .disabled] class or add #[code .disabled] / #[code .pagination-disabled] class to the container element.
+
+    .docs-demo.columns
+      .column.col-12
+        ul.pagination.pagination-border.pagination-icon.disabled
+          li.page-item.page-prev
+            a(href="#pagination")
+              i.fa-solid.fa-arrow-left-long
+              span
+                span.page-item-subtitle Getting started - Previous
+                span.page-item-title Variables
+          li.page-item.page-next
+            a(href="#pagination")
+              span
+                span.page-item-subtitle Next - Getting started
+                span.page-item-title Browser support
+              i.fa-solid.fa-arrow-right-long
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <ul class="pagination pagination-border pagination-icon disabled"> <!-- Add .disabled here -->
+            <li class="page-item page-prev">
+              <a href="#">
+                <i class="fa-solid fa-arrow-left-long"></i>
+                <span>
+                  <span class="page-item-subtitle">Getting started - Previous</span>
+                  <span class="page-item-title">Variables</span>
+                </span>
+              </a>
+            </li>
+            <li class="page-item page-next">
+              <a href="#">
+                <span>
+                  <span class="page-item-subtitle">Next - Getting started</span>
+                  <span class="page-item-title">Browser support</span>
+                </span>
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </a>
+            </li>
+          </ul>
+
+    +docs-subheading('colors', 'Pagination - Colors', {slug})
+
+    p
+      | The following table contains the available colors for the pagination.
+      | If the color dark is available then add to the class name suffix #[code -dark], for example, to gray color #[code pagination-gray-dark].
+
+    table.docs-table.table.table-hover.table-striped.text-center
+      thead
+        tr
+          th
+          th.text-left Code
+          th Available
+          th Dark 
+          th Light
+      tbody
+        tr
+          th.text-left Dark
+          td.text-left
+            code pagination-dark
+          td 
+            +docs-dot(true)
+          td
+            +docs-dot(false)
+          td
+            +docs-dot(false)
+        tr
+          th.text-left Light
+          td.text-left
+            code pagination-light
+          td 
+            +docs-dot(true)
+          td
+            +docs-dot(false)
+          td
+            +docs-dot(false)
+        tr
+          th.text-left Accent
+          td.text-left
+            code pagination-accent
+          td 
+            +docs-dot(true)
+          td
+            +docs-dot(false)
+          td
+            +docs-dot(false)
+        tr
+          th.text-left Primary
+          td.text-left
+            code pagination-primary
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(true)
+        tr
+          th.text-left Secondary
+          td.text-left
+            code pagination-secondary
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(true)
+        tr
+          th.text-left Gray
+          td.text-left
+            code pagination-gray
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(true)
+        tr
+          th.text-left Bg
+          td.text-left
+            code pagination-bg
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(true)
+        tr
+          th.text-left Border
+          td.text-left
+            code pagination-border*
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(true)
+        tr
+          th.text-left Link
+          td.text-left
+            code pagination-link
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(true)
+        tr
+          th.text-left Disabled
+          td.text-left
+            code pagination-disabled
+          td
+            +docs-dot(false)
+          td
+            +docs-dot(false)
+          td
+            +docs-dot(false)
+        tr
+          th.text-left Error
+          td.text-left
+            code pagination-error
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(false)
+          td
+            +docs-dot(false)
+        tr
+          th.text-left Info
+          td.text-left
+            code pagination-info
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(false)
+          td
+            +docs-dot(false)
+        tr
+          th.text-left Success
+          td.text-left
+            code pagination-success
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(false)
+          td
+            +docs-dot(false)
+        tr
+          th.text-left Body bg
+          td.text-left
+            code pagination-body-bg
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(false)
+          td
+            +docs-dot(false)
+        tr
+          th.text-left Body font
+          td.text-left
+            code pagination-body-font
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(false)
+          td
+            +docs-dot(false)
+        tr
+          th.text-left Code
+          td.text-left
+            code pagination-code
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(false)
+          td
+            +docs-dot(false)
+        tr
+          th.text-left Highlight
+          td.text-left
+            code pagination-highlight
+          td
+            +docs-dot(true)
+          td
+            +docs-dot(false)
+          td
+            +docs-dot(false)
+
+    +docs-subheading('colors-accent', 'Pagination - Accent color', {slug, tag: 'h5'})
+
+    p This is the only example of the #[code accent] color.
+
+    .docs-demo.columns
+      .column.col-xs-12
+        ul.pagination.pagination-accent
+          li.page-item
+            a(href="#pagination") Previous
+          li.page-item
+            a(href="#pagination") 1
+          li.page-item
+            span ...
+          li.page-item
+            a(href="#pagination") 4
+          li.page-item.active
+            a(href="#pagination") 5
+          li.page-item
+            a(href="#pagination") 6
+          li.page-item
+            span ...
+          li.page-item
+            a(href="#pagination") 9
+          li.page-item
+            a(href="#pagination") Next
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <ul class="pagination pagination-accent">
+            <li class="page-item">
+              <a href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item ">
+              <a href="#">1</a>
+            </li>
+            <li class="page-item">
+              <span>...</span>
+            </li>
+            <li class="page-item">
+              <a href="#">4</a>
+            </li>
+            <li class="page-item active">
+              <a href="#">5</a>
+            </li>
+            <li class="page-item">
+              <a href="#">6</a>
+            </li>
+            <li class="page-item">
+              <span>...</span>
+            </li>
+            <li class="page-item">
+              <a href="#">9</a>
+            </li>
+            <li class="page-item">
+              <a href="#">Next</a>
+            </li>
+          </ul>
+
+    .docs-demo.columns
+      .column.col-12
+        ul.pagination.pagination-border.pagination-icon.pagination-accent
+          li.page-item.page-prev.disabled
+            a(href="#pagination")
+              i.fa-solid.fa-arrow-left-long
+              span
+                span.page-item-subtitle Getting started - Previous
+                span.page-item-title Variables
+          li.page-item.page-next
+            a(href="#pagination")
+              span
+                span.page-item-subtitle Next - Getting started
+                span.page-item-title Browser support
+              i.fa-solid.fa-arrow-right-long
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Add accent here -->
+          <ul class="pagination pagination-border pagination-icon pagination-accent">
+            <li class="page-item page-prev disabled"> <!-- Add disabled here -->
+              <a href="#">
+                <i class="fa-solid fa-arrow-left-long"></i>
+                <span>
+                  <span class="page-item-subtitle">Getting started - Previous</span>
+                  <span class="page-item-title">Variables</span>
+                </span>
+              </a>
+            </li>
+            <li class="page-item page-next">
+              <a href="#">
+                <span>
+                  <span class="page-item-subtitle">Next - Getting started</span>
+                  <span class="page-item-title">Browser support</span>
+                </span>
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </a>
+            </li>
+          </ul>
+
+    .docs-demo.columns
+      .column.col-12
+        ul.pagination.pagination-border.pagination-icon.pagination-accent
+          li.page-item.page-prev.active
+            a(href="#pagination")
+              i.fa-solid.fa-arrow-left-long
+              span
+                span.page-item-subtitle Getting started - Previous
+                span.page-item-title Variables
+          li.page-item.page-next
+            a(href="#pagination")
+              span
+                span.page-item-subtitle Next - Getting started
+                span.page-item-title Browser support
+              i.fa-solid.fa-arrow-right-long
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <!-- Add accent here -->
+          <ul class="pagination pagination-border pagination-icon pagination-accent">
+            <li class="page-item page-prev active"> <!-- Add active here -->
+              <a href="#">
+                <i class="fa-solid fa-arrow-left-long"></i>
+                <span>
+                  <span class="page-item-subtitle">Getting started - Previous</span>
+                  <span class="page-item-title">Variables</span>
+                </span>
+              </a>
+            </li>
+            <li class="page-item page-next">
+              <a href="#">
+                <span>
+                  <span class="page-item-subtitle">Next - Getting started</span>
+                  <span class="page-item-title">Browser support</span>
+                </span>
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </a>
+            </li>
+          </ul>
+
+    +docs-pagination({path: 'nav', name: 'Nav'}, {path: 'panels', name: 'Panels'})
+
     include ../_layout/_ad-c.pug
 
-  include ../_layout/_footer.pug

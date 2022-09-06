@@ -7,7 +7,7 @@ block variables
   - var description = 'Accordions, Avatars, Badges, Bars, Breadcrumbs, Cards, Chips, Empty states, Menu, Modals, Nav, Pagination, Panels, Popovers, teps, Tabs, TIles, Toasts, Tooltips'
 
 block docs-content
-  +docs-heading('components', 'Components')
+  +docs-heading(slug, 'Components')
     include _layout/_ad-g.pug
 
     p 
@@ -187,7 +187,7 @@ block docs-content
             | Context information labels that appear on hover and focus
           .card-footer
             a.btn.btn-primary(href="components/tooltips.html") View
-              
-    include _layout/_ad-c.pug
 
-  include _layout/_footer.pug
+    +docs-pagination({parent: 'layout', path: 'responsive', name: 'Responsive'}, {path: 'accordions', name: 'Accordions'})
+
+    include _layout/_ad-c.pug
