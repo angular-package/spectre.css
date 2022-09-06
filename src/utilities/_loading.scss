@@ -8,7 +8,7 @@
 @use '../functions/var/var-negative.function' as *;
 
 // Mixins.
-@use '../mixins/border/border.mixin' as *;
+@use '../borders/mixins/border.mixin' as *;
 @use '../mixins/z-index.mixin' as *;
 
 // Loading

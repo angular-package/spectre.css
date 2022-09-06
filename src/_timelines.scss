@@ -6,7 +6,7 @@
 @use 'functions/var/unit-var.function' as *;
 
 // Mixins.
-@use 'mixins/border/border.mixin' as *;
+@use 'borders/mixins/border.mixin' as *;
 @use 'mixins/color/color.mixin' as *;
 @use 'mixins/color/background.mixin' as *;
 @use 'mixins/margin.mixins' as *;

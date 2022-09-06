@@ -12,7 +12,7 @@
 @use 'functions/var/var-negative.function' as *;
 
 // Mixins.
-@use 'mixins/border' as *;
+@use 'borders/mixins/border.mixin' as *;
 @use 'mixins/color/background.mixin' as *;
 @use 'mixins/color/color.mixin' as *;
 @use 'mixins/margin.mixins' as *;

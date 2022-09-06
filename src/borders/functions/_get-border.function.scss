@@ -1,5 +1,5 @@
-@use 'color/color.function' as *;
-@use 'var/get-var.function' as *;
+@use '../../functions/color/color.function' as *;
+@use '../../functions/var/get-var.function' as *;
 
 @function get-border(
   $width: 'border-width',

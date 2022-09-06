@@ -3,7 +3,7 @@
 @use 'sass:string';
 
 // Functions.
-@use '../../functions/get-border.function' as *;
+@use '../functions/get-border.function' as *;
 @use '../../functions/var/css-var.function' as *;
 
 @mixin border(
