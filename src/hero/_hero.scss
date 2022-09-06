@@ -41,8 +41,8 @@
   }
 
   // Hero border variants
-  @include hero-border-variant(); // Default size.
-  @include hero-border-variant($size: 'lg'); // Large size.
+  // @include hero-border-variant(); // Default size.
+  // @include hero-border-variant($size: 'lg'); // Large size.
 
   // Hero color variants.
   @include hero-theme();
