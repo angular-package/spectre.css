@@ -6,4 +6,6 @@ $color-scheme: light;
 
 @use '../../mixins/toast-theme-light.mixin' as *;
 
-// @include toast-theme-light('control-colors');
+.#{$class-prefix}toast {
+  @include toast-theme-light('core-colors');
+}

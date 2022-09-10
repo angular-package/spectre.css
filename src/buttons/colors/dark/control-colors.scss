@@ -1,0 +1,17 @@
+// Variables.
+@use '../../../variables' as *;
+
+// Set the color scheme to dark.
+$color-scheme: dark;
+
+@use '../../mixins/button-outline-theme-dark.mixin' as *;
+@use '../../mixins/button-theme-dark.mixin' as *;
+
+.#{$class-prefix}btn {
+  &:not(.btn-outline) {
+    @include button-theme-dark('control-colors');
+  }
+  &.btn-outline {
+    @include button-outline-theme-dark('control-colors');
+  }
+}

@@ -8,6 +8,10 @@ $color-scheme: normal;
 @use '../mixins/button-theme-normal.mixin' as *;
 
 .#{$class-prefix}btn {
-  @include button-theme-normal('core-colors');
-  @include button-outline-theme-normal('core-colors');
+  &:not(.btn-outline) {
+    @include button-theme-normal('control-colors');
+  }
+  &.btn-outline {
+    @include button-outline-theme-normal('control-colors');
+  }
 }

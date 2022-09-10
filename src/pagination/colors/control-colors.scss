@@ -6,4 +6,6 @@ $color-scheme: normal;
 
 @use '../mixins/pagination-theme-normal.mixin' as *;
 
-@include pagination-theme-normal('core-colors');
+.#{$class-prefix}pagination {
+  @include pagination-theme-normal('control-colors');
+}
