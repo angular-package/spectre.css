@@ -1,0 +1,7 @@
+@use '../../variables' as *;
+
+@use 'border-color-variants.mixin' as *;
+
+@mixin border-theme($prefix: $class-prefix) {
+  @include border-color-variants();
+}
