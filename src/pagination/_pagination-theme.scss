@@ -1,0 +1,9 @@
+@use '../variables' as *;
+
+@use 'mixins/pagination-theme.mixin' as *;
+
+// Pagination.
+.#{$class-prefix}pagination {
+  // Pagination theme colors.
+  @include pagination-theme(); 
+}
