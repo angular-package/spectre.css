@@ -6,4 +6,6 @@ $color-scheme: dark;
 
 @use '../../mixins/toast-theme-dark.mixin' as *;
 
-// @include toast-theme-dark('border-colors');
+.#{$class-prefix}toast {
+  @include toast-theme-dark('border-colors');
+}
