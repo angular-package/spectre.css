@@ -1,7 +1,7 @@
 @use '../../functions/color/color.function' as *;
 
-@mixin border-color-variant($color) {
-  &.border-#{$color} {
+@mixin border-color-variant($name, $color) {
+  &.border-#{$name} {
     border-color: color($color);
   }
 }
