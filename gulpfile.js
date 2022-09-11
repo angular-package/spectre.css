@@ -112,5 +112,5 @@ exports.build = series(dist_clean, parallel(build, build_colors));
 exports.build_colors = build_colors;
 exports.build_docs = series(docs_clean, parallel(build_docs_css, build_colors, build_docs_html));
 exports.build_docs_css = series(docs_clean_dist, parallel(build_docs_css, build_colors));
-exports.build_docs_html = build_docs_html;
+exports.build_docs_html = series(docs_clean_html, parallel(build_docs_html));
 exports.default = build;
