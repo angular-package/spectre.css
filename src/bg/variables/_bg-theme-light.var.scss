@@ -15,7 +15,9 @@ $bg-theme-light: (
 
     'secondary': ('secondary-color', ('secondary-color', -40%)),
     'secondary-dark': ('secondary-color-dark', ('secondary-color-dark', -40%)),
-    'secondary-light': ('secondary-color-light', ('secondary-color-light', -40%))
+    'secondary-light': ('secondary-color-light', ('secondary-color-light', -40%)),
+
+    'theme': ('theme-color', ('theme-color', 50%))
   ),
 
   // Gray colors.
