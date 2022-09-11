@@ -21,7 +21,7 @@
     border-color: color($bg-color);
     @include background($bg-color, $alpha: 0.95);
     @include color($color);
-    a {
+    a:not(.btn) {
       @include color($color, $selector: (':active', ':link', ':visited'));
     }
   }
