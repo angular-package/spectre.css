@@ -6,4 +6,6 @@ $color-scheme: dark;
 
 @use '../../mixins/pagination-theme-dark.mixin' as *;
 
-@include pagination-theme-dark('border-colors');
+.#{$class-prefix}pagination {
+  @include pagination-theme-dark('border-colors');
+}

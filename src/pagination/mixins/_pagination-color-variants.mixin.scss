@@ -5,11 +5,9 @@
 @use 'pagination-color-variant.mixin' as *;
 
 @mixin pagination-color-variants($colors...) {
-  .#{$class-prefix}pagination {
-    @each $row in $colors {
-      @each $color in $row {
-        @include pagination-color-variant($color);
-      }
+  @each $row in $colors {
+    @each $color in $row {
+      @include pagination-color-variant($color);
     }
   }
 }
