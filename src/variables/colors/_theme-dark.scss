@@ -43,7 +43,7 @@ $theme-dark: (
 
   // Body colors.
   'body-bg-color': #121212,
-  'body-font-color': 'light-color',
+  'body-font-color': ('light-color', -15%),
 
   // Control colors.
   'disabled-color': $disabled-color,
