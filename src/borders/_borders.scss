@@ -1,6 +1,5 @@
 // Variables.
 @use '../variables/core' as *;
-@use 'variables' as *;
 
 // Mixins.
 @use 'mixins/border-color-variants.mixin' as *;
@@ -11,5 +10,4 @@
 .#{$class-prefix}border {
   @include border($radius: 'border-radius');
   @include border-size-variants('lg');
-  @include border-color-variants($border-colors...);
 }
