@@ -12,6 +12,9 @@
 
 // Spectre.css theme colors.
 :root, :host {
+
+  color-scheme: $color-scheme;
+
   @if is-scheme-dark() == true {
     @media (prefers-color-scheme: dark) {
       @each $name, $color in $theme-dark {
