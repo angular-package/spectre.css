@@ -1,0 +1,41 @@
+extends ../_layout/_docs-layout.pug
+include ../_layout/_docs-color.mixin.pug
+
+block variables
+  - var color = 'link'
+  - var shade = 'dark'
+  - var slug = color + '-' + shade
+  - var parent = 'colors'
+  - var title = 'Link color dark - Colors - Spectre.css CSS Framework'
+  - var description = 'Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development. Spectre provides basic styles for typography and elements, flexbox based responsive layout system, pure CSS components and utilities with best practice coding and consistent design language.'
+
+block docs-content
+  +docs-heading(slug, 'Link ' + shade, { parent, name: 'Colors' })
+    //- +docs-menu('Theme', {parent, slug})
+
+    p
+      small.label.label-secondary CSS Variables
+      small.label.label-secondary.ml-1 Link color dark
+      small.label.label-secondary.ml-1 Customizable
+      small.label.label-secondary.ml-1 hsla
+
+    include ../_layout/_ad-g.pug
+
+    +docs-color(
+      {
+        title: 'Link color ' + shade,
+        name: color + '-color-' + shade,
+        code: slug,
+        hex: '#302ECD',
+        sass: '$' + color +'-color-' + shade,
+        theme: {
+          property: color + '-color-' + shade,
+          value: '$' + color +'-color-' + shade
+        }
+      }
+    )
+
+    +docs-pagination({ path: 'link', name: 'Link' }, { path: 'link-light', name: 'Link light' })
+
+    include ../_layout/_ad-c.pug
+

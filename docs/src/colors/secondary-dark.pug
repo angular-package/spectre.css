@@ -1,0 +1,41 @@
+extends ../_layout/_docs-layout.pug
+include ../_layout/_docs-color.mixin.pug
+
+block variables
+  - var color = 'secondary'
+  - var shade = 'dark'
+  - var slug = color + '-' + shade
+  - var parent = 'colors'
+  - var title = 'Secondary color dark - Colors - Spectre.css CSS Framework'
+  - var description = 'Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development. Spectre provides basic styles for typography and elements, flexbox based responsive layout system, pure CSS components and utilities with best practice coding and consistent design language.'
+
+block docs-content
+  +docs-heading(slug, 'Secondary ' + shade, { parent, name: 'Colors' })
+    //- +docs-menu('Theme', {parent, slug})
+
+    p
+      small.label.label-secondary CSS Variables
+      small.label.label-secondary.ml-1 Secondary color dark
+      small.label.label-secondary.ml-1 Customizable
+      small.label.label-secondary.ml-1 hsla
+
+    include ../_layout/_ad-g.pug
+
+    +docs-color(
+      {
+        title: 'Secondary color ' + shade,
+        name: color + '-color-' + shade,
+        code: slug,
+        hex: '#E5E5F9',
+        sass: '$' + color +'-color-' + shade,
+        theme: {
+          property: color + '-color-' + shade,
+          value: '$' + color +'-color-' + shade
+        }
+      }
+    )
+
+    +docs-pagination({ path: 'secondary', name: 'Secondary' }, { path: 'secondary-light', name: 'Secondary light' })
+
+    include ../_layout/_ad-c.pug
+
