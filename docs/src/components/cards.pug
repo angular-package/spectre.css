@@ -7,7 +7,23 @@ block variables
   - var description = 'Cards are flexible content containers. Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development.'
 
 block docs-content
-  +docs-heading(cards, 'Cards', {parent, name: 'Components'})
+  +docs-heading(slug, 'Cards', {parent, name: 'Components'})
+    +docs-menu('Cards', {parent, slug},
+      { anchor: 'border', name: 'Border' },
+      { anchor: 'shadow', name: 'Shadow' },
+      { anchor: 'hover', name: 'Hover' },
+      { anchor: 'color', name: 'Color' },
+      {
+        anchor: 'contact',
+        name: 'Contact',
+        items: [
+          { name: 'Overview' },
+          { anchor: 'size', name: 'Size' },
+          { anchor: 'phone-call', name: 'Phone call' },
+          { anchor: 'message', name: 'Message' },
+        ]
+      }
+    )
     include ../_layout/_ad-g.pug
 
     p Cards are flexible content containers.
@@ -104,7 +120,57 @@ block docs-content
               <button class="btn btn-primary">...</button>
             </div>
           </div>
-    
+
+
+    +docs-subheading('border', 'Cards - Border', {slug})
+
+    p
+      | Use the borders from utilities to have card with a different border color. Add the #[code border] class to the container element, 
+      | and border class with a color code, for example #[code border-primary] to get a card with border of the #[a(href='../colors/primary.html') primary] color.
+
+    .docs-demo.columns
+      .column.col-6.col-xs-12
+        .card.border.border-primary
+          .card-image
+            img.img-responsive(src="../img/osx-el-capitan.jpg" alt="OS X El Capitan")
+          .card-header
+            .card-title.h5 Microsoft
+            .card-subtitle.text-gray Software and hardware
+          .card-body
+            | Empower every person and every organization on the planet to achieve more.
+          .card-footer
+            a.btn.btn-primary(href="#cards") Do
+      .column.col-6.col-xs-12
+        .card.border.border-error
+          .card-header
+            .card-title.h5 Apple
+            .card-subtitle.text-gray Hardware and software
+          .card-image
+            img.img-responsive(src="../img/osx-yosemite.jpg" alt="OS X Yosemite")
+          .card-body
+            | To make a contribution to the world by making tools for the mind that advance humankind.
+          .card-footer
+            .btn-group.btn-group-block
+              button.btn.btn-error Buy
+              button.btn.btn-light Buy
+              button.btn.btn-light Buy
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <div class="card border border-primary">
+            ...
+          </div>
+
+          <div class="card border border-error">
+            ...
+          </div>
+
+    +docs-subheading('shadow', 'Cards - Shadow', {slug})
+
+    p
+      | Add #[code card-shadow] class to a #[code card] element to get a card with shadow.
+
     .docs-demo.columns
       .column.col-6.col-xs-12
         .card.card-shadow
@@ -117,9 +183,6 @@ block docs-content
             | Empower every person and every organization on the planet to achieve more.
           .card-footer
             a.btn.btn-primary(href="#cards") Do
-
-    p
-      | Add #[code card-shadow] class to a #[code card] element to get a card with shadow.
     
     pre.code(data-lang='HTML')
       code
@@ -128,9 +191,58 @@ block docs-content
             ...
           </div>
 
+    +docs-subheading('hover', 'Cards - Hover', {slug})
+
+    p
+      | Add #[code card-hover] class to a #[code card] container element to get a card with shadow on hover.
+
+    .docs-demo.columns
+      .column.col-6.col-xs-12
+        .card.card-hover
+          .card-image
+            img.img-responsive(src="../img/osx-el-capitan.jpg" alt="OS X El Capitan")
+          .card-header
+            .card-title.h5 Microsoft
+            .card-subtitle.text-gray Software and hardware
+          .card-body
+            | Empower every person and every organization on the planet to achieve more.
+          .card-footer
+            a.btn.btn-primary(href="#cards") Do
+    
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <div class="card card-hover">
+            ...
+          </div>
+
+    p
+      | To have the shadow visible also on focus add #[code tabindex] to the container element.
+
+    .docs-demo.columns
+      .column.col-6.col-xs-12
+        .card.card-hover(tabindex="-1")
+          .card-image
+            img.img-responsive(src="../img/osx-el-capitan.jpg" alt="OS X El Capitan")
+          .card-header
+            .card-title.h5 Microsoft
+            .card-subtitle.text-gray Software and hardware
+          .card-body
+            | Empower every person and every organization on the planet to achieve more.
+          .card-footer
+            a.btn.btn-primary(href="#cards") Do
+    
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <div class="card card-hover" tabindex="-1">
+            ...
+          </div>
+
     +docs-subheading('color', 'Cards - Color', {slug})
     p
-      | Add #[code card-color] class to a #[code card] element to get a color card.
+      | Add #[code card-color] class to a #[code card] container element to get a color card that represents the specified color. To specify the color 
+      | add the background color from the utilities, for example #[a(href="../colors/primary.html") primary] by adding #[code bg-primary] class.
 
     .docs-demo.columns
       .column.col-6.col-xs-12
@@ -139,7 +251,7 @@ block docs-content
           span.card-color-class .bg-primary
           span.card-color-sass $primary-color
           span.card-color-hex #5755D9
-          input(class="color-picker" type="color" name="primary-color" value="#5755D9")
+          input(class="card-color-picker" type="color" name="primary-color" value="#5755D9")
           span.card-color-name Primary color
     pre.code(data-lang='HTML')
       code
@@ -152,6 +264,377 @@ block docs-content
             <input class="card-color-picker" type="color" name="primary-color" value="#5755D9" />
             <span class="card-color-name">Primary color</span>
           </div>
+
+    // Contact cards.
+    +docs-subheading('contact', 'Cards - Contact', {slug})
+
+    p
+      | A contact card is designed to display personal information, like first name, surname, also with company position, and various ways to contact the 
+      | person, especially by using the phone number. It's built based on the  Spectre cards above with a few additional classes.
+    p Add the #[code card-contact] class to the container element with the #[code card] class, then add the child 
+      | element with the #[code card-image] class to put the person avatar, and add a full name to the child element with the #[code card-header] class. Inside the child element 
+      | with the #[code card-subtitle] class below the #[code card-title], you can provide a date, time, or position. To the body add a phone number, email, and others 
+      | and in the footer put a group of buttons with or without icons.
+
+    .docs-demo.columns
+      .column.col-4.col-xs-12
+        .card.card-contact
+          .card-image.text-center
+            img(src="../img/avatar-10.svg" alt="George Mueller" class="img-responsive")
+          .card-header
+            button.btn.btn-primary.float-right.tooltip.tooltip-left(data-tooltip="Add to contacts")
+              i.icon.icon-plus
+            .card-title.h5 George Mueller 
+            .card-subtitle.text-gray-dark Special forces FBI
+          .card-body
+            | +45 178 343 251
+          .card-footer
+            .btn-group.btn-group-block
+              button.btn.active
+                i.fa-solid.fa-message
+                |  Message
+              button.btn
+                i.fa-solid.fa-magnifying-glass
+                |  Details
+
+      .column.col-4.col-xs-12
+        .card.card-contact.text-right
+          .card-image.text-center
+            img(src="../img/avatar-12.svg" alt="Julissa Munoz" class="img-responsive")
+          .card-header
+            .card-title.h5 Julissa Munoz
+          .card-body
+            span.text-gray-dark Supervisor
+            br
+            span +95 770 771 772
+          .card-footer
+            .btn-group.btn-group-block
+              button.btn.active
+                i.fa-solid.fa-message
+                |  Message
+              button.btn
+                | Details 
+                i.fa-solid.fa-magnifying-glass.fa-flip-horizontal
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <div class="card card-contact">
+            <div class="card-image text-center">
+              <img class="img-responsive" src="../img/avatar-10.svg" alt="George Mueller">
+            </div>
+            <div class="card-header">
+              <button class="btn btn-primary float-right tooltip tooltip-left" data-tooltip="Add to contacts">
+                <i class="icon icon-plus"></i>
+              </button>
+              <div class="card-title h5">George Mueller </div>
+              <div class="card-subtitle text-gray-dark">Special forces FBI</div>
+            </div>
+            <div class="card-body">+45 178 343 251</div>
+            <div class="card-footer">
+              <div class="btn-group btn-group-block">
+                <button class="btn active">
+                  <i class="fa-solid fa-message"></i> 
+                  Message
+                </button>
+                <button class="btn">
+                  <i class="fa-solid fa-magnifying-glass"></i> 
+                  Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+    +docs-subheading('contact-dropdown', 'Cards - Contact - Dropdown', {slug})
+
+    p
+      | To make an action on the person from the contact card there is a dropdown menu from the menu section injected into the card follows.
+
+    .docs-demo.columns
+      .column.col-4.col-xs-12
+        .card.card-contact.text-center
+          .dropdown.p-absolute.p-1.text-left
+            a.btn.btn-link.dropdown-toggle(tabindex="0")
+              i.icon.icon-more-vert
+            ul.menu
+              li.menu-item
+                a(href="#dropdowns")
+                  | Block
+              li.menu-item
+                a(href="#dropdowns")
+                  | Edit
+              li.menu-item
+                a(href="#dropdowns")
+                  | Remove
+          .card-image.text-center
+            img(src="../img/avatar-8.svg" alt="Hailee Kelly" class="img-responsive")
+          .card-header
+            .card-title.h5 Hailee Kelly
+          .card-body
+            span.text-gray-dark Supervisor
+            br
+            span +12 578 213 233
+          .card-footer
+            .btn-group.btn-group-block
+              button.btn.active
+                i.fa-solid.fa-message
+                |  Message
+              button.btn
+                | Details 
+                i.fa-solid.fa-magnifying-glass.fa-flip-horizontal
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+
+
+    +docs-subheading('contact-size', 'Cards - Contact - Size', {slug, tag: 'h5'})
+
+    p 
+      | To change the contact size on the grid change the grid size, read more in the #[a(href='../layout/grid.html') flexbox grid] section.
+      | A way of presenting two woman with the ability to give a #[strong.text-error ♥].
+
+    .docs-demo.columns
+      .column.col-6.col-xs-12
+        .card.card-contact
+          .card-image.text-center
+            img(src="../img/avatar-9.svg" alt="Alessandra Lowery" class="img-responsive")
+          .card-header
+            .card-title.h5 Alessandra Lowery
+            .card-subtitle.text-gray-dark Operations and production
+          .card-footer
+            .btn-group.btn-group-block
+              button.btn.tooltip.tooltip-bottom(data-tooltip="Send message")
+                i.fa-regular.fa-message
+              button.btn.tooltip.tooltip-bottom(data-tooltip="Like")
+                i.fa-solid.fa-heart.text-error
+              button.btn.tooltip.tooltip-bottom(data-tooltip="Details")
+                i.fa-solid.fa-magnifying-glass
+      .column.col-6.col-xs-12
+        .card.card-contact
+          .card-image.text-center
+            img(src="../img/avatar-11.svg" alt="Paula Chambers" class="img-responsive")
+          .card-header
+            .card-title.h5 Paula Chambers
+            .card-subtitle.text-gray-dark Executive assistants
+          .card-footer
+            .btn-group.btn-group-block
+              button.btn.btn-gray.tooltip.tooltip-bottom(data-tooltip="Send message")
+                i.fa-regular.fa-message
+              button.btn.btn-gray.tooltip.tooltip-bottom(data-tooltip="Like")
+                i.fa-regular.fa-heart
+              button.btn.btn-gray.tooltip.tooltip-bottom(data-tooltip="Details")
+                i.fa-solid.fa-magnifying-glass
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <div class="card card-contact">
+            <div class="card-image text-center">
+              <img class="img-responsive" src="../img/avatar-9.svg" alt="Alessandra Lowery">
+            </div>
+            <div class="card-header">
+              <div class="card-title h5">Alessandra Lowery</div>
+              <div class="card-subtitle text-gray-dark">
+                Operations and production
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="btn-group btn-group-block">
+                <button class="btn tooltip tooltip-bottom" data-tooltip="Send message">
+                  <i class="fa-regular fa-message"></i>
+                </button>
+                <button class="btn tooltip tooltip-bottom" data-tooltip="Like">
+                  <i class="fa-solid fa-heart text-error"></i>
+                </button>
+                <button class="btn tooltip tooltip-bottom" data-tooltip="Details"
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+    +docs-subheading('contact-phone-call', 'Cards - Contact - Phone call', {slug, tag: 'h5'})
+
+    p.mt-2
+      | Contact card can be used as a ringing phone, with header within the avatar.
+
+    .docs-demo.columns
+      .column.col-4.col-xs-12
+        .card.card-contact.card-hover.text-center(tabindex="-1")
+          .card-image.text-center
+            img(src="../img/avatar-7.svg" alt="Pablo Cortez " class="img-responsive")
+          .card-header
+            .card-title.h5 Pablo Cortez
+            .card-subtitle.text-gray-dark Chief executive officer (CEO)
+          .card-body.card-phone-number
+            | +77 484 442 212
+          .card-footer
+            button.btn.btn-success.btn-block
+              i.fa-solid.fa-phone
+
+      .column.col-8.col-xs-12
+        .card.card-contact.text-center
+          .card-image.text-center
+            img(src="../img/avatar-9.svg" alt="Alessandra Lowery" class="img-responsive")
+          .card-header.card-photo-header
+            .card-title.h5 Alessandra Lowery
+            .card-subtitle Operations and production
+          .card-body.card-phone
+            | +12 578 213 233
+          .card-footer
+            button.btn.btn-success.btn-block
+              i.fa-solid.fa-phone
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <div class="card card-contact card-hover text-center" tabindex="-1">
+            <div class="card-image text-center">
+              <img class="img-responsive" src="../img/avatar-7.svg" alt="Pablo Cortez ">
+            </div>
+            <div class="card-header">
+              <div class="card-title h5">Pablo Cortez</div>
+              <div class="card-subtitle text-gray-dark">Chief executive officer (CEO)</div>
+            </div>
+            <div class="card-body card-phone">
+              +77 484 442 212
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-success btn-block">
+                <i class="fa-solid fa-phone"></i>
+              </button>
+            </div>
+          </div>
+
+    .docs-demo.columns
+      .column.col-12.col-xs-12
+        .card.card-contact.text-center
+          .card-image.text-center
+            img(src="../img/avatar-12.svg" alt="Julissa Munoz")
+          .card-header
+            .card-title.h5 Julissa Munoz
+            .card-subtitle.text-gray Supervisor
+          .card-body.card-phone
+            | +95 770 771 772
+          .card-footer
+            button.btn.btn-success.btn-block
+              i.fa-solid.fa-phone
+
+    +docs-subheading('contact', 'Cards - Contact - With initials avatar', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-4.col-xs-12
+        .card.card-contact.card-hover.text-center(tabindex="-1")
+          .card-image.text-center
+            figure.avatar(data-initial="PC")
+          .card-header
+            .card-title.h5 Pablo Cortez
+            .card-subtitle.text-gray-dark Chief executive officer (CEO)
+          .card-body
+            | +77 484 442 212
+          .card-footer
+            .btn-group.btn-group-block
+              button.btn.btn-error.btn-outline
+                i.fa-solid.fa-phone.fa-rotate-by(style="--fa-rotate-angle: 130deg;")
+
+      .column.col-4.col-xs-12
+        .card.card-contact.card-hover.text-center(tabindex="-1")
+          .card-image.text-center
+            figure.avatar.bg-light(data-initial="KM")
+          .card-header
+            .card-title.h5 Kaylynn Moore
+            .card-subtitle.text-gray-dark Financial director
+          .card-body
+            | +12 578 213 233
+          .card-footer
+            .btn-group.btn-group-block
+              button.btn.btn-success.btn-outline
+                i.fa-solid.fa-phone
+
+      .column.col-4.col-xs-12
+        .card.card-contact.card-hover.text-center(tabindex="-1")
+          .card-image.text-center.card-phone-call
+            i.fa-solid.fa-phone-volume.fa-2x.fa-fw.text-gray-dark
+          .card-header
+            .card-title.h5 Alessandra Lowery
+            .card-subtitle.text-gray-dark Operations and production
+          .card-body
+            | +12 578 213 233
+          .card-footer
+            .btn-group.btn-group-block
+              button.btn.btn-error.btn-outline
+                i.fa-solid.fa-phone.fa-rotate-by(style="--fa-rotate-angle: 130deg;")
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+
+    // Message
+    +docs-subheading('contact', 'Cards - Contact - Message', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-4.col-xs-12
+        .card.card-contact.card-hover(tabindex="-1")
+          .card-image.text-center
+            img(src="../img/avatar-7.svg" alt="Pablo Cortez " class="img-responsive")
+          .card-header
+            .card-title.h5 Pablo Cortez
+            .card-subtitle.text-gray
+              time(datetime="2018-07-07") July 7 2018, 
+                  time(datetime="22:31") 22:27
+          .card-body
+            .card-message.text-gray-dark Yeah that is crazy, but people can change their own picture and build their own Twitter conversation with this generator, so it does not ...
+          .card-footer
+            button.btn.btn-block
+              i.fa-regular.fa-envelope-open
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+          <div class="card card-contact card-hover" tabindex="-1">
+            <div class="card-image text-center">
+              <img class="img-responsive" src="../img/avatar-7.svg" alt="Pablo Cortez ">
+            </div>
+            <div class="card-header">
+              <div class="card-title h5">Pablo Cortez</div>
+              <div class="card-subtitle text-gray">
+                <time datetime="2018-07-07">July 7 2018, 
+                  <time datetime="22:31">22:27</time>
+                </time>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-message text-gray-dark">
+                Yeah that is crazy, but people can change their own picture and build their own Twitter conversation with this generator, 
+                so it does not ...
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-block"><svg class="svg-inline--fa fa-envelope-open" aria-hidden="true" focusable="false" data-prefix="far" data-icon="envelope-open" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M493.6 163c-24.88-19.62-45.5-35.37-164.3-121.6C312.7 29.21 279.7 0 256.4 0H255.6C232.3 0 199.3 29.21 182.6 41.38C63.88 127.6 43.25 143.4 18.38 163C6.75 172 0 186 0 200.8v247.2C0 483.3 28.65 512 64 512h384c35.35 0 64-28.67 64-64.01V200.8C512 186 505.3 172 493.6 163zM464 448c0 8.822-7.178 16-16 16H64c-8.822 0-16-7.178-16-16V276.7l136.1 113.4C204.3 406.8 229.8 416 256 416s51.75-9.211 71.97-26.01L464 276.7V448zM464 214.2l-166.8 138.1c-23.19 19.28-59.34 19.27-82.47 .0156L48 214.2l.1055-13.48c23.24-18.33 42.25-32.97 162.9-120.6c3.082-2.254 6.674-5.027 10.63-8.094C229.4 65.99 246.7 52.59 256 48.62c9.312 3.973 26.62 17.37 34.41 23.41c3.959 3.066 7.553 5.84 10.76 8.186C421.6 167.7 440.7 182.4 464 200.8V214.2z"></path></svg><!-- <i class="fa-regular fa-envelope-open"></i> Font Awesome fontawesome.com --></button>
+            </div>
+          </div>
+
+    +docs-subheading('contact', 'Cards - Contact - Without avatar', {slug, tag: 'h5'})
+
+    .docs-demo.columns
+      .column.col-4.col-xs-12
+        .card.card-contact.card-hover(tabindex="-1")
+          .card-header
+            .card-title.h5 Pablo Cortez
+            .card-subtitle.text-gray Chief executive officer (CEO)
+          .card-body
+            | You could help me to develop the Spectre.css,
+            | Please, call back to me...
+          .card-footer
+            button.btn.btn-block.btn-primary
+              i.fa-regular.fa-envelope-open
+
+    pre.code(data-lang='HTML')
+      code
+        :highlight(lang="html")
+
+
 
     +docs-pagination({path: 'breadcrumbs', name: 'Breadcrumbs'}, {path: 'chips', name: 'Chips'})
 
