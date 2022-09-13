@@ -1,0 +1,175 @@
+extends ../_layout/_docs-layout.pug
+include ../_layout/_docs-color.mixin.pug
+
+block variables
+  - var slug = 'overview'
+  - var parent = 'colors'
+  - var title = 'Overview - Colors - Spectre.css CSS Framework'
+  - var description = 'Spectre.css CSS Framework is a lightweight, responsive and modern CSS framework for faster and extensible development. Spectre provides basic styles for typography and elements, flexbox based responsive layout system, pure CSS components and utilities with best practice coding and consistent design language.'
+
+block docs-content
+  +docs-heading(slug, 'Overview', { parent, name: 'Colors' })
+    //- +docs-menu('Theme', {parent, slug})
+
+    +docs-subheading('overview', 'Colors - Overview', {slug})
+
+    p Click on the link to see color dependency change.
+    p
+      a.btn.btn-primary(href='https://angular-package.dev/ui-kit/component/theme', target='_blank') Theme demonstration
+
+    .columns
+      .column.col-12
+        .h5 Accent color
+      .column.col-3.col-md-6
+        .docs-color.bg-accent
+          .color-title #9932CC
+          .color-subtitle Accent
+
+    .columns
+      .column.col-12
+        .h5 Primary colors
+      .column.col-3.col-md-6
+        .docs-color.bg-primary
+          .color-title #5755d9
+          .color-subtitle Primary
+      .column.col-3.col-md-6
+        .docs-color.bg-primary-dark
+          .color-title #4B48D6
+          .color-subtitle Primary dark
+      .column.col-3.col-md-6
+        .docs-color.bg-primary-light
+          .color-title #6362DC
+          .color-subtitle Primary light
+
+    .columns
+      .column.col-12
+        .h5 Secondary colors
+      .column.col-3.col-md-6
+        .docs-color.bg-secondary
+          .color-title #F1F1Fc
+          .color-subtitle Secondary
+      .column.col-3.col-md-6
+        .docs-color.bg-secondary-dark
+          .color-title #E5E5F9
+          .color-subtitle Secondary dark
+      .column.col-3.col-md-6
+        .docs-color.bg-secondary-light
+          .color-title #FEFEFF
+          .color-subtitle Secondary light
+
+    .columns
+      .column.col-12
+        .h5 Gray colors
+      .column.col-3.col-md-6
+        .docs-color.bg-gray
+          .color-title #BCC3CE
+          .color-subtitle Gray
+      .column.col-3.col-md-6
+        .docs-color.bg-gray-dark
+          .color-title #66758C
+          .color-subtitle Gray dark
+      .column.col-3.col-md-6
+        .docs-color.bg-gray-light
+          .color-title #F7F8F9
+          .color-subtitle Gray light
+
+    .columns
+      .column.col-12
+        .h5 Bg colors
+      .column.col-3.col-md-6
+        .docs-color.bg-bg
+          .color-title #F7F8F9
+          .color-subtitle Bg
+      .column.col-3.col-md-6
+        .docs-color.bg-bg-dark
+          .color-title #EEF0F3
+          .color-subtitle Bg dark
+      .column.col-3.col-md-6
+        .docs-color.bg-bg-light
+          .color-title #FFFFFF
+          .color-subtitle Bg light
+
+    .columns
+      .column.col-12
+        .h5 Border colors
+      .column.col-3.col-md-6
+        .docs-color.bg-border
+          .color-title #DADEE4
+          .color-subtitle Border
+      .column.col-3.col-md-6
+        .docs-color.bg-border-dark
+          .color-title #BCC3CE
+          .color-subtitle Border dark
+      .column.col-3.col-md-6
+        .docs-color.bg-border-light
+          .color-title #F1F3F5
+          .color-subtitle Border light
+
+    .columns
+      .column.col-12
+        .h5 Link colors
+      .column.col-3.col-md-6
+        .docs-color.bg-link
+          .color-title #5755D9
+          .color-subtitle Link
+      .column.col-3.col-md-6
+        .docs-color.bg-link-dark
+          .color-title #302ECD
+          .color-subtitle Link dark
+      .column.col-3.col-md-6
+        .docs-color.bg-link-light
+          .color-title #807FE2
+          .color-subtitle Link light
+
+    .columns
+      .column.col-12
+        .h5 Control colors
+      .column.col-3.col-md-6
+        .docs-color.bg-disabled
+          .color-title #EEF0F3
+          .color-subtitle Disabled
+      .column.col-3.col-md-6
+        .docs-color.bg-error
+          .color-title #E85600
+          .color-subtitle Error
+      .column.col-3.col-md-6
+        .docs-color.bg-info
+          .color-title #D9EDF7
+          .color-subtitle Info
+      .column.col-3.col-md-6
+        .docs-color.bg-success
+          .color-title #32B643
+          .color-subtitle Success
+      .column.col-3.col-md-6
+        .docs-color.bg-warning
+          .color-title #FFB700
+          .color-subtitle Warning
+
+    .columns
+      .column.col-12
+        .h5 Body colors
+      .column.col-3.col-md-6
+        .docs-color.bg-body
+          .color-title #FFFFFF
+          .color-subtitle Body background
+      .column.col-3.col-md-6
+        .docs-color.bg-body-font
+          .color-title #3B4351
+          .color-subtitle Body font
+
+    .columns
+      .column.col-12
+        .h5 Other colors
+      .column.col-3.col-md-6
+        .docs-color.bg-code
+          .color-title #D73E48
+          .color-subtitle Code
+      .column.col-3.col-md-6
+        .docs-color.bg-highlight.text-warning
+          .color-title #FFE9B3
+          .color-subtitle Highlight
+
+    +docs-pagination({ parent: 'getting-started', path: 'whatsnew', name: 'What\s new' }, { path: 'accent', name: 'Accent' })
+
+    include ../_layout/_ad-c.pug
+
