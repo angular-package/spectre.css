@@ -1,0 +1,8 @@
+// Functions.
+@use '../../mixins/color/background.mixin' as *;
+
+@mixin dot-color-variant($name, $color) {
+  &.dot-#{$name} {
+    @include background($color);
+  }
+}

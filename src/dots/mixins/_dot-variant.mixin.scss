@@ -1,0 +1,14 @@
+
+// Functions.
+@use '../../functions/color/color.function' as *;
+@use '../../functions/var/css-var.function' as *;
+
+// Mixins.
+@use 'dot-color-variants.mixin' as *;
+
+@mixin dot-variant($colors, $shadow-color: false) {
+  @include dot-color-variants($colors);
+  @if $shadow-color {
+    box-shadow: 0 0 0 css-var('border-width', $suffix: 'lg') color($shadow-color);
+  }
+}
