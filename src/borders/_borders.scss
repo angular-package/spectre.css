@@ -1,5 +1,10 @@
 // Variables.
+@use '../variables/border' as *;
 @use '../variables/core' as *;
+
+// Functions.
+@use '../mixins/set-var.mixin' as *;
+@use '../functions/var/css-var.function' as *;
 
 // Mixins.
 @use 'mixins/border-color-variants.mixin' as *;
@@ -8,6 +13,18 @@
 
 // Default border.
 .#{$class-prefix}border {
-  @include border($radius: 'border-radius');
+  @include border();
   @include border-size-variants('lg');
+
+  // Style.
+  &.border-dotted {
+    border-style: dotted;
+  }
+
+  // Radius.
+  &.border-radius {
+    // Add the CSS variable to set custom border radius in the style='--s-border-radius: '
+    @include set-var('custom-border-radius', css-var('border-radius'));
+    border-radius: css-var('custom-border-radius');
+  }
 }
