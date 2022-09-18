@@ -1,0 +1,16 @@
+// Variables.
+@use '../variables/border.var' as *;
+
+// Mixins.
+@use '../../mixins/set-var.mixin' as *;
+
+:root, :host {
+  // Border radius.
+  @include set-var($border-prefix, $border-radius, $suffix: 'radius'); // $unit-h
+  // Border width.
+  @if $border-size {
+    @each $size, $width in $border-size {
+      @include set-var('#{$border-prefix}-width', $width, $suffix: $size);
+    }  
+  }
+}
