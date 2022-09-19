@@ -2,7 +2,7 @@
 
 @use '../variables' as *;
 
-@mixin border-color-variants($colors: $border-colors) {
+@mixin border-color-variants($colors) {
   @if $colors {
     @each $name, $color in $colors {
       @include border-color-variant($name, $color);
