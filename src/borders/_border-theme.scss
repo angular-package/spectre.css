@@ -1,7 +1,8 @@
 @use '../variables' as *;
+@use 'variables/border-colors.var' as *;
 
 @use 'mixins/border-theme.mixin' as *;
 
 .#{$class-prefix}border {
-  @include border-theme;
+  @include border-theme($border-colors);
 }  
