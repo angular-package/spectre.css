@@ -1,6 +1,6 @@
 // Variables.
-@use '../variables/border' as *;
 @use '../variables/core' as *;
+@use 'variables/border-sizes.var' as *;
 
 // Functions.
 @use '../mixins/set-var.mixin' as *;
@@ -14,9 +14,12 @@
 // Default border.
 .#{$class-prefix}border {
   @include border();
-  @include border-size-variants('lg');
+  @include border-size-variants($border-sizes...);
 
   // Style.
+  &.border-dashed {
+    border-style: dashed;
+  }
   &.border-dotted {
     border-style: dotted;
   }
