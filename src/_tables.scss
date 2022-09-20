@@ -87,4 +87,9 @@
       }
     }
   }
+
+  tfoot > tr > th,
+  tfoot > tr > td {
+    @include border($side: top);
+  }
 }
