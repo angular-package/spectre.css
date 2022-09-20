@@ -1,11 +1,12 @@
 // Variables.
 @use '../../variables/core' as *;
+@use '../variables/border.var' as *;
 
 // Set the color scheme to normal.
 $color-scheme: normal;
 
 @use '../mixins/border-theme-normal.mixin' as *;
 
-.#{$class-prefix}border {
+.#{$class-prefix}#{$border-prefix} {
   @include border-theme-normal('core-colors');
 }

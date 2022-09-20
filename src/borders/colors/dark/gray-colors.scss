@@ -1,11 +1,12 @@
 // Variables.
 @use '../../../variables/core' as *;
+@use '../../variables/border.var' as *;
 
 // Set the color scheme to dark.
 $color-scheme: dark;
 
 @use '../../mixins/border-theme-dark.mixin' as *;
 
-.#{$class-prefix}border {
+.#{$class-prefix}#{$border-prefix} {
   @include border-theme-dark('gray-colors');
 }
