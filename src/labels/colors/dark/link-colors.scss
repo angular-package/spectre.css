@@ -1,0 +1,11 @@
+// Variables.
+@use '../../../variables' as *;
+
+// Set the color scheme to dark.
+$color-scheme: dark;
+
+@use '../../mixins/label-theme-dark.mixin' as *;
+
+.#{$class-prefix}label {
+  @include label-theme-dark('link-colors');
+}

@@ -1,0 +1,11 @@
+// Variables.
+@use '../../../variables/core' as *;
+
+// Set the color scheme to light.
+$color-scheme: light;
+
+@use '../../mixins/border-theme-light.mixin' as *;
+
+.#{$class-prefix}border {
+  @include border-theme-light('gray-colors');
+}

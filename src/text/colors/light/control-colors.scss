@@ -1,0 +1,9 @@
+// Variables.
+@use '../../../variables/core' as *;
+
+// Set the color scheme to light.
+$color-scheme: light;
+
+@use '../../mixins/text-theme-light.mixin' as *;
+
+@include text-theme-light('control-colors');

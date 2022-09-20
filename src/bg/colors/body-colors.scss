@@ -1,0 +1,9 @@
+// Variables.
+@use '../../variables/core' as *;
+
+// Set the color scheme to normal.
+$color-scheme: normal;
+
+@use '../mixins/bg-theme-normal.mixin' as *;
+
+@include bg-theme-normal('body-colors');

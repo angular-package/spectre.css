@@ -1,0 +1,9 @@
+@use '../../../variables' as *;
+
+$color-scheme: dark;
+
+@use '../../mixins/hero-theme-dark.mixin' as *;
+
+.#{$class-prefix}hero {
+  @include hero-theme-dark('link-colors');
+}

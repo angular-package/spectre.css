@@ -1,0 +1,9 @@
+// Variables.
+@use '../../../variables/core' as *;
+
+// Set the color scheme to dark.
+$color-scheme: dark;
+
+@use '../../mixins/text-theme-dark.mixin' as *;
+
+@include text-theme-dark('gray-colors');
