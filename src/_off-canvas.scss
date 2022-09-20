@@ -90,12 +90,6 @@ $off-canvas-breakpoint: $size-lg !default;
     // Size.
     width: 100%;
     height: 100%;
-
-    // Border.
-    border-color: transparent;
-    border-radius: 0;
-
-    @include background('dark', $alpha: 0.1);
   }
 
   .off-canvas-sidebar {
