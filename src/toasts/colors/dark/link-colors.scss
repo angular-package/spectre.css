@@ -1,11 +1,12 @@
 // Variables.
 @use '../../../variables' as *;
+@use '../../variables' as *;
 
 // Set the color scheme to normal.
 $color-scheme: dark;
 
 @use '../../mixins/toast-theme-dark.mixin' as *;
 
-.#{$class-prefix}toast {
+.#{$toast} {
   @include toast-theme-dark('link-colors');
 }

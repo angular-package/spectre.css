@@ -1,3 +1,7 @@
+@forward 'toast-theme-dark.var';
+@forward 'toast-theme-light.var';
+@forward 'toast-theme-normal.var';
+
 // (color group name, color group name #1)
 $toast-theme: (
   'dark': ('core-colors', 'control-colors'),

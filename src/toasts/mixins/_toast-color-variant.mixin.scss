@@ -1,7 +1,10 @@
 // Sass.
 @use 'sass:list';
 
-@use '../../variables' as *;
+// Variables.
+@use '../../buttons/variables' as *;
+@use '../../variables/core' as *;
+@use '../variables/toast.var' as *;
 
 // Functions.
 @use '../../functions/color/color.function' as *;
@@ -17,11 +20,11 @@
   $bg-color: 'dark',
   $color: 'light'
 ) {
-  &.toast-#{$name} {
+  &.#{$toast}-#{$name} {
     border-color: color($bg-color);
     @include background($bg-color, $alpha: 0.95);
     @include color($color);
-    a:not(.btn) {
+    a:not(.#{$button-name}) {
       @include color($color, $selector: (':active', ':link', ':visited'));
     }
   }

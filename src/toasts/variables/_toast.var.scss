@@ -1,0 +1,6 @@
+@forward 'toast-theme.var';
+
+@use '../../variables/core' as *;
+
+$_toast: 'toast';
+$toast: '#{$class-prefix}#{$_toast}';

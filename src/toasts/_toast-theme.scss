@@ -1,0 +1,18 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use 'variables/toast.var' as *;
+
+// Mixins.
+@use 'mixins/toast-theme.mixin' as *;
+
+// Toasts.
+.#{$toast} {
+  // Includes the toast themes.
+  @include toast-theme(
+    $dark: map.get($toast-theme, 'dark'),
+    $light: map.get($toast-theme, 'light'),
+    $normal: map.get($toast-theme, 'normal')
+  );
+}

@@ -1,5 +1,7 @@
 // Variables.
+@use '../buttons/variables' as *;
 @use '../variables/core' as *;
+@use 'variables' as *;
 
 // Mixins.
 @use '../borders/mixins/border.mixin' as *;
@@ -11,7 +13,7 @@
 @use 'mixins/toast-theme.mixin' as *;
 
 // Toasts
-.#{$class-prefix}toast {
+.#{$toast} {
   // Display.
   display: block;
 
@@ -24,7 +26,7 @@
   @include background('dark');
   @include color('light');
 
-  a {
+  a:not(.#{$button-name}) {
     @include color('light');
     text-decoration: underline;
     @include color(
@@ -34,8 +36,16 @@
     );
   }
 
+  &.#{$toast}-icon {
+    display: flex;
+    > div {
+      flex: 1 1 100%;
+      @include padding-left('unit-2');
+    }
+  }
+
   // Button clear.
-  .btn-clear {
+  .#{$button-name}-clear {
     @include margin('unit-h');
   }
 
@@ -44,7 +54,4 @@
       margin-bottom: 0;
     }
   }
-
-  // Includes the toast themes.
-  @include toast-theme();
 }
