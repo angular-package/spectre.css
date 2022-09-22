@@ -1,0 +1,13 @@
+@forward 'hero-size.var';
+@forward 'hero-theme.var';
+
+@use '../../variables/core' as *;
+
+// Hero class name without prefix.
+$hero-name: 'hero' !default;
+
+// CSS variable name.
+$var-hero: $hero-name !default; // --#{$var-prefix}-#{$var-hero}
+
+// Basic hero class name with prefix.
+$hero: '#{$class-prefix}#{$hero-name}';

@@ -1,9 +1,14 @@
+// Variables.
 @use '../../../variables' as *;
+@use '../../variables' as *;
 
+// Set color scheme to dark.
 $color-scheme: dark;
 
+// Mixins.
 @use '../../mixins/hero-theme-dark.mixin' as *;
 
-.#{$class-prefix}hero {
+// Initialize mixin.
+.#{$hero} {
   @include hero-theme-dark('gray-colors');
 }
