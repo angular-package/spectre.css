@@ -1,14 +1,11 @@
 // Variables.
-@use '../../variables/core' as *;
 @use '../variables' as *;
 
 // Mixins.
-@use '../../mixins/set-var.mixin' as *;
+@use '../mixins/hero-set-size-vars.mixin' as *;
 
 // Hero size.
 :root,
 :host {
-  @each $size, $value in $hero-size {
-    @include set-var('#{$var-hero}-size', $value, $suffix: $size);
-  }
+  @include hero-set-size-vars($hero-size);
 }

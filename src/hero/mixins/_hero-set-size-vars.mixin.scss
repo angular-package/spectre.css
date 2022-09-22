@@ -1,0 +1,15 @@
+// Variables.
+@use '../../variables/core' as *;
+@use '../variables' as *;
+
+// Mixins.
+@use '../../mixins/set-vars.mixin' as *;
+
+@mixin hero-set-size-vars(
+  $values,
+  $prefix: $var-prefix,
+  $var-hero: $var-hero
+) {
+  @include set-vars('#{$var-hero}-size', $values, $prefix);
+}
+
