@@ -9,9 +9,10 @@
 @mixin hero-size-variant(
   $size,
   $hero-name: $hero-name,
-  $class-prefix: $class-prefix
+  $class-prefix: $class-prefix,
+  $var-hero: $var-hero
 ) {
   &.#{hero-class(($size), $hero-name, $class-prefix)} {
-    @include padding(('#{$hero-name}-size', ('suffix': $size)), 'unit-0');
+    @include padding(('#{$var-hero}-size', ('suffix': $size)), 'unit-0');
   }
 }
