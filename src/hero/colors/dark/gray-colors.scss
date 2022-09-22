@@ -1,14 +1,15 @@
 // Variables.
 @use '../../../variables' as *;
-@use '../../variables' as *;
+@use '../../spectre-hero-variables' as *;
 
 // Set color scheme to dark.
 $color-scheme: dark;
 
 // Mixins.
 @use '../../mixins/hero-theme-dark.mixin' as *;
+@use '../../functions/hero-class.function' as *;
 
 // Initialize mixin.
-.#{$hero} {
+.#{hero-class()} {
   @include hero-theme-dark('gray-colors');
 }

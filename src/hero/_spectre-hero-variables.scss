@@ -1,0 +1,21 @@
+@forward 'variables';
+@forward '../variables/core';
+
+/**
+ * ---
+ * Uncomment this variables to customize CSS variable names and class names.
+ * ---
+ */
+// Variables.
+// @use 'variables' as *;
+// @use '../variables/core' as *;
+
+// Update class prefix.
+// $class-prefix: 'spectre';
+
+// Update the class name.
+// $hero-name: 'new-hero';
+
+// CSS variable name.
+// $var-prefix: 'spectre';
+// $var-hero: $hero-name; // --#{$var-prefix}-#{$var-hero}
