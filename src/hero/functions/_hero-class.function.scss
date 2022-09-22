@@ -9,7 +9,7 @@
 @use '../../functions/class.function' as *;
 
 @function hero-class(
-  $names,
+  $names: (),
   $hero-name: $hero-name,
   $class-prefix: $class-prefix
 ) {
