@@ -8,6 +8,3 @@ $hero-name: 'hero' !default;
 
 // CSS variable name.
 $var-hero: $hero-name !default; // --#{$var-prefix}-#{$var-hero}
-
-// Basic hero class name with prefix.
-$hero: '#{$class-prefix}#{$hero-name}';
