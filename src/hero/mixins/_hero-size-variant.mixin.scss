@@ -1,8 +1,17 @@
+// Variables.
+@use '../../variables/core' as *;
+@use '../variables' as *;
+
 // Functions.
+@use '../functions/hero-class.function' as *;
 @use '../../mixins/padding.mixins' as *;
 
-@mixin hero-size-variant($name: 'hero', $size) {
-  &.#{$name}-#{$size} {
-    @include padding(('#{$name}-size', ('suffix': $size)), 'unit-0');
+@mixin hero-size-variant(
+  $size,
+  $hero-name: $hero-name,
+  $class-prefix: $class-prefix
+) {
+  &.#{hero-class(($size), $hero-name, $class-prefix)} {
+    @include padding(('#{$hero-name}-size', ('suffix': $size)), 'unit-0');
   }
 }
