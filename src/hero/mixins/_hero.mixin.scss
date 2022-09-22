@@ -1,0 +1,36 @@
+// Variables.
+@use '../variables' as *;
+
+// Functions.
+@use '../functions/hero-class.function' as *;
+
+// Mixins.
+@use '../../mixins/padding.mixins' as *;
+// - Hero.
+@use '../mixins/hero-size-variants.mixin' as *;
+
+@mixin hero($class: $hero) {
+  // Hero.
+  .#{$class} {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    // Default size = md.
+    @include padding-bottom(('unit-16', 0.8rem));
+    @include padding-top(('unit-16', 0.8rem));
+
+    .#{hero-class(('body'))} {
+      @include padding(('layout-spacing', true));
+    }
+
+    // Hero size variants.
+    @include hero-size-variants($hero-size, $hero);
+
+    // View height hero.
+    &.#{hero-class(('size', 'vh'))} {
+      justify-content: center;
+      height: 100vh;
+    }
+  }
+}

@@ -1,49 +1,5 @@
-@use '../variables' as *;
-@use 'variables' as *;
-
-// Functions.
-@use '../functions/var/get-var.function' as *;
-
 // Mixins.
-@use '../mixins/color/background-color.mixin' as *;
-@use '../mixins/color/color.mixin' as *;
-@use '../mixins/padding.mixins' as *;
+@use 'mixins/hero.mixin' as *;
 
-// Hero.
-@use 'mixins/hero-border-variant.mixin' as *;
-@use 'mixins/hero-size-variants.mixin' as *;
-@use 'mixins/hero-color-variant.mixin' as *;
-
-@use 'mixins/hero-theme.mixin' as *;
-
-// Hero.
-.#{$class-prefix}hero {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  // Default size = md.
-  @include padding-bottom(('unit-16', 0.8rem));
-  @include padding-top(('unit-16', 0.8rem));
-
-  .hero-body {
-    @include padding(('layout-spacing', true));
-  }
-
-  // Hero size variants
-  // Set the hero sizes variants.
-  @include hero-size-variants('hero', $hero-size);
-
-  // View height hero.
-  &.hero-size-vh {
-    justify-content: center;
-    height: 100vh;
-  }
-
-  // Hero border variants
-  // @include hero-border-variant(); // Default size.
-  // @include hero-border-variant($size: 'lg'); // Large size.
-
-  // Hero color variants.
-  @include hero-theme();
-}
+// Initialize hero.
+@include hero();
