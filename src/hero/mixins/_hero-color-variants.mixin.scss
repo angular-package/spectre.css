@@ -7,14 +7,18 @@
 // Mixins.
 @use 'hero-color-variant.mixin' as *;
 
+// Example $row: 'dark': ('dark-color', 'light-color')
+// Results: .hero.hero-dark { background-color: color('dark-color'); color: color('light-color'); }
 @mixin hero-color-variants($colors...) {
-  @each $row in $colors {
-    @each $name, $color in $row {
-      @if list.length($color) > 1 {
-        @include hero-color-variant($name, list.nth($color, 1), list.nth($color, 2));
-      } @else {
-        @include hero-color-variant($name, list.nth($color, 1));
+  @if $colors {
+    @each $row in $colors {
+      @each $name, $color in $row {
+        @if list.length($color) > 1 {
+          @include hero-color-variant($name, list.nth($color, 1), list.nth($color, 2));
+        } @else {
+          @include hero-color-variant($name, list.nth($color, 1));
+        }
       }
-    }
+    }  
   }
 }
