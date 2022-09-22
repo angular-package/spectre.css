@@ -6,9 +6,11 @@
  * Uncomment this variables to customize CSS variable names and class names.
  * ---
  */
-// Variables.
+ // Variables.
 // @use 'variables' as *;
-// @use '../variables/core' as *;
+@use '../variables/core' as *;
+
+/*! Spectre.css module: hero | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 // Update class prefix and separator.
 // $class-prefix: 'spectre';
