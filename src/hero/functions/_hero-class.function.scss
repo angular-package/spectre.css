@@ -1,0 +1,17 @@
+// Sass.
+@use 'sass:list';
+
+// Variables.
+@use '../../variables/core' as *;
+@use '../variables' as *;
+
+// Functions.
+@use '../../functions/class.function' as *;
+
+@function hero-class(
+  $names,
+  $hero-name: $hero-name,
+  $class-prefix: $class-prefix
+) {
+  @return class(list.join(($hero-name), $names), $class-prefix);
+}
