@@ -1,14 +1,13 @@
 // Variables.
-@use '../../variables' as *;
+@use '../variables' as *;
 
-// Functions.
-@use '../../functions/var/get-var.function' as *;
-
-// Hero.
+// Mixins.
 @use 'hero-size-variant.mixin' as *;
 
-@mixin hero-size-variants($name: 'hero', $sizes: $hero-size) {
-  @each $size, $value in $sizes {
-    @include hero-size-variant($name, $size);
+@mixin hero-size-variants($sizes, $hero-name: $hero-name) {
+  @if $sizes {
+    @each $size, $value in $sizes {
+      @include hero-size-variant($size, $hero-name);
+    }  
   }
 }
