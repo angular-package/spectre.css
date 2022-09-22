@@ -1,6 +1,9 @@
 // Variables.
-@forward 'css-variables/hero-size.var';
+@forward 'css-variables';
 @forward 'variables';
+
+// Functions.
+@forward 'functions';
 
 // Mixins.
 @forward 'mixins';

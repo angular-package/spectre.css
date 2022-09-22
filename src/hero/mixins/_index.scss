@@ -1,6 +1,3 @@
-// Border.
-@forward 'hero-border-variant.mixin';
-
 // Color.
 @forward 'hero-color-variant.mixin';
 @forward 'hero-color-variants.mixin';
@@ -14,3 +11,6 @@
 @forward 'hero-theme-light.mixin';
 @forward 'hero-theme-normal.mixin';
 @forward 'hero-theme.mixin';
+
+// Main style.
+@forward 'hero.mixin';
