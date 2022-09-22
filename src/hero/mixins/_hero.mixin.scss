@@ -1,4 +1,5 @@
 // Variables.
+@use '../../variables/core' as *;
 @use '../variables' as *;
 
 // Functions.
@@ -9,9 +10,14 @@
 // - Hero.
 @use '../mixins/hero-size-variants.mixin' as *;
 
-@mixin hero($class: $hero) {
+@mixin hero(
+  $name: $hero-name,
+  $size: $hero-size,
+  $var-hero: $var-hero,
+  $prefix: $class-prefix
+) {
   // Hero.
-  .#{$class} {
+  .#{hero-class((), $name, $prefix)} {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -20,15 +26,15 @@
     @include padding-bottom(('unit-16', 0.8rem));
     @include padding-top(('unit-16', 0.8rem));
 
-    .#{hero-class(('body'))} {
+    .#{hero-class(('body'), $name, $prefix)} {
       @include padding(('layout-spacing', true));
     }
 
     // Hero size variants.
-    @include hero-size-variants($hero-size, $hero);
+    @include hero-size-variants($size, $name, $prefix, $var-hero);
 
     // View height hero.
-    &.#{hero-class(('size', 'vh'))} {
+    &.#{hero-class(('size', 'vh'), $name, $prefix)} {
       justify-content: center;
       height: 100vh;
     }
