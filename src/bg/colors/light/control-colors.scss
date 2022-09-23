@@ -1,5 +1,6 @@
 // Variables.
 @use '../../../variables/core' as *;
+@use '../colors.customize' as *;
 
 // Set the color scheme to light.
 $color-scheme: light;

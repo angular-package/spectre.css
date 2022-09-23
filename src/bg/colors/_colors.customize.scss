@@ -1,0 +1,30 @@
+// Sass.
+@use 'sass:map';
+
+/**
+ * ---
+ * Uncomment this variables to customize CSS variable names and class names.
+ * Naming convention https://getbem.com/naming/
+ * ---
+ */
+// Variables.
+@use '../../variables/core' as *;
+@use '../variables' as *;
+
+/*! Spectre.css module: bg | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+// Update class prefix and separator.
+// $class-prefix: 's-';
+// $class-separator: '';
+
+// Update the class name.
+// $bg-name: 'bg__'; // Component
+
+// Dark theme: bg-colors.
+// $bg-theme-dark: map.merge($bg-theme-dark, (
+//   'bg-colors': (
+//     'bg': ('bg-color', 'body-font'), // Child component
+//     'bg--dark': ('bg-color-dark', 'body-font'), // Child component
+//     'bg--light': ('bg-color-light', 'body-font') // Child component
+//   )
+// ));
