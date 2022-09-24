@@ -14,7 +14,7 @@
 @mixin bg-theme-dark($colors...) {
   @if is-scheme-dark() == true {
     @media (prefers-color-scheme: dark) {
-      @include bg-color-variants(get-theme-colors($bg-theme-dark, $colors...)...);
+      @include bg-color-variants(get-theme-colors($bg-theme-dark, $colors...));
     }
   }
 }

@@ -14,7 +14,7 @@
 @mixin bg-theme-light($colors...) {
   @if is-scheme-light() == true {
     @media (prefers-color-scheme: light) {
-      @include bg-color-variants(get-theme-colors($bg-theme-light, $colors...)...);
+      @include bg-color-variants(get-theme-colors($bg-theme-light, $colors...));
     }
   }
 }
