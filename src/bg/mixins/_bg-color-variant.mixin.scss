@@ -1,16 +1,28 @@
 // Variables.
 @use '../../variables' as *;
+@use '../variables/bg.var' as *;
+
+// Functions.
+@use '../functions/bg-class.function' as *;
 
 // Mixins.
 @use '../../mixins/color/background.mixin' as *;
 @use '../../mixins/color/color.mixin' as *;
 
 // Background color utility mixin
-@mixin bg-color-variant($name, $bg-color, $color, $prefix: $class-prefix) {
-  .#{$prefix}bg-#{$name} {
-    @include background($bg-color, $important: !important);
-    @if $color {
-      @include color($color);
+@mixin bg-color-variant(
+  $variant,
+  $bg-color,
+  $color,
+  $name: $bg-name,
+  $prefix: $class-prefix
+) {
+  @if $variant {
+    .#{bg-class(($variant), $name, $prefix)} {
+      @include background($bg-color, $important: !important);
+      @if $color {
+        @include color($color);
+      }
     }
   }
 }
