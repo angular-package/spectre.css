@@ -13,3 +13,21 @@ $unit-9: 1.8rem !default; // --#{$var-prefix}-unit-9.
 $unit-10: 2rem !default; // --#{$var-prefix}-unit-10.
 $unit-12: 2.4rem !default; // --#{$var-prefix}-unit-12.
 $unit-16: 3.2rem !default; // --#{$var-prefix}-unit-16.
+
+$unit-size: (
+  '0': 0rem, // --#{$var-prefix}-unit-0.
+  'o': $unit-o, // --#{$var-prefix}-unit-o.
+  'h': $unit-h,  // --#{$var-prefix}-unit-h.
+  '1': $unit-1,  // --#{$var-prefix}-unit-1.
+  '2': $unit-2,  // --#{$var-prefix}-unit-2.
+  '3': $unit-3,  // --#{$var-prefix}-unit-3.
+  '4': $unit-4,  // --#{$var-prefix}-unit-4.
+  '5': $unit-5,    // --#{$var-prefix}-unit-5.
+  '6': $unit-6,  // --#{$var-prefix}-unit-6.
+  '7': $unit-7,  // --#{$var-prefix}-unit-7.
+  '8': $unit-8,  // --#{$var-prefix}-unit-8.
+  '9': $unit-9,  // --#{$var-prefix}-unit-9.
+  '10': $unit-10,   // --#{$var-prefix}-unit-10.
+  '12': $unit-12, // --#{$var-prefix}-unit-12.
+  '16': $unit-16  // --#{$var-prefix}-unit-16.
+) !default;
