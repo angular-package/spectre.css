@@ -3,6 +3,10 @@
 @use '../variables/core' as *;
 @use 'variables' as *;
 
+// Functions.
+@use '../buttons/functions/button-class.function' as *;
+@use 'functions/toast-class.function' as *;
+
 // Mixins.
 @use '../borders/mixins/border.mixin' as *;
 @use '../mixins/color/background.mixin' as *;
@@ -13,7 +17,7 @@
 @use 'mixins/toast-theme.mixin' as *;
 
 // Toasts
-.#{$toast} {
+.#{toast-class()} {
   // Display.
   display: block;
 
@@ -26,7 +30,7 @@
   @include background('dark');
   @include color('light');
 
-  a:not(.#{$button-name}) {
+  a:not(.#{button-class()}) {
     @include color('light');
     text-decoration: underline;
     @include color(
@@ -36,7 +40,7 @@
     );
   }
 
-  &.#{$toast}-icon {
+  &.#{toast-class(('icon'))} {
     display: flex;
     > div {
       flex: 1 1 100%;
@@ -45,7 +49,8 @@
   }
 
   // Button clear.
-  .#{$button-name}-clear {
+  // .#{$button}-clear {
+  .#{button-class(('clear'))} {
     @include margin('unit-h');
   }
 

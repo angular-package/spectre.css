@@ -5,10 +5,11 @@
 @use 'variables/toast.var' as *;
 
 // Mixins.
+@use 'functions/toast-class.function' as *;
 @use 'mixins/toast-theme.mixin' as *;
 
 // Toasts.
-.#{$toast} {
+.#{toast-class()} {
   // Includes the toast themes.
   @include toast-theme(
     $dark: map.get($toast-theme, 'dark'),
