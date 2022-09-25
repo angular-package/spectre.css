@@ -1,12 +1,15 @@
 // Variables.
-@use '../../../variables' as *;
-@use '../../variables' as *;
+@use '../../spectre-toasts.customize' as *;
 
 // Set the color scheme to normal.
 $color-scheme: dark;
 
+// Functions.
+@use '../../functions/toast-class.function' as *;
+
+// Mixins.
 @use '../../mixins/toast-theme-dark.mixin' as *;
 
-.#{$toast} {
+.#{toast-class()} {
   @include toast-theme-dark('other-colors');
 }
