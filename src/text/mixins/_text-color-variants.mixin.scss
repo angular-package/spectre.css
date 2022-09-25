@@ -1,14 +1,21 @@
 // Variables.
 @use '../../variables' as *;
+@use '../variables' as *;
 
 // Text.
 @use 'text-color-variant.mixin' as *;
 
 // Text color variants.
-@mixin text-color-variants($colors...) {
-  @each $row in $colors {
-    @each $name, $color in $row {
-      @include text-color-variant($name, $color);
+@mixin text-color-variants(
+  $colors,
+  $name: $text-name,
+  $prefix: $class-prefix
+) {
+  @if $colors {
+    @each $row in $colors {
+      @each $variant, $color in $row {
+        @include text-color-variant($variant, $color, $name, $prefix);
+      }
     }
   }
 }

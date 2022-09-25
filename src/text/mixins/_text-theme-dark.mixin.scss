@@ -1,6 +1,5 @@
-@use 'sass:map';
-
 // Text variables.
+@use '../../variables/core' as *;
 @use '../variables' as *;
 
 // Functions.
@@ -11,10 +10,14 @@
 @use 'text-color-variants.mixin' as *;
 
 // Initialize mixins.
-@mixin text-theme-dark($colors...) {
+@mixin text-theme-dark($colors, $name: $text-name, $prefix: $class-prefix) {
   @if is-scheme-dark() == true {
     @media (prefers-color-scheme: dark) {
-      @include text-color-variants(get-theme-colors($text-theme-light, $colors...)...);
+      @include text-color-variants(
+        get-theme-colors($text-theme-light, $colors...),
+        $name,
+        $prefix
+      );
     }
   }
 }

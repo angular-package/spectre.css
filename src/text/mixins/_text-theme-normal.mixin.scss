@@ -1,5 +1,3 @@
-@use 'sass:map';
-
 // Variables.
 @use '../../variables' as *;
 // - Text variables.
@@ -12,8 +10,12 @@
 @use 'text-color-variants.mixin' as *;
 
 // Initialize mixins.
-@mixin text-theme-normal($colors...) {
+@mixin text-theme-normal($colors, $name: $text-name, $prefix: $class-prefix) {
   @if $color-scheme == normal {
-    @include text-color-variants(get-theme-colors($text-theme-normal, $colors...)...);
+    @include text-color-variants(
+      get-theme-colors($text-theme-normal, $colors...),
+      $name,
+      $prefix
+    );
   }
 }
