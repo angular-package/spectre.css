@@ -1,79 +1,103 @@
+// Variables.
+@use 'variables' as *;
+
+// Functions.
+@use 'functions' as *;
+
 // Mixins.
 @use 'mixins/text-ellipsis.mixin' as *;
 
 // Text
 // Text alignment utilities
-.text-left {
+// .#{$text}-left {
+.#{text-class(('left'))} {
   text-align: left;
 }
 
-.text-right {
+// .#{$text}-right {
+.#{text-class(('right'))} {
   text-align: right;
 }
 
-.text-center {
+// .#{$text}-center {
+.#{text-class(('center'))} {
   text-align: center;
 }
 
-.text-justify {
+// .#{$text}-justify {
+.#{text-class(('justify'))} {
   text-align: justify;
 }
 
 // Text transform utilities
-.text-lowercase {
+// .#{$text}-lowercase {
+.#{text-class(('lowercase'))} {
   text-transform: lowercase;
 }
 
-.text-uppercase {
+// .#{$text}-uppercase {
+.#{text-class(('uppercase'))} {
   text-transform: uppercase;
 }
 
-.text-capitalize {
+// .#{$text}-capitalize {
+.#{text-class(('capitalize'))} {
   text-transform: capitalize;
 }
 
 // Text style utilities
-.text-normal {
+// .#{$text}-normal {
+.#{text-class(('normal'))} {
   font-weight: normal;
 }
 
-.text-bold {
+// .#{$text}-bold {
+.#{text-class(('bold'))} {
   font-weight: bold;
 }
 
-.text-italic {
+// .#{$text}-italic {
+.#{text-class(('italic'))} {
   font-style: italic;
 }
 
-.text-large {
+// .#{$text}-large {
+.#{text-class(('large'))} {
   font-size: 1.2em;
 }
 
-.text-small {
+// .#{$text}-small {
+.#{text-class(('small'))} {
   font-size: 0.9em;
 }
 
-.text-tiny {
+// .#{$text}-tiny {
+.#{text-class(('tiny'))} {
   font-size: 0.8em;
 }
 
-.text-muted {
+// .#{$text}-muted {
+.#{text-class(('muted'))} {
   opacity: 0.8;
 }
 
 // Text overflow utilities
-.text-ellipsis {
+// .#{$text}-ellipsis {
+.#{text-class(('ellipsis'))} {
   @include text-ellipsis();
 }
 
-.text-clip {
+// .#{$text}-clip {
+.#{text-class(('clip'))} {
   overflow: hidden;
   text-overflow: clip;
   white-space: nowrap;
 }
 
-.text-break {
+// .#{$text}-break {
+.#{text-class(('break'))} {
   hyphens: auto;
   word-break: break-word;
   word-wrap: break-word;
 }
+
