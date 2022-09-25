@@ -1,0 +1,115 @@
+// Variables.
+@use 'variables' as *;
+@use '../buttons/variables' as *;
+@use '../variables/core' as *;
+
+// Functions.
+@use '../buttons/functions/button-class.function' as *;
+@use '../functions/color/color.function' as *;
+@use '../functions/var/css-var.function' as *;
+@use '../functions/var/unit-var.function' as *;
+@use '../functions/var/var-negative.function' as *;
+@use 'functions' as *;
+
+// Mixins.
+@use '../borders/mixins/border.mixin' as *;
+@use '../mixins/color/color.mixin' as *;
+@use '../mixins/margin.mixins' as *;
+
+// Tabs.
+.#{tab-class()} {
+  // Display.
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+
+  // Position.
+  margin: css-var('unit-1') 0 calc(css-var('unit-1') - css-var('border-width')) 0; // TODO: Use the margin
+
+  // Border.
+  @include border($side: bottom, $radius: 'border-radius');
+
+  .#{tab-class(('item'))} {
+    margin-top: 0;
+    a {
+      // Position.
+      @include margin('unit-0', 'unit-2', 'unit-0', 'unit-0');
+      // Display.
+      display: block;
+      cursor: pointer;
+      // Size.
+      padding: css-var('unit-2') css-var('unit-1') calc(css-var('unit-2') - css-var('border-width', $suffix: 'lg')) css-var('unit-1');
+      // border-bottom: css-var('border-width', $suffix: 'lg') solid transparent;
+      @include border('lg', $side: bottom, $color: transparent);
+      color: inherit;
+      text-decoration: none;
+      @include color('link', $selector: (':focus', ':hover'));
+
+      i, svg {
+        pointer-events: none;
+      }
+    }
+    &.active a,
+    a.active {
+      border-bottom-color: color('primary');
+      @include color('link');
+    }
+
+
+    &.#{tab-class(('action'))} {
+      flex: 1 0 auto;
+      text-align: right;
+    }
+
+    .#{button-class(('clear'))} {
+      margin-top: var-negative(unit-var('1'));
+    }
+  }
+
+  &.#{tab-class(('block'))} {
+    .#{tab-class(('item'))} {
+      flex: 1 0 0;
+      text-align: center;
+
+      a {
+        margin: 0;
+      }
+
+      .badge {
+        &[data-badge]::after {
+          position: absolute;
+          top: unit-var('h');
+          right: unit-var('h');
+          transform: translate(0, 0);
+        }
+      }
+    }
+  }
+
+  &:not(.#{tab-class(('block'))}) {
+    .badge {
+      padding-right: 0;
+    }
+  }
+}
+
+.#{tab-class(('container'))} {
+  li.spacer {
+    flex: 1 1 100%;
+    display: flex;
+  }
+  .#{tab-class()} {
+    flex-wrap: unset;
+  }
+
+  .#{tab-class(('content'))} {
+    > div {
+      display: none;
+      animation: fadeEffect 1s;
+      &.active {
+        display: block;
+      }
+    }
+  }
+}
