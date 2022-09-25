@@ -1,0 +1,10 @@
+// Variables.
+@use '../../../variables/core' as *;
+@use '../../spectre-text.customize' as *;
+
+// Set the color scheme to normal.
+$color-scheme: normal;
+
+@use '../../mixins/text-theme-normal.mixin' as *;
+
+@include text-theme-normal('bg-colors');

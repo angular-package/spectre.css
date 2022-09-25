@@ -1,5 +1,6 @@
 // Variables.
 @use '../../../variables/core' as *;
+@use '../../spectre-text.customize' as *;
 
 // Set the color scheme to light.
 $color-scheme: light;

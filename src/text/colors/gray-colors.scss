@@ -1,9 +1,0 @@
-// Variables.
-@use '../../variables/core' as *;
-
-// Set the color scheme to normal.
-$color-scheme: normal;
-
-@use '../mixins/text-theme-normal.mixin' as *;
-
-@include text-theme-normal('gray-colors');
