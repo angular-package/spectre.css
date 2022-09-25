@@ -15,6 +15,8 @@
 // Initialize mixins.
 @mixin toast-theme-light($colors...) {
   @if is-scheme-light() == true {
-    @include toast-color-variants(get-theme-colors($toast-theme-light, $colors...)...);
+    @media (prefers-color-scheme: light) {
+      @include toast-color-variants(get-theme-colors($toast-theme-light, $colors...));
+    }
   }
 }

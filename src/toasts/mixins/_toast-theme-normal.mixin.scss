@@ -16,6 +16,6 @@
 // Initialize mixins.
 @mixin toast-theme-normal($colors...) {
   @if $color-scheme == normal {
-    @include toast-color-variants(get-theme-colors($toast-theme-normal, $colors...)...);
+    @include toast-color-variants(get-theme-colors($toast-theme-normal, $colors...));
   }
 }
