@@ -1,5 +1,6 @@
 // Sass.
 @use 'sass:list';
+@use 'sass:map';
 
 // Variables.
 @use '../../variables/core' as *;
@@ -13,5 +14,13 @@
   $name: $tab-name,
   $prefix: $class-prefix
 ) {
+  @if type-of($name) == map {
+    @if map.has-key($name, 'prefix') {
+      $prefix: map.get($name, 'prefix');
+    }
+    @if map.has-key($name, 'tab') {
+      $name: map.get($name, 'tab');
+    }
+  }
   @return class(list.join(($name), $names), $prefix);
 }
