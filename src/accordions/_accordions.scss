@@ -12,7 +12,7 @@
   input:checked ~,
   &[open] {
     // & .accordion-header > {
-    & .#{accordion-class(('header', 'test'))} > {
+    & .#{accordion-class(('header'))} > {
       .icon:first-child {
         transform: rotate(90deg);
       }
