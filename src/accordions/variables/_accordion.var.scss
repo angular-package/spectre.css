@@ -1,0 +1,14 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../../variables/core' as *;
+
+$accordion: (
+  'class-separator': map.get($class, 'separator'),
+  'class': (
+    'accordion': 'accordion',
+    'header': 'header',
+    'body': 'body'
+  )
+) !default;

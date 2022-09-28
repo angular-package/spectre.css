@@ -1,0 +1,42 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Variables.
+@use '../../variables/core' as *;
+@use '../variables/accordion.var' as *;
+
+// Functions.
+@use '../../functions/class.function' as *;
+
+// The `accordion-class` function
+@function accordion-class(
+  $names: (),
+  $name: map.get($accordion, 'class', 'accordion'),
+  $prefix: map.get($class, 'prefix')
+) {
+  @if type-of($name) == map {
+    @if map.has-key($name, 'prefix') {
+      $prefix: map.get($name, 'prefix');
+    }
+    @if map.has-key($name, 'accordion') {
+      $name: map.get($name, 'accordion');
+    }
+  }
+
+  @if list.length($names) > 0 {
+    $i: 1;
+    @each $key in $names {
+      @if map.has-key($accordion, 'class', $key) {
+        $names: list.set-nth($names, $i, map.get($accordion, 'class', $key));
+      }
+      $i: $i + 1;
+    }  
+  }
+
+  @return class(
+    list.join(($name), $names),
+    $prefix,
+    map.get($accordion, 'class-separator')
+  );
+}
