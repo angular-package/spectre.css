@@ -13,6 +13,6 @@
 @function accordion-class($names: (), $class: ()) {
   @return class(
     list.join(('accordion'), $names),
-    $class: map.merge($class, map.get($accordion, 'class'))
+    $class: map.merge(map.get($accordion, 'class'), $class)
   );
 }
