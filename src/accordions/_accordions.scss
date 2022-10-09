@@ -1,4 +1,5 @@
 // Functions.
+@use '../icons/functions/icon-class.function' as *;
 @use 'functions/accordion-class.function' as *;
 
 // Mixins.
@@ -8,45 +9,47 @@
 
 // Accordions
 // .#{$class-prefix}accordion {
-.#{accordion-class()} {
+#{accordion-class()} {
   input:checked ~,
   &[open] {
     // & .accordion-header > {
-    & .#{accordion-class(('header'))} > {
-      .icon:first-child {
+    & #{accordion-class('header')} > {
+      // .icon:first-child {
+      #{icon-class((), ('&:first-child'))} {
         transform: rotate(90deg);
       }
     }
 
     // & .accordion-body {
-    & .#{accordion-class('body')} {
+    & #{accordion-class('body')} {
       max-height: 60rem;
     }
   }
 
   // .accordion-header {
-  .#{accordion-class('header')} {
+  #{accordion-class('header')} {
     display: block;
-    @include padding('unit-1', 'unit-2');
+    @include padding(('unit', '1'), ('unit', '2'));
 
-    .icon {
+    // .icon {
+    #{icon-class()} {
       @include transition((transform, 0.05s));
     }
   }
 
   // .accordion-body {
-  .#{accordion-class('body')} {
+  #{accordion-class('body')} {
     max-height: 0;
     overflow: hidden;
-    @include margin-bottom(('layout-spacing', true));
+    @include margin-bottom(('layout', 'spacing', true));
     @include transition((max-height, 0.05s));
   }
 }
 
 // Remove default details marker in Webkit
 // summary.accordion-header {
-summary.#{accordion-class('header')} {
-  &::-webkit-details-marker {
+summary#{accordion-class('header', ('&::-webkit-details-marker'))} {
+  // &::-webkit-details-marker {
     display: none;
-  }
+  // }
 }
