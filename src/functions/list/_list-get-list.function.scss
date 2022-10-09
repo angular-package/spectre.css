@@ -1,0 +1,26 @@
+// Sass.
+@use 'sass:list';
+
+// The `list-get-list()` function returns the list from the given list if exists, otherwise null.
+@function list-get-list($list) {
+  $-list: ();
+  @if list.length($list) > 0 {
+    @each $element in $list {
+      @if type-of($element) == list {
+        $-list: list.join($-list, $element, $separator: list.separator($list));
+      }
+    }
+  }
+  @if list.length($-list) > 0 {
+    @return $-list;
+  }
+  @return null;
+}
+
+/*
+  Example usage
+  @debug list-get-list(('a', 'b', 'c')); // Returns `null`
+  @debug list-get-list(('a', 'b', 'c', ('d', 'e', 'f'))); // Returns ("d", "e", "f")
+  @debug list-get-list(('a', 'b', 'c', ('d', 'e', 'f'), 'g', 'h', (1, 2, 3))); // Returns ("d", "e", "f", 1, 2, 3)
+  @debug list-get-list(('a', 'b', 'c', ('d', (1, 2, 3, (4, 5, 6)), 'e', 'f'))); // Returns ("d", (1, 2, 3, (4, 5, 6)), "e", "f")
+*/

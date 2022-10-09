@@ -1,0 +1,30 @@
+// Sass.
+@use 'sass:list';
+
+//
+@function list-get-bool($list, $bool...) {
+  @if list.length($list) > 0 {
+    @each $element in $list {
+      @if type-of($value: $element) == bool {
+        @if list.length($bool) > 0  {
+          @if list.nth($bool, 1) == $element {
+            @return $element;
+          }
+        } @else {
+          @return $element;
+        }
+      }
+    }
+  }
+  @return null;
+}
+
+/*
+  Example usage
+  @debug list-get-bool(('a', 'b', false, 'c', 2)); // Returns `false`
+  @debug list-get-bool(('a', 'b', true, 'c', 2)); // Returns `true`
+  @debug list-get-bool(('a', 'b', 'c', (true, '5', (6,)))); // Returns `null`
+  @debug list-get-bool(('a', 'b', true, 'c', 2), false); // Returns `null`
+  @debug list-get-bool(('a', 'b', true, 'c', 2), true); // Returns `true`
+  @debug list-get-bool(('a', 'b', false, 'c', 2), false); // Returns `false`
+*/

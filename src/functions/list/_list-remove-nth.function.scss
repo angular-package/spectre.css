@@ -1,0 +1,25 @@
+// Sass.
+@use 'sass:list';
+
+//
+@function list-remove-nth($list, $index...) {
+  @if list.length($index) > 0 {
+    $-list: ();
+    $i: 1;
+    @each $element in $list {
+      @if list.index($index, $i) == null {
+        $-list: list.append($-list, $element, $separator: list.separator($list));
+      }
+      $i: $i + 1;
+    }
+    @return $-list;
+  } @else {
+    @return $list;
+  }
+}
+
+/*
+  Example usage
+  @debug list-remove-nth(('a', 'b', 'c', ('d', 'e', 'f'), 'g', 'h', 'i', 'j', 'k'), 2, 4, 7); // Returns ("a", "c", "g", "h", "j", "k")
+  @debug list-remove-nth(('a', 'b', 'c', ('d', (1, 2, 3, (4, 5, 6)), 'e', 'f'))); // Returns ("a", "b", "c", ("d", (1, 2, 3, (4, 5, 6)), "e", "f"))
+*/

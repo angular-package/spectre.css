@@ -1,0 +1,15 @@
+// Sass.
+@use 'sass:list';
+
+// The `check-list()` checks whether the given list has elements given in arbitrary argument.
+@function check-list($list, $elements...) {
+  // Check.
+  @if list.length($elements) > 0 {
+    @each $element in $elements {
+      @if list.index($list, $element) == null {
+        @error "Element '#{$element}' is not allowed";
+      }
+    }
+  }
+  @return true;
+}
