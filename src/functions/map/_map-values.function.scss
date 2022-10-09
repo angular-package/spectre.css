@@ -1,0 +1,19 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// The `map-values()` function pick the values from the specified map and key of specified elements.
+@function map-values($map, $keys...) {
+  @if list.length($keys) > 0 {
+    $i: 1;
+    @each $key in $keys {
+      @if map.has-key($map, $key) {
+        $keys: list.set-nth($keys, $i, map.get($map, $key));
+      }
+      $i: $i + 1;
+    }
+  } @else {
+    $keys: map.values($map);
+  }
+  @return $keys;
+}
