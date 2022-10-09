@@ -1,0 +1,23 @@
+// Variables.
+@use '../variables/dot.var' as *;
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../functions/dot-class.function' as *;
+
+// Mixins.
+@use 'dot-base.mixin' as *;
+@use 'dot-variant.mixin' as *;
+
+//
+@mixin dot(
+  $variant: (),
+  $colors: ('default'),
+  $class: (),
+) {
+  // .#{$class-prefix}dot {
+  #{dot-class($variant, $class)} {
+    @include dot-base;
+    @include dot-variant($colors);
+  }
+}
