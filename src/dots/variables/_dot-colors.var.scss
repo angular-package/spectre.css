@@ -1,0 +1,11 @@
+$dot-colors: (
+  'default': (
+    'active': 'success',
+    'available': 'primary',
+    'away': 'warning',
+    'busy': 'error',
+    'error': 'error',
+    'online': 'success',
+    'warning': 'warning'
+  )
+) !default;
