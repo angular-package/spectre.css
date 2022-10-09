@@ -1,18 +1,10 @@
-// Sass.
-@use 'sass:list';
-@use 'sass:map';
-
 // Variables.
-@use '../../variables/core' as *;
 @use '../variables/accordion.var' as *;
 
 // Functions.
-@use '../../functions/class.function' as *;
+@use '../../functions/class/module-class.function' as *;
 
-// The `accordion-class` function defines accordion class names.
-@function accordion-class($names: (), $class: ()) {
-  @return class(
-    list.join(('accordion'), $names),
-    $class: map.merge(map.get($accordion, 'class'), $class)
-  );
+// The `accordion-class()` function defines accordion class names with given `$name`, `$selector` and class dictionary.
+@function accordion-class($name: (), $selector: (), $class: ()) {
+  @return module-class('accordion', $name, $selector, $accordion, $class);
 }
