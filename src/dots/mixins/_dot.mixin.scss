@@ -13,11 +13,12 @@
 @mixin dot(
   $variant: (),
   $colors: ('default'),
+  $shadow-color: 'light',
   $class: (),
 ) {
   // .#{$class-prefix}dot {
   #{dot-class($variant, $class)} {
     @include dot-base;
-    @include dot-variant($colors);
+    @include dot-variant($colors, $shadow-color);
   }
 }

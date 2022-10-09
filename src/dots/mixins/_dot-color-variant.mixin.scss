@@ -1,8 +1,27 @@
-// Functions.
-@use '../../mixins/color/background.mixin' as *;
+// Variables.
+@use '../../variables/core' as *;
+@use '../variables' as *;
 
-@mixin dot-color-variant($name, $color) {
-  &.dot-#{$name} {
+// Functions.
+@use '../../borders/functions/border-width-var.function' as *;
+@use '../../functions/color/color.function' as *;
+@use '../../mixins/color/background.mixin' as *;
+@use '../functions/dot-class.function' as *;
+
+//
+@mixin dot-color-variant(
+  $variant,
+  $color,
+  $shadow-color: false,
+  $class: (),
+) {
+  // &.dot-#{$name} {
+  &#{dot-class(($variant), $class)} {
     @include background($color);
+    @if type-of($value: $shadow-color) == string {
+      // box-shadow: 0 0 0 css-var('border-width', $suffix: 'lg') color($shadow-color);
+      // box-shadow: 0 0 0 css-var(('border', 'width', 'lg')) color($shadow-color);
+      box-shadow: 0 0 0 border-width-var('lg') color($shadow-color);
+    }  
   }
 }
