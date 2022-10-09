@@ -1,8 +1,12 @@
+// Sass.
 @use 'sass:map';
 
+// The map-get-default
 @function map-get-default($map, $key, $default-value: null) {
   @if map.has-key($map, $key) {
-    @return map.get($map, $key);
+    @if map.get($map, $key) != null {
+      @return map.get($map, $key);
+    }
   }
   @return $default-value;
 }
