@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/label.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+//
+@function label-class($name: (), $selector: (), $class: ()) {
+  @return module-class('label', $name, $selector, $label, $class);
+}
