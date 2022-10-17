@@ -1,5 +1,13 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../../variables/core' as *;
+@use '../variables' as *;
+
 // Functions.
-@use'../../functions/color/color.function' as *;
+@use '../functions/label-class.function' as *;
+@use '../../functions/color/color.function' as *;
 
 // Mixins.
 @use '../../mixins/color/background.mixin' as *;
@@ -8,10 +16,19 @@
 // The mixin contains the `color` and `background` style of the values given respectively by `$color` and `$bg-color` CSS variable name.
 // Both parameters can be passed as two-index list where the second item in the list refers to the lightness, and parameter `$bg-color` can be passed using the three-index list where the third item is a label background alpha.
 // For example `$color: ('primary', -10%)` when font color `primary` should be darker by 10%, and `$bg-color: ('primary-dark', +10%)` when label background color is `primary-dark` lighter by 10%
-@mixin label-color-variant($name: 'light', $bg-color: 'primary', $color: 'light') {
-  &.label-#{$name} {
-    @include background($bg-color);
-    @include color($color);
+@mixin label-color-variant(
+  $variant: 'light',
+  $bg-color: 'primary',
+  $color: 'light',
+  $class: (),
+  $var: ()
+) {
+  $var: map.merge(map.get($label, 'var'), $var);
+
+  // &.#{$label-name}-#{$name} {
+  &#{label-class($variant, (), $class)} {
+    @include background($bg-color, $var: $var);
+    @include color($color, $var: $var);
   }
 }
 
@@ -39,8 +56,13 @@
   $bg-lightness: 0%
 ) {
   @warn 'label-class-variant() mixin is deprecated to simplify spectre.css';
-  &.label-#{$name} {
-    @include label-color-variant($color, $bg-color, $color-lightness, $bg-lightness);
+  &.#{$label-name}-#{$name} {
+    @include label-color-variant(
+      $color,
+      $bg-color,
+      $color-lightness,
+      $bg-lightness
+    );
   }
 }
 
@@ -53,7 +75,7 @@
   $bg-color: color('primary-color')
 ) {
   @warn 'label-class--variant() mixin is deprecated to simplify spectre.css';
-  &.label-#{$name} {
+  &.#{$label-name}-#{$name} {
     @include label--variant($color, $bg-color);
   }
 }
