@@ -2,11 +2,13 @@
 @use '../../functions/var/css-var.function' as *;
 
 // Mixins.
+@use '../../borders/mixins/radius/border-radius.mixin' as *;
 @use '../../mixins/padding.mixins' as *;
 
 // Label base style
 @mixin label-base() {
-  @include padding('unit-h', 'unit-1');
+  @include padding(('unit', 'h'), ('unit', '1'));
   line-height: 1.25;
-  border-radius: css-var('border-radius');
+  // border-radius: css-var('border-radius');
+  @include border-radius();
 }
