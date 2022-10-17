@@ -16,6 +16,6 @@
 // Initialize mixins.
 @mixin label-theme-normal($colors...) {
   @if $color-scheme == normal {
-    @include label-color-variants(get-theme-colors($label-theme-normal, $colors...)...);
+    @include label-color-variants(get-theme-colors($label-theme-normal, $colors...));
   }
 }

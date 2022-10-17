@@ -18,7 +18,7 @@
 @mixin label-theme-dark($colors...) {
   @if is-scheme-dark() == true {
     @media (prefers-color-scheme: dark) {
-      @include label-color-variants(get-theme-colors($label-theme-dark, $colors...)...);
+      @include label-color-variants(get-theme-colors($label-theme-dark, $colors...));
     }
   }
 }
