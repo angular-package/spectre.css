@@ -1,0 +1,18 @@
+// Variables.
+@use '../colors.customize' as *;
+@use '../../../variables/core' as *;
+
+// Set the color scheme to dark.
+$color-scheme: normal;
+
+/*! Spectre.css module: label | colors: #{$colors} | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+// Functions.
+@use '../../functions/label-class.function' as *;
+
+// Mixins.
+@use '../../mixins/label-theme-normal.mixin' as *;
+
+#{label-class()} {
+  @include label-theme-normal($colors);
+}

@@ -1,11 +1,5 @@
-// Variables.
-@use '../../../variables' as *;
+@use '../colors.customize' as *;
 
-// Set the color scheme to dark.
-$color-scheme: light;
+$colors: 'border-colors';
 
-@use '../../mixins/label-theme-light.mixin' as *;
-
-.#{$class-prefix}label {
-  @include label-theme-light('border-colors');
-}
+@use 'theme' as *;
