@@ -1,16 +1,9 @@
-@use 'sass:map';
-
-@use '../variables/label-theme.var' as *;
-
+// Mixins.
 @use 'label-theme-dark.mixin' as *;
 @use 'label-theme-light.mixin' as *;
 @use 'label-theme-normal.mixin' as *;
 
-@mixin label-theme(
-  $dark: map.get($label-theme, 'dark'),
-  $light: map.get($label-theme, 'light'),
-  $normal: map.get($label-theme, 'normal')
-) {
+@mixin label-theme($dark, $light, $normal) {
   @if $dark {
     @include label-theme-dark($dark...);
   }

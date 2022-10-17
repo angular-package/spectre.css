@@ -1,0 +1,23 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../variables/core' as *;
+@use 'variables/label.var' as *;
+
+// Functions.
+@use 'functions/label-class.function' as *;
+
+// Mixins.
+@use 'mixins/label-theme.mixin' as *;
+
+// Labels.
+// .#{$class-prefix}#{$label-name} {
+#{label-class()} {
+  // Label color variants.
+  @include label-theme(
+    $dark: map.get($label-theme, 'dark'),
+    $light: map.get($label-theme, 'light'),
+    $normal: map.get($label-theme, 'normal')
+  );
+}
