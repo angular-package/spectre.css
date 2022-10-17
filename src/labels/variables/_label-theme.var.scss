@@ -1,3 +1,6 @@
+@forward './label-theme-dark.var';
+@forward './label-theme-light.var';
+@forward './label-theme-normal.var';
 
 $label-theme: (
   'dark': ('control-colors', 'core-colors'),

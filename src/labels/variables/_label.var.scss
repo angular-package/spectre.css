@@ -1,0 +1,10 @@
+@forward 'label-theme.var';
+
+$label-name: 'label' !default;
+
+$label: (
+  'class': (
+    'label': $label-name
+  ),
+  'var': ()
+) !default;

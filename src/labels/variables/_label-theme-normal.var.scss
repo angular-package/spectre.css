@@ -41,7 +41,7 @@ $label-theme-normal: (
   'control-colors': (
     'disabled': ('disabled-color', ('disabled-color', -10%)),
     'error': ('error-color', 'light-color'),
-    'info': ('info-color', ('info-color', -50%)),
+    'info': (('info-color', -50%), 'info-color'),
     'success': ('success-color', 'light-color'),
     'warning': ('warning-color', 'light-color')
   ),
