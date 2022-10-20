@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/tooltip.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `tooltip-class()` function defines tooltip class names with given `$name`, `$selector` and class dictionary.
+@function tooltip-class($name: (), $selector: (), $class: ()) {
+  @return module-class('tooltip', $name, $selector, $tooltip, $class);
+}
