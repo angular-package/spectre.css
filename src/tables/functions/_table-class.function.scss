@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/table.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `table-class()` function defines table class names with given `$name`, `$selector` and class dictionary.
+@function table-class($name: (), $selector: (), $class: ()) {
+  @return module-class('table', $name, $selector, $table, $class);
+}
