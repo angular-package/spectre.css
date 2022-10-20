@@ -2,6 +2,7 @@
 @use 'variables/core' as *;
 
 // Functions.
+@use 'functions/class/class.function' as *;
 @use 'functions/var/get-var.function' as *;
 
 // Mixins.
@@ -11,7 +12,7 @@
 @use 'mixins/padding.mixins' as *;
 
 // Tables
-.#{$class-prefix}table {
+#{class(('table'))} {
   width: 100%;
 
   @if $rtl == true {
@@ -23,7 +24,7 @@
   border-collapse: collapse;
   border-spacing: 0;
 
-  &.table-striped {
+  &#{class(('table', 'striped'))} {
     tbody {
       tr:nth-of-type(odd) {
         @include background('bg');
@@ -32,7 +33,7 @@
   }
 
   &,
-  &.table-striped {
+  &#{class(('table', 'striped'))} {
     tbody {
       tr {
         &.active {
@@ -42,7 +43,7 @@
     }
   }
 
-  &.table-hover {
+  &#{class(('table', 'hover'))} {
     tbody {
       tr {
         &:hover {
@@ -53,7 +54,7 @@
   }
 
   // Scollable tables
-  &.table-scroll {
+  &#{class(('table', 'scroll'))} {
     display: block;
     overflow-x: auto;
     padding-bottom: 0.75rem;
@@ -71,9 +72,9 @@
   }
 
   tbody {
-    tr {
-      th {
-        a {
+    > tr {
+      > th {
+       > a {
           @include color('body-font');
         }
         @include border($side: right);
@@ -81,7 +82,7 @@
       }
 
       &:last-child {
-        td, th {
+        > td, > th {
           border-bottom: none;
         }
       }
