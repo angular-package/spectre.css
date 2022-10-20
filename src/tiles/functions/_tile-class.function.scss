@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/tile.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `tile-class()` function defines tile class names with given `$name`, `$selector` and class dictionary.
+@function tile-class($name: (), $selector: (), $class: ()) {
+  @return module-class('tile', $name, $selector, $tile, $class);
+}

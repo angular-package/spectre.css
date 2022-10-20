@@ -1,0 +1,66 @@
+// Variables.
+@use '../variables/core' as *;
+
+// Functions.
+@use 'functions/tile-class.function' as *;
+@use '../functions/class/class.function' as *;
+@use '../functions/var/css-var.function' as *;
+
+// Mixins.
+@use '../mixins/padding.mixins' as *;
+@use '../text/mixins/text-ellipsis.mixin' as *;
+
+// Tiles
+// .#{$class-prefix}tile {
+// #{class($tile-name)} {
+#{tile-class()} {
+  // Display.
+  display: flex;
+  align-content: space-between;
+  align-items: flex-start;
+
+  // .tile-icon,
+  // .tile-action {
+  // #{class(($tile-name, ('icon',), ('action',)))} {
+  #{tile-class((('icon',), ('action',)))} {
+    flex: 0 0 auto;
+  }
+  // .tile-content {
+  // #{class(($tile-name, 'content'))} {
+  #{tile-class('content')} {
+    flex: 1 1 auto;
+    &:not(:first-child) {
+      @include padding-left(('unit', '2'));
+
+    }
+    &:not(:last-child) {
+      @include padding-right(('unit', '2'));
+    }
+  }
+  // .tile-title,
+  // .tile-subtitle {
+  // #{class(($tile-name, ('title',), ('subtitle',)))} {
+  #{tile-class((('title',), ('subtitle',)))} {
+    line-height: css-var(('line', 'height'));
+  }
+
+  // &.tile-centered {
+  // #{class(('&', $tile-name, 'centered'))} {
+  #{tile-class(('&', 'centered'))} {
+    align-items: center;
+
+    // .tile-content {
+    // #{class(($tile-name, 'content'))} {
+    #{tile-class('content')} {
+      overflow: hidden;
+    }
+
+    // .tile-title,
+    // .tile-subtitle {
+    // #{class(($tile-name, ('title',), ('subtitle',)))} {
+    #{class((('title',), ('subtitle',)))} {
+      margin-bottom: 0;
+      @include text-ellipsis();
+    }
+  }
+}
