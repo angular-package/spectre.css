@@ -1,0 +1,21 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../variables/footer.var' as *;
+
+// Functions.
+@use '../../functions/color/get-theme-colors.function' as *;
+@use '../../functions/is-scheme-dark.function' as *;
+
+// Mixins.
+@use '../mixins/footer-color-variants.mixin' as *;
+
+//
+@mixin footer-theme-dark($colors...) {
+  @if is-scheme-dark() == true {
+    @include footer-color-variants(
+      get-theme-colors(map.get($footer, 'theme', 'dark'), $colors...)
+    );
+  }
+}

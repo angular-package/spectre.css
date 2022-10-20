@@ -1,0 +1,10 @@
+// Functions.
+@use 'functions/footer-class.function' as *;
+
+// Mixins.
+@use 'mixins/footer-size-variants.mixin' as *;
+@use 'mixins/footer-color-variants.mixin' as *;
+@use 'mixins/footer.mixin' as *;
+
+// Initialize.
+@include footer();

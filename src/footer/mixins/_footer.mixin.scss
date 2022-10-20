@@ -1,0 +1,63 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../../variables/core' as *;
+@use '../variables/footer-theme.var' as *;
+@use '../variables/footer.var' as *;
+
+// Functions.
+@use '../functions/footer-class.function' as *;
+@use '../../functions/class/class.function' as *;
+
+// Mixins.
+@use '../../mixins/margin.mixins' as *;
+@use '../../mixins/padding.mixins' as *;
+@use 'footer-size-variants.mixin' as *;
+@use 'footer-theme.mixin' as *;
+
+//
+@mixin footer($name: (), $size: (), $theme: (), $class: ()) {
+  // Footer theme.
+  $theme: if($theme != null, map.merge($footer-theme, $theme), $theme);
+  // Footer size.
+  $size: if($size != null, map.merge(map.get($footer, 'size'), $size), $size);
+
+  // .#{$prefix}footer {
+  #{footer-class($name, (), $class)} {
+    width: 100%;
+
+    // .columns {
+    #{class('columns')} {
+      margin: 0;
+
+      // .column {
+      #{class('column')} {
+        @include padding-top(('unit', '0'));
+        @include padding-right(('layout', 'spacing', true));
+        @include padding-bottom(('unit', '0'));
+        @include padding-left(('layout', 'spacing', true));
+      }
+    }
+
+    // Size variants.
+    @if $size != null {
+      @include footer-size-variants($size, (), $class);
+    }
+
+    // Header.
+    h5,
+    h6 {
+      @include margin-bottom(('unit', '6'));
+    }
+
+    // Color theme.
+    @if $theme != null {
+      @include footer-theme(
+        $dark: map.get($theme, 'dark'),
+        $light: map.get($theme, 'light'),
+        $normal: map.get($theme, 'normal')
+      );
+    }
+  }
+}

@@ -1,0 +1,17 @@
+// Mixins.
+@use '../../mixins/color/color.mixin' as *;
+
+//
+@mixin footer-color-variant($font-color, $link-color, $link-hover-color) {
+  @include color($font-color);
+  a {
+    @include color($link-color);
+  }
+  ul {
+    li {
+      a {
+        @include color($link-hover-color, $selector: (':hover'));
+      }
+    }
+  }
+}

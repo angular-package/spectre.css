@@ -1,0 +1,31 @@
+// Variables.
+@use 'footer-theme-dark.var' as *;
+@use 'footer-theme-light.var' as *;
+@use 'footer-theme-normal.var' as *;
+
+// Functions.
+@use '../../functions/var/css-var.function' as *;
+@use '../../functions/var/layout-spacing-var.function' as *;
+
+//
+$-footer-grid-size: calc(layout-spacing-var('', false) * css-var('html-font-size') * 2);
+
+// Footer map variable.
+$footer: (
+  'class': (
+    'footer': 'footer',
+  ),
+  'size': (
+    'xl': calc($-footer-grid-size + size-var('xl')),
+    'lg': calc($-footer-grid-size + size-var('lg')),
+    'md': calc($-footer-grid-size + size-var('md')),
+    'sm': calc($-footer-grid-size + size-var('sm')),
+    'xs': calc($-footer-grid-size + size-var('xs'))
+  ),
+  'theme': (
+    'dark': $footer-theme-dark,
+    'light': $footer-theme-light,
+    'normal': $footer-theme-normal,
+  ),
+  'var': (),
+) !default;

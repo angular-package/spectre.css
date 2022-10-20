@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/footer.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `footer-class()` function defines footer class names with given `$name`, `$selector` and class dictionary.
+@function footer-class($name: (), $selector: (), $class: ()) {
+  @return module-class('footer', $name, $selector, $footer, $class);
+}
