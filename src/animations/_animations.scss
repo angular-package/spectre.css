@@ -1,8 +1,13 @@
 // Functions.
-@use 'functions/var/unit-var.function' as *;
-@use 'functions/var/var-negative.function' as *;
+@use '../functions/var/unit-var.function' as *;
+@use '../functions/var/var-negative.function' as *;
 
 // Animations
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
 @keyframes loading {
   0% {
     transform: rotate(0deg);
