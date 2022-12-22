@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/empty.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `empty-class()` function defines empty class names with given `$name`, `$selector` and class dictionary.
+@function empty-class($class: (), $selector: (), $dictionary: ()) {
+  @return module-class('empty', $class, $selector, $empty, $dictionary);
+}
