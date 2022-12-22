@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/badge.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `badge-class()` function defines badge class names with given `$name`, `$selector` and class name `$dictionary`.
+@function badge-class($class: (), $selector: (), $dictionary: ()) {
+  @return module-class('badge', $class, $selector, $badge, $dictionary);
+}

@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/core' as *;
+
+// Mixins.
+@use 'mixins/badge.mixin' as *;
+
+/* Spectre.css module: badges | components | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+// Initialize mixin.
+@include badge;
