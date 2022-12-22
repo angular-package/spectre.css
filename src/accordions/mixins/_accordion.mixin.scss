@@ -1,0 +1,67 @@
+// Functions.
+@use '../../icons/functions/icon-class.function' as *;
+@use '../functions/accordion-class.function' as *;
+
+// Mixins.
+@use '../../menus/functions/menu-class.function' as *;
+@use '../../mixins/margin.mixins' as *;
+@use '../../mixins/padding.mixins' as *;
+@use '../../mixins/transition.mixin' as *;
+
+// The `accordion()` mixin.
+@mixin accordion($class: '', $selector: (), $dictionary: ()) {
+  // Accordions
+  // .#{$class-prefix}accordion {
+  #{accordion-class($class, $selector, $dictionary)} {
+    input:checked ~,
+    &[open] {
+      // & .accordion-header > {
+      & #{accordion-class(($class, 'header'), (), $dictionary)} > {
+        svg,
+        // .icon:first-child {
+        #{icon-class((), '&:first-child', $dictionary)} {
+          transform: rotate(90deg);
+        }
+      }
+
+      // & .accordion-body {
+      & #{accordion-class(($class, 'body'), (), $dictionary)} {
+        overflow: visible;
+        max-height: 60rem;
+      }
+    }
+
+    // .accordion-header {
+    #{accordion-class(($class, 'header'), (), $dictionary)} {
+      display: block;
+      @include padding(('unit', '1'), ('unit', '2'));
+
+      > svg,
+      // .icon {
+      > #{icon-class($dictionary: $dictionary)} {
+        @include transition((transform, 0.05s));
+        @include margin-right(('unit', '2'));
+      }
+    }
+
+    // .accordion-body {
+    #{accordion-class(($class, 'body'), (), $dictionary)} {
+      overflow: hidden;
+      max-height: 0;
+      @include margin-bottom(('layout', 'spacing', true));
+      @include transition((max-height, 0.05s));
+
+      #{menu-class('item')} > a {
+        align-items: center;
+      }
+    }
+  }
+
+  // Remove default details marker in Webkit
+  // summary.accordion-header {
+  summary#{accordion-class(($class, 'header'), '&::-webkit-details-marker', $dictionary)} {
+    // &::-webkit-details-marker {
+    display: none;
+    // }
+  }
+}
