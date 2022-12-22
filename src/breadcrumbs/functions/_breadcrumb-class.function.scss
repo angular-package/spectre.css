@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/breadcrumb.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `breadcrumb-class()` function defines breadcrumb class names with given `$name`, `$selector` and class dictionary.
+@function breadcrumb-class($class: (), $selector: (), $dictionary: ()) {
+  @return module-class('breadcrumb', $class, $selector, $breadcrumb, $dictionary);
+}

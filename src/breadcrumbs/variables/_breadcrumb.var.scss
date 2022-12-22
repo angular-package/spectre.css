@@ -1,0 +1,12 @@
+// Can be modified for breadcrumb only.
+$breadcrumb: (
+  'dictionary': (
+    'class': (
+      'breadcrumb': 'breadcrumb',
+      // 'prefix': '',
+      // 'suffix': '',
+      // 'separator': '-'
+    ),
+    'var': ()
+  )
+) !default;

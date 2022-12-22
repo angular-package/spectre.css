@@ -1,0 +1,52 @@
+// Variables.
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../functions/breadcrumb-class.function' as *;
+@use '../../functions/class/class.function' as *;
+@use '../../functions/selector-nest.function' as *;
+
+// Mixins.
+@use '../../mixins/color/color.mixin' as *;
+@use '../../mixins/margin.mixins' as *;
+@use '../../mixins/padding.mixins' as *;
+
+// The `breadcrumb()` mixin.
+@mixin breadcrumb($class: '', $selector: (), $dictionary: ()) {
+  // Breadcrumbs
+  // .#{$class-prefix}breadcrumb {
+  #{breadcrumb-class($class, $selector, $dictionary)} {
+    @include margin(('unit', '1'), ('unit', '0'));
+    @include padding(('unit', '1'), ('unit', '0'));
+
+    list-style: none;
+
+    // .breadcrumb-item {
+    #{breadcrumb-class(($class, 'item'), (), $dictionary)} {
+      display: inline-block;
+      margin: 0;
+      @include padding(('unit', '1'), ('unit', '0'));
+      @include color('gray-dark');
+
+      &:not(:last-child) {
+        @include margin-right(('unit', '1'));
+
+        a {
+          @include color('gray-dark');
+        }
+      }
+
+      // TODO: use selector-nest()
+      // #{selector-nest(('&', ':not(:first-child)', '&::before'))} {
+      //   font-size: 1;
+      // }
+      &:not(:first-child) {
+        &::before {
+          content: '/';
+          @include padding-right(('unit', '2'));
+          @include color('gray-dark');
+        }
+      }
+    }
+  }
+}
