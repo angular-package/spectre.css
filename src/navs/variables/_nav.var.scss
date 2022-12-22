@@ -1,0 +1,13 @@
+// nav.
+$nav-name: 'nav' !default;
+$nav: (
+  'dictionary': (
+    'class': (
+      'nav': $nav-name,
+      // 'prefix': '',
+      // 'suffix': '',
+      // 'separator': ''
+    ),
+    'var': ()
+  )
+) !default;

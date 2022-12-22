@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/step.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `step-class()` function defines step class names with given `$class`, `$selector` and class dictionary.
+@function step-class($class: (), $selector: (), $dictionary: ()) {
+  @return module-class('step', $class, $selector, $step, $dictionary);
+}

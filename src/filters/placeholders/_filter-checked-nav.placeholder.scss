@@ -1,0 +1,9 @@
+// Mixins.
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/color/color.mixin' as *;
+
+// Nav checked.
+%filter-checked-nav {
+  @include background('primary');
+  @include color('light');
+}

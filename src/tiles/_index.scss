@@ -1,3 +1,7 @@
-@forward 'functions';
-@forward 'tile';
+// Directories.
 @forward 'variables';
+@forward 'functions';
+@forward 'mixins';
+
+// Files.
+@use 'tiles';

@@ -1,0 +1,120 @@
+// Variables.
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../../cards/functions/card-class.function' as *;
+@use '../../functions/class/class.function' as *;
+@use '../../functions/var/get-var.function' as *;
+@use '../functions/popover-class.function' as *;
+
+// Mixins.
+@use '../../mixins/padding.mixins' as *;
+@use '../../mixins/box-shadow.mixins' as *;
+@use '../../mixins/transition.mixin' as *;
+@use '../../mixins/z-index.mixin' as *;
+
+// The `popover()` mixin.
+@mixin popover($class: '', $selector: (), $dictionary: ()) {
+  #{popover-class($class, $selector, $dictionary)} {
+    position: relative;
+    display: inline-block;
+
+    // .popover-container {
+    // #{class(($popover-name, 'container'))} {
+    #{popover-class(($class, 'container'), (), $dictionary)} {
+      // Position.
+      @include z-index('3');
+
+      position: absolute;
+      top: 0;
+      left: 50%;
+
+      // width: get-var('control-width', $suffix: 'sm');
+      width: get-var(('control', 'width', 'sm'));
+      @include padding(('layout', 'spacing', true));
+
+      opacity: 0;
+      @include transition(transform);
+
+      transform: translate(-50%, -50%) scale(0);
+    }
+
+    // *:focus + .popover-container,
+    // *:focus + #{class(($popover-name, 'container'))},
+    *:focus + #{popover-class(($class, 'container'), (), $dictionary)},
+    // &:hover .popover-container {
+    // &:hover #{class(($popover-name, 'container'))} {
+    &:hover #{popover-class(($class, 'container'), (), $dictionary)} {
+      display: block;
+      opacity: 1;
+      transform: translate(-50%, -100%) scale(1);
+    }
+
+    // &.popover-right {
+    // #{class(('&', $popover-name, 'right'))} {
+    #{popover-class(('&', $class, 'right'), (), $dictionary)} {
+      // .popover-container {
+      // #{class(($popover-name, 'container'))} {
+      #{popover-class(($class, 'container'), (), $dictionary)} {
+        top: 50%;
+        left: 100%;
+      }
+
+      // *:focus + .popover-container,
+      // *:focus + #{class(($popover-name, 'container'))},
+      *:focus + #{popover-class(($class, 'container'), (), $dictionary)},
+      // &:hover .popover-container {
+      // &:hover #{class(($popover-name, 'container'))} {
+      &:hover #{popover-class(($class, 'container'), (), $dictionary)} {
+        transform: translate(0, -50%) scale(1);
+      }
+    }
+
+    // &.popover-bottom {
+    // #{class(('&', $popover-name, 'bottom'))} {
+    #{popover-class(('&', $class, 'bottom'), (), $dictionary)} {
+      // .popover-container {
+      // #{class(($popover-name, 'container'))} {
+      #{popover-class(($class, 'container'), (), $dictionary)} {
+        top: 100%;
+        left: 50%;
+      }
+
+      // *:focus + .popover-container,
+      // *:focus + #{class(($popover-name, 'container'))},
+      *:focus + #{popover-class(($class, 'container'), (), $dictionary)},
+      // &:hover .popover-container {
+      // &:hover #{class(($popover-name, 'container'))} {
+      &:hover #{popover-class(($class, 'container'), (), $dictionary)} {
+        transform: translate(-50%, 0) scale(1);
+      }
+    }
+
+    // &.popover-left {
+    // #{class(('&', $popover-name, 'left'))} {
+    #{popover-class(('&', $class, 'left'), (), $dictionary)} {
+      // .popover-container {
+      // #{class(($popover-name, 'container'))} {
+      #{popover-class(($class, 'container'), (), $dictionary)} {
+        top: 50%;
+        left: 0;
+      }
+
+      // *:focus + .popover-container,
+      // *:focus + #{class(($popover-name, 'container'))},
+      *:focus + #{popover-class(($class, 'container'), (), $dictionary)},
+      // &:hover .popover-container {
+      // &:hover #{class(($popover-name, 'container'))} {
+      &:hover #{popover-class(($class, 'container'), (), $dictionary)} {
+        transform: translate(-100%, -50%) scale(1);
+      }
+    }
+
+    // .card {
+    // #{class('card')} {
+    #{card-class()} {
+      border: 0;
+      @include shadow-variant(0.2rem);
+    }
+  }
+}

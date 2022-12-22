@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/core' as *;
+
+// Mixins.
+@use 'mixins/popover.mixin' as *;
+
+/* Spectre.css module: popovers | components | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+// Initialize.
+@include popover;

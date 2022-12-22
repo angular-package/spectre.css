@@ -1,0 +1,22 @@
+// Variables.
+@use '../variables/core' as *;
+
+// Functions.
+@use '../functions/class/class.function' as *;
+
+/*! Spectre.css: overflow | utilities | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+#{class(('overflow', 'x', 'auto'))} {
+  overflow-x: auto;
+}
+
+#{class(('overflow', 'y', 'auto'))} {
+  overflow-x: auto;
+}
+
+#{class(('overflow', 'x', 'hidden'))} {
+  overflow-x: hidden;
+}
+
+#{class(('overflow', 'y', 'hidden'))} {
+  overflow-y: hidden;
+}

@@ -1,0 +1,87 @@
+// Variables.
+@use '../../buttons/variables' as *;
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../../buttons/functions/button-class.function' as *;
+@use '../../forms/functions/form-class.function' as *;
+@use '../../functions/class/active-class.function' as *;
+@use '../../functions/class/class.function' as *;
+@use '../../functions/color' as *;
+@use '../../functions/var/css-var.function' as *;
+@use '../../menus/functions/menu-class.function' as *;
+@use '../functions/dropdown-class.function' as *;
+
+// Mixins.
+@use '../../mixins/active.mixin' as *;
+@use '../../mixins/hover.mixin' as *;
+@use '../../borders/mixins/radius/border-radius.mixin' as *;
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/color/color.mixin' as *;
+@use '../../mixins/padding.mixins' as *;
+@use '../../mixins/box-shadow.mixins' as *;
+
+// The `dropdown()` mixin.
+@mixin dropdown($class: '', $selector: (), $dictionary: ()) {
+  #{dropdown-class($class, $selector, $dictionary)} {
+    position: relative;
+    display: inline-block;
+
+    // Menu.
+    #{menu-class()} {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: none;
+      overflow-y: auto;
+      max-height: 50vh;
+      animation: slide-down .15s ease 1;
+
+      // Menu item.
+      #{menu-class('item')} {
+        // &:hover {
+          // @include background('secondary');
+          // @include color('primary');
+        // }
+
+        // Dropdown has form label.
+        &:has(label) {
+          @include padding-right(('unit', '0'));
+          @include padding-left(('unit', '0'));
+        }
+
+        // TODO: Checkbox.
+        #{form-class((('checkbox', ), ('radio', ), ('switch', )))} {
+          width: 100%;
+          @include padding(('unit', '1'), ('unit', '2'));
+          @include hover((':',));
+
+          &:focus {
+            @include active(null);
+          }
+        }
+      }
+    }
+
+    // Dropdown right.
+    #{dropdown-class(('&', $class, 'right'), (), $dictionary)} {
+      #{menu-class()} {
+        right: 0;
+        left: auto;
+      }
+    }
+
+    #{active-class('&')} #{menu-class()},
+    #{dropdown-class(($class, 'toggle'), '&:focus', $dictionary)} + #{menu-class()},
+    #{menu-class((), '&:hover')} {
+      display: block;
+    }
+
+    // Fix dropdown-toggle border radius in button groups
+    #{button-class('group')} {
+      #{dropdown-class(($class, 'toggle'), '&:nth-last-child(2)', $dictionary)} {
+        @include border-radius(('bottom-right', 'top-right'));
+      }
+    }
+  }
+}

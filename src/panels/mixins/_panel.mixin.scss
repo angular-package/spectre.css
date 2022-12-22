@@ -1,0 +1,50 @@
+// Variables.
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../functions/panel-class.function' as *;
+@use '../../functions/class/class.function' as *;
+
+// Mixins.
+@use '../../borders/mixins/border.mixin' as *;
+@use '../../mixins/padding.mixins' as *;
+
+// The `panel()` mixin.
+@mixin panel($class: '', $selector: (), $dictionary: ()) {
+  #{panel-class($class, $selector, $dictionary)} {
+    // Display.
+    display: flex;
+    flex-direction: column;
+
+    // Border.
+    @include border($radius: true);
+
+    // .panel-header,
+    // #{class(('panel', 'header'))},
+    // .panel-footer {
+    // #{class(('panel', 'footer'))} {
+    // #{class(($panel-name, ('header',), ('footer',)))} {
+    #{panel-class(($class, ('header',), ('footer',)), (), $dictionary)} {
+      flex: 0 0 auto;
+
+      // @include padding(('layout-spacing', ('suffix': 'lg', 'unit': true)));
+      @include padding((('layout', 'spacing', 'lg', true)));
+    }
+
+    // .panel-nav {
+    // #{class(($panel-name, 'nav'))} {
+    #{panel-class(($class, 'nav'), (), $dictionary)} {
+      flex: 0 0 auto;
+    }
+
+    // .panel-body {
+    // #{class(($panel-name, 'body'))} {
+    #{panel-class(($class, 'body'), (), $dictionary)} {
+      flex: 1 1 auto;
+      overflow-y: auto;
+
+      // @include padding('unit-0', ('layout-spacing', ('suffix': 'lg', 'unit': true)));
+      @include padding(('unit', '0'), (('layout', 'spacing', 'lg', true)));
+    }
+  }
+}

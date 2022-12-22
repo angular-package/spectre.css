@@ -1,0 +1,21 @@
+@keyframes first-run {
+  0% {
+    width: unit-var('0');
+  }
+
+  25% {
+    width: unit-var('12');
+  }
+
+  50% {
+    width: unit-var('4');
+  }
+
+  75% {
+    width: unit-var('6');
+  }
+
+  100% {
+    width: unit-var('0');
+  }
+}

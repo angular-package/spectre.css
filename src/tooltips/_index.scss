@@ -1,3 +1,7 @@
-@forward 'functions';
-@forward 'tooltip';
+// Directories.
 @forward 'variables';
+@forward 'functions';
+@forward 'mixins';
+
+// Files.
+@use 'tooltips';

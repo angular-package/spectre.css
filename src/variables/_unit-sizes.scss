@@ -1,6 +1,8 @@
 // Unit sizes.
 $unit-o: 0.05rem !default; // --#{$var-prefix}-unit-o.
 $unit-h: 0.1rem !default; // --#{$var-prefix}-unit-h.
+
+// Step 0.2rem
 $unit-1: 0.2rem !default; // --#{$var-prefix}-unit-1.
 $unit-2: 0.4rem !default; // --#{$var-prefix}-unit-2.
 $unit-3: 0.6rem !default; // --#{$var-prefix}-unit-3.
@@ -15,9 +17,12 @@ $unit-12: 2.4rem !default; // --#{$var-prefix}-unit-12.
 $unit-16: 3.2rem !default; // --#{$var-prefix}-unit-16.
 
 $unit-size: (
+  'rem': 1rem,
   '0': 0rem, // --#{$var-prefix}-unit-0.
+
   'o': $unit-o, // --#{$var-prefix}-unit-o.
   'h': $unit-h,  // --#{$var-prefix}-unit-h.
+
   '1': $unit-1,  // --#{$var-prefix}-unit-1.
   '2': $unit-2,  // --#{$var-prefix}-unit-2.
   '3': $unit-3,  // --#{$var-prefix}-unit-3.

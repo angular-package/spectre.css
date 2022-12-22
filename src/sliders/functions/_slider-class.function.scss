@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/slider.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `slider-class()` function defines slider class names with given `$class`, `$selector` and class dictionary.
+@function slider-class($class: (), $selector: (), $dictionary: ()) {
+  @return module-class('slider', $class, $selector, $slider, $dictionary);
+}

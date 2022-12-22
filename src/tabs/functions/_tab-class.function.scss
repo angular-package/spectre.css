@@ -1,26 +1,10 @@
-// Sass.
-@use 'sass:list';
-@use 'sass:map';
-
 // Variables.
-@use '../../variables/core' as *;
-@use '../variables' as *;
+@use '../variables/tab.var' as *;
 
 // Functions.
-@use '../../functions/class.function' as *;
+@use '../../functions/class/module-class.function' as *;
 
-@function tab-class(
-  $names: (),
-  $name: $tab-name,
-  $prefix: $class-prefix
-) {
-  @if type-of($name) == map {
-    @if map.has-key($name, 'prefix') {
-      $prefix: map.get($name, 'prefix');
-    }
-    @if map.has-key($name, 'tab') {
-      $name: map.get($name, 'tab');
-    }
-  }
-  @return class(list.join(($name), $names), $prefix);
+// The `tab-class()` function.
+@function tab-class($class: (), $selector: (), $dictionary: ()) {
+  @return module-class('tab', $class, $selector, $tab, $dictionary);
 }

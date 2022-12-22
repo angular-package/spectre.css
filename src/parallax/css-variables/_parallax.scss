@@ -1,0 +1,14 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../../css-variables/css-vars.var' as *;
+@use '../variables/parallax-settings.var' as *;
+
+// Mixins.
+@use '../../mixins/var/set-css-variables.mixin' as *;
+
+@include set-css-variables(('parallax': $parallax-settings));
+
+// Other way, not recommended.
+// $css-vars: map.merge($css-vars, ('parallax': $parallax-settings));

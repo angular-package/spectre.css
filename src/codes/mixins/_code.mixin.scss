@@ -1,0 +1,55 @@
+// Variables.
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../functions/code-class.function' as *;
+@use '../../functions/class/class.function' as *;
+@use '../../functions/color/scheme/is-scheme-dark.function' as *;
+@use '../../functions/color/scheme/is-scheme-light.function' as *;
+@use '../../functions/color/scheme/is-scheme-normal.function' as *;
+@use '../../functions/var/get-var.function' as *;
+@use '../../functions/var/layout-spacing-var.function' as *;
+@use '../../functions/var/unit-var.function' as *;
+
+// Mixins.
+@use '../../borders/mixins/radius/border-radius.mixin' as *;
+@use '../../labels/mixins/label-base.mixin' as *;
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/color/color.mixin' as *;
+@use '../../mixins/font-size.mixin' as *;
+
+// The `code()` mixin.
+@mixin code($class: '', $selector: (), $dictionary: ()) {
+  #{code-class($class, $selector, $dictionary)} {
+    position: relative;
+
+    // border-radius: get-var(('border', 'radius'));
+    @include border-radius;
+    @include color('body-font');
+
+    &::before {
+      content: attr(data-lang);
+      position: absolute;
+      top: unit-var('h');
+
+      // right: get-var(('layout', 'spacing', true));
+      right: layout-spacing-var();
+      @include color('gray');
+
+      // font-size: get-var('font-size', $suffix: 'sm');
+      // font-size: get-var(('font-size', 'sm'));
+      @include font-size('sm');
+    }
+
+    code {
+      display: block;
+      overflow-x: auto;
+      width: 100%;
+      padding: 1rem;
+      @include background('bg');
+
+      color: inherit;
+      line-height: 1.5;
+    }
+  }
+}

@@ -1,0 +1,116 @@
+// Variables.
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../../accordions/functions/accordion-class.function' as *;
+@use '../../functions/class/active-class.function' as *;
+@use '../../functions/class/class.function' as *;
+@use '../../functions/var/get-var.function' as *;
+@use '../../functions/var/unit-var.function' as *;
+@use '../../icons/functions/icon-class.function' as *;
+@use '../../menus/functions/menu-class.function' as *;
+@use '../functions/nav-class.function' as *;
+
+// Mixins.
+@use '../../borders/mixins/radius/border-radius.mixin' as *;
+@use '../../mixins/active.mixin' as *;
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/color/color.mixin' as *;
+@use '../../mixins/hover.mixin' as *;
+@use '../../mixins/margin.mixins' as *;
+@use '../../mixins/padding.mixins' as *;
+@use '../../mixins/box-shadow.mixins' as *;
+
+// Navs
+// The `nav()` mixin.
+@mixin nav($class: '', $selector: (), $dictionary: ()) {
+  #{nav-class($class, $selector, $dictionary)} {
+    // Position.
+    @include margin(('unit', '1'), ('unit', '0'));
+
+    // Display.
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+
+    // .nav-item {
+    // #{class(($nav-name, 'item'))} {
+    #{nav-class(($class, 'item'), (), $dictionary)} {
+      a {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        @include padding(('unit', '1'), ('unit', '2'));
+        @include border-radius;
+        @include color('gray-dark');
+
+        text-decoration: none;
+
+        &:focus {
+          @include active(null);
+        }
+        @include hover((':',));
+
+        > svg,
+        > #{icon-class()} {
+          @include margin-right(('unit', '2'));
+        }
+      }
+
+      label#{nav-class(($class, 'badge'), (), $dictionary)} {
+        position: absolute;
+        right: unit-var('2');
+      }
+
+      // &.active {
+      #{active-class('&')} {
+        & > a {
+          // @include color('gray-dark', $lightness: -10%);
+          // @include color('primary');
+          @include active(null, $color: 'primary', $pick: ('color',));
+
+          font-weight: bold;
+
+          &:focus,
+          &:hover {
+            @include color('primary');
+          }
+
+          &:not(:has(+ul)) {
+            @include active(null, $pick: ('background', 'control-shadow'));
+          }
+        }
+      }
+    }
+
+    // & .nav {
+    // & #{class($nav-name)} {
+    & #{nav-class($class, (), $dictionary)} {
+      @include margin-bottom(('unit', '2'));
+
+      #{nav-class(($class, 'item'), (), $dictionary)} {
+        #{active-class('&', 'a')} {
+          // a {
+            @include active(null);
+
+            // @include background('secondary');
+            // @include color('primary');
+            // @include control-shadow;
+          // }
+        }
+
+        a {
+          @include padding-left(('unit', '9'));
+        }
+      }
+
+      // @include margin-left(('unit', '4'));
+    }
+
+    // Accordion sibling to the nav.
+    ~ #{accordion-class()} {
+      @include margin-top(('unit', '2'));
+    }
+  }
+}

@@ -1,0 +1,70 @@
+// Variables.
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../functions/tile-class.function' as *;
+@use '../../functions/class/class.function' as *;
+@use '../../functions/var/css-var.function' as *;
+
+// Mixins.
+@use '../../mixins/padding.mixins' as *;
+@use '../../text/mixins/text-ellipsis.mixin' as *;
+
+// The `tile()` mixin.
+@mixin tile($class: '', $selector: (), $dictionary: ()) {
+  #{tile-class($class, $selector, $dictionary)} {
+    // Display.
+    display: flex;
+    align-content: space-between;
+    align-items: flex-start;
+
+    // .tile-icon,
+    // .tile-action {
+    // #{class(($tile-name, ('icon',), ('action',)))} {
+    #{tile-class(($class, ('icon',), ('action',)), (), $dictionary)} {
+      flex: 0 0 auto;
+    }
+
+    // .tile-content {
+    // #{class(($tile-name, 'content'))} {
+    #{tile-class(($class, 'content'), (), $dictionary)} {
+      flex: 1 1 auto;
+
+      &:not(:first-child) {
+        @include padding-left(('unit', '2'));
+
+      }
+
+      &:not(:last-child) {
+        @include padding-right(('unit', '2'));
+      }
+    }
+
+    // .tile-title,
+    // .tile-subtitle {
+    // #{class(($tile-name, ('title',), ('subtitle',)))} {
+    #{tile-class(($class, ('title',), ('subtitle',)), (), $dictionary)} {
+      line-height: css-var(('line', 'height'));
+    }
+
+    // &.tile-centered {
+    // #{class(('&', $tile-name, 'centered'))} {
+    #{tile-class(('&', $class, 'centered'), (), $dictionary)} {
+      align-items: center;
+
+      // .tile-content {
+      // #{class(($tile-name, 'content'))} {
+      #{tile-class(($class, 'content'), (), $dictionary)} {
+        overflow: hidden;
+      }
+
+      // .tile-title,
+      // .tile-subtitle {
+      // #{class(($tile-name, ('title',), ('subtitle',)))} {
+      #{tile-class(($class, ('title',), ('subtitle',)), (), $dictionary)} {
+        margin-bottom: 0;
+        @include text-ellipsis;
+      }
+    }
+  }
+}

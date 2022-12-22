@@ -1,0 +1,7 @@
+// Variables.
+@use '../unit-sizes' as *;
+
+// Layout spacing.
+$layout-spacing: $unit-2 !default; // --#{$var-prefix}-layout-spacing.
+$layout-spacing-sm: $unit-1 !default; // --#{$var-prefix}-layout-spacing-sm.
+$layout-spacing-lg: $unit-4 !default; // --#{$var-prefix}-layout-spacing-lg.

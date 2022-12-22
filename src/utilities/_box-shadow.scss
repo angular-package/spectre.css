@@ -1,0 +1,25 @@
+// Variables.
+@use '../variables/core' as *;
+
+// Functions.
+@use '../functions/class/class.function' as *;
+
+// Mixins.
+@use '../mixins/box-shadow.mixins' as *;
+
+/*! Spectre.css: box-shadow | utilities | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+#{class(('box', 'shadow', 'top'))} {
+  @include box-shadow-side($side: left);
+}
+
+#{class(('box', 'shadow', 'right'))} {
+  @include box-shadow-side($side: right);
+}
+
+#{class(('box', 'shadow', 'bottom'))} {
+  @include box-shadow-side($side: bottom);
+}
+
+#{class(('box', 'shadow', 'left'))} {
+  @include box-shadow-side($side: left);
+}

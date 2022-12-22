@@ -1,0 +1,16 @@
+// The number of filter options.
+$filter-number: 8 !default;
+
+// Filter variable.
+$filter: (
+  'dictionary': (
+    'class': (
+      'filter': 'filter',
+      // 'prefix': '',
+      // 'suffix': '',
+      // 'separator': ''
+    ),
+    'var': ()
+  ),
+  'number': $filter-number,
+) !default;

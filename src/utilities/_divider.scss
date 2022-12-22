@@ -2,6 +2,10 @@
 @use '../variables/core' as *;
 
 // Functions.
+@use '../borders/functions/border-size-var.function' as *;
+@use '../functions/class/class.function' as *;
+@use '../functions/var/css-var.function' as *;
+@use '../functions/var/font-size-var.function' as *;
 @use '../functions/var/get-var.function' as *;
 @use '../functions/var/unit-var.function' as *;
 @use '../functions/var/var-negative.function' as *;
@@ -10,28 +14,38 @@
 @use '../borders/mixins/border.mixin' as *;
 @use '../mixins/color/background.mixin' as *;
 @use '../mixins/color/color.mixin' as *;
+@use '../mixins/font-size.mixin' as *;
 @use '../mixins/margin.mixins' as *;
 @use '../mixins/padding-size-variants.mixin' as *;
 @use '../mixins/padding.mixins' as *;
 
-// Divider
-.#{$class-prefix}divider,
-.#{$class-prefix}divider-vert {
+/*! Spectre.css: divider | utilities | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+// .#{$class-prefix}divider,
+#{class('divider')},
+// .#{$class-prefix}divider-vert {
+#{class(('divider', 'vert'))} {
   position: relative;
   display: block;
 
   &[data-content]::after {
     content: attr(data-content);
     display: inline-block;
-    @include padding('unit-0', 'unit-2');
-    transform: translateY(calc(var-negative(get-var('font-size', $suffix: 'sm')) + get-var('border-width')));
+    @include padding(('unit', '0'), ('unit', '2'));
+
+    // transform: translateY(calc(var-negative(get-var('font-size', $suffix: 'sm')) + get-var('border-width')));
+    transform: translateY(calc(var-negative(font-size-var('sm')) + border-size-var())); // REVIEW: Do check.
     @include background('bg-light');
     @include color('gray');
-    font-size: get-var('font-size', $suffix: 'sm');
+
+    // font-size: get-var('font-size', $suffix: 'sm');
+    // font-size: css-var(('font', 'size', 'sm'));
+    @include font-size('sm');
   }
 
-  &.divider-no-border {
+  // &.divider-no-border {
+  #{class(('&', 'divider', 'no', 'border'))} {
     border-color: transparent;
+
     &::before {
       border-color: transparent;
     }
@@ -40,38 +54,48 @@
   @include padding-size-variants('divider');
 }
 
-.#{$class-prefix}divider {
-  @include margin('unit-2', 'unit-0');
-  height: get-var('border-width');
+// .#{$class-prefix}divider {
+#{class('divider')} {
+  // @include margin('unit-2', 'unit-0');
+  @include margin(('unit', '2'), ('unit', '0'));
+
+  // height: get-var(('border', 'width'));
+  height: border-size-var();
   @include border($side: top, $color: 'border-light');
 
   &[data-content] {
-    @include margin('unit-4', 'unit-0');
+    // @include margin('unit-4', 'unit-0');
+    @include margin(('unit', '4'), ('unit', '0'));
   }
 }
 
-.#{$class-prefix}divider-vert {
+// .#{$class-prefix}divider-vert {
+#{class(('divider', 'vert'))} {
   display: block;
-  padding: unit-var('4');
+
+  // padding: unit-var('4');
+  @include padding(('unit', '4'));
 
   &::before {
+    content: '';
     position: absolute;
     top: unit-var('2');
     bottom: unit-var('2');
     left: 50%;
-
-    content: '';
     display: block;
+    @include border($side: 'left');
 
     transform: translateX(-50%);
-    @include border($side: 'left');
   }
 
   &[data-content]::after {
     position: absolute;
     top: 50%;
     left: 50%;
-    @include padding('unit-1', 'unit-0');
+
+    // @include padding('unit-1', 'unit-0');
+    @include padding(('unit', '1'), ('unit', '0'));
+
     transform: translate(-50%, -50%);
   }
 }

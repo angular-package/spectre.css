@@ -1,0 +1,12 @@
+// Mixins.
+@use '../../mixins/z-index.mixin' as *;
+
+// The `parallax-dir()` mixin.
+@mixin parallax-dir() {
+  position: absolute;
+  @include z-index('1');
+
+  width: 50%;
+  height: 50%;
+  outline: none;
+}

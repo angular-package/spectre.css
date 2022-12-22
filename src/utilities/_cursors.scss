@@ -1,24 +1,36 @@
-// Cursors
-.c-hand {
+// Variables.
+@use '../variables/core' as *;
+
+// Functions.
+@use '../functions/class/class.function' as *;
+
+/*! Spectre.css: cursors | utilities | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+// .c-hand {
+#{class(('c', 'hand'))} {
   cursor: pointer;
 }
 
-.c-move {
+// .c-move {
+#{class(('c', 'move'))} {
   cursor: move;
 }
 
-.c-zoom-in {
+// .c-zoom-in {
+#{class(('c', 'hand', 'in'))} {
   cursor: zoom-in;
 }
 
-.c-zoom-out {
+// .c-zoom-out {
+#{class(('c', 'zoom', 'out'))} {
   cursor: zoom-out;
 }
 
-.c-not-allowed {
+// .c-not-allowed {
+#{class(('c', 'not', 'allowed'))} {
   cursor: not-allowed;
 }
 
-.c-auto {
+// .c-auto {
+#{class(('c', 'auto'))} {
   cursor: auto;
 }

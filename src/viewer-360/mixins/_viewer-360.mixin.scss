@@ -1,0 +1,48 @@
+// Sass.
+@use 'sass:map';
+@use 'sass:math';
+
+// Variables.
+@use '../../variables/core' as *;
+@use '../variables/viewer-360.var' as *;
+
+// Functions.
+@use '../functions/viewer-360-class.function' as *;
+
+// Mixins.
+@use 'viewer-360-slider-size.mixin' as *;
+
+// 360 Degree Viewer
+// The `viewer-360()` mixin.
+@mixin viewer-360(
+  $class: '',
+  $selector: (),
+  $size: map.get($viewer-360, 'size'),
+  $dictionary: ()
+) {
+  #{viewer-360-class($class, $selector, $dictionary)} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    // Copy and add more numbers if you need
+    @include viewer-360-slider-size($size, $dictionary);
+
+    // .viewer-slider {
+    #{viewer-360-class(($class, 'slider'), (), $dictionary)} {
+      order: 2;
+      width: 60%;
+      margin: 1rem;
+      cursor: ew-resize;
+    }
+
+    // .viewer-image {
+    #{viewer-360-class(($class, 'image'), (), $dictionary)} {
+      order: 1;
+      max-width: 100%;
+      background-position-y: 0;
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+  }
+}

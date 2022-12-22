@@ -1,0 +1,21 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../variables/z-index' as *;
+@use '../variables/core' as *;
+
+// Functions.
+@use '../functions/class/class.function' as *;
+
+// Mixins.
+@use '../mixins/z-index.mixin' as *;
+
+/*! Spectre.css: z-index | utilities | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+@if type-of($z-index) == map {
+  @each $key, $value in $z-index {
+    #{class(('z-index', $key))} {
+      @include z-index($key);
+    }
+  }
+}

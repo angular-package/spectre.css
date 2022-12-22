@@ -1,0 +1,76 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../functions/bar-class.function' as *;
+@use '../../borders/functions/border-size-var.function' as *;
+
+// @use '../../functions/class/class.function' as *;
+// @use '../../functions/color/color.function' as *;
+// @use '../../functions/var/get-var.function' as *;
+@use '../../functions/var/unit-var.function' as *;
+
+// Mixins.
+// @use '../../borders/mixins/radius/border-radius.mixin' as *;
+@use '../../mixins/color/background.mixin' as *;
+
+// @use '../../mixins/color/color.mixin' as *;
+// @use '../../mixins/font-size.mixin' as *;
+@use '../../mixins/margin.mixins' as *;
+@use '../../mixins/z-index.mixin' as *;
+
+// The `bar-slider()` mixin.
+@mixin bar-slider($class: '', $selector: (), $dictionary: ()) {
+  // Slider bar
+  // .bar-slider {
+  // #{class(($bar-name, 'slider'), $class: map.get($bar, 'class'))} {
+  #{bar-class(($class, 'slider'), $selector, $dictionary)} {
+    position: relative;
+
+    // height: get-var('border-width', $suffix: 'lg');
+    // height: get-var((('border', 'width', 'lg'),));
+    height: border-size-var('lg');
+    @include margin(('layout', 'spacing', true), ('unit', '0'));
+
+    // .bar-item {
+    // #{class(($bar-name, 'item'), $class: map.get($bar, 'class'))} {
+    #{bar-class(($class, 'item'), (), $dictionary)} {
+      position: absolute;
+      left: 0;
+      padding: 0;
+
+      &:not(:last-child):first-child {
+        @include z-index('0');
+        @include background('bg-dark');
+      }
+    }
+
+    // .bar-slider-btn {
+    // #{class(($bar-name, 'slider', 'btn'), $class: map.get($bar, 'class'))} {
+    #{bar-class(($class, 'slider', 'button'), (), $dictionary)} {
+      // Position.
+      position: absolute !important;
+      top: 50%;
+      right: 0;
+
+      // Size.
+      width: unit-var('3');
+      height: unit-var('3');
+      padding: 0;
+
+      // Border.
+      border: 0;
+      border-radius: 50%;
+      @include background('primary');
+
+      transform: translate(50%, -50%);
+
+      &:active {
+        box-shadow: 0 0 0 0.1rem color('primary');
+      }
+    }
+  }
+}

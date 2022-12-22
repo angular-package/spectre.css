@@ -1,0 +1,20 @@
+// Sass.
+@use 'sass:map';
+
+// Responsive breakpoints.
+$size-xs: 480px !default; // --#{$var-prefix}-size-xs.
+$size-sm: 600px !default; // --#{$var-prefix}-size-sm.
+$size-md: 840px !default; // --#{$var-prefix}-size-md.
+$size-lg: 960px !default; // --#{$var-prefix}-size-lg.
+$size-xl: 1280px !default; // --#{$var-prefix}-size-xl.
+$size-2x: 1440px !default; // --#{$var-prefix}-size-2x.
+
+$size: (
+  'xs': $size-xs,
+  'sm': $size-sm,
+  'md': $size-md,
+  'lg': $size-lg,
+  'xl': $size-xl,
+  '2x': $size-2x,
+) !default;
+$responsive-breakpoint: map.get($size, 'xs') !default; // --#{map.get($var, 'prefix')}-responsive-breakpoint.

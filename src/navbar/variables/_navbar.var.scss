@@ -1,0 +1,13 @@
+// navbar.
+$navbar-name: 'navbar' !default;
+$navbar: (
+  'dictionary': (
+    'class': (
+      'navbar': $navbar-name,
+      // 'prefix': '',
+      // 'suffix': '',
+      // 'separator': ''
+    ),
+    'var': ()
+  )
+) !default;

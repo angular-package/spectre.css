@@ -1,0 +1,20 @@
+// Can be modified for bar only.
+$bar: (
+  // Class and var name dictionary.
+  'dictionary': (
+    'class': (
+      'bar': 'bar',
+      'button': 'btn',
+      // 'prefix': '',
+      // 'suffix': '',
+      // 'separator': '-'
+    ),
+    'var': ()
+  ),
+
+  // Size.
+  'size': (
+    'sm': '1',
+    'lg': '6',
+  )
+) !default;

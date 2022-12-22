@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/modal.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `modal-class()` function defines modal class names with given `$class`, `$selector` and class dictionary.
+@function modal-class($class: (), $selector: (), $dictionary: ()) {
+  @return module-class('modal', $class, $selector, $modal, $dictionary);
+}

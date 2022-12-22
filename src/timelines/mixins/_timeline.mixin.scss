@@ -1,0 +1,105 @@
+// Variables.
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../../functions/class/class.function' as *;
+@use '../../functions/var/get-var.function' as *;
+@use '../../functions/var/unit-var.function' as *;
+@use '../../icons/functions/icon-class.function' as *;
+@use '../functions/timeline-class.function' as *;
+
+// Mixins.
+@use '../../borders/mixins/border.mixin' as *;
+@use '../../mixins/color/color.mixin' as *;
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/margin.mixins' as *;
+
+// The `timeline()` mixin.
+@mixin timeline($class: '', $selector: (), $dictionary: ()) {
+  #{timeline-class($class, $selector, $dictionary)} {
+    // .timeline-item {
+    // #{class(('timeline', 'item'))} {
+    #{timeline-class(($class, 'item'), (), $dictionary)} {
+      // Position.
+      position: relative;
+      @include margin-bottom(('unit', '6'));
+
+      // Display.
+      display: flex;
+
+      &::before {
+        // Position.
+        content: '';
+        position: absolute;
+        top: unit-var('6');
+        left: 11px;
+
+        // Size.
+        width: 2px;
+        height: 100%;
+
+        @include background('border');
+      }
+
+      // .timeline-left {
+      // #{class(('timeline', 'left'))} {
+      #{timeline-class(($class, 'left'), (), $dictionary)} {
+        flex: 0 0 auto;
+      }
+
+      // .timeline-content {
+      // #{class(('timeline', 'content'))} {
+      #{timeline-class(($class, 'content'), (), $dictionary)} {
+        flex: 1 1 auto;
+        padding: 2px 0 2px get-var(('layout', 'spacing', 'lg', true)); // TODO: Check padding 2px
+      }
+
+      // .timeline-icon {
+      // #{class(('timeline', 'icon'))} {
+      #{timeline-class(($class, 'icon'), (), $dictionary)} {
+        // Display.
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        // Size.
+        width: unit-var('6');
+        height: unit-var('6');
+        border-radius: 50%;
+        @include color('light');
+
+        text-align: center;
+
+        &::before {
+          // Position.
+          content: '';
+          position: absolute;
+          top: unit-var('2');
+          left: unit-var('2');
+
+          // Display.
+          display: block;
+          width: unit-var('2');
+          height: unit-var('2');
+
+          // Border.
+          @include border('lg', solid, 'primary');
+
+          border-radius: 50%;
+        }
+
+        // &.icon-lg {
+        // &#{class(('icon', 'lg'))} {
+        // #{class(('&', 'icon', 'lg'))} {
+        #{icon-class(('&', 'lg'))} {
+          line-height: get-var(('line', 'height'));
+          @include background('primary');
+
+          &::before {
+            content: none;
+          }
+        }
+      }
+    }
+  }
+}

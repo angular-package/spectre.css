@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/core' as *;
+
+// Mixins.
+@use 'mixins/tile.mixin' as *;
+
+/* Spectre.css module: tiles | components | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+// Initialize.
+@include tile;

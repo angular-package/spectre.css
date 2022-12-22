@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/nav.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `nav-class()` function defines nav class names with given `$class`, `$selector` and class dictionary.
+@function nav-class($class: (), $selector: (), $dictionary: ()) {
+  @return module-class('nav', $class, $selector, $nav, $dictionary);
+}

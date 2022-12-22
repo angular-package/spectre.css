@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/filter.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `filter-class()` function defines filter class names with given `$class`, `$selector` and class dictionary.
+@function filter-class($class: (), $selector: (), $dictionary: ()) {
+  @return module-class('filter', $class, $selector, $filter, $dictionary);
+}

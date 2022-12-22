@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/slider.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `comparison-slider-class()` function defines comparison slider class names with given `$class`, `$selector` and class dictionary.
+@function comparison-slider-class($class: (), $selector: (), $dictionary: ()) {
+  @return module-class('comparison-slider', $class, $selector, $slider, $dictionary);
+}

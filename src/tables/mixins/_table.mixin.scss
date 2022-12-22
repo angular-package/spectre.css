@@ -1,0 +1,101 @@
+// Variables.
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../../functions/class/active-class.function' as *;
+@use '../../functions/class/class.function' as *;
+@use '../../functions/var/get-var.function' as *;
+@use '../functions/table-class.function' as *;
+
+// Mixins.
+@use '../../borders/mixins/border.mixin' as *;
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/color/color.mixin' as *;
+@use '../../mixins/padding.mixins' as *;
+
+// The `table()` mixin.
+@mixin table($class: '', $selector: (), $dictionary: ()) {
+  #{table-class($class, $selector, $dictionary)} {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align: if($rtl == true, right, left);
+
+    // &#{class(('table', 'striped'))} {
+    #{table-class(('&', $class, 'striped'), 'tbody tr:nth-of-type(odd)', $dictionary)} {
+      // tbody {
+        // tr:nth-of-type(odd) {
+          @include background('bg');
+        // }
+      // }
+    }
+
+    &,
+    // &#{class(('table', 'striped'))} {
+    // #{table-class((('&',), ('&', 'striped'),), 'tbody tr.active')} {
+    #{table-class(('&', $class, 'striped'), (), $dictionary)} {
+      tbody {
+        tr {
+          // &.active {
+          #{active-class('&')} {
+            @include background('bg-dark');
+          }
+        }
+      }
+    }
+
+    // &#{class(('table', 'hover'))} {
+    #{table-class(('&', $class, 'hover'), 'tbody tr:hover', $dictionary)} {
+      // tbody {
+        // tr {
+          // &:hover {
+            @include background('bg-dark');
+          // }
+        // }
+      // }
+    }
+
+    // Scollable tables
+    // &#{class(('table', 'scroll'))} {
+    #{table-class(('&', $class, 'scroll'), (), $dictionary)} {
+      display: block;
+      overflow-x: auto;
+      padding-bottom: 0.75rem;
+      white-space: nowrap;
+    }
+
+    thead > tr > th,
+    tbody > tr > td,
+    tbody > tr > th {
+      @include padding(('unit', '3'), ('unit', '2'));
+      @include border($side: bottom);
+    }
+
+    thead > tr > th {
+      @include border($side: bottom);
+    }
+
+    tbody {
+      > tr {
+        > th {
+         > a {
+            @include color('body-font');
+          }
+          @include border($side: right);
+          @include color('body-font');
+        }
+
+        &:last-child {
+          > td, > th {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+
+    tfoot > tr > th,
+    tfoot > tr > td {
+      @include border($side: top);
+    }
+  }
+}

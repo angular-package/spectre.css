@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/popover.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `popover-class()` function defines popover class names with given `$class`, `$selector` and class dictionary.
+@function popover-class($class: (), $selector: (), $dictionary: ()) {
+  @return module-class('popover', $class, $selector, $popover, $dictionary);
+}

@@ -1,0 +1,13 @@
+// Variables.
+@use 'line-height' as *;
+@use 'font-sizes' as *;
+
+// Html map.
+$html: (
+  'font': (
+    'size': $html-font-size
+  ),
+  'line': (
+    'height': $html-line-height
+  )
+) !default;

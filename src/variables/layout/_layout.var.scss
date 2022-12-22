@@ -1,0 +1,18 @@
+// Variables.
+@use 'column.var' as *;
+@use 'grid.var' as *;
+@use 'layout-spacing.var' as *;
+
+// Functions.
+@use '../../functions/strip-unit.function' as *;
+
+// Layout.
+$layout: (
+  'column': $column,
+  'grid': $grid,
+  'spacing': (
+    '': strip-unit($layout-spacing),
+    'sm': strip-unit($layout-spacing-sm),
+    'lg': strip-unit($layout-spacing-lg)
+  )
+) !default;

@@ -1,51 +1,118 @@
+// Variables.
+@use '../variables/core' as *;
+
+// Functions.
+@use '../text/functions/text-class.function' as *;
+@use '../functions/class/class.function' as *;
+
 // Mixins.
 @use '../mixins/hide-scrollbar.mixin' as *;
 
-// Display
-.d-block {
+/*! Spectre.css: display | utilities | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+// .d-block {
+#{class(('d', 'block'))},
+#{class(('display', 'block'))} {
   display: block;
 }
-.d-inline {
+
+// .d-inline {
+#{class(('d', 'inline'))},
+#{class(('display', 'inline'))} {
   display: inline;
 }
-.d-inline-block {
+
+// .d-inline-block {
+#{class(('d', 'inline', 'block'))},
+#{class(('display', 'inline', 'block'))} {
   display: inline-block;
 }
-.d-flex {
+
+// .d-flex {
+#{class(('d', 'flex'))},
+#{class(('display', 'flex'))} {
   display: flex;
 }
-.d-inline-flex {
+
+// .d-inline-flex {
+#{class(('d', 'inline', 'flex'))},
+#{class(('display', 'inline', 'flex'))} {
   display: inline-flex;
 }
-.d-none,
-.d-hide {
+
+#{class(('d', 'grid'))},
+#{class(('display', 'grid'))} {
+  display: grid;
+}
+
+#{class(('d', 'inline', 'grid'))},
+#{class(('display', 'inline', 'grid'))} {
+  display: inline-grid;
+}
+
+// .d-none,
+// .d-hide {
+#{class(('d', ('none',), ('hide',)))},
+#{class(('display', ('none',), ('hide',)))} {
   display: none !important;
 }
-.d-visible {
+
+// .d-visible {
+#{class(('d', 'visible'))},
+#{class(('display', 'visible'))} {
   visibility: visible;
 }
-.d-invisible {
+
+// .d-invisible {
+#{class(('d', 'invisible'))},
+#{class(('display', 'invisible'))} {
   visibility: hidden;
 }
-.text-hide {
-  background: transparent;
+
+// Width.
+#{class(('width', '100', 'vw'))} {
+  width: 100vw;
+}
+#{class(('width', 'fit', 'content'))} {
+  width: fit-content;
+}
+#{class(('width', '100'))} {
+  width: 100%;
+}
+
+// Height.
+#{class(('height', '100', 'vh'))} {
+  height: 100vh;
+}
+#{class(('height', 'fit', 'content'))} {
+  height: fit-content;
+}
+#{class(('height', '100'))} {
+  height: 100%;
+}
+
+// .text-hide {
+#{text-class('hide')} {
   border: 0;
+  background: transparent;
   color: transparent;
   font-size: 0;
   line-height: 0;
   text-shadow: none;
 }
-.text-assistive {
-  border: 0;
+
+// .text-assistive {
+#{text-class('assistive')} {
+  position: absolute;
+  overflow: hidden;
   clip: rect(0, 0, 0, 0);
+  width: 1px;
   height: 1px;
   margin: -1px;
-  overflow: hidden;
   padding: 0;
-  position: absolute;
-  width: 1px;
+  border: 0;
 }
 
-.hide-scrollbar {
-  @include hide-scrollbar();
+// .hide-scrollbar {
+#{class(('hide', 'scrollbar'))} {
+  @include hide-scrollbar;
 }

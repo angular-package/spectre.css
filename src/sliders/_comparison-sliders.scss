@@ -1,0 +1,136 @@
+// Variables.
+@use '../variables/core' as *;
+
+// Animations.
+@use 'animations/first-run.anim' as *;
+
+// Functions.
+@use 'functions/comparison-slider-class.function' as *;
+@use '../functions/class/class.function' as *;
+@use '../functions/var/unit-var.function' as *;
+
+// Mixins.
+@use '../mixins/color/background.mixin' as *;
+@use '../mixins/color/color.mixin' as *;
+@use '../mixins/padding.mixins' as *;
+@use '../mixins/z-index.mixin' as *;
+
+// Image comparison slider
+// Credit: http://codepen.io/solipsistacp/pen/Gpmaq
+// .#{$class-prefix}comparison-slider {
+#{comparison-slider-class()} {
+  position: relative;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  height: 50vh;
+
+  // .comparison-before,
+  #{class(('comparison', 'before'))},
+  #{comparison-slider-class('before')},
+  // .comparison-after {
+  #{class(('comparison', 'after'))},
+  #{comparison-slider-class('after')} {
+    // Position.
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+
+    img {
+      position: absolute;
+      object-fit: cover;
+      object-position: left center;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // .comparison-before {
+  #{class(('comparison', 'before'))},
+  #{comparison-slider-class('before')} {
+    z-index: 1;
+    width: 100%;
+
+    // .comparison-label {
+    #{class(('comparison', 'label'))},
+    #{comparison-slider-class('label')} {
+      right: unit-var('4');
+    }
+  }
+
+  // .comparison-after {
+  #{class(('comparison', 'after'))},
+  #{comparison-slider-class('after')} {
+    z-index: 2;
+    min-width: 0;
+    max-width: 100%;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: unit-var('4');
+      left: 0;
+      height: 100%;
+      @include z-index('0');
+
+      background: transparent;
+      cursor: default;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: unit-var('2');
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: currentcolor;
+      @include color('light');
+
+      box-shadow: 0 -5px, 0 5px;
+      pointer-events: none;
+      transform: translate(50%, -50%);
+    }
+
+    // .comparison-label {
+    #{class(('comparison', 'label'))},
+    #{comparison-slider-class('label')} {
+      left: unit-var('4');
+    }
+  }
+
+  // .comparison-resizer {
+  #{class(('comparison', 'resizer'))},
+  #{comparison-slider-class('resizer')} {
+    position: relative;
+    top: 50%;
+    left: 0;
+    width: 0;
+    min-width: unit-var('4');
+    max-width: 100%;
+    height: unit-var('4');
+    outline: none;
+    opacity: 0;
+    resize: horizontal;
+    cursor: ew-resize;
+    transform: translateY(-50%) scaleY(30);
+    animation: first-run 1.5s 1 ease-in-out;
+  }
+
+  // .comparison-label {
+  #{class(('comparison', 'label'))},
+  #{comparison-slider-class('label')} {
+    position: absolute;
+    bottom: unit-var('4');
+    @include padding(('unit', '1'), ('unit', '2'));
+    @include background('dark', $alpha: 0.5);
+    @include color('light');
+
+    user-select: none;
+  }
+}

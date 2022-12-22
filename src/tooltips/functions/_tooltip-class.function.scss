@@ -4,7 +4,7 @@
 // Functions.
 @use '../../functions/class/module-class.function' as *;
 
-// The `tooltip-class()` function defines tooltip class names with given `$name`, `$selector` and class dictionary.
-@function tooltip-class($name: (), $selector: (), $class: ()) {
-  @return module-class('tooltip', $name, $selector, $tooltip, $class);
+// The `tooltip-class()` function defines tooltip class names with given `$class`, `$selector` and class dictionary.
+@function tooltip-class($class: (), $selector: (), $dictionary: ()) {
+  @return module-class('tooltip', $class, $selector, $tooltip, $dictionary);
 }

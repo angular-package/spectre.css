@@ -1,0 +1,13 @@
+// modal.
+$modal-name: 'modal' !default;
+$modal: (
+  'dictionary': (
+    'class': (
+      'modal': $modal-name,
+      // 'prefix': '',
+      // 'suffix': '',
+      // 'separator': '',
+    ),
+    'var': (),
+  )
+) !default;

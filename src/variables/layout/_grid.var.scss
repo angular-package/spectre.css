@@ -1,0 +1,25 @@
+// Functions.
+@use '../../functions/var/css-var.function' as *;
+@use '../../functions/var/get-var.function' as *;
+@use '../../functions/var/size-var.function' as *;
+
+//
+$-grid-size: calc(get-var(('layout', 'spacing', false)) * css-var(('html', 'font', 'size')) * 2);
+$grid: (
+  'max-width': (
+    // 'xl': calc(get-var(('layout', 'spacing', false)) * css-var(('html', 'font', 'size')) * 2 + size-var('xl')),
+    'xl': calc($-grid-size + size-var('xl')),
+
+    // 'lg': calc(get-var(('layout', 'spacing', false)) * css-var(('html', 'font', 'size')) * 2 + size-var('lg')),
+    'lg': calc($-grid-size + size-var('lg')),
+
+    // 'md': calc(get-var(('layout', 'spacing', false)) * css-var(('html', 'font', 'size')) * 2 + size-var('md')),
+    'md': calc($-grid-size + size-var('md')),
+
+    // 'sm': calc(get-var(('layout', 'spacing', false)) * css-var(('html', 'font', 'size')) * 2 + size-var('sm')),
+    'sm': calc($-grid-size + size-var('sm')),
+
+    // 'xs': calc(get-var(('layout', 'spacing', false)) * css-var(('html', 'font', 'size')) * 2 + size-var('xs')),
+    'xs': calc($-grid-size + size-var('xs')),
+  )
+) !default;

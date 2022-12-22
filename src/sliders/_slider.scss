@@ -1,0 +1,165 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../variables/core' as *;
+@use 'variables' as *;
+
+// Functions.
+@use '../functions/class/class.function' as *;
+@use '../functions/class/disabled-class.function' as *;
+@use '../functions/var/css-var.function' as *;
+@use '../functions/var/unit-var.function' as *;
+@use '../functions/var/var-negative.function' as *;
+@use 'functions/slider-class.function' as *;
+
+// Mixins.
+@use '../borders/mixins/radius/border-radius.mixin' as *;
+@use '../mixins/color/background.mixin' as *;
+@use '../mixins/box-shadow.mixins' as *;
+@use '../mixins/transition.mixin' as *;
+
+// Sliders
+// Credit: https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
+// .#{$class-prefix}slider {
+// #{class('slider')} {
+#{slider-class()} {
+  // Display.
+  display: block;
+
+  // Size.
+  width: 100%;
+  height: unit-var(map.get($slider, 'height'));
+  background: transparent;
+  appearance: none;
+
+  &:focus {
+    @include control-shadow;
+
+    outline: none;
+  }
+
+  &.tooltip:not([data-tooltip]) {
+    &::after {
+      content: attr(value);
+    }
+  }
+
+  // Slider Thumb
+  &::-webkit-slider-thumb {
+    // Size.
+    width: unit-var(map.get($slider, 'thumb', 'width')); // REVIEW: Check.
+    height: unit-var(map.get($slider, 'thumb', 'height'));
+
+    // Position.
+    margin-top: calc(var-negative(unit-var('3') - unit-var('h')) / 2);
+
+    // Border.
+    border: 0;
+    border-radius: 50%;
+
+    @include background('primary');
+    @include transition(transform);
+
+    -webkit-appearance: none;
+  }
+
+  &::-moz-range-thumb {
+    // Size.
+    width: unit-var(map.get($slider, 'thumb', 'width'));
+    height: unit-var(map.get($slider, 'thumb', 'height'));
+
+    // Border.
+    border: 0;
+    border-radius: 50%;
+
+    @include background('primary');
+    @include transition(transform);
+  }
+
+  &::-ms-thumb {
+    // Size.
+    width: unit-var(map.get($slider, 'thumb', 'width'));
+    height: unit-var(map.get($slider, 'thumb', 'height'));
+
+    // Border.
+    border: 0;
+    border-radius: 50%;
+
+    @include background('primary');
+    @include transition(transform);
+  }
+
+  &:active {
+    &::-webkit-slider-thumb {
+      transform: scale(1.25);
+    }
+
+    &::-moz-range-thumb {
+      transform: scale(1.25);
+    }
+
+    &::-ms-thumb {
+      transform: scale(1.25);
+    }
+  }
+
+  &:disabled,
+  // &.disabled {
+  #{disabled-class('&')} {
+    &::-webkit-slider-thumb {
+      @include background('gray-light');
+
+      transform: scale(1);
+    }
+
+    &::-moz-range-thumb {
+      @include background('gray-light');
+
+      transform: scale(1);
+    }
+
+    &::-ms-thumb {
+      @include background('gray-light');
+
+      transform: scale(1);
+    }
+  }
+
+  // Slider Track
+  &::-webkit-slider-runnable-track {
+    // Size.
+    width: 100%;
+    height: unit-var('h');
+
+    // border-radius: css-var('border-radius');
+    @include border-radius;
+    @include background('bg-dark');
+  }
+
+  &::-moz-range-track {
+    // Size.
+    width: 100%;
+    height: unit-var('h');
+
+    // Border.
+    // border-radius: css-var('border-radius');
+    @include border-radius;
+    @include background('bg-dark');
+  }
+
+  &::-ms-track {
+    // Size.
+    width: 100%;
+    height: unit-var('h');
+
+    // Border.
+    // border-radius: css-var('border-radius');
+    @include border-radius;
+    @include background('bg-dark');
+  }
+
+  &::-ms-fill-lower {
+    @include background('primary');
+  }
+}

@@ -1,0 +1,115 @@
+
+$column-width-1: 8.33333333% !default;
+$column-width-2: 16.66666667% !default;
+$column-width-3: 25% !default;
+$column-width-4: 33.33333333% !default;
+$column-width-5: 41.66666667% !default;
+$column-width-6: 50% !default;
+$column-width-7: 58.33333333% !default;
+$column-width-8: 66.66666667% !default;
+$column-width-9: 75% !default;
+$column-width-10: 83.33333333% !default;
+$column-width-11: 91.66666667% !default;
+$column-width-12: 100% !default;
+
+// Column variable.
+$column: (
+  'width': (
+    '': (
+      'auto': auto,
+      '12': $column-width-12,
+      '11': $column-width-11,
+      '10': $column-width-10,
+      '9': $column-width-9,
+      '8': $column-width-8,
+      '7': $column-width-7,
+      '6': $column-width-6,
+      '5': $column-width-5,
+      '4': $column-width-4,
+      '3': $column-width-3,
+      '2': $column-width-2,
+      '1': $column-width-1,
+    ),
+
+    'xl': (
+      'auto': auto,
+      '12': $column-width-12,
+      '11': $column-width-11,
+      '10': $column-width-10,
+      '9': $column-width-9,
+      '8': $column-width-8,
+      '7': $column-width-7,
+      '6': $column-width-6,
+      '5': $column-width-5,
+      '4': $column-width-4,
+      '3': $column-width-3,
+      '2': $column-width-2,
+      '1': $column-width-1,
+    ),
+
+    'lg': (
+      'auto': auto,
+      '12': $column-width-12,
+      '11': $column-width-11,
+      '10': $column-width-10,
+      '9': $column-width-9,
+      '8': $column-width-8,
+      '7': $column-width-7,
+      '6': $column-width-6,
+      '5': $column-width-5,
+      '4': $column-width-4,
+      '3': $column-width-3,
+      '2': $column-width-2,
+      '1': $column-width-1,
+    ),
+
+    'md': (
+      'auto': auto,
+      '12': $column-width-12,
+      '11': $column-width-11,
+      '10': $column-width-10,
+      '9': $column-width-9,
+      '8': $column-width-8,
+      '7': $column-width-7,
+      '6': $column-width-6,
+      '5': $column-width-5,
+      '4': $column-width-4,
+      '3': $column-width-3,
+      '2': $column-width-2,
+      '1': $column-width-1,
+    ),
+
+    'sm': (
+      'auto': auto,
+      '12': $column-width-12,
+      '11': $column-width-11,
+      '10': $column-width-10,
+      '9': $column-width-9,
+      '8': $column-width-8,
+      '7': $column-width-7,
+      '6': $column-width-6,
+      '5': $column-width-5,
+      '4': $column-width-4,
+      '3': $column-width-3,
+      '2': $column-width-2,
+      '1': $column-width-1,
+    ),
+
+    'xs': (
+      'auto': auto,
+      '12': $column-width-12,
+      '11': $column-width-11,
+      '10': $column-width-10,
+      '9': $column-width-9,
+      '8': $column-width-8,
+      '7': $column-width-7,
+      '6': $column-width-6,
+      '5': $column-width-5,
+      '4': $column-width-4,
+      '3': $column-width-3,
+      '2': $column-width-2,
+      '1': $column-width-1,
+    )
+  )
+) !default;
+

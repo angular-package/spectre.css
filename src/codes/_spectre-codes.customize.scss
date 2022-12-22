@@ -1,0 +1,30 @@
+/* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
+
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../variables/core' as *;
+@use 'variables' as *;
+
+// color-scheme
+// $color-scheme: dark light;
+
+$colors: '' !default;
+
+@if $colors != '' {
+  /* Spectre.css module: codes | colors: #{$colors} | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+} @else {
+  /* Spectre.css module: codes | elements | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+}
+
+$code: map.merge($code, (
+  'dictionary': (
+    'class': (
+      // 'code': 'code--', // code + modifier --
+      // 'prefix': 'spectre', //
+      // 'suffix': '',
+      // 'separator': '' // Remove separator class name to use BEM naming.
+    )
+  )
+));

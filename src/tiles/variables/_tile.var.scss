@@ -1,5 +1,12 @@
-//
+// Tile map variable.
 $tile: (
-  'class': (),
-  'var': ()
+  'dictionary': (
+    'class': (
+      // 'tile': '',
+      // 'prefix': '',
+      // 'suffix': '',
+      // 'separator': ''
+    ),
+    'var': ()
+  )
 ) !default;
