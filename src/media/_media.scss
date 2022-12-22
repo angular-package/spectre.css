@@ -1,0 +1,85 @@
+// Variables.
+@use '../variables/core' as *;
+
+// Functions.
+@use '../functions/class/class.function' as *;
+
+// Mixins.
+@use '../mixins/color/color.mixin' as *;
+@use '../mixins/margin.mixins' as *;
+
+// Media
+$img-name: 'img' !default;
+$video-name: 'video' !default;
+
+// Image responsive
+#{class(($img-name, 'responsive'))} {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// object-fit support is coming to Microsoft Edge
+// https://developer.microsoft.com/en-us/microsoft-edge/platform/status/objectfitandobjectposition/
+#{class(($img-name, 'fit', 'cover'))} {
+  object-fit: cover;
+}
+
+#{class(($img-name, 'fit', 'contain'))} {
+  object-fit: contain;
+}
+
+// Video responsive
+#{class(($video-name, 'responsive'))} {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-bottom: 56.25%; // Default ratio 16:9, you can calculate this value by dividing 9 by 16
+  }
+
+  iframe,
+  object,
+  embed {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+video#{class(($video-name, 'responsive'))} {
+  max-width: 100%;
+  height: auto;
+
+  &::before {
+    content: none;
+  }
+}
+
+#{class(($video-name, 'responsive', '4', '3'), ('&::before'))} {
+  padding-bottom: 75%; // Ratio 4:3
+}
+
+#{class(($video-name, 'responsive', '1', '1'), ('&::before'))} {
+  padding-bottom: 100%; // Ratio 1:1
+}
+
+// Figure
+#{class('figure')} {
+  @include margin(('unit', '0'), ('unit', '0'), ('layout', 'spacing', true), ('unit', '0'));
+
+  #{class(('figure', 'caption'))} {
+    @include margin-top(('layout', 'spacing', true));
+    @include color('gray-dark');
+  }
+}

@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/menu.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `menu-class()` function defines menu class names with given `$name`, `$selector` and class dictionary.
+@function menu-class($class: (), $selector: (), $dictionary: ()) {
+  @return module-class('menu', $class, $selector, $menu, $dictionary);
+}

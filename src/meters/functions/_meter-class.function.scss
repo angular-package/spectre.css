@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/meter.var' as *;
+
+// Functions.
+@use '../../functions/class/module-class.function' as *;
+
+// The `meter-class()` function defines meter class names with given `$name`, `$selector` and class dictionary.
+@function meter-class($class: (), $selector: (), $dictionary: ()) {
+  @return module-class('meter', $class, $selector, $meter, $dictionary);
+}

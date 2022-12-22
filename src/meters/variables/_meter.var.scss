@@ -1,0 +1,12 @@
+$meter-name: 'meter' !default;
+$meter: (
+  'dictionary': (
+    'class': (
+      'meter': $meter-name,
+      // 'prefix': '',
+      // 'suffix': '',
+      // 'separator': '',
+    ),
+    'var': (),
+  )
+) !default;

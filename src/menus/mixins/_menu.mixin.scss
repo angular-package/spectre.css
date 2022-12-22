@@ -1,0 +1,194 @@
+// Variables.
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../../forms/functions/form-class.function' as *;
+@use '../../functions/class/active-class.function' as *;
+@use '../../functions/class/class.function' as *;
+@use '../../functions/color/scheme/is-scheme-dark.function' as *;
+@use '../../functions/color/scheme/is-scheme-light.function' as *;
+@use '../../functions/color/scheme/is-scheme-normal.function' as *;
+@use '../../functions/var/get-var.function' as *;
+@use '../../functions/var/layout-spacing-var.function' as *;
+@use '../../labels/functions/label-class.function' as *;
+@use '../functions/menu-class.function' as *;
+
+// Mixins.
+@use '../../borders/mixins/radius/border-radius.mixin' as *;
+@use '../../mixins/color/background.mixin' as *;
+@use '../../mixins/color/color.mixin' as *;
+@use '../../mixins/disabled.mixin' as *;
+@use '../../mixins/margin.mixins' as *;
+@use '../../mixins/padding.mixins' as *;
+@use '../../mixins/box-shadow.mixins' as *;
+@use '../../mixins/transition.mixin' as *;
+@use '../../mixins/z-index.mixin' as *;
+
+// The `menu()` mixin.
+@mixin menu($class: '', $selector: (), $dictionary: ()) {
+  #{menu-class($class, $selector, $dictionary)} {
+    @include z-index('3');
+
+    // min-width: get-var('control-width', $suffix: 'xs');
+    min-width: get-var(('control', 'width', 'xs'));
+    @include margin(('unit', '0'));
+
+    list-style: none;
+
+    @include padding(('unit', '2'));
+
+    // Border.
+    // border-radius: get-var('border-radius');
+    // border-radius: get-var(('border', 'radius'));
+    @include border-radius;
+    @include background('body-bg');
+    @include shadow-variant(0.05rem);
+
+    // Transform.
+    // transform: translateY(get-var('layout-spacing', $suffix: 'sm', $unit: true));
+    // transform: translateY(get-var(('layout-spacing', 'sm'), $unit: true));
+    // transform: translateY(get-var(('layout', 'spacing', 'sm'), $unit: true));
+    transform: translateY(layout-spacing-var('sm'));
+
+    // Menu nav.
+    // &.menu-nav {
+    // #{class(('&', $menu-name, 'nav'))} {
+    #{menu-class(('&', $class, 'nav'), (), $dictionary)} {
+      // @include padding-right('unit-h');
+      @include padding-right(('unit', 'h'));
+
+      // @include padding-left('unit-0');
+      @include padding-left(('unit', '0'));
+
+      background: transparent;
+      box-shadow: none;
+
+      // .menu-item {
+      // #{class(($menu-name, 'item'))} {
+      #{menu-class(($class, 'item'), (), $dictionary)} {
+        // @include margin-right('unit-h');
+        @include margin-right(('unit', 'h'));
+
+        // @include margin-left('unit-h');
+        @include margin-left(('unit', 'h'));
+
+        // @include padding-right('unit-0');
+        @include padding-right(('unit', '0'));
+
+        // @include padding-left('unit-0');
+        @include padding-left(('unit', '0'));
+
+        // font-size: .7rem; // REVIEW: Find another place.
+
+        > a {
+          display: flex;
+
+          // @include margin('unit-0');
+          @include margin(('unit', '0'));
+
+          // @include padding-left('unit-3');
+          @include padding-left(('unit', '2'));
+
+          > svg {
+            @include margin-right(('unit', '2'));
+          }
+        }
+      }
+    }
+
+    // .menu-item {
+    // #{class(($menu-name, 'item'))} {
+    #{menu-class(($class, 'item'), (), $dictionary)} {
+      position: relative;
+
+      // @include margin-top('unit-0');
+      @include margin-top(('unit', '0'));
+
+      // @include padding('unit-0', 'unit-2');
+      @include padding(('unit', '0'), ('unit', '2'));
+
+      // Text.
+      text-decoration: none;
+
+      @include disabled('.');
+
+      & > a {
+        display: block;
+
+        // @include margin('unit-0', ('unit-2', ('negative': true)));
+        @include margin(('unit', '0'), ('!', 'unit', '2'));
+
+        // @include padding('unit-1', 'unit-2');
+        @include padding(('unit', '1'), ('unit', '2'));
+
+        // border-radius: get-var('border-radius');
+        // border-radius: get-var(('border', 'radius'));
+        @include border-radius;
+        @include color('gray-dark');
+
+        text-decoration: none;
+
+        // Color schemes.
+        &:active,
+        // &.active,
+        #{active-class('&')},
+        &:focus,
+        &:hover {
+          @include background((
+            scheme: (
+              dark: 'secondary-light',
+              light: 'secondary',
+              normal: 'secondary',
+            )
+          ));
+
+          @include color((
+            scheme: (
+              dark: 'body-font-color',
+              light: 'primary',
+              normal: 'primary',
+            )
+          ));
+        }
+
+        // Transition.
+        @include transition(background, color, box-shadow);
+      }
+
+      // .form-checkbox,
+      // .form-radio,
+      // .form-switch {
+      #{form-class((('checkbox', ), ('radio', ), ('switch', )))} {
+        @include margin(('unit', 'h'), ('unit', '0'));
+      }
+
+      // & + .menu-item {
+      // & + #{class(($menu-name, 'item'))} {
+      & + #{menu-class(($class, 'item'), (), $dictionary)} {
+        @include margin-top(('unit', '1'));
+      }
+    }
+
+    // .menu-badge {
+    // #{class(($menu-name, 'badge'))} {
+    #{menu-class(($class, 'badge'), (), $dictionary)} {
+      // Position.
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      // Display.
+      display: flex;
+      align-items: center;
+
+      // Size.
+      height: 100%;
+
+      // .label {
+      #{label-class()} {
+        // @include margin-right(('unit-2'));
+        @include margin-right(('unit', '2'));
+      }
+    }
+  }
+}
