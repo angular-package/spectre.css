@@ -1,0 +1,55 @@
+// Functions.
+@use 'list-nth.function' as *;
+
+// Examples.
+// Single number.
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), 2); // b
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), -2); // e
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), -6); // a
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), 10); // null
+
+// Single string.
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), first); // a
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), last); // f
+
+// Find index.
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (any, ('==', number))); // TODO: ?
+
+// Multiple indexes.
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (2, -1)); // "b", "f"
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (2, -10)); // "b", null
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (2, 5)); // "b", "e"
+
+// Get list range.
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (2, '...', 4)); // "b", "c", "d"
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (-2, '...', 1)); // "e", "f", "a"
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (-10, '...', 5)); // null, null, null, null, "a", "b", "c", "d", "e", "f", "a", "b", "c", "d", "e"
+
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), ((any, ('==', 'a')), '...', 4)); // "a", "b", "c", "d"
+// @debug list-nth(('a', 'bold king purple', 'c', 'd', 'e', 'f'), ((any, ('~=', 'purple')), '...', 4)); // "bold king purple", "c", "d"
+// @debug list-nth(('a', 'b', 'bold king purple', 'c', 'd', 'e', 'f'), ((any, ('~=', 'bold'), -1), '...', 4)); // "b", "bold king purple", "c"
+
+// From: string.
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (from: length)); // ("f",)
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (from: length, to: start)); // "f", "e", "d", "c", "b", "a"
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (from: start)); // "a", "b", "c", "d", "e", "f"
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (from: start, to: start)); // ("a",)
+
+// From: number
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (from: 2)); // "b", "c", "d", "e", "f"
+
+// From: search. TODO:
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (from: (any, ('==', 'b')))); // "b", "c", "d", "e", "f"
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), ((any, ('==', 'b')), '...',)); // "b", "c", "d", "e", "f"
+// @debug list-nth(('a', 'b', 'c', 'd', 4, 'e', 'f'), (from: (any, ('==', number), -1))); //
+
+// To.
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (to: 3)); // "a", "b", "c"
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (to: (any, ('==', 'b')))); // "b", "c", "d", "e", "f"
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (-1, '...', (any, ('==', 'e')))); // "b", "c", "d", "e", "f"
+
+// From - To.
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (from: -2, to: 3)); // "e", "f", "a", "b", "c"
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (to: -3, from: 3)); // "c", "b", "a", "f", "e", "d"
+// @debug list-nth(('a', 'b', 'c', 'd', 'e', 'f'), (from: length, to: -3)); // "f", "e", "d", "c", "b", "a", "f", "e", "d"
+

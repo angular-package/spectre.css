@@ -1,6 +1,7 @@
 // Sass.
 @use 'sass:list';
 
+// Status: @deprecated
 // The `check-list()` checks whether the given list has elements given in arbitrary argument.
 @function check-list($list, $elements...) {
   // Check.

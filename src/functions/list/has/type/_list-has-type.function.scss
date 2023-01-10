@@ -1,0 +1,40 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:meta';
+
+// Status: REVIEW: Add compare()
+// The `list-has-type()` function.
+@function list-has-type($list, $type, $condition: any) {
+  $condition: if(meta.type-of($condition) == list, list.nth($condition,1), $condition);
+  $has: false;
+
+  @if $condition == any {
+    @each $element in $list {
+      @if type-of($element) == if(not $type, type-of($type), $type) {
+        @return true;
+      }
+    }
+  } @else if $condition == all {
+    $has: true;
+    @each $element in $list {
+      @if type-of($element) != if(not $type, type-of($type), $type) {
+        @return false;
+      }
+    }
+  }
+  @return $has;
+}
+
+// Examples.
+// @debug list-has-type(('a', 'b', 'c'), string); // true
+// @debug list-has-type(('a', 'b', 'c', 5123), number); // true
+// @debug list-has-type(('a', null, 'b', 'c', 5123), null); // true
+// @debug list-has-type(('a', ('b', 'c'), 5123), list); // true
+// @debug list-has-type(('a', ('b': 'c'), 5123), map); // true
+
+// all
+// @debug list-has-type(('a', 'b', 'c'), string, all); // true
+// @debug list-has-type(('a', 'b', 'c', 5123), number, all); // false
+// @debug list-has-type(('a', null, 'b', 'c', 5123), null, all); // false
+// @debug list-has-type(('a', ('b', 'c'), 5123), list, all); // false
+// @debug list-has-type(('a', ('b': 'c'), 5123), map, all); // false

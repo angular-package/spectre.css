@@ -1,0 +1,38 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use '../is/is-list-length.function' as *;
+@use '../is/is-list.function' as *;
+
+// Status: DONE.
+// The `list-remove-list()` function removes the list from the given `$list`.
+@function list-remove-list($list, $length: false) {
+  $result: ();
+  @if is-list-length($list, 0) {
+    @each $element in $list {
+      $allow: false;
+
+      @if type-of($length) == number {
+        @if not is-list($element) or (is-list($element) and is-list-length($element, $length, '!=')) {
+          $allow: true;
+        }
+      } @else {
+        @if not is-list($element) {
+          $allow: true;
+        }
+      }
+
+      @if $allow == true {
+        $result: list.append($result, $element, $separator: list.separator($list));
+      }
+    }
+  }
+  @return $result;
+}
+
+// Examples.
+// @debug list-remove-list(('a', 'b', 'c')); // "a", "b", "c"
+// @debug list-remove-list(('a', 'b', 'c', ('d', 'e', 'f'))); // "a", "b", "c"
+// @debug list-remove-list(('a', 'b', 'c', ('d', 'e', 'f'), 'g', 'h', (1, 2, 3))); // "a", "b", "c", "g", "h"
+// @debug list-remove-list(('a', 'b', 'c', ('d', (1, 2, 3, (4, 5, 6)), 'e', 'f'))); // "a", "b", "c"

@@ -1,15 +1,25 @@
-// Variables.
-@use '../../variables/core' as *;
+// Sass.
+@use 'sass:list';
 
 // Functions.
 @use '../strip-unit.function' as *;
-@use 'css-var.function' as *;
 
 // The function `var-adjust()` returns CSS calc function with the given `$value` adjusted.
 @function var-adjust($var, $adjust: null, $operator: '+') {
-  @if $adjust != null {
-    @if strip-unit($adjust) != 0 {
-      @return calc(#{$var} #{$operator} #{$adjust});
+  @if $adjust {
+    $calc: true;
+    $value: $adjust;
+    @if list.length($adjust) > 1 {
+      $operator: list.nth($adjust, 1);
+      $value: list.nth($adjust, 2);
+    }
+    @if
+    ($operator == '+' and strip-unit($value) == 0) or
+    ($operator == '*' and strip-unit($value) == 1) {
+      $calc: false;
+    }
+    @if $calc == true {
+      @return calc(#{$var} #{$operator} #{$value});
     }
   }
   @return $var;

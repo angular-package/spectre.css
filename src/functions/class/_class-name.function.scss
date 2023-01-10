@@ -1,0 +1,101 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Functions.
+@use '../dictionary' as *;
+@use '../list/has/list-has-string.function' as *;
+@use '../list/is/is-list-length.function' as *;
+@use '../list/remove/list-remove-string.function' as *;
+@use '../name.function' as *;
+
+// Status: REVIEW:
+// https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
+// The `class-name()` function defines name from the given list and `$dictionary`, separated by the given `$separator`.
+@function class-name($name, $dictionary: (), $separator: null) {
+  $selector: ();
+
+  // If name is built from the list.
+  @if is-list-length($name, 1) {
+    // Parent and class selector in indexes.
+    @if list-has-string($name, any, '&', '.') {
+      $selector: if(list.index($name, '&'), list.append($selector, '&'), $selector);
+      $selector: if(list.index($name, '.'), list.append($selector, '.'), $selector);
+
+    // Both parent and class selector in index.
+    } @else if list-has-string($name, any, '&.') {
+      $selector: list.join($selector, ('&', '.'), $separator: 'comma');
+    }
+
+    // REVIEW: Check.
+    $name: list-remove-string($name, '&', '.', '&.');
+  }
+
+  @return #{name($selector) + name($name, dictionary-merge('class', $dictionary), $separator)};
+}
+
+// Examples.
+// Execute: sass src/functions/class/_class-name.function.scss
+
+// @debug class-name(('border', 'width', 'lg')); // border-width-lg
+// @debug class-name(('.', 'border', 'width', 'lg')); // .border-width-lg
+// @debug class-name(('&', 'border', 'width', 'lg')); // &border-width-lg
+// @debug class-name(('.', '&', 'border', 'width', 'lg')); // &.border-width-lg
+// @debug class-name(('&', '.', 'border', 'width', 'lg')); // &.border-width-lg
+// @debug class-name(('&.', 'border', 'width', 'lg')); // &.border-width-lg
+// @debug class-name(('border', 'width', '&.', 'lg')); // &.border-width-lg
+
+// @debug class-name(('border', '&', 'width', '&', '.', 'lg')); // &.border-width-lg
+
+// Example 1.
+// @debug class-name(('', 'border', 'width', 'lg')); // Left side separator
+// @debug class-name(('', 'border', 'width', 'lg', '')); // Both sides separator
+// @debug class-name(('border', 'width', 'lg', '')); // Right side separator
+
+// Example 2.
+// @debug class-name(('border', 'width', 'lg'), $separator: '--'); // border--width--lg
+
+// Example 3.
+// @debug class-name(('border', 'width', 'lg'), ('prefix': 'spectre', 'suffix': 'ver2'));
+
+// Example 4.
+// @debug class-name(('border', ('prefix': 'spectre', 'suffix': 'ver2'), 'width', 'lg'));
+
+// Example 5.
+// @debug class-name(('border', ('border': 'modified-border'), 'width', 'lg'));
+
+// Example 6.
+// @debug class-name(('border', 'width', 'lg'), ('border': 'modified-border'));
+
+// Example 7.
+// @debug class-name(('border', 'width', 'lg'), ('width': 'modified-width', 'lg': 'lg-modified'));
+
+// Example 8.
+// @debug class-name(('border', 'width', 'lg', ' ', 'border', '>', 'active'));
+
+// Example 9.
+// @debug class-name(('border', 'width', 'lg', '~', 'border', '+', 'active'));
+
+// Example 10.
+// @debug class-name(('border', 'width', 'lg', ' ', 'border', '||', 'active'));
+
+// Example 11.
+// @debug class-name(('100', 'border', 'width'));
+
+// Example 12.
+// @debug class-name(('border', 'width', '100'));
+
+// Example 13.
+// @debug class-name(('border', 'width', '200'));
+
+// Example 14.
+// @debug class-name(('dark', 'theme', ' ', 'button', 'red', ' ', 'icon', 'svg'));
+
+// Example 15.
+// @debug class-name(('light', 'theme', ' ', 'button', 'red'));
+
+// Example 16.
+// @debug class-name(('.', '100', 'border', 'width'));
+
+// Example 17.
+// @debug class-name(('&', '.', '100', 'border', 'width'));

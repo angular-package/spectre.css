@@ -1,0 +1,7 @@
+// Sass.
+@use 'sass:list';
+
+// The `list-has-value()` function.
+@function list-has-value($list, $value) {
+  @return if(list.index($list, $value), true, false);
+}

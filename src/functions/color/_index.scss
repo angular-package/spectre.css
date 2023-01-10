@@ -1,8 +1,10 @@
 // Directory.
 @forward 'hsla';
+@forward 'scheme';
 
 // Function.
 @forward 'alpha-var.function';
 @forward 'color-name.function';
 @forward 'color.function';
 @forward 'get-theme-colors.function';
+@forward 'has-color.function';

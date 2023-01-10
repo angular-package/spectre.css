@@ -1,0 +1,25 @@
+// Sass.
+@use 'sass:list';
+
+// Status: REVIEW:
+// The `list-get-number()` function returns the first detected number from the list given as arbitrary argument, otherwise null.
+@function list-get-number($list, $multiple: false, $separator: list.separator($list)) {
+  $result: ();
+  @each $element in $list {
+    @if type-of($element) == number {
+      @if $multiple == true {
+        $result: list.append($result, $element, $separator: $separator);
+      } @else {
+        @return $element;
+      }
+    }
+  }
+  @return if($multiple == true, if(list.length($result) > 0, $result, null), null);
+}
+
+// Examples.
+// @debug list-get-number(('a', 'b', 'c', 2)); // Returns `2`
+// @debug list-get-number(('a', 'b', 'c', (3))); // Returns `3`
+// @debug list-get-number(('a', 'b', 'c', (4, ))); // Returns `null`
+// @debug list-get-number(('a', 'b', 'c', ('5', (6,)))); // Returns `null`
+// @debug list-get-number((3, 'a', 0, 'b', 1, 'c', 2), true); // Returns 3, 0, 1, 2

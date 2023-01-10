@@ -1,0 +1,11 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use '../list-type-to.function' as *;
+
+// Status: REVIEW: Check.
+// The `list-type-index()` function.
+@function list-type-index($list, $conditions: all, $types...) {
+  @return list-type-to($list, $conditions, list.append($types, index)...);
+}

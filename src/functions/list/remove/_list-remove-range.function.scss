@@ -1,0 +1,27 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use '../has/list-has-string.function' as *;
+@use '../is/is-list-length.function' as *;
+
+// Status: DONE
+// The `list-remove-range()` function.
+@function list-remove-range($list, $from, $to) {
+  @if is-list-length($list, 1) {
+    $result: ();
+    $i: 1;
+    @each $element in $list {
+      @if not ($i >= $from and $i <= $to) {
+        $result: list.append($result, $element, $separator: list.separator($list));
+      }
+
+      $i: $i + 1;
+    }
+    @return $result;
+  }
+  @return $list;
+}
+
+// Examples.
+// @debug list-remove-range(('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'), 2, 5); // "a", "f", "g", "h", "i"

@@ -1,0 +1,35 @@
+// Functions.
+@use '../is/is-list-length.function' as *;
+@use 'type/list-has-type.function' as *;
+@use 'value/list-has-values.function' as *;
+
+// Status: DONE
+// The `list-has-bool()` function checks whether the given `$list` has `any/all` of given in the arbitrary argument `$bools`.
+@function list-has-bool($list, $condition: any, $bools...) {
+  // Checks whether the given `$list` has `any/all` elements of bool type.
+  $has: list-has-type($list, bool, $condition);
+  @if is-list-length($bools, 0) and $has {
+    $has: list-has-values($list, $condition, $bools...);
+  }
+  @return $has;
+}
+
+// Examples (true).
+// @debug list-has-bool(('a', 'b', 'c', true)); // true
+// @debug list-has-bool(('a', 'b', false, 'c'), any); // true
+// @debug list-has-bool((true, true, false, false), all); // true
+// @debug list-has-bool((true, true, true, true), all, true); // true
+// @debug list-has-bool((false, false, false, false), all, false); // true
+// @debug list-has-bool((true, true, false, false), all, true, false); // true
+// @debug list-has-bool((true, true, true, true), (all, '=='), true); // true
+// @debug list-has-bool((false, false, false, false), (all, '=='), false); // true
+
+// Examples (false).
+// @debug list-has-bool(('a', 'b', 'c')); // false
+// @debug list-has-bool(('a', 'b', 'c'), all); // false
+// @debug list-has-bool(('a', 'b', false, 'c'), all); // false
+// @debug list-has-bool(('a', 'b', 'c'), any, true); // false
+// @debug list-has-bool(('a', 'b', 'c'), any, false); // false
+// @debug list-has-bool((true, true, true, true), all, true, false); // false
+// @debug list-has-bool((false, false, false, false), all, true); // false
+// @debug list-has-bool((true, true, true, true), all, false); // false

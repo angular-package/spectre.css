@@ -1,0 +1,16 @@
+// Functions.
+@use '../map/values-map-get.function' as *;
+@use 'is/is-list-length.function' as *;
+
+// The `limit()` function.
+@function limit($value, $key...) {
+  @return values-map-get(
+    $value,
+    if(is-list-length($value, 1), (offset, limit), (limit,)),
+    $key...
+  );
+}
+
+// Examples.
+// @debug limit(2, 'limit'); // (limit: 2)
+// @debug limit((2, 15)); // (offset: 2, limit: 15)

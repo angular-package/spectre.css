@@ -7,6 +7,6 @@
 @use '../color-name.function' as *;
 
 // The function returns the CSS variable hue color of the given `$name` and `$prefix`.
-@function hue-var($name, $hue: 0deg, $prefix: $var-prefix) {
-  @return var-adjust(css-var(color-name($name), $suffix: $var-hue), $hue);
+@function hue-var($name, $hue: 0deg, $backup: null, $var: ()) {
+  @return var-adjust(css-var((color-name($name), 'hue'), $backup, $var), $hue);
 }

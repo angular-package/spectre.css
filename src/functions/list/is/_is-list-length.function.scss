@@ -1,0 +1,44 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use '../../compare.function' as *;
+@use 'is-list-type.function' as *;
+
+// Status: DONE
+// The `is-list-length()` function.
+@function is-list-length($list, $conditions...) {
+  $operator: '>';
+  $length: 0;
+
+  @if list.length($conditions) > 0 {
+    @each $condition in $conditions {
+      @if type-of($condition) == string {
+        $operator: $condition;
+      } @else if type-of($condition) == number {
+        $length: $condition;
+      }
+    }
+  }
+
+  @return compare(list.length($list), $operator, $length);
+}
+
+// Examples.
+// @debug is-list-length(('a', 'b', 'c')); // true
+
+// @debug is-list-length(('a', 'b', 'c'), 1); // true
+// @debug is-list-length(('a', 'b', 'c'), 4); // false
+
+// @debug is-list-length(('a', 'b', 'c'), 3, '=='); // true
+// @debug is-list-length(('a', 'b', 'c'), '==', 3); // true
+// @debug is-list-length(('a', 'b', 'c'), '!=', 3); // false
+
+// @debug is-list-length(('a', 'b', 'c'), 3, '>='); // true
+// @debug is-list-length(('a', 'b', 'c'), 3, '<='); // true
+
+// @debug is-list-length(('a', 'b', 'c'), 4, '<'); // true
+// @debug is-list-length(('a', 'b', 'c'), 3, '<'); // false
+
+// @debug is-list-length(('a', 'b', 'c'), 2, '>'); // true
+// @debug is-list-length(('a', 'b', 'c'), 3, '>'); // false

@@ -1,3 +1,7 @@
+// Sass.
+@use 'sass:map';
+@use 'sass:string';
+
 // Variables.
 @use '../../variables/core' as *;
 
@@ -10,15 +14,13 @@
   $hue: 0deg,
   $saturation: 0%,
   $lightness: 0%,
-  $alpha: 0,
-  $prefix: $var-prefix
+  $alpha: 1,
+  $var: (), // TODO: Remove $var in favor of $dictionary.
+  $dictionary: ()
 ) {
-  @return hsla-color(
+  @return if(
+    $name == currentcolor or type-of($name) == color,
     $name,
-    $hue,
-    $saturation,
-    $lightness,
-    $alpha,
-    $prefix
+    hsla-color($name, $hue, $saturation, $lightness, $alpha, $var)
   );
 }

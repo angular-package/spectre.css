@@ -1,0 +1,56 @@
+// Sass.
+@use 'sass:string';
+
+// The `compare()` function.
+@function compare($value, $operator, $operand) {
+  @if $operator == '==' {
+    @return $value == $operand;
+
+  } @else if $operator == ':==' or $operator == ':!=' {
+    $operand: if(not $operand, meta.type-of($operand), $operand);
+    @if string.index($operator, '==') {
+      @return type-of($value) == $operand;
+    } @else if string.index($operator, '!=') {
+      @return type-of($value) != $operand;
+    }
+
+  } @else if $operator == '~=' {
+    @return (
+      type-of($value) == string and
+      type-of($operand) == string and
+      string.index($value, $operand)
+    ) or false;
+
+  } @else if $operator == '!=' {
+    @return $value != $operand;
+
+  } @else if $operator ==  '>' {
+    @return (
+      type-of($value) == number and
+      type-of($operand) == number and
+      $value > $operand
+    ) or false;
+
+  } @else if $operator ==  '>=' {
+    @return (
+      type-of($value) == number and
+      type-of($operand) == number and
+      $value >= $operand
+    ) or false;
+
+  } @else if $operator ==  '<' {
+    @return (
+      type-of($value) == number and
+      type-of($operand) == number and
+      $value < $operand
+    ) or false;
+
+  } @else if $operator ==  '<=' {
+    @return (
+      type-of($value) == number and
+      type-of($operand) == number and
+      $value <= $operand
+    ) or false;
+  }
+  @return false;
+}

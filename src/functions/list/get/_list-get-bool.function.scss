@@ -1,0 +1,34 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use '../is/is-list-type.function' as *;
+@use '../is/is-list.function' as *;
+
+// Status: DONE
+// The `list-get-bool()` function.
+@function list-get-bool($list, $bool...) {
+  @if is-list($list, 0) {
+    $check: is-list($bool, 0);
+    @each $element in $list {
+      @if type-of($element) == bool {
+        @if $check {
+          @if list.nth($bool, 1) == $element {
+            @return $element;
+          }
+        } @else {
+          @return $element;
+        }
+      }
+    }
+  }
+  @return null;
+}
+
+// Examples.
+// @debug list-get-bool(('a', 'b', false, 'c', 2)); // Returns `false`
+// @debug list-get-bool(('a', 'b', true, 'c', 2)); // Returns `true`
+// @debug list-get-bool(('a', 'b', 'c', (true, '5', (6,)))); // Returns `null`
+// @debug list-get-bool(('a', 'b', true, 'c', 2), false); // Returns `null`
+// @debug list-get-bool(('a', 'b', true, 'c', 2), true); // Returns `true`
+// @debug list-get-bool(('a', 'b', false, 'c', 2), false); // Returns `false`

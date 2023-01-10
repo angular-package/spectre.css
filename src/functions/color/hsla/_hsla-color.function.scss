@@ -6,8 +6,8 @@
 
 // Functions.
 @use '../../../functions/var/var-adjust.function' as *;
-@use '../../get-from-list.function' as *;
-@use '../../map-get-default.function' as *;
+@use '../../map/values-map.function' as *;
+@use '../../map/map-get-default.function' as *;
 @use '../alpha-var.function' as *;
 @use 'lightness-var.function' as *;
 @use 'hue-var.function' as *;
@@ -22,14 +22,14 @@
   $hue: 0deg,
   $saturation: 0%,
   $lightness: 0%,
-  $alpha: 0,
-  $prefix: $var-prefix
+  $alpha: 1,
+  $var: ()
 ) {
-  $color: get-from-list($name, 'name', 'lightness', 'alpha', 'hue', 'saturation');
+  $color: values-map($name, 'name', 'lightness', 'alpha', 'hue', 'saturation');
   @return hsla(
-    hue-var(map.get($color, 'name'), map-get-default($color, 'hue', $hue), $prefix),
-    saturation-var(map.get($color, 'name'), map-get-default($color, 'saturation', $saturation), $prefix),
-    lightness-var(map.get($color, 'name'), calc(map-get-default($color, 'lightness', 0%) + $lightness), $prefix),
-    alpha-var(map.get($color, 'name'), map-get-default($color, 'alpha', $alpha), $prefix)
+    hue-var(map.get($color, 'name'), map-get-default($color, 'hue', $hue), $var: $var),
+    saturation-var(map.get($color, 'name'), map-get-default($color, 'saturation', $saturation), $var: $var),
+    lightness-var(map.get($color, 'name'), calc(map-get-default($color, 'lightness', 0%) + $lightness), $var: $var),
+    alpha-var(map.get($color, 'name'), map-get-default($color, 'alpha', $alpha), $var: $var)
   );
 }

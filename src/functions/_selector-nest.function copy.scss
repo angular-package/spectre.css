@@ -1,0 +1,122 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:selector';
+@use 'sass:string';
+
+// Functions.
+@use 'list/has/list-has-string.function' as *;
+@use 'list/list-replace-string.function' as *;
+@use 'list/remove/list-remove-list.function' as *;
+@use 'list/remove/list-remove-nth.function' as *;
+@use 'name.function' as *;
+@use 'replace-parent-placeholder.function' as *;
+@use 'replace-parent-selector.function' as *;
+@use 'selector-name.function' as *;
+@use 'string/string-replace.function' as *;
+
+// Selectors.
+$selectors: (
+  '&', // REVIEW: ?
+  '.',
+  '&.',
+  // '&:', // REVIEW: Useless?
+  __CLASS__
+);
+
+// The `selector-nest()` function.
+@function selector-nest($selector, $dictionary: (), $placeholder: __PARENT__) {
+  // WARNING: Check.
+  // $selector: list-remove-list($selector, 0);
+
+  @debug $selector;
+  // @debug list.length($selector);
+
+  $result: ();
+
+  // Name of string.
+  @if type-of($selector) == string {
+    $result: list.join((), $selector);
+  }
+
+  // Name of list of strings, or name of list of list of strings.
+  @if type-of($selector) == list and list.length($selector) > 0 {
+    $-group: ();
+    $-selector: ();
+    $i: 1;
+    @each $element in $selector {
+      // @debug type-of($value: $element);
+      // If the selector is string.
+      @if type-of($element) == string and string.length($element) > 0 {
+        $-selector: list.append($-selector, $element, $separator: 'comma');
+      }
+
+      // Else if the selector is a list.
+      @else if type-of($element) == list {
+        // If the selector is list that contains $selectors.
+        @if list-has-string($element, any, $selectors...) == true {
+          $-selector: list.append($-selector, selector-name($element, $dictionary), $separator: 'comma');
+
+        // Else if the list not contains selectors then.
+        } @else {
+          @each $e in $element {
+            @if type-of($e) == string and string.length($e) > 0 {
+              $-group: list.append($-group, $e, $separator: 'comma');
+            }
+            @else if type-of($e) == list and list-has-string($e, any, $selectors...) == true {
+              $-group: list.append($-group, selector-name($e, $dictionary), $separator: 'comma');
+            }
+          }
+          @if list.length($-group) > 0 {
+            $-selector: list.append($-selector, $-group, $separator: 'comma');
+            $-group: (); // Reset group.
+          }
+        }
+      }
+
+      $i: $i + 1;
+    }
+
+    @debug $-selector;
+
+    // Use Sass nest.
+    @if list.length($-selector) > 0 {
+      $selector: selector.nest(replace-parent-selector($-selector, $placeholder)...);
+    }
+
+    // Replace empty placeholder for example placeholder.
+    $selector: list-replace-string($selector, __CLASS__, '');
+
+    @return replace-parent-placeholder($selector, $placeholder);
+  }
+  @return selector.nest($result...);
+}
+
+// Examples.
+// @debug selector-nest('border-width');
+// @debug selector-nest(('border-width', '&:hover'));
+// @debug selector-nest('.border-width');
+// @debug selector-nest(('border', 'width'));
+// @debug selector-nest((('.', 'border', 'width'), '&:hover'));
+// @debug selector-nest((('.', 'btn', '&', 'dark', 'xs'),));
+// @debug selector-nest((('&', '.', 'btn', 'dark', 'xs'),));
+// @debug selector-nest((('.', 'border', 'width'),),);
+// @debug selector-nest((('&.', 'border', 'width'),));
+// @debug selector-nest((('&', '.', 'border', 'width'),));
+// @debug selector-nest((('&', '.', 'border', 'width'), ('&', '.', 'border', 'width', 'lg'),));
+// @debug selector-nest(((('&', '.', 'border', 'width'), ('&', '.', 'border', 'width', 'lg')),));
+// @debug selector-nest(((('&', '.', 'card'), ('&', '.', 'border')), (('&', 'header', 'a'), ('&', 'header', 'b'))));
+// @debug selector-nest((('&', '.', 'card'), (('&', 'header', 'a'), ('&', 'header', 'b'))));
+// @debug selector-nest(('&.card', (('&', 'header', 'a'), ('&', 'header', 'b'))));
+// @debug selector-nest(('&.card', (('&', '-', 'header', 'a'), ('&', '-', 'header', 'b')), ('&', '-', 'primary')));
+// @debug selector-nest((('&', '.', 'card'), (('&', 'header'), ('&', 'body'), ('&', 'footer'),)));
+
+// Examples: empty placeholder.
+// @debug selector-nest((('&', '.', __CLASS__), (('&', 'header'), ('&', 'body'), ('&', 'footer'),)));
+// @debug selector-nest(((".", "card"), (("&", "header"), ("&", "body"), ("&", "footer"))));
+// @debug selector-nest((("card__CLASS__",), (("&", "header"), ("&", "body"), ("&", "footer"))),);
+// @debug selector-nest((('.', "card",), (('&', '', "header"), ('&', '', 'person')), (('&', '', "body"), ('&', '', "footer"))),);
+// @debug selector-nest((('.', "card",), (('&', '', "header"), ('&', '', 'person')), ('&', '', 'between') , (('&', '', "body"), ('&', '', "footer"))),);
+
+// Examples: tag.
+@debug selector-nest(('&', '.', ('&', 'border', 'width'),));

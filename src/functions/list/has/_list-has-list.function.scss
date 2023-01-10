@@ -1,0 +1,29 @@
+// Functions.
+@use '../is/is-list-length.function' as *;
+@use 'type/list-has-type.function' as *;
+@use 'value/list-has-values.function' as *;
+
+// Status: DONE
+// The `list-has-list()` function checks whether the given `$list` has `any/all` of given in the arbitrary argument `$lists`.
+@function list-has-list($list, $condition: any, $lists...) {
+  // Checks whether the given `$list` has `any/all` elements of list type.
+  $has: list-has-type($list, list, $condition);
+  @if is-list-length($lists, 0) and $has {
+    $has: list-has-values($list, $condition, $lists...);
+  }
+  @return $has;
+}
+
+// Examples.
+// -- true
+// @debug list-has-list(((1, 2, 3), ('4', '5', '6'), 7, 8, 9)); // true
+// @debug list-has-list(((1, 2, 3), ('4', '5', '6'), 7, 8, 9), any); // true
+// @debug list-has-list(((1, 2, 3), ('4', '5', '6'), (7, 8, 9)), all); // true
+// @debug list-has-list(((1, 2, 3), ('4', '5', '6'), 7, 8, 9), (any, '=='), ('4', '5', '6')); // true
+// @debug list-has-list(((4, 5, 6), (4, 5, 6), (4, 5, 6)), (any, '=='), (4, 5, 6)); // true
+// @debug list-has-list((('4', '5', '6'), ('4', '5', '6'), ('4', '5', '6')), (all, '=='), ('4', '5', '6')); // true
+
+// -- false
+// @debug list-has-list((1, 2, 3, '4', '5', '6', 7, 8, 9, (a: 1)), any); // false
+// @debug list-has-list(((1, 2, 3), ('4', '5', '6'), 7, 8, 9), all); // false
+// @debug list-has-list(((1, 2, 3), ('4', '5', '6'), 7, 8, 9), (all, '=='), ('4', '5', '6')); // false

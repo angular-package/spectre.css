@@ -7,6 +7,10 @@
 @use 'color-name.function' as *;
 
 // The function returns the CSS variable alpha color of the given `$name` and `$prefix`.
-@function alpha-var($name, $alpha: 0, $prefix: $var-prefix) {
-  @return var-adjust(css-var(color-name($name), $prefix, $var-alpha), $alpha, '*');
+@function alpha-var($name, $alpha: 1, $backup: null, $var: ()) {
+  @return var-adjust(
+    css-var((color-name($name), 'alpha'), $backup, $var),
+    $alpha,
+    '*'
+  );
 }

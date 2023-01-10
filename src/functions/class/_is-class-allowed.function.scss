@@ -1,0 +1,11 @@
+// Sass.
+@use 'sass:string';
+
+// The `is-class-allowed()` function.
+// @deprecated
+// @function is-class-allowed($variant) {
+//   @if string.index($variant, '-') != 1 {
+//     @return true;
+//   }
+//   @return false;
+// }

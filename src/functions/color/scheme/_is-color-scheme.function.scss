@@ -1,0 +1,24 @@
+// Variables.
+@use '../../../variables/core' as *;
+
+// Mixins.
+@use 'is-scheme-dark.function' as *;
+@use 'is-scheme-light.function' as *;
+@use 'is-scheme-normal.function' as *;
+
+// The `is-color-scheme()` function. normal / dark / light / light dark
+// https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
+@function is-color-scheme($scheme) {
+  @if type-of($scheme) == string {
+    @if $scheme == normal {
+      @return is-scheme-normal();
+    } @else if $scheme == dark {
+      @return is-scheme-dark();
+    } @else if $scheme == light {
+      @return is-scheme-light();
+    } @else if $scheme == 'light dark' {
+      @return is-scheme-dark() and is-scheme-light();
+    }
+  }
+  @return $color-scheme == $scheme;
+}

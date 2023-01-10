@@ -1,0 +1,102 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use '../list/has/list-has-string.function' as *;
+
+// The `add-class-selector()` function.
+@function add-class-selector($selector, $placeholder: __CLASS__) {
+  $result: ();
+
+  @debug $selector;
+
+  // String.
+  @if type-of($selector) == string {
+    $result: -append-selector($result, $selector, '.');
+  }
+
+  // List.
+  @else if type-of($selector) == list {
+    // Only string type elements.
+    @if list-has-string($selector, all) {
+      $result: -append-selector($result, $selector, '.');
+    } @else {
+      $-string: ();
+      $-list: ();
+      $result: ();
+      $extend-list: ('&', '');
+      $extend-string: ('&', '');
+      $string-added: false; // First string was added then set to true, and add next with extend string.
+      $i: 1;
+      @each $element in $selector {
+        @if $i == 1 and type-of($element) == list {
+          $result: list.append($result, $placeholder, $separator: 'comma');
+          $extend-list: '&';
+        }
+
+        @if type-of($element) == string {
+          // Append string to the list.
+          $-string: -append($-string, $element);
+
+          // If list exists append to the result.
+          @if list.length($-list) > 0 {
+            $result: -append($result, $-list);
+            $-list: ();
+          }
+
+        } @else if type-of($element) == list {
+          @if list.length($-string) > 0 {
+            @if $string-added == false {
+              $result: -append($result, $-string);
+            } @else {
+              $result: -append-selector($result, $-string, $extend-string);
+            }
+
+            $-string: ();
+            $string-added: true;
+          }
+
+          $-list: -append-selector($-list, $element, $extend-list);
+        }
+
+        $i: $i + 1;
+      }
+
+      @if list.length($-list) > 0 {
+        $result: -append($result, $-list);
+        $-list: ();
+      }
+
+      @if list.length($-string) > 0 {
+        $result: -append-selector($result, $-string, $extend-string);
+        $-string: ();
+      }
+
+      // Add the class selector to the first element.
+      $result: list.set-nth($result, 1, -add-selector(list.nth($result, 1), '.'));
+    }
+  }
+
+  @debug $result;
+
+  // Returns.
+  @return $result;
+}
+
+
+// The `-add-selector()` function.
+@function -add-selector($list, $selector: null) {
+  @return if($selector, list.join($selector, $list, $separator: 'comma'), $list) ;
+}
+
+// The `-append()` function.
+@function -append($list, $value) {
+  @return list.append($list, $value, $separator: 'comma');
+}
+
+// The `-append-class()` function.
+@function -append-selector($list, $value, $selector) {
+  @return -append($list, -add-selector($value, $selector));
+}
+
+@debug add-class-selector(('card', ('header',), ('body', ), ('footer', ), 'primary'));

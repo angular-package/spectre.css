@@ -8,6 +8,9 @@
 
 // The function returns the CSS variable saturation color of the given `$name` and `$prefix`.
 // The `$name` parameter can take color code.
-@function saturation-var($name, $saturation: 0%, $prefix: $var-prefix) {
-  @return var-adjust(css-var(color-name($name), $suffix: $var-saturation), $saturation);
+@function saturation-var($name, $saturation: 0%, $backup: null, $var: ()) {
+  @return var-adjust(
+    css-var((color-name($name), 'saturation'), $backup, $var),
+    $saturation
+  );
 }

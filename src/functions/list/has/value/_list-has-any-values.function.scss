@@ -1,0 +1,18 @@
+// Functions.
+@use 'list-has-value.function' as *;
+
+// Status: DONE
+// The `list-has-any-values()` function.
+@function list-has-any-values($list, $values...) {
+  @each $value in $values {
+    @if list-has-value($list, $value) {
+      @return true;
+    }
+  }
+  @return false;
+}
+
+// Examples.
+// @debug list-has-any-values(('a', 'b', ('c', 'd'), e), 'a', 'b'); // true
+// @debug list-has-any-values(('a', 'b', ('c', 'd'), e), 'b', 'a'); // true
+// @debug list-has-any-values(('a', 'b', ('c', 'd'), e), 'b', 'a', 'something'); // true

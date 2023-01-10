@@ -1,0 +1,40 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:string';
+
+// Functions.
+@use '../list/is/is-list-length.function' as *;
+
+// Status: DONE
+// The `string-join()` function returns the string built from the given elements separated by the given separator
+// in original elements order.
+@function string-join($separator: '', $elements...) {
+  $result: '';
+  $separator: $separator or '';
+  @if is-list-length($elements, 0) {
+    @each $element in $elements {
+      // @if type-of($element) == list {
+      //   @each $value in $element {
+      //     @if type-of($value) == string {
+      //       $result: '#{$result}#{$value}#{$separator}';
+      //     }
+      //   }
+      // } @else if type-of($element) == string {
+      //   $result: '#{$result}#{$element}#{$separator}';
+      // }
+
+      @if type-of($element) == string {
+        $result: '#{$result}#{$element}#{$separator}';
+      }
+    }
+  }
+  @return string.slice($result, 1, calc((string.length($separator) + 1) * -1));
+}
+
+// Examples.
+// @debug string-join('-');
+// @debug string-join('-', 'a', 'b', 'c'); // a-b-c
+// @debug string-join('-', '', 'a', 'b', 'c'); // -a-b-c
+// @debug string-join('-', 'a', 'b', 'c', ''); // a-b-c-
+// @debug string-join('-', '', 'a', 'b', 'c', ''); // a-b-c-
+// @debug string-join('-', 'a', ('b', 'c')); // a-b-c

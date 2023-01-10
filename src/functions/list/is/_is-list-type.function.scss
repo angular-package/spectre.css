@@ -1,0 +1,5 @@
+// Status: DONE
+// The `is-list-type()` function.
+@function is-list-type($value) {
+  @return type-of($value) == list or type-of($value) == arglist;
+}

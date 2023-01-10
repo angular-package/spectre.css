@@ -1,0 +1,22 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:string';
+
+// The `string-join()` function returns the string built from the given elements separated by the given separator
+// in original elements order.
+@function string-join($separator: '', $elements...) {
+  $string: '';
+  $separator: $separator or '';
+  @if list.length($elements) > 0 {
+    @each $element in $elements {
+      @if type-of($element) == list {
+        @each $sub-element in $element {
+          $string: '#{$string}#{$sub-element}#{$separator}';
+        }
+      } @else if type-of($element) == string and string.length($element) > 0 {
+        $string: '#{$string}#{$element}#{$separator}';
+      }
+    }
+  }
+  @return string.slice($string, 1, calc((string.length($separator) + 1) * -1));
+}

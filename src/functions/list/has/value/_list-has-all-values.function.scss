@@ -1,0 +1,35 @@
+// Functions.
+@use '../../is/is-list-length.function' as *;
+@use 'list-has-value.function' as *;
+
+// Status: DONE
+// The `list-has-all-values()` function.
+@function list-has-all-values($list, $values...) {
+  $has: false;
+  @each $value in $values {
+    $has: list-has-value($list, $value);
+    @if not $has {
+      @return false;
+    }
+  }
+
+  @return $has;
+}
+
+// Examples.
+// @debug '--';
+// @debug list-has-all-values(('a', 'a', 'a'), 'a'); // true
+// @debug list-has-all-values((true, true, true), true); // true
+// @debug list-has-all-values((false, false, false), false); // true
+// @debug list-has-all-values((null, null, null), null); // true
+// @debug list-has-all-values((('a': 1), ('a': 1), ('a': 1)), ('a': 1)); // true
+// @debug list-has-all-values(('a', 'b', 'c'), 'c', 'b', 'a'); // true
+// @debug list-has-all-values(('a', 1, 'b', 'c', false), 1, false); // true
+// @debug list-has-all-values(('a', ('b', 'c'), null), ('b', 'c'), null); // true
+// @debug list-has-all-values(('a', ('b', 'c'), 4, null), 4, null, 'a', ('b', 'c')); // true
+
+// @debug '--';
+// @debug list-has-all-values(('a', 'b', 1, 'c'), 'c'); // true
+// @debug list-has-all-values(('a', 'b', 'c'), 1, 4); // false
+// @debug list-has-all-values(('a', false, 'b', 'c', null, 5), null, 5, 'a', true); // false
+// @debug list-has-all-values(('a', ('b', 'c'), null, false), ('b', 'c'), true, 'a'); // false

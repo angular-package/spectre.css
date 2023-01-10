@@ -1,0 +1,40 @@
+// Functions.
+@use 'list-type-nth.function' as *;
+
+// Params.
+// $conditions: all/any (get)
+// $conditions: (all/any, '==') (get, operator)
+// $conditions: (all/any, '==', -1) (get, operator, adjust position)
+// $conditions: ((all/any, first/last), '==') ((get, occurrence), operator)
+// $conditions: ((all/any, first/last), '==', -1) ((get, occurrence), operator, adjust position)
+
+// $condition: 'get'
+// $condition: 'occurrence'
+// $condition: 'operator'
+// $condition: 'adjust'
+
+// Examples.
+@debug list-type-nth(('a',), any, string); // a
+@debug list-type-nth(('a',), any, string, number); // "a", null
+@debug list-type-nth(('a', 'b', 'c'), any, string); // "a"
+@debug list-type-nth(('a', 12, 'b', 54, 'c', 45), any, number, string); // 12, "a"
+@debug list-type-nth(('a',), all, string, number); // "a", null
+@debug list-type-nth(('a', 'b', 'c'), all, string); // "a", "b", "c"
+@debug list-type-nth(('a', 12, 'b', 54, 'c', 45), all, number, string); // (12, 54, 45), ("a", "b", "c")
+@debug list-type-nth(('bold king', 12, 'b', 54, 'c', 45), (all, ('~=', 'bold')), string); // "bold king", "b", "c"
+
+// Get any first or last occurrence.
+@debug list-type-nth(('a', 'b', 'c', 'd', 'e', 'f', 'g'), ((any, last), '=='), string); // g
+@debug list-type-nth(('a', 'b', 'c', 'd', 'e', 'f', 'g', 45), ((any, first), '=='), string); // a
+@debug list-type-nth(('a', 'b', 'c', 'd', 'e', 'f', 'g', 45), ((any, first), ('==', number)), string); // 45
+@debug list-type-nth(('a', 'b', 'c', 35, 'd', 'e', 'f', 'g', 45), ((any, first), ('==', number), -1), string); // 35
+@debug list-type-nth(('a', 'b', 'c', 35, 'd', 'e', 'f', 'g', 45), ((any, last), ('==', number)), string); // 45
+@debug list-type-nth(('a', 'b', 3, 'c', 'd', 'e', 27, 'f', 'g', 31, '2'), ((any, first), '!='), string); // 3
+@debug list-type-nth(('a', 'b', 'c', 'd', 'e', 27, 'f', 'g'), ((any, first), '!='), string); // 27
+@debug list-type-nth(('a', 'b', 'c', 'd', 'e', 27, 'f', 'g', 31, '2'), ((any, last), '!='), string); // 31
+@debug list-type-nth(('a', 'b', 3, 'c', 'd', 'e', 27, 'f', 'g', 31, '2'), ((any, first), '=='), number); // 3
+@debug list-type-nth(('a', 'b', 'c', 'd', 'e', 27, 'f', 'g'), ((any, first), '=='), number); // 27
+@debug list-type-nth(('a', 'b', 'c', 'd', 'e', 27, 'f', 'g', 31, '2'), ((any, last), '=='), number); // 31
+@debug list-type-nth(('a', 'b', 3, 'c', 'd', 'e', 27, 'f', 'g', 31, '2'), (all, '=='), number); // 3, 27, 31
+@debug list-type-nth(('a', 'b', 3, 'c', 'd', 'e', 27, 'f', 'g', 31, '2'), (all, '!='), number); // "a", "b", "c", "d", "e", "f", "g", "2"
+@debug list-type-nth(('a', 'b', 'c', 'd', 'e', 27, 'f', 'g', 31, '2'), (all, '=='), bool, number); // null, (27, 31)

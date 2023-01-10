@@ -1,0 +1,21 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
+
+// Functions.
+@use '../list-query.function' as *;
+@use '../update-condition.function' as *;
+
+// Status: REVIEW: Check.
+// The `list-type-nth()` function.
+@function list-type-nth($list, $conditions: all, $types...) {
+  @return list-query(
+    $list,
+    update-condition($conditions, ('+', 'operator'), ':'),
+    list.append($types, nth)...
+  );
+}
+
+// Examples.
+@debug list-type-nth(('a', 'b', 'c'), ((any, last, 5), '!=',), string, number); // TODO: add get 5 quantity

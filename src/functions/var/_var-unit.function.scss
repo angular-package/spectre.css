@@ -1,11 +1,26 @@
-@use '../../variables/core' as *;
+// Sass.
+@use 'sass:list';
+
+// Functions,.
+@use '../../functions/list/get/list-get-list.function' as *;
 @use 'css-var.function' as *;
 
 // The function `var-unit()` returns CSS calc function with the given `$value` multiplied by CSS variable unit.
-@function var-unit($name, $unit: false, $prefix: $var-prefix, $suffix: null) {
-  $var: css-var($name, $prefix, $suffix);
-  @if $unit == true {
-    @return calc($var * css-var($name, $prefix, 'unit'));
+@function var-unit($name, $unit: false, $backup: null, $var: (), $dictionary: null) {
+  $var: if($dictionary, $dictionary, $var);
+  $-var: css-var($name, $backup, $var);
+
+  // Check parameters to modify the var.
+  @if $unit == false {
+    $var-modifiers: list-get-list($name);
+    $unit: list.index($var-modifiers, 'unit') != null;
   }
-  @return $var;
+
+  @if $unit == true {
+    @return calc($-var * css-var(('unit', 'rem'), $backup, $var));
+  } @else if type-of($unit) == string {
+    @return calc($-var * css-var(('unit', $unit), $backup, $var));
+  }
+
+  @return $-var;
 }

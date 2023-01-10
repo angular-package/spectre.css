@@ -1,0 +1,42 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Functions.
+@use 'list/remove/list-remove-list.function' as *;
+@use 'list/list-extract-map.function' as *;
+@use 'map/map-values.function' as *;
+@use 'string/string-join.function' as *;
+@use 'map/map-get-default.function' as *;
+
+// The `name()` function defines name from the given list and `$dictionary`, separated by the given `$separator`.
+@function name($name, $dictionary: (), $separator: null) {
+  // Extract map.
+  $-dictionary: list-extract-map($name);
+
+  // Get dictionary extracted from the list.
+  $dictionary: map.merge($dictionary, map.get($-dictionary, 'map'));
+
+  // Remove var modifiers.
+  $name: list-remove-list(map.get($-dictionary, 'list'));
+
+  // Return string-type name.
+  @return string-join(
+    $separator or map.get($dictionary, 'separator'),
+    map-values(
+      $dictionary,
+      list.join(
+          list.join(map.get($dictionary, 'prefix'), $name, $separator: 'comma'),
+          map.get($dictionary, 'suffix')
+        )...
+    )...
+  );
+}
+
+// Example usage
+// @debug name(('', 'border', 'width'),  $separator: '-'); // Returns '-border-width'
+// @debug name(('', 'border', 'width', ''),  $separator: '-'); // Returns '-border-width-'
+// @debug name(('border', 'width', ''),  $separator: '-'); // Returns 'border-width-'
+// @debug name(('border', 'width'), ( 'prefix': 's', 'suffix': 'lg'), '-'); // Returns 's-border-width-lg'
+// @debug name(('border', 'width', 'lg'), ( 'prefix': 's'), '-'); // Returns 's-border-width-lg'
+// @debug name(('border', ('prefix': 's'), 'width', 'lg'), (), '-'); // Returns 's-border-width-lg'

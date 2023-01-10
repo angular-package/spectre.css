@@ -1,0 +1,23 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Functions.
+@use '../dictionary' as *;
+@use 'tag.function' as *;
+
+// The `module-tag()` function.
+@function module-tag($tag, $name, $class: (), $selector: (), $module-dictionary: null, $dictionary: ()) {
+  @return tag(
+    $tag,
+    ('&', list.join($name, $class, $separator: "comma")),
+    $selector,
+    map.merge(
+      if($module-dictionary, dictionary('class', $module-dictionary), module-dictionary($name, 'class')),
+      dictionary('class', $dictionary)
+    )
+  );
+}
+
+// Examples.
+@debug module-tag('span', 'label', 'primary'); // (span.label-primary,)

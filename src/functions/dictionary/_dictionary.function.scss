@@ -1,0 +1,28 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Variables.
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../map/map-get-default.function' as *;
+
+// The `dictionary()` function.
+@function dictionary($keys: (), $dictionary: $dictionary) {
+  @if type-of($dictionary) == map {
+    $dictionary: map-get-default($dictionary, 'dictionary', $dictionary);
+  } @else {
+    $dictionary: ();
+  }
+
+  @if (type-of($keys) == list and list.length($keys) > 0) or type-of($keys) == string {
+    @return map-get-default($dictionary, $keys, $dictionary);
+  }
+  @return $dictionary;
+}
+
+// The `dictionary-merge()` function.
+@function dictionary-merge($keys: (), $dictionary: ()) {
+  @return map.merge(dictionary($keys), $dictionary);
+}

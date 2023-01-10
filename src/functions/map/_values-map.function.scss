@@ -1,62 +1,113 @@
 // Sass.
 @use 'sass:list';
 @use 'sass:map';
+@use 'sass:meta';
+@use 'sass:string';
 
+// Functions.
+@use '../../bg/variables/_bg-theme-normal.var.scss' as *;
+@use '../list/has/type/list-has-type.function' as *;
+@use '../list/has/type/list-has-types.function' as *;
+@use '../list/is/is-list-length.function' as *;
+@use '../list/is/is-list.function' as *;
+@use '../list/nth/list-nth-default.function' as *;
+@use '../map/map-get-default.function' as *;
+@use '../string/string-replace.function' as *;
+
+// Status: REVIEW: Function name
 // The `values-map()` function returns map built from the given `$list` under the given `$keys`.
 @function values-map($list, $keys...) {
   $map: ();
-  @if list.length($list) > 0 {
+  @if is-list-length($list, 0) {
     $index: 1;
+    @each $key in $keys {
+      // Get the `$value` from the `$list` under the given `$index`.
+      $value: list-nth-default($list, $index);
 
-    @each $value in $list {
-      @if type-of($value) != map {
-        $key: list.nth($keys, $index);
-        @if type-of($key) == map {
-          @each $k, $type in $key {
-            // If value can be more than one type.
-            @if list.length($type) > 1 {
-              @each $t in $type {
-                @if type-of($value) == $t {
-                  $map: map.set($map, $k, $value);
-                }
-              }
-            } @else if type-of($value) == $type {
-              // @warn '#{$k} #{$type} #{$value}';
-              $map: map.set($map, $k, $value);
+      // The value indicates that elements of the `$value` list variable should be checked one by one.
+      $check: is-list($key); // Pick value from the list.
+
+      @if type-of($key) == string or type-of($key) == map {
+        $key: list.append((), $key);
+      }
+
+      @if is-list($key) {
+        $i: 1;
+        @each $k in $key {
+          $v: $value;
+
+          @if $check {
+            @if is-list($value, 0) or (type-of($k) != map and type-of($value) != map) {
+              $v: list-nth-default($value, $i);
             }
           }
-        } @else {
-          $map: map.set($map, $key, $value);
-        }
-        $index: $index + 1;
-      }
-    }
 
-    @each $value in $list {
-      @if type-of($value) == map {
-        @each $key in $keys {
-          @if type-of($key) != map {
-            @if map.has-key($value, $key) {
-              $map: map.set($map, $key, map.get($value, $key));
-            }
-          } @else {
-            @each $k, $type in $key {
-              @if list.length($type) > 1 {
-                @each $t in $type {
-                  @if type-of(map.get($value, $k)) == $t {
-                    $map: map.set($map, $k, map.get($value, $k));
-                  }
-                }
-              } @else if type-of(map.get($value, $k)) == $type {
-                $map: map.set($map, $k, map.get($value, $k));
-              }
-            }
+          @if type-of($k) == map and list-has-type(map.keys($k), list) {
+            $v: $value;
+            $k: (list-nth-default(map.values($k), 1): list.nth(map.keys($k), 1));
           }
+
+          $map: -map-set($map, $k, $v);
+          $i: $i + 1;
         }
       }
+
+      $index: $index + 1;
     }
-  } @else {
-    $map: map.set($map, list.nth($keys, 1), $list);
   }
   @return $map;
 }
+
+// Private `-key()` function.
+// @function -key($key, $get) {
+//   @if type-of($key) == map {
+//     @each $name, $type in $key {
+//       @return if($get == 'type', $type, $name);
+//     }
+//   }
+//   @return if($get == type, null, $key);
+// }
+
+// Private `-set-map()` function.
+@function -map-set($map, $key, $value) {
+  @each $k, $type in $key {
+    // Use the default `$value` if key does not exist in the map.
+    $default: if(string.index($k, '?'), false, true);
+
+    // Remove char '?' - `check the map indicator` from the key.
+    $k: string-replace($k, '?', '');
+
+    // If `$value` is the map then try to pick the key from it.
+    $value: map-get-default($value, $k, if($default, $value, null));
+
+    // Add to the map if type of the value matches.
+    @if not $type or ($type and list.index($type, type-of($value))) {
+      $map: map.set($map, $k, $value);
+    }
+  }
+
+  // Get key type.
+  // $type: -key($key, type);
+
+  // Get key name.
+  // $key: -key($key, name);
+
+  // // Use the default `$value` if key does not exist in the map.
+  // $default: if(string.index($key, '?'), false, true);
+
+  // // Remove char '?' - `check the map indicator` from the key.
+  // $key: string-replace($key, '?', '');
+
+  // // If `$value` is the map then try to pick the key from it.
+  // $value: map-get-default($value, $key, if($default, $value, null));
+
+  // // Add to the map if type of the value matches.
+  // @if not $type or ($type and list.index($type, type-of($value))) {
+  //   $map: map.set($map, $key, $value);
+  // }
+
+  @return $map;
+}
+
+// Key.
+// ? - Char indicates that if key does not exist in the map then return null value, not the map by default.

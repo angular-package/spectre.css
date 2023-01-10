@@ -1,0 +1,175 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+// Functions.
+@use 'values-map.function' as *;
+
+// Methodology.
+// 1. List.
+// (value, value1, value2, value3) => (key, key1, key2) => (key: value, key1: value1, key2: value2)
+// ((value, value1), value2, value3) => (key, key1, key2) => (key: (value, value1), key1: value2, key2: value3)
+// ((value, value1), value2, value3) => ((key, key1), key2) => (key: value, key1: value1, key2: value2)
+// (value, value1, value2) => ((key, key1), key2) => (key: value, key1: value, key2: value1)
+// (value, value1, value2) => ((key-number: number, key-string: string), key2) => (key-string: value, key2: value1)
+// (value, value1, value2) => ((key: number, key: string), key2) => (key: value, key2: value1)
+
+// 2. Map.
+// ((value: 1), (value1: 2), (value2: 3), value3) => (key, key1, key2) => (key: (value: 1), key1: (value1: 1), key2: (value2: 1))
+// ((key: 1), (key1: 2), (key2: 3), key3) => (key, key1, key2) => (key: 1, key1: 2, key2: 3)
+// ((key: 1), (key1: 2), (key2: 3), key3) => ((key:number), (key1:string), (key2:bool), key3) => (key: 1, key3: null)
+// ((key: 1), (key1: 2), (key2: 3), key3) => (((key: number), (key1: string)), (key2: bool), key3) => (key: 1, key3: (key2:3))
+// ((key: 1), (key1: 2), (key2: 3), key3) => (((key: number), (key1: string)), (key2: bool), key3) => (key: 1, key3: (key2:3))
+// (((map-key: 1), (map-key1: 2)), (map-key2: 3), value3) => ((key, key1), key2) => (key: (map-key: 1), key1: (map-key1: 2), key2: (map-key2: 3))
+
+// string => (string, string) => string: string, null
+// string => (map, string) => map-key: string
+// string => ((string, string), string) => string, null,
+// string => ((map, map), string) => map-key: string, map-key: string
+
+// (string, string) => string, string => string, null,
+// (string, string) => (map, string) => map-key: string, string
+// (string, string) => ((string, string), string) => (string, string), null,
+// (string, string) => ((map, map), string) => map-key: string, map-key: string, null
+
+// map => (string, string) => string/key: map
+// map => (map, string) => map-key: map-value or map
+// map => ((string, string), string) => string: map-value or map, null,
+// map => ((map, map), string) => map-key: map-value, map-key: map-value, null
+
+// The `run-test()` function.
+@function run-test($number, $list, $keys, $expected) {
+  $result: values-map($list, $keys...);
+
+  @if $result != $expected {
+    // @warn "✕ Test #{$number} not passed.";
+    @debug "✕ #{$number} ";
+    @debug "";
+    @debug "--- Result is";
+    @debug $result;
+    @debug "";
+
+    @debug "--- Expected result";
+    @debug $expected;
+    @debug "";
+  }
+  @return $result == $expected;
+}
+
+// Execute tests.
+@mixin execute-tests($tests, $index: null) {
+  $i: 1;
+  @debug "Testing...";
+  @each $test in $tests {
+    @if not $index or ($index and list.index($index, $i)) {
+      $result: run-test($i, map.get($test, 'list'), map.get($test, 'keys'), map.get($test, 'result'));
+      $tests: list.set-nth($tests, $i, $result);
+      @if $result {
+        @debug "✓ #{$i}";
+      }
+    }
+
+    $i: $i + 1;
+  }
+
+  @if not list.index($tests, false) {
+    @debug '✓ All tests passed.';
+  }
+
+}
+
+$-tests: ((
+  // --- Simple key to value.
+  // (string) => (string)
+  (list: (value, value1, value2), keys: (key, key1, key2), result: (key: value, key1: value1, key2: value2)),
+  (list: (value, value1, value2, value3), keys: (key, key1, key2, key3), result: (key: value, key1: value1, key2: value2, key3: value3)),
+  (list: (value, value1, value2, value3), keys: (key, key1), result: (key: value, key1: value1)),
+
+  // (string) => ((string), string)
+  (list: (value, value1, value2, value3), keys: ((key, key1), key2), result: (key: value, key1: null, key2: value1)),
+  (list: (value, value1, value2, value3), keys: (key, (key1, key2)), result: (key: value, key1: value1, key2: null)),
+  (list: (value, value1, value2), keys: ((key, key1), key2), result: (key: value, key1: null, key2: value1)),
+
+  // ((string), string) => ((string), string)
+  (list: ((value, value1), value2, value3), keys: ((key, key1), key2), result: (key: value, key1: value1, key2: value2)),
+  (list: ((value, value1), value2), keys: ((key, key1), key2), result: (key: value, key1: value1, key2: value2)),
+
+  // ((string), string) => (string)
+  (list: ((value, value1), value2, value3), keys: (key, key1, key2), result: (key: (value, value1), key1: value2, key2: value3)),
+  (list: ((value, value1), value2), keys: (key, key1, key2), result: (key: (value, value1), key1: value2, key2: null)),
+
+  // (string) => (map)
+  (list: (value, value1, value2, value3), keys: ((key: string), (key1: string)), result: (key: value, key1: value1)),
+  (list: (value, value1, value2, value3), keys: ((key: string), (key1: number)), result: (key: value)),
+
+  // (string, number) => ((map),)
+  (list: (value, value1, value2, value3), keys: (((key: string), (key1: number)),), result: (key: value)),
+  (list: (27, value1, value2, value3), keys: (((key: string), (key1: number)),), result: (key1: 27)),
+  (list: (27, value1, value2, value3), keys: (((key: number), (key1: number)),), result: (key:27, key1: 27)),
+
+  // ((number, string),) => ((map),)
+  (list: ((27, value1), value2, value3), keys: (((key: number), (key1: number)),), result: (key: 27)),
+  (list: ((27, value1), value2, value3), keys: (((key: number), (key1: string)),), result: (key: 27, key1: value1)),
+
+  // (map) => (string) => string: map
+  (list: ((value: 1), (value1: 2), (value2: 3)), keys: (key, key1, key2), result: (key: (value: 1), key1: (value1: 2), key2: (value2: 3))),
+  (list: ((value: 1), (value1: 2), (value2: 3)), keys: (key, key1, key2, key3), result: (key: (value: 1), key1: (value1: 2), key2: (value2: 3), key3: null)),
+
+  // (map) => (string) => string: map-value
+  (list: (((key: 1), (key1: 2), (key2: 3))), keys: (key, key1, key2, key3), result: (key: 1, key1: 2, key2: 3, key3: null)),
+  (list: ((key: 1, key10: 10), (key1: 2), (key2: 3)), keys: (key, key1, keys), result: (key: 1, key1: 2, keys: (key2: 3))),
+
+  // (map) => (map) => map-key: map-value
+  (list: (((key: 1), (key1: 2), (key2: 3))), keys: ((key: number), (key1: string), (key2: bool), key3), result: (key: 1, key3: null)),
+
+  // (map) => ((map),) => map-key: map-value
+  (list: ((key: 1, key1: span), (key1: 2), (key2: 3)), keys: (((key: number), (key1: string),), (key2: bool), key3), result: (key: 1, key1: span, key3: (key2: 3))),
+  (list: ((key: 1, key1: span), (key1: 2), (key2: 3)), keys: (((key3: number), (key4: string),), (key2: bool), key3), result: (key3: (key2: 3))),
+
+  // (map, (map)) => ((string),string) => map-key: map-value
+  (list: ((key: 1, key1: span), ((key1: 2), (key100: 1)), (key2: 3)), keys: ((key3, key4), (key1, key10), key5), result: ((key3: (key: 1, key1: span), key4: (key: 1, key1: span), key1: 2, key10: (key100: 1), key5: (key2: 3)))),
+
+  // ((map), map, string) => ((string),string) => map-key: map-value
+  (list: (((map-key: 1), (map-key1: 2)), (map-key2: 3), value3), keys: ((key, key1), key2), result: (key: (map-key: 1), key1: (map-key1: 2), key2: (map-key2: 3))),
+  (list: (((map-key: 1), (map-key1: 2)), (map-key2: 3), value3), keys: ((map-key, map-key1), map-key2), result: (map-key: 1, map-key1: 2, map-key2: 3)),
+
+  // (map) => (map,(string),string) => map-key: map-value
+  (list: ((a: 'bold'), (b: 2, b1: 3), (a: 25)), keys: (('a': (string, number)), ('b', 'b1'), 'cetra'), result: ("a": "bold", "b": 2, "b1": 3, "cetra": (a: 25))),
+
+  // (string) => ((map),string) => map-key: string/number or string: string
+  (list: (value, value1, value2), keys: (((key-number: number), (key-string: string)), key2), result: (key-string: value, key2: value1)),
+  (list: (value, value1, value2), keys: (((key: number), (key: string)), key2), result: (key: value, key2: value1)),
+
+  // ((map), map, string) => ((map),string)
+  (list: (((value: 1), (value1: 2)), (value2: 3), value3), keys: (((value: number), (value1: number)), value2, key3), result: (value: 1, value1: 2, value2: 3, key3: value3)),
+
+  (list: ('My name', 'My surname', 42), keys: ('firstname', 'surname', 'age'), result: ("firstname": "My name", "surname": "My surname", "age": 42)),
+  (list: ('My name', 'My surname', 42), keys: ((firstname: (string, list)), 'surname', (age: number)), result: ((firstname: 'My name', surname: 'My surname', age: 42))),
+  (list: (('My', 'name'), 'My surname', 42), keys: ((firstname: (string, list)), 'surname', (age: number)), result: ((firstname: ("My", "name"), "surname": "My surname", age: 42))),
+  (list: (all, '==', -1), keys: (('get', 'occurrence'), ('operator', 'operand'), 'adjust'), result: ("get": all, "occurrence": null, "operator": "==", "operand": null, "adjust": -1)),
+
+  (list: ((value, value1), value2), keys: (((key-number: number), (key-string: string)), key2), result: (key-string: value1, key2: value2)),
+  (list: ('a', (value, value1), value2), keys: ((key-string: string), ((key-list: string), (key-list-1:  string),)), result: (key-string: "a", key-list: value, key-list-1: value1)),
+
+  (list: ((all, last, test), '==', -1), keys: (('get', 'occurrence'), 'operator', 'adjust'), result: ("get": all, "occurrence": "last", "operator": "==", "adjust": -1)),
+  (list: ((all, last, test), '==', -1), keys: ((('get': string),), 'operator', 'adjust'), result: ("get": all, "operator": "==", "adjust": -1)),
+  (list: ((all, last, test), '==', -1), keys: ((('get': (string, number)),), 'operator', 'adjust'), result: ("get": all, "operator": "==", "adjust": -1)),
+  (list: ((all, last, test), '==', -1), keys: ((('get': string), ('get': number)), 'operator', 'adjust'), result: (("get": all, "operator": "==", "adjust": -1))),
+  (list: ((all, last, test), '==', -1), keys: (('get', 'occurrence'), 'operator', 'adjust'), result: ("get": all, "occurrence": last, "operator": "==", "adjust": -1)),
+  (list: ((all, last, test), ('==', 3), -1), keys: (('get', 'occurrence'), ('operator', 'operand'), 'adjust'), result: (("get": all, "occurrence": last, "operator": "==", "operand": 3, "adjust": -1))),
+
+  // Filter, limit and range.
+  (list: (index, (2, '...', 5) ), keys: ('select', ( ('filter': (list, number)), ('limit': (list, number)), ('range': (list, number))) ), result: (("select": index, "filter": 2, "range": 5))),
+  (list: (index, (limit: (2, 5)) ), keys: ('select', ( ('filter': (list, number)), ('limit': (list, number)), ('range': (list, number))) ), result: (("select": index, "limit": (2, 5)))),
+  (list: (index, (2, '...', 5) ), keys: ('select', ( ((list, number): 'filter'), ((list, number): 'limit?'), ((list, number): 'range?')) ), result: (("select": index, "filter": (2, "...", 5)))),
+  (list: (index, (2, '...', 5) ), keys: ('select', ( (from: number), (to: number), (to: number), ((list, number): 'filter'), ((list, number): 'limit?'), ((list, number): 'range?')) ), result: (("select": index, from: 2, to: 5, "filter": (2, "...", 5)))),
+  (list: (index, (2, 5) ), keys: ('select', ( ('from': number), ('to': number), ('to': number), ((list, number): 'filter'), ((list, number): 'limit?'), ((list, number): 'range?')) ), result: (("select": index, "from": 2, "to": 5, "filter": (2, 5)))),
+
+));
+
+@include execute-tests($-tests, 47);
+
+// Map key values
+// @debug values-map(($bg-theme-normal, ('key': 1)), ('first', 'second'), ('a', ('key': (number, string)), 'other.colors', 'b', 'c'), 'd'); //
+// @debug values-map(($bg-theme-normal, ('key': 1)), 'other.colors', ('a', ('key': (number, string)), 'b', 'c'), 'd'); //

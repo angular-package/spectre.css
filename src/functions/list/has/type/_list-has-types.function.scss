@@ -1,0 +1,35 @@
+// Functions.
+@use 'list-has-all-types.function' as *;
+@use 'list-has-any-types.function' as *;
+
+// Status: DONE
+// The `list-has-types()` function.
+@function list-has-types($list, $condition, $types...) {
+  @if $condition == all {
+    @return list-has-all-types($list, $types...);
+  } @else if $condition == any {
+    @return list-has-any-types($list, $types...);
+  }
+  @return false;
+}
+
+// Examples.
+// @debug '--';
+// @debug list-has-types(('a', 'b', 1, 'c'), all, number); // false
+// @debug list-has-types(('a', 'b', 1, 'c'), any, number); // true
+// @debug list-has-types(('a', 'b', 'c'), any, string, number, bool); // true
+// @debug list-has-types(('a', false, 'b', 5, 'c'), all, string, number, bool); // true
+// @debug list-has-types(('a', false, 'b', 5, 'c'), all, string, number); // true
+// @debug list-has-types(('a', false, 'b', 'c'), any, bool); // true
+// @debug list-has-types(('a', ('b', 'c'), null), any, list); // true
+// @debug list-has-types(('a', ('b', 'c'), 4, null), any, string, null, list, number); // true
+// @debug list-has-types(('a', ('b', 'c'), 4, null, ('a': 1)), any, string, null, list, number, map); // true
+
+// @debug '--';
+// @debug list-has-types(('a', 'b', 'c'), all, string, number); // false
+// @debug list-has-types(('a', 'b', 1, 'c'), all, number, null); // false
+// @debug list-has-types(('a', false, 'b', 'c'), any, number, null); // false
+// @debug list-has-types(('a', false, 'b', 'c'), any, list); // false
+// @debug list-has-types(('a', ('b', 'c'), null), all, string, list, null, number); // false
+// @debug list-has-types(('a', false, 'b', 5, 'c'), all, string, number, bool, list); // false
+// @debug list-has-types(('a', 'b', 'c', null), all, null); // false

@@ -1,0 +1,29 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
+
+// Functions.
+@use '../string/string-join.function' as *;
+@use 'index-condition.function' as *;
+@use 'is/is-list.function' as *;
+@use 'list-replace-string.function' as *;
+
+// Status: REVIEW: Check.
+// The `update-condition()` function.
+@function update-condition($conditions, $name, $value) {
+  $conditions: index-condition($conditions);
+  @if is-list($name) {
+    $pattern: $name;
+
+    // Get the condition name to update.
+    $name: string-join('', list-replace-string($pattern, '+', '')...);
+
+    // Update the value.
+    $value: string-join('', list-replace-string(list-replace-string($pattern, $name, map.get($conditions, $name)), '+', $value)...);
+  }
+
+  $conditions: map.set($conditions, $name, $value);
+
+  @return $conditions;
+}

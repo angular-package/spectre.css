@@ -1,0 +1,18 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use '../list/nth/list-nth.function' as *;
+@use 'get-class-index.function' as *;
+
+// Status: DONE
+// The `get-class()` function.
+@function get-class($class, $selectors: ('&', '.', '&.')) {
+  $index: get-class-index($class, $selectors);
+  @return if($index, list-nth($class, ($index, '...', length)), $class);
+}
+
+// Examples.
+// @debug get-class(('s', 'p', 'a', 'n', '&[attr="aaa"]', '.', 'border', 'width'));
+// @debug get-class(('s', 'p', 'a', 'n', '&[attr="aaa"]', '&', '.', 'border', 'width'));
+// @debug get-class(('s', 'p', 'a', 'n', '&[attr="aaa"]', '&.', 'border', 'width'));

@@ -1,0 +1,43 @@
+// Functions.
+@use 'list-index.function' as *;
+
+// Examples.
+// String.
+$-string: ('a', 'b', 'd', 'c', 'l', 'd', 'e', 'f g h', 'i', 'j', 'k', 'l', 'm', 'n');
+@debug '';
+@debug '--- String ';
+@debug list-index($-string, any, 'e', 'l'); // 7, 5
+@debug list-index($-string, all, 'e', 'l'); // (7,), (5, 12)
+@debug list-index($-string, (any, '~='), 'f g', 'l'); // 8, 5
+@debug list-index(('Whether or not', 'b', 'c', true, 'a', false, null, 'a', 1, 2), (all, '~='), 'or not', 'b', 'cccc'); // 1, 2, null
+
+// Number.
+$-number: (1, 4, 10, 2, 200, 1000, 33, 45, 2, 56, 451, 66);
+@debug '';
+@debug '--- Number ';
+@debug list-index($-number, any, 1000); // (6, )
+@debug list-index($-number, any, 3, 6); // null, null
+@debug list-index($-number, (any, '>'), 3, 6); // 2, 3
+@debug list-index($-number, (all, '>'), 450, 6); // (6, 11), (3, 5, 6, 7, 8, 10, 11, 12)
+@debug list-index($-number, ((any, first), ('==', 2),), 3, 6); // (4,)
+@debug list-index($-number, ((any, last), ('==', 2),), 3, 6); // (9,)
+
+// Different data types.
+$-data: ('a', 'b', 'c', true, 'a', false, null, 'a', 1, 2);
+@debug '';
+@debug list-index($-data); // null
+@debug list-index($-data, all); // null
+@debug list-index($-data, any); // null
+@debug list-index($-data, any, 'a'); // (1,)
+@debug list-index($-data, any, 1); // (9,)
+@debug list-index($-data, all, 'a'); // ((1, 5, 8), )
+@debug list-index($-data, all, 1); // (9,)
+@debug list-index($-data, all, 'a', 'b'); // (1, 5, 8), (2,)
+@debug list-index($-data, all, 1, false); // 9, 6
+@debug list-index($-data, all, 2, 'a', 'b', null); // 10, (1, 5, 8), 2, 7
+
+@debug list-index(('a', 'b', 'c', true, 'a', false, null, false, 'a', 1, 2), any, 'a', false); // 1, 6
+@debug list-index(('a', 'b', 'c', true, 'a', false, null, false, 'a', 1, 2), all, 'a', false); // (1, 5, 9), (6, 8)
+@debug list-index((('a', 'b', 'c'), true, ('a': false), null, 'a', 1, 2), all, 'a', 'b'); // 5, null
+@debug list-index((('a', 'b', 'c'), #fff, true, ('a': false), null, red, 'a', 1, 2), all, ('a', 'b', 'c'), #fff); // 1, 2
+

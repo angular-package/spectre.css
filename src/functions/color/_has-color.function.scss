@@ -1,0 +1,10 @@
+// Sass.
+@use 'sass:map';
+
+// The `has-color()` function.
+@function has-color($color, $name: null) {
+  @if type-of($color) == map or type-of($color) == string {
+    @return ($name and type-of($color) == map and map.has-key($color, $name)) or type-of($color) == string;
+  }
+  @return false;
+}

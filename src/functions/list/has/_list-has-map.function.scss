@@ -1,0 +1,24 @@
+// Functions.
+@use '../is/is-list-length.function' as *;
+@use 'type/list-has-type.function' as *;
+@use 'value/list-has-values.function' as *;
+
+// Status: DONE
+// The `list-has-map()` function checks whether the given `$list` has `any/all` of given in the arbitrary argument `$maps`.
+@function list-has-map($list, $condition: any, $maps...) {
+  // Checks whether the given `$list` has `any/all` elements of map type.
+  $has: list-has-type($list, map, $condition);
+  @if is-list-length($maps, 0) and $has {
+    $has: list-has-values($list, $condition, $maps...);
+  }
+  @return $has;
+}
+
+// Examples.
+// -- true
+// @debug list-has-map(((a: 1), ));
+// @debug list-has-map(((a: 1), (b: 2)), any);
+
+// -- false
+// @debug list-has-map(((a, 1), a, b, c), null); // any false
+// @debug list-has-map(((a: 1), (b: 2), a, 1, (b, c), 2d), all); // all false

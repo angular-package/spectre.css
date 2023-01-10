@@ -1,9 +1,5 @@
-
+// Status: DONE
+// The `important()` function.
 @function important($important: false) {
-  @if $important == true {
-    $important: ' !important';
-  } @else if $important == false {
-    $important: '';
-  }
-  @return #{$important};
+  @return if($important == true, #{' !important'}, #{''});
 }

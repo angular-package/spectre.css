@@ -1,0 +1,18 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Functions.
+@use 'class.function' as *;
+
+// The `disabled-class` function defines disabled class name.
+@function disabled-class($class: (), $selector: (), $dictionary: ()) {
+  @return class(
+    list.join($class, 'disabled', $separator: 'comma'),
+    $selector,
+    map.merge((
+      'prefix': '',
+      'suffix': '',
+    ), $dictionary)
+  );
+}

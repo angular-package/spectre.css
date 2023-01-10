@@ -1,0 +1,39 @@
+// Functions.
+@use 'list-type-index.function' as *;
+
+// Params.
+// $conditions: all/any (get)
+// $conditions: (all/any, '==') (get, operator)
+// $conditions: (all/any, '==', -1) (get, operator, adjust position)
+// $conditions: ((all/any, first/last), '==') ((get, occurrence), operator)
+// $conditions: ((all/any, first/last), '==', -1) ((get, occurrence), operator, adjust position)
+
+// $condition: 'get'
+// $condition: 'occurrence'
+// $condition: 'operator'
+// $condition: 'adjust'
+
+// Examples.
+@debug list-type-index(('a',), any, string); // 1
+@debug list-type-index(('a',), any, string, number); // 1, null
+@debug list-type-index(('a', 'b', 'c'), any, string); // 1
+@debug list-type-index(('a', 12, 'b', 54, 'c', 45), any, number, string); // 2, 1
+@debug list-type-index(('a',), all, string, number); // 1, null
+@debug list-type-index(('a', 'b', 'c'), all, string); // 1, 2, 3
+@debug list-type-index(('a', 12, 'b', 54, 'c', 45), all, number, string); // (2, 4, 6), (1, 3, 5)
+
+// Get any first or last occurrence.
+@debug list-type-index(('a', 'b', 'c', 'd', 'e', 'f', 'g'), ((any, last), '=='), string); // 7
+@debug list-type-index(('a', 'b', 'c', 'd', 'e', 'f', 'g', 45), ((any, first), '=='), string); // 1
+@debug list-type-index(('a', 'b', 'c', 'd', 'e', 'f', 'g', 45), ((any, first), ('==', number)), string); // 8
+@debug list-type-index(('a', 'b', 'c', 35, 'd', 'e', 'f', 'g', 45), ((any, first), ('==', number), -1), string); // 3
+@debug list-type-index(('a', 'b', 'c', 35, 'd', 'e', 'f', 'g', 45), ((any, last), ('==', number)), string); // 9
+@debug list-type-index(('a', 'b', 3, 'c', 'd', 'e', 27, 'f', 'g', 31, '2'), ((any, first), '!='), string); // 3
+@debug list-type-index(('a', 'b', 'c', 'd', 'e', 27, 'f', 'g'), ((any, first), '!='), string); // 6
+@debug list-type-index(('a', 'b', 'c', 'd', 'e', 27, 'f', 'g', 31, '2'), ((any, last), '!='), string); // 9
+@debug list-type-index(('a', 'b', 3, 'c', 'd', 'e', 27, 'f', 'g', 31, '2'), ((any, first), '=='), number); // 3
+@debug list-type-index(('a', 'b', 'c', 'd', 'e', 27, 'f', 'g'), ((any, first), '=='), number); // 6
+@debug list-type-index(('a', 'b', 'c', 'd', 'e', 27, 'f', 'g', 31, '2'), ((any, last), '=='), number); // 9
+@debug list-type-index(('a', 'b', 3, 'c', 'd', 'e', 27, 'f', 'g', 31, '2'), (all, '=='), number); // 3, 7, 10
+@debug list-type-index(('a', 'b', 3, 'c', 'd', 'e', 27, 'f', 'g', 31, '2'), (all, '!='), number); // 1, 2, 4, 5, 6, 8, 9, 11
+@debug list-type-index(('a', 'b', 'c', 'd', 'e', 27, 'f', 'g', 31, '2'), (all, '=='), bool, number); // null, (6, 9)

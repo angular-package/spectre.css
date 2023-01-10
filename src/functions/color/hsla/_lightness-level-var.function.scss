@@ -6,6 +6,6 @@
 @use '../color-name.function' as *;
 
 // The function returns the CSS variable lightness level color of the given `$name` and `$prefix`.
-@function lightness-level-var($name, $prefix: $var-prefix) {
-  @return css-var(color-name($name), $prefix, '#{$var-lightness}-l');
+@function lightness-level-var($name, $backup: null, $var: ()) {
+  @return css-var((color-name($name), 'lightness', 'l'), $backup, $var);
 }

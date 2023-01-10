@@ -1,0 +1,70 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Functions.
+@use '../../compare.function' as *;
+@use '../../map/map-get-default.function' as *;
+@use '../index-condition.function' as *;
+@use '../is/is-list-length.function' as *;
+@use '../is/is-list.function' as *;
+
+// Status: DONE
+// The `list-index()` function.
+@function list-index($list, $conditions: all, $values...) {
+  $result: ();
+  $values: index-condition($conditions, 'operand') or $values;
+
+  @if not is-list($values) {
+    $values: list.append((), $values);
+  }
+
+  @if is-list($list, 0) and is-list($values, 0) {
+    @each $value in $values {
+      $index: -list-index($list, $conditions, $value);
+
+      // Add found indexes to result.
+      $result: list.append(
+        $result,
+        if(is-list-length($index, 0), $index, null),
+        $separator: list.separator($list)
+      );
+    }
+  }
+
+  // @return if(is-list-length($result), $result, null); REVIEW: Check.
+
+  @return if(
+    is-list-length($result),
+    if(is-list-length($result, '==', 1), list.nth($result, 1), $result),
+    null
+  );
+}
+
+// Private `-list-index()` function.
+@function -list-index($list, $conditions, $operand) {
+  // Conditions.
+  $adjust: index-condition($conditions, 'adjust') or 0;
+  $get: index-condition($conditions, 'get') or $conditions;
+  $occurrence: index-condition($conditions, 'occurrence') or first;
+  $operator: index-condition($conditions, 'operator') or '==';
+
+  // Get result.
+  $result: ();
+  $i: 1;
+  @each $element in $list {
+    $result: if(
+      compare($element, $operator, $operand),
+      list.join($result, $i + $adjust, $separator: 'comma'),
+      $result
+    );
+    $i: $i + 1;
+  }
+
+  // Filter result using conditions.
+  @if is-list-length($result) and $get == any {
+    $result: if($occurrence == first, list.nth($result, 1), list.nth($result, list.length($result)));
+  }
+
+  @return if(is-list-length($result, '==', 1), list.nth($result, 1), $result);
+}

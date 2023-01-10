@@ -1,0 +1,41 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Functions.
+// @use '../../map/map-get-default.function' as *;
+// @use '../../map/values-map-get.function' as *;
+// @use '../../map/values-map.function' as *;
+// @use '../has/list-has-string.function' as *;
+// @use '../is/is-list-length.function' as *;
+@use '../is/is-list.function' as *;
+@use '../range.function' as *;
+@use 'list-nth-default.function' as *;
+@use 'list-range-nth.function' as *;
+
+// Status: DONE
+// The `list-nth()` function.
+@function list-nth($list, $index, $default: null) {
+  $result: ();
+
+  @if type-of($index) == string or type-of($index) == number {
+    @return list-nth-default($list, $index, $default);
+  }
+
+  @else if list.index($index, '...') or type-of($index) == map {
+    @return list-range-nth(
+      $list,
+      range($index, 'from') or 1,
+      range($index, 'to') or length,
+      $default
+    );
+
+  // Get indexes.
+  } @else if is-list($index) {
+    @each $value in $index {
+      $result: list.append($result, list-nth-default($list, $value, $default), $separator: list.separator($list));
+    }
+  }
+
+  @return $result;
+}

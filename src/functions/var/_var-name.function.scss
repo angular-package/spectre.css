@@ -1,13 +1,15 @@
-@use 'sass:string';
-@use '../../variables/core' as *;
+// Sass.
+@use 'sass:map';
 
-@function var-name($prefix: $var-prefix, $name, $suffix: null, $var: null) {
-  @if $suffix == null {
-    @return --#{$prefix}-#{$name};
-  }
-  @if string.length($suffix) > 0 {
-    $suffix: '-#{$suffix}';
-  }
+// Functions.
+@use '../../functions/list/remove/list-remove-string.function' as *;
+@use '../dictionary/dictionary.function' as *;
+@use '../name.function' as *;
 
-  @return --#{$prefix}-#{$name}#{$suffix};
+// The `var-name()` function.
+@function var-name($name, $dictionary: ()) {
+  @return --#{name(
+      list-remove-string($name, '!'),
+      dictionary-merge('var', $dictionary)
+    )};
 }

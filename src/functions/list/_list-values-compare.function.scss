@@ -1,0 +1,46 @@
+// Sass.
+@use 'sass:map';
+
+// Functions.
+@use '../compare.function' as *;
+@use '../list/is/is-list-length.function' as *;
+@use '../map/values-map.function' as *;
+@use '../map/map-get-default.function' as *;
+
+// The `list-values-compare()` function.
+@function list-values-compare($list, $condition: (any, '=='), $values...) {
+  $result: false;
+  @if is-list-length($condition, 0) {
+    $condition: values-map($condition, 'condition', 'operator');
+    $operator: map-get-default($condition, 'operator', '==');
+    $condition: map-get-default($condition, 'condition', 'any');
+    $result: if($condition == all, true, false);
+    @if is-list-length($list, 0) {
+      @each $value in $values {
+        @each $element in $list {
+          @if $condition == any and compare($element, $operator, $value) {
+            @return true;
+          }
+
+          @if $condition == all and not compare($element, $operator, $value) {
+            @return false;
+          }
+        }
+      }
+    }
+  }
+  @return $result;
+}
+
+// Examples.
+// String
+// @debug list-values-compare(('a', 'a', 'a'), (all, '=='), 'a'); // true
+// @debug list-values-compare(('a', 'b', 'c'), (all, '=='), 'a'); // false
+// @debug list-values-compare(('a', 'a', 'a'), (all, '!='), 'a'); // false
+
+// @debug list-values-compare(('a', 'a', 'a'), (any, '=='), 'a'); // true
+// @debug list-values-compare(('aa', 'b', 'c'), (any, '=='), 'a'); // false
+
+// @debug list-values-compare(('a', 'b', 'c'), (all, '=='), 'a'); // false
+
+// @debug list-values-compare((14, 511, 63), (all, '=='), ('>', 2), ('<', 512)); // false

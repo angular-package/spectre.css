@@ -1,0 +1,7 @@
+// Functions.
+@use 'get-var.function' as *;
+
+// The `font-size-var()` function.
+@function font-size-var($size: '') {
+  @return get-var(('font', 'size', $size));
+}

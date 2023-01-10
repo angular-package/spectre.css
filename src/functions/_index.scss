@@ -1,12 +1,19 @@
 // Folder.
+@forward 'class';
 @forward 'color';
+@forward 'list';
+@forward 'map';
+@forward 'string';
+@forward 'tag';
 @forward 'var';
 
 // Functions.
-@forward 'get-from-list.function';
+@forward 'compare.function';
 @forward 'important.function';
-@forward 'is-scheme-dark.function';
-@forward 'is-scheme-light.function';
-@forward 'map-get-default.function';
+@forward 'name.function';
+@forward 'replace-parent-placeholder.function';
+@forward 'replace-parent-selector.function';
+@forward 'selector-name.function';
+@forward 'selector-nest.function';
+@forward 'string-join.function';
 @forward 'strip-unit.function';
-@forward 'typeof.function';

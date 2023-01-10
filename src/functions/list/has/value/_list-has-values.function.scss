@@ -1,0 +1,35 @@
+// Functions.
+@use '../../is/is-list-length.function' as *;
+@use '../../list-values-compare.function' as *;
+@use 'list-has-all-values.function' as *;
+@use 'list-has-any-values.function' as *;
+
+// Status: DONE
+// The `list-has-values()` function.
+@function list-has-values($list, $condition, $values...) {
+  @if type-of($condition) == list {
+    @return list-values-compare($list, $condition, $values...);
+  } @else if $condition == all {
+    @return list-has-all-values($list, $values...);
+  } @else if $condition == any {
+    @return list-has-any-values($list, $values...);
+  }
+  @return false;
+}
+
+// Examples (true).
+// @debug list-has-values(('a', 'b', 'c'), any, 'a'); // true
+// @debug list-has-values(('a', 'b', 'c'), all, 'a'); // true
+// @debug list-has-values(('a', 'b', 'c'), all, 'a', 'b'); // true
+// @debug list-has-values(('a', 'b', 'c', 1), any, 1); // true
+// @debug list-has-values(('a', 'b', 'c', 1), all, 1); // true
+// @debug list-has-values(('a', 'b', 'c'), any, 'c', 'b', 'a'); // true
+// @debug list-has-values(('a', 'b', 'c'), (any, '=='), 'a'); // true
+// @debug list-has-values(('a', 'a', 'a'), (all, '=='), 'a'); // true
+
+// Examples (false)
+// @debug list-has-values(('a', 'b', 'c'), all, 'a', 'b', 'c', 'd'); // false
+// @debug list-has-values(('a', 1, 'c'), any, 2); // false
+// @debug list-has-values(('a', 'b', 'c'), all, 'd'); // false
+// @debug list-has-values(('a', 'b', 'c'), any, true); // false
+// @debug list-has-values(('a', 'b', 'c'), (all, '=='), 'a'); // false

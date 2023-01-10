@@ -1,11 +1,11 @@
-@forward 'check-list.function';
+@forward 'get';
+@forward 'has';
+@forward 'remove';
+
+@forward 'is-list-class.function';
+@forward 'list-check.function';
 @forward 'list-extract-map.function';
-@forward 'list-get-list.function';
-@forward 'list-get-map.function';
-@forward 'list-get-number.function';
-@forward 'list-has-number.function';
-@forward 'list-has-string.function';
-@forward 'list-remove-list.function';
-@forward 'list-remove-map.function';
-@forward 'list-remove-nth.function';
-@forward 'list-remove-string.function';
+@forward 'list-index.function';
+@forward 'list-nth.function';
+@forward 'list-replace-string.function';
+@forward 'list-string-to-list.function';

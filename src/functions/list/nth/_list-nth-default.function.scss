@@ -1,0 +1,29 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use '../is/is-list-length.function' as *;
+
+// Status: DONE
+// The `list-nth-default()` function.
+@function list-nth-default($list, $index, $default: null) {
+  @if list.index((start, first), $index) {
+    $index: 1;
+  } @else if list.index((last, length), $index) {
+    $index: list.length($list) or 0;
+  }
+
+  @return if(
+    is-list-length($list, if($index < 0, calc($index * -1), $index), '>='),
+    list.nth($list, $index),
+    $default
+  );
+}
+
+// Examples.
+// @debug list-nth-default(('a', 'b', 'c', 'd', 'e', 'f'), 10); // null
+// @debug list-nth-default(('a', 'b', 'c', 'd', 'e', 'f'), 10, false); // false
+// @debug list-nth-default(('a', 'b', 'c', 'd', 'e', 'f'), -10); // null
+// @debug list-nth-default(('a', 'b', 'c', 'd', 'e', 'f'), -10, false); // false
+
+// position type-of/value // REVIEW: consider

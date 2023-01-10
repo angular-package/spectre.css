@@ -1,0 +1,14 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:string';
+
+// Functions.
+@use '../string/string-join.function' as *;
+
+// The `list-string-to-list()` function.
+@function list-string-to-list($list, $separator: '-') {
+  @return string-join($separator, $list...);
+}
+
+// Examples.
+// @debug list-string-to-list(('.', ('b', 'c'), 'a', 'b', 'c'));

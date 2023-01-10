@@ -1,0 +1,35 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+// Functions.
+@use '../list/is/is-list-length.function' as *;
+@use '../list/is/is-list.function' as *;
+@use 'values-map.function' as *;
+
+// Status: REVIEW:
+// The `values-map-get()` function.
+@function values-map-get($values, $keys, $get...) {
+  $result: ();
+  $values: if(not is-list($values), list.append((), $values), $values);
+
+  // Map.
+  @if is-list($values, 0) or type-of($values) == string {
+    $values: values-map($values, $keys...);
+
+    // Remove null values.
+    @each $key, $value in $values {
+      @if not $value {
+        $values: map.remove($values, $key);
+      }
+    }
+  }
+
+  $result: map.merge($result, $values);
+
+  @return if(is-list-length($get), if(is-list-length($get, 1), $result, map.get($result, $get...)), $result); // TODO: Update.
+}
+
+// Examples.
+// @debug values-map-get(((all,first), '==', -1), (('get', 'occurrence'), ('operator', 'operand'), 'adjust'), 'get'); // all

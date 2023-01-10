@@ -1,58 +1,50 @@
-@use 'sass:map';
+// Sass.
 @use 'sass:list';
+@use 'sass:map';
 @use 'sass:string';
 
 // Variables.
 @use '../../variables/core' as *;
 
 // Functions.
-@use '../get-from-list.function' as *;
-@use '../map-get-default.function' as *;
-@use './var-adjust.function' as *;
-@use './var-unit.function' as *;
-@use 'css-var.function' as *;
-@use 'var-name.function' as *;
-@use 'var-negative.function' as *;
+@use '../list/get/list-get-list.function' as *;
 
-// The function returns the CSS var function or calc function with the specified name, prefix, optional suffix, or unit.
-// Unit is used for variables with a separated unit from the value.
-// $name: (string, ('negative': true, 'prefix': 'spectre', 'suffix': 'sm', 'unit': true))
-// Interchangeably:
-// $name: (string, true, 5) translates -> (name, unit, adjust)
-// $name: (string, 3, false) translates -> (name, adjust, unit)
+// @use '../list/remove/list-remove-list.function' as *;
+// @use '../list/remove/list-remove-nth.function' as *;
+@use '../list/get/list-get-bool.function' as *;
+@use '../list/get/list-get-number.function' as *;
+
+// @use '../map/map-get-default.function' as *;
+// @use '../map/map-values.function' as *;
+// @use 'css-var.function' as *;
+@use 'var-adjust.function' as *;
+
+// @use 'var-name.function' as *;
+@use 'var-negative.function' as *;
+@use 'var-unit.function' as *;
+
+// The `get-var()` function.
 @function get-var(
-  $name,
+  $params,
   $adjust: null,
   $unit: false,
-  $prefix: $var-prefix,
-  $suffix: null
+  $backup: null,
+  $var: (), // Remove in favor of $dictionary.
+  $dictionary: null
 ) {
-  $var: get-from-list(
-    $name,
-    'name',
-    (
-      'unit': 'boolean',
-      'adjust': 'number',
-    ),
-    (
-      'unit': 'boolean',
-      'adjust': 'number',
-    ),
-    'negative',
-    'prefix',
-    'suffix'
-  );
+  $var: if($dictionary, $dictionary, $var);
 
+  @if $params == auto or type-of($params) == number {
+    @return $params;
+  }
+
+  $adjust: list-get-list($params) or list-get-number($params) or $adjust;
+  $negative: list.index($params, '!') != null;
+  $unit: list-get-bool($params) or $unit;
+
+  // Returns.
   @return var-negative(
-    var-adjust(
-      var-unit(
-        map.get($var, 'name'),
-        map-get-default($var, 'unit', $unit),
-        map-get-default($var, 'prefix', $prefix),
-        map-get-default($var, 'suffix', $suffix)
-      ),
-      map-get-default($var, 'adjust', $adjust)
-    ),
-    map.get($var, 'negative')
+    var-adjust(var-unit($params, $unit, $backup, $dictionary: $dictionary), $adjust),
+    $negative
   );
 }

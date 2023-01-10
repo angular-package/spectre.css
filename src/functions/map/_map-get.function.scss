@@ -1,0 +1,163 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+// Functions.
+@use '../list/is/is-list.function' as *;
+@use '../list/is/is-list-length.function' as *;
+@use '../list/nth/list-nth-default.function' as *;
+@use '../map/map-get-default.function' as *;
+
+
+// Status: TODO: Consider.
+// The `map-get()` function returns map.
+@function map-get($map, $keys, $default) {
+  $result: ();
+  @if type-of($map) == map {
+    @if is-list-length($keys, 0) {
+      $get: ();
+      $m: ();
+      $i: 1;
+
+      @each $key in $keys {
+        @if type-of($key) == string {
+        }
+
+        // @if is-list($key, 0) {
+        //   @each $map-key in $key {
+        //     $get: list.append($get, $map-key, $separator: 'comma');
+
+        //     // $result: map.set($result, $map-key, map-get-default($map, $map-key, $default));
+        //   }
+        // } @else {
+        //   // @debug $key;
+        //   $j: 1;
+        //   @each $value in $get {
+        //     $get: list.set-nth($get, $j, list.join($value, $key, $separator: 'comma'));
+        //     $j: $j + 1;
+        //   }
+
+        //   @if map.has-key($map, $key) {
+        //     $get: list.append($get, $key);
+
+        //     // $result: map.set($result, $key, map-get-default($map, $key, $default));
+        //   }
+        // }
+      }
+
+      $i: $i + 1;
+
+      // @debug map.set($result, 'a', 'b', 'c', 3123);
+
+      // $result: map.set($result, $get..., map-get-default($map, $get, $default));
+
+      @each $key in $get {
+        @debug map.set($result, );
+        @debug map-get-default($map, $key, $default);
+        // @debug $key;
+        // @debug map-get-default($map, $key, $default);
+        // $result: map.set($result, $key..., map-get-default($map, $key, $default));
+      }
+    }
+  }
+  @return $result;
+
+  @if is-list-length($map, 0) {
+    $index: 1;
+
+    @each $value in $list {
+      $key: list-nth-default($keys, $index);
+
+      @if $key {
+        @if type-of($value) == map {
+
+          @if type-of($key) == map {
+
+            // If key is the map.
+            // @each $name, $type in $key {
+            //   @if is-list-length($type, 1) {
+            //     @each $t in $type {
+            //       @if type-of(map.get($value, $name)) == $t {
+            //         $map: map.set($map, $name, map.get($value, $name));
+            //       }
+            //     }
+            //   } @else if type-of(map.get($value, $name)) == $type {
+            //     $map: map.set($map, $name, map.get($value, $name));
+            //   }
+            // }
+
+          } @else {
+            @if is-list($key, 0) {
+              @each $map-key in $key {
+                $map: map.set($map, $map-key, map-get-default($value, $map-key));
+              }
+            } @else {
+              @if map.has-key($value, $key) {
+                $map: map.set($map, $key, map.get($value, $key));
+              }
+            }
+          }
+
+
+        } @else {
+          // Map.
+          @if type-of($key) == map {
+            @each $name, $type in $key {
+              $set: false;
+
+              // If value can be more than one type.
+              @if is-list-length($type, 1) {
+                // @debug list-type-index($value, any, $type...); // TODO: use.
+                @each $t in $type {
+                  $set: if(meta.type-of($value) == $t, true, $set);
+                }
+              } @else if type-of($value) == $type {
+                $set: true;
+              }
+
+              $map: if($set, map.set($map, $name, $value), $map);
+            }
+          }
+
+          @else if type-of($key) == list {
+            $i: 1;
+            @each $name in $key {
+              $map: map.set($map, $name, list-nth-default($value, $i));
+              $i: $i + 1;
+            }
+
+          } @else {
+            $map: map.set($map, $key, $value);
+          }
+        }
+      }
+
+      $index: $index + 1;
+    }
+  }
+  @return $map;
+}
+
+// Examples.
+// @debug values-map(('My name', 'My surname', 42), 'firstname', 'surname', 'age');
+// @debug values-map(('My name', 'My surname', 42), (firstname: (string, list)), 'surname', (number: 'age'));
+// @debug values-map((('My', 'name'), 'My surname', 42), (firstname: (string, list)), 'surname', (age: number));
+
+// @debug values-map(((all, last, test), '==', -1), ('get', ), 'operator', 'adjust'); // ("get": all, "operator": "==", "adjust": -1)
+// @debug values-map(((all, last, test), '==', -1), ('get', 'occurrence'), 'operator', 'adjust'); // ("get": all, "occurrence": last, "operator": "==", "adjust": -1)
+// @debug values-map(((all, last, test), ('==', 3), -1), ('get', 'occurrence'), ('operator', 'operand'), 'adjust'); // ("get": all, "occurrence": last, "operator": "==", "operand": 3, "adjust": -1)
+// @debug values-map((all, '==', -1), ('get', 'occurrence'), ('operator', 'operand'), 'adjust'); // ("get": all, "occurrence": null, "operator": "==", "operand": null, "adjust": -1)
+
+// @debug values-map(()); // ()
+// @debug values-map(((a: 'bold'), (b: 2, b1: 3), (a: 25) ), ('a': (string, number)), 'b', 'cetra'); // ("a": "bold", "b": 2)
+
+// Map key values
+$light-theme: ('bg.colors': ('dark': 'dark-color'), 'body.colors': ('light': 'light-color'), 'border.colors': ('border': 'border-color'));
+
+
+@debug map-get($light-theme, ('bg.colors', 'dark'), false);
+// @debug map-get($light-theme, (('bg.colors', 'body.colors'), 'dark'), false);
+
+// @debug map-get($light-theme, ('a', ('bg.colors', 'dark'), 'body.colors'), false);
+// @debug map-get($light-theme, (('a', 'bg.colors', 'body.colors'),), false);

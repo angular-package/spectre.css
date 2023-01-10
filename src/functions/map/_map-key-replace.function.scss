@@ -1,0 +1,23 @@
+// Sass.
+@use 'sass:map';
+@use 'sass:string';
+
+// Functions.
+@use '../string/string-replace.function' as *;
+
+// The `map-key-replace()` function.
+@function map-key-replace($map, $replace, $replacement) {
+  @if type-of($map) == map {
+    $result: ();
+    @each $key, $value in $map {
+      @if string.index($key, $replace) {
+        $key: string-replace($key, $replace, $replacement);
+      }
+
+      $result: map.merge($result, ($key: $value));
+    }
+
+    @return $result;
+  }
+  @return $map;
+}

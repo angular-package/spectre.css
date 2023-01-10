@@ -1,0 +1,17 @@
+// Sass.
+@use 'sass:string';
+
+// The `string-replace()` function.
+@function string-replace($string, $replace, $replacement) {
+  $index: string.index($string, $replace);
+
+  @if $index {
+    @return string.slice($string, 1, ($index - 1)) + $replacement +
+      string.slice(
+        $string,
+        ($index + (string.length($replace))),
+        (string.length($string))
+      );
+  }
+  @return $string;
+}
