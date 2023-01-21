@@ -5,7 +5,7 @@ $version: '1.0.0-beta';
 $rtl: false !default;
 
 // Class names prefix.
-$class-prefix: '' !default;
+$class-prefix: null !default;
 $class-separator: '-' !default;
 
 // Global CSS variable's name prefix.
@@ -34,7 +34,7 @@ $columns-count: 4 !default;
 $class: (
   'prefix': $class-prefix,
   'separator': $class-separator,
-  'suffix': ''
+  'suffix': null
 ) !default;
 
 // Map for CSS variable names.

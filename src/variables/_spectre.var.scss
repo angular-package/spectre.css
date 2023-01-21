@@ -1,1 +1,97 @@
-$spectre: () !default;
+// Sass.
+@use 'sass:list';
+
+// Variables.
+@use 'index' as *;
+
+// Spectre main.
+$spectre: (
+  // Core variables
+  'version': $version,
+
+  // Core features
+  'rtl': $rtl,
+
+  // color-scheme - https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
+  'color-scheme': $color-scheme,
+  'columns-count': $columns-count,
+
+  // Font family.
+  'font': (
+    'family': (
+      'base': $base-font-family,
+      'mono': $mono-font-family,
+      'fallback': $fallback-font-family,
+      'cjk-zh-hans': $cjk-zh-hans-font-family,
+      'cjk-zh-hant': $cjk-zh-hant-font-family,
+      'cjk-jp-font': $cjk-jp-font-family,
+      'cjk-ko-font': $cjk-ko-font-family,
+      'body': $body-font-family
+    ),
+    'size': (
+      '': $font-size,
+      'sm': $font-size-sm,
+      'lg': $font-size-lg,
+    )
+  ),
+
+  'html': $html,
+  'line-height': $line-height,
+  'blur': $blur,
+
+  // Layout.
+  'layout': $layout,
+
+  // Sides and corners.
+  'corners': (all: list.join($corners-x, $corners-y), y: $corners-y, x: $corners-x),
+  'side': $sides,
+
+  // Control and size.
+  'control': $control,
+  'responsive-breakpoint': $responsive-breakpoint,
+  'size': $size,
+  'unit-size': $unit-size,
+  'z-index': $z-index,
+
+  // Combinators.
+  'combinator': (' ', '>', '+', '~', '||'),
+
+  // Query.
+  'query': (
+    // 'select': ('select': ':select'),
+    // 'from': (from: list),
+    // 'where': (('occurrence': ':occurrence'), ('operand': ':operand', 'operator': ':operator'), ('operator,': ':operator'), (operands: (any))),
+    // 'filter': (':limit-range': list, ':limit': 'limit', ':range': 'range'),
+
+    'limit': (('offset,': (number, string)), ('limit': (number, string))),
+    'limit-range': (('offset,': number), ('limit': number), ('to': number)),
+    'range': (('offset,': number), ('to': number)),
+
+    'occurrence': (any, all),
+    'operand': (index, nth, quantity, type),
+    'operator': ('==', '~=', '!=', ':==', ':!=', '>', '>=', '<', '<='),
+    'select': (has, index, nth, quantity, type),
+
+    'indicator': (
+      arbitrary: '...', // Arbitrary parameter.
+      map: '.', // Get from the map '.key'
+      optional: ',', // Optional parameter.
+      type: ':', // Query types.
+    ),
+  ),
+
+  'type': (bool, list, map, null, number, string),
+
+  // Animation.
+  'transition-duration': $transition-duration,
+
+  // Theme.
+  'theme': (
+    'dark': $theme-dark,
+    'light': $theme-light,
+    'normal': $theme-normal,
+  ),
+
+  // Spectre class and var dictionary.
+  'dictionary': $dictionary
+) !default;
