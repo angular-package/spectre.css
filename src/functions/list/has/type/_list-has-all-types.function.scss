@@ -1,5 +1,4 @@
 // Functions.
-@use '../../is/is-list-length.function' as *;
 @use 'list-has-type.function' as *;
 
 // Status: DONE
@@ -7,7 +6,7 @@
 @function list-has-all-types($list, $types...) {
   $has: false;
   @each $type in $types {
-    $has: if(list-has-type($list, $type), true, false);
+    $has: list-has-type($list, any, $type);
     @if not $has {
       @return false;
     }

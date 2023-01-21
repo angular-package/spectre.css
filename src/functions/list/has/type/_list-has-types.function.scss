@@ -1,35 +1,50 @@
+// Sass.
+@use 'sass:list';
+
 // Functions.
+@use '../../nth/list-nth-default.function' as *;
 @use 'list-has-all-types.function' as *;
 @use 'list-has-any-types.function' as *;
+@use 'list-has-type.function' as *;
 
 // Status: DONE
 // The `list-has-types()` function.
-@function list-has-types($list, $condition, $types...) {
-  @if $condition == all {
+@function list-has-types($list, $occurrence, $types...) {
+  @if $occurrence == all {
     @return list-has-all-types($list, $types...);
-  } @else if $condition == any {
+  } @else if $occurrence == any {
     @return list-has-any-types($list, $types...);
   }
-  @return false;
+  @return if(
+    $occurrence == only,
+    list-has-type($list, $occurrence, list-nth-default($types, 1)),
+    false
+  );
 }
 
 // Examples.
-// @debug '--';
-// @debug list-has-types(('a', 'b', 1, 'c'), all, number); // false
-// @debug list-has-types(('a', 'b', 1, 'c'), any, number); // true
+// @debug '-- any';
 // @debug list-has-types(('a', 'b', 'c'), any, string, number, bool); // true
-// @debug list-has-types(('a', false, 'b', 5, 'c'), all, string, number, bool); // true
-// @debug list-has-types(('a', false, 'b', 5, 'c'), all, string, number); // true
-// @debug list-has-types(('a', false, 'b', 'c'), any, bool); // true
-// @debug list-has-types(('a', ('b', 'c'), null), any, list); // true
+// @debug list-has-types(('a', 'b', 1, 'c'), any, number); // true
 // @debug list-has-types(('a', ('b', 'c'), 4, null), any, string, null, list, number); // true
 // @debug list-has-types(('a', ('b', 'c'), 4, null, ('a': 1)), any, string, null, list, number, map); // true
-
-// @debug '--';
-// @debug list-has-types(('a', 'b', 'c'), all, string, number); // false
-// @debug list-has-types(('a', 'b', 1, 'c'), all, number, null); // false
-// @debug list-has-types(('a', false, 'b', 'c'), any, number, null); // false
+// @debug list-has-types(('a', ('b', 'c'), null), any, list); // true
+// @debug list-has-types(('a', false, 'b', 'c'), any, bool); // true
 // @debug list-has-types(('a', false, 'b', 'c'), any, list); // false
+// @debug list-has-types(('a', false, 'b', 'c'), any, number, null); // false
+
+// @debug '-- all';
+// @debug list-has-types(('a', 'b', 'c'), all, string, number); // false
+// @debug list-has-types(('a', 'b', 'c', null), all, null); // true
+// @debug list-has-types(('a', 'b', 1, 'c'), all, number); // true
+// @debug list-has-types(('a', 'b', 1, 'c'), all, number, null); // false
 // @debug list-has-types(('a', ('b', 'c'), null), all, string, list, null, number); // false
+// @debug list-has-types(('a', false, 'b', 5, 'c'), all, string, number); // true
+// @debug list-has-types(('a', false, 'b', 5, 'c'), all, string, number, bool); // true
 // @debug list-has-types(('a', false, 'b', 5, 'c'), all, string, number, bool, list); // false
-// @debug list-has-types(('a', 'b', 'c', null), all, null); // false
+
+// @debug '-- only';
+// @debug list-has-types(('a', 'b', 'c'), only, string); // true
+// @debug list-has-types((1, 2, 3), only, number); // true
+// @debug list-has-types((true, false, false), only, bool); // true
+// @debug list-has-types((null, null, null), only, null); // true

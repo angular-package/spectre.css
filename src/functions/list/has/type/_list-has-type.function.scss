@@ -2,39 +2,51 @@
 @use 'sass:list';
 @use 'sass:meta';
 
-// Status: REVIEW: Add compare()
-// The `list-has-type()` function.
-@function list-has-type($list, $type, $condition: any) {
-  $condition: if(meta.type-of($condition) == list, list.nth($condition,1), $condition);
-  $has: false;
+// Functions.
+@use '../../../compare.function' as *;
+@use '../../is/is-list-length.function' as *;
 
-  @if $condition == any {
-    @each $element in $list {
-      @if type-of($element) == if(not $type, type-of($type), $type) {
-        @return true;
+// Status: DONE
+// The `list-has-type()` function.
+@function list-has-type($list, $occurrence, $type) {
+  $has: false;
+  @if is-list-length($list, '>', 0) {
+    @if $occurrence == any {
+      @each $element in $list {
+        @if compare($element, ':==', $type) {
+          @return true;
+        }
       }
-    }
-  } @else if $condition == all {
-    $has: true;
-    @each $element in $list {
-      @if type-of($element) != if(not $type, type-of($type), $type) {
-        @return false;
+    } @else if $occurrence == only {
+      $has: true;
+      @each $element in $list {
+        @if compare($element, ':!=', $type) {
+          @return false;
+        }
       }
     }
   }
+
   @return $has;
 }
 
 // Examples.
-// @debug list-has-type(('a', 'b', 'c'), string); // true
-// @debug list-has-type(('a', 'b', 'c', 5123), number); // true
-// @debug list-has-type(('a', null, 'b', 'c', 5123), null); // true
-// @debug list-has-type(('a', ('b', 'c'), 5123), list); // true
-// @debug list-has-type(('a', ('b': 'c'), 5123), map); // true
+// any
+// @debug list-has-type(('a', 'b', 'c'), any, string); // true
+// @debug list-has-type(('a', 'b', 'c', 5123), any, number); // true
+// @debug list-has-type(('a', null, 'b', 'c', 5123), any, null); // true
+// @debug list-has-type(('a', ('b', 'c'), 5123), any, list); // true
+// @debug list-has-type(('a', ('b': 'c'), 5123), any, map); // true
+// @debug list-has-type(('a', 'b', 'c', 5123), any, list); // false
 
-// all
-// @debug list-has-type(('a', 'b', 'c'), string, all); // true
-// @debug list-has-type(('a', 'b', 'c', 5123), number, all); // false
-// @debug list-has-type(('a', null, 'b', 'c', 5123), null, all); // false
-// @debug list-has-type(('a', ('b', 'c'), 5123), list, all); // false
-// @debug list-has-type(('a', ('b': 'c'), 5123), map, all); // false
+// only
+// @debug list-has-type(('a', 'b', 'c'), only, string); // true
+// @debug list-has-type(('a', 'b', 'c', 5123), only, number); // false
+// @debug list-has-type(('a', null, 'b', 'c', 5123), only, null); // false
+// @debug list-has-type(('a', ('b', 'c'), 5123), only, list); // false
+// @debug list-has-type(('a', ('b': 'c'), 5123), only, map); // false
+
+// null
+// @debug list-has-type(('a', ('b': 'c'), 5123, null, '27', 27), any, null); // true
+// @debug list-has-type(('a', ('b': 'c'), 5123, null, '27', 27), any, null); // true
+// @debug list-has-type(('a', ('b': 'c'), 5123, false, '27', 27), any, null); // false
