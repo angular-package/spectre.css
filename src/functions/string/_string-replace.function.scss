@@ -1,6 +1,7 @@
 // Sass.
 @use 'sass:string';
 
+// Status: DONE
 // The `string-replace()` function.
 @function string-replace($string, $replace, $replacement) {
   $index: string.index($string, $replace);
@@ -14,4 +15,8 @@
       );
   }
   @return $string;
+}
+
+@function replace($string, $replace, $replacement) {
+  @return string-replace($string, $replace, $replacement);
 }

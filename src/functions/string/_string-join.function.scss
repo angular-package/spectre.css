@@ -1,34 +1,40 @@
 // Sass.
 @use 'sass:list';
+@use 'sass:meta';
 @use 'sass:string';
 
 // Functions.
 @use '../list/is/is-list-length.function' as *;
+@use '../list/is/is-list.function' as *;
 
 // Status: DONE
 // The `string-join()` function returns the string built from the given elements separated by the given separator
 // in original elements order.
 @function string-join($separator: '', $elements...) {
-  $result: '';
+  $string: '';
   $separator: $separator or '';
   @if is-list-length($elements, 0) {
     @each $element in $elements {
-      // @if type-of($element) == list {
-      //   @each $value in $element {
-      //     @if type-of($value) == string {
-      //       $result: '#{$result}#{$value}#{$separator}';
-      //     }
-      //   }
-      // } @else if type-of($element) == string {
-      //   $result: '#{$result}#{$element}#{$separator}';
-      // }
-
-      @if type-of($element) == string {
-        $result: '#{$result}#{$element}#{$separator}';
+      @if is-list($element) {
+        @each $value in $element {
+          $string: -string-join($string, $value, $separator);
+        }
+      } @else if type-of($element) == string {
+        $string: -string-join($string, $element, $separator);
       }
     }
   }
-  @return string.slice($result, 1, calc((string.length($separator) + 1) * -1));
+  @return string.slice($string, 1, calc((string.length($separator) + 1) * -1));
+}
+
+// Private -`string-join()` function.
+@function -string-join($string, $value, $separator) {
+  @return if(meta.type-of($value) == string, '#{$string}#{$value}#{$separator}', $string);
+}
+
+// The `join()` function.
+@function join($separator: '', $elements...) {
+  @return string-join($separator, $elements...);
 }
 
 // Examples.
