@@ -1,5 +1,4 @@
 // Functions.
-@use '../../is/is-list-length.function' as *;
 @use 'list-has-value.function' as *;
 
 // Status: DONE
@@ -7,7 +6,7 @@
 @function list-has-all-values($list, $values...) {
   $has: false;
   @each $value in $values {
-    $has: list-has-value($list, $value);
+    $has: list-has-value($list, any, $value);
     @if not $has {
       @return false;
     }

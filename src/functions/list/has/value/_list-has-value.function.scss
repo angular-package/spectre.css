@@ -1,7 +1,36 @@
 // Sass.
 @use 'sass:list';
 
+// Status: DONE
 // The `list-has-value()` function.
-@function list-has-value($list, $value) {
-  @return if(list.index($list, $value), true, false);
+@function list-has-value($list, $occurrence, $value) {
+  $has: false;
+  @if $occurrence == any {
+    @return if(list.index($list, $value), true, false);
+  } @else if $occurrence == only {
+    $has: true;
+    @each $element in $list {
+      @if not ($element == $value) {
+        @return false;
+      }
+    }
+  }
+  @return $has;
 }
+
+// Examples.
+// any true
+// @debug list-has-value(('a', 'b', 3), any, 3); // true
+// @debug list-has-value(('a', 'b', 3, '4', null), any, null); // true
+
+// any false
+// @debug list-has-value(('a', 'b', 3), any, 4); // false
+// @debug list-has-value(('a', 'b', 3, '4', ('a', 'b')), any, null); // false
+
+// only true
+// @debug list-has-value((3, 3, 3), only, 3); // true
+// @debug list-has-value((null, null, null, null), only, null); // true
+
+// only false
+// @debug list-has-value((2, 3, 3), only, 3); // false
+// @debug list-has-value((false, null, null, null), only, null); // false

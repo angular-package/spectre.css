@@ -1,35 +1,76 @@
+// Sass.
+@use 'sass:list';
+
 // Functions.
-@use '../../is/is-list-length.function' as *;
+@use '../../../is-operator.function' as *;
 @use '../../list-values-compare.function' as *;
+@use '../../nth/list-nth-default.function' as *;
 @use 'list-has-all-values.function' as *;
 @use 'list-has-any-values.function' as *;
+@use 'list-has-value.function' as *;
 
 // Status: DONE
 // The `list-has-values()` function.
-@function list-has-values($list, $condition, $values...) {
-  @if type-of($condition) == list {
-    @return list-values-compare($list, $condition, $values...);
-  } @else if $condition == all {
-    @return list-has-all-values($list, $values...);
-  } @else if $condition == any {
-    @return list-has-any-values($list, $values...);
+@function list-has-values($list, $occurrence, $operator, $values...) {
+  @if is-operator($operator) {
+    @return list-values-compare($list, $occurrence, $operator, $values...);
+  } @else {
+    $values: list.join($operator, $values);
+    @if $occurrence == all {
+      @return list-has-all-values($list, $values...);
+    } @else if $occurrence == any {
+      @return list-has-any-values($list, $values...);
+    }
   }
-  @return false;
+
+  @return if(
+    $occurrence == only,
+    list-has-value($list, $occurrence, list-nth-default($values, 1)),
+    false
+  );
 }
 
-// Examples (true).
+// Examples.
+// any true
 // @debug list-has-values(('a', 'b', 'c'), any, 'a'); // true
-// @debug list-has-values(('a', 'b', 'c'), all, 'a'); // true
-// @debug list-has-values(('a', 'b', 'c'), all, 'a', 'b'); // true
+// @debug list-has-values(('a', 'b', 'c'), any, '==', 'a'); // true
 // @debug list-has-values(('a', 'b', 'c', 1), any, 1); // true
-// @debug list-has-values(('a', 'b', 'c', 1), all, 1); // true
 // @debug list-has-values(('a', 'b', 'c'), any, 'c', 'b', 'a'); // true
-// @debug list-has-values(('a', 'b', 'c'), (any, '=='), 'a'); // true
-// @debug list-has-values(('a', 'a', 'a'), (all, '=='), 'a'); // true
 
-// Examples (false)
-// @debug list-has-values(('a', 'b', 'c'), all, 'a', 'b', 'c', 'd'); // false
+// false
 // @debug list-has-values(('a', 1, 'c'), any, 2); // false
-// @debug list-has-values(('a', 'b', 'c'), all, 'd'); // false
 // @debug list-has-values(('a', 'b', 'c'), any, true); // false
-// @debug list-has-values(('a', 'b', 'c'), (all, '=='), 'a'); // false
+
+// all true
+// @debug list-has-values(('a', 'a', 'a'), all, '==', 'a'); // true
+// @debug list-has-values(('a', 'b', 'c', 1), all, 1); // true
+// @debug list-has-values(('a', 'b', 'c'), all, 'a', 'b'); // true
+// @debug list-has-values(('a', 'b', 'c', 'd'), all, 'a', 'b', 'd'); // true
+
+// all false
+// Checks whether the list has all given values.
+// @debug list-has-values(('a', 'b', 'c'), all, '==', 'a'); // true
+
+// Checks whether the list has not all given values.
+// Checks whether the list has values all different from the given.
+// @debug list-has-values(('a', 'b', 'c'), all, '!=', 'a', 'b'); // true
+// @debug list-has-values(('a', 'b', 'c'), all, 'd'); // false
+// @debug list-has-values(('a', 'b', 'c'), all, 'a', 'b', 'c', 'd'); // false
+
+// only true
+// @debug list-has-values(('a', 'a', 'a'), only, 'a'); // true
+// @debug list-has-values(('a', 'b', 'c'), only, '==', 'a'); // true
+// @debug list-has-values(('a', 'b', 'c'), only, '!=', 'a'); // false
+// @debug list-has-values((1, 1, 1, 1), only, 1); // true
+// @debug list-has-values((null, null, null), only, null); // true
+// @debug list-has-values((false, false, false), only, false); // true
+
+// only false
+// @debug list-has-values(('a', 1, 'c'), only, 2); // false
+// @debug list-has-values(('a', 'b', 'c'), only, true); // false
+
+// @debug list-has-values((4, 5, 6), only, '>', 3); // true
+// @debug list-has-values((4, 5, 6, 'a', 'bold king'), only, '!=', 3); // true
+
+// @debug list-has-values((4, 5, 6), only, '>', 3); // true
+// @debug list-has-values((4, 5, 6), only, '!=', 3); // true

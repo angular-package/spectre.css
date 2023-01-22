@@ -5,7 +5,7 @@
 // The `list-has-any-values()` function.
 @function list-has-any-values($list, $values...) {
   @each $value in $values {
-    @if list-has-value($list, $value) {
+    @if list-has-value($list, any, $value) {
       @return true;
     }
   }
