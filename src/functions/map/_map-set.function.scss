@@ -1,0 +1,28 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Functions.
+@use '../list/is/is-list-length.function' as *;
+
+// Status:
+// The `map-set()` function.
+@function map-set($map, $key, $value, $allowed...) {
+  @if is-list-length($allowed, '==', 0) or -is-type($value, $allowed...) or -is-value($value, $allowed...) {
+    $map: map.set($map, $key, $value);
+  }
+  @return $map;
+}
+
+// Private.
+@function -is-type($value, $types...) {
+  @return if(is-list-length($types, 0) and (list.index($types, type-of($value)) or list.index($types, any)), true, false);
+}
+
+// Private.
+@function -is-value($value, $values...) {
+  @return if(is-list-length($values, 0) and list.index($values, $value), true, false);
+}
+
+// Examples.
+// @debug -is-type((aaa, bbb));

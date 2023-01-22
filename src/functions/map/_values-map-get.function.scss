@@ -12,7 +12,6 @@
 // The `values-map-get()` function.
 @function values-map-get($values, $keys, $get...) {
   $result: ();
-  $values: if(not is-list($values), list.append((), $values), $values);
 
   // Map.
   @if is-list($values, 0) or type-of($values) == string {
@@ -28,7 +27,7 @@
 
   $result: map.merge($result, $values);
 
-  @return if(is-list-length($get), if(is-list-length($get, 1), $result, map.get($result, $get...)), $result); // TODO: Update.
+  @return if(is-list-length($get, '==', 0), $result, map.get($result, $get...));
 }
 
 // Examples.

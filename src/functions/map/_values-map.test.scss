@@ -4,6 +4,7 @@
 @use 'sass:meta';
 
 // Functions.
+@use '../variable.function' as *;
 @use 'values-map.function' as *;
 
 // Methodology.
@@ -14,6 +15,20 @@
 // (value, value1, value2) => ((key, key1), key2) => (key: value, key1: value, key2: value1)
 // (value, value1, value2) => ((key-number: number, key-string: string), key2) => (key-string: value, key2: value1)
 // (value, value1, value2) => ((key: number, key: string), key2) => (key: value, key2: value1)
+
+// $data: 6;
+// $keys: 'limit';
+
+// $data: 6;
+// $keys: ('limit': number);
+
+// $data: (2, 6);
+// $keys: (('offset': number), ('limit': number));
+
+// $keys: ('limit': number, (('offset': number), ('limit': number)): list);
+// $keys: ('offset/limit', 'limit');
+// $keys: ('offset+', limit)
+
 
 // 2. Map.
 // ((value: 1), (value1: 2), (value2: 3), value3) => (key, key1, key2) => (key: (value: 1), key1: (value1: 1), key2: (value2: 1))
@@ -86,51 +101,76 @@ $-tests: ((
   (list: (value, value1, value2, value3), keys: (key, key1, key2, key3), result: (key: value, key1: value1, key2: value2, key3: value3)),
   (list: (value, value1, value2, value3), keys: (key, key1), result: (key: value, key1: value1)),
 
-  // (string) => ((string), string)
-  (list: (value, value1, value2, value3), keys: ((key, key1), key2), result: (key: value, key1: null, key2: value1)),
-  (list: (value, value1, value2, value3), keys: (key, (key1, key2)), result: (key: value, key1: value1, key2: null)),
-  (list: (value, value1, value2), keys: ((key, key1), key2), result: (key: value, key1: null, key2: value1)),
-
-  // ((string), string) => ((string), string)
-  (list: ((value, value1), value2, value3), keys: ((key, key1), key2), result: (key: value, key1: value1, key2: value2)),
-  (list: ((value, value1), value2), keys: ((key, key1), key2), result: (key: value, key1: value1, key2: value2)),
-
   // ((string), string) => (string)
   (list: ((value, value1), value2, value3), keys: (key, key1, key2), result: (key: (value, value1), key1: value2, key2: value3)),
-  (list: ((value, value1), value2), keys: (key, key1, key2), result: (key: (value, value1), key1: value2, key2: null)),
 
-  // (string) => (map)
+  // (map) => (string) => string: map
+  (list: ((value: 1), (value1: 2), (value2: 3)), keys: (key, key1, key2), result: (key: (value: 1), key1: (value1: 2), key2: (value2: 3))),
+  (list: ((value: 1, key: 1), (value1: 2, key1: 2), (value2: 3, key2: 3)), keys: (key, key1, key2), result: (key: 1, key1: 2, key2: 3)),
+  (list: ((key: 1, key10: 10), (key1: 2), (key2: 3)), keys: (key, key1, keys), result: (key: 1, key1: 2, keys: (key2: 3))),
+
+  // ((map),) => (string) => string: map
+  (list: ( ((value: 1), (value1: 2)), (value2: 3)), keys: (key, key1, key2), result: (key: ((value: 1), (value1: 2)), key1: (value2: 3))),
+  (list: ( ((key: 1), (key1: 2)), (key2: 3)), keys: (key, key1, key2), result: (key: ((key: 1), (key1: 2)), key1: (key2: 3))),
+
+  // ---
+
+  // (string) => ((string), string)
+  (list: (value, value1, value2, value3), keys: ((key, key1), key2), result: (key: value, key2: value1)),
+  (list: (value, value1, value2, value3), keys: (key, (key1, key2)), result: (key: value, key1: value1)),
+
+  // ((number, string), string) => ((string, map), string)
+  (list: ((2, 7), value2, value3), keys: (('offset,', limit), key2), result: (offset: 2, limit: 7, key2: value2)),
+  (list: ((2, '...', 7), value2, value3), keys: (('offset,', ('limit': number), ('to': number)), key2), result: (offset: 2, to: 7, key2: value2)),
+
+  // ((string), string) => ((string), string)
+  (list: ((value, value1), value2), keys: ((key, key1), key2), result: (key: value, key1: value1, key2: value2)),
+
+  // (map, string) => ((string), string)
+  (list: ((key: value, key1: value1), value2), keys: ((key, key1), key2), result: (key: value, key1: value1, key2: value2)), // TODO: ? key1: null
+  (list: ((key10: value, key11: value1), value2), keys: ((key, key1), key2), result: (key: (key10: value, key11: value1), key1: (key10: value, key11: value1), key2: value2)), // REVIEW: Add ? to the key.
+
+  // ((map, ), string) => ((string), string)
+  (list: (((key: value, key1: value1), ), value2), keys: ((key, key1), key2), result: (key: value, key2: value2)), // TODO: Remove key1: null
+
+  // ---
+
+  // (string) => (map,) -- Type checking.
   (list: (value, value1, value2, value3), keys: ((key: string), (key1: string)), result: (key: value, key1: value1)),
   (list: (value, value1, value2, value3), keys: ((key: string), (key1: number)), result: (key: value)),
+  (list: (15, value1, value2, value3), keys: ((key: (string, number, bool)), (key1: (bool, string))), result: (key: 15, key1: value1)),
 
-  // (string, number) => ((map),)
+  // (number, string) => (map,)
+  (list: ((15, value1, value2), value3), keys: ((key: (string, number, bool)), (key1: (bool, string))), result: (key1: value3)),
+
+  // (string, number) => ((map, map),)
   (list: (value, value1, value2, value3), keys: (((key: string), (key1: number)),), result: (key: value)),
-  (list: (27, value1, value2, value3), keys: (((key: string), (key1: number)),), result: (key1: 27)),
-  (list: (27, value1, value2, value3), keys: (((key: number), (key1: number)),), result: (key:27, key1: 27)),
+  (list: (27, value1, value2, value3), keys: (((key: string, key1: number), (key1: number)),), result: (key1: 27)),
+  (list: (27, value1, value2, value3), keys: (((key: number), (key1: number)),), result: (key:27)),
+
+  // (map) => ((map),) => map-key: map-value
+  (list: ((key: 1, key1: span), (key1: 2), (key2: 3)), keys: (((key: number, key1: string), (key1: string),), (key2: bool), key3), result: (key: 1, key1: span, key3: (key2: 3))), // TODO: Change
+  (list: ((key: 1, key1: span), (key1: 2), (key2: 3)), keys: (((key3: number), (key4: string),), (key2: bool), key3), result: (key3: (key2: 3))),
+
+  // (map, string) => (map,)
+  (list: ((key: 15, key1: value1, key2: value2), value3), keys: ((key: (string, number, bool)), (key1: (bool, string))), result: (key: 15, key1: value3)),
+  (list: ((key: 1), (key1: 2), (key2: 3)), keys: ((key: number), (key1: string), (key2: bool), key3), result: (key: 1)),
+
+  // ((map, number, string), string) => ((map,), map)
+  (list: ((key: 1, key1: span), (key1: 2), (key2: 3)), keys: (((key: number, key1: string), (key1: string),), (key2: bool), key3), result: (key: 1, key1: span, key3: (key2: 3))), // TODO: Change
+  (list: (((key: 1, key1: span), (key1: 2)), (key2: 3)), keys: (((key: number, key1: string), (key1: string),), (key2: bool), key3), result: (key: 1, key1: span)),
+  (list: (((key: 1, key1: span), (key1: 2)), (key2: 3)), keys: (((key: number, key1: string), (key1: number),), (key2: bool), key3), result: (key: 1, key1: 2)),
 
   // ((number, string),) => ((map),)
   (list: ((27, value1), value2, value3), keys: (((key: number), (key1: number)),), result: (key: 27)),
   (list: ((27, value1), value2, value3), keys: (((key: number), (key1: string)),), result: (key: 27, key1: value1)),
 
-  // (map) => (string) => string: map
-  (list: ((value: 1), (value1: 2), (value2: 3)), keys: (key, key1, key2), result: (key: (value: 1), key1: (value1: 2), key2: (value2: 3))),
-  (list: ((value: 1), (value1: 2), (value2: 3)), keys: (key, key1, key2, key3), result: (key: (value: 1), key1: (value1: 2), key2: (value2: 3), key3: null)),
-
-  // (map) => (string) => string: map-value
-  (list: (((key: 1), (key1: 2), (key2: 3))), keys: (key, key1, key2, key3), result: (key: 1, key1: 2, key2: 3, key3: null)),
-  (list: ((key: 1, key10: 10), (key1: 2), (key2: 3)), keys: (key, key1, keys), result: (key: 1, key1: 2, keys: (key2: 3))),
-
-  // (map) => (map) => map-key: map-value
-  (list: (((key: 1), (key1: 2), (key2: 3))), keys: ((key: number), (key1: string), (key2: bool), key3), result: (key: 1, key3: null)),
-
-  // (map) => ((map),) => map-key: map-value
-  (list: ((key: 1, key1: span), (key1: 2), (key2: 3)), keys: (((key: number), (key1: string),), (key2: bool), key3), result: (key: 1, key1: span, key3: (key2: 3))),
-  (list: ((key: 1, key1: span), (key1: 2), (key2: 3)), keys: (((key3: number), (key4: string),), (key2: bool), key3), result: (key3: (key2: 3))),
+  // ((map, number, string), string) => ((map),)
+  (list: (((key: 15, key1: value1, key2: value2), 27, value2), value3), keys: ((key: (string, number, bool)), (key1: (bool, string))), result: (key1: value3)),
+  (list: (((key: 15, key1: value1, key2: value2), 27, value2), value3), keys: (((key: (string, number, bool),), (key1: string)), (key1: (bool, string))), result: (key: 15,key1: value3)),
 
   // (map, (map)) => ((string),string) => map-key: map-value
   (list: ((key: 1, key1: span), ((key1: 2), (key100: 1)), (key2: 3)), keys: ((key3, key4), (key1, key10), key5), result: ((key3: (key: 1, key1: span), key4: (key: 1, key1: span), key1: 2, key10: (key100: 1), key5: (key2: 3)))),
-
-  // ((map), map, string) => ((string),string) => map-key: map-value
   (list: (((map-key: 1), (map-key1: 2)), (map-key2: 3), value3), keys: ((key, key1), key2), result: (key: (map-key: 1), key1: (map-key1: 2), key2: (map-key2: 3))),
   (list: (((map-key: 1), (map-key1: 2)), (map-key2: 3), value3), keys: ((map-key, map-key1), map-key2), result: (map-key: 1, map-key1: 2, map-key2: 3)),
 
@@ -138,8 +178,8 @@ $-tests: ((
   (list: ((a: 'bold'), (b: 2, b1: 3), (a: 25)), keys: (('a': (string, number)), ('b', 'b1'), 'cetra'), result: ("a": "bold", "b": 2, "b1": 3, "cetra": (a: 25))),
 
   // (string) => ((map),string) => map-key: string/number or string: string
-  (list: (value, value1, value2), keys: (((key-number: number), (key-string: string)), key2), result: (key-string: value, key2: value1)),
-  (list: (value, value1, value2), keys: (((key: number), (key: string)), key2), result: (key: value, key2: value1)),
+  (list: (value, value1, value2), keys: (((key-number: number), (key-string: string)), key2), result: (key2: value1)),
+  (list: (value, value1, value2), keys: (((key: number), (key: string)), key2), result: (key2: value1)),
 
   // ((map), map, string) => ((map),string)
   (list: (((value: 1), (value1: 2)), (value2: 3), value3), keys: (((value: number), (value1: number)), value2, key3), result: (value: 1, value1: 2, value2: 3, key3: value3)),
@@ -147,7 +187,7 @@ $-tests: ((
   (list: ('My name', 'My surname', 42), keys: ('firstname', 'surname', 'age'), result: ("firstname": "My name", "surname": "My surname", "age": 42)),
   (list: ('My name', 'My surname', 42), keys: ((firstname: (string, list)), 'surname', (age: number)), result: ((firstname: 'My name', surname: 'My surname', age: 42))),
   (list: (('My', 'name'), 'My surname', 42), keys: ((firstname: (string, list)), 'surname', (age: number)), result: ((firstname: ("My", "name"), "surname": "My surname", age: 42))),
-  (list: (all, '==', -1), keys: (('get', 'occurrence'), ('operator', 'operand'), 'adjust'), result: ("get": all, "occurrence": null, "operator": "==", "operand": null, "adjust": -1)),
+  (list: (all, '==', -1), keys: (('get', 'occurrence'), ('operator', 'operand'), 'adjust'), result: ("get": all, "operator": "==", "adjust": -1)),
 
   (list: ((value, value1), value2), keys: (((key-number: number), (key-string: string)), key2), result: (key-string: value1, key2: value2)),
   (list: ('a', (value, value1), value2), keys: ((key-string: string), ((key-list: string), (key-list-1:  string),)), result: (key-string: "a", key-list: value, key-list-1: value1)),
@@ -159,16 +199,41 @@ $-tests: ((
   (list: ((all, last, test), '==', -1), keys: (('get', 'occurrence'), 'operator', 'adjust'), result: ("get": all, "occurrence": last, "operator": "==", "adjust": -1)),
   (list: ((all, last, test), ('==', 3), -1), keys: (('get', 'occurrence'), ('operator', 'operand'), 'adjust'), result: (("get": all, "occurrence": last, "operator": "==", "operand": 3, "adjust": -1))),
 
-  // Filter, limit and range.
-  (list: (index, (2, '...', 5) ), keys: ('select', ( ('filter': (list, number)), ('limit': (list, number)), ('range': (list, number))) ), result: (("select": index, "filter": 2, "range": 5))),
-  (list: (index, (limit: (2, 5)) ), keys: ('select', ( ('filter': (list, number)), ('limit': (list, number)), ('range': (list, number))) ), result: (("select": index, "limit": (2, 5)))),
-  (list: (index, (2, '...', 5) ), keys: ('select', ( ((list, number): 'filter'), ((list, number): 'limit?'), ((list, number): 'range?')) ), result: (("select": index, "filter": (2, "...", 5)))),
-  (list: (index, (2, '...', 5) ), keys: ('select', ( (from: number), (to: number), (to: number), ((list, number): 'filter'), ((list, number): 'limit?'), ((list, number): 'range?')) ), result: (("select": index, from: 2, to: 5, "filter": (2, "...", 5)))),
-  (list: (index, (2, 5) ), keys: ('select', ( ('from': number), ('to': number), ('to': number), ((list, number): 'filter'), ((list, number): 'limit?'), ((list, number): 'range?')) ), result: (("select": index, "from": 2, "to": 5, "filter": (2, 5)))),
+  // Range.
+  (list: (index, (2, '...', 5) ), keys: ('select', ( ('offset': (list, number)), ('limit': (list, number)), ('to': (list, number)),) ), result: (("select": index, "offset": 2, "to": 5))),
+  (list: (index, (range: (2, '...', 5)) ), keys: ('select', ( ('offset': (list, number)), ('range': (('offset': number), ('to': number), ('to': number))),) ), result: (("select": index, "range": ("offset": 2, "to": 5)))),
+  (list: (index, (range: (2, 5)) ), keys: ('select', ( ('filter': (list, number)), ('limit': ((offset: number), (to: number), (to: number))), ('range': ((offset: number), (to: number), (to: number)))), ), result: (("select": index, "range": (offset: 2, to: 5)))),
 
+  // Limit.
+  (list: ( 7 ), keys: (('limit': number), ), result: ("limit": 7)),
+  (list: ( 7, ), keys: (('limit': number, ('offset,', 'limit'): list), ), result: ("limit": 7)),
+  (list: ( (2, 7), ), keys: (('limit': number, ('offset', 'limit'): list), ), result: ("offset": 2, "limit": 7)),
+  (list: (index, (2, 5) ), keys: ('select', ( ('offset': (list, number)), ('limit': (list, number)), ('to': (list, number)),) ), result: (("select": index, "offset": 2, "limit": 5))),
+  (list: (index, 5 ), keys: ('select', ( ((number, ): 'offset', 'limit': number), ('limit': number) )), result: (("select": index, "limit": 5))),
+  (list: (index, (2, 7) ), keys: ('select', (( ('offset': number), ('limit': number) ): list, 'limit': number)), result: (("select": index, "offset": 2, "limit": 7))),
+  (list: (index, (limit: (2, 5)) ), keys: ('select', ( ('offset': (list, number)), ('limit': (('offset': number), ('limit': number)),), ('to': (list, number)),) ), result: (("select": index, "limit": ("offset": 2, "limit": 5)))),
+  (list: (index, (limit: 5) ), keys: ('select', ( ('limit': ((('offset': number), ('limit': number)), number)), ('to': (list, number)),) ), result: (("select": index, "limit": 5))),
+  (list: (index, (limit: (2, 5)) ), keys: ('select', ( ('limit': ((('offset': number), ('limit': number)), number)), ('to': (list, number)),) ), result: (("select": index, "limit": ("offset": 2, "limit": 5)))),
+
+  // (map) => ((map), map)
+  (list: (index, (limit: (2, 5)) ), keys: ('select', ( 'filter': (list, number), 'limit': (list, number), 'range': (list, number)) ), result: (("select": index, "limit": (2, 5)))),
+  (list: (index, (limit: (2, 5)) ), keys: ('select', ( ('filter': (list, number), 'limit': (list, number), 'range': (list, number))), ), result: (("select": index, "limit": (2, 5)))),
+  (list: (index, (limit: (2, 5)) ), keys: ('select', ( ('filter': (list, number)), ('limit': (list, number)), ('range': (list, number))), ), result: (("select": index, "limit": (2, 5)))),
+
+  // (string, map) => (string, (map,),)
+  (list: (index, (limit: (2, 5)) ), keys: ('select', ( ('filter': (list, number)), ('limit': ((offset: number), (limit: number), (limit: number))), ('range': (list, number))), ), result: (("select": index, "limit": (offset: 2, limit: 5)))),
+
+  // Select.
+  (list: ((select: nth),), keys:((select: ':select'), ), result: (select: (nth))),
+  (list: (index,), keys:(('select': ':select',  ), ), result: (select: (index))),
+
+  // Query.
+  (list: (nth, ('a', 'b'), (nth, '==', (63, 21, 234)),), keys:(select, (from: list), (where: (('operand': ':operand'), ('operator': ':operator'), (operands: any))),), result: ((select: nth, from: ("a", "b"), where: ("operand": nth, "operator": "==", operands: (63, 21, 234))))),
+  // (list: ((nth, index), (nth, '==', (63, 21, 234)),), keys:(select, ( ((operand: string), (operator: string), (operands: list)): 'where'),  ), result: (false)),
+  // (list: ((select: (nth, index)), (nth, '==', (63, 21, 234)),), keys:((select: (nth, index)), ( 'where': ((operand: (nth, index)), (operator: ('==', '>')), (operands: any)) ),  ), result: (false))
 ));
 
-@include execute-tests($-tests, 47);
+@include execute-tests($-tests);
 
 // Map key values
 // @debug values-map(($bg-theme-normal, ('key': 1)), ('first', 'second'), ('a', ('key': (number, string)), 'other.colors', 'b', 'c'), 'd'); //
