@@ -1,25 +1,34 @@
 // Sass.
+@use 'sass:list';
+@use 'sass:meta';
 @use 'sass:string';
 
+// Status: DONE
 // The `compare()` function.
 @function compare($value, $operator, $operand) {
   @if $operator == '==' {
     @return $value == $operand;
 
-  } @else if $operator == ':==' or $operator == ':!=' {
+  // Type of the given value equal or not equal to operand.
+  } @else if list.index((':==', ':!='), $operator) {
+    $value: meta.type-of($value);
     $operand: if(not $operand, meta.type-of($operand), $operand);
-    @if string.index($operator, '==') {
-      @return type-of($value) == $operand;
-    } @else if string.index($operator, '!=') {
-      @return type-of($value) != $operand;
+
+    @if string.index($operator, ':==') {
+      @return $value == $operand;
+    } @else if string.index($operator, ':!=') {
+      @return $value != $operand;
     }
 
-  } @else if $operator == '~=' {
-    @return (
-      type-of($value) == string and
-      type-of($operand) == string and
+  // Type of the given value equal or not equal to operand.
+  } @else if list.index(('~=', '!~='), $operator) {
+    $result: (
+      meta.type-of($value) == string and
+      meta.type-of($operand) == string and
       string.index($value, $operand)
     ) or false;
+
+    @return if($operator == '~=', if($result, true, false), not $result);
 
   } @else if $operator == '!=' {
     @return $value != $operand;
@@ -54,3 +63,63 @@
   }
   @return false;
 }
+
+// Operator.
+// '==', // equal to
+// '!=', // not equal to
+// '~=', // text contains the given string (string.index())
+// '!~=', // text does not contain the given string (string.index())
+// ':==', // type of the given value is equal to the given type
+// ':!=',  // type of the given value is not equal to the given type
+// '>',
+// '>=',
+// '<',
+// '<='
+
+// Examples.
+// ==
+// @debug compare(27, '==', 27); // true
+// @debug compare('there is a word', '==', 'there is a word'); // true
+// @debug compare(null, '==', null); // true
+// @debug compare((a: 2222), '==', ('a': 2222)); // true
+
+// !=
+// @debug compare(27, '!=', 27); // true
+// @debug compare('there is a word', '!=', 'there is a word'); // true
+// @debug compare(null, '!=', null); // true
+// @debug compare((a: 2222), '!=', ('a': 2222)); // true
+
+// :==
+// @debug compare('a', ':==', string); // true
+// @debug compare(3, ':!=', string); // true
+// @debug compare(null, ':==', null); // true
+// @debug compare(false, ':==', bool); // true
+
+// :!=
+// @debug compare(27, ':!=', string); // true
+// @debug compare('a', ':!=', string); // false
+// @debug compare(null, ':!=', null); // false
+// @debug compare(false, ':!=', bool); // false
+
+// ~=
+// @debug compare('bold king', '~=', 'bold'); // true
+
+// !~=
+// @debug compare('bold king', '!~=', 'word'); // true
+// @debug compare('bold king', '!~=', 'bold'); // false
+
+// >
+// @debug compare(3, '>', 1); // true
+// @debug compare(3, '>', 5); // false
+
+// >=
+// @debug compare(3, '>=', 1); // true
+// @debug compare(3, '>=', 3); // true
+
+// <
+// @debug compare(3, '<', 1); // false
+// @debug compare(3, '>', 5); // true
+
+// <=
+// @debug compare(3, '<=', 1); // false
+// @debug compare(3, '<=', 3); // true

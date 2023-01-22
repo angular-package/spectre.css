@@ -1,0 +1,32 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use 'variable.function' as *;
+
+// The `is-operator()` function.
+@function is-operator($value, $operator: null) {
+  @return if(
+    list.index(variable(query, operator), $value),
+    if($operator, $value == $operator, true),
+    false
+  );
+}
+
+// Examples.
+// @debug is-operator('==');
+// @debug is-operator('!=');
+// @debug is-operator(':==');
+// @debug is-operator(':!=');
+// @debug is-operator('~=');
+// @debug is-operator('!~=');
+// @debug is-operator('<');
+// @debug is-operator('<=');
+// @debug is-operator('>');
+// @debug is-operator('>=');
+
+// given operator
+// $value: '==';
+// @debug is-operator($value, '=='); // true
+// @debug is-operator($value, '!='); // false
+
