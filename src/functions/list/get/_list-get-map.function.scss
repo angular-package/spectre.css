@@ -2,11 +2,14 @@
 @use 'sass:list';
 @use 'sass:map';
 
-// Status: REVIEW:
-// The `list-get-map()` returns the map built from the given `$list`.
+// Functions.
+@use '../is/is-list-length.function' as *;
+
+// Status: DONE
+// The `list-get-map()` returns the map built from the maps of the given `$list`.
 @function list-get-map($list, $separate: false) {
   $map: ();
-  @if type-of($list) == list and list.length($list) > 0 {
+  @if is-list-length($list, '>', 0) {
     $i: 1;
     @each $element in $list {
       @if type-of($element) == map {
@@ -21,10 +24,12 @@
   @return $map;
 }
 
-// Example usage
+// Examples.
 // @debug list-get-map(('a', 'b', 'c')); // Returns `()`
 // @debug list-get-map(('a', 'b', 'c', ('d': 1, 'e': 2, 'f': 3))); // Returns ("d": 1, "e": 2, "f": 3)
-// @debug list-get-map(('a', 'b', 'c', ('d': 1, 'e': 2, 'f': 3)), true); // Returns (1: ("d": 1, "e": 2, "f": 3))
 // @debug list-get-map(('a', 'b', 'c', (('d': 1, 'e': 2, 'f': 3), 'g'), 'h')); // Returns ()
 // @debug list-get-map(('a', 'b', 'c', ('d': 1, 'e': 2, 'f': 3), 'g', 'h', ('1': 'd', '2': 'e', '3': 'f'))); // Returns ("d": 1, "e": 2, "f": 3, "1": "d", "2": "e", "3": "f")
 // @debug list-get-map(('a', ('d': 1, 'e': 2, 'f': 3), 'b', 'c', ('d', ('g': 1, 'h': 2, 'i': 3), (1, 2, 3, (4, 5, 6)), 'e', 'f'))); // Returns ("d": 1, "e": 2, "f": 3)
+
+// Separate
+// @debug list-get-map(('a', 'b', 'c', ('d': 1, 'e': 2, 'f': 3)), true); // Returns (1: ("d": 1, "e": 2, "f": 3))

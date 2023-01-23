@@ -2,14 +2,13 @@
 @use 'sass:list';
 
 // Functions.
-@use '../is/is-list-type.function' as *;
 @use '../is/is-list.function' as *;
 
 // Status: DONE
 // The `list-get-bool()` function.
 @function list-get-bool($list, $bool...) {
-  @if is-list($list, 0) {
-    $check: is-list($bool, 0);
+  @if is-list($list, '>', 0) {
+    $check: is-list($bool, '>', 0);
     @each $element in $list {
       @if type-of($element) == bool {
         @if $check {

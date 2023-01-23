@@ -1,8 +1,11 @@
 // Sass.
 @use 'sass:list';
 
-// Status: REVIEW:
-// The `list-get-number()` function returns the first detected number from the list given as arbitrary argument, otherwise null.
+// Functions.
+@use '../is/is-list-length.function' as *;
+
+// Status: DONE
+// The `list-get-number()` function returns the first occurring number, otherwise null.
 @function list-get-number($list, $multiple: false, $separator: list.separator($list)) {
   $result: ();
   @each $element in $list {
@@ -14,7 +17,7 @@
       }
     }
   }
-  @return if($multiple == true, if(list.length($result) > 0, $result, null), null);
+  @return if($multiple == true, if(is-list-length($result, '>', 0), $result, null), null);
 }
 
 // Examples.
