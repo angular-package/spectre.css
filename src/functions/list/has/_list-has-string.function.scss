@@ -1,41 +1,47 @@
 // Functions.
-@use '../is/is-list-length.function' as *;
+@use '../../is-operator.function' as *;
 @use 'type/list-has-type.function' as *;
 @use 'value/list-has-values.function' as *;
 
 // Status: DONE
 // The `list-has-string()` function checks whether the given `$list` has `any/all` of given in the arbitrary argument `$strings`.
-@function list-has-string($list, $condition: any, $strings...) {
-  // Checks whether the given `$list` has `any/all` elements of string type.
-  $has: list-has-type($list, string, $condition);
-  @if is-list-length($strings, 0) and $has {
-    $has: list-has-values($list, $condition, $strings...);
+@function list-has-string($list, $occurrence: any, $operator: null, $strings...) {
+  $has: false;
+  @if is-operator($operator) {
+    $has: if(
+      list-has-type($strings, only, string),
+      list-has-values($list, $occurrence, $operator, $strings...),
+      false
+    );
+  } @else {
+    $has: list-has-type($list, $occurrence, string);
   }
   @return $has;
 }
 
-// Examples (true).
+// Examples.
+// true
 // @debug list-has-string(('a', 'b', 'c')); // true
-// @debug list-has-string(('a', 'b', 'c'), all); // true
-// @debug list-has-string(('a', 'b', 'c', 1)); // true
-// @debug list-has-string(('a', 'b', 'c'), all, 'a'); // true
-// @debug list-has-string(('a', 'b', 'c'), any, 'a', 'b'); // true
-// @debug list-has-string(('a', 'b', 'c'), any, 'a', 'b', 'c'); // true
-// @debug list-has-string(('a', 'b', 'c'), any, 'a', 'b', 'c', 'd'); // true
+// @debug list-has-string(('a', 'b', 'c'), any); // true
+// @debug list-has-string(('a', 'b', 'c'), only); // true
+// @debug list-has-string(('a', 'b', 'c', 1), all, '==', 'a'); // true
+// @debug list-has-string(('a', 'b', 'c'), all, '==', 'a'); // true
+// @debug list-has-string(('a', 'b', 'c'), any, '==', 'a', 'b'); // true
+// @debug list-has-string(('a', 'b', 'c'), any, '==', 'a', 'b', 'c'); // true
+// @debug list-has-string(('a', 'b', 'c'), any, '==', 'a', 'b', 'c', 'd'); // true
 
-// Examples (false)
-// @debug list-has-string(('a', 'b', 'c', 1), all); // false
-// @debug list-has-string(('a', 1, 'b', 'c'), all); // false
-// @debug list-has-string(('a', 1, 'b', 'c'), any); // false
-// @debug list-has-string(('a', 'b', 'c'), all, 'a', 'b', 'c', 'd'); // false
-// @debug list-has-string(('a', 'b', 'c'), all, 'a', 'b', 'c', false); // false
-// @debug list-has-string(('a', 1, 'c'), any, true);
-// @debug list-has-string(('a', 'b', 'c'), any, 'd');
-// @debug list-has-string(('a', 'b', 'c'), any, false);
+// false
+// @debug list-has-string(('a', 'b', 'c', 1), only); // false
+// @debug list-has-string(('a', 1, 'b', 'c'), only); // false
+// @debug list-has-string(('a', 'b', 'c'), all, '==', 'a', 'b', 'c', 'd'); // false
+// @debug list-has-string(('a', 'b', 'c'), all, '==', 'a', 'b', 'c', false); // false
+// @debug list-has-string(('a', 1, 'c'), any, '==', true); // false
+// @debug list-has-string(('a', 'b', 'c'), any, '==', 'd'); // false
+// @debug list-has-string(('a', 'b', 'c'), any, '==', false); // false
 
 // Compare
-// @debug list-has-string(('a', 'a', 'a'), (all, '=='), 'a'); // true
-// @debug list-has-string(('a', 'a', 'a'), (all, '!='), 'a'); // false, all != 'a'
-// @debug list-has-string(('a1', 'a2', 'a3'), (all, '!='), 'a'); // true
-// @debug list-has-string(('a', 'a2', 'a'), (any, '!='), 'a'); // true
-// @debug list-has-string(('a', 'a', 'a'), (any, '!='), 'a'); // false
+// @debug list-has-string(('a', 'a', 'a'), all, '==', 'a'); // true
+// @debug list-has-string(('a', 'a', 'a'), all, '!=', 'a'); // false
+// @debug list-has-string(('a1', 'a2', 'a3'), all, '!=', 'a'); // true
+// @debug list-has-string(('a', 'a2', 'a'), any, '!=', 'a'); // true
+// @debug list-has-string(('a', 'a', 'a'), any, '!=', 'a'); // false

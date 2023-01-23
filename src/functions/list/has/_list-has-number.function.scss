@@ -1,47 +1,53 @@
 // Functions.
-@use '../is/is-list-length.function' as *;
+@use '../../is-operator.function' as *;
 @use 'type/list-has-type.function' as *;
 @use 'value/list-has-values.function' as *;
 
 // Status: DONE
 // The `list-has-number()` function checks whether the given `$list` has `any/all` of given in the arbitrary argument `$numbers`.
-@function list-has-number($list, $condition: any, $numbers...) {
-  // Checks whether the given `$list` has `any/all` elements of number type.
-  $has: list-has-type($list, number, $condition);
-  @if is-list-length($numbers, 0) and $has {
-    $has: list-has-values($list, $condition, $numbers...);
+@function list-has-number($list, $occurrence: any, $operator: null, $numbers...) {
+  $has: false;
+  @if is-operator($operator) {
+    $has: if(
+      list-has-type($numbers, only, number),
+      list-has-values($list, $occurrence, $operator, $numbers...),
+      false
+    );
+  } @else {
+    $has: list-has-type($list, $occurrence, number);
   }
   @return $has;
 }
 
 // Examples.
-// -- true
+// true
 // @debug list-has-number((1, 2, '3', '5', 4)); // true
 // @debug list-has-number((1, 2, 3, 5, 4)); // true
-// @debug list-has-number((1, 2, 3, 5, 4), all); // true
+// @debug list-has-number((1, 2, 3, 5, 4), only); // true
 // @debug list-has-number(('1', 2, '3', 5, '4'), any, 5, 2, 10); // true
 
-// -- false
-// @debug list-has-number((1, 2, '3', '5', 4), all); // false
+// false
+// @debug list-has-number((1, 2, '3', '5', 4), only); // false
 // @debug list-has-number(('1', '2', '3', '5', '4')); // false
-// @debug list-has-number((1, '2', 3, '5', '4'), any, 5, 4); // false
+// @debug list-has-number((1, '2', 3, '5', '4'), any, '==', 5, 4); // false
 
-// @debug list-has-number((1, 1, 1), (all, '=='), 1); // true
-// @debug list-has-number((1, 11, 111), (all, '=='), 1); // false
-// @debug list-has-number((1, 2, 3), (any, '=='), 3); // false
+// ---
+// @debug list-has-number((1, 1, 1), all, '==', 1); // true
+// @debug list-has-number((1, 11, 111), only, '==', 1); // false
+// @debug list-has-number((1, 2, 3), any, '==', 3); // true
 
-// @debug list-has-number((1, 2, 3), (all, '>'), 1); // false
-// @debug list-has-number((1, 2, 3), (all, '>='), 1); // true
+// @debug list-has-number((1, 2, 3), all, '>', 1); // true
+// @debug list-has-number((1, 2, 3), all, '>=', 1); // true
 
-// @debug list-has-number((1, 2, 3), (any, '>'), 1); // true
-// @debug list-has-number((1, 2, 3), (any, '>'), 4); // false
+// @debug list-has-number((1, 2, 3), any, '>', 1); // true
+// @debug list-has-number((1, 2, 3), any, '>', 4); // false
 
-// @debug list-has-number((4, 10, 15), (any, '<'), 15); // true
-// @debug list-has-number((4, 10, 15), (all, '<'), 15); // false
-// @debug list-has-number((4, 10, 15), (all, '<='), 15); // true
-// @debug list-has-number((4, 10, 15), (any, '!='), 15); // true
+// @debug list-has-number((4, 10, 15), any, '<', 15); // true
+// @debug list-has-number((4, 10, 15), only, '<', 15); // false
+// @debug list-has-number((4, 10, 15), all, '<=', 15); // true
+// @debug list-has-number((4, 10, 15), any, '!=', 15); // true
 
-// @debug list-has-number((15, 15, 15), (any, '!='), 15); // false
+// @debug list-has-number((15, 15, 15), any, '!=', 15); // false
 
-// @debug list-has-number((4, 10, 15), (any, '>'), 15, 20, 25); // false
-// @debug list-has-number((4, 10, 15), (any, '>'), 15, 14, 25); // true
+// @debug list-has-number((4, 10, 15), any, '>', 15, 20, 25); // false
+// @debug list-has-number((4, 10, 15), any, '>', 15, 14, 25); // true

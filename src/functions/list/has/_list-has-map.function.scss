@@ -1,24 +1,34 @@
 // Functions.
-@use '../is/is-list-length.function' as *;
+@use '../../is-operator.function' as *;
 @use 'type/list-has-type.function' as *;
 @use 'value/list-has-values.function' as *;
 
 // Status: DONE
 // The `list-has-map()` function checks whether the given `$list` has `any/all` of given in the arbitrary argument `$maps`.
-@function list-has-map($list, $condition: any, $maps...) {
-  // Checks whether the given `$list` has `any/all` elements of map type.
-  $has: list-has-type($list, map, $condition);
-  @if is-list-length($maps, 0) and $has {
-    $has: list-has-values($list, $condition, $maps...);
+@function list-has-map($list, $occurrence: any, $operator: null, $maps...) {
+  $has: false;
+  @if is-operator($operator) {
+    $has: if(
+      list-has-type($maps, only, map),
+      list-has-values($list, $occurrence, $operator, $maps...),
+      false
+    );
+  } @else {
+    $has: list-has-type($list, $occurrence, map);
   }
   @return $has;
 }
 
 // Examples.
-// -- true
-// @debug list-has-map(((a: 1), ));
-// @debug list-has-map(((a: 1), (b: 2)), any);
+// true
+// @debug list-has-map(((a: 1), )); // true
+// @debug list-has-map(((a: 1), (b: 2)), any); // true
+// @debug list-has-map(((a: 1), (b: 2)), only); // true
+// @debug list-has-map(((a: 1), (a: 2), (a: 3)), all, '==', (a: 1), (a: 2)); // true
+// @debug list-has-map(((a: 1), (a: 1), (a: 1)), only, '==', (a: 1), (a: 1)); // true
 
-// -- false
-// @debug list-has-map(((a, 1), a, b, c), null); // any false
-// @debug list-has-map(((a: 1), (b: 2), a, 1, (b, c), 2d), all); // all false
+// false
+// @debug list-has-map(((a, 1), a, b, c)); // false
+// @debug list-has-map(((a, 1), a, b, c), any); // false
+// @debug list-has-map(((a: 1), (b: 2), a, 1, (b, c), 2d), only); // false
+// @debug list-has-map(((a: 1), (b: 2), a, 1, (b, c), 2d), only, '==', (a: 1)); // false
