@@ -1,11 +1,39 @@
 // Sass.
 @use 'sass:list';
+@use 'sass:meta';
 
 // Functions.
-@use '../list-type-to.function' as *;
+@use '../has/list-has-number.function' as *;
+@use '../is/is-list-length.function' as *;
+@use '../is/is-list.function' as *;
 
-// Status: REVIEW: Check.
+// Status: DONE
 // The `list-type-index()` function.
-@function list-type-index($list, $conditions: all, $types...) {
-  @return list-type-to($list, $conditions, list.append($types, index)...);
+// Returns list of types of the given indexes.
+@function list-type-index($list, $indexes...) {
+  $result: ();
+  @if is-list($list, 0) and is-list($indexes, 0) {
+    $i: 1;
+    @each $index in $indexes {
+      $indexes: list.set-nth($indexes, $i, meta.type-of(list.nth($list, $index)));
+      $i: $i + 1;
+    }
+
+    $result: $indexes;
+  } @else {
+    $i: 1;
+    @each $element in $list {
+      $list: list.set-nth($list, $i, meta.type-of($element));
+      $i: $i + 1;
+    }
+
+    $result: $list;
+  }
+  @return if(is-list-length($result), if(is-list-length($result, 1), $result, list.nth($result, 1)), null);
 }
+
+// Examples.
+// @debug list-type-index(('a', 2, (a: 231), 'b', 7, null, 'c', 5, 'd', 231), 4, 1, 3, 6); // string, string, map, null
+// @debug list-type-index(('a', 2, (a: 231), 'b', 7, null, 'c', 5, 'd', 231), 4, 1, 3, 6); // string, string, map, null
+// @debug list-type-index(('a', 2, (a: 231), 'b', 7, null, 'c', 5, 'd', 231), 4, 1, 3, 6, 11); // Error not in range
+// @debug list-type-index(('a', 2, (a: 231), true, 'b', 7, null, 'c', 5, 'd', 231)); // string, number, map, bool, string, number, null, string, number, string, number

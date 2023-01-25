@@ -3,39 +3,56 @@
 @use 'sass:meta';
 
 // Functions.
+@use '../../compare.function' as *;
 @use '../has/list-has-number.function' as *;
 @use '../is/is-list-length.function' as *;
 @use '../is/is-list.function' as *;
+@use '../nth/list-nth-default.function' as *;
+@use '../nth/list-nth-first.function' as *;
 
 // Status: DONE
 // The `list-index-type()` function.
-@function list-index-type($list, $indexes...) {
+// Returns list of indexes of the given types.
+@function list-index-type($list, $occurrence, $types...) {
   $result: ();
-  @if is-list($list, 0) {
-    @if is-list($indexes, 0) {
-      $i: 1;
-      @each $index in $indexes {
-        $indexes: list.set-nth($indexes, $i, meta.type-of(list.nth($list, $index)));
-        $i: $i + 1;
-      }
-
-      $result: $indexes;
-    } @else {
-      $i: 1;
+  @if is-list($list, 0) and is-list($types, 0) {
+    $i: 1;
+    $default-occurrence: $occurrence;
+    @each $type in $types {
+      $j: 1;
+      $index: ();
       @each $element in $list {
-        $list: list.set-nth($list, $i, meta.type-of($element));
-        $i: $i + 1;
+        // Occurrence specified in the type.
+        @if type-of($type) == list {
+          $occurrence: list.nth($type, 1);
+          $type: list.nth($type, 2);
+        }
+
+        // Compare element with the type.
+        @if compare($element, ':==', $type) {
+          $index: list.append($index, $j, list.separator($list));
+        }
+
+        $j: $j + 1;
       }
 
-      $result: $list;
+      // Occurrence any and first.
+      @if list.index((first, any), $occurrence) {
+        $index: list-nth-default($index, 1);
+      }
+
+      // Occurrence last.
+      @else if list.index((last,), $occurrence) {
+        $index: list-nth-default($index, list.length($index));
+      }
+
+      $types: list.set-nth($types, $i, if(is-list-length($index, '>', 0), list-nth-first($index), null));
+      $occurrence: $default-occurrence;
+      $i: $i + 1;
     }
+
+    $result: $types;
   }
 
-  @return if(is-list-length($result), if(is-list-length($result, 1), $result, list.nth($result, 1)), null);
+  @return if(is-list-length($result), list-nth-first($result), null);
 }
-
-// Examples.
-// @debug list-index-type(('a', b, c, 1, 2, null, false)); // string, string, string, number, number, null, bool
-// @debug list-index-type(('a', b, c, 1, 2, null, false), 5); // number
-// @debug list-index-type(('a', b, c, 1, 2, null, false), 6); // null
-// @debug list-index-type(('a', b, c, 1, 2, null, false), 5, 6, 7); // number, null, bool
