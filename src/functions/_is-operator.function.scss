@@ -2,31 +2,53 @@
 @use 'sass:list';
 
 // Functions.
+@use 'list/is/is-list-length.function' as *;
 @use 'variable.function' as *;
 
+// Status: DONE
 // The `is-operator()` function.
-@function is-operator($value, $operator: null) {
+@function is-operator($value, $operators...) {
   @return if(
-    list.index(variable(query, operator), $value),
-    if($operator, $value == $operator, true),
-    false
+    is-list-length($operators, '>', 0),
+    -is-operator($value) and -is-operator($value, $operators),
+    -is-operator($value)
   );
 }
 
+// Private `-is-operator()` function.
+@function -is-operator($value, $operators: variable(operator)) {
+  $result: if(list.index($operators, $value), true, false);
+  @if not $result {
+    @each $group in $operators {
+      @if is-list($group) {
+        @if list.index($group, $value) {
+          $result: if(list.index($group, $value), true, false);
+        }
+      }
+    }
+  }
+  @return $result;
+}
+
 // Examples.
-// @debug is-operator('==');
-// @debug is-operator('!=');
-// @debug is-operator(':==');
-// @debug is-operator(':!=');
-// @debug is-operator('~=');
-// @debug is-operator('!~=');
-// @debug is-operator('<');
-// @debug is-operator('<=');
-// @debug is-operator('>');
-// @debug is-operator('>=');
+// $-operator: '==';
+// @debug is-operator('=='); // true
+// @debug is-operator('!='); // true
+// @debug is-operator(':=='); // true
+// @debug is-operator(':!='); // true
+// @debug is-operator('~='); // true
+// @debug is-operator('!~='); // true
+// @debug is-operator('<'); // true
+// @debug is-operator('<='); // true
+// @debug is-operator('>'); // true
+// @debug is-operator('>='); // true
 
 // given operator
 // $value: '==';
 // @debug is-operator($value, '=='); // true
 // @debug is-operator($value, '!='); // false
 
+// is given value one of the given expected operators
+// @debug is-operator('>', '!=', '>', '<'); // true
+// @debug is-operator('==', '!=', '>', '<'); // false
+// @debug is-operator('>', '!=' '>' '<'); // true
