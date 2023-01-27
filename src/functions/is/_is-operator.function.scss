@@ -30,6 +30,11 @@
   @return $result;
 }
 
+// Public for the namespace `is` function.
+@function operator($value, $operators...) {
+  @return operator($value, $operators...);
+}
+
 // Examples.
 // $-operator: '==';
 // @debug is-operator('=='); // true

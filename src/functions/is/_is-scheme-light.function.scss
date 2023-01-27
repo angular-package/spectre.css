@@ -3,3 +3,7 @@
 @function is-scheme-light() {
   @return $color-scheme == light or ($color-scheme != dark and $color-scheme != normal);
 }
+
+@function scheme-light() {
+  @return is-scheme-light();
+}
