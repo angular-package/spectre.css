@@ -2,29 +2,25 @@
 @use 'sass:list';
 
 // Functions.
-@use '../has/list-has-string.function' as *;
-@use '../is/is-list-length.function' as *;
 @use 'list-remove-range.function' as *;
 
 // Status: DONE
 // The `list-remove-nth()` function.
 @function list-remove-nth($list, $index...) {
-  @if is-list-length($index, 0) {
+  @if list.length($index) > 0 {
     $result: ();
-
-    @if list-has-string($index, any, '...') {
+    @if list.index($index, '...') {
       $result: list-remove-range($list, list.nth($index, 1), list.nth($index, 3));
     } @else {
       $i: 1;
       @each $element in $list {
         @if not list.index($index, $i) {
-          $result: list.append($result, $element, $separator: list.separator($list));
+          $result: list.append($result, $element, list.separator($list));
         }
 
         $i: $i + 1;
       }
     }
-
     @return $result;
   }
   @return $list;

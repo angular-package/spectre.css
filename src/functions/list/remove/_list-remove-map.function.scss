@@ -7,7 +7,7 @@
   $result: ();
   @each $element in $list {
     @if type-of($element) != map {
-      $result: list.append($result, $element, $separator: list.separator($list));
+      $result: list.append($result, $element, list.separator($list));
     }
   }
   @return $result;
@@ -15,3 +15,4 @@
 
 // Examples.
 // @debug list-remove-map(('a', 'b', 'c', (a: 1), true, false, null)); // "a", "b", "c", true, false, null
+// @debug list-remove-map(('a', 'b', 'c', (a: 1), true, (b: 2), false, null)); // "a", "b", "c", true, false, null

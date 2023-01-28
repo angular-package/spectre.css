@@ -1,27 +1,22 @@
 // Sass.
 @use 'sass:list';
 
-// Functions.
-@use '../is/is-list-length.function' as *;
-
 // Status: DONE
 // The `list-remove-string()` function returns the list with removed elements of string type,
 // or elements of string type equal to the given arbitrary `$string` argument.
 @function list-remove-string($list, $strings...) {
   $result: ();
-
-  @if is-list-length($list, 0) {
+  @if list.length($list) > 0 {
     @each $element in $list {
-      @if type-of($element) != string or not list.index($strings, $element) {
-        $result: list.append($result, $element, $separator: list.separator($list));
+      @if type-of($element) != string or (list.length($strings) > 0 and not list.index($strings, $element)) {
+        $result: list.append($result, $element, list.separator($list));
       }
     }
   }
-
   @return $result;
 }
 
-// Example usage
+// Examples.
 // @debug list-remove-string(('a', 'b', 'c')); // Returns `()`
 // @debug list-remove-string(('a', 'b', 'c', ('d', 'e', 'f'))); // Returns (("d", "e", "f"),)
 // @debug list-remove-string(('a', 'b', 'c', ('d', 'e', 'f'), 'g', 'h', (1, 2, 3))); // Returns ("d", "e", "f"), (1, 2, 3)
