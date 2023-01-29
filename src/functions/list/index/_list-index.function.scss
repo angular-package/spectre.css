@@ -4,37 +4,21 @@
 
 // Functions.
 @use '../../compare.function' as *;
-@use '../is/is-list-length.function' as *;
-@use '../is/is-list.function' as *;
 @use '../nth/list-nth-first.function' as *;
 
 // Status: DONE
 // The `list-index()` function.
-@function list-index($list, $condition: all, $values...) {
+@function list-index($list, $occurrence: all, $operator: '==', $values...) {
   $result: ();
-  $occurrence: $condition;
-  $operator: '==';
-
-  @if type-of($condition) == list {
-    $occurrence: list.nth($condition, 1);
-    $operator:list.nth($condition, 2);
+  @each $value in $values {
+    $index: -list-index($list, $occurrence, $operator, $value);
+    $result: list.append($result, if(list.length($index) > 0, $index, null), list.separator($list));
   }
-
-  @if is-list($list) and is-list-length($values, '>', 0) {
-    @each $value in $values {
-      $index: -list-index($list, $occurrence, $operator, $value);
-
-      // Add found indexes to result.
-      $result: list.append($result, if(is-list-length($index, 0), $index, null), list.separator($list));
-    }
-  }
-
-  @return if(is-list-length($result), list-nth-first($result), null);
+  @return if(list.length($result) > 0, list-nth-first($result), null);
 }
 
 // Private `-list-index()` function.
 @function -list-index($list, $occurrence, $operator, $operand) {
-  // Get result.
   $result: ();
   $i: 1;
   @each $element in $list {
@@ -45,15 +29,12 @@
     );
     $i: $i + 1;
   }
-
-  // Filter result using conditions.
-  @if is-list-length($result) {
+  @if list.length($result) > 0 {
     @if list.index((first, any), $occurrence) {
       $result: list.nth($result, 1);
     } @else if list.index((last,), $occurrence) {
       $result: list.nth($result, list.length($result));
     }
   }
-
   @return list-nth-first($result);
 }

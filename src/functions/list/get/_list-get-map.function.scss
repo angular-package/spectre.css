@@ -2,14 +2,11 @@
 @use 'sass:list';
 @use 'sass:map';
 
-// Functions.
-@use '../is/is-list-length.function' as *;
-
 // Status: DONE
 // The `list-get-map()` returns the map built from the maps of the given `$list`.
 @function list-get-map($list, $separate: false) {
   $map: ();
-  @if is-list-length($list, '>', 0) {
+  @if list.length($list) > 0 {
     $i: 1;
     @each $element in $list {
       @if type-of($element) == map {
