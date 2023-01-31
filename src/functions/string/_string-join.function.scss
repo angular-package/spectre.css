@@ -3,19 +3,15 @@
 @use 'sass:meta';
 @use 'sass:string';
 
-// Functions.
-@use '../list/is/is-list-length.function' as *;
-@use '../list/is/is-list.function' as *;
-
 // Status: DONE
 // The `string-join()` function returns the string built from the given elements separated by the given separator
 // in original elements order.
 @function string-join($separator: '', $elements...) {
   $string: '';
   $separator: $separator or '';
-  @if is-list-length($elements, 0) {
+  @if list.length($elements) > 0 {
     @each $element in $elements {
-      @if is-list($element) {
+      @if type-of($element) == list {
         @each $value in $element {
           $string: -string-join($string, $value, $separator);
         }

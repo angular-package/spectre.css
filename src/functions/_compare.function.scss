@@ -1,80 +1,121 @@
 // Sass.
 @use 'sass:list';
 @use 'sass:map';
+@use 'sass:math';
 @use 'sass:meta';
-@use 'sass:string';
 
 // Functions.
-@use 'string/string-replace.function' as *;
+@use 'string';
 
 // Status: DONE
 // The `compare()` function.
-@function compare($value, $operator, $operand) {
-  // Check the list length.
-  @if string.index($operator, '(,)') {
-    $operator: string-replace($operator, '(,)', '');
-    $value: list.length($value);
-  } @else if string.index($operator, '(:)') {
-    $operator: string-replace($operator, '(:)', '');
-    $value: list.length(map.keys($value));
+@function compare($comparisons...) {
+  $result: ();
+
+  // Single comparison by using arbitrary.
+  @if list.length($comparisons) == 3 and type-of(list.nth($comparisons, 2)) == string {
+    @return -compare($comparisons...);
+
+  // Multiple/single comparison/s by using map/list provided in the arbitrary parameter.
+  } @else {
+    @each $comparison in $comparisons {
+      $result: list.append(
+        $result,
+        -compare(if(meta.type-of($comparison) == map, map.values($comparison), $comparison)...),
+        'comma'
+      );
+    }
   }
+  @return if(list.length($result) > 1, $result, if(list.length($result) == 1, list.nth($result, 1), false));
+}
 
-  @if $operator == '==' {
-    @return $value == $operand;
+// Private `-compare()` function.
+@function -compare($value, $operator, $operand) {
+  $not: if(string.index($operator, '!') == 1 and not ($operator == '!='), true, false);
+  $check-type: null;
 
-  // Type of the given value equal or not equal to operand.
-  } @else if list.index((':==', ':!='), $operator) {
+  // List length.
+  @if string.index($operator, '(,)') {
+    $operator: string.replace($operator, '(,)', '');
+    $check-type: meta.type-of($value) == list;
+    $value: if($check-type, list.length($value), $value);
+
+  // Map length.
+  } @else if string.index($operator, '(:)') {
+    $operator: string.replace($operator, '(:)', '');
+    $check-type: meta.type-of($value) == map;
+    $value: if(meta.type-of($value) == map, list.length(map.keys($value)), $value);
+
+  // Type of.
+  } @else if string.index($operator, ':') == 1 {
+    $operator: string.replace($operator, ':', '');
     $value: meta.type-of($value);
     $operand: if(not $operand, meta.type-of($operand), $operand);
 
-    @if string.index($operator, ':==') {
-      @return $value == $operand;
-    } @else if string.index($operator, ':!=') {
-      @return $value != $operand;
-    }
-
-  // Type of the given value equal or not equal to operand.
-  } @else if list.index(('~=', '!~='), $operator) {
-    $result: (
-      meta.type-of($value) == string and
-      meta.type-of($operand) == string and
-      string.index($value, $operand)
-    ) or false;
-
-    @return if($operator == '~=', if($result, true, false), not $result);
-
-  } @else if $operator == '!=' {
-    @return $value != $operand;
-
-  } @else if $operator ==  '>' {
-    @return (
-      type-of($value) == number and
-      type-of($operand) == number and
-      $value > $operand
-    ) or false;
-
-  } @else if $operator ==  '>=' {
-    @return (
-      type-of($value) == number and
-      type-of($operand) == number and
-      $value >= $operand
-    ) or false;
-
-  } @else if $operator ==  '<' {
-    @return (
-      type-of($value) == number and
-      type-of($operand) == number and
-      $value < $operand
-    ) or false;
-
-  } @else if $operator ==  '<=' {
-    @return (
-      type-of($value) == number and
-      type-of($operand) == number and
-      $value <= $operand
-    ) or false;
+  } @else if string.index($operator, '!') == 1 {
+    $operator: if(not ($operator == '!='), string.replace($operator, '!', ''), $operator);
   }
-  @return false;
+
+  // Use the function depending on the given operator.
+  $function: map.get((
+    '===': meta.get-function("comparable"),
+    '~=': meta.get-function("-string-index"),
+    '==': meta.get-function("-equal"),
+    '!=': meta.get-function("-not-equal"),
+    '>': meta.get-function("-greater"),
+    '>=': meta.get-function("-greater-equal"),
+    '<': meta.get-function("-less"),
+    '<=': meta.get-function("-less-equal"),
+  ), $operator);
+
+  // Call the function.
+  $result: meta.call($function, $value, $operand);
+
+  // Check the type for list and map length.
+  $result: if(meta.type-of($check-type) == bool, $check-type and $result, $result);
+
+  // If the result is number set bool.
+  $result: if(meta.type-of($result) == number, true, $result);
+
+  // Returns comparison result.
+  @return if($not, not $result, $result);
+}
+
+@function -is-number($values...) {
+  @each $value in $values {
+    @if not (type-of($value) == number) {
+      @return false;
+    }
+  }
+  @return true;
+}
+
+@function -string-index($value, $substring) {
+  @return type-of($value) == string and type-of($substring) == string and string.index($value, $substring);
+}
+
+@function -greater($value, $than) {
+  @return -is-number($value, $than) and $value > $than;
+}
+
+@function -greater-equal($value, $than) {
+  @return -is-number($value, $than) and $value >= $than;
+}
+
+@function -less($value, $than) {
+  @return -is-number($value, $than) and $value < $than;
+}
+
+@function -less-equal($value, $than) {
+  @return -is-number($value, $than) and $value <= $than;
+}
+
+@function -equal($value, $to) {
+  @return $value == $to;
+}
+
+@function -not-equal($value, $to) {
+  @return $value != $to;
 }
 
 // Operator.
@@ -94,16 +135,35 @@
 
 // Examples.
 // ==
+// Arbitrary.
 // @debug compare(27, '==', 27); // true
+// @debug compare(27px, '==', 27em); // false
+// @debug compare(27px, '===', 27em); // false
+// @debug compare('bold ', '!~=', 'bold'); // false
+
+// List.
+// @debug compare(27 '==' 27); // true
+// @debug compare((27, '==', 27)); // true
+
+// Map.
+// @debug compare((value: 27, operator: '==', operand: 27)); // true
+
 // @debug compare('there is a word', '==', 'there is a word'); // true
 // @debug compare(null, '==', null); // true
 // @debug compare((a: 2222), '==', ('a': 2222)); // true
 
+// Multiple comparisons as map.
+// @debug compare((value: 27, operator: '==', operand: 27), (value: 17, operator: '==', operand: 27)); // true, false
+
+// Multiple comparisons as list.
+// @debug compare(27 '==' 27, 17 '==' 27, 5 '>' 3); // true, false, true
+// @debug compare((27, '==', 27), (27, '!=', 27)); // true, false
+
 // !=
-// @debug compare(27, '!=', 27); // true
-// @debug compare('there is a word', '!=', 'there is a word'); // true
-// @debug compare(null, '!=', null); // true
-// @debug compare((a: 2222), '!=', ('a': 2222)); // true
+// @debug compare(27, '!=', 27); // false
+// @debug compare('there is a word', '!=', 'there is a word'); // false
+// @debug compare(null, '!=', null); // false
+// @debug compare((a: 2222), '!=', ('a': 2222)); // false
 
 // :==
 // @debug compare('a', ':==', string); // true
@@ -134,7 +194,7 @@
 
 // <
 // @debug compare(3, '<', 1); // false
-// @debug compare(3, '>', 5); // true
+// @debug compare(3, '>', 5); // false
 
 // <=
 // @debug compare(3, '<=', 1); // false
