@@ -1,0 +1,79 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use '../index/list-index.function' as *;
+@use 'list-nth-default.function' as *;
+
+// Status: DONE
+// The `list-nth-range()` function.
+@function list-nth-range($list, $from: 1, $to: list.length($list), $default: null) {
+  $result: ();
+  $range: ($from, $to);
+  $i: 1;
+  @each $value in $range {
+    $adjust: 0;
+    @if type-of($value) == list {
+      @if type-of(list.nth($value, 1)) == list{
+        $adjust: list.nth($value, 2);
+        $value: list-index($list, list.nth($value, 1)...);
+      } @else {
+        $value: list-index($list, $value...);
+      }
+    } @else {
+      $value: if(list.index(first start, $value), 1, if(list.index(end last length, $value), list.length($list), $value));
+    }
+
+    $range: list.set-nth($range, $i, calc($value + $adjust));
+    $i: $i + 1;
+  }
+  @for $i from list.nth($range, 1) through list.nth($range, 2) {
+    @if $i != 0 {
+      $result: list.append($result, list-nth-default($list, $i, $default), list.separator($list));
+    }
+  }
+  @return $result;
+}
+
+// from or to
+// occurrence operator operand
+// any/first/last '==' a, 1, true
+// (any/first/last '==' a, 1, true) adjust
+
+// Examples.
+// from - to
+// @debug list-nth-range(('a', 'b', 'c', 'd', 'e', 'f'), 2, 4); // "b", "c", "d"
+// @debug list-nth-range(('a', 'b', 'c', 'd', 'e', 'f'), 2, -1); // "b", "a", "f"
+// @debug list-nth-range(('a', 'b', 'c', 'd', 'e', 'f'), -1, 1); // "f", "a"
+// @debug list-nth-range(('a', 'b', 'c', 'd', 'e', 'f'), -6, -2); // "a", "b", "c", "d", "e"
+// @debug list-nth-range(('a', 'b', 'c', 'd', 'e', 'f'), 4, -4); // "d", "c", "b", "a", "f", "e", "d", "c"
+// @debug list-nth-range(('a', 'b', 'c', 'd', 'e', 'f'), 4, 9); // "d", "e", "f", null, null, null
+
+// from: number - to: string
+// @debug list-nth-range(('a', 'b', 'c', 'd', 'e', 'f'), -4, length); // "c", "d", "e", "f", "a", "b", "c", "d", "e", "f"
+// @debug list-nth-range(('a', 'b', 'c', 'd', 'e', 'f'), -4, last); // "c", "d", "e", "f", "a", "b", "c", "d", "e", "f"
+
+// from: string to to: number
+// last 2
+// @debug list-nth-range(('a', 'b', 'c', 'd', 'e', 'f'), -1, -2); // "f", "e"
+// @debug list-nth-range(('a', 'b', 'c', 'd', 'e', 'f'), length, -4); // "f", "e", "d", "c", "b", "a", "f", "e", "d", "c"
+// @debug list-nth-range(('a', 'b', 'c', 'd', 'e', 'f'), first, -4); // "a", "f", "e", "d", "c"
+// @debug list-nth-range(('a', 'b', 'c', 'd', 'e', 'f'), start, -4); // "a", "f", "e", "d", "c"
+
+// search index
+// $-number: (1, '49 bold', 432, 313, 43, 132, 423, 89, 127, 2, 4, '213');
+// @debug list-nth-range($-number, first '>' 400, any '==' 127); // 432, 313, 43, 132, 423, 89, 127
+// @debug list-nth-range($-number, any '~=' '49', any '==' 127); // "49 bold", 432, 313, 43, 132, 423, 89, 127
+// @debug list-nth-range($-number, any '>' 400, any ':==' string); // 432, "49 bold"
+
+// search index and adjust position
+// @debug list-nth-range(('a', 'b', 'c', 'd', '.', 'e', '.', 'f'), any '==' '.', 8); // ".", "e", ".", "f"
+// @debug list-nth-range(('a', 'b', 'c', 'd', '.', 'e', '.', 'f'), 1, any '==' '.'); // "a", "b", "c", "d", "."
+// @debug list-nth-range(('a', 'b', 'c', 'd', '.', 'e', '.', 'f'), 1, first '==' '.'); // "a", "b", "c", "d", "."
+// @debug list-nth-range(('a', 'b', 'c', 'd', '.', 'e', '.', 'f'), any '==' 'b', any '==' '.'); // "b", "c", "d", "."
+// @debug list-nth-range(('a', 'bold king purple', 'c', 'd', '.', 'e', '.', 'f'), any '~=' 'bold king', any '==' '.'); // "bold king purple", "c", "d", "."
+
+// search index and adjust position
+// @debug list-nth-range(('a', 'b', 'c', 'd', '.', 'e', '.', 'f'), 1, (any '==' '.') -1); // "a", "b", "c", "d"
+// @debug list-nth-range(('a', 'bold king purple', 'c', 'd', '.', 'e', '.', 'f'), (any '~=' 'bold king') 1, any '==' '.'); // "c", "d", "."
+// @debug list-nth-range(('a', 'b', (a: 1), 'c', 'd', '.', 'e', '.', 'f'), (first ':==' map) -1, (any '==' '.') -1); // "b", (a: 1), "c", "d"

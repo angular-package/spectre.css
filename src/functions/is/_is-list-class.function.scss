@@ -3,7 +3,7 @@
 
 // Functions.
 @use '../has/list-has-string.function' as *;
-@use './is-list-length.function' as *;
+@use 'is-list-length.function' as *;
 
 // Index selectors indicate class translate.
 $selectors: ('&.', '.', '&');
