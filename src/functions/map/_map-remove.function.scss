@@ -1,0 +1,31 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Status: DONE
+// Set the `map-remove()` function.
+@function map-remove($map, $remove...) {
+  $result: ();
+  @if type-of($map) == map and list.length($remove) > 0 {
+    $result: ();
+    @each $key, $value in $map {
+      @if not (list.index($remove, type-of($value)) or list.index($remove, $value)) {
+        $result: map.merge($result, ($key: $value));
+      }
+    }
+    @return map.remove($result, $remove...);
+  }
+
+  @return $map;
+}
+
+// Examples.
+// type
+// @debug map-remove((a: 1, b: 2, c: 3), number); // ()
+// @debug map-remove((a: 1, b: 2, c: 3, d: e, f: g, h: (i, j)), number, string); // (h: (i, j))
+
+// value
+// @debug map-remove((a: 1, b: 2, c: 3), 1, 2); // (c: 3)
+
+// key - default feature map.remove()
+// @debug map-remove((a: 1, b: 2, c: 3), a, b); // (c: 3)

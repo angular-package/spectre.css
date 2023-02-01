@@ -2,13 +2,10 @@
 @use 'sass:list';
 @use 'sass:map';
 
-// Functions.
-@use '../list/is/is-list-length.function' as *;
-
-// Status: REVIEW:
-// The `map-values()` function pick the values from the specified map and key of specified elements.
+// Status: DONE
+// The `map-values()` function.
 @function map-values($map, $keys...) {
-  @if is-list-length($keys) {
+  @if list.length($keys) > 0 {
     $i: 1;
     @each $key in $keys {
       @if map.has-key($map, $key) {
@@ -22,3 +19,11 @@
   }
   @return $keys;
 }
+
+// Examples.
+// key
+// @debug map-values((a: 1, b: 2, c: 3), 'a', 'b', 'c'); // (1, 2, 3)
+// @debug map-values((a: 1, b: 2, c: 3), 'b', 'c'); // (2, 3)
+
+// default
+// @debug map-values((a: 1, b: 2, c: 3)); // (1, 2, 3)

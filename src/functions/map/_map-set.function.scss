@@ -1,28 +1,30 @@
 // Sass.
 @use 'sass:list';
 @use 'sass:map';
+@use 'sass:meta';
 
-// Functions.
-@use '../list/is/is-list-length.function' as *;
-
-// Status:
+// Status: DONE
 // The `map-set()` function.
 @function map-set($map, $key, $value, $allowed...) {
-  @if is-list-length($allowed, '==', 0) or -is-type($value, $allowed...) or -is-value($value, $allowed...) {
-    $map: map.set($map, $key, $value);
-  }
-  @return $map;
-}
-
-// Private.
-@function -is-type($value, $types...) {
-  @return if(is-list-length($types, 0) and (list.index($types, type-of($value)) or list.index($types, any)), true, false);
-}
-
-// Private.
-@function -is-value($value, $values...) {
-  @return if(is-list-length($values, 0) and list.index($values, $value), true, false);
+  $set: if(
+    list.length($allowed) > 0,
+    if(list.index($allowed, meta.type-of($value)) or list.index($allowed, any) or list.index($allowed, $value), true, false),
+    true
+  );
+  @return if($set, map.set($map, list.append($key, $value)...), $map);
 }
 
 // Examples.
-// @debug -is-type((aaa, bbb));
+// single type
+// @debug map-set((a: 1, b: 2), test string, 27, string ); // (a: 1, b: 2)
+// @debug map-set((a: 1, b: 2), test number, 27, number); // (a: 1, b: 2, test: (number: 27))
+// @debug map-set((a: 1, b: 2), test map, (map: 22,), map); // (a: 1, b: 2, test: (map: (map: 22)))
+// @debug map-set((a: 1, b: 2), test list, (22, 44), list); // (a: 1, b: 2, test: (list: (22, 44)))
+// @debug map-set((a: 1, b: 2), test color, #ffffff, color); // (a: 1, b: 2, test: (color: #ffffff))
+// @debug map-set((a: 1, b: 2), test null, null, null); // (a: 1, b: 2, test: (null: null))
+
+// multiple types
+// @debug map-set((a: 1, b: 2), test number, 27, number, string, bool, list, map); // (a: 1, b: 2, test: (number: 27))
+// @debug map-set((a: 1, b: 2), test string, twenty seven, number, string, bool, list, map); // (a: 1, b: 2, test: (string: twenty seven))
+// @debug map-set((a: 1, b: 2), test bool, false, number, string, bool, list, map); // (a: 1, b: 2, test: (bool: false))
+// @debug map-set((a: 1, b: 2), test null, null, number, null, string, bool, list, map); // (a: 1, b: 2, test: (null: null))

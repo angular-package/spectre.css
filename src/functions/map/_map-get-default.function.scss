@@ -1,12 +1,11 @@
 // Sass.
+@use 'sass:list';
 @use 'sass:map';
 
-// Functions.
-@use '../list/is/is-list-length.function' as *;
-
+// Status: DONE
 // The `map-get-default()` function.
 @function map-get-default($map, $keys, $default-value: null) {
-  @if type-of($map) == map and is-list-length($keys) and map.has-key($map, $keys...) {
+  @if type-of($map) == map and list.length($keys) and map.has-key($map, $keys...) {
     @if map.get($map, $keys...) {
       @return map.get($map, $keys...);
     }

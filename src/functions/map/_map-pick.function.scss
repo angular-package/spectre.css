@@ -1,0 +1,22 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Status: DONE
+// The `map-pick()` function returns map with the specified keys.
+@function map-pick($map, $keys...) {
+  $result: ();
+  @if list.length($keys) {
+    @each $key in $keys {
+      @each $name in $key {
+        $result: map.merge($result, ($name: map.get($map, $name)));
+      }
+    }
+    @return $result;
+  }
+  @return $map;
+}
+
+// Examples.
+// @debug map-pick((a: 1, b: 2, c: 3, d: 4), a b d); // (a: 1, b: 2, d: 4)
+// @debug map-pick((a: 1, b: 2, c: 3, d: 4, e: 5), e); // (e: 5)
