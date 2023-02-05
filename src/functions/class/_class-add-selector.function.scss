@@ -4,8 +4,8 @@
 // Functions.
 @use '../list/has/list-has-string.function' as *;
 
-// The `add-class-selector()` function.
-@function add-class-selector($selector, $placeholder: __CLASS__) {
+// The `class-add-selector()` function.
+@function class-add-selector($selector, $placeholder: __CLASS__) {
   $result: ();
 
   @debug $selector;

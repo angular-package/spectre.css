@@ -3,12 +3,12 @@
 
 // Functions.
 @use '../selector-nest.function' as *;
-@use 'add-class-selector.function' as *;
+@use 'class-add-selector.function' as *;
 
 // The `class()` function.
 @function class($name, $selector: (), $dictionary: ()) {
   @return selector-nest(
-    list.join(add-class-selector($name), $selector),
+    list.join(class-add-selector($name), $selector, list.separator($name)),
     $dictionary
   );
 }

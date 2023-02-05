@@ -1,11 +1,9 @@
 // Sass.
 @use 'sass:list';
-@use 'sass:map';
 
 // Functions.
-@use '../dictionary' as *;
+@use '../dictionary/dictionary.function' as *;
 @use '../list/has/list-has-string.function' as *;
-@use '../list/is/is-list-length.function' as *;
 @use '../list/remove/list-remove-string.function' as *;
 @use '../name.function' as *;
 
@@ -16,15 +14,15 @@
   $selector: ();
 
   // If name is built from the list.
-  @if is-list-length($name, 1) {
+  @if list.length($name) > 1 {
     // Parent and class selector in indexes.
-    @if list-has-string($name, any, '&', '.') {
+    @if list-has-string($name, any, '==', '&', '.') {
       $selector: if(list.index($name, '&'), list.append($selector, '&'), $selector);
       $selector: if(list.index($name, '.'), list.append($selector, '.'), $selector);
 
     // Both parent and class selector in index.
-    } @else if list-has-string($name, any, '&.') {
-      $selector: list.join($selector, ('&', '.'), $separator: 'comma');
+    } @else if list-has-string($name, any, '==', '&.') {
+      $selector: list.join($selector, ('&', '.'), comma);
     }
 
     // REVIEW: Check.
@@ -37,65 +35,36 @@
 // Examples.
 // Execute: sass src/functions/class/_class-name.function.scss
 
-// @debug class-name(('border', 'width', 'lg')); // border-width-lg
-// @debug class-name(('.', 'border', 'width', 'lg')); // .border-width-lg
-// @debug class-name(('&', 'border', 'width', 'lg')); // &border-width-lg
-// @debug class-name(('.', '&', 'border', 'width', 'lg')); // &.border-width-lg
-// @debug class-name(('&', '.', 'border', 'width', 'lg')); // &.border-width-lg
-// @debug class-name(('&.', 'border', 'width', 'lg')); // &.border-width-lg
-// @debug class-name(('border', 'width', '&.', 'lg')); // &.border-width-lg
+// @debug class-name('border' 'width' 'lg'); // border-width-lg
+// @debug class-name('.' 'border' 'width' 'lg'); // .border-width-lg
+// @debug class-name('&' 'border' 'width' 'lg'); // &border-width-lg
+// @debug class-name('.' '&' 'border' 'width' 'lg'); // &.border-width-lg
+// @debug class-name('&' '.' 'border' 'width' 'lg'); // &.border-width-lg
+// @debug class-name('&.' 'border' 'width' 'lg'); // &.border-width-lg
+// @debug class-name('border' 'width' '&.' 'lg'); // &.border-width-lg
+// @debug class-name('border' '&' 'width' '&' '.' 'lg'); // &.border-width-lg
 
-// @debug class-name(('border', '&', 'width', '&', '.', 'lg')); // &.border-width-lg
+// separator
+// @debug class-name('' 'border' 'width' 'lg'); // -border-width-lg
+// @debug class-name('' 'border' 'width' 'lg' ''); // -border-width-lg-
+// @debug class-name('border' 'width' 'lg' ''); // border-width-lg-
+// @debug class-name('border' 'width' 'lg', $separator: '--'); // border--width--lg
 
-// Example 1.
-// @debug class-name(('', 'border', 'width', 'lg')); // Left side separator
-// @debug class-name(('', 'border', 'width', 'lg', '')); // Both sides separator
-// @debug class-name(('border', 'width', 'lg', '')); // Right side separator
+// dictionary
+// @debug class-name('border' 'width' 'lg', ('prefix': 'spectre', 'suffix': 'ver2')); // spectre-border-width-lg-ver2
+// @debug class-name('border' ('prefix': 'spectre', 'suffix': 'ver2') 'width' 'lg'); // spectre-border-width-lg-ver2
+// @debug class-name('border' ('border': 'modified-border') 'width' 'lg'); // modified-border-width-lg
+// @debug class-name('border' 'width' 'lg', ('border': 'modified-border')); // modified-border-width-lg
+// @debug class-name('border' 'width' 'lg', ('width': 'modified-width', 'lg': 'lg-modified')); // border-modified-width-lg-modified
 
-// Example 2.
-// @debug class-name(('border', 'width', 'lg'), $separator: '--'); // border--width--lg
-
-// Example 3.
-// @debug class-name(('border', 'width', 'lg'), ('prefix': 'spectre', 'suffix': 'ver2'));
-
-// Example 4.
-// @debug class-name(('border', ('prefix': 'spectre', 'suffix': 'ver2'), 'width', 'lg'));
-
-// Example 5.
-// @debug class-name(('border', ('border': 'modified-border'), 'width', 'lg'));
-
-// Example 6.
-// @debug class-name(('border', 'width', 'lg'), ('border': 'modified-border'));
-
-// Example 7.
-// @debug class-name(('border', 'width', 'lg'), ('width': 'modified-width', 'lg': 'lg-modified'));
-
-// Example 8.
-// @debug class-name(('border', 'width', 'lg', ' ', 'border', '>', 'active'));
-
-// Example 9.
-// @debug class-name(('border', 'width', 'lg', '~', 'border', '+', 'active'));
-
-// Example 10.
-// @debug class-name(('border', 'width', 'lg', ' ', 'border', '||', 'active'));
-
-// Example 11.
-// @debug class-name(('100', 'border', 'width'));
-
-// Example 12.
-// @debug class-name(('border', 'width', '100'));
-
-// Example 13.
-// @debug class-name(('border', 'width', '200'));
-
-// Example 14.
-// @debug class-name(('dark', 'theme', ' ', 'button', 'red', ' ', 'icon', 'svg'));
-
-// Example 15.
-// @debug class-name(('light', 'theme', ' ', 'button', 'red'));
-
-// Example 16.
-// @debug class-name(('.', '100', 'border', 'width'));
-
-// Example 17.
-// @debug class-name(('&', '.', '100', 'border', 'width'));
+// other
+// @debug class-name('border' 'width' 'lg' ' ' 'border' '>' 'active'); // border-width-lg- -border->-active
+// @debug class-name('border' 'width' 'lg' '~' 'border' '+' 'active'); // border-width-lg-~-border-+-active
+// @debug class-name('border' 'width' 'lg' ' ' 'border' '||' 'active'); // border-width-lg- -border-||-active
+// @debug class-name('100' 'border' 'width'); // 100-border-width
+// @debug class-name('border' 'width' '100'); // border-width-100
+// @debug class-name('border' 'width' '200'); // border-width-200
+// @debug class-name('dark' 'theme' ' ' 'button' 'red' ' ' 'icon' 'svg'); // dark-theme- -button-red- -icon-svg
+// @debug class-name('light' 'theme' ' ' 'button' 'red'); // light-theme- -button-red
+// @debug class-name('.' '100' 'border' 'width'); // .100-border-width
+// @debug class-name('&' '.' '100' 'border' 'width'); // &.100-border-width

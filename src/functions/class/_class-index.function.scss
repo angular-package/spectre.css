@@ -1,0 +1,24 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use '../list/index/list-index.function' as *;
+
+// Status: DONE
+// The `class-index()` function.
+@function class-index($class, $selectors: '&' '.' '&.') {
+  $index: ();
+  @if list.length($class) > 1 {
+    @each $i in list-index($class, any, '==', $selectors...) {
+      @if $i {
+        $index: list.append($index, $i);
+      }
+    }
+  }
+  @return if(list.length($index), min($index...), null);
+}
+
+// Examples.
+// @debug class-index(('s', 'p', 'a', 'n', '&[attr="aaa"]', '.', 'border', 'width')); // 6
+// @debug class-index(('p', 'a', 'n', '222', '333', '&[attr="aaa"]', '&', '.', 'border', 'width')); // 7
+// @debug class-index(('s', 'a', 'n', '&[attr="aaa"]', '&.', 'border', 'width')); // 5
