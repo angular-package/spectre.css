@@ -1,67 +1,43 @@
 // Sass.
 @use 'sass:list';
-@use 'sass:map';
 
 // Functions.
 @use 'class/class-name.function' as *;
-@use 'class/get-class.function' as *;
-@use 'list/has/list-has-string.function' as *;
 @use 'list/index/list-index.function' as *;
-@use 'list/is/is-list-class.function' as *;
-@use 'list/nth/list-nth.function' as *;
+@use 'list/nth/list-nth-from.function' as *;
+@use 'list/nth/list-nth-to.function' as *;
+@use 'string/string-replace.function' as *;
 @use 'name.function' as *;
 
-// Status: REVIEW:
+// Status: DONE
 // The `selector-name()` function.
-@function selector-name($name, $dictionary: ()) {
-  @return if(
-    is-list-class($name),
-    list.join(name(-get($name, 'tag')),
-    class-name(-get($name, 'class'), $dictionary), $separator: 'comma'),
-    name($name)
-  );
-}
-
-// Private `-get()` function.
-@function -get($name, $type) {
-  $index: ();
-  $class: ();
-  $tag: ();
-  $class: get-class($name);
-
-  @if list-has-string($name, any, '&.', '.') {
-    // @debug $index;
-    @each $value in list-index($name, any, '&.', '.') {
-      @if $value {
-        $index: $value;
-      }
-    }
-
-    @debug list-nth($name, ($index, '...', (any, ('!=', string))));
-
-    @if $index {
-      $class: list-nth($name, (from: $index));
-      @if $index > 1 {
-        $tag: list-nth($name, (1, '...', calc($index - 1)));
-      }
+@function selector-name($name, $dictionary: (), $separator: null) {
+  @each $index in list-index($name, any, '==', '&', '&.', '.') {
+    @if type-of($index) == number {
+      $class: class-name(list-nth-from($name, $index), $dictionary, $separator);
+      $tag: if($index > 1, list-nth-to($name, $index - 1), null);
+      @return '#{name($tag)}#{if($tag, string-replace($class, all "&" ""), $class)}';
     }
   }
-
-  @return map.get(('tag': $tag, 'class': $class), $type);
+  @return name($name);
 }
 
 // Examples.
-@debug selector-name(('a', 'b', 'c')); // DONE
-@debug selector-name(('.', 'a', 'b', 'c')); // DONE
-// @debug selector-name(('.', __CLASS__, 'a', 'b', 'c'));
-// @debug selector-name((__CLASS__, 'a', 'b', 'c'), $dictionary: ('a': 'ccc'));
-// @debug selector-name(('a', 'b', 'c'), $dictionary: ('a': 'ccc'));
-// @debug selector-name(('&.', 'a', 'b', 'c'));
-// @debug selector-name(('&', '.', 'a', 'b', 'c'));
-// @debug selector-name(('span', '&', '.', 'a', 'b', 'c'));
+// @debug selector-name('a' 'b' 'c'); // abc
+// @debug selector-name('.' 'a' 'b' 'c'); // .abc
+// @debug selector-name('.' __CLASS__ 'a' 'b' 'c'); // .__CLASS_abc
+// @debug selector-name(__CLASS__ 'a' 'b' 'c', $dictionary: ('a': 'ccc')); // __CLASS__abc
+// @debug selector-name('a' 'b' 'c', $dictionary: ('a': 'ccc')); // abc
+// @debug selector-name('&' 'a' 'b' 'c'); // &abc
+// @debug selector-name('&.' 'a' 'b' 'c'); // &.abc
+// @debug selector-name('&' '.' 'a' 'b' 'c'); // &.abc
+// @debug selector-name('span' '&' '.' 'a' 'b' 'c'); // span.abc
+
+// hover
+// @debug selector-name('span' '&' '.' 'a' 'b' 'c' '&:hover'); // span.abc:hover
 
 // Tag.
-// @debug selector-name(('s', 'p', 'a', 'n', '&[disabled=""]', '&', '.', 'border', 'width'));
-// @debug selector-name(('s', 'p', 'a', 'n', '&[aria=""]', '&', '.', 'border', 'width'));
-// @debug selector-name(('s', 'p', 'a', 'n', '&[attr="aaa"]', '&.', 'border', 'width'));
-// @debug selector-name(('s', 'p', 'a', 'n', '&[attr="aaa"]', '.', 'border', 'width'));
+// @debug selector-name('s' 'p' 'a' 'n' '[disabled=""]' '&' '.' 'border' 'width'); // span[disabled=""].borderwidth
+// @debug selector-name('s' 'p' 'a' 'n' '[aria=""]' '&' '.' 'border' 'width'); // span[aria=""].borderwidth
+// @debug selector-name('s' 'p' 'a' 'n' '[attr="aaa"]' '&.' 'border' 'width'); // span[attr="aaa"].borderwidth
+// @debug selector-name('s' 'p' 'a' 'n' '[attr="aaa"]' '.' 'border' 'width'); // span[attr="aaa"].border-width

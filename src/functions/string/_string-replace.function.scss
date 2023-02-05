@@ -12,7 +12,7 @@
           $string-left: string.slice($string, 1, ($index - 1));
           $string-right: string.slice(
             $string,
-            ($index + (string.length($value) + if(string.length($replacement) > 1, 0, 1))),
+            ($index + (string.length($value))),
             (string.length($string))
           );
           $string: $string-left + $replacement + $string-right;
@@ -36,14 +36,15 @@
 // Examples.
 // single replacement first occurrence
 // @debug string-replace('bold king is hairy', first 'bold' 'baloon'); // baloon king is hairy
-// @debug string-replace('bold king is hairy', first 'bold' ''); //  king is hairy
+// @debug string-replace('bold king is hairy', first 'bold' ''); //  king is  hairy
+// @debug string-replace(':==', first ':' '');
 
 // single replacement all occurrences
-// @debug string-replace('bold king is bold hairy', all 'bold' ''); // king is hairy
+// @debug string-replace('bold king is bold hairy', all 'bold' ''); //  king is  hairy
 // @debug string-replace('bold king is bold hairy', all 'bold' 'test'); // test king is test hairy
 
 // multiple replacements
-// @debug string-replace('bold king is hairy', first (bold is) ''); // king hairy
+// @debug string-replace('bold king is hairy', first (bold is) ''); //  king  hairy
 // @debug string-replace('bold king is hairy', first bold baloon, first king baloon); // baloon baloon is hairy
 // @debug string-replace('bold king is hairy', first (bold king) baloon, first (is hairy) bold); // baloon baloon bold bold
 // @debug string-replace('atmosphere bold bold bold king is hairy', first (king bold) baloon); // atmosphere baloon bold bold baloon is hairy
