@@ -11,7 +11,7 @@
     $result: ();
     @each $key, $value in $map {
       @if string.index($key, $replace) {
-        $key: string.replace($key, $replace, $replacement);
+        $key: string.replace($key, $replace $replacement);
       }
 
       $result: map.merge($result, ($key: $value));

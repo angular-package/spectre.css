@@ -44,7 +44,7 @@
       @if list.length($keys) == $index and list.length($values) >= $index and -is-key-arbitrary($key) {
         $map: -map-set(
           $map,
-          string.replace($key, variable(query, indicator, arbitrary), ''),
+          string.replace($key, variable(query, indicator, arbitrary) ''),
           list-nth-from($values, $index)
         );
       }
@@ -113,7 +113,7 @@
       // . Indicates the $value should be taken from the map or return null.
       // @if type-of($name) == string and string.index($name, variable(query, indicator, map)) == 1 {
       @if -is-key-map($name) {
-        $name: string.replace($name, variable(query, indicator, map), '');
+        $name: string.replace($name, variable(query, indicator, map) '');
         $value: map-get-default($value, $name);
       } @else {
         $value: map-get-default($value, $name, $value);
@@ -122,7 +122,7 @@
       // FEATURE: Parameter with the comma indicates an optional parameter, and is activated when the following parameter exists.
       // Optional parameter.
       @if -is-key-optional($name) {
-        $name: string.replace($name, variable(query, indicator, optional), '');
+        $name: string.replace($name, variable(query, indicator, optional) '');
         @if not list-nth-default($original-value, $i + 1) {
           $name: list-nth-default($keys, $i + 1);
         }
@@ -162,7 +162,7 @@
 //
 @function -type($key) {
   @if -is-key-type($key) {
-    $key: variable(query, string.replace($key, variable(query, indicator, type), '')) or $key;
+    $key: variable(query, string.replace($key, variable(query, indicator, type) '')) or $key;
   }
   @return $key;
 }

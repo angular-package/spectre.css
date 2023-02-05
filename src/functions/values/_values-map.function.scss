@@ -38,9 +38,9 @@
       @if list.length($keys) == $index and list.length($values) >= $index {
         @each $k in $key {
           @if type-of($k) == string and string.index($k, '...') {
-            $key: list.set-nth($key, list.length($key), string.replace($k, '...', ''));
+            $key: list.set-nth($key, list.length($key), string.replace($k, '...' ''));
             @if type-of(list.nth($values, $index)) == map {
-              $values: map-get-default(list.nth($values, $index), string.replace($k, '...', ''), $values);
+              $values: map-get-default(list.nth($values, $index), string.replace($k, '...' ''), $values);
             } @else {
               $values: list-nth-from($values, $index);
             }

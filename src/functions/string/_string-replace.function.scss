@@ -3,20 +3,33 @@
 
 // Status: DONE
 // The `string-replace()` function.
-@function string-replace($string, $replace, $replacement) {
-  $index: string.index($string, $replace);
-
-  @if $index {
-    @return string.slice($string, 1, ($index - 1)) + $replacement +
-      string.slice(
-        $string,
-        ($index + (string.length($replace))),
-        (string.length($string))
-      );
+@function string-replace($string, $replacements...) {
+  @each $replace, $replacement in $replacements {
+    @each $value in $replace {
+      $index: string.index($string, $value);
+      @if type-of($index) == number {
+        $string: string.slice($string, 1, ($index - 1)) + $replacement +
+          string.slice(
+            $string,
+            ($index + (string.length($value))),
+            (string.length($string))
+          );
+      }
+    }
   }
   @return $string;
 }
 
-@function replace($string, $replace, $replacement) {
-  @return string-replace($string, $replace, $replacement);
+@function replace($string, $replacements...) {
+  @return string-replace($string, $replacements...);
 }
+
+// Examples.
+// single replacement.
+// @debug string-replace('bold king is hairy', 'bold' 'baloon'); // baloon king is hairy
+// @debug string-replace('bold king is hairy', 'bold' ''); //  king is hairy
+
+// multiple replacements
+// @debug string-replace('bold king is hairy', (bold is) ''); //  king  hairy
+// @debug string-replace('bold king is hairy', bold baloon, king baloon); // baloon baloon is hairy
+// @debug string-replace('bold king is hairy', (bold king) baloon, (is hairy) bold); // baloon baloon bold bold
