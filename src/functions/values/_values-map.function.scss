@@ -38,9 +38,9 @@
       @if list.length($keys) == $index and list.length($values) >= $index {
         @each $k in $key {
           @if type-of($k) == string and string.index($k, '...') {
-            $key: list.set-nth($key, list.length($key), string.replace($k, '...' ''));
+            $key: list.set-nth($key, list.length($key), string.replace($k, first '...' ''));
             @if type-of(list.nth($values, $index)) == map {
-              $values: map-get-default(list.nth($values, $index), string.replace($k, '...' ''), $values);
+              $values: map-get-default(list.nth($values, $index), string.replace($k, first '...' ''), $values);
             } @else {
               $values: list-nth-from($values, $index);
             }
@@ -76,7 +76,7 @@
 // map to obtain key of the type
 // @debug values-map(a '1' b 2 c 3 d 4 e 5 f 6 g 7 h i j k l m n o p r s t u w y z, key, (key-string: string, key-number: number)); // (key: a, key-string: "1")
 // @debug values-map(a 1 b 2 c 3 d 4 e 5 f 6 g 7 h i j k l m n o p r s t u w y z, key, (key-string: string, key-number: number)); // (key: a, key-number: 1)
-// @debug values-map(a b c d e f g h i j k l m n o p r s t u w y z, ('1', 2), ((1, '2'): (string, number)), '3');
+// @debug values-map(a b c d e f g h i j k l m n o p r s t u w y z, ('1', 2), ((1, '2'): (string, number)), '3'); // ("1": (2: a), 1: ("2": b), "3": c)
 
 // query
 // @debug values-map(nth (a b c d) any '==' 1 2 3, select, from, occurrence, operator, 'operand...'); // (select: nth, from: a b c d, occurrence: any, operator: "==", "operand": 1 2 3)

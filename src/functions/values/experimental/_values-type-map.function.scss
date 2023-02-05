@@ -29,7 +29,7 @@
 
         @each $name, $type in list-nth-default($key-type, $i) {
           @if type-of($name) == string {
-            $name: string.replace($name, ',' '');
+            $name: string.replace($name, first ',' '');
             $map: -map-set($map, $name, map-get-default($value, $name, $value), -type($type));
           }
         }
@@ -58,7 +58,7 @@
 
 @function -type($value) {
   @if type-of($value) == string and string.index($value, variable(query, indicator, type)) {
-    $value: variable(query, string.replace($value, variable(query, indicator, type) '')) or $value;
+    $value: variable(query, string.replace($value, first variable(query, indicator, type) '')) or $value;
   }
   @return $value;
 }

@@ -36,24 +36,24 @@
 
   // List length.
   @if string.index($operator, '(,)') {
-    $operator: string.replace($operator, '(,)' '');
+    $operator: string.replace($operator, first '(,)' '');
     $check-type: meta.type-of($value) == list;
     $value: if($check-type, list.length($value), $value);
 
   // Map length.
   } @else if string.index($operator, '(:)') {
-    $operator: string.replace($operator, '(:)' '');
+    $operator: string.replace($operator, first '(:)' '');
     $check-type: meta.type-of($value) == map;
     $value: if(meta.type-of($value) == map, list.length(map.keys($value)), $value);
 
   // Type of.
   } @else if string.index($operator, ':') == 1 {
-    $operator: string.replace($operator, ':' '');
+    $operator: string.replace($operator, first ':' '');
     $value: meta.type-of($value);
     $operand: if(not $operand, meta.type-of($operand), $operand);
 
   } @else if string.index($operator, '!') == 1 {
-    $operator: if(not ($operator == '!='), string.replace($operator, '!' ''), $operator);
+    $operator: if(not ($operator == '!='), string.replace($operator, first '!' ''), $operator);
   }
 
   // Use the function depending on the given operator.
