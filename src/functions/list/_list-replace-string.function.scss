@@ -34,9 +34,9 @@
 // Private `-list-set-nth()` function.
 @function -list-set-nth($list, $index, $element, $replace, $replacement) {
   @if type-of($element) == string {
-    @return list.set-nth($list, $index, string-replace($element, $replace, $replacement));
+    @return list.set-nth($list, $index, string-replace($element, first $replace $replacement));
   } @else if type-of($element) == list {
-    @return list.set-nth($list, $index, -list-replace-string($element, $replace, $replacement));
+    @return list.set-nth($list, $index, -list-replace-string($element, first $replace $replacement));
   }
 }
 
@@ -46,7 +46,7 @@
     $i: 1;
     @each $element in $list {
       @if type-of($element) == string {
-        $list: list.set-nth($list, $i, string-replace($element, $replace, $replacement));
+        $list: list.set-nth($list, $i, string-replace($element, first $replace $replacement));
       }
 
       $i: $i + 1;
