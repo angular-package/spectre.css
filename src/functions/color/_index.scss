@@ -1,10 +1,11 @@
-// Directory.
-@forward 'hsla';
-@forward 'scheme';
-
 // Function.
-@forward 'alpha-var.function';
-@forward 'color-name.function';
+@forward 'color.alpha-var.function';
 @forward 'color.function';
-@forward 'get-theme-colors.function';
-@forward 'has-color.function';
+@forward 'color.get-theme-colors.function';
+@forward 'color.has.function';
+@forward 'color.hsla.function';
+@forward 'color.hue-var.function';
+@forward 'color.lightness-level-var.function';
+@forward 'color.name.function';
+@forward 'color.saturation-var.function';
+@forward 'sass:color';

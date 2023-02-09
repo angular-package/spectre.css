@@ -1,0 +1,12 @@
+// Functions.
+@use 'get/list.get-map.function' as *;
+@use 'remove/list.remove-map.function' as *;
+
+// Status: DONE
+// The `extract-map()` gets and removes the map from the list.
+@function extract-map($list) {
+  @return ('map': get-map($list), 'list': remove-map($list));
+}
+
+// Examples.
+

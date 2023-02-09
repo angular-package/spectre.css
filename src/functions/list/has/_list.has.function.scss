@@ -1,0 +1,72 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use '../../compare.function' as *;
+
+// Status: DONE
+// The `has()` function.
+// ? $occurrence: all/any/only
+// ? $operator: '==', '!=', '~=', '!~=', ':==', ':!=', '>', '>=', '<', '<=',
+// ?            '(:)', '(:)==', '(:)!=', '(:)>', '(:)>=', '(:)<', '(:)<=',
+// ?            '(,)', '(,)==', '(,)!=', '(,)>', '(,)>=', '(,)<', '(,)<='
+@function has($list, $where...) {
+  $result: ();
+  @if list.index(all any only, list.nth($where, 1)) {
+    @return -list-has($list, $where...);
+  } @else {
+    $result: ();
+    @each $condition in $where {
+      $result: list.append($result, -list-has($list, $condition...));
+    }
+  }
+  @return if(list.index($result, false), false, true);
+}
+
+@function -list-has($list, $occurrence, $operator, $values...) {
+  @each $condition in $values {
+    $operation: ();
+    @each $element in $list {
+      $operation: list.append($operation, $element $operator $condition, 'space');
+    }
+
+    $has: compare($operation...);
+
+    @if $occurrence == any and list.index($has, true) {
+      @return true;
+    }
+    @if $occurrence == all and not list.index($has, true) {
+      @return false;
+    }
+    @if $occurrence == only and list.index($has, false) {
+      @return false;
+    }
+  }
+  @return if($occurrence == all or $occurrence == only, true, false);
+}
+
+// Where.
+// ? Single: (occurrence, operator, operand...)
+// ? Multiple: occurrence operator operand..., occurrence operator operand...
+
+// Examples.
+// all
+// @debug has(('a', 'b', 'c', 'd'), all, '==', 'a', 'b', 'c'); // true
+// @debug has(('a', 'b', 'c', 'd'), all, '==', 'a', 'b', 'c', 'e'); // false
+// @debug has(('a', 'a', 'a', 'a'), all, '!=', 'a'); // false
+
+// any
+// @debug has(('a', 'b', 'c', 'd'), any, '==', 'e'); // false
+// @debug has(('a', 'b', 'c', 1, 'd'), any, '==', 2, 3); // false
+// @debug has(('a', 'b', 'c', 1, 'd'), any, '==', 2, 3, 1); // true
+
+// only
+// @debug has(('a', 'b', 'c', 1, 'd'), only, ':==', number); // false
+// @debug has((3, 5, 22, 1, 12), only, ':==', number); // true
+// @debug has((3, 5, 22, 1, 12), only, ':!=', number); // false
+// @debug has(('3', '5', '22', ('1', 12)), only, ':!=', number); // true
+
+// Multiple.
+// @debug has(('a', 2, 'b', 10, 'c', 1, 'd', 15), any '==' 2 15, any '<' 2); // true
+// @debug has(('a', 'b', 'c', 1, 'd'), only ':==' number, any ':==' string); // false
+// @debug has((1, 'b', 'c', 1, 'd'), only ':==' number, any ':==' string); // false

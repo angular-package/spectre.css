@@ -1,18 +1,28 @@
 // Sass.
-@use 'sass:list';
+// @use 'sass:list';
 
 // Functions.
-@use 'list/is/is-list-length.function' as *;
-@use 'list/list-replace-string.function' as *;
+@use 'list';
+@use 'string';
 
+// Status: DONE
 // The `replace-parent-selector()` function.
+// Replaces parent selector for the `selector-nest()`.
 @function replace-parent-selector($selector, $parent-placeholder: __PARENT__) {
-  @if is-list-length($selector, 0) {
+  @if type-of($selector) == list and list.length($selector) > 0 {
     @if type-of(list.nth($selector, 1)) == string {
-      $selector: list-replace-string($selector, '&', $parent-placeholder, 1);
+      $selector: list.replace-string($selector, '&', $parent-placeholder, 1);
     } @else {
-      $selector: list.set-nth($selector, 1, list-replace-string(list.nth($selector, 1), '&', $parent-placeholder));
+      $selector: list.set-nth($selector, 1, list.replace-string(list.nth($selector, 1), '&', $parent-placeholder));
     }
+  } @else if type-of($selector) == string {
+    $selector: string.replace($selector, first '&' $parent-placeholder);
   }
   @return $selector;
 }
+
+// Examples.
+// @debug replace-parent-selector('&' 'border' 'width'); // "__PARENT__" "border" "width"
+// @debug replace-parent-selector('&.border-width'); // __PARENT__.border-width
+// @debug replace-parent-selector('&' '.' 'class'); // "__PARENT__" "." "class"
+// @debug replace-parent-selector('&.' 'border' 'width'); // "__PARENT__." "border" "width"

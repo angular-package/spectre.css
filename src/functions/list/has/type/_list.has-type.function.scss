@@ -1,0 +1,40 @@
+// Functions.
+@use '../../../compare.function' as *;
+
+// Status: DONE
+// The `has-type()` function.
+// ? $occurrence: any/only
+// ? $operator: ==, !=
+// ? $type: arglist bool calculation color function list map null number string
+@function has-type($list, $occurrence: any, $operator: '==', $type) {
+  @each $element in $list {
+    $has: compare($element, ':#{$operator}', $type);
+    @if ($occurrence == any and $has) or ($occurrence == only and not $has) {
+      @return $has;
+    }
+  }
+  @return if($occurrence == only, true, false);
+}
+
+// Examples.
+// any
+// @debug has-type(('a', 'b', 'c'), $type: string); // true
+// @debug has-type(('a', 'b', 'c'), any, '==', string); // true
+// @debug has-type(('a', 'b', 'c', 5123), any, '==', number); // true
+// @debug has-type(('a', null, 'b', 'c', 5123), any, '==', null); // true
+// @debug has-type(('a', ('b', 'c'), 5123), any, '==', list); // true
+// @debug has-type(('a', ('b': 'c'), 5123), any, '==', map); // true
+// @debug has-type(('a', 'b', 'c', 5123), any, '==', list); // false
+
+// only
+// @debug has-type(('a', 'b', 'c'), only, '==', string); // true
+// @debug has-type((332, 551, 3123, 5123), only, '==', number); // true
+// @debug has-type(('a', 'b', 'c', 5123), only, '==', number); // false
+// @debug has-type(('a', null, 'b', 'c', 5123), only, '==', null); // false
+// @debug has-type(('a', ('b', 'c'), 5123), only, '==', list); // false
+// @debug has-type(('a', ('b': 'c'), 5123), only, '==', map); // false
+
+// any null
+// @debug has-type(('a', ('b': 'c'), 5123, null, '27', 27), any, '==', null); // true
+// @debug has-type(('a', ('b': 'c'), 5123, null, '27', 27), any, '==', null); // true
+// @debug has-type(('a', ('b': 'c'), 5123, false, '27', 27), any, '==', null); // false

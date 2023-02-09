@@ -1,0 +1,47 @@
+// Modules.
+@use '../string';
+@use '../list';
+
+// Functions.
+@use '../class/class.name.function' as class;
+@use '../name.function' as _;
+
+// Status: DONE
+// The `name()` function.
+@function name($name, $dictionary: (), $separator: null) {
+  $index: list.nth(list.index($name, any, '==', '&', '&.', '.'), 1);
+  @if $index {
+    $class: class.name(list-nth-from($name, $index), $dictionary, $separator);
+    @if $index > 1 {
+      @return if($index > 1, _.name(list.nth-to($name, $index - 1)), null) + string.replace($class, all "&" "");
+    }
+    @return $class;
+  }
+
+  $name: _.name($name);
+  @return if(not (string.index($name, '&') == 1), string.replace($name, all "&" ""), $name);
+}
+
+// Examples.
+// @debug name('a' 'b' 'c'); // abc
+// @debug name('.abc'); // .abc
+// @debug name('.' 'a' 'b' 'c'); // .abc
+// @debug name('.' __CLASS__ 'a' 'b' 'c'); // .__CLASS_abc
+// @debug name(__CLASS__ 'a' 'b' 'c', $dictionary: ('a': 'ccc')); // __CLASS__abc
+// @debug name('a' 'b' 'c', $dictionary: ('a': 'ccc')); // abc
+// @debug name('&' 'a' 'b' 'c'); // &abc
+// @debug name('&.' 'a' 'b' 'c'); // &.abc
+// @debug name('&' '.' 'a' 'b' 'c'); // &.abc
+// @debug name('a' 'b' 'c' '&' '.'); // abc.
+// @debug name('span' '&' '.' 'a' 'b' 'c'); // span.abc
+
+// hover
+// @debug name('&:hover'); // &:hover
+// @debug name('span' '&:hover'); // &:hover
+// @debug name('span' '&' '.' 'a' 'b' 'c' '&:hover'); // span.abc:hover
+
+// Tag.
+// @debug name('s' 'p' 'a' 'n' '[disabled=""]' '&' '.' 'border' 'width'); // span[disabled=""].borderwidth
+// @debug name('s' 'p' 'a' 'n' '[aria=""]' '&' '.' 'border' 'width'); // span[aria=""].borderwidth
+// @debug name('s' 'p' 'a' 'n' '[attr="aaa"]' '&.' 'border' 'width'); // span[attr="aaa"].borderwidth
+// @debug name('s' 'p' 'a' 'n' '[attr="aaa"]' '.' 'border' 'width'); // span[attr="aaa"].border-width

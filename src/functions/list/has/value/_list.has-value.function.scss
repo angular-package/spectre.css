@@ -1,0 +1,149 @@
+// Functions.
+@use '../../../compare.function' as *;
+
+// Status: DONE
+// The `has-value()` function.
+// ? $occurrence: any, only
+// ? $operator: '==', '!=', '~=', '!~=', ':==', ':!=', '>', '>=', '<', '<=',
+// ?            '(:)', '(:)==', '(:)!=', '(:)>', '(:)>=', '(:)<', '(:)<=',
+// ?            '(,)', '(,)==', '(,)!=', '(,)>', '(,)>=', '(,)<', '(,)<='
+@function has-value($list, $occurrence: any, $operator: '==', $value: null) {
+  $has: if($occurrence == only, true, false);
+  @each $element in $list {
+    $has: compare($element, $operator, $value);
+    @if ($occurrence == any and $has) or ($occurrence == only and not $has) {
+      @return $has;
+    }
+  }
+  @return $has;
+}
+
+// Parameters.
+// Arbitrary: (list, occurrence, operand): bool
+// List: (list, occurrence operator operand): bool
+// List: (list, (occurrence, operator, operand)...): bool
+// Map: (list, (occurrence: value, operator: value, operand: value)...): bool
+
+// Examples.
+// ---
+// equality operator == !=
+// ---
+// $occurrence: any
+// number
+// @debug has-value()(('a', 'b', 3, any, last), any, '==', 3); // true
+// @debug has-value()(('a', 'b', 3), any '!=' 4...); // true
+
+// list parameter
+// @debug has-value()(('a', 'b', 3, any, last), any '==' 3...); // true
+// @debug has-value()(('a', 'b', 3, any, last), (any, '==', 3)...); // true
+
+// map parameter
+// @debug has-value()(('a', 'b', 3, any, last), (occurrence: any, operator: '==', value: 3)...); // true
+
+// string
+// @debug has-value()(('a', 'b', 3, any, last), any, '==', 'b'); // true
+// @debug has-value()(('a', 'b', 3, any, last), any, '==', any); // true
+// @debug has-value()(('a', 'b', 3, any, last), any '==' any...); // true
+// @debug has-value()(('a', 'b', 3, '4', null), any '==' null...); // true
+
+// list
+// @debug has-value()(('a', 'b', (3, any), last), any, '==', (3, any)); // true
+// @debug has-value()(('a', 'b', (3, any), last, (3, any)), any, '==', (3, any)); // true
+
+// map
+// @debug has-value()(('a', 'b', (a: 3, b: any), last), any, '==', (a: 3, b: any)); // true
+// @debug has-value()(('a', (a: 'b', c: d), (a: 3, b: any), last), any, '==', (a: 3, b: any)); // true
+
+// null
+// @debug has-value()(('a', 'b', 3, '4', null), any, '==', null); // true
+// @debug has-value()(('a', 'b', 3, '4', ('a', 'b')), any '==' null...); // false
+
+
+// $occurrence: only
+// number
+// @debug has-value()((3, 3, 3), only '==' 3...); // true
+// @debug has-value()((2, 3, 3), only '==' 3...); // false
+
+// list
+// @debug has-value()(('a', ('b', 3, any), last), any '==' ('b', 3, any)...); // true
+
+// null
+// @debug has-value()((null, null, null, null), only '==' null...); // true
+// @debug has-value()((false, null, null, null), only '==' null...); // false
+
+// @debug has-value()(('a', 'b', 3, any, last), any '==' 3...); // true
+// @debug has-value()(('a', 'b', 3, '4', null), any '!=' null...); // true
+
+
+
+// ---
+// number relational operator >= > < <=
+// ---
+// > number
+// @debug has-value()(('a', 'b', 3, '4', null), any '>' 2...); // true
+// @debug has-value()(('a', 'b', 3, '4', null), any '<' 2...); // false
+
+// >= number
+// @debug has-value()((12, 211, 35, 34, 312), only '>=' 2...); // true
+// @debug has-value()((12, 211, 35, 34, 312), only '>=' 13...); // false
+
+// < number
+// @debug has-value()((12, 211, 35, 34, 312), only '<' 313...); // true
+// @debug has-value()((12, 211, 35, 34, 312), only '<' 211...); // false
+
+// <= number
+// @debug has-value()(('a', 'b', 3, '4', null), any '<=' 3...); // true
+// @debug has-value()(('a', 'b', 3, '4', null), any '<=' 2...); // false
+
+
+
+// ---
+// string index operator ~= and !~=
+// ---
+// @debug has-value()((('a', ' bold  king '), 'bold lizard', 3, any, (last, 4m, 5)), any '~=' 'bold'...); // true
+// @debug has-value()((('a', ' bold  king '), 'bold lizard', 3, any, (last, 4m, 5)), only '!~=' 'bold'...); // false
+
+
+
+// ---
+// type-of operator :== and :!=
+// ---
+// @debug has-value()((('a', 'b'), 3, any, (last, 4m, 5)), any ':==' string...); // true
+// @debug has-value()((('a', 'b'), 3, any, (last, 4m, 5)), any ':==' number...); // true
+// @debug has-value()((('a', 'b'), 3, any, null, (last, 4m, 5)), any ':==' null...); // true
+// @debug has-value()((('a', 'b'), 3, any, false, (last, 4m, 5)), any ':==' bool...); // true
+// @debug has-value()((('a', 'b'), 3, any, red, (last, 4m, 5)), any ':==' color...); // true
+// @debug has-value()((('a', 'b'), 3, any, red, (last, 4m, 5)), any ':==' list...); // true
+// @debug has-value()((('a', 'b'), 3, (c: 213), any, red, (last, 4m, 5)), any ':==' map...); // true
+
+// @debug has-value()((('a', 'b'), 3, any, (last, 4m, 5)), only ':!=' string...); // false
+
+
+
+// ---
+// list length operator (,)== (,)!= (,)> (,)>= (,)< (,)<=
+// ---
+// @debug has-value()((('a', 'b'), 3, any, (last, 4m, 5)), any '(,)==' 2...); // true
+// @debug has-value()((('a', 'b'), 3, any, (last, 4m, 5)), only '(,)==' 2...); // false
+// @debug has-value()((('a', 'b'), 3, any, (last, 4m)), only '(,)==' 2...); // false
+// @debug has-value()((('a', 'b'), (3, any), (last, 4m)), only '(,)==' 2...); // true
+
+// list length > number
+// @debug has-value()((('a', 'b'), 3, any, (last, 4m, 5)), any '(,)>' 3...); // false
+
+// list length < number
+// @debug has-value()((('a', 'b'), 3, any, (last, 4m, 5)), any '(,)<' 3...); // true
+// @debug has-value()((('a': 1, 'b': 2), 3, any, (last: 3, 4m: 5, 5: 5)), any '(,)<' 3...); // false
+
+
+
+// ---
+// map length operator (:)== (:)!= (:)> (:)>= (:)< (:)<=
+// ---
+// map length < number
+// @debug has-value()((('a': 1, 'b': 2), 3, any, (last: 3, 4m: 5, 5: 5)), any '(:)<' 3...); // true
+// @debug has-value()((('a': 1, 'b': 2), 3, any, (last: 3, 4m: 5, 5: 5)), any '(:)<' 2...); // false
+
+// map length > number or >=
+// @debug has-value()((('a': 1, 'b': 2), 3, any, (last: 3, 4m: 5, 5: 5)), any '(:)>' 3...); // false
+// @debug has-value()((('a': 1, 'b': 2), 3, any, (last: 3, 4m: 5, 5: 5)), any '(:)>=' 2...); // true

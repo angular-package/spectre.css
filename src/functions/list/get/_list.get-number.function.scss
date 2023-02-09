@@ -1,0 +1,51 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use '../../compare.function' as *;
+
+// Status: DONE
+// The `get-number()` function returns the first occurring number, otherwise null.
+@function get-number($list, $occurrence: first, $operator: '==', $value: null) {
+  $result: ();
+  @each $element in $list {
+    @if type-of($element) == number {
+      @if type-of($value) == number {
+        @if compare($element, $operator, $value) {
+          $result: list.append($result, $element, list.separator($list));
+        }
+      } @else {
+        $result: list.append($result, $element, list.separator($list));
+      }
+    }
+    @if list.length($result) > 0 and list.index((any, first), $occurrence) {
+      @return list.nth($result, 1);
+    }
+  }
+  @if list.length($result) > 0 and $occurrence == last {
+    @return list.nth($result, list.length($result));
+  }
+  @return if(list.length($result) > 0, if(list.length($result) == 1, list.nth($result, 1), $result), null);
+}
+
+// Examples.
+// occurrence: first by default
+// @debug get-number(('a', 'b', 'c', 2)); // `2`
+// @debug get-number(('a', 'b', 'c', 2), first); // `2`
+// @debug get-number(('a', 'b', 'c', 2), any); // `2`
+
+// @debug get-number(('a', 'b', 'c', (3))); // `3`
+// @debug get-number(('a', 'b', 'c', (4, ))); // `null`
+// @debug get-number(('a', 'b', 'c', ('5', (6,)))); // `null`
+
+// occurrence: last
+// @debug get-number(('a', 5, 'b', 2, 'c', (4, )), last); // 2
+
+// occurrence: all
+// @debug get-number((3, 'a', 0, 'b', 1, 'c', 2), all); // 3, 0, 1, 2
+// @debug get-number(('a', 5, 'b', 2, 'c', (4, )), all); // 5, 2
+
+// specified value
+// @debug get-number((3, 'a', 0, 'b', 1, 'c', 2), all '>' 2...); // 3
+// @debug get-number((3, 'a', 0, 'b', 1, 'c', 2), all '>' 1...); // 3, 2
+// @debug get-number(('3', 'a', '0', 'b', '1', 'c', '2'), last '==' 2...); // null

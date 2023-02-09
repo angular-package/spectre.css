@@ -1,0 +1,33 @@
+// Functions.
+@use 'list.has-type.function' as *;
+
+// Status: DONE
+// The `has-any-types()` function.
+// ! $occurrence: any
+// ? $operator: ==, !=
+// ? $types: arglist bool calculation color function list map null number string
+@function has-any-types($list, $operator: '==', $types...) {
+  @each $type in $types {
+    @if has-type($list, any, $operator, $type) {
+      @return true;
+    }
+  }
+  @return false;
+}
+
+// Examples.
+// @debug '--';
+// @debug has-any-types(('a', 'b', 1, 'c'), '==', number); // true
+// @debug has-any-types(('a', 'b', 'c'), '==', string, number, bool); // true
+// @debug has-any-types(('a', false, 'b', 'c'), '==', bool); // true
+// @debug has-any-types(('a', 'b', 'c', null), '==', null); // true
+// @debug has-any-types(('a', ('b', 'c'), null), '==', list); // true
+// @debug has-any-types(('a', ('b', 'c'), 4, null), '==', string, null, list, number); // true
+// @debug has-any-types(('a', ('b', 'c'), 4, null, ('a': 1)), '==', string, null, list, number, map); // true
+
+// @debug '--';
+// @debug has-any-types(('a', 'b', 'c'), '==', bool, null); // false
+// @debug has-any-types(('a', 'b', 1, 'c'), '==', list, map, bool); // false
+// @debug has-any-types(('a', false, 'b', 'c'), '==', number, null); // false
+// @debug has-any-types(('a', false, 'b', 'c'), '==', list); // false
+// @debug has-any-types(('a', ('b', 'c'), null), '==', string, list, null, number); // true

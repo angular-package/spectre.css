@@ -1,0 +1,13 @@
+// Variables.
+@use '../../variables/core' as *;
+
+// Status: DONE
+// The `scheme.is-normal()` function.
+@function is-normal() {
+  @return $color-scheme == normal;
+}
+
+// Examples.
+// @debug is-normal(); // true
+// $color-scheme: light;
+// @debug is-normal(); // false

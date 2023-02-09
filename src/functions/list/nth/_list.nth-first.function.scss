@@ -1,0 +1,13 @@
+// Sass.
+@use 'sass:list';
+
+// Status: DONE
+// The `nth-first()` function.
+// Picks the first element of the list if there is only one, otherwise the list.
+@function nth-first($list) {
+  @return if(list.length($list) == 1, list.nth($list, 1), $list);
+}
+
+// Examples.
+// @debug nth-first(('a', 'b')); // "a", "b"
+// @debug nth-first(('a')); // a

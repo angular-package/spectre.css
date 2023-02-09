@@ -1,0 +1,27 @@
+// Modules.
+@use '../var';
+
+// Functions.
+@use 'color.name.function' as *;
+
+// Status: DONE
+// The function returns the CSS variable saturation color of the given `$name` and `$prefix`.
+// The `$name` parameter can take color code.
+@function saturation-var($name, $saturation: null, $backup: null, $dictionary: ()) {
+  @return var.adjust(
+    var.css(name($name, saturation), $backup, $dictionary),
+    $saturation
+  );
+}
+
+// Examples.
+// @debug saturation-var(primary); // var(--s-primary-color-s)
+
+// adjusted
+// @debug saturation-var(primary, 5%); // calc(var(--s-primary-color-s) + 5%)
+
+// adjusted + backup
+// @debug saturation-var(primary, 5%, 50%); // calc(var(--s-primary-color-s, 50%) + 5%)
+
+// adjusted + backup + dictionary
+// @debug saturation-var(primary, 5%, 50%, (color: c, prefix: s, primary: p)); // calc(var(--s-p-c-s, 50%) + 5%)

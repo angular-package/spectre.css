@@ -1,0 +1,29 @@
+// Modules.
+@use '../var';
+
+// Functions.
+@use 'color.name.function' as *;
+
+// Status: DONE
+// The function returns the CSS variable lightness color of the given `$name` and `$prefix`.
+@function lightness-var($name, $lightness: null, $backup: null, $dictionary: ()) {
+  @return var.adjust(
+    calc(
+      var.css(name($name, lightness), $backup, $dictionary) +
+        var.css(name($name, lightness, l), $backup, $dictionary)
+    ),
+    $lightness
+  );
+}
+
+// Examples.
+// @debug lightness-var(primary); // calc(var(--s-primary-color-l) + var(--s-primary-color-l-l))
+
+// adjusted lightness
+// @debug lightness-var(primary, 1%); // calc((var(--s-primary-color-l) + var(--s-primary-color-l-l)) + 1%)
+
+// backup
+// @debug lightness-var(primary, 1%, 30%); // calc((var(--s-primary-color-l, 30%) + var(--s-primary-color-l-l, 30%)) + 1%)
+
+// dictionary
+// @debug lightness-var(primary, 1%, 30%, (prefix: spectre, suffix: basic)); // calc((var(--spectre-primary-color-l-basic, 30%) + var(--spectre-primary-color-l-l-basic, 30%)) + 1%)

@@ -1,0 +1,27 @@
+// Modules.
+@use '../var';
+
+// Functions.
+@use 'color.name.function' as color;
+
+// Status: DONE
+// The function returns the CSS variable alpha color of the given `$name` and `$prefix`.
+@function alpha-var($name, $alpha: null, $backup: null, $dictionary: ()) {
+  @return var.adjust(
+    var.css(color.name($name, alpha), $backup, $dictionary),
+    $alpha,
+    '*'
+  );
+}
+
+// Examples.
+// @debug alpha-var(primary); // var(--s-primary-color-a)
+
+// adjusted
+// @debug alpha-var(primary, 1); // calc(var(--s-primary-color-a) * 1)
+
+// adjusted + backup
+// @debug alpha-var(primary, 1, 0.5); // calc(var(--s-primary-color-a, 0.5) * 1)
+
+// adjusted + backup + dictionary
+// @debug alpha-var(primary, 1, 0.5, (primary: p)); // calc(var(--s-p-color-a, 0.5) * 1)

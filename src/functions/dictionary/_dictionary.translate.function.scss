@@ -1,0 +1,68 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Functions.
+@use 'dictionary.get.function' as *;
+
+// Status: DONE
+// The `dictionary.translate()` function.
+@function translate($words, $dictionary: ()) {
+  $dictionary: get(list.nth($dictionary, 2), list.nth($dictionary, 1));
+  $result: $words;
+  @if type-of($result) == map {
+    @each $key, $words in $result {
+      @if type-of($words) == string {
+        @if -translate($words, $dictionary) {
+          $result: map.set($result, $key, -translate($words, $dictionary));
+        }
+      }
+    }
+
+  } @else if type-of($result) == list {
+    $i: 1;
+    @each $words in $result {
+      @if type-of($words) == string {
+        @if -translate($words, $dictionary) {
+          $result: list.set-nth($result, $i, -translate($words, $dictionary));
+        }
+      }
+
+      $i: $i + 1;
+    }
+  } @else if type-of($words) == string {
+    $result: -translate($words, $dictionary);
+  }
+
+  @return $result;
+}
+
+@function -translate($word, $dictionary: ()) {
+  @if type-of($word) == string {
+    @each $words, $translation in $dictionary  {
+      @if list.index($words, $word) {
+        @return $translation;
+      }
+    }
+  }
+  @return null;
+}
+
+// Examples.
+$-dictionary: (
+  'general': ('word': 'słowo', ('wrapper', 'wrap'): 'owijka', ('technology', 'technologia'): 'tech'),
+  'class': ('calendars': ('calendar': 'cal'), 'labels': ('label': 'lab'))
+);
+
+// List.
+// @debug translate(('wrapper', 'technology'), ($-dictionary, 'general')); // "owijka", "tech"
+
+// Map.
+// @debug translate(('word': 'wrapper'), ($-dictionary, 'general')); // ("word": "owijka")
+// @debug translate((limit: first), ((first, start): 1, (last, length, end): 50)); // (limit: 1)
+
+// String.
+// @debug translate('wrapper', ($-dictionary, 'general')); // owijka
+
+// Different dictionary.
+// @debug translate('calendar', ($-dictionary, ('class', 'calendars'))); // cal

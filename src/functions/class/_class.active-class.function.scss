@@ -1,0 +1,20 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Functions.
+@use '../selector';
+
+// Status: DONE
+// The `active-class` function defines active class name.
+@function active-class($name: (), $selector: (), $dictionary: ()) {
+  @return selector.class(
+    list.join($name, active, list.separator($name)),
+    $selector,
+    map.merge((prefix: null, suffix: null), $dictionary)
+  );
+}
+
+// Examples.
+// @debug active-class(chat); // (.chat-active,)
+// @debug active-class(chat, '&:hover'); // (.chat-active:hover,)

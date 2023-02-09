@@ -1,0 +1,40 @@
+// Sass.
+@use 'sass:list';
+
+// Status: DONE
+// The `get-list()` function returns the list from the given list if exists, otherwise null.
+@function get-list($list, $occurrence: first, $method: join) {
+  $result: ();
+  @each $element in $list {
+    @if type-of($element) == list {
+      $result: if(
+        $method == join or $method == false,
+        list.join((list1: $result, list2: $element, separator: list.separator($list))...),
+        list.append((list: $result, val: $element, separator: list.separator($list))...)
+      );
+    }
+    @if list.length($result) > 0 and list.index((any, first), $occurrence) {
+      @return if($method == append, list.nth($result, 1), $result);
+    }
+  }
+  @if list.length($result) > 0 and $occurrence == last and $method == append  {
+    @return list.nth($result, list.length($result));
+  }
+  @return if(list.length($result) > 0, $result, null);
+}
+
+// Examples.
+// @debug get-list(('a', 'b', 'c')); // `null`
+// @debug get-list(('a', 'b', 'c', ('d', 'e', 'f'))); // ("d", "e", "f")
+// @debug get-list(('a', 'b', 'c', ('d', 'e', 'f'), 'g', 'h', (1, 2, 3)), all); // ("d", "e", "f", 1, 2, 3)
+// @debug get-list(('a', 'b', 'c', ('d', (1, 2, 3, (4, 5, 6)), 'e', 'f')), all); // ("d", (1, 2, 3, (4, 5, 6)), "e", "f")
+
+// Append.
+// @debug get-list(('a', 'b', 'c', ('d', 'e', 'f'), 'g', 'h', (1, 2, 3)), all, append); // ("d", "e", "f"), (1, 2, 3)
+
+// last
+// @debug get-list(('a', 'b', 'c', ('d', 'e', 'f'), 132, ('a', 'd', 'f')), last append...); // "a", "d", "f"
+
+// fist/any
+// @debug get-list(('a', 'b', 'c', ('d', 'e', 'f'), 132, ('a', 'd', 'f')), any, append); // "d", "e", "f"
+// @debug get-list(('a', 'b', 'c', ('d', 'e', 'f'), 132, ('a', 'd', 'f')), any append...); // "d", "e", "f"

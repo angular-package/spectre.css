@@ -1,7 +1,0 @@
-// Functions.
-@use 'get-var.function' as *;
-
-// The `unit-var()` function.
-@function unit-var($size, $adjust: null) {
-  @return get-var(('unit', $size), $adjust);
-}

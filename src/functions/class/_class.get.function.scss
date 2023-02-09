@@ -1,0 +1,17 @@
+// Modules.
+@use '../list';
+
+// Functions.
+@use 'class.index.function' as *;
+
+// Status: DONE
+// The `get()` function.
+@function get($class, $selectors: ('&', '.', '&.')) {
+  $index: index($class, $selectors);
+  @return if(type-of($index) == number, list.nths($class, ($index, '...', length)), $class);
+}
+
+// Examples.
+// @debug get(('s', 'p', 'a', 'n', '&[attr="aaa"]', '.', 'border', 'width')); // ".", "border", "width"
+// @debug get(('s', 'p', 'a', 'n', '&[attr="aaa"]', '&', '.', 'border', 'width')); // "&", ".", "border", "width"
+// @debug get(('s', 'p', 'a', 'n', '&[attr="aaa"]', '&.', 'border', 'width')); // "&.", "border", "width"

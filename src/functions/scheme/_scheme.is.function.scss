@@ -1,0 +1,31 @@
+// Variables.
+@use '../../variables/core' as *;
+
+// Functions.
+@use 'scheme.is-dark.function' as *;
+@use 'scheme.is-light.function' as *;
+@use 'scheme.is-normal.function' as *;
+
+// Status: DONE
+// The `scheme.is()` function. normal / dark / light / light dark
+// https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
+@function is($scheme) {
+  @if type-of($scheme) == string {
+    @if $scheme == normal {
+      @return is-normal();
+    } @else if $scheme == dark {
+      @return is-dark();
+    } @else if $scheme == light {
+      @return is-light();
+    } @else if $scheme == 'light dark' {
+      @return is-dark() and is-light();
+    }
+  }
+  @return $color-scheme == $scheme;
+}
+
+// Examples.
+// @debug is(normal); // true
+// @debug is(light); // false
+// @debug is(dark); // false
+// @debug is('light dark'); // false

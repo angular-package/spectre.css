@@ -1,26 +1,22 @@
-// Sass.
-@use 'sass:map';
-@use 'sass:string';
-
-// Variables.
-@use '../../variables/core' as *;
-
 // Functions.
-@use 'hsla/hsla-color.function' as *;
+@use 'color.hsla.function' as *;
 
+// Status: DONE
 // The function `color()` returns the `hsla()` color from a CSS variables of the given `$name`.
 @function color(
   $name,
-  $hue: 0deg,
-  $saturation: 0%,
-  $lightness: 0%,
-  $alpha: 1,
-  $var: (), // TODO: Remove $var in favor of $dictionary.
+  $hue: null,
+  $saturation: null,
+  $lightness: null,
+  $alpha: null,
   $dictionary: ()
 ) {
   @return if(
     $name == currentcolor or type-of($name) == color,
     $name,
-    hsla-color($name, $hue, $saturation, $lightness, $alpha, $var)
+    hsla-color($name, $hue, $saturation, $lightness, $alpha, $dictionary)
   );
 }
+
+// Examples.
+// @debug color(dark); // hsla(var(--s-dark-color-h), var(--s-dark-color-s), calc(var(--s-dark-color-l) + var(--s-dark-color-l-l)), var(--s-dark-color-a))

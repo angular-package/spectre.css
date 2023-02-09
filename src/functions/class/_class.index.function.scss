@@ -1,0 +1,21 @@
+// Modules.
+@use '../list';
+
+// Status: DONE
+// The `index()` function.
+@function index($class, $selectors: '&' '.' '&.') {
+  $index: ();
+  @if list.length($class) > 1 {
+    @each $i in list.index($class, any, '==', $selectors...) {
+      @if $i {
+        $index: list.append($index, $i);
+      }
+    }
+  }
+  @return if(list.length($index), min($index...), null);
+}
+
+// Examples.
+// @debug index(('s', 'p', 'a', 'n', '&[attr="aaa"]', '.', 'border', 'width')); // 6
+// @debug index(('p', 'a', 'n', '222', '333', '&[attr="aaa"]', '&', '.', 'border', 'width')); // 7
+// @debug index(('s', 'a', 'n', '&[attr="aaa"]', '&.', 'border', 'width')); // 5

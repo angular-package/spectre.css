@@ -1,0 +1,17 @@
+// Modules.
+@forward 'get';
+@forward 'has';
+@forward 'nth';
+@forward 'remove';
+
+// Functions.
+@forward 'list.extract-map.function';
+@forward 'list.index-type.function';
+@forward 'list.index.function';
+@forward 'list.nths.function';
+@forward 'list.query.function';
+@forward 'list.replace-string.function';
+@forward 'list.type-index.function';
+
+// Sass.
+@forward 'sass:list' hide index, nth;

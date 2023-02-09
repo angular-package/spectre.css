@@ -1,0 +1,26 @@
+// Sass.
+@use 'sass:list';
+
+// Status: DONE
+// The `nth()` function.
+@function nth($list, $index, $default: null) {
+  @return if(
+    list.length($list) >= if($index < 0, calc($index * -1), $index),
+    list.nth($list, $index),
+    $default
+  );
+}
+
+// Examples.
+// number
+// @debug nth(('a', 'b', 'c', 'd', 'e', 'f'), 10); // null
+// @debug nth(('a', 'b', 'c', 'd', 'e', 'f'), 10, false); // false
+// @debug nth(('a', 'b', 'c', 'd', 'e', 'f'), -10); // null
+// @debug nth(('a', 'b', 'c', 'd', 'e', 'f'), -10, false); // false
+
+// string - @deprecated
+// @debug nth(('a', 'b', 'c', 'd', 'e', 'f'), start, false); // a
+// @debug nth(('a', 'b', 'c', 'd', 'e', 'f'), first, false); // a
+// @debug nth(('a', 'b', 'c', 'd', 'e', 'f'), end, false); // f
+// @debug nth(('a', 'b', 'c', 'd', 'e', 'f'), last, false); // f
+// @debug nth(('a', 'b', 'c', 'd', 'e', 'f'), length, false); // f

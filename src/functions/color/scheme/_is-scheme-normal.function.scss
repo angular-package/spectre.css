@@ -1,7 +1,0 @@
-// Variables.
-@use '../../../variables/core' as *;
-
-// The `is-scheme-normal()` function.
-@function is-scheme-normal() {
-  @return $color-scheme == normal;
-}

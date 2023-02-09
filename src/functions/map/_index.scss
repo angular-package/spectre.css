@@ -1,0 +1,7 @@
+@forward 'map.get.function';
+@forward 'map.key-replace.function';
+@forward 'map.pick.function';
+@forward 'map.remove.function';
+@forward 'map.set.function';
+@forward 'map.values.function';
+@forward 'sass:map' hide get, values, set, remove;

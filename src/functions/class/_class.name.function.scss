@@ -1,0 +1,81 @@
+// Modules.
+@use '../dictionary';
+@use '../list';
+@use '../string';
+
+// Functions.
+@use '../name.function' as _;
+
+// Status: DONE
+// https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
+// The `name()` function defines name from the given list and `$dictionary`, separated by the given `$separator`.
+@function name($name, $dictionary: (), $separator: null) {
+  $selector: ();
+  @if list.length($name) > 0 {
+    @each $indicator in list.index($name, any, '==', '&', '.', '&.') {
+      @if $indicator {
+        $selector: list.append($selector, list.nth($name, $indicator));
+      }
+    }
+
+    $name: list.remove-string($name, '&', '.', '&.');
+  }
+
+  $parent: false;
+  $i: 1;
+  @each $element in $name {
+    @if not ($element == '&') and type-of($element) == string and string.index($element, '&') {
+      $parent: true;
+      $name: list.set-nth($name, $i, string.replace($element, first '&' ''));
+    }
+
+    $i: $i + 1;
+  }
+  @if not list.has-string($selector, any, '==', '&') and $parent {
+    $selector: list.join('&', $selector, list.separator($selector));
+  }
+  @return #{_.name($selector) + _.name($name, dictionary.merge(class, $dictionary), $separator)};
+}
+
+// Examples.
+// no class/parent indicators
+// @debug name(border width lg); // border-width-lg
+
+// single class/parent indicator
+// @debug name('.' border width lg); // .border-width-lg
+// @debug name('&' 'border' 'width' 'lg'); // &border-width-lg
+// @debug name('.' '&' 'border' 'width' 'lg'); // &.border-width-lg
+// @debug name('&' '.' 'border' 'width' 'lg'); // &.border-width-lg
+// @debug name('&.' 'border' 'width' 'lg'); // &.borderwidthlg
+// @debug name('border' 'width' '&.' 'lg'); // &.borderwidthlg
+// @debug name('border' '&' 'width' '&' '.' 'lg'); // &.borderwidthlg
+
+// class/parent indicator in the string
+// @debug name('.&border' 'width' lg); // &.border-width-lg
+// @debug name('.' 'border' '&width' lg); // &.border-width-lg
+// @debug name('.border' 'width' '&lg'); // &.border-width-lg
+
+// separator
+// @debug name('' 'border' 'width' 'lg', $separator: '-'); // -border-width-lg
+// @debug name('' 'border' 'width' 'lg' '', $separator: '-'); // -border-width-lg-
+// @debug name('border' 'width' 'lg' '', $separator: '-'); // border-width-lg-
+// @debug name('border' 'width' 'lg', $separator: '--'); // border--width--lg
+
+// dictionary
+// @debug name('border' 'width' 'lg', ('prefix': 'spectre', 'suffix': 'ver2'), '-'); // spectre-border-width-lg-ver2
+// @debug name('border' ('prefix': 'spectre', 'suffix': 'ver2') 'width' 'lg', $separator: '-'); // spectre-border-width-lg-ver2
+// @debug name('border' ('border': 'modified-border') 'width' 'lg', $separator: '-'); // modified-border-width-lg
+// @debug name('border' 'width' 'lg', ('border': 'modified-border'), $separator: '-'); // modified-border-width-lg
+// @debug name('border' 'width' 'lg', ('width': 'modified-width', 'lg': 'lg-modified'), $separator: '-'); // border-modified-width-lg-modified
+
+// other
+// @debug name('border' 'width' 'lg' ' ' 'border' '>' 'active', $separator: '-'); // border-width-lg- -border->-active
+// @debug name('border' 'width' 'lg' '~' 'border' '+' 'active', $separator: '-'); // border-width-lg-~-border-+-active
+// @debug name('border' 'width' 'lg' ' ' 'border' '||' 'active', $separator: '-'); // border-width-lg- -border-||-active
+// @debug name('100' 'border' 'width', $separator: '-'); // 100-border-width
+// @debug name('border' 'width' '100', $separator: '-'); // border-width-100
+// @debug name('border' 'width' '200', $separator: '-'); // border-width-200
+// @debug name('dark' 'theme' ' ' 'button' 'red' ' ' 'icon' 'svg', $separator: '-'); // dark-theme- -button-red- -icon-svg
+// @debug name('light' 'theme' ' ' 'button' 'red', $separator: '-'); // light-theme- -button-red
+// @debug name('.' '100' 'border' 'width', $separator: '-'); // .100-border-width
+// @debug name('&' '.' '100' 'border' 'width', $separator: '-'); // &.100-border-width

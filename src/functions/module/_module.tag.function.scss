@@ -1,0 +1,27 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Modules.
+@use '../dictionary';
+@use '../selector';
+
+// Functions.
+@use 'module.dictionary.function' as *;
+
+// Status: TODO: does not work good
+// The `tag()` function.
+@function tag($tag, $name, $class: (), $selector: (), $module-dictionary: null, $dictionary: ()) {
+  @return selector.tag(
+    $tag,
+    ('&', list.join($name, $class, comma)),
+    $selector,
+    map.merge(
+      if($module-dictionary, dictionary.get(class, $module-dictionary), dictionary($name, class)),
+      dictionary.get('class', $dictionary)
+    )
+  );
+}
+
+// Examples.
+// @debug tag('span', 'label', 'primary'); // (span.label-primary,)

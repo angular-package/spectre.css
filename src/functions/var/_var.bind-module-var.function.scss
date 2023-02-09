@@ -1,0 +1,25 @@
+// Sass.
+@use 'sass:map';
+@use 'sass:string';
+
+// Functions.
+@use 'var.module-var.function' as *;
+
+// Status: TODO: Check.
+// Set the `bind-module-var()` function.
+@function bind-module-var($module-name, $css-vars) {
+  // Bind `module-var()` to the value whether it's list or string.
+  @if type-of($css-vars) == map {
+    @each $key, $value in $css-vars {
+      @if type-of($value) == list or type-of($value) == string {
+        // If string contains the `var()`.
+        @if type-of($value) == string and string.index($value, 'var(') {
+          $css-vars: map.merge($css-vars, ($key: $value));
+        } @else {
+          $css-vars: map.merge($css-vars, ($key: module-var($module-name, $value)));
+        }
+      }
+    }
+  }
+  @return $css-vars;
+}

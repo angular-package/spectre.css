@@ -1,0 +1,29 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Status: DONE
+// The `map.values()` function.
+@function values($map, $keys...) {
+  @if list.length($keys) > 0 {
+    $i: 1;
+    @each $key in $keys {
+      @if map.has-key($map, $key) {
+        $keys: list.set-nth($keys, $i, map.get($map, $key));
+      }
+
+      $i: $i + 1;
+    }
+  } @else {
+    $keys: map.values($map);
+  }
+  @return $keys;
+}
+
+// Examples.
+// key
+// @debug values((a: 1, b: 2, c: 3), 'a', 'b', 'c'); // (1, 2, 3)
+// @debug values((a: 1, b: 2, c: 3), 'b', 'c'); // (2, 3)
+
+// default
+// @debug values((a: 1, b: 2, c: 3)); // (1, 2, 3)

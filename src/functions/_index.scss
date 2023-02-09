@@ -1,9 +1,11 @@
-// Folder.
+// Modules.
 @forward 'class';
 @forward 'color';
 @forward 'is';
 @forward 'list';
 @forward 'map';
+@forward 'math';
+@forward 'selector';
 @forward 'string';
 @forward 'tag';
 @forward 'var';
@@ -14,6 +16,3 @@
 @forward 'name.function';
 @forward 'replace-parent-placeholder.function';
 @forward 'replace-parent-selector.function';
-@forward 'selector-name.function';
-@forward 'selector-nest.function';
-@forward 'strip-unit.function';

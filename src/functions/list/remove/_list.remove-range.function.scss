@@ -1,0 +1,30 @@
+// Sass.
+@use 'sass:list';
+
+// Status: DONE
+// The `remove-range()` function.
+@function remove-range($list, $from: 1, $to: list.length($list)) {
+  @if list.length($list) > 1 {
+    $result: ();
+    $i: 1;
+    @each $element in $list {
+      @if not ($i >= $from and $i <= $to) {
+        $result: list.append($result, $element, list.separator($list));
+      }
+
+      $i: $i + 1;
+    }
+    @return $result;
+  }
+  @return $list;
+}
+
+// Examples.
+// @debug remove-range(('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'), 2, 5); // "a", "f", "g", "h", "i"
+// @debug remove-range(('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'), 3, 4); // "a", "b", "e", "f", "g", "h", "i"
+
+// From 3 to length.
+// @debug remove-range(('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'), 3); // "a", "b"
+
+// From 1 to 3.
+// @debug remove-range(('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'), $to: 3); // "d", "e", "f", "g", "h", "i"

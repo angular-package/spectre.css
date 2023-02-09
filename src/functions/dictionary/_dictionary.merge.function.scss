@@ -1,0 +1,16 @@
+// Sass.
+@use 'sass:map';
+
+// Functions.
+@use 'dictionary.get.function' as *;
+
+// Status: DONE
+// The `merge()` function.
+@function merge($keys: (), $dictionary: ()) {
+  @return map.merge(get($keys), $dictionary);
+}
+
+// Examples.
+// @debug merge(class, (test: 1)); // ("prefix": null, "separator": "-", "suffix": null, test: 1)
+// @debug merge(class, (prefix: spectre)); // ("prefix": spectre, "separator": "-", "suffix": null)
+// @debug merge(class, (prefix: spectre, suffix: big)); // ("prefix": spectre, "separator": "-", "suffix": big)

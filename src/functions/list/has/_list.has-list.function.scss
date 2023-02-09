@@ -1,0 +1,37 @@
+// Functions.
+@use 'type/list.has-type.function' as *;
+@use 'value/list.has-values.function' as *;
+
+// Status: DONE
+// The `has-list()` function.
+// ? $occurrence: all any only
+// ? $operator: == !=
+@function has-list($list, $occurrence: any, $operator: null, $lists...) {
+  $has: false;
+  @if type-of($operator) == string {
+    $has: if(
+      has-type($lists, only, '==', list),
+      has-values($list, $occurrence, $operator, $lists...),
+      false
+    );
+  } @else {
+    $has: has-type($list, $occurrence, '==', list);
+  }
+  @return $has;
+}
+
+// Examples.
+// any
+// @debug has-list(((1, 2, 3), ('4', '5', '6'), 7, 8, 9)); // true
+// @debug has-list(((1, 2, 3), ('4', '5', '6'), 7, 8, 9), any); // true
+// @debug has-list(((1, 2, 3), ('4', '5', '6'), 7, 8, 9), any, '==', ('4', '5', '6')); // true
+// @debug has-list(((4, 5, 6), (4, 5, 6), (4, 5, 6)), any, '==', (4, 5, 6)); // true
+// @debug has-list((1, 2, 3, '4', '5', '6', 7, 8, 9, (a: 1)), any); // false
+
+// all
+// @debug has-list(((1, 2, 3), ('4', '5', '6'), 7, 8, 9), all, '==', ('4', '5', '6'), (7, 8 , 9)); // false
+// @debug has-list((('4', '5', '6'), ('4', '5', '6'), ('4', '5', '6')), all, '==', ('4', '5', '6')); // true
+
+// only
+// @debug has-list(((1, 2, 3), ('4', '5', '6'), (7, 8, 9)), only); // true
+// @debug has-list(((1, 2, 3), ('4', '5', '6'), 7, 8, 9), only); // false

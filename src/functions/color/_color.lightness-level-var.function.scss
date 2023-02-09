@@ -1,0 +1,20 @@
+// Modules.
+@use '../var';
+
+// Functions.
+@use 'color.name.function' as *;
+
+// The function returns the CSS variable lightness level color of the given `$name` and `$prefix`.
+@function lightness-level-var($name, $backup: null, $dictionary: ()) {
+  @return var.css(name($name, lightness, l), $backup, $dictionary);
+}
+
+// Examples.
+// @debug lightness-level-var(primary); // var(--s-primary-color-l-l)
+
+// backup
+// @debug lightness-level-var(primary, 30%); // var(--s-primary-color-l-l, 30%)
+
+// backup + custom dictionary
+// @debug lightness-level-var(primary, 30%, (hue: hue, prefix: spectre)); // var(--spectre-primary-color-l-l, 30%)
+// @debug lightness-level-var(primary, 30%, (suffix: basic)); // var(--s-primary-color-l-l-basic, 30%)

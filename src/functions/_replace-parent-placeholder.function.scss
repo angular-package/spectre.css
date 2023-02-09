@@ -1,25 +1,27 @@
 // Sass.
-@use 'sass:list';
+// @use 'sass:list';
+
+// Modules.
+@use 'list';
 
 // Functions.
-@use 'list/list-replace-string.function' as *;
-@use 'list/is/is-list.function' as *;
-@use 'list/index/list-index-type.function' as *;
+// @use 'list/index/list-type-index.function' as *;
+// @use 'list/list-replace-string.function' as *;
 
 // Status: DONE
 // The `replace-parent-placeholder()` function.
 @function replace-parent-placeholder($selector, $placeholder: __PARENT__) {
-  @if is-list($selector, 0) {
+  @if type-of($selector) == list and list.length($selector) > 0 {
     // If first element of the list is string type.
-    @if list-index-type($selector, 1) == string {
-      $selector: list-replace-string($selector, $placeholder, '&');
+    @if list.type-index($selector, 1) == string {
+      $selector: list.replace-string($selector, $placeholder, '&');
 
     // If first element of the list is list type.
     } @else {
       $i: 1;
       @each $value in $selector {
-        @if is-list($value, 0) {
-          $selector: list.set-nth($selector, $i, list-replace-string($value, $placeholder, '&'));
+        @if type-of($value) == list and list.length($value) > 0 {
+          $selector: list.set-nth($selector, $i, list.replace-string($value, $placeholder, '&'));
         }
 
         $i: $i + 1;
@@ -30,8 +32,8 @@
 }
 
 // Examples.
-// @debug replace-parent-placeholder(('__PARENT__', 'card'));
-// @debug replace-parent-placeholder(('__PARENT__', 'card'), __OTHER__);
-// @debug replace-parent-placeholder(('__OTHER__', 'card'), __OTHER__);
-// @debug replace-parent-placeholder((('__PARENT__', 'bla'), 'card'));
-// @debug replace-parent-placeholder((('__PARENT__', 'bla'), (__PARENT__, 'card')));
+// @debug replace-parent-placeholder(('__PARENT__', 'card')); // "&", "card"
+// @debug replace-parent-placeholder(('__PARENT__', 'card'), __OTHER__); // "__PARENT__", "card"
+// @debug replace-parent-placeholder(('__OTHER__', 'card'), __OTHER__); // "&", "card"
+// @debug replace-parent-placeholder((('__PARENT__', 'bla'), 'card')); // ("&", "bla"), "card"
+// @debug replace-parent-placeholder(('__PARENT__' 'bla', __PARENT__ 'card')); // ("&", "bla"), (&, "card")

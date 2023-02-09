@@ -1,0 +1,24 @@
+// Modules.
+@use '../var';
+
+// Functions.
+@use 'color.name.function' as *;
+
+// Status: DONE
+// The function returns the CSS variable hue color of the given `$name` and `$prefix`.
+@function hue-var($name, $hue: null, $backup: null, $dictionary: ()) {
+  @return var.adjust(var.css(name($name, hue), $backup, $dictionary), $hue);
+}
+
+// Examples.
+// @debug hue-var(primary); // var(--s-primary-color-h)
+
+// adjusted hue
+// @debug hue-var(primary, 1deg); // calc(var(--s-primary-color-h) + 1deg)
+
+// adjusted hue + backup
+// @debug hue-var(primary, 1deg, 30deg); // calc(var(--s-primary-color-h, 30deg) + 1deg)
+
+// adjusted hue + backup + custom dictionary
+// @debug hue-var(primary, 1deg, 30deg, (hue: hue, prefix: spectre)); // calc(var(--spectre-primary-color-hue, 30deg) + 1deg)
+// @debug hue-var(primary, 1deg, 30deg, (suffix: basic)); // calc(var(--s-primary-color-h-basic, 30deg) + 1deg)

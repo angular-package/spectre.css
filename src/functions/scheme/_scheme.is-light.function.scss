@@ -1,0 +1,13 @@
+// Variables.
+@use '../../variables/core' as *;
+
+// Status: DONE
+// The `scheme.is-light()` function.
+@function is-light() {
+  @return $color-scheme == light or ($color-scheme != dark and $color-scheme != normal);
+}
+
+// Examples.
+// @debug is-light(); // false
+// $color-scheme: light;
+// @debug is-light(); // true

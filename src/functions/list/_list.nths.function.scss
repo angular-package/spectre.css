@@ -1,0 +1,37 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Functions.
+@use 'nth' as *;
+
+// Status: DONE
+// The `nths()` function.
+@function nths($list, $where...) {
+  $result: ();
+  @if list.index($where, '...') {
+    @return nth-range($list, list.nth($where, 1), list.nth($where, 3));
+  } @else {
+    @each $condition in $where {
+      $value: null;
+      @if type-of($condition) == list or type-of($condition) == map {
+        @if list.index($condition, '...') or
+        (type-of($condition) == map and (list.index(map.keys($condition), from) or list.index(map.keys($condition), to))) {
+          @if not (type-of($condition) == map) {
+            $condition: list.nth($condition, 1) list.nth($condition, 3);
+          }
+
+          $value: nth-range($list, $condition...);
+        } @else {
+          $value: nth-limit($list, $condition...);
+        }
+      } @else {
+        $value: if(list.index(first start, $condition), 1, if(list.index(end last length, $condition), list.length($list), $condition));
+        $value: nth($list, $value);
+      }
+
+      $result: list.join($result, $value);
+    }
+  }
+  @return nth-first($result);
+}

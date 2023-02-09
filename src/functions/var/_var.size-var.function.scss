@@ -1,0 +1,17 @@
+// Functions.
+@use 'var.get.function' as *;
+
+// The `size-var()` function returns CSS variable preceded by `size`.
+@function size-var($size, $backup: null, $dictionary: ()) {
+  @return get(size $size, $backup: $backup, $dictionary: $dictionary);
+}
+
+// Examples.
+// @debug size-var(sm); // var(--s-size-sm)
+
+// backup
+// @debug size-var(sm, 30px); // var(--s-size-sm, 30px)
+
+// backup + dictionary
+// @debug size-var(sm, 30px, (size: s)); // var(--s-s-sm, 30px)
+// @debug size-var(sm, 30px, (size: s, separator: '')); // var(--sssm, 30px)

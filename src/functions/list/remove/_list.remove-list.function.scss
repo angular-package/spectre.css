@@ -1,0 +1,32 @@
+// Sass.
+@use 'sass:list';
+
+// Status: DONE.
+// The `remove-list()` function removes the list from the given `$list`.
+@function remove-list($list, $length: false) {
+  $result: ();
+  @if list.length($list) > 0 {
+    @each $element in $list {
+      $allow: false;
+      @if type-of($length) == number {
+        @if not (type-of($element) == list) or (type-of($element) == list and list.length($element) != $length) {
+          $allow: true;
+        }
+      } @else {
+        @if not (type-of($element) == list) {
+          $allow: true;
+        }
+      }
+      @if $allow == true {
+        $result: list.append($result, $element, list.separator($list));
+      }
+    }
+  }
+  @return $result;
+}
+
+// Examples.
+// @debug remove-list(('a', 'b', 'c')); // "a", "b", "c"
+// @debug remove-list(('a', 'b', 'c', ('d', 'e', 'f'))); // "a", "b", "c"
+// @debug remove-list(('a', 'b', 'c', ('d', 'e', 'f'), 'g', 'h', (1, 2, 3))); // "a", "b", "c", "g", "h"
+// @debug remove-list(('a', 'b', 'c', ('d', (1, 2, 3, (4, 5, 6)), 'e', 'f'))); // "a", "b", "c"

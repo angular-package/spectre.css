@@ -1,8 +1,6 @@
-@forward 'active-class.function';
-@forward 'add-class-selector.function';
-@forward 'class-name.function';
-@forward 'class.function';
-@forward 'classes.function';
-@forward 'disabled-class.function';
-@forward 'is-class-allowed.function';
-@forward 'module-class.function';
+@forward 'class.active-class.function';
+@forward 'class.classes.function';
+@forward 'class.disabled-class.function';
+@forward 'class.get.function';
+@forward 'class.index.function';
+@forward 'class.name.function';

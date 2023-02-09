@@ -1,0 +1,30 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+// Status: DONE
+// The `map.set()` function.
+@function set($map, $key, $value, $allowed...) {
+  $set: if(
+    list.length($allowed) > 0,
+    if(list.index($allowed, meta.type-of($value)) or list.index($allowed, any) or list.index($allowed, $value), true, false),
+    true
+  );
+  @return if($set, map.set($map, list.append($key, $value)...), $map);
+}
+
+// Examples.
+// single type
+// @debug set((a: 1, b: 2), test string, 27, string ); // (a: 1, b: 2)
+// @debug set((a: 1, b: 2), test number, 27, number); // (a: 1, b: 2, test: (number: 27))
+// @debug set((a: 1, b: 2), test map, (map: 22,), map); // (a: 1, b: 2, test: (map: (map: 22)))
+// @debug set((a: 1, b: 2), test list, (22, 44), list); // (a: 1, b: 2, test: (list: (22, 44)))
+// @debug set((a: 1, b: 2), test color, #ffffff, color); // (a: 1, b: 2, test: (color: #ffffff))
+// @debug set((a: 1, b: 2), test null, null, null); // (a: 1, b: 2, test: (null: null))
+
+// multiple types
+// @debug set((a: 1, b: 2), test number, 27, number, string, bool, list, map); // (a: 1, b: 2, test: (number: 27))
+// @debug set((a: 1, b: 2), test string, twenty seven, number, string, bool, list, map); // (a: 1, b: 2, test: (string: twenty seven))
+// @debug set((a: 1, b: 2), test bool, false, number, string, bool, list, map); // (a: 1, b: 2, test: (bool: false))
+// @debug set((a: 1, b: 2), test null, null, number, null, string, bool, list, map); // (a: 1, b: 2, test: (null: null))

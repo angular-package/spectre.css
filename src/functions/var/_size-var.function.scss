@@ -1,8 +1,0 @@
-// Functions.
-@use 'get-var.function' as *;
-
-// The `size-var()` function returns CSS variable preceded by `size`.
-@function size-var($size, $backup: null, $var: ()) {
-  // @return get-var('size', $suffix: $size);
-  @return get-var(('size', $size), $backup: $backup, $var: $var);
-}

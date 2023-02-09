@@ -1,0 +1,32 @@
+// Variables.
+@use '../../variables/core' as *;
+
+// Functions.
+@use '../map';
+
+// Status: DONE
+// The `get()` function.
+@function get($name: null, $dictionary: $dictionary) {
+  @if type-of($dictionary) == map {
+    $dictionary: map.get($dictionary, 'dictionary', $dictionary);
+  } @else {
+    $dictionary: ();
+  }
+  @return if($name, map.get($dictionary, $name, ()), $dictionary); // REVIEW: Check.
+}
+
+// Examples.
+$-dictionary: (
+  'general': ('word': 'słowo', ('wrapper', 'wrap'): 'owijka', 'technology': ('action': 'akcja')),
+  'class': ('calendars': ('calendar': 'cal'), 'labels': ('label': 'lab'))
+);
+
+// Examples.
+// Spectre dictionary from the core variables.
+// @debug get(); // (class: ("prefix": null, "separator": "-", "suffix": null), var: ("prefix": "s", "hue": "h", "saturation": "s", "lightness": "l", "alpha": "a", "separator": "-", "size": "size", "suffix": ""))
+
+// Custom dictionary
+// @debug get(general, $-dictionary); // ("word": "słowo", ("wrapper", "wrap"): "owijka", "technology": ("action": "akcja"))
+// @debug get(class, $-dictionary); // ("calendars": ("calendar": "cal"), "labels": ("label": "lab"))
+// @debug get(class calendars, $-dictionary); // ("calendar": "cal")
+// @debug get(class, $-dictionary); // ("calendars": ("calendar": "cal"), "labels": ("label": "lab"))

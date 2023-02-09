@@ -1,0 +1,82 @@
+// Functions.
+@use 'list.has-value.function' as *;
+
+// Status: DONE
+// The `has-any-values()` function.
+// ! $occurrence: any - not changeable
+// ? $operator: '==', '!=', '~=', '!~=', ':==', ':!=', '>', '>=', '<', '<=',
+// ?            '(:)', '(:)==', '(:)!=', '(:)>', '(:)>=', '(:)<', '(:)<=',
+// ?            '(,)', '(,)==', '(,)!=', '(,)>', '(,)>=', '(,)<', '(,)<='
+@function has-any-values($list, $operator: '==', $values...) {
+  @each $value in $values {
+    @if has-value($list, any, $operator, $value) {
+      @return true;
+    }
+  }
+  @return false;
+}
+
+// Examples.
+// ---
+// equality operator == !=
+// ---
+// @debug has-any-values(('a', 'b', ('c', 'd'), e), '==', 'b', 'a'); // true
+// @debug has-any-values(('a', 'b', ('c', 'd'), e), '==', 'b', 'a', 'something'); // true
+// @debug has-any-values(('a', 'b', ('c', 'd'), e), '==', 'f'); // false
+// @debug has-any-values(('a', 'b', ('c', 'd'), e), '!=', 'a', 'b'); // true
+// @debug has-any-values(('a', 'a', 'a', 'a', 'a'), '!=', 'a'); // false
+
+
+
+// ---
+// number relational operator >= > < <=
+// ---
+// @debug has-any-values(('a', 1, 'b', 4, ('c', 'd'), 232, e), '>', 232); // false
+// @debug has-any-values(('a', 1, 'b', 4, ('c', 'd'), 232, e), '>', 1, 4); // true
+// @debug has-any-values((1, 1, 1, 1, 1, 1, 1), '>', 1); // false
+
+
+
+// ---
+// string index operator ~= and !~=
+// ---
+// @debug has-any-values(('a', 'bold king', ('c', 'd'), e), '~=', 'bold ', 'f'); // true
+// @debug has-any-values(('a', 'bold king', ('c', 'd'), e), '!~=', 'bold '); // true
+// @debug has-any-values(('bold king', 'bold king', 'bold king', 'bold king'), '!~=', 'bold '); // false
+
+
+
+// ---
+// type-of operator :== and :!=
+// ---
+// @debug has-any-values(('a', 1, 'b', 4, ('c', 'd'), 232, e), ':==', number, string); // true
+// @debug has-any-values(('a', 1, 'b', 4, 232, e), ':!=', number, string); // true
+// @debug has-any-values((3, 1, 3123, 4, 232, 555), ':!=', number); // false
+
+
+
+// ---
+// list length operator (,)== (,)!= (,)> (,)>= (,)< (,)<=
+// ---
+// @debug has-any-values(('a', 'b', ('c', 'd'), e), '(,)==', 2); // true
+// @debug has-any-values(('a', 'b', ('c', 'd'), e), '(,)!=', 2); // false
+// @debug has-any-values(('a', 'b', ('c', 'd'), (e, a, a)), '(,)!=', 2); // true
+// @debug has-any-values(('a', 'b', ('c', 'd'), e), '(,)>', 2); // false
+// @debug has-any-values(('a', 'b', ('c', 'd'), (e, a, a)), '(,)>', 2); // true
+// @debug has-any-values(('a', 'b', ('c', 'd'), e), '(,)>=', 2); // true
+// @debug has-any-values(('a', 'b', ('c', 'd'), e), '(,)<', 2); // false
+// @debug has-any-values(('a', 'b', ('c', 'd'), e), '(,)<=', 1); // false
+
+
+
+// ---
+// map length operator (:)== (:)!= (:)> (:)>= (:)< (:)<=
+// ---
+// @debug has-any-values(('a', 'b', ('c': 1, 'd': 3), e), '(:)==', 2); // true
+// @debug has-any-values(('a', 'b', ('c': 1, 'd': 3), e), '(:)!=', 2); // false
+// @debug has-any-values(('a', ('c': 1, 'd': 3, g: 1), 'b', ('c': 1, 'd': 3), e), '(:)!=', 2); // true
+// @debug has-any-values((('a': 1), 'b', ('c': 1, 'd': 3), e), '(:)!=', 2); // true
+// @debug has-any-values(('a', 'b', ('c': 1, 'd': 3), e), '(:)>', 2); // false
+// @debug has-any-values(('a', 'b', ('c': 1, 'd': 3), e), '(:)>=', 2); // true
+// @debug has-any-values(('a', 'b', ('c': 1, 'd': 3), e), '(:)<', 2); // false
+// @debug has-any-values(('a', 'b', ('c': 1, 'd': 3), e), '(:)<=', 2); // false

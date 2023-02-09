@@ -1,7 +1,0 @@
-// Variables.
-@use '../../../variables/core' as *;
-
-// The `is-scheme-dark()` function.
-@function is-scheme-dark() {
-  @return $color-scheme == dark or ($color-scheme != light and $color-scheme != normal);
-}

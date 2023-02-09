@@ -1,0 +1,25 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use 'selector.class.function' as *;
+@use 'selector.nest.function' as *;
+
+// Status: TODO: does not work good
+// The `tag()` function.
+@function tag($tag, $class: (), $selector: (), $dictionary: ()) {
+  @return nest(list.join(($tag, class($class)), $selector), $dictionary);
+}
+
+// Examples.
+// @debug tag(input, lg);
+// @debug tag('input', 'lg', '&:hover');
+
+// @debug tag('input', form lg);
+// @debug tag('input', (('form', 'lg',), ('form', 'sm')));
+// @debug tag('input', (('form', 'lg',), ('form', 'sm')), '&:hover');
+
+// @debug tag((('&', 'input',), ('&', 'span',)), (('&', 'button', 'dark'), ('&', 'button', 'light'),));
+// @debug tag((('&', 'input',), ('&', 'span',)), (('button', 'dark'), ('button', 'light'),));
+
+// @debug tag('input', ('&', 'form', 'input', ('lg',), ('sm',)));

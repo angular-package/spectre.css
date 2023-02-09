@@ -1,0 +1,28 @@
+// Sass.
+// @use 'sass:list';
+@use 'sass:selector';
+
+// Functions.
+@use '../list';
+@use '../replace-parent-placeholder.function' as *;
+@use '../replace-parent-selector.function' as *;
+
+// Status: DONE
+// The `nest()` function.
+@function nest($selector, $placeholder: __PARENT__) {
+  @if list.length($selector) > 0 {
+    $selector: list.replace-string(
+      selector.nest(replace-parent-selector($selector, $placeholder)...),
+      '__CLASS__',
+      ''
+    );
+  }
+  @return replace-parent-placeholder($selector, $placeholder);
+}
+
+// Examples.
+// @debug nest('&border' 'width'); // (&border width,)
+// @debug nest('&.card' ('&-details', '&-summary')); // &.card-details, &.card-summary
+// @debug nest(('btn', '&-light', '&-xs')); // (btn-light-xs,)
+// @debug nest(('btn', ('&-light', '&-dark'), '&-xs')); // btn-light-xs, btn-dark-xs
+// @debug nest((card, ('&-header', '&-body', '&-footer'))); // ard-header, card-body, card-footer

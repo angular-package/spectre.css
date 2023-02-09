@@ -1,0 +1,15 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use 'var.get.function' as *;
+
+// Status: DONE
+// The `unit-var()` function.
+@function unit-var($size, $adjust: null) {
+  @return get(list.join(unit, $size, list.separator($size)), $adjust);
+}
+
+// Examples.
+// @debug unit-var(1); // var(--s-unit-1)
+// @debug unit-var(sm ('+' 1)); // calc(var(--s-unit-sm) + 1)

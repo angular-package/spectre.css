@@ -1,0 +1,14 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Status: DONE
+// The `map.get()` function.
+@function get($map, $keys, $default-value: null) {
+  @if type-of($map) == map and list.length($keys) and map.has-key($map, $keys...) {
+    @if map.get($map, $keys...) {
+      @return map.get($map, $keys...);
+    }
+  }
+  @return $default-value;
+}

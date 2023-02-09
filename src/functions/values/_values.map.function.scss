@@ -1,0 +1,116 @@
+// Sass.
+@use 'sass:list';
+
+// - list.
+@use '../list/nth/list.nth-from.function' as _list;
+
+// - map.
+@use '../map';
+
+// - string.
+@use '../string';
+
+// Status: REVIEW: Simplify.
+// The `map()` function.
+@function map($values, $keys...) {
+  $map: ();
+  @if list.length($values) > 0 {
+    $index: 1;
+    @each $key in $keys {
+      @if list.length($values) >= $index {
+        $value: list.nth($values, $index);
+        @if type-of($key) == list {
+          $map: -map-set($map, $key, $value);
+        } @else {
+          @each $name, $type in $key {
+            // TODO: support list.
+            @if $type == map {
+              @if type-of($value) == map {
+                @each $map-name, $map-type in $name {
+                  @each $map-key in $map-name {
+                    $map: -map-set($map, $map-key, map.get($value, $map-key), $map-type...);
+                  }
+                }
+              }
+            } @else {
+              @if type-of($key) == map {
+                $map: -map-set($map, $name, map.get($value, $name, $value), $type...);
+              } @else if type-of($name) == list or type-of($name) == string {
+                $map: -map-set($map, $name, $value);
+              }
+            }
+          }
+        }
+      }
+
+      // FEATURE: Arbitrary parameter with the three dots 'name...' indicates to set map rest of the values under the `name` key.
+      @if list.length($keys) == $index and list.length($values) >= $index {
+        @each $k in $key {
+          @if type-of($k) == string and string.index($k, '...') {
+            $key: list.set-nth($key, list.length($key), string.replace($k, first '...' ''));
+            @if type-of(list.nth($values, $index)) == map {
+              $values: map.get(list.nth($values, $index), string.replace($k, first '...' ''), $values);
+            } @else {
+              $values: _list.nth-from($values, $index);
+            }
+
+            $map: map.set($map, $key, $values);
+          }
+        }
+      }
+
+      $index: $index + 1;
+    }
+  }
+  @return $map;
+}
+
+@function -map-set($map, $key, $value, $type...) {
+  @return if(not string.index(string.join('', $key...), '...'), map.set($map, $key, $value, $type...), $map);
+}
+
+// Examples.
+// string key
+// @debug map(a b c, key1, key2, key3); // (key1: a, key2: b, key3: c)
+
+// string key as list
+// @debug map(a b c, (key1, key1-2), key2, key3); // (key1: (key1-2: a), key2: b, key3: c) // TODO
+
+// map to determine the type
+// @debug map(a b c, (key1: string), (key2: number), key3); // (key1: a, key3: c)
+
+// pick from the map.
+// @debug map((key1: a, key2: 2) b c, (key1: string, key2: number), (key2: number), key3); // (key1: a, key3: c)
+
+// map to obtain key of the type
+// @debug map(a '1' b 2 c 3 d 4 e 5 f 6 g 7 h i j k l m n o p r s t u w y z, key, (key-string: string, key-number: number)); // (key: a, key-string: "1")
+// @debug map(a 1 b 2 c 3 d 4 e 5 f 6 g 7 h i j k l m n o p r s t u w y z, key, (key-string: string, key-number: number)); // (key: a, key-number: 1)
+// @debug map(a b c d e f g h i j k l m n o p r s t u w y z, ('1', 2), ((1, '2'): (string, number)), '3'); // ("1": (2: a), 1: ("2": b), "3": c)
+
+// query
+// @debug map(nth (a b c d) any '==' 1 2 3, select, from, occurrence, operator, 'operand...'); // (select: nth, from: a b c d, occurrence: any, operator: "==", "operand": 1 2 3)
+// @debug map(
+//   nth (a b c d) any '==' 1 2 3,
+//   (select: index nth quantity type), (from: list), (occurrence: any all first last), (operator: string), 'operand...'
+// ); // (select: nth, from: a b c d, occurrence: any, operator: "==", "operand": 1 2 3)
+
+// @debug map(
+//   nth (a b c d) any '==' 1 2 3,
+//   (select: index nth quantity type), (from, list), ((where, occurrence): any all first last), ((where, operator): string), (where, 'operand...')
+// ); // (select: nth, from: (list: a b c d), where: (occurrence: any, operator: "==", "operand": 1 2 3))
+
+// list with the map
+// @debug map(
+//   (select: nth) (from: a b c d) (occurrence: any) (operator: '==') (operand: 1 2 3),
+//   (select: index nth quantity type), (from: list), (occurrence: any all first last), (operator: string), 'operand...'
+// ); // (select: nth, from: a b c d, occurrence: any, operator: "==", "operand": 1 2 3)
+
+// @debug map(
+//   nth (a b c d) any '==' (1 2 3) 5,
+//   (select: index nth quantity type),
+//   (from, list),
+//   ((where, occurrence): any all first last),
+//   ((where, operator): string),
+//   (operand: list),
+//   (limit: number list)
+// ); // (select: nth, from: (list: a b c d), where: (occurrence: any, operator: "=="), operand: 1 2 3, limit: 5)

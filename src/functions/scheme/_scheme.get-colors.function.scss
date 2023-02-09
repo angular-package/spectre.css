@@ -1,0 +1,28 @@
+// Modules.
+@use '../map';
+
+// Functions
+@use 'scheme.is.function' as *;
+
+// Status: REVIEW: Check.
+// The `scheme-get-colors()` function.
+@function get-colors($colors, $scheme) {
+  // @if type-of($colors) != map {
+  //   @if type-of($scheme) == string {
+  //     $colors: (
+  //       $scheme: $colors,
+  //     );
+  //   } @else {
+  //     $colors: (
+  //       dark: $colors,
+  //       light: $colors,
+  //       normal: $colors,
+  //     );
+  //   }
+  // }
+
+  @if is($scheme) {
+    @return map.get($colors, $scheme);
+  }
+  @return $colors;
+}

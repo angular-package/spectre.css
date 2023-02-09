@@ -1,8 +1,0 @@
-// Functions.
-@use 'var-name.function' as *;
-
-// The `css-var()` function returns the CSS variable of the given `$name` and optional `$var`.
-@function css-var($name, $backup: null, $var: (), $dictionary: null) {
-  $var: if($dictionary, $dictionary, $var);
-  @return if($backup, var(var-name($name, $var), $backup), var(var-name($name, $var)));
-}

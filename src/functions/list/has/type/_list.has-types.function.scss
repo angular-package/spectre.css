@@ -1,0 +1,70 @@
+// Functions.
+@use 'list.has-all-types.function' as *;
+@use 'list.has-any-types.function' as *;
+@use 'list.has-type.function' as *;
+
+// Status: DONE
+// The `has-types()` function.
+// ? $occurrence: all/any/only
+// ? $operator: ==, !=
+// ? $type: arglist bool calculation color function list map null number string
+@function has-types($list, $occurrence: any, $operator: '==', $where...) {
+  $result: if($occurrence == all, true, false);
+  @if type-of($operator) == string {
+    @return -list-has-types($list, $occurrence, $operator, $where...);
+  } @else {
+    $expected-result: $operator;
+    @each $condition in $where {
+      $result: -list-has-types($list, $condition...) == $expected-result;
+      @if ($occurrence == all and not $result) or ($occurrence == any and $result) {
+        @return $result;
+      }
+    }
+  }
+  @return $result;
+}
+
+// Private `-list-has-types()` function.
+@function -list-has-types($list, $occurrence, $operator, $types...) {
+  @if $occurrence == all {
+    @return list-has-all-types($list, $operator, $types...);
+  } @else if $occurrence == any {
+    @return list-has-any-types($list, $operator, $types...);
+  }
+  @return if($occurrence == only, has-type($list, $occurrence, $operator, $types...), false);
+}
+
+// Examples.
+// @debug '-- any';
+// @debug has-types(('a', 'b', 'c'), any, '==', string, number, bool); // true
+// @debug has-types(('a', 'b', 'c'), any '==' string number bool...); // true
+// @debug has-types(('a', 'b', 1, 'c'), any, '==', number); // true
+// @debug has-types(('a', ('b', 'c'), 4, null), any, '==', string, null, list, number); // true
+// @debug has-types(('a', ('b', 'c'), 4, null, ('a': 1)), any, '==', string, null, list, number, map); // true
+// @debug has-types(('a', ('b', 'c'), null), any, '==', list); // true
+// @debug has-types(('a', false, 'b', 'c'), any, '==', bool); // true
+// @debug has-types(('a', false, 'b', 'c'), any, '==', list); // false
+// @debug has-types(('a', false, 'b', 'c'), any, '==', number, null); // false
+
+// @debug '-- all';
+// @debug has-types(('a', 'b', 'c'), all, '==', string, number); // false
+// @debug has-types(('a', 'b', 'c', null), all, '==', null); // true
+// @debug has-types(('a', 'b', 1, 'c'), all, '==', number); // true
+// @debug has-types(('a', 'b', 1, 'c'), all, '==', number, null); // false
+// @debug has-types(('a', ('b', 'c'), null), all, '==', string, list, null, number); // false
+// @debug has-types(('a', false, 'b', 5, 'c'), all, '==', string, number); // true
+// @debug has-types(('a', false, 'b', 5, 'c'), all, '==', string, number, bool); // true
+// @debug has-types(('a', false, 'b', 5, 'c'), all, '==', string, number, bool, list); // false
+
+// @debug '-- only';
+// @debug has-types(('a', 'b', 'c'), only, '==', string); // true
+// @debug has-types((1, 2, 3), only, '==', number); // true
+// @debug has-types((true, false, false), only, '==', bool); // true
+// @debug has-types((null, null, null), only, '==', null); // true
+// @debug has-types(((a: 1), (a: 2), (b: 3)), only, '==', map); // true
+// @debug has-types(((null, null), (null,)), only, '==', list); // true
+// @debug has-types((#313131, #222222), only, '==', color); // true
+
+// Multiple.
+// @debug has-types(('a', 1, 'b', 2, 'c', (a: 1), (1, 2), 5, 'd'), all, true, any '==' string, any '==' bool); // false
+// @debug has-types(('a', 1, 'b', 2, 'c', (a: 1), (1, 2), 5, 'd'), all, false, all '==' bool, all '==' null); // true
