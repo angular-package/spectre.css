@@ -1,47 +1,37 @@
 // Sass.
 @use 'sass:map';
 
-// Functions.
-@use '../functions/var/css-var.function' as *;
-@use '../functions/var/get-var.function' as *;
-@use '../functions/var/unit-var.function' as *;
-
-// Variables.
-@use '../borders/variables/border.var' as *;
-@use 'line-height' as *;
-@use 'unit-sizes' as *;
-
-// TODO: remove
-// @debug map.get($border, 'size', '');
+// Modules.
+@use '../var';
 
 // Control size.
 // $control-size-sm: $unit-7 !default; // --#{$var-prefix}-control-size-sm.
-$control-size-sm: unit-var('7') !default; // --#{$var-prefix}-control-size-sm.
+$control-size-sm: var.unit-var(7) !default; // --#{$var-prefix}-control-size-sm.
 
 // $control-size: $unit-9 !default; // --#{$var-prefix}-control-size.
-$control-size: unit-var('9') !default; // --#{$var-prefix}-control-size.
+$control-size: var.unit-var(9) !default; // --#{$var-prefix}-control-size.
 
 // $control-size-lg: $unit-10 !default; // --#{$var-prefix}-control-size-lg.
-$control-size-lg: unit-var('10') !default; // --#{$var-prefix}-control-size-lg.
+$control-size-lg: var.unit-var(10) !default; // --#{$var-prefix}-control-size-lg.
 
 // Control padding.
 // $control-padding-x: $unit-2 !default; // --#{$var-prefix}-control-padding-x.
-$control-padding-x: unit-var('2') !default; // --#{$var-prefix}-control-padding-x.
+$control-padding-x: var.unit-var(2) !default; // --#{$var-prefix}-control-padding-x.
 
 // $control-padding-x-sm: $unit-2 * 0.75 !default; // --#{$var-prefix}-control-padding-x-sm.
-$control-padding-x-sm: get-var(('unit', '2'), ('*', 0.75)) !default; // --#{$var-prefix}-control-padding-x-sm.
+$control-padding-x-sm: var.get(unit 2, ('*' 0.75)) !default; // --#{$var-prefix}-control-padding-x-sm.
 
 // $control-padding-x-lg: $unit-2 * 1.5 !default; // --#{$var-prefix}-control-padding-x-lg.
-$control-padding-x-lg: get-var(('unit', '2'), ('*', 1.5)) !default; // --#{$var-prefix}-control-padding-x-lg.
+$control-padding-x-lg: var.get(unit 2, ('*' 1.5)) !default; // --#{$var-prefix}-control-padding-x-lg.
 
 // $control-padding-y: ($control-size - $line-height) * 0.5 - $border-width !default; // --#{$var-prefix}-control-padding-y.
-$control-padding-y: calc((css-var(('control', 'size')) - css-var(('line', 'height'))) * 0.5 - css-var(('border', 'size', 'md'))) !default; // --#{$var-prefix}-control-padding-y.
+$control-padding-y: calc((var.css(control size) - var.css(line height)) * 0.5 - var.css(border size md)) !default; // --#{$var-prefix}-control-padding-y.
 
 // $control-padding-y-sm: ($control-size-sm - $line-height) * 0.5 - map.get($border, 'size', '') !default; // --#{$var-prefix}-control-padding-y-sm.
-$control-padding-y-sm: calc((css-var(('control', 'size', 'sm')) - css-var(('line', 'height'))) * 0.5 - css-var(('border', 'size', 'md'))) !default; // --#{$var-prefix}-control-padding-y-sm.
+$control-padding-y-sm: calc((var.css(control size sm) - var.css(line height)) * 0.5 - var.css(border size md)) !default; // --#{$var-prefix}-control-padding-y-sm.
 
 // $control-padding-y-lg: ($control-size-lg - $line-height) * 0.5 - map.get($border, 'size', '') !default; // --#{$var-prefix}-control-padding-y-lg.
-$control-padding-y-lg: calc((css-var(('control', 'size', 'lg')) - css-var(('line', 'height'))) * 0.5 - css-var(('border', 'size', 'md'))) !default; // --#{$var-prefix}-control-padding-y-lg.
+$control-padding-y-lg: calc((var.css(control size lg) - var.css(line height)) * 0.5 - var.css(border size md)) !default; // --#{$var-prefix}-control-padding-y-lg.
 
 // Control icon.
 $control-icon-size: 0.8rem !default; // --#{$var-prefix}-control-icon-size.

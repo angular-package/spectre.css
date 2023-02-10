@@ -1,0 +1,20 @@
+$unit-size: (
+  rem: 1rem,
+  0: 0rem, // --#{$var-prefix}-unit-0-#{$var-suffix}
+
+  o: 0.05rem, // --#{$var-prefix}-unit-o-#{$var-suffix}
+  h: 0.1rem,  // --#{$var-prefix}-unit-h-#{$var-suffix}
+
+  1: 0.2rem,  // --#{$var-prefix}-unit-1-#{$var-suffix}
+  2: 0.4rem,  // --#{$var-prefix}-unit-2-#{$var-suffix}
+  3: 0.6rem,  // --#{$var-prefix}-unit-3-#{$var-suffix}
+  4: 0.8rem,  // --#{$var-prefix}-unit-4-#{$var-suffix
+  5: 1rem,    // --#{$var-prefix}-unit-5-#{$var-suffix}
+  6: 1.2rem,  // --#{$var-prefix}-unit-6-#{$var-suffix}
+  7: 1.4rem,  // --#{$var-prefix}-unit-7-#{$var-suffix}
+  8: 1.6rem,  // --#{$var-prefix}-unit-8-#{$var-suffix}
+  9: 1.8rem,  // --#{$var-prefix}-unit-9-#{$var-suffix}
+  10: 2rem,   // --#{$var-prefix}-unit-10-#{$var-suffix}
+  12: 2.4rem, // --#{$var-prefix}-unit-12-#{$var-suffix}
+  16: 3.2rem  // --#{$var-prefix}-unit-16-#{$var-suffix}
+) !default;

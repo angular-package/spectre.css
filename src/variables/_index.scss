@@ -4,13 +4,16 @@
 
 // Files.
 @forward 'blur.var';
-@forward 'control';
+@forward 'control.var';
 @forward 'core';
-@forward 'font-sizes';
+@forward 'corners.var';
+@forward 'dictionary.var';
+@forward 'font-size.var';
 @forward 'fonts';
 @forward 'html.var';
 @forward 'line-height';
-@forward 'sides-corners';
-@forward 'sizes.var';
-@forward 'unit-sizes';
-@forward 'z-index';
+@forward 'query.var';
+@forward 'sides.var';
+@forward 'size.var';
+@forward 'unit-size.var';
+@forward 'z-index.var';
