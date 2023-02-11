@@ -3,7 +3,7 @@
 @use 'sass:meta';
 
 // Functions.
-@use '../compare.function' as *;
+@use '../functions/compare.function' as *;
 @use 'nth/list.nth.function' as *;
 @use 'nth/list.nth-first.function' as *;
 

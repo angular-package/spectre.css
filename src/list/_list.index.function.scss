@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 // Functions.
-@use '../compare.function' as *;
+@use '../functions/compare.function' as *;
 @use 'nth/list.nth-first.function' as *;
 
 // Status: DONE

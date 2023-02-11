@@ -6,7 +6,8 @@
 // The `calculate()` function.
 @function calculate($operation...) {
   @each $value, $operator, $operand in if(list.length($operation) == 3, ($operation,), $operation){
-    @if $value and $operand {
+    @if (meta.type-of($value) == number or meta.type-of($value) == calculation)
+    and (meta.type-of($operand) == number or meta.type-of($operand) == calculation) {
       $value: if(meta.type-of($value) == calculation, meta.calc-args($value), $value);
       $operand: if(meta.type-of($operand) == calculation, meta.calc-args($operand), $operand);
       @if $operator == '+' {

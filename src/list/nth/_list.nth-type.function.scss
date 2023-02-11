@@ -2,7 +2,7 @@
 @use 'sass:list';
 
 // Functions.
-@use '../../compare.function' as *;
+@use '../../functions/compare.function' as *;
 @use 'list.nth-first.function' as *;
 
 // Status: DONE.

@@ -2,7 +2,7 @@
 @use 'sass:list';
 
 // Functions.
-@use '../../compare.function' as *;
+@use '../../functions/compare.function' as function;
 
 // Status: DONE
 // The `get-number()` function returns the first occurring number, otherwise null.
@@ -11,7 +11,7 @@
   @each $element in $list {
     @if type-of($element) == number {
       @if type-of($value) == number {
-        @if compare($element, $operator, $value) {
+        @if function.compare($element, $operator, $value) {
           $result: list.append($result, $element, list.separator($list));
         }
       } @else {
