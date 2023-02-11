@@ -1,0 +1,15 @@
+// Functions.
+@use '../../borders/functions/border-var.function' as *;
+@use '../../dots/functions/var/dot-var.function' as *;
+@use 'var.get.function' as *;
+
+// Status: TODO: Check
+// The `module-var()` function.
+@function module-var($module-name, $name, $adjust: null, $backup: null, $dictionary: ()) {
+  @if $module-name == 'dots' {
+    @return dot-var($name, $adjust, $backup, $dictionary);
+  } @else if $module-name == 'borders' {
+    @return border-var($name, $adjust, $backup, $dictionary);
+  }
+  @return get($name, $adjust, $backup: $backup, $dictionary: $dictionary);
+}

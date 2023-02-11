@@ -1,0 +1,42 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:meta';
+
+// Modules.
+@use '../../math';
+
+// Status: DONE
+// The function `adjust()` returns CSS calc function with the given `$value` adjusted.
+@function adjust($var, $adjust: null) {
+  @if $adjust {
+    $calculate: true;
+    $operator: '+';
+    $value: $adjust;
+    @if list.length($adjust) > 1 {
+      $operator: list.nth($adjust, 1);
+      $value: list.nth($adjust, 2);
+    }
+    @if
+    ($operator == '+' and math.strip-unit($value) == 0) or
+    ($operator == '*' and math.strip-unit($value) == 1) {
+      $calculate: false;
+    }
+    @if $calculate == true and type-of($value) == number {
+      @return math.calculate($var $operator $value);
+    }
+  }
+  @return $var;
+}
+
+// Examples.
+// empty adjust
+// @debug adjust(var(--s-layout-spacing)); // var(--s-layout-spacing)
+
+// adjust number with default + operator
+// @debug adjust(var(--s-layout-spacing), 27); // calc(var(--s-layout-spacing) + 27)
+// @debug adjust(var(--s-layout-spacing), 1); // calc(var(--s-layout-spacing) + 1)
+
+// adjust with different operator
+// @debug adjust(var(--s-layout-spacing), '/' 1); // calc(var(--s-layout-spacing) / 1)
+// @debug adjust(calc(var(--s-layout-spacing) + 2), '*' 2); // calc((var(--s-layout-spacing) + 2) * 2)
+// @debug adjust(var(--s-layout-spacing), '+' 0); // var(--s-layout-spacing)

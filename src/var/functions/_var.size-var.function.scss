@@ -1,0 +1,43 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Variables.
+@use '../../variables/size.var' as variables;
+
+// Functions.
+@use 'var.get.function' as *;
+
+// Status: DONE
+// The `size-var()` function.
+@function size-var($size, $adjust: null, $backup: null, $dictionary: ()) {
+  $available-sizes: map.keys(variables.$size);
+  @if not list.index($available-sizes, list.nth($size, 1)) {
+    @warn 'Unit size #{$size} is not set. Try: #{$available-sizes}';
+  }
+  @return get(
+    list.join(size, $size, list.separator($size)),
+    $adjust,
+    null,
+    $backup,
+    $dictionary
+  );
+}
+
+// Examples.
+// @debug size-var(sm); // var(--s-size-sm)
+// @debug size-var(xlg); // Warning: Unit size xlg is not set. Try, xs, sm, md, lg, xl, 2x
+
+// adjust
+// @debug size-var(sm, 30px); // calc(var(--s-size-sm) + 30px);
+// @debug size-var(sm ('+' 30px)); // calc(var(--s-size-sm) + 30px);
+
+// backup
+// @debug size-var(sm, $backup: 5px); // var(--s-size-sm, 5px);
+
+// adjust + backup
+// @debug size-var(sm, 30px, 5px); // calc(var(--s-size-sm, 5px) + 30px);
+
+// adjust + backup + dictionary
+// @debug size-var(sm, 1px, 30px, (size: s)); // calc(var(--s-s-sm, 30px) + 1px)
+// @debug size-var(sm, 1px, 30px, (size: s, separator: '')); // calc(var(--sssm, 30px) + 1px)

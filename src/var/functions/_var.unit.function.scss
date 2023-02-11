@@ -1,0 +1,27 @@
+// Sass.
+@use 'sass:meta';
+
+// Functions.
+@use 'var.css.function' as *;
+
+// Status: DONE
+// The `unit()` function.
+@function unit($var, $unit: null, $dictionary: ()) {
+  @return if(
+    $unit,
+    calc($var * if(meta.type-of($unit) == number, $unit, css(unit $unit, null, $dictionary))),
+    $var
+  );
+}
+
+// Examples.
+// @debug unit(layout spacing); // layout spacing
+// @debug unit(var(--s-layout-spacing)); // var(--s-layout-spacing)
+
+// unit rem
+// @debug unit(var(--s-layout-spacing), rem); // calc(var(--s-layout-spacing) * var(--s-unit-rem))
+// @debug unit(var(--s-layout-spacing), px); // calc(var(--s-layout-spacing) * var(--s-unit-px))
+// @debug unit(var(--s-layout-spacing), 1rem); // calc(var(--s-layout-spacing) * 1rem)
+
+// dictionary
+// @debug unit(var(--s-layout-spacing), rem, (unit: u, rem: r)); // calc(var(--s-layout-spacing) * var(--s-u-r))

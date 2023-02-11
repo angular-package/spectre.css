@@ -1,81 +1,42 @@
-// Sass.
-@use 'sass:map';
-
 // Modules.
 @use '../var';
 
-// Control size.
-// $control-size-sm: $unit-7 !default; // --#{$var-prefix}-control-size-sm.
-$control-size-sm: var.unit-var(7) !default; // --#{$var-prefix}-control-size-sm.
-
-// $control-size: $unit-9 !default; // --#{$var-prefix}-control-size.
-$control-size: var.unit-var(9) !default; // --#{$var-prefix}-control-size.
-
-// $control-size-lg: $unit-10 !default; // --#{$var-prefix}-control-size-lg.
-$control-size-lg: var.unit-var(10) !default; // --#{$var-prefix}-control-size-lg.
-
-// Control padding.
-// $control-padding-x: $unit-2 !default; // --#{$var-prefix}-control-padding-x.
-$control-padding-x: var.unit-var(2) !default; // --#{$var-prefix}-control-padding-x.
-
-// $control-padding-x-sm: $unit-2 * 0.75 !default; // --#{$var-prefix}-control-padding-x-sm.
-$control-padding-x-sm: var.get(unit 2, ('*' 0.75)) !default; // --#{$var-prefix}-control-padding-x-sm.
-
-// $control-padding-x-lg: $unit-2 * 1.5 !default; // --#{$var-prefix}-control-padding-x-lg.
-$control-padding-x-lg: var.get(unit 2, ('*' 1.5)) !default; // --#{$var-prefix}-control-padding-x-lg.
-
-// $control-padding-y: ($control-size - $line-height) * 0.5 - $border-width !default; // --#{$var-prefix}-control-padding-y.
-$control-padding-y: calc((var.css(control size) - var.css(line height)) * 0.5 - var.css(border size md)) !default; // --#{$var-prefix}-control-padding-y.
-
-// $control-padding-y-sm: ($control-size-sm - $line-height) * 0.5 - map.get($border, 'size', '') !default; // --#{$var-prefix}-control-padding-y-sm.
-$control-padding-y-sm: calc((var.css(control size sm) - var.css(line height)) * 0.5 - var.css(border size md)) !default; // --#{$var-prefix}-control-padding-y-sm.
-
-// $control-padding-y-lg: ($control-size-lg - $line-height) * 0.5 - map.get($border, 'size', '') !default; // --#{$var-prefix}-control-padding-y-lg.
-$control-padding-y-lg: calc((var.css(control size lg) - var.css(line height)) * 0.5 - var.css(border size md)) !default; // --#{$var-prefix}-control-padding-y-lg.
-
-// Control icon.
-$control-icon-size: 0.8rem !default; // --#{$var-prefix}-control-icon-size.
-
-// Control width.
-$control-width-xs: 180px !default; // --#{$var-prefix}-control-width-xs.
-$control-width-sm: 320px !default; // --#{$var-prefix}-control-width-sm.
-$control-width-md: 640px !default; // --#{$var-prefix}-control-width-md.
-$control-width-lg: 960px !default; // --#{$var-prefix}-control-width-lg.
-$control-width-xl: 1280px !default; // --#{$var-prefix}-control-width-xl.
-
 // Control.
 $control: (
-  'icon': (
-    'size': $control-icon-size
+  icon: (
+    size: 0.8rem
   ),
 
   // Used in: button, form.
-  'padding': (
-    'x': (
-      '': $control-padding-x,
-      'sm': $control-padding-x-sm,
-      'lg': $control-padding-x-lg,
+  padding: (
+    x: (
+      sm: var.get(unit 2, ('*' 0.75)),
+      md: var.unit-var(2),
+      '': var.unit-var(2),
+      lg: var.get(unit 2, ('*' 1.5)),
     ),
-    'y': (
-      '': $control-padding-y,
-      'sm': $control-padding-y-sm,
-      'lg': $control-padding-y-lg,
+    y: (
+      sm: calc((var.css(control size sm) - var.css(line height)) * 0.5 - var.css(border size md)),
+      md: calc((var.css(control size) - var.css(line height)) * 0.5 - var.css(border size md)),
+      '': calc((var.css(control size) - var.css(line height)) * 0.5 - var.css(border size md)),
+      lg: calc((var.css(control size lg) - var.css(line height)) * 0.5 - var.css(border size md)),
     )
   ),
 
   // Used in: button, form.
-  'size': (
-    'sm': $control-size-sm,
-    '': $control-size,
-    'lg': $control-size-lg,
+  size: (
+    sm: var.unit-var(7),
+    md: var.unit-var(9),
+    '': var.unit-var(9),
+    lg: var.unit-var(10),
   ),
 
   // Used in: chip, menu, modal, popover, tooltip.
-  'width': (
-    'xs': $control-width-xs,
-    'sm': $control-width-sm,
-    'md': $control-width-md,
-    'lg': $control-width-lg,
-    'xl': $control-width-xl,
+  width: (
+    xs: 180px,
+    sm: 320px,
+    md: 640px,
+    lg: 960px,
+    xl: 1280px,
   )
 ) !default;

@@ -1,0 +1,30 @@
+// Sass.
+@use 'sass:list';
+
+// Variables.
+@use '../../variables/control.var' as *;
+
+// Functions.
+@use 'var.get.function' as *;
+
+// Status: DONE
+// The `control-width-var()` function.
+@function control-width-var(
+  $size: md,
+  $adjust: null,
+  $unit: false,
+  $backup: null,
+  $dictionary: ()
+) {
+  $available-sizes: map.keys($font);
+  @if not list.index($available-sizes, list.nth($size, 1)) {
+    @warn 'Font size #{$size} is not set. Try: #{$available-sizes}';
+  }
+  @return get(
+    list.join(control width, $size),
+    $adjust,
+    $unit,
+    $backup,
+    $dictionary
+  );
+}

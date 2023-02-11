@@ -1,0 +1,14 @@
+@use '../var';
+
+// var
+// @debug var.adjust(var(--s-layout-spacing)); // var(--s-layout-spacing)
+// @debug var.control-width-var(); // var(--s-control-width-md)
+// @debug var.css(layout spacing); // var(--s-layout-spacing)
+// @debug var.font-size-var(sm); // var(--s-font-size-sm)
+// @debug var.get(primary); // var(--s-primary)
+// @debug var.layout-spacing-var(); // calc(var(--s-layout-spacing-) * var(--s-unit-rem))
+// @debug var.name(layout spacing); // --s-layout-spacing
+// @debug var.negative(var(--s-layout-spacing)); // calc(var(--s-layout-spacing) * -1)
+// @debug var.size-var(sm); // var(--s-size-sm)
+// @debug var.unit-var(1); // var(--s-unit-1)
+// @debug var.unit(layout spacing); // var(--s-layout-spacing)

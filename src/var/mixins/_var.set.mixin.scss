@@ -1,0 +1,30 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use '../functions/var.name.function' as var;
+
+// Status: DONE
+// The `set()` mixin defines the CSS variable with a specified name, value, prefix, and optional suffix.
+@mixin set($name, $values, $dictionary: ()) {
+  @each $variant, $value in $values {
+    #{var.name(if($value, list.join($name, $variant), $name), $dictionary)}: #{if(not $value, $variant, $value)};
+  }
+}
+
+// Examples.
+// div {
+//   @include set(blur, 0.05rem); // --s-blur: 0.05rem;
+//   @include set(border blur, 0.05rem); // --s-border-blur: 0.05rem;
+//   @include set(blur, (low: 0.05rem, medium: 0.075rem, high: 0.1rem));
+
+  // --s-blur-low: 0.05rem;
+  // --s-blur-medium: 0.075rem;
+  // --s-blur-high: 0.1rem;
+
+  // @include set(window blur, (low: 0.05rem, medium: 0.075rem, high: 0.1rem), (blur: b, window: w));
+
+  // --s-w-b-low: 0.05rem;
+  // --s-w-b-medium: 0.075rem;
+  // --s-w-b-high: 0.1rem;
+// }

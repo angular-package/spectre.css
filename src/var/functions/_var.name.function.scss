@@ -1,0 +1,22 @@
+// Functions.
+@use '../../dictionary';
+@use '../../list';
+@use '../../functions/name.function' as function;
+
+// Status: DONE
+// The `name()` function.
+@function name($name, $dictionary: ()) {
+  @return --#{function.name(
+      list.remove-string($name, '!'),
+      dictionary.merge(var, $dictionary or ())
+    )};
+}
+
+// Examples.
+// @debug name(layout spacing); // --s-layout-spacing
+
+// dictionary
+// @debug name(primary, (primary: pp)); // --s-pp
+// @debug name(layout spacing, (layout: lay, spacing: spa)); // --s-lay-spa
+// @debug name(layout spacing, (layout: l, spacing: s)); // --s-l-s
+// @debug name(layout spacing (layout: lay, spacing: spa)); // --s-lay-spa
