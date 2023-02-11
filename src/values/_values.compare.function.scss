@@ -2,7 +2,7 @@
 @use 'sass:list';
 
 // Functions.
-@use '../compare.function' as _compare;
+@use '../functions/compare.function' as _compare;
 
 // Status: DONE
 // The `compare()` function.

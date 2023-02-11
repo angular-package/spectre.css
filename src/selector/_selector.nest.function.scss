@@ -1,11 +1,10 @@
 // Sass.
-// @use 'sass:list';
 @use 'sass:selector';
 
 // Functions.
 @use '../list';
-@use '../replace-parent-placeholder.function' as *;
-@use '../replace-parent-selector.function' as *;
+@use '../functions/replace-parent-placeholder.function' as *;
+@use '../functions/replace-parent-selector.function' as *;
 
 // Status: DONE
 // The `nest()` function.
