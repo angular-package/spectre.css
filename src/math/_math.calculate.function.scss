@@ -1,0 +1,34 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:meta';
+
+// Status: DONE
+// The `calculate()` function.
+@function calculate($operation...) {
+  @each $value, $operator, $operand in if(list.length($operation) == 3, ($operation,), $operation){
+    @if $value and $operand {
+      $value: if(meta.type-of($value) == calculation, meta.calc-args($value), $value);
+      $operand: if(meta.type-of($operand) == calculation, meta.calc-args($operand), $operand);
+      @if $operator == '+' {
+        @return calc($value + $operand);
+      }
+      @if $operator == '-' {
+        @return calc($value - $operand);
+      }
+      @if $operator == '*' {
+        @return calc($value * $operand);
+      }
+      @if $operator == '/' {
+        @return calc($value / $operand);
+      }
+    }
+  }
+  @return null;
+}
+
+// Examples.
+// @debug calculate(15 '+' 13); // 28
+// @debug calculate(15 '-' 12); // 3
+// @debug calculate(55 '*' 17); // 935
+// @debug calculate(42 '/' 14); // 3
+// @debug calculate(15, '+', 13); // 28
