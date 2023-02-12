@@ -1,0 +1,29 @@
+// Modules.
+@use '../../var';
+
+// Functions.
+@use 'color.name.function' as *;
+
+// Status: DONE
+// The `alpha-var()` function returns the CSS variable alpha color of the given `$name`.
+@function alpha-var($name, $alpha: null, $backup: null, $dictionary: ()) {
+  @return var.get(name($name, alpha), $alpha, null, $backup, $dictionary);
+}
+
+// Examples.
+// @debug alpha-var(primary); // var(--s-primary-color-a)
+
+// adjusted
+// @debug alpha-var(primary, 0.1); // calc(var(--s-primary-color-a) + 0.1)
+// @debug alpha-var(primary, -0.1); // calc(var(--s-primary-color-a) + -0.1)
+// @debug alpha-var(primary, '+' 0.9); // calc(var(--s-primary-color-a) + 0.9)
+// @debug alpha-var(primary, '-' 0.9); // calc(var(--s-primary-color-a) - 0.9)
+
+// adjusted + backup
+// @debug alpha-var(primary, 0.1, 0.5); // calc(var(--s-primary-color-a, 0.5) + 0.1)
+// @debug alpha-var(primary, 0.9, 0.5); // calc(var(--s-primary-color-a, 0.5) + 0.9)
+// @debug alpha-var(primary (adjust: 0.9, backup: 0.5)); // calc(var(--s-primary-color-a, 0.5) + 0.9)
+
+// adjusted + backup + dictionary
+// @debug alpha-var(primary, 0.9, 0.5, (primary: p)); // calc(var(--s-p-color-a, 0.5) + 0.9)
+// @debug alpha-var(primary, 0.9, 0.5, (primary: spectre, suffix: basic)); // calc(var(--spectre-primary-color-a-basic, 0.5) + 0.9)

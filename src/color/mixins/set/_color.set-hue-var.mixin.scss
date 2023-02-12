@@ -1,0 +1,71 @@
+// Sass.
+@use 'sass:color';
+@use 'sass:meta';
+
+// Modules.
+@use '../../../math';
+@use '../../../var';
+
+// Functions.
+@use '../../functions/color.hue-var.function' as *;
+@use '../../functions/color.name.function' as *;
+
+// Status: DONE
+// The `set-hue-var()` mixin.
+@mixin set-hue-var($name, $hue: null, $adjust: null, $dictionary: ()) {
+  @if (meta.type-of($hue) == string and not var.is($hue)) or meta.type-of($hue) == list {
+    $hue: hue-var($hue, $adjust, null, $dictionary);
+  } @else {
+    $hue: if(meta.type-of($hue) == color, color.hue($hue), $hue);
+    $hue: if(
+      $adjust,
+      math.calculate(
+        $hue,
+        if(meta.type-of($adjust) == list, $adjust, '+' $adjust)...
+      ),
+      $hue
+    );
+  }
+  @include var.set(name($name, hue), $hue, $dictionary);
+}
+
+// Examples.
+// :host {
+  // number
+  // @include set-hue-var(primary, 20deg); // --s-primary-color-h: 20deg;
+  // @include set-hue-var(primary, 50deg); // --s-primary-color-h: 50deg;
+
+  // number + adjust
+  // @include set-hue-var(primary, 20deg, 7deg); // --s-primary-color-h: 27deg;
+
+  // var
+  // @include set-hue-var(primary, var(--s-different-var)); // --s-primary-color-h: var(--s-different-var);
+
+  // hex
+  // @include set-hue-var(primary, #5755d9); // --s-primary-color-h: --s-primary-color-h: 240.9090909091deg;
+
+  // hex + adjusted
+  // @include set-hue-var(primary, #5755d9, 7deg); // --s-primary-color-h: 247.9090909091deg;
+
+  // var + adjusted
+  // @include set-hue-var(primary, var(--s-different-var), 20deg); // --s-primary-color-h: calc(var(--s-different-var) + 20deg);
+
+  // relative
+  // @include set-hue-var(primary, secondary dark); // --s-primary-color-h: var(--s-secondary-dark-h);
+
+  // relative + adjust
+  // @include set-hue-var(primary, secondary dark, 5deg); // --s-primary-color-h: calc(var(--s-secondary-dark-h) + 5deg);
+  // @include set-hue-var(primary, secondary dark ('+' 1deg)); // --s-primary-color-h: calc(var(--s-secondary-dark-h) + 1deg);
+
+  // relative + backup
+  // @include set-hue-var(primary, secondary dark (backup: 30deg)); // --s-primary-color-h: var(--s-secondary-dark-h, 30deg);
+  // @include set-hue-var(primary, secondary dark (backup: 15deg)); // --s-primary-color-h: var(--s-secondary-dark-h, 15deg);
+  // @include set-hue-var(primary, secondary dark (backup: var(--s-backup-primary, 30deg))); // --s-primary-color-h: var(--s-secondary-color-dark-h, var(--s-backup-primary, 30deg));
+
+  // relative + adjust + backup
+  // @include set-hue-var(primary, secondary dark (backup: 30deg), 15deg); // --s-primary-color-h: calc(var(--s-secondary-dark-h, 30deg) + 15deg);
+  // @include set-hue-var(primary, secondary dark (backup: 15deg), 10deg); // --s-primary-color-h: calc(var(--s-secondary-dark-h, 15deg) + 10deg);
+
+  // relative + backup + dictionary
+  // @include set-hue-var(primary, secondary color, 15deg, (secondary: three)); // --s-primary-color-h: var(--s-three-color-h, 15deg);
+// }

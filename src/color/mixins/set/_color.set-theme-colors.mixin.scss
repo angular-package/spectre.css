@@ -1,0 +1,35 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+// Variables.
+@use '../../../variables/core' as core;
+
+// Module mixins.
+@use '../../../module/module-color-scheme-variants.mixin' as *;
+@use '../../../module/module-theme-variants.mixin' as *;
+
+// Status: REVIEW:
+// The `set-theme-colors()` mixin.
+@mixin set-theme-colors($module, $colors, $theme: null, $dictionary: ()) {
+  @if type-of($theme) == map {
+    @if type-of($colors) == list and list.length($colors) > 0 {
+      @each $theme-name in $colors {
+        @if list.index((dark, light, normal), list.nth($theme-name, 1)) {
+          @include module-color-scheme-variants($module, list.join(($theme,), $theme-name, $separator: 'comma'), $dictionary);
+        } @else {
+          @include module-theme-variants($module, list.join(($theme,), $theme-name, $separator: 'comma'), $dictionary);
+        }
+      }
+    } @else if type-of($colors) == map {
+      @each $theme-name, $theme-colors in $colors {
+        @if list.index((dark, light, normal), $theme-name) {
+          @include module-color-scheme-variants($module, ($theme, $theme-name, $theme-colors), $dictionary);
+        } @else {
+          @include module-theme-variants($module, ($theme, $theme-name, $theme-colors), $dictionary);
+        }
+      }
+    }
+  }
+}

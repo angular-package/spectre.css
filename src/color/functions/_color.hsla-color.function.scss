@@ -1,17 +1,15 @@
 // Modules.
-@use '../map';
-@use '../values';
+@use '../../map';
+@use '../../values';
 
 // Functions.
 @use 'color.alpha-var.function' as *;
 @use 'color.hue-var.function' as *;
-@use 'color.lightness-level-var.function' as *;
 @use 'color.lightness-var.function' as *;
 @use 'color.saturation-var.function' as *;
 
+// Status: DONE
 // The function `hsla-color()` returns the `hsla()` color from a CSS variables of the given `$name`.
-// ('primary', -35.5%, 0.95);
-// ('primary-dark', ('lightness': -35.5%, 'alpha': 0.95));
 @function hsla-color(
   $name,
   $hue: null,
@@ -22,16 +20,20 @@
 ) {
   $color: values.map(
     $name,
-    (name: string list),
-    (lightness: number, (alpha hue saturation: number): map),
-    (alpha: number, (hue saturation: number): map),
-    (hue: number, (saturation: number): map),
+    (name: list string),
+    (lightness: number list, (alpha hue saturation: number list): map),
+    (alpha: number list, (hue saturation: number list): map),
+    (hue: number list, (saturation: number list): map),
     saturation
   );
   @return hsla(
     hue-var(map.get($color, name), map.get($color, hue, $hue), $dictionary: $dictionary),
     saturation-var(map.get($color, name), map.get($color, saturation, $saturation), $dictionary: $dictionary),
-    lightness-var(map.get($color, name), if($lightness, map.get($color, lightness, 0%) + $lightness, map.get($color, lightness)), $dictionary: $dictionary),
+    lightness-var(
+      map.get($color, name),
+      if(type-of($lightness) == number, map.get($color, lightness, 0%) + $lightness, map.get($color, lightness) or $lightness),
+      $dictionary: $dictionary
+    ),
     alpha-var(map.get($color, name), map.get($color, alpha, $alpha), $dictionary: $dictionary)
   );
 }

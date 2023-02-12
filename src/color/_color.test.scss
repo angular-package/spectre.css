@@ -1,7 +1,8 @@
 // @forward 'color';
 @use 'sass:list';
-@use 'color';
+@use '../color';
 
+// functions
 @debug color.alpha-var(primary); // var(--s-primary-color-a)
 @debug color.color(primary); //  hsla(var(--s-primary-color-h), var(--s-primary-color-s), calc(var(--s-primary-color-l) + var(--s-primary-color-l-l)), var(--s-primary-color-a))
 @debug color.get-theme-colors(('red.colors': ('a': 1), ), 'red.colors'); //  (("": ((("a": 1),))),)
@@ -11,3 +12,5 @@
 @debug color.lightness-level-var(dark); // var(--s-dark-color-l-l)
 @debug color.name(dark); // dark color
 @debug color.saturation-var(light); // var(--s-light-color-s)
+
+// mixins

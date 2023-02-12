@@ -1,0 +1,117 @@
+// Sass.
+@use 'sass:meta';
+
+// Modules.
+@use '../../../map';
+@use '../../../math';
+@use '../../../values';
+@use '../../../var';
+
+// Mixins.
+@use '../../functions/color.color.function' as *;
+@use '../../functions/color.name.function' as *;
+@use 'color.set-alpha-var.mixin' as *;
+@use 'color.set-hue-var.mixin' as *;
+@use 'color.set-lightness-var.mixin' as *;
+@use 'color.set-saturation-var.mixin' as *;
+
+// Status: DONE
+// The `set-hsla-color()` mixin sets CSS variable color in hsla form, by splitting it in four CSS variables.
+@mixin set-hsla-color(
+  $name,
+  $hue: null,
+  $saturation: null,
+  $lightness: null,
+  $alpha: null,
+  $color: null,
+  $dictionary: ()
+) {
+  $color: values.map(
+    $color,
+    (color: color string list),
+    (lightness: number list, (alpha hue saturation: number list): map),
+    (alpha: number list, (hue saturation: number list): map),
+    (hue: number list, (saturation: number list): map),
+    saturation
+  );
+
+  // Sets the CSS variable hue.
+  @include set-hue-var(
+    $name,
+    map.get($color, color) or $hue,
+    if(map.get($color, color), math.calculate(map.get($color, hue) '+' $hue) or map.get($color, hue) or $hue, null),
+    $dictionary
+  );
+
+  // Sets the CSS variable saturation.
+  @include set-saturation-var(
+    $name,
+    map.get($color, color) or $saturation,
+    if(map.get($color, color), math.calculate(map.get($color, saturation) '+' $saturation) or map.get($color, saturation) or $saturation, null),
+    $dictionary
+  );
+
+  // Sets the CSS variable lightness.
+  @include set-lightness-var(
+    $name,
+    map.get($color, color) or $lightness,
+    if(map.get($color, color), math.calculate(map.get($color, lightness) '+' $lightness) or map.get($color, lightness) or $lightness, null),
+    $dictionary
+  );
+
+  // Sets the alpha.
+  @include set-alpha-var(
+    $name,
+    map.get($color, color) or $alpha,
+    if(map.get($color, color), math.calculate(map.get($color, alpha) '+' $alpha) or map.get($color, alpha) or $alpha, null),
+    $dictionary
+  );
+
+  @include var.set(name($name), color(($name: hsla)), $dictionary)
+}
+
+// Examples.
+// :host {
+  // standard
+  // @include set-hsla-color(primary dark, 200deg, 84%, 4.9020%, 0.5);
+  // @include set-hsla-color(primary dark, $hue: 200deg, $saturation: 84%, $lightness: 4.9020%, $alpha: 0.5);
+
+  // --s-primary-color-dark-h: 200deg;
+  // --s-primary-color-dark-s: 84%;
+  // --s-primary-color-dark-l: 4.902%;
+  // --s-primary-color-dark-a: 0.5;
+
+  // hex / rgba
+  // @include set-hsla-color(primary dark, $color: #2cacedf1);
+  // @include set-hsla-color(primary dark, $color: rgba(44, 172, 237, 0.95));
+
+  // --s-primary-color-dark-h: 200.207253886deg;
+  // --s-primary-color-dark-s: 84.2794759825%;
+  // --s-primary-color-dark-l: 55.0980392157%;
+  // --s-primary-color-dark-a: 0.9450980392;
+
+  // adjust all
+  // @include set-hsla-color(primary dark, $color: #2cacedf1, $hue: -10deg, $saturation: -5%, $lightness: -15%, $alpha: -0.5);
+  // @include set-hsla-color(primary dark, $color: #2cacedf1 -15% -0.5 -10deg -5%);
+
+  // --s-primary-color-dark-h: 190.207253886deg;
+  // --s-primary-color-dark-s: 79.2794759825%;
+  // --s-primary-color-dark-l: 40.0980392157%;
+  // --s-primary-color-dark-a: 0.4450980392;
+
+  // sum adjustments
+  // @include set-hsla-color(primary dark, $color: #2cacedf1 -15% -0.5 -10deg -5%, $hue: -10deg, $saturation: -5%, $lightness: -15%, $alpha: -0.1);
+
+  // --s-primary-color-dark-h: 180.207253886deg;
+  // --s-primary-color-dark-s: 74.2794759825%;
+  // --s-primary-color-dark-l: 25.0980392157%;
+  // --s-primary-color-dark-a: 0.3450980392;
+
+  // @include set-hsla-color(primary dark, $color: #2cacedf1 ('*' 0.5) -0.9 ('*' 0.3) ('/' 5));
+  // @include set-hsla-color(primary dark, $color: #2cacedf1 ('*' 0.5) ('-' 0.9) ('*' 0.3) ('/' 5), $hue: '*' 0.3, $saturation: '/' 5, $lightness: '*' 0.5, $alpha: '-' 0.9);
+
+  // --s-primary-color-dark-h: 60.0621761658deg;
+  // --s-primary-color-dark-s: 16.8558951965%;
+  // --s-primary-color-dark-l: 27.5490196078%;
+  // --s-primary-color-dark-a: 0.0450980392;
+// }

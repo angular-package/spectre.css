@@ -1,0 +1,163 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Modules.
+@use '../../selector';
+
+// Functions.
+@use 'color.property-color.mixin' as *;
+@use 'color.scheme-color.mixin' as *;
+
+// Status: REVIEW:
+// The `color()` mixin contains the `color` style of the given `$color` CSS variable name without the prefix.
+@mixin color(
+  $color,
+  $hue: null,
+  $saturation: null,
+  $lightness: null,
+  $alpha: null,
+  $backup: null,
+  $important: false,
+  $selector: null,
+  $dictionary: (),
+) {
+  @if $selector {
+    #{selector.nest($selector)} {
+      @include -color(
+        $color,
+        $hue,
+        $saturation,
+        $lightness,
+        $alpha,
+        $backup,
+        $important,
+        $selector,
+        $dictionary
+      );
+    }
+  } @else {
+    @include -color(
+      $color,
+      $hue,
+      $saturation,
+      $lightness,
+      $alpha,
+      $backup,
+      $important,
+      $selector,
+      $dictionary
+    );
+  }
+}
+
+// Private helper function.
+@mixin -color(
+  $color,
+  $hue,
+  $saturation,
+  $lightness,
+  $alpha,
+  $backup,
+  $important,
+  $selector,
+  $dictionary
+) {
+  @if type-of($color) == map {
+    @if list.index(map.keys($color), dark) or list.index(map.keys($color), light) or list.index(map.keys($color), normal) {
+      @include scheme-color($color, $hue, $saturation, $lightness, $alpha, $backup, $important, $dictionary);
+    } @else {
+      @include property-color(
+        if(list.index(map.values($color), hsla), (color: $color), $color),
+        $hue, $saturation, $lightness, $alpha, $backup, $important, $dictionary
+      );
+    }
+  } @else {
+    @include property-color((color: $color), $hue, $saturation, $lightness, $alpha, $backup, $important, $dictionary);
+  }
+}
+
+// Examples.
+// :host {
+  // var color
+  // @include color(primary dark); // color: var(--s-primary-color-dark);
+
+  // different property
+  // @include color((background-color: primary dark)); // background-color: var(--s-primary-color-dark);
+
+  // properties
+  // @include color((color background background-color: primary dark));
+  // color: var(--s-primary-color-dark);
+  // background: var(--s-primary-color-dark);
+  // background-color: var(--s-primary-color-dark);
+
+  // backup
+  // @include color(primary dark, $backup: orange); // color: var(--s-primary-color-dark, orange);
+  // @include color(primary dark (backup: orange)); // color: var(--s-primary-color-dark, orange);
+
+  // backup + negative
+  // @include color(primary dark (backup: orange, negative: true)); // color: calc(var(--s-primary-color-dark, orange) * -1);
+  // @include color('!' primary dark (backup: orange)); // color: calc(var(--s-primary-color-dark, orange) * -1);
+
+  // important
+  // @include color(primary silver, $important: true); // color: var(--s-primary-color-silver) !important;
+
+  // selector nest
+  // @include color(primary silver, $selector: '.active, .disabled');
+  // :host .active, :host .disabled {
+  //   color: var(--s-primary-silver-color);
+  // }
+
+  // hsla color
+  // @include color(primary dark ':hsla'); // color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a));
+  // @include color((primary dark: hsla)); // color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a));
+
+  // hsla + adjust hue
+  // @include color(primary dark ':hsla', 15deg); // color: hsla(calc(var(--s-primary-color-h) + 15deg), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a));
+  // @include color((primary dark: hsla), 15deg); // color: hsla(calc(var(--s-primary-color-h) + 15deg), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a));
+
+  // hsla + adjust hue saturation lightness alpha
+  // @include color(primary dark ':hsla', 15deg, 45%, 23%, 0.4); // color: hsla(calc(var(--s-primary-color-h) + 15deg), calc(var(--s-primary-color-s) + 45%), calc(var(--s-primary-color-l) + 23%), calc(var(--s-primary-color-a) + 0.4));
+  // @include color(primary dark ':hsla', -15deg, -45%, -23%, -0.2); // color: hsla(calc(var(--s-primary-color-h) - 15deg), calc(var(--s-primary-color-s) - 45%), calc(var(--s-primary-color-l) - 23%), calc(var(--s-primary-color-a) - 0.2));
+  // @include color((primary dark: hsla), '*' 5deg, '/' 3, '*' 23%, '+' 0.2); // color: hsla(calc(var(--s-primary-color-h) * 5deg), calc(var(--s-primary-color-s) / 3), calc(var(--s-primary-color-l) * 23%), calc(var(--s-primary-color-a) + 0.2));
+  // @include color(((primary dark,) (hue: '*' 5deg, saturation: '/' 3, lightness: '*' 23%, alpha: '+' 0.2): hsla)); // color: hsla(calc(var(--s-primary-dark-h) * 5deg), calc(var(--s-primary-dark-s) / 3), calc(var(--s-primary-dark-l) * 23%), calc(var(--s-primary-dark-a) + 0.2));
+
+  // color properties + adjusted hue and lightness alpha
+  // @include color((
+  //   color: (primary dark: hsla),
+  //   background-color: ((primary dark, 15%, 0.1): hsla),
+  //   background: ('orange' light: hsla),
+  //   border-color: (border-color)
+  // ), 15deg);
+
+  // color: hsla(calc(var(--s-primary-color-h) + 15deg), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a));
+  // background-color: hsla(calc(var(--s-primary-color-dark-h) + 15deg), var(--s-primary-color-dark-s), calc(var(--s-primary-color-dark-l) + 15%), calc(var(--s-primary-color-dark-a) + 0.1));
+  // background: hsla(calc(var(--s-orange-color-h) + 15deg), var(--s-orange-color-s), var(--s-orange-color-l), var(--s-orange-color-a));
+  // border-color: var(--s-border-color);
+
+  // scheme + color properties + adjusted hue and lightness alpha
+  // @include color((
+  //   dark: (
+  //     color: (primary dark: hsla),
+  //     background-color: ((primary dark, 15%, 0.1): hsla),
+  //     background: ('orange' light: hsla),
+  //     border-color: (border-color)
+  //   ),
+  //   light: (
+  //     background: ('orange' light: hsla),
+  //   )
+  // ), 15deg);
+  // @media (prefers-color-scheme: dark) {
+  //   :host {
+  //     color: hsla(calc(var(--s-primary-color-h) + 15deg), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a));
+  //     background-color: hsla(calc(var(--s-primary-color-dark-h) + 15deg), var(--s-primary-color-dark-s), calc(var(--s-primary-color-dark-l) + 15%), calc(var(--s-primary-color-dark-a) + 0.1));
+  //     background: hsla(calc(var(--s-orange-color-h) + 15deg), var(--s-orange-color-s), var(--s-orange-color-l), var(--s-orange-color-a));
+  //     border-color: var(--s-border-color);
+  //   }
+  // }
+  // @media (prefers-color-scheme: light) {
+  //   :host {
+  //     background: hsla(calc(var(--s-orange-color-h) + 15deg), var(--s-orange-color-s), var(--s-orange-color-l), var(--s-orange-color-a));
+  //   }
+  // }
+// }

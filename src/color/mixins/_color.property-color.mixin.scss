@@ -1,0 +1,72 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+// Modules.
+@use '../../selector';
+@use '../../scheme';
+
+// Functions.
+@use '../functions/color.color.function' as *;
+@use '../../functions/important.function' as *;
+
+// Status: REVIEW:
+// The `property-color()` mixin contains the `color` style of the given `$color` CSS variable name without the prefix.
+@mixin property-color(
+  $property-color,
+  $hue: null,
+  $saturation: null,
+  $lightness: null,
+  $alpha: null,
+  $backup: null,
+  $important: false,
+  $dictionary: (),
+) {
+  @each $property, $color in $property-color {
+    @each $value in $property {
+      #{$value}: color($color, $hue, $saturation, $lightness, $alpha, $backup, $dictionary) + important($important);
+    }
+  }
+}
+
+// Examples.
+// :host {
+  // property var color
+  // @include property-color(border color); // var(--s-border-color);
+
+  // property hsla color
+  // @include property-color(border color ':hsla'); // var(--s-border-color);
+
+  // property hsla color + adjust
+  // @include property-color(border color ':hsla'); // color: hsla(var(--s-border-color-h), var(--s-border-color-s), var(--s-border-color-l), var(--s-border-color-a));
+
+  // property color
+  // @include property-color((border-color: border color)); //
+
+  // property hsla color
+  // @include property-color((border-color: (primary color: hsla))); // border-color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a));
+  // @include property-color((border-color: border color ':hsla')); // border-color: hsla(var(--s-border-color-h), var(--s-border-color-s), var(--s-border-color-l), var(--s-border-color-a));
+
+  // property hsla color + adjust lightness alpha
+  // @include property-color((border-color: ((primary color,) 15% 0.5: hsla))); // border-color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), calc(var(--s-primary-color-l) + 15%), calc(var(--s-primary-color-a) + 0.5));
+
+  // properties + same color
+  // @include property-color(( background color border-color: border color));
+  // background: var(--s-border-color);
+  // color: var(--s-border-color);
+  // border-color: var(--s-border-color);
+
+  // properties + same hsla color
+  // @include property-color(( background color border-color: (border color: hsla)));
+  // background: hsla(var(--s-border-color-h), var(--s-border-color-s), var(--s-border-color-l), var(--s-border-color-a));
+  // color: hsla(var(--s-border-color-h), var(--s-border-color-s), var(--s-border-color-l), var(--s-border-color-a));
+  // border-color: hsla(var(--s-border-color-h), var(--s-border-color-s), var(--s-border-color-l), var(--s-border-color-a));
+
+  // properties + different colors
+  // @include property-color((
+  //   border-color: border color, // var(--s-border-color);
+  //   color: primary dark ':hsla', // color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a))
+  //   background: (secondary: hsla), // background: hsla(var(--s-secondary-color-h), var(--s-secondary-color-s), var(--s-secondary-color-l), var(--s-secondary-color-a));
+  // ));
+// }
