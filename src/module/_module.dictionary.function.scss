@@ -2,7 +2,7 @@
 @use 'sass:meta';
 
 // Variables.
-@use '../../variables/modules';
+@use '../variables/modules';
 
 // Modules.
 @use '../dictionary';
@@ -11,7 +11,7 @@
 // Status: DONE
 // The `dictionary()` function.
 @function dictionary($name, $keys: null) {
-  @return dictionary.get($keys, map.get(meta.module-variables("modules"), $name, ()));
+  @return dictionary.get($keys, map.get(meta.module-variables("modules"), $name, ()), ());
 }
 
 // Examples.

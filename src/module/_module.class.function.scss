@@ -1,0 +1,53 @@
+// Sass.
+@use 'sass:map';
+
+// Modules.
+@use '../dictionary';
+@use '../list';
+
+// Functions.
+@use '../selector/selector.class.function' as selector;
+@use 'module.dictionary.function' as *;
+
+// Status: WARNING: Check it's working fine.
+// The `module-class` function defines  class names.
+@function class(
+  $name,
+  $class: (),
+  $selector: (),
+  $module-dictionary: null,
+  $dictionary: ()
+) {
+  @return selector.class(
+    list.remove-list(list.join($name, $class), 0),
+    $selector,
+    map.merge(
+      if(
+        $module-dictionary and not type-of($module-dictionary) == string,
+        dictionary.get(class, $module-dictionary),
+        dictionary($name, class)
+      ),
+      dictionary.get(null, $dictionary) or dictionary.get(class, $dictionary)
+    )
+  );
+}
+
+// Examples.
+// button module
+// @debug class(button); // (.btn,)
+
+// button module + class
+// @debug class(button, '&' dark xs); // (.btn-dark-xs,)
+// @debug class(button, '&dark' xs); // (.btn-dark-xs,)
+
+// button module + selector
+// @debug class(button, '&' dark xs, '&:hover'); // (.btn-dark-xs:hover,)
+
+// button module + selector + dictionary
+// @debug class(button, '&' dark xs, $dictionary: (dark: light)); // (.btn-light-xs,)
+
+// Multiple class prefixed with header
+// @debug class(card, (('header', 'body', 'footer'),)); // .card-header, .card-body, .card-footer
+
+// Multiple class prefixed with header and suffixed by xs
+// @debug class(card, (('header', 'body', 'footer'), xs)); // .card-header-xs, .card-body-xs, .card-footer-xs
