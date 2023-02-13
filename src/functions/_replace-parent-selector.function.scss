@@ -1,13 +1,10 @@
-// Sass.
-// @use 'sass:list';
-
 // Functions.
-@use 'list';
-@use 'string';
+@use '../list';
+@use '../string';
 
 // Status: DONE
 // The `replace-parent-selector()` function.
-// Replaces parent selector for the `selector-nest()`.
+// Replaces parent selector for the `selector.nest()`.
 @function replace-parent-selector($selector, $parent-placeholder: __PARENT__) {
   @if type-of($selector) == list and list.length($selector) > 0 {
     @if type-of(list.nth($selector, 1)) == string {

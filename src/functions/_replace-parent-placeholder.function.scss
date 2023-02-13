@@ -1,12 +1,5 @@
-// Sass.
-// @use 'sass:list';
-
 // Modules.
-@use 'list';
-
-// Functions.
-// @use 'list/index/list-type-index.function' as *;
-// @use 'list/list-replace-string.function' as *;
+@use '../list';
 
 // Status: DONE
 // The `replace-parent-placeholder()` function.
