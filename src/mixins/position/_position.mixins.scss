@@ -1,0 +1,58 @@
+
+// Mixins.
+@use '../property';
+
+// The `top()` mixin.
+@mixin top($variant, $dictionary: ()) {
+  @include property.side-variant(if(&, '&top', top), $variant, '', $dictionary);
+}
+
+// The `right()` mixin.
+@mixin right($variant, $dictionary: ()) {
+  @include property.side-variant(if(&, '&right', right), $variant, '', $dictionary);
+}
+
+// The `bottom()` mixin.
+@mixin bottom($variant, $dictionary: ()) {
+  @include property.side-variant(if(&, '&bottom', bottom), $variant, '', $dictionary);
+}
+
+// The `left()` mixin.
+@mixin left($variant, $dictionary: ()) {
+  @include property.side-variant(if(&, '&left', left), $variant, '', $dictionary);
+}
+
+// Examples.
+// .top-1 {
+//   top: var(--s-unit-1) !important;
+// }
+
+// div * {
+  // @include top((1: unit 1));
+  // div *.top-1 {
+  //   top: var(--s-unit-1) !important;
+  // }
+// }
+
+// @include top((1: unit 1, 2: unit 2));
+// .top-1 {
+//   top: var(--s-unit-1) !important;
+// }
+// .top-2 {
+//   top: var(--s-unit-2) !important;
+// }
+
+// @include right((1: unit 1));
+// .right-1 {
+//   right: var(--s-unit-1) !important;
+// }
+
+// @include bottom((1: unit 1));
+// .bottom-1 {
+//   bottom: var(--s-unit-1) !important;
+// }
+
+// @include left((1: unit 1));
+// .left-1 {
+//   left: var(--s-unit-1) !important;
+// }

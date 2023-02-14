@@ -1,8 +1,0 @@
-@use '../functions/var/get-var.function' as *;
-
-// Avatar mixin
-@mixin avatar-base($size: 'unit-8') {
-  font-size: calc(get-var($size) * 0.5);
-  height: get-var($size);
-  width: get-var($size);
-}

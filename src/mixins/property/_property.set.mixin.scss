@@ -1,0 +1,27 @@
+// Sass.
+@use 'sass:list';
+
+// Modules.
+@use '../../var';
+
+// Status: DONE
+// The `set()` mixin.
+@mixin set($name, $values, $dictionary: ()) {
+  $property-value: ();
+  @each $value in $values {
+    @if $value != '!important' {
+      $property-value: list.append($property-value, var.get($value, $dictionary: $dictionary));
+    }
+  }
+  @if list.index($values, '!important') {
+    $property-value: list.append($property-value, '!important');
+  }
+
+  #{$name}: #{$property-value}
+}
+
+// Examples.
+// div {
+//   @include set(padding, 5px 10px); //  padding: 5px 10px;
+//   @include set(padding, (unit 1 ('+' 15), unit 2)); //  padding: calc(var(--s-unit-1) + 15) var(--s-unit-2);
+// }

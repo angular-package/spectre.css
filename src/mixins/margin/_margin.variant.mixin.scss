@@ -1,0 +1,54 @@
+// Mixins.
+@use '../property';
+
+// Status: REVIEW: parameter order
+// Margin utility mixin
+@mixin variant($variant, $sides: null, $dictionary: ()) {
+  @include property.side-variant(margin, $variant, $sides, $dictionary);
+}
+
+// Examples.
+// @include variant((1: unit 1));
+
+// .margin-1 {
+//   margin: var(--s-unit-1) !important;
+// }
+// .margin-top-1 {
+//   margin-top: var(--s-unit-1) !important;
+// }
+// .margin-right-1 {
+//   margin-right: var(--s-unit-1) !important;
+// }
+// .margin-bottom-1 {
+//   margin-bottom: var(--s-unit-1) !important;
+// }
+// .margin-left-1 {
+//   margin-left: var(--s-unit-1) !important;
+// }
+// .margin-x-1 {
+//   margin-right: var(--s-unit-1) !important;
+//   margin-left: var(--s-unit-1) !important;
+// }
+// .margin-y-1 {
+//   margin-top: var(--s-unit-1) !important;
+//   margin-bottom: var(--s-unit-1) !important;
+// }
+
+// @include variant((1: unit 1, 2: unit 2), x y, (unit: u));
+
+// .margin-x-1 {
+//   margin-right: var(--s-u-1) !important;
+//   margin-left: var(--s-u-1) !important;
+// }
+// .margin-y-1 {
+//   margin-top: var(--s-u-1) !important;
+//   margin-bottom: var(--s-u-1) !important;
+// }
+// .margin-x-2 {
+//   margin-right: var(--s-u-2) !important;
+//   margin-left: var(--s-u-2) !important;
+// }
+// .margin-y-2 {
+//   margin-top: var(--s-u-2) !important;
+//   margin-bottom: var(--s-u-2) !important;
+// }

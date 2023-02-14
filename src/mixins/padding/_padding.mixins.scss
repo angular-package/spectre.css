@@ -1,0 +1,47 @@
+// Modules.
+@use '../../var';
+@use '../property';
+
+@mixin padding($sides, $dictionary: ()) {
+  @include property.set(padding, $sides, $dictionary);
+}
+
+@mixin top($var-name, $dictionary: ()) {
+  padding-top: var.get($var-name, $dictionary: $dictionary);
+}
+
+@mixin right($var-name, $dictionary: ()) {
+  padding-right: var.get($var-name, $dictionary: $dictionary);
+}
+
+@mixin bottom($var-name, $dictionary: ()) {
+  padding-bottom: var.get($var-name, $dictionary: $dictionary);
+}
+
+@mixin left($var-name, $dictionary: ()) {
+  padding-left: var.get($var-name, $dictionary: $dictionary);
+}
+
+@mixin x($left-var-name, $right-var-name, $dictionary: ()) {
+  padding-right: var.get($right-var-name, $dictionary: $dictionary);
+  padding-left: var.get($left-var-name, $dictionary: $dictionary);
+}
+
+@mixin y($top-var-name, $bottom-var-name, $dictionary: ()) {
+  padding-top: var.get($top-var-name, $dictionary: $dictionary);
+  padding-bottom: var.get($bottom-var-name, $dictionary: $dictionary);
+}
+
+// Examples.
+// div {
+  // @include padding((unit 1) (unit 2)); // padding: var(--s-unit-1) var(--s-unit-2);
+//   @include padding((unit 1) (unit 2) (unit 5)); // padding: var(--s-unit-1) var(--s-unit-2) var(--s-unit-5);
+
+//   @include top(unit 10); // padding-top: var(--s-unit-10);
+//   @include right(unit 5); // padding-right: var(--s-unit-5);
+//   @include bottom(unit 3); // padding-bottom: var(--s-unit-3);
+//   @include left(unit 4); // padding-left: var(--s-unit-4);
+
+//   @include x((unit 7) (unit 10)); // padding-right: var(--s-unit-10); padding-left: var(--s-unit-7);
+//   @include y((unit 9) (unit 5)); // padding-top: var(--s-unit-9); padding-bottom: var(--s-unit-5);
+// }

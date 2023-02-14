@@ -1,0 +1,47 @@
+// Modules.
+@use '../property';
+@use '../../var';
+
+@mixin margin($sides...) {
+  @include property.set(margin, $sides...);
+}
+
+@mixin top($var-name) {
+  margin-top: var.get($var-name);
+}
+
+@mixin right($var-name) {
+  margin-right: var.get($var-name);
+}
+
+@mixin bottom($var-name) {
+  margin-bottom: var.get($var-name);
+}
+
+@mixin left($var-name) {
+  margin-left: var.get($var-name);
+}
+
+@mixin x($left-var-name, $right-var-name) {
+  margin-right: var.get($right-var-name);
+  margin-left: var.get($left-var-name);
+}
+
+@mixin y($top-var-name, $bottom-var-name) {
+  margin-top: var.get($top-var-name);
+  margin-bottom: var.get($bottom-var-name);
+}
+
+// Examples.
+// div {
+//   @include side(unit 1, unit 2); // margin: var(--s-unit-1) var(--s-unit-2);
+//   @include side((unit 1) (unit 2) (unit 5)...); // margin: var(--s-unit-1) var(--s-unit-2) var(--s-unit-5);
+
+//   @include top(unit 10); // margin-top: var(--s-unit-10);
+//   @include right(unit 5); // margin-right: var(--s-unit-5);
+//   @include bottom(unit 3); // margin-bottom: var(--s-unit-3);
+//   @include left(unit 4); // margin-left: var(--s-unit-4);
+
+//   @include x((unit 7) (unit 10)...); // margin-right: var(--s-unit-10); margin-left: var(--s-unit-7);
+//   @include y((unit 9) (unit 5)...); // margin-top: var(--s-unit-9); margin-bottom: var(--s-unit-5);
+// }
