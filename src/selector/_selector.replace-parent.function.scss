@@ -5,7 +5,7 @@
 // Status: DONE
 // The `replace-parent-selector()` function.
 // Replaces parent selector for the `selector.nest()`.
-@function replace-parent-selector($selector, $parent-placeholder: __PARENT__) {
+@function replace-parent($selector, $parent-placeholder: __PARENT__) {
   @if type-of($selector) == list and list.length($selector) > 0 {
     @if type-of(list.nth($selector, 1)) == string {
       $selector: list.replace-string($selector, '&', $parent-placeholder, 1);
@@ -19,7 +19,13 @@
 }
 
 // Examples.
-// @debug replace-parent-selector('&' 'border' 'width'); // "__PARENT__" "border" "width"
-// @debug replace-parent-selector('&.border-width'); // __PARENT__.border-width
-// @debug replace-parent-selector('&' '.' 'class'); // "__PARENT__" "." "class"
-// @debug replace-parent-selector('&.' 'border' 'width'); // "__PARENT__." "border" "width"
+// string
+// @debug replace-parent('&border-width'); // __PARENT_border-width
+
+// list
+// @debug replace-parent('&' 'border' 'width'); // "__PARENT__" "border" "width"
+// @debug replace-parent('&border' 'width'); // "__PARENT__border" "width"
+// @debug replace-parent('&.border-width'); // __PARENT__.border-width
+// @debug replace-parent('&' '.' 'class'); // "__PARENT__" "." "class"
+// @debug replace-parent('&.' 'border' 'width'); // "__PARENT__." "border" "width"
+// @debug replace-parent('&.' 'border' 'width' '&'); // "__PARENT__." "border" "width" "&"

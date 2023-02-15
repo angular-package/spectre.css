@@ -1,5 +1,7 @@
 @forward 'selector.class.function';
 @forward 'selector.name.function';
 @forward 'selector.nest.function';
+@forward 'selector.replace-parent-placeholder.function';
+@forward 'selector.replace-parent.function';
 @forward 'selector.tag.function';
 @forward 'sass:selector' hide nest;
