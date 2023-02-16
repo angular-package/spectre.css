@@ -8,3 +8,7 @@
 
 // Initialize mixin.
 @include accordion;
+
+// Examples.
+// @include accordion((primary variant,));
+// @include accordion((primary dark, primary light));  //
