@@ -5,21 +5,34 @@
 @use 'selector.class.function' as *;
 @use 'selector.nest.function' as *;
 
-// Status: TODO: does not work good
+// Status: DONE
 // The `tag()` function.
-@function tag($tag, $class: (), $selector: (), $dictionary: ()) {
-  @return nest(list.join(($tag, class($class)), $selector), $dictionary);
+@function tag($tag, $class, $selector: (), $dictionary: ()) {
+  @return nest(
+    list.join(($tag, class($class, $dictionary: $dictionary)), $selector)
+  );
 }
 
 // Examples.
-// @debug tag(input, lg);
-// @debug tag('input', 'lg', '&:hover');
+// tag input + class
+// @debug tag(input, lg); // (input .lg,)
+// @debug tag(input, '&lg'); // (input.lg,)
+// @debug tag(input, '&' lg); // (input.lg,)
 
-// @debug tag('input', form lg);
-// @debug tag('input', (('form', 'lg',), ('form', 'sm')));
-// @debug tag('input', (('form', 'lg',), ('form', 'sm')), '&:hover');
+// input + class + :hover
+// @debug tag(input, lg, '&:hover'); // (input .lg:hover,)
+// @debug tag(input, '&lg', '&:hover'); // (input.lg:hover,)
 
-// @debug tag((('&', 'input',), ('&', 'span',)), (('&', 'button', 'dark'), ('&', 'button', 'light'),));
-// @debug tag((('&', 'input',), ('&', 'span',)), (('button', 'dark'), ('button', 'light'),));
+// input + class + dictionary
+// @debug tag(input, form lg, $dictionary: (lg: large)); // (input .form-large,)
+// @debug tag(input, form__ submit --disabled , $dictionary: (submit: submit-basic, separator: null)); // (input .form__submit-basic--disabled,)
+// @debug tag(input, '&form--' theme -xmas , $dictionary: (xmas: basic, separator: null)); // (input.form--theme-xmas,)
 
-// @debug tag('input', ('&', 'form', 'input', ('lg',), ('sm',)));
+// multiple classes
+// @debug tag(input, form (lg, sm)); // input .form-lg, input .form-sm
+// @debug tag(input, form (lg, md, sm)); // input .form-lg, input .form-md, input .form-sm
+// @debug tag(input, '&' form (lg, md, sm)); // input.form-lg, input.form-md, input.form-sm
+
+// pseudo selector
+// @debug tag('input', '&form' input (lg, sm), '&:hover'); // input.form-input-lg:hover, input.form-input-sm:hover
+// @debug tag('input', '&form' input (lg, sm), (('&:hover', '&:visited'),)); // input.form-input-lg:hover, input.form-input-lg:visited, input.form-input-sm:hover, input.form-input-sm:visited

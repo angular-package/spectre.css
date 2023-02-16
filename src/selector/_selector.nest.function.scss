@@ -1,17 +1,19 @@
 // Sass.
 @use 'sass:selector';
 
-// Functions.
+// Modules.
 @use '../list';
-@use '../functions/replace-parent-placeholder.function' as *;
-@use '../functions/replace-parent-selector.function' as *;
+
+// Functions.
+@use 'selector.replace-parent-placeholder.function' as *;
+@use 'selector.replace-parent.function' as *;
 
 // Status: DONE
 // The `nest()` function.
 @function nest($selector, $placeholder: __PARENT__) {
   @if list.length($selector) > 0 {
     $selector: list.replace-string(
-      selector.nest(replace-parent-selector($selector, $placeholder)...),
+      selector.nest(replace-parent($selector, $placeholder)...),
       '__CLASS__',
       ''
     );
@@ -20,8 +22,18 @@
 }
 
 // Examples.
+// string
+// @debug nest('&border-width'); // (&border-width,)
+
+// list
 // @debug nest('&border' 'width'); // (&border width,)
 // @debug nest('&.card' ('&-details', '&-summary')); // &.card-details, &.card-summary
+
 // @debug nest(('btn', '&-light', '&-xs')); // (btn-light-xs,)
+// @debug nest(('&btn', '&-light', '&-xs')); // (&btn-light-xs,)
+
 // @debug nest(('btn', ('&-light', '&-dark'), '&-xs')); // btn-light-xs, btn-dark-xs
-// @debug nest((card, ('&-header', '&-body', '&-footer'))); // ard-header, card-body, card-footer
+// @debug nest(('&btn', ('&-light', '&-dark'), '&-xs')); // &btn-light-xs, &btn-dark-xs
+
+// @debug nest((card, ('&-header', '&-body', '&-footer'))); // card-header, card-body, card-footer
+// @debug nest(('&card', ('&-header', '&-body', '&-footer'))); // &card-header, &card-body, &card-footer
