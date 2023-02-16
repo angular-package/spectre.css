@@ -1,5 +1,5 @@
 // Modules.
-@use '../../var';
+@use '../../var/functions/var.get.function' as var;
 
 // Functions.
 @use 'color.name.function' as *;

@@ -2,7 +2,7 @@
 @use 'sass:list';
 
 // Modules.
-@use '../../var';
+@use '../../var/functions/var.get.function' as var;
 
 // Functions.
 @use '../functions/color.name.function' as *;
@@ -33,22 +33,36 @@
 }
 
 // Examples.
+// string or list
+// @debug color(dark); // var(--s-dark-color)
+// @debug color(dark color); // var(--s-dark-color)
+// @debug color(light); // var(--s-light-color)
+// @debug color(light color); // var(--s-light-color)
+// @debug color(primary); // var(--s-primary-color)
+// @debug color(primary dark); // var(--s-primary-color-dark)
+// @debug color('gray'); // var(--s-gray-color)
+// @debug color(gray dark); // var(--s-gray-color-dark)
+
+// hsla form
+// @debug color((primary dark) ':hsla'); // hsla(var(--s-primary-color-dark-h), var(--s-primary-color-dark-s), var(--s-primary-color-dark-l), var(--s-primary-color-dark-a))
 // @debug color((dark: hsla)); // hsla(var(--s-dark-color-h), var(--s-dark-color-s), var(--s-dark-color-l), var(--s-dark-color-a))
-// @debug color(dark); // hsla(var(--s-dark-color-h), var(--s-dark-color-s), var(--s-dark-color-l), var(--s-dark-color-a))
-// @debug color(light); // hsla(var(--s-light-color-h), var(--s-light-color-s), var(--s-light-color-l), var(--s-light-color-a))<<
-// @debug color(((primary dark) 15%: hsla)); // hsla(var(--s-primary-color-dark-h), var(--s-primary-color-dark-s), calc(var(--s-primary-color-dark-l) + 15%), var(--s-primary-color-dark-a))
-// @debug color((primary dark) 15%); // hsla(var(--s-primary-color-dark-h), var(--s-primary-color-dark-s), calc(var(--s-primary-color-dark-l) + 15%), var(--s-primary-color-dark-a))
-// @debug color('gray'); // hsla(var(--s-gray-color-h), var(--s-gray-color-s), var(--s-gray-color-l), var(--s-gray-color-a))
-// @debug color(gray); // gray
+// @debug color((primary: hsla)); // hsla(var(--s-primary-color-h), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a))
+// @debug color(((primary dark,): hsla)); // hsla(var(--s-primary-color-dark-h), var(--s-primary-color-dark-s), var(--s-primary-color-dark-l), var(--s-primary-color-dark-a))
 
 // adjust deg
 // @debug color(dark, 10deg); // hsla(calc(var(--s-dark-color-h) + 10deg), var(--s-dark-color-s), var(--s-dark-color-l), var(--s-dark-color-a))
 // @debug color(dark, -10deg); // hsla(calc(var(--s-dark-color-h) - 10deg), var(--s-dark-color-s), var(--s-dark-color-l), var(--s-dark-color-a))
 // @debug color(primary dark, '*' 0.5deg); // hsla(calc(var(--s-primary-color-h) * 0.5deg), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a))
 
+// adjust in list in order lightness + alpha + hue + saturation
+// @debug color((primary dark) 15% 0.1 15deg 5% ':hsla'); // hsla(calc(var(--s-primary-color-dark-h) + 15deg), calc(var(--s-primary-color-dark-s) + 5%), calc(var(--s-primary-color-dark-l) + 15%), calc(var(--s-primary-color-dark-a) + 0.1))
+// @debug color(((primary dark) 15%: hsla)); // hsla(var(--s-primary-color-dark-h), var(--s-primary-color-dark-s), calc(var(--s-primary-color-dark-l) + 15%), var(--s-primary-color-dark-a))
+// @debug color(((primary dark) 15% 0.1 15deg 5%: hsla)); // hsla(calc(var(--s-primary-color-dark-h) + 15deg), calc(var(--s-primary-color-dark-s) + 5%), calc(var(--s-primary-color-dark-l) + 15%), calc(var(--s-primary-color-dark-a) + 0.1))
+
 // adjust saturation
-// @debug color(dark (saturation: 30%)); // hsla(var(--s-dark-color-h), calc(var(--s-dark-color-s) + 30%), var(--s-dark-color-l), var(--s-dark-color-a))
-// @debug color(dark (saturation: -30%)); // hsla(var(--s-dark-color-h), calc(var(--s-dark-color-s) - 30%), var(--s-dark-color-l), var(--s-dark-color-a))
+// @debug color(dark (saturation: 30%) ':hsla'); // hsla(var(--s-dark-color-h), calc(var(--s-dark-color-s) + 30%), var(--s-dark-color-l), var(--s-dark-color-a))
+// @debug color(dark (saturation: -30%) ':hsla'); // hsla(var(--s-dark-color-h), calc(var(--s-dark-color-s) - 30%), var(--s-dark-color-l), var(--s-dark-color-a))
+// @debug color(dark (saturation: 30%, hue: 5deg) ':hsla'); // hsla(calc(var(--s-dark-color-h) + 5deg), calc(var(--s-dark-color-s) + 30%), var(--s-dark-color-l), var(--s-dark-color-a))
 
 // dictionary
 // @debug color(accent, $dictionary: (accent: a)); // hsla(var(--s-a-color-h), var(--s-a-color-s), var(--s-a-color-l), var(--s-a-color-a))

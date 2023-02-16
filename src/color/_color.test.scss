@@ -1,6 +1,6 @@
 // @forward 'color';
-@use 'sass:list';
 @use '../color';
+@use 'sass:list';
 
 // functions
 @debug color.alpha-var(primary); // var(--s-primary-color-a)

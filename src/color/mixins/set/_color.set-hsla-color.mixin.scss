@@ -2,10 +2,10 @@
 @use 'sass:meta';
 
 // Modules.
-@use '../../../map';
-@use '../../../math';
-@use '../../../values';
-@use '../../../var';
+@use '../../../map/map.get.function' as map;
+@use '../../../math/math.calculate.function' as math;
+@use '../../../values/values.map.function' as values;
+@use '../../../var/mixins/var.set.mixin' as var;
 
 // Mixins.
 @use '../../functions/color.color.function' as *;

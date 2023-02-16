@@ -3,7 +3,7 @@
 @use 'sass:meta';
 
 // Modules.
-@use '../../../math';
+@use '../../../math/math.calculate.function' as math;
 @use '../../../var';
 
 // Functions.
