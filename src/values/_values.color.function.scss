@@ -1,0 +1,40 @@
+// Sass.
+@use 'sass:list';
+
+// Modules.
+@use '../color/functions/color.color.function' as color;
+
+// Status: DONE
+// The `color` function.
+@function color($values, $alpha: null, $dictionary: ()) {
+  $i: 1;
+  @each $value in $values {
+    @if type-of($value) == string or type-of($value) == list or type-of($value) == map {
+      $values: list.set-nth($values, $i, color.color($value, $alpha: $alpha, $dictionary: $dictionary));
+    }
+
+    $i: $i + 1;
+  }
+  @return $values;
+}
+
+// Examples.
+// string
+// @debug color(0 4px 8px dark); // 0 4px 8px var(--s-dark-color)
+
+// list
+// @debug color(0 4px 8px (dark,)); // 0 4px 8px var(--s-dark-color)
+// @debug color(0 4px 8px ('gray' color)); // 0 4px 8px var(--s-gray-color)
+// @debug color(0 4px 8px (dark color ':hsla')); // 0 4px 8px hsla(var(--s-dark-color-h), var(--s-dark-color-s), var(--s-dark-color-l), var(--s-dark-color-a))
+
+// map
+// @debug color(0 4px 8px (dark color: var)); // 0 4px 8px var(--s-dark-color)
+// @debug color(0 4px 8px (dark color: hsla)); // 0 4px 8px hsla(var(--s-dark-color-h), var(--s-dark-color-s), var(--s-dark-color-l), var(--s-dark-color-a))
+
+// adjust
+// @debug color(0 4px 8px (dark ':hsla'), 10%); // 0 4px 8px hsla(var(--s-dark-color-h), var(--s-dark-color-s), calc(var(--s-dark-color-l) + 15%), calc(var(--s-dark-color-a) + 0.2))
+// @debug color(0 4px 8px (dark 15% 0.5 1deg 11% ':hsla')); // 0 4px 8px hsla(calc(var(--s-dark-color-h) + 1deg), calc(var(--s-dark-color-s) + 11%), calc(var(--s-dark-color-l) + 15%), calc(var(--s-dark-color-a) + 0.5))
+// @debug color(0 4px 8px ((primary dark) 15% 0.5 1deg 11% ':hsla')); // 0 4px 8px hsla(calc(var(--s-primary-color-dark-h) + 1deg), calc(var(--s-primary-color-dark-s) + 11%), calc(var(--s-primary-color-dark-l) + 15%), calc(var(--s-primary-color-dark-a) + 0.5))
+
+// dictionary
+// @debug color(0 4px 8px dark, $dictionary: (dark: dark--, prefix: spectre--, suffix: --basic, separator: '')); // 0 4px 8px var(--spectre--dark--color--basic)
