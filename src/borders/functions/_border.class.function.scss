@@ -1,0 +1,22 @@
+// Variables.
+@use '../variables/border.var' as *;
+
+// Functions.
+@use '../../module/module.class.function' as module;
+
+// The `class()` function.
+@function class($name: (), $selector: (), $dictionary: ()) {
+  @return module.class(border, $name, $selector, $border, $dictionary);
+}
+
+// Examples.
+// single
+// @debug class(top right); // (.border-top-right,)
+// @debug class(top right); // (.border-top-right,)
+
+// multiple
+// @debug class(top (right, left)); // .border-top-right, .border-top-left
+
+// selector
+// @debug class(top right, '&:active'); // (.border-top-right:active,)
+// @debug class(top (right, left), '&xs', (prefix: spectre, suffix: basic)); // .spectre-border-top-right-basicxs, .spectre-border-top-left-basicxs

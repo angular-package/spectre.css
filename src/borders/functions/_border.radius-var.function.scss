@@ -1,0 +1,11 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use 'border.var.function' as border;
+
+// Status: DONE
+// The `radius-var()` function return the CSS var() function with the border width.
+@function radius-var($size: md, $adjust: null, $backup: null, $dictionary: ()) {
+  @return border.var(list.join(radius, $size), $adjust, $backup, $dictionary);
+}

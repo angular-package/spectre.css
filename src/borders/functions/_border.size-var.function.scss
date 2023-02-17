@@ -1,0 +1,11 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use 'border.var.function' as border;
+
+// Status: DONE
+// The `size-var()` function return the CSS var() function with the border width.
+@function size-var($size: md, $adjust: null, $backup: null, $dictionary: ()) {
+  @return border.var(list.join(size, $size), $adjust, $backup, $dictionary);
+}

@@ -1,0 +1,34 @@
+// Sass.
+@use 'sass:list';
+
+// Variables.
+@use '../variables/border.var' as *;
+
+// Modules.
+@use '../../dictionary';
+@use '../../map';
+@use '../../var';
+
+// Status: DONE
+// The `var()` function.
+@function var($name: (), $adjust: null, $backup: null, $dictionary: ()) {
+  @return var.get(
+    list.join(border, $name),
+    $adjust: $adjust,
+    $backup: $backup,
+    $dictionary: dictionary.merge(dictionary var, $dictionary)
+  );
+}
+
+// Examples.
+// @debug var(); // var(--s-border)
+// @debug var(width large); // var(--s-border-width-large)
+
+// adjust
+// @debug var(null, 15); // var(--s-border)
+
+// adjust + backup
+// @debug var(null, 15, 10); // calc(var(--s-border, 10) + 15)
+
+// adjust + backup + dictionary
+// @debug var(null, 15, 10, (prefix: spectre, suffix: large, border: b)); // calc(var(--spectre-b-large, 10) + 15)
