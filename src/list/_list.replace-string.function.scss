@@ -37,6 +37,7 @@
   } @else if type-of($element) == list {
     @return list.set-nth($list, $index, -list-replace-string($element, $replace, $replacement));
   }
+  @return $list;
 }
 
 // Private `-list-replace-string()` function.

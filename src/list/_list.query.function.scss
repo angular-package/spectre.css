@@ -5,7 +5,7 @@
 
 // Functions.
 @use '../functions/compare.function' as *;
-@use '../values';
+@use '../values/values.map.function' as values;
 @use 'nth' as *;
 
 // Status: TODO: Check `has`.

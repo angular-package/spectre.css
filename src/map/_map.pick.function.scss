@@ -2,14 +2,30 @@
 @use 'sass:list';
 @use 'sass:map';
 
+// Modules.
+@use '../string';
+
 // Status: DONE
 // The `map.pick()` function returns map with the specified keys.
 @function pick($map, $keys...) {
   $result: ();
-  @if list.length($keys) {
+  @if list.length($keys) > 0 {
     @each $key in $keys {
-      @each $name in $key {
-        $result: map.merge($result, ($name: map.get($map, $name)));
+      @if type-of($key) == list and list.separator($key) == space {
+        $result: map.merge($result, ($key: map.get($map, $key)));
+      } @else {
+        @each $name in $key {
+          @if string.index($name, '*') == 1 {
+            $name: string.replace($name, first '*' '');
+            @each $n in map.keys($map) {
+              @if type-of($n) == string and string.index($n, $name) {
+                $result: map.merge($result, ($n: map.get($map, $n)));
+              }
+            }
+          } @else {
+            $result: map.merge($result, ($name: map.get($map, $name)));
+          }
+        }
       }
     }
     @return $result;
@@ -18,5 +34,43 @@
 }
 
 // Examples.
-// @debug pick((a: 1, b: 2, c: 3, d: 4), a b d); // (a: 1, b: 2, d: 4)
+// @debug pick((a: 1, b: 2, c: 3, d: 4), a, b, d); // (a: 1, b: 2, d: 4)
+// @debug pick((a: 1, b: 2, c: 3, d: 4), (a, b, d)); // (a: 1, b: 2, d: 4)
+// @debug pick((a: 1, b: 2, c: 3, d: 4), (a, b), (c, d)); // (a: 1, b: 2, c: 3, d: 4)
+// @debug pick((a: 1, b: 2, c: 3, d: 4, a b: 5), a b); // (a b: 5)
+// @debug pick((a: 1, b: 2, c: 3, d: 4, a b: 5, c d: 6), a b, c d); // (a b: 5, c d: 6)
 // @debug pick((a: 1, b: 2, c: 3, d: 4, e: 5), e); // (e: 5)
+// $-theme: (
+//   dark: (),
+//   basic: (
+//     'default.palette': (),
+
+//     'gray.palette': (
+//       'gray': 'gray' color,
+//       'gray' dark: 'gray' dark,
+//       'gray' light: 'gray' light
+//     ),
+
+//     'bg.palette': (
+//       bg: bg color,
+//       bg dark: bg dark,
+//       bg light: bg light
+//     ),
+
+//     basic large: (
+//       '': border,
+//       dark: border dark,
+//       light: border light
+//     ),
+
+//     extended small: (
+//       '': primary,
+//       dark: primary dark,
+//       light: primary light
+//     ),
+//   )
+// );
+// @debug pick(map.get($-theme, basic), '*.palette');
+// @debug pick(map.get($-theme, basic), basic large, 'bg.palette');
+// @debug pick(map.get($-theme, basic), basic large, 'default.palette', 'gray.palette', 'bg.palette');
+// @debug pick(map.get($-theme, basic), basic large, extended small);

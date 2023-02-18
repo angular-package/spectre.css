@@ -1,0 +1,17 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use 'selector.nest.function' as *;
+
+// Status: DONE
+// The `content()` mixin.
+@mixin content($selector) {
+  @if list.length($selector) > 0 {
+    @at-root #{nest($selector)} {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
