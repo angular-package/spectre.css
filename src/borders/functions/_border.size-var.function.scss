@@ -9,3 +9,8 @@
 @function size-var($size: md, $adjust: null, $backup: null, $dictionary: ()) {
   @return border.var(list.join(size, $size), $adjust, $backup, $dictionary);
 }
+
+// Examples.
+// @debug size-var(); // var(--s-border-size-md)
+// @debug size-var(sm, '*' 15px, 300px); // calc(var(--s-border-size-sm, 300px) * 15px)
+// @debug size-var(small, '*' 15px, 300px, (small: sm)); // calc(var(--s-border-size-sm, 300px) * 15px)

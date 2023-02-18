@@ -19,7 +19,7 @@
   $color: map.get($border, color),
   $dictionary: ()
 ) {
-  @return #{border.size-var($size, $adjust, null, $dictionary)} #{$style} #{color($color)};
+  @return #{border.size-var($size, $adjust, null, $dictionary)} #{$style} #{color($color, $dictionary: $dictionary)};
 }
 
 // Examples.

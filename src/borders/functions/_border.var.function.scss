@@ -14,15 +14,15 @@
 @function var($name: (), $adjust: null, $backup: null, $dictionary: ()) {
   @return var.get(
     list.join(border, $name),
-    $adjust: $adjust,
-    $backup: $backup,
-    $dictionary: dictionary.merge(dictionary var, $dictionary)
+    $adjust,
+    false,
+    $backup,
+    dictionary.merge(var, $border, $dictionary)
   );
 }
 
 // Examples.
 // @debug var(); // var(--s-border)
-// @debug var(width large); // var(--s-border-width-large)
 
 // adjust
 // @debug var(null, 15); // var(--s-border)
@@ -32,3 +32,6 @@
 
 // adjust + backup + dictionary
 // @debug var(null, 15, 10, (prefix: spectre, suffix: large, border: b)); // calc(var(--spectre-b-large, 10) + 15)
+
+// dictionary
+// @debug var(width large, $dictionary: (border: b2)); // var(--s-border-width-large)
