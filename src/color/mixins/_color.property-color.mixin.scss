@@ -10,8 +10,8 @@
 @use '../functions/color.color.function' as *;
 @use '../../functions/important.function' as *;
 
-// Status: REVIEW:
-// The `property-color()` mixin contains the `color` style of the given `$color` CSS variable name without the prefix.
+// Status: DONE
+// The `property-color()` mixin.
 @mixin property-color(
   $property-color,
   $hue: null,
@@ -23,8 +23,8 @@
   $dictionary: (),
 ) {
   @each $property, $color in $property-color {
-    @each $value in $property {
-      #{$value}: color($color, $hue, $saturation, $lightness, $alpha, $backup, $dictionary) + important($important);
+    @each $property in $property {
+      #{$property}: color($color, $hue, $saturation, $lightness, $alpha, $backup, $dictionary) + important($important);
     }
   }
 }
@@ -32,16 +32,13 @@
 // Examples.
 // :host {
   // property var color
-  // @include property-color(border color); // var(--s-border-color);
+  // @include property-color((border-color: border color,)); // border-color: var(--s-border-color);
 
   // property hsla color
-  // @include property-color(border color ':hsla'); // var(--s-border-color);
+  // @include property-color((border-color: border color ':hsla')); // border-color: hsla(var(--s-border-color-h), var(--s-border-color-s), var(--s-border-color-l), var(--s-border-color-a));
 
   // property hsla color + adjust
-  // @include property-color(border color ':hsla'); // color: hsla(var(--s-border-color-h), var(--s-border-color-s), var(--s-border-color-l), var(--s-border-color-a));
-
-  // property color
-  // @include property-color((border-color: border color)); //
+  // @include property-color((border-color: (border color) 15% ':hsla')); //  border-color: hsla(var(--s-border-color-h), var(--s-border-color-s), calc(var(--s-border-color-l) + 15%), var(--s-border-color-a));
 
   // property hsla color
   // @include property-color((border-color: (primary color: hsla))); // border-color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a));

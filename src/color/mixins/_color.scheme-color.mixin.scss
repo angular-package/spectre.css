@@ -1,0 +1,87 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Modules.
+@use '../../selector';
+
+// Functions.
+@use '../../functions/important.function' as *;
+
+// Mixins.
+@use '../../color/mixins/color.property-color.mixin' as *;
+@use '../../media';
+
+// Status: REVIEW:
+// The `scheme-color()` mixin.
+@mixin scheme-color(
+  $scheme-color,
+  $hue: null,
+  $saturation: null,
+  $lightness: null,
+  $alpha: null,
+  $backup: null,
+  $important: false,
+  $dictionary: (),
+) {
+  @if $scheme-color {
+    @each $color-scheme, $property-color in $scheme-color {
+      @include media.color-scheme-content($color-scheme) {
+        @include property-color(
+          if(list.index(map.values($property-color), hsla), (color: $property-color), $property-color),
+          $hue,
+          $saturation,
+          $lightness,
+          $alpha,
+          $backup,
+          $important,
+          $dictionary
+        );
+      }
+    }
+  }
+}
+
+// Examples.
+:host {
+  @include scheme-color((
+    dark: ((primary dark,) 15%: hsla)
+  ));
+
+  // @include scheme-color((
+  //   normal: ((primary dark,) 15%: hsla)
+  // ));
+  // color: hsla(var(--s-primary-dark-h), var(--s-primary-dark-s), calc(var(--s-primary-dark-l) + 15%), var(--s-primary-dark-a));
+
+//   @include scheme-color((
+//     normal: (
+//       color: ((primary dark,) 15%: hsla),
+//       background: ((primary dark,) 15%: hsla)
+//     ),
+//     dark: (
+//       color: ((primary dark,) 15%: hsla),
+//       background: ((primary dark,) 15%: hsla)
+//     ),
+//     light: (
+//       color: ((primary dark,) 15%: hsla),
+//       background: ((primary dark,) 15%: hsla)
+//     ),
+//   ));
+
+  // :host {
+  //   color: hsla(var(--s-primary-dark-h), var(--s-primary-dark-s), calc(var(--s-primary-dark-l) + 15%), var(--s-primary-dark-a));
+  //   background: hsla(var(--s-primary-dark-h), var(--s-primary-dark-s), calc(var(--s-primary-dark-l) + 15%), var(--s-primary-dark-a));
+  // }
+  // @media (prefers-color-scheme: dark) {
+  //   :host {
+  //     color: hsla(var(--s-primary-dark-h), var(--s-primary-dark-s), calc(var(--s-primary-dark-l) + 15%), var(--s-primary-dark-a));
+  //     background: hsla(var(--s-primary-dark-h), var(--s-primary-dark-s), calc(var(--s-primary-dark-l) + 15%), var(--s-primary-dark-a));
+  //   }
+  // }
+  // @media (prefers-color-scheme: light) {
+  //   :host {
+  //     color: hsla(var(--s-primary-dark-h), var(--s-primary-dark-s), calc(var(--s-primary-dark-l) + 15%), var(--s-primary-dark-a));
+  //     background: hsla(var(--s-primary-dark-h), var(--s-primary-dark-s), calc(var(--s-primary-dark-l) + 15%), var(--s-primary-dark-a));
+  //   }
+  // }
+}
