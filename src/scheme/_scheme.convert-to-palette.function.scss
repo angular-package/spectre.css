@@ -1,0 +1,57 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Functions.
+@use '../color/functions/color.name.function' as *;
+@use 'scheme.color-to-variant.function' as *;
+
+// Status: TODO:
+// The `convert-to-palette()` function.
+@function convert-to-palette($values...) {
+  $palette: ();
+  @each $value in $values {
+    @if type-of($value) == map {
+      @each $name, $color in $value {
+        @if type-of($color) == list {
+          $build-variant: list.is-bracketed($name);
+          @each $-name in $name {
+            $variant: ();
+            @if $build-variant {
+              @if list.separator($color) == comma {
+                $variant: color-to-variant(list.append([$-name], $color));
+              } @else {
+                $variant: color-to-variant(list.join($-name, $color, $bracketed: true));
+              }
+            } @else {
+              $variant: color-to-variant($color...);
+            }
+
+            $palette: map.set($palette, $-name, $variant);
+          }
+        }
+      }
+    }
+  }
+  @return $palette;
+}
+
+// Examples.
+// @debug convert-to-palette((control: (disabled, error, info, success, warning)));
+// @debug convert-to-palette(([primary xs, border]: [color, dark, light]));
+// @debug convert-to-palette((['gray']: [xs [color, dark, light]]));
+// @debug convert-to-palette(([primary large, secondary small]: [xs [color, dark, light]]));
+
+// (core: (dark: dark color, light: light color, accent: accent color, primary: primary color, primary dark: primary color dark, primary light: primary color light, secondary: secondary color, secondary dark: secondary color dark, secondary light: secondary color light))
+// @debug convert-to-palette((core: (dark, light, accent, [primary [color, dark, light]], [secondary [color, dark, light]])));
+// @debug convert-to-palette(([bg]: [color, dark, light])); // (bg: (bg: bg color, bg dark: bg color dark, bg light: bg color light))
+
+// @debug convert-to-palette(
+  // ((primary large, primary small): (secondary, highlight, 'yellow'))
+  // ([primary large, primary small]: [color, dark, light])
+  // (control: (disabled, error, info, success, warning)),
+  // ([link, 'gray']: [color, dark, light])
+// );
+
+// lightness and alpha adjust
+// @debug convert-to-palette((control: ((disabled, 15%), (error, 15% 0.5), info, success, warning)));

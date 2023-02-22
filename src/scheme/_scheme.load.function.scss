@@ -1,0 +1,45 @@
+// Sass.
+@use 'sass:list';
+
+// Modules.
+@use '../color';
+@use '../map';
+
+// Functions.
+@use 'scheme.convert-to-palette.function' as *;
+@use 'scheme.pick.function' as *;
+
+// Status: DONE
+// The `load()` function.
+@function load($theme, $picks...) {
+  $resolved-theme: ();
+
+  // Pick.
+  @each $pick in $picks {
+    $resolved-theme: map.deep-merge($resolved-theme, pick($theme, $pick));
+  }
+
+  // Convert.
+  @each $name, $palette in $resolved-theme {
+    @each $key, $value in $palette {
+      $converted: convert-to-palette(($key: $value));
+      @if list.length($converted) > 0 {
+        $resolved-theme: map.deep-merge($resolved-theme, ($name: $converted));
+      }
+    }
+  }
+
+  // Filter bracketed.
+  $filtered-theme: ();
+  @each $name, $palette in $resolved-theme {
+    @each $key, $value in $palette {
+      @if not list.is-bracketed($key) {
+        $filtered-theme: map.deep-merge($filtered-theme, ($name: ($key: $value)));
+      }
+    }
+  }
+  @if list.length($filtered-theme) > 0 {
+    $resolved-theme: $filtered-theme;
+  }
+  @return $resolved-theme;
+}

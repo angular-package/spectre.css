@@ -1,5 +1,12 @@
-@forward 'scheme.get-colors.function';
-@forward 'scheme.is.function';
+// Mixins.
+@forward 'scheme.color.mixin';
+@forward 'scheme.content.mixin';
+
+// Functions.
+@forward 'scheme.convert-to-palette.function';
 @forward 'scheme.is-dark.function';
 @forward 'scheme.is-light.function';
 @forward 'scheme.is-normal.function';
+@forward 'scheme.is.function';
+@forward 'scheme.load.function';
+@forward 'scheme.pick.function';

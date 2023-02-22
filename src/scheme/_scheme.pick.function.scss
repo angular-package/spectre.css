@@ -1,0 +1,38 @@
+// Sass.
+@use 'sass:list';
+
+// Modules.
+@use '../map';
+@use '../string';
+
+// Status: TODO: unify
+// The `pick()` function.
+@function pick($theme, $pick) {
+  $result: ();
+  @each $name, $palette in $pick {
+    @each $palette in if($palette == '*', map.keys(map.get($theme, $name)), ($palette,)) {
+      @if list.is-bracketed($palette) {
+        @each $palette in $palette {
+          @each $key, $value in map.get($theme, $name) {
+            @if list.index($key, $palette) and list.is-bracketed($key) and list.is-bracketed($value) {
+              $result: map.deep-merge($result, ($name: (list.join([], $palette, $bracketed: true): $value)));
+            }
+          }
+        }
+      } @else {
+        @each $palette in $palette {
+          @if type-of($palette) == string and string.index($palette, '*') {
+            $result: map.deep-merge($result, ($name: map.pick(map.get($theme, $name), $palette...)));
+          } @else {
+            @each $key, $value in map.get($theme, $name) {
+              @if list.index($key, $palette) and not list.is-bracketed($key) and not list.is-bracketed($value) {
+                $result: map.deep-merge($result, ($name: ($palette: $value)));
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @return $result;
+}

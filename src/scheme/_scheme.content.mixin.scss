@@ -1,0 +1,25 @@
+// Sass.
+@use 'sass:list';
+
+// Status: DONE
+// The `content()` mixin.
+@mixin content($color-scheme) {
+  @if list.index(dark light normal, $color-scheme) {
+    @if list.index(dark light, $color-scheme) {
+      @media (prefers-color-scheme: $color-scheme) {
+        @content;
+      }
+    } @else {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Examples.
+// div {
+//   @include content(dark) {
+//     font-size: 1;
+//   }
+// }

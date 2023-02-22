@@ -1,0 +1,57 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:selector';
+
+// Functions.
+@use '../color/functions/color.name.function' as *;
+@use '../list/get/list.get-number.function' as *;
+@use '../list/remove/list.remove-number.function' as *;
+@use '../list/remove/list.remove-string.function' as *;
+@use '../string';
+
+// Status: TODO: bracketed adjust
+// The `color-to-variant()` function.
+@function color-to-variant($color...) {
+  $result: ();
+  @each $color in $color {
+    $adjust: null;
+    @if list.is-bracketed($color) {
+      @each $-color in selector.nest($color...) {
+        $result: map.merge($result, (remove-string($-color, color): name($-color)));
+      }
+    } @else {
+      @if list.separator($color) == comma {
+        $adjust: list.nth($color, 2);
+        $color: list.nth($color, 1);
+      }
+
+      $variant: remove-number($color);
+      $variant: if(list.length($variant) == 1, string.join('', $variant...), $variant);
+      $result: map.merge($result, (
+        $variant: if($adjust, list.append((name($color),), $adjust), name($color))
+      ));
+    }
+  }
+  @return $result;
+}
+
+// Examples.
+// @debug color-to-variant(primary, gray dark, secondary); // (primary: primary color, gray dark: gray color dark, secondary: secondary color)
+// @debug map.get(color-to-variant(primary, gray dark, secondary), primary); // primary color
+// @debug map.get(color-to-variant(primary, gray dark, secondary), gray dark); // gray color dark
+// @debug color-to-variant(disabled, error, info, success, warning); // (disabled: disabled color, error: error color, info: info color, success: success color, warning: warning color)
+
+// adjust lightness
+// @debug color-to-variant((primary, 15% 0.9), (gray dark, 20%), secondary); //  (primary: primary color (15% 0.9), gray dark: gray color dark 20%, secondary: secondary color)
+// @debug color-to-variant((primary dark, -15%), (primary light, 35%));
+// @debug color-to-variant((primary dark, -15% 0.5), (primary light, 35% 0.3));
+
+// bracketed
+// @debug color-to-variant(dark, light, accent, [primary large [color, dark, light]], [secondary [color, dark, light]]); // (dark: dark color, light: light color, accent: accent color, primary large dark: primary large color dark, primary large light: primary large color light, secondary dark: secondary color dark, secondary light: secondary color light)
+// @debug color-to-variant([primary [large, small] [color, dark, light]]); // (primary large: primary large color, primary large dark: primary large color dark, primary large light: primary large color light, primary small: primary small color, primary small dark: primary small color dark, primary small light: primary small color light)
+// @debug color-to-variant([primary [color, dark, light]]); // (primary: primary color, primary dark: primary color dark, primary light: primary color light)
+// @debug color-to-variant([[primary, secondary] [color, dark, light]]); // (primary: primary color, primary dark: primary color dark, primary light: primary color light, secondary: secondary color, secondary dark: secondary color dark, secondary light: secondary color light)
+
+// bracketed adjust
+// @debug color-to-variant([primary large [color, dark, light]]); // TODO:
