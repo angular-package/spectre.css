@@ -16,7 +16,7 @@
   $dictionary: ()
 ) {
   @each $name, $type in $name {
-    @if $type == hsla{
+    @if $type == hsla {
       @include set-hsla-color(
         $name,
         $hue,

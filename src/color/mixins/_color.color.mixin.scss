@@ -7,7 +7,7 @@
 
 // Functions.
 @use 'color.property-color.mixin' as *;
-@use 'color.scheme-color.mixin' as *;
+@use '../../scheme/scheme.color.mixin' as scheme;
 
 // Status: REVIEW:
 // The `color()` mixin contains the `color` style of the given `$color` CSS variable name without the prefix.
@@ -65,7 +65,7 @@
 ) {
   @if type-of($color) == map {
     @if list.index(map.keys($color), dark) or list.index(map.keys($color), light) or list.index(map.keys($color), normal) {
-      @include scheme-color($color, $hue, $saturation, $lightness, $alpha, $backup, $important, $dictionary);
+      @include scheme.color($color, $hue, $saturation, $lightness, $alpha, $backup, $important, $dictionary);
     } @else {
       @include property-color(
         if(list.index(map.values($color), hsla), (color: $color), $color),
