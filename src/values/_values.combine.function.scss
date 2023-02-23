@@ -1,0 +1,27 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// The `combine()` function.
+@function combine($values...) {
+  $result: ();
+  $parameters: (list1: (), list2: (), separator: auto, bracketed: auto);
+  $-values: ();
+  @each $value in $values {
+    @if type-of($value) == map and (list.index(map.keys($value), separator) or list.index(map.keys($value), bracketed)) {
+      $parameters: map.merge($parameters, $value);
+    } @else {
+      $-values: list.append($-values, $value, list.separator($values));
+    }
+  }
+  @each $value in $-values {
+    $result: list.join(map.merge($parameters, (list1: $result, list2: $value))...);
+  }
+  @return $result;
+}
+
+// Examples.
+// @debug combine('&', layout sidebar, primary dark, extra small); // "&" layout sidebar primary dark extra small
+// @debug combine('&', layout sidebar, primary dark, extra small, (separator: comma)); // "&", layout, sidebar, primary, dark, extra, small
+// @debug combine('&', layout sidebar, primary dark, extra small, (separator: comma, bracketed: true)); // ["&", layout, sidebar, primary, dark, extra, small]
+// @debug combine('&', layout sidebar, primary dark, extra small, (bracketed: true)); // ["&" layout sidebar primary dark extra small]
