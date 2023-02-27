@@ -43,10 +43,10 @@
 }
 
 // Examples.
-:host {
-  @include scheme-color((
-    dark: ((primary dark,) 15%: hsla)
-  ));
+// :host {
+  // @include scheme-color((
+  //   dark: ((primary dark,) 15%: hsla)
+  // ));
 
   // @include scheme-color((
   //   normal: ((primary dark,) 15%: hsla)
@@ -84,4 +84,4 @@
   //     background: hsla(var(--s-primary-dark-h), var(--s-primary-dark-s), calc(var(--s-primary-dark-l) + 15%), var(--s-primary-dark-a));
   //   }
   // }
-}
+// }
