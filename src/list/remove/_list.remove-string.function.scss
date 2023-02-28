@@ -2,13 +2,13 @@
 @use 'sass:list';
 
 // Status: DONE
-// The `remove-string()` function returns the list with removed elements of string type,
-// or elements of string type equal to the given arbitrary `$string` argument.
-@function remove-string($list, $strings...) {
+// The `remove-string()` function.
+@function remove-string($list, $string...) {
   $result: ();
   @if list.length($list) > 0 {
     @each $element in $list {
-      @if type-of($element) != string or (list.length($strings) > 0 and not list.index($strings, $element)) {
+      @if not (type-of($element) == string) or
+        (list.length($string) > 0 and type-of($element) == string and not list.index($string, $element)) {
         $result: list.append($result, $element, list.separator($list));
       }
     }

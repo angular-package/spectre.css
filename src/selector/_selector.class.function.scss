@@ -7,14 +7,18 @@
 // Functions.
 @use '../class/class.name.function' as class;
 @use '../class/class.parent-first.function' as *;
+@use '../list/get/list.get-map.function' as *;
+@use '../list/remove/list.remove-list.function' as *;
+@use '../list/remove/list.remove-map.function' as *;
 @use 'selector.nest.function' as *;
 
 // Status: DONE
 // The `class()` function.
 @function class($name, $selector: (), $dictionary: ()) {
   $i: 1;
+  $dictionary: map.merge($dictionary, get-map($name));
   $-dictionary: map.merge($dictionary, (prefix: null, suffix: null));
-  $name: parent-first($name);
+  $name: remove-list(parent-first(remove-map($name)), $bracketed: only);
   @each $value in $name {
     $name: if(meta.type-of($value) == number, list.set-nth($name, $i, #{$value}), $name);
     $resolved-dictionary: if(
@@ -77,6 +81,7 @@
 // @debug class(('card', ('header', 'body', 'footer', ), 'silver'), $dictionary: ('silver': 'primary')); // .card-header-primary, .card-body-primary, .card-footer-primary
 // @debug class(('card', ('header', 'body', 'footer', ), 'silver'), $dictionary: (prefix: s, suffix: p, 'silver': 'primary')); // .s-card-header-primary-p, .s-card-body-primary-p, .s-card-footer-primary-p@debug class('&' border width, $dictionary: (header: h));
 // @debug class('&' border width (header, body), $dictionary: (header: h)); // &.border-width-h, &.border-width-body
+// @debug class(border (dictionary: (prefix: p)));
 
 // with $selector
 // @debug class(border, '&:hover'); // (.border:hover,)

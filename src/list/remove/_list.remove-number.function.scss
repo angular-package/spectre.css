@@ -1,0 +1,23 @@
+// Sass.
+@use 'sass:list';
+
+// Status: DONE
+// The `remove-number()` function.
+@function remove-number($list, $number...) {
+  $result: ();
+  @if list.length($list) > 0 {
+    @each $element in $list {
+      @if not (type-of($element) == number) or
+        (list.length($number) > 0 and type-of($element) == number and not list.index($number, $element)) {
+        $result: list.append($result, $element, list.separator($list));
+      }
+    }
+  }
+  @return $result;
+}
+
+// Examples.
+// @debug remove-number(( 1, 2, 3, 4)); // ()
+// @debug remove-number(('a', 1, 2, 3, 'b', 4, 'c')); // "a", "b", "c"
+// @debug remove-number(('a', 1, 2, 3, 'b', 4, 'c'), 3); // "a", 1, 2, "b", 4, "c"
+// @debug remove-number(('a', 14, 'b', 13, 'c', 26, ('d', 'e', 'f')), 26, 14); // "a", "b", 13, "c", ("d", "e", "f")

@@ -10,8 +10,8 @@
 @use 'scheme.pick.function' as *;
 
 // Status: DONE
-// The `load()` function.
-@function load($theme, $picks...) {
+// The `build()` function.
+@function build($theme, $picks...) {
   $resolved-theme: ();
 
   // Pick.

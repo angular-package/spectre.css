@@ -1,9 +1,9 @@
-// Functions.
+@forward 'scheme.build.function';
 @forward 'scheme.color-to-variant.function';
 @forward 'scheme.convert-to-palette.function';
 @forward 'scheme.is-dark.function';
 @forward 'scheme.is-light.function';
 @forward 'scheme.is-normal.function';
 @forward 'scheme.is.function';
-@forward 'scheme.load.function';
+@forward 'scheme.load.mixin';
 @forward 'scheme.pick.function';
