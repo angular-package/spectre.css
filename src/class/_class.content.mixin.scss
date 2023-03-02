@@ -1,0 +1,150 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+// Functions.
+@use '../list/remove/list.remove-number.function' as *;
+@use '../selector/selector.class.function' as *;
+@use '../values/values.combine.function' as *;
+
+// Status: DONE
+// The `content()` mixin.
+@mixin content($class, $selector: (), $dictionary: (), $function: meta.get-function("class"), $attr-class: ()) {
+  @if $class {
+    @if type-of($class) == map {
+      @each $name, $variant in $class {
+        @if type-of($variant) == map {
+          @each $class, $side-value in $variant {
+            $class: if(list.separator($class) == comma, $class, ($class,));
+            @if type-of($side-value) == map {
+              @each $side, $value in $side-value {
+                @each $value in if(list.separator($value) == comma, $value, ($value,)) {
+                  @each $side in if(list.separator($side) == comma, $side, ($side,)) {
+                    $-variant: ();
+                    @each $-name in if(list.separator($name) == comma, $name, ($name,)) {
+                      @each $class in $class {
+                        $-variant: combine(
+                          $-variant,
+                          meta.call(
+                            $function,
+                            combine(if(&, '&', ()), if(meta.type-of($name) == list, $-name, ()), $side, $attr-class, $class),
+                            $selector,
+                            $dictionary
+                          ),
+                          (separator: comma)
+                        );
+                      }
+                    }
+                    #{$-variant} {
+                      @content(($side, $value)...);
+                    }
+                  }
+                }
+              }
+            } @else {
+              @each $value in if(list.separator($side-value) == comma, $side-value, ($side-value,)) {
+                $-variant: ();
+                @each $-name in if(list.separator($name) == comma, $name, ($name,)) {
+                  @each $class in $class {
+                    $-variant: combine(
+                      $-variant,
+                      meta.call(
+                        $function,
+                        combine(if(&, '&', ()), if(meta.type-of($name) == list, $-name, ()), $attr-class, $class),
+                        $selector,
+                        $dictionary
+                      ),
+                      (separator: comma)
+                    );
+                  }
+                }
+                #{$-variant} {
+                  @content((null, $value)...);
+                }
+              }
+            }
+          }
+        }
+      }
+    } @else {
+      #{meta.call($function, $class, $selector, $dictionary)} {
+        @content;
+      }
+    }
+  }
+}
+
+// Examples.
+// div {
+  // class
+  // @include content(border) {
+  //   border: 1px solid red;
+  // }
+
+  // @include content('&' 'border' 'red') {
+  //   border: 1px solid red;
+  // }
+  // div.border-red {
+  //   border: 1px solid red;
+  // }
+
+  // class + selector
+  // @include content(border top left radius hover, '&:hover') {
+  //   border-top-left-radius: 15px;
+  // }
+  // div .border-top-left-radius-hover:hover {
+  //   border-top-left-radius: 15px;
+  // }
+
+  // class + selector + dictionary
+  // @include content(border top left radius hover, '&:hover', (border: b, left: l, top: t, radius: r)) {
+  //   border-top-left-radius: 15px;
+  // }
+  // div .b-t-l-r-hover:hover {
+  //   border-top-left-radius: 15px;
+  // }
+
+  // @include content(border radius, '&:hover', (border: b)) {
+  //   border-radius: 3rem;
+  // }
+// }
+
+// variant
+// div {
+  // @include content((
+  //   (outline, inline): (
+  //     primary dark: primary color dark,
+  //     primary light: primary color light
+  // )), $attr-class: color) using ($side, $color) {
+  //   @if $side {
+  //     border-#{$side}-color: $color;
+  //   } @else {
+  //     border-color: $color;
+  //   }
+  // }
+  // div.outline-color-primary-dark, div.inline-color-primary-dark {
+  //   border-color: primary color dark;
+  // }
+  // div.outline-color-primary-light, div.inline-color-primary-light {
+  //   border-color: primary color light;
+  // }
+
+  // multiple variants + sides
+  // @include content((
+  //   (border outline, button inline): (
+  //     primary 'orange': ((top, left): orange),
+  // )), $attr-class: color) using ($side, $color) {
+  //   @if $side {
+  //     border-#{$side}-color: $color;
+  //   } @else {
+  //     border-color: $color;
+  //   }
+  // }
+  // div.border-outline-top-color-primary-orange, div.button-inline-top-color-primary-orange {
+  //   border-top-color: orange;
+  // }
+  // div.border-outline-left-color-primary-orange, div.button-inline-left-color-primary-orange {
+  //   border-left-color: orange;
+  // }
+// }

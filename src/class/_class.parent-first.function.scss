@@ -1,0 +1,48 @@
+// Modules.
+@use '../list';
+@use '../string';
+
+// Status: DONE
+@function parent-first($name) {
+  $selector: ();
+  @if list.length($name) > 0 {
+    @each $indicator in list.index($name, any, '==', '&', '&.') {
+      @if $indicator {
+        $selector: list.append($selector, list.nth($name, $indicator));
+      }
+    }
+
+    $name: list.remove-string($name, '&', '.', '&.');
+  }
+
+  $i: 1;
+  $parent: false;
+  @each $element in $name {
+    @if not ($element == '&') and type-of($element) == string and string.index($element, '&') {
+      $name: list.set-nth($name, $i, string.replace($element, first '&' ''));
+      $parent: true;
+    }
+
+    $i: $i + 1;
+  }
+
+  @if not list.has-string($selector, any, '==', '&') and $parent {
+    $selector: list.join('&', $selector, list.separator($selector));
+  }
+
+  @return list.join($selector, $name, list.separator($name));
+}
+
+// Examples.
+// in string
+// @debug parent-first('&border' 'width' 'lg'); // "&" "border" "width" "lg"
+// @debug parent-first('border' '&width' 'lg'); // "&" "border" "width" "lg"
+// @debug parent-first(border width '&lg'); // "&" border width "lg"
+
+// in list element '&'
+// @debug parent-first('&' 'border' 'width' 'lg'); // "&" "border" "width" "lg"
+// @debug parent-first('.' '&' 'border' 'width' 'lg'); // "&" "border" "width" "lg"
+// @debug parent-first('&' '.' 'border' 'width' 'lg'); // "&" "border" "width" "lg"
+// @debug parent-first('&.' 'border' 'width' 'lg'); // "&." "border" "width" "lg"
+// @debug parent-first('border' 'width' '&.' 'lg'); // "&." "border" "width" "lg"
+// @debug parent-first('border' '&' 'width' '&' '.' 'lg'); // "&" "border" "width" "lg"

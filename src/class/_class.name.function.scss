@@ -20,20 +20,6 @@
 
     $name: list.remove-string($name, '&', '.', '&.');
   }
-
-  $parent: false;
-  $i: 1;
-  @each $element in $name {
-    @if not ($element == '&') and type-of($element) == string and string.index($element, '&') {
-      $parent: true;
-      $name: list.set-nth($name, $i, string.replace($element, first '&' ''));
-    }
-
-    $i: $i + 1;
-  }
-  @if not list.has-string($selector, any, '==', '&') and $parent {
-    $selector: list.join('&', $selector, list.separator($selector));
-  }
   @return #{_.name($selector) + _.name($name, dictionary.merge(class, $dictionary), $separator)};
 }
 
@@ -46,14 +32,14 @@
 // @debug name('&' 'border' 'width' 'lg'); // &border-width-lg
 // @debug name('.' '&' 'border' 'width' 'lg'); // &.border-width-lg
 // @debug name('&' '.' 'border' 'width' 'lg'); // &.border-width-lg
-// @debug name('&.' 'border' 'width' 'lg'); // &.borderwidthlg
-// @debug name('border' 'width' '&.' 'lg'); // &.borderwidthlg
-// @debug name('border' '&' 'width' '&' '.' 'lg'); // &.borderwidthlg
+// @debug name('&.' 'border' 'width' 'lg'); // &.border-width-lg
+// @debug name('border' 'width' '&.' 'lg'); // &.border-width-lg
+// @debug name('border' '&' 'width' '&' '.' 'lg'); // &.border-width-lg
 
 // class/parent indicator in the string
-// @debug name('.&border' 'width' lg); // &.border-width-lg
-// @debug name('.' 'border' '&width' lg); // &.border-width-lg
-// @debug name('.border' 'width' '&lg'); // &.border-width-lg
+// @debug name('.&border' 'width' lg); // .&border-width-lg
+// @debug name('.' 'border' '&width' lg); // .border-&width-lg
+// @debug name('.border' 'width' '&lg'); // .border-width-&lg
 
 // separator
 // @debug name('' 'border' 'width' 'lg', $separator: '-'); // -border-width-lg

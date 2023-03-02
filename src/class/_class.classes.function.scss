@@ -2,7 +2,7 @@
 @use 'sass:list';
 
 // Variables.
-@use '../../variables/core' as *;
+@use '../variables/core' as *;
 
 // Functions.
 @use '../selector/selector.class.function' as selector;

@@ -25,6 +25,15 @@
       (alpha: number list, (alpha hue saturation: number list): map),
     );
   }
+  @if list.length($name) == 4 {
+    @return values.map(
+      $name,
+      (name: list string),
+      (hue: number list, (hue saturation lightness alpha: number list): map),
+      (lightness: number list, (saturation lightness alpha: number list): map),
+      (alpha: number list, (saturation alpha: number list): map),
+    );
+  }
   @return values.map(
     $name,
     (name: list string),
