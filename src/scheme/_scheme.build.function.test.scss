@@ -48,7 +48,7 @@ $-theme: (
     ),
 
     // variant
-    (chat, sidebar, footer large): (disabled, error, info, success, warning),
+    (chat, sidebar, footer large): outline (disabled, error, info, success, warning),
     // control: (disabled, error, info, success, warning),
 
     (control,): (
@@ -77,24 +77,22 @@ $-theme: (
 // '*.palette' ends with .palette
 // (class variant)
 
-// @debug build($-theme, (basic: core bg));
-// @debug build($-theme, (basic: '*.palette'));
-// @debug build($-theme, (basic: [secondary, 'gray']), (basic: '*.palette'));
-
 // all * indicator
 // @debug build($-theme, (basic: '*', dark: '*'));
 
-// all *.palette indicator
-// @debug build($-theme, (basic: '*.palette'));
-// @debug build($-theme, (basic: '*.palette' '*.colors'));
+// all *.[string] indicator
+// @debug build($-theme, (basic: '*.palette')); // (basic: ("body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
+// @debug build($-theme, (basic: ('*.palette', '*.colors'))); // (basic: ("body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
 
 // variant
-// @debug build($-theme, (basic: (control big,)));
-// @debug build($-theme, (basic: (control big, control,)));
+// @debug build($-theme, (basic: core bg)); // ()
+// @debug build($-theme, (basic: footer large)); // ()
+// @debug build($-theme, (basic: (control big,))); // ()
+// @debug build($-theme, (basic: (control big, control,))); // (basic: (control: (disabled: disabled color, error: error color, info: info color, success: success color, warning: warning color)))
 
 // direct .palette
-// @debug build($-theme, (basic: 'core.palette' 'control.palette'));
-// @debug build($-theme, (basic: [bg 'gray'])); // bracketed indicates .palette suffix in the key
+// @debug build($-theme, (basic: ('body.palette', 'other.palette'))); // (basic: ("body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
+// @debug build($-theme, (basic: [bg, 'gray'])); // (basic: ("gray": (gray xs: gray xs color, gray xs dark: gray xs color dark, gray xs light: gray xs color light)))
 
 // bracketed palette
 // @debug build($-theme, (basic: [primary xs,]));
@@ -103,3 +101,4 @@ $-theme: (
 // multiple
 // @debug build($-theme, (basic: ('*.palette', control big)));
 // @debug build($-theme, (basic: [primary xs, secondary] '*.palette' (control big)));
+// @debug build($-theme, (basic: [secondary, 'gray']), (basic: '*.palette'));

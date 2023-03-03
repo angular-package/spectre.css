@@ -1,3 +1,6 @@
+// Sass.
+@use 'sass:map';
+
 // Functions.
 @use 'scheme.pick.function' as *;
 
@@ -17,9 +20,13 @@ $-theme: (
     //   secondary light: secondary light
     // ),
 
+    basic xs: ((): (primary, primary dark, primary light)),
+    (basic lg, premium sm): ((): (primary, primary dark, primary light)),
+
     // build variant
     ['gray', secondary, primary large]: [xs [color, dark, light]],
-    // ['secondary']: [xs [color, dark, light]],
+    [secondary small]: [xs [color, dark, light]],
+    [accent]: [accent [color, dark, light]],
     // 'gray': (
     //   'gray': 'gray' color,
     //   'gray' dark: 'gray' dark,
@@ -65,7 +72,13 @@ $-theme: (
     'other.palette': (
       code: code color,
       highlight: highlight color
+    ),
+
+    'other.colors': (
+      code: code color,
+      highlight: highlight color
     )
+
   )
 ) !default;
 
@@ -77,11 +90,39 @@ $-theme: (
 
 // '*' indicator
 // @debug pick($-theme, (basic: '*'));
-// @debug pick($-theme, (basic: '*.palette')); // (basic: ("body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
-// @debug pick($-theme, (basic: 'body.palette')); // (basic: ("body.palette": (body bg: body bg color, body font: body font color)))
-// @debug pick($-theme, (basic: 'body.palette' 'other.palette')); // (basic: ("body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
+// @debug pick($-theme, (basic: '*.palette'));
+// @debug pick($-theme, (basic: '*.colors'));
+// @debug pick($-theme, (basic: ('*.palette', '*.colors')));
+
+// string
+// @debug pick($-theme, (basic: control));
+// @debug pick($-theme, (basic: sidebar));
+// @debug pick($-theme, (basic: 'body.palette'));
+
+// multiple strings
 // @debug pick($-theme, (basic: (control, link)));
+// @debug pick($-theme, (basic: ('body.palette', 'other.palette')));
+
+// single list indicates one element
+// @debug pick($-theme, (basic: core link)); // ()
+// @debug pick($-theme, (basic: basic xs)); // (basic: (basic xs: ((): (primary, primary dark, primary light))))
+// @debug pick($-theme, (basic: footer large)); // (basic: (footer large: (disabled, error, info, success, warning)))
+
+// multiple lists
+// @debug pick($-theme, (basic: (premium sm, basic xs))); // (basic: (premium sm: ((): (primary, primary dark, primary light)), basic xs: ((): (primary, primary dark, primary light))))
+// @debug pick($-theme, (basic: (control, sidebar, chat, footer large))); // (basic: (control: (disabled: disabled color, error: error color, info: info color, success: success color, warning: warning color), sidebar: (disabled, error, info, success, warning), chat: (disabled, error, info, success, warning), footer large: (disabled, error, info, success, warning)))
 
 // bracketed keys
-// @debug pick($-theme, (basic: [secondary, 'gray', primary large]));
-// @debug pick($-theme, (basic: (footer large, chat, sidebar, '*.palette')));
+// @debug map.get(pick($-theme, (basic: [accent])), basic, [accent]); // [accent [color, dark, light]]
+// @debug map.get(pick($-theme, (basic: [secondary small])), basic, [secondary small]); // [xs [color, dark, light]]
+// @debug map.get(pick($-theme, (basic: [primary small])), basic, [primary small]); // null
+// @debug map.get(pick($-theme, (basic: [primary small,])), basic, [primary small]); // null
+
+// @debug pick($-theme, (basic: [accent, primary large, secondary small])); // (basic: ([accent]: [accent [color, dark, light]], [primary large]: [xs [color, dark, light]], [secondary small]: [xs [color, dark, light]]))
+// @debug pick($-theme, (basic: [secondary, 'gray', primary large])); // (basic: ([secondary]: [xs [color, dark, light]], ["gray"]: [xs [color, dark, light]], [primary large]: [xs [color, dark, light]]))
+// @debug pick($-theme, (basic: (footer large, chat, sidebar, '*.palette'))); // (basic: (footer large: (disabled, error, info, success, warning), chat: (disabled, error, info, success, warning), sidebar: (disabled, error, info, success, warning), "body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
+
+// $-data: pick($-theme, (basic: [accent, primary large, secondary small]));
+// @debug map.get($-data, basic, [accent]); // [accent [color, dark, light]]
+// @debug map.get($-data, basic, [primary large]); // [xs [color, dark, light]]
+// @debug map.get($-data, basic, [secondary small]); // [xs [color, dark, light]]

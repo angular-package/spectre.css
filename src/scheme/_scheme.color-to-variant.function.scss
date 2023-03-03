@@ -44,8 +44,8 @@
 
 // adjust lightness
 // @debug color-to-variant((primary, 15% 0.9), (gray dark, 20%), secondary); //  (primary: primary color (15% 0.9), gray dark: gray color dark 20%, secondary: secondary color)
-// @debug color-to-variant((primary dark, -15%), (primary light, 35%));
-// @debug color-to-variant((primary dark, -15% 0.5), (primary light, 35% 0.3));
+// @debug color-to-variant((primary dark, -15%), (primary light, 35%)); // (primary dark: (primary color dark, -15%), primary light: (primary color light, 35%))
+// @debug color-to-variant((primary dark, -15% 0.5), (primary light, 35% 0.3)); // (primary dark: (primary color dark, -15% 0.5), primary light: (primary color light, 35% 0.3))
 
 // bracketed
 // @debug color-to-variant(dark, light, accent, [primary large [color, dark, light]], [secondary [color, dark, light]]); // (dark: dark color, light: light color, accent: accent color, primary large dark: primary large color dark, primary large light: primary large color light, secondary dark: secondary color dark, secondary light: secondary color light)
