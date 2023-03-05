@@ -6,8 +6,8 @@
 
 // Status: REVIEW:
 // The `load()` mixin.
-@mixin load($theme: (), $load: null) {
-  @each $scheme, $palette in build($theme, $load) {
+@mixin load($variant...) {
+  @each $scheme, $palette in build($variant...) {
     @include media.color-scheme-content($scheme) {
       @each $palette, $variant in $palette {
         @content(($palette, $variant)...);

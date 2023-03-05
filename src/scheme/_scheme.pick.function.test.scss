@@ -5,6 +5,24 @@
 @use 'scheme.pick.function' as *;
 
 $-theme: (
+  dark: (
+    core: ((dark, 15%), light, accent, primary, primary dark, primary light, ),
+    ['gray', secondary, primary large]: [xs [color, dark, light]],
+    [secondary small]: [xs [color, dark, light]],
+  ),
+
+  dark room: (
+    core: ((dark, 15%), light, accent, primary, primary dark, primary light, ),
+    ['gray', secondary, primary large]: [xs [color, dark, light]],
+    [secondary small]: [xs [color, dark, light]],
+  ),
+
+  (dark theme, light theme): (
+    core: ((dark, 15%), light, accent, primary, primary dark, primary light, ),
+    ['gray', secondary, primary large]: [xs [color, dark, light]],
+    [secondary small]: [xs [color, dark, light]],
+  ),
+
   basic: (
     // core: (dark, light, accent, [primary [color, dark, light]], [secondary [color, dark, light]]),
     core: ((dark, 15%), light, accent, primary, primary dark, primary light, ),
@@ -89,10 +107,17 @@ $-theme: (
 // (class variant)
 
 // '*' indicator
-// @debug pick($-theme, (basic: '*'));
+// @debug pick($-theme, '*');
 // @debug pick($-theme, (basic: '*.palette'));
 // @debug pick($-theme, (basic: '*.colors'));
 // @debug pick($-theme, (basic: ('*.palette', '*.colors')));
+
+// string or list
+// @debug pick($-theme, dark);
+// @debug pick($-theme, basic, dark);
+// @debug pick($-theme, (dark: core), (dark: [secondary, secondary small]));
+// @debug pick($-theme, dark room, light theme);
+// @debug pick($-theme, light theme);
 
 // string
 // @debug pick($-theme, (basic: control));

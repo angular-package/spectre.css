@@ -5,10 +5,23 @@
 // Status: DONE
 // The `map.get()` function.
 @function get($map, $keys, $default-value: null) {
-  @if type-of($map) == map and list.length($keys) and map.has-key($map, $keys...) {
-    @if map.get($map, $keys...) {
-      @return map.get($map, $keys...);
-    }
-  }
-  @return $default-value;
+  @return if(
+    type-of($map) == map and list.length($keys) > 0,
+    if(list.separator($keys) == comma, map.get($map, $keys...), map.get($map, $keys)) or $default-value,
+    $default-value
+  );
 }
+
+// Examples.
+// @debug get((
+//   light theme: (
+//     primary palette: (
+//       primary: primary color,
+//       primary dark: primary color dark
+//     )
+//   ),
+//   (dark theme, normal theme): (
+//     silver: #f1f1f1,
+//     red: #d72000,
+//   )
+// ), (light theme, primary palette));

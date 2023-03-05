@@ -2,8 +2,7 @@
 @use '../variables/core' as *;
 
 // Functions.
-@use '../functions/var/unit-var.function' as *;
-@use '../functions/var/var-negative.function' as *;
+@use '../var';
 
 /* Spectre.css module: animations | utilities | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
@@ -25,7 +24,7 @@
 @keyframes slide-down {
   0% {
     opacity: 0;
-    transform: translateY(var-negative(unit-var('8'))); // TODO: negative
+    transform: translateY(var.unit-var(8, '*' -1));
   }
 
   100% {

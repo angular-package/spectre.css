@@ -6,41 +6,52 @@
 @use '../map';
 @use '../string';
 
+// Functions.
+@use 'scheme.get.function' as scheme;
+
 // Status: DONE
 // The `pick()` function.
-@function pick($theme, $pick) {
+@function pick($theme, $pick...) {
   $result: ();
-  @each $name, $palette in $pick {
 
-    @if $palette == '*' {
-      $palette: map.keys(map.get($theme, $name));
+  @if list.index($pick, '*') {
+    $pick: map.keys($theme);
+  }
+
+  @each $pick in $pick {
+    @if not (type-of($pick) == map) {
+      $-pick: ();
+      @each $key in map.keys(scheme.get($theme, $pick)) {
+        $-pick: list.append($-pick, $pick $key);
+      }
+
+      $pick: $-pick;
     }
-
-    $bracketed: list.is-bracketed($palette);
-
-    @each $palette in if(list.separator($palette) == comma or list.length($palette) == 1, $palette, if($bracketed, [list.join((), $palette), ], ($palette,))) {
-      @if type-of($palette) == string and string.index($palette, '*') {
-        $result: map.deep-merge($result, ($name: map.pick(map.get($theme, $name), $palette...)));
-      } @else {
-        @each $key, $value in map.get($theme, $name) {
-          @if type-of($key) == list and list.separator($key) == space {
-            $key: if(
-              $bracketed, [if(list.length($key) == 1, list.nth($key, 1), list.join((), $key, $bracketed: false)),],
-              ($key, )
-            );
-          }
-          @if list.index($key, $palette) {
-            $result: map.deep-merge(
-              $result,
-              ($name: (
-                if($bracketed, if(meta.type-of($palette) == string, [$palette], list.join([], $palette, $bracketed: true)), $palette): $value
-              ))
-            );
+    @each $name, $palette in $pick {
+      $bracketed: list.is-bracketed($palette);
+      @each $palette in if(list.separator($palette) == comma or list.length($palette) == 1, $palette, if($bracketed, [list.join((), $palette), ], ($palette,))) {
+        @if type-of($palette) == string and string.index($palette, '*') {
+          $result: map.deep-merge($result, ($name: map.pick(map.get($theme, $name), $palette...)));
+        } @else {
+          @each $key, $value in scheme.get($theme, $name) {
+            @if type-of($key) == list and list.separator($key) == space {
+              $key: if(
+                $bracketed, [if(list.length($key) == 1, list.nth($key, 1), list.join((), $key, $bracketed: false)),],
+                ($key, )
+              );
+            }
+            @if list.index($key, $palette) {
+              $result: map.deep-merge(
+                $result,
+                ($name: (
+                  if($bracketed, if(meta.type-of($palette) == string, [$palette], list.join([], $palette, $bracketed: true)), $palette): $value
+                ))
+              );
+            }
           }
         }
       }
     }
-
   }
   @return $result;
 }

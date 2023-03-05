@@ -1,0 +1,44 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use '../map/map.get.function' as map;
+
+// Status: DONE
+// The `scheme.get()` function.
+@function get($theme, $name) {
+  @each $name in if(list.separator($name) == comma, $name, ($name,)) {
+    @each $key, $value in $theme {
+      @if type-of($key) == list {
+        @if list.index($key, $name) {
+          @return $value;
+        }
+      }
+    }
+    @if map.get($theme, $name) {
+      @return map.get($theme, $name);
+    }
+  }
+  @return null;
+}
+
+// Examples.
+// @debug get((
+//   core: (
+//     secondary palette: (
+//       secondary: secondary color,
+//       secondary dark: secondary color dark,
+//     )
+//   ),
+//   light theme: (
+//     primary palette: (
+//       primary: primary color,
+//       primary dark: primary color dark
+//     )
+//   ),
+//   (dark theme, normal theme): (
+//     silver: #f1f1f1,
+//     red: #d72000,
+//   )
+// ), normal theme);
+// (silver: #f1f1f1, red: #d72000)

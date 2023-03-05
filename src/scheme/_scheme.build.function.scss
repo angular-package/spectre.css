@@ -1,9 +1,5 @@
 // Sass.
-@use 'sass:list';
-
-// Modules.
-@use '../color';
-@use '../map';
+@use 'sass:map';
 
 // Functions.
 @use 'scheme.convert-to-palette.function' as *;
@@ -11,35 +7,23 @@
 
 // Status: DONE
 // The `build()` function.
-@function build($theme, $picks...) {
-  $resolved-theme: ();
+@function build($scheme...) {
+  $result: ();
+  @each $variant in $scheme {
+    @if type-of($variant) == list {
+      $-variant: ();
+      @each $variant, $pick in ($variant,) {
+        $-variant: map.deep-merge($-variant, pick($variant, $pick));
+      }
 
-  // Pick.
-  @each $pick in $picks {
-    $resolved-theme: map.deep-merge($resolved-theme, pick($theme, $pick));
-  }
+      $variant: $-variant;
+    }
 
-  // Convert.
-  @each $name, $palette in $resolved-theme {
-    @each $key, $value in if(list.separator($palette) == comma, $palette, ($palette,)) {
-      $converted: convert-to-palette(($key: $value));
-      @if list.length($converted) > 0 {
-        $resolved-theme: map.deep-merge($resolved-theme, ($name: $converted));
+    @if type-of($variant) == map {
+      @each $name, $palette in $variant {
+        $result: map.deep-merge($result, ($name: convert-to-palette($palette)));
       }
     }
   }
-
-  // Filter bracketed.
-  $filtered-theme: ();
-  @each $name, $palette in $resolved-theme {
-    @each $key, $value in $palette {
-      @if not list.is-bracketed($key) {
-        $filtered-theme: map.deep-merge($filtered-theme, ($name: ($key: $value)));
-      }
-    }
-  }
-  @if list.length($filtered-theme) > 0 {
-    $resolved-theme: $filtered-theme;
-  }
-  @return $resolved-theme;
+  @return $result;
 }

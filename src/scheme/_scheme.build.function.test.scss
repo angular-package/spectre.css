@@ -1,8 +1,23 @@
 // Functions.
 @use 'scheme.build.function' as *;
 
-$-theme: (
-  dark: (),
+// Dark theme
+$-dark: (
+  dark: (
+    core-dark: ((dark, 15%), light, accent, primary, primary dark, primary light, ),
+    // ['gray', secondary, primary large]: [xs [color, dark, light]],
+    (chat, sidebar, footer large): (disabled, error, info, success, warning),
+  ),
+
+  light: (
+    core: ((dark, 15%), light, accent, primary, primary dark, primary light, ),
+    // ['gray', secondary, primary large]: [xs [color, dark, light]],
+    (chat, sidebar, footer large): (disabled, error, info, success, warning),
+  ),
+);
+
+// Basic theme
+$-basic: (
   basic: (
     // core: (dark, light, accent, [primary [color, dark, light]], [secondary [color, dark, light]]),
     core: ((dark, 15%), light, accent, primary, primary dark, primary light, ),
@@ -48,10 +63,10 @@ $-theme: (
     ),
 
     // variant
-    (chat, sidebar, footer large): outline (disabled, error, info, success, warning),
+    (chat, sidebar, footer large): (disabled, error, info, success, warning),
     // control: (disabled, error, info, success, warning),
 
-    (control,): (
+    (control, ghokan): (
       disabled: disabled color,
       error: error color,
       info: info color,
@@ -69,7 +84,7 @@ $-theme: (
       highlight: highlight color
     )
   )
-) !default;
+);
 
 // input data
 // [bracketed list] - build color variant
@@ -77,28 +92,35 @@ $-theme: (
 // '*.palette' ends with .palette
 // (class variant)
 
-// all * indicator
-// @debug build($-theme, (basic: '*', dark: '*'));
+// Map
+// @debug build($-dark);
+// @debug build($-basic);
+
+// List
+// @debug build($-dark dark);
+// @debug build($-basic basic);
+// @debug build(($-dark, dark), $-basic basic);
+// @debug build(($-dark, (dark: (footer large,))), $-basic (basic: (bg,))); // (dark: (footer large: ("disabled": disabled color, "error": error color, "info": info color, "success": success color, "warning": warning color)), basic: (bg: (bg: bg color, bg dark: (bg dark, -30%), bg light: bg light)))
 
 // all *.[string] indicator
-// @debug build($-theme, (basic: '*.palette')); // (basic: ("body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
-// @debug build($-theme, (basic: ('*.palette', '*.colors'))); // (basic: ("body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
+// @debug build($-basic (basic: '*.palette')); // (basic: ("body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
+// @debug build($-basic (basic: ('*.palette', '*.colors'))); // (basic: ("body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
 
 // variant
-// @debug build($-theme, (basic: core bg)); // ()
-// @debug build($-theme, (basic: footer large)); // ()
-// @debug build($-theme, (basic: (control big,))); // ()
-// @debug build($-theme, (basic: (control big, control,))); // (basic: (control: (disabled: disabled color, error: error color, info: info color, success: success color, warning: warning color)))
+// @debug build($-basic (basic: core bg)); // ()
+// @debug build($-basic (basic: footer large)); // ()
+// @debug build($-basic (basic: (control big,))); // ()
+// @debug build($-basic (basic: (control big, control,))); // (basic: (control: (disabled: disabled color, error: error color, info: info color, success: success color, warning: warning color)))
 
 // direct .palette
-// @debug build($-theme, (basic: ('body.palette', 'other.palette'))); // (basic: ("body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
-// @debug build($-theme, (basic: [bg, 'gray'])); // (basic: ("gray": (gray xs: gray xs color, gray xs dark: gray xs color dark, gray xs light: gray xs color light)))
+// @debug build($-basic (basic: ('body.palette', 'other.palette'))); // (basic: ("body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
+// @debug build($-basic (basic: [bg, 'gray'])); // (basic: ("gray": (gray xs: gray xs color, gray xs dark: gray xs color dark, gray xs light: gray xs color light)))
 
 // bracketed palette
-// @debug build($-theme, (basic: [primary xs,]));
-// @debug build($-theme, (basic: [primary xs, secondary]));
+// @debug build($-basic (basic: [primary xs,])); // ()
+// @debug build($-basic (basic: [primary xs, secondary])); // (basic: ([secondary]: (secondary xs: secondary xs color, secondary xs dark: secondary xs color dark, secondary xs light: secondary xs color light)))
 
 // multiple
-// @debug build($-theme, (basic: ('*.palette', control big)));
-// @debug build($-theme, (basic: [primary xs, secondary] '*.palette' (control big)));
-// @debug build($-theme, (basic: [secondary, 'gray']), (basic: '*.palette'));
+// @debug build($-basic (basic: ('*.palette', control big)));
+// @debug build($-basic (basic: [primary xs, secondary] '*.palette' (control big)));
+// @debug build($-basic (basic: [secondary, 'gray']), (basic: '*.palette'));

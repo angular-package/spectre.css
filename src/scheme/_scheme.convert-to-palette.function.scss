@@ -1,6 +1,7 @@
 // Sass.
 @use 'sass:list';
 @use 'sass:map';
+@use 'sass:meta';
 
 // Functions.
 @use '../color/functions/color.name.function' as *;
@@ -29,6 +30,8 @@
 
             $palette: map.set($palette, $-name, $variant);
           }
+        } @else {
+          $palette: map.set($palette, $name, $color);
         }
       }
     }
@@ -37,7 +40,10 @@
 }
 
 // Examples.
-// @debug convert-to-palette((border outline: (disabled, error, info, success, warning)));
+// not converted
+// @debug convert-to-palette((border: (primary: primary color, secondary: secondary color, accent: accent color))); // (border: (primary: primary color, secondary: secondary color, accent: accent color))
+
+// @debug convert-to-palette((border outline: (disabled, error, info, success, warning))); // (border outline: ("disabled": disabled color, "error": error color, "info": info color, "success": success color, "warning": warning color))
 // @debug convert-to-palette((control: (disabled, error, info, success, warning))); // (control: ("disabled": disabled color, "error": error color, "info": info color, "success": success color, "warning": warning color))
 // @debug convert-to-palette((core: (dark, light, accent, [primary [color, dark, light]], [secondary [color, dark, light]]))); // (core: ("dark": dark color, "light": light color, "accent": accent color, primary: primary color, primary dark: primary color dark, primary light: primary color light, secondary: secondary color, secondary dark: secondary color dark, secondary light: secondary color light))
 
