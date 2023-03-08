@@ -138,6 +138,7 @@ $-theme: (
 // @debug pick($-theme, (basic: (control, sidebar, chat, footer large))); // (basic: (control: (disabled: disabled color, error: error color, info: info color, success: success color, warning: warning color), sidebar: (disabled, error, info, success, warning), chat: (disabled, error, info, success, warning), footer large: (disabled, error, info, success, warning)))
 
 // bracketed keys
+// @debug pick($-theme, (basic: [bg,]));
 // @debug map.get(pick($-theme, (basic: [accent])), basic, [accent]); // [accent [color, dark, light]]
 // @debug map.get(pick($-theme, (basic: [secondary small])), basic, [secondary small]); // [xs [color, dark, light]]
 // @debug map.get(pick($-theme, (basic: [primary small])), basic, [primary small]); // null
@@ -148,6 +149,6 @@ $-theme: (
 // @debug pick($-theme, (basic: (footer large, chat, sidebar, '*.palette'))); // (basic: (footer large: (disabled, error, info, success, warning), chat: (disabled, error, info, success, warning), sidebar: (disabled, error, info, success, warning), "body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
 
 // $-data: pick($-theme, (basic: [accent, primary large, secondary small]));
-// @debug map.get($-data, basic, [accent]); // [accent [color, dark, light]]
-// @debug map.get($-data, basic, [primary large]); // [xs [color, dark, light]]
-// @debug map.get($-data, basic, [secondary small]); // [xs [color, dark, light]]
+// @debug map.get($-theme, basic, [accent]); // [accent [color, dark, light]]
+// @debug map.get($-theme, basic, [primary large]); // [xs [color, dark, light]]
+// @debug map.get($-theme, basic, [secondary small]); // [xs [color, dark, light]]

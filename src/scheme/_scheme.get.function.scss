@@ -6,17 +6,17 @@
 
 // Status: DONE
 // The `scheme.get()` function.
-@function get($theme, $name) {
+@function get($scheme, $name) {
   @each $name in if(list.separator($name) == comma, $name, ($name,)) {
-    @each $key, $value in $theme {
+    @each $key, $value in $scheme {
       @if type-of($key) == list {
         @if list.index($key, $name) {
           @return $value;
         }
       }
     }
-    @if map.get($theme, $name) {
-      @return map.get($theme, $name);
+    @if map.get($scheme, $name) {
+      @return map.get($scheme, $name);
     }
   }
   @return null;

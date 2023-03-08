@@ -1,0 +1,198 @@
+// Functions.
+@use 'scheme.build.function' as *;
+
+// Dark theme
+$-dark: (
+  dark: (
+    core-dark: ((dark, 15%), light, accent, primary, primary dark, primary light, ),
+    // ['gray', secondary, primary large]: [xs [color, dark, light]],
+    (chat, sidebar, footer large): (disabled, error, info, success, warning),
+  ),
+
+  light: (
+    core: ((dark, 15%), light, accent, primary, primary dark, primary light, ),
+    // ['gray', secondary, primary large]: [xs [color, dark, light]],
+    (chat, sidebar, footer large): (disabled, error, info, success, warning),
+  ),
+);
+
+// Light theme
+$-light: (
+  light: (
+
+    (basic,): (
+      core: (color, dark, light)
+    ),
+
+    // // [bg]: [color, dark, light],
+    // bg: (
+    //   bg: bg color,
+    //   bg dark: (bg dark, -30%),
+    //   bg light: bg light
+    // ),
+
+    // // [border]: [color, dark, light],
+    // border: (
+    //   border dark: border dark,
+    //   border light: border light
+    // ),
+
+    // // [link]: [color, dark, light],
+    // link: (
+    //   link: link color,
+    //   link dark: link dark,
+    //   link light: link light
+    // ),
+
+    // // variant
+    // (chat, sidebar, footer large): (disabled, error, info, success, warning),
+    // // control: (disabled, error, info, success, warning),
+
+    // (control, ghokan): (
+    //   disabled: disabled color,
+    //   error: error color,
+    //   info: info color,
+    //   success: success color,
+    //   warning: warning color
+    // ),
+
+    // 'body.palette': (
+    //   body bg: body bg color,
+    //   body font: body font color
+    // ),
+
+    // 'other.palette': (
+    //   code: code color,
+    //   highlight: highlight color
+    // )
+  )
+);
+
+// Basic theme
+$-basic: (
+  normal: (
+    // (basic,): (
+
+    //   primary: primary color,
+    //   primary dark: primary color dark,
+    //   primary light: primary color light,
+
+    //   secondary: secondary color,
+    //   secondary dark: secondary color dark,
+    //   secondary light: secondary color light,
+
+    // ),
+
+
+    (basic,): (
+      (dark, 15%), light, accent,
+
+      primary, primary dark, primary light,
+
+      secondary, secondary dark, secondary light,
+    ),
+
+    // // core: (dark, light, accent, [primary [color, dark, light]], [secondary [color, dark, light]]),
+    // core: ((dark, 15%), light, accent, primary, primary dark, primary light, ),
+    // // core: (
+    // //   dark: (dark color, -15%),
+    // //   light: light color,
+    // //   accent: accent color,
+    // //   primary: primary color,
+    // //   primary dark: primary dark,
+    // //   primary light: primary light,
+    // //   secondary: secondary color,
+    // //   secondary dark: secondary dark,
+    // //   secondary light: secondary light
+    // // ),
+
+    // // build variant
+    // ['gray', secondary, primary large]: [xs] [color, dark, light],
+    // // ['secondary']: [xs [color, dark, light]],
+    // // 'gray': (
+    // //   'gray': 'gray' color,
+    // //   'gray' dark: 'gray' dark,
+    // //   'gray' light: 'gray' light
+    // // ),
+
+    // // [bg]: [color, dark, light],
+    // bg: (
+    //   bg: bg color,
+    //   bg dark: (bg dark, -30%),
+    //   bg light: bg light
+    // ),
+
+    // // [border]: [color, dark, light],
+    // border: (
+    //   border dark: border dark,
+    //   border light: border light
+    // ),
+
+    // // [link]: [color, dark, light],
+    // link: (
+    //   link: link color,
+    //   link dark: link dark,
+    //   link light: link light
+    // ),
+
+    // // variant
+    // (chat, sidebar, footer large): (disabled, error, info, success, warning),
+    // // control: (disabled, error, info, success, warning),
+
+    // (control, ghokan): (
+    //   disabled: disabled color,
+    //   error: error color,
+    //   info: info color,
+    //   success: success color,
+    //   warning: warning color
+    // ),
+
+    // 'body.palette': (
+    //   body bg: body bg color,
+    //   body font: body font color
+    // ),
+
+    // 'other.palette': (
+    //   code: code color,
+    //   highlight: highlight color
+    // )
+  )
+);
+
+// input data
+// [bracketed list] - build color variant
+// '*' - all from the given theme
+// '*.palette' ends with .palette
+// (class variant)
+
+// Map
+// @debug build($-dark);
+// @debug build($-basic);
+
+// List
+// @debug build($-dark, dark);
+// @debug build($-basic, normal);
+// @debug build($-light, light);
+
+// all *.[string] indicator
+// @debug build($-basic, (basic: '*.palette')); // (basic: ("body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
+// @debug build($-basic, (basic: ('*.palette', '*.colors'))); // (basic: ("body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
+
+// variant
+// @debug build($-basic, (basic: core bg)); // ()
+// @debug build($-basic, (basic: footer large)); // ()
+// @debug build($-basic, (basic: (control big,))); // ()
+// @debug build($-basic, (basic: (control big, control,))); // (basic: (control: (disabled: disabled color, error: error color, info: info color, success: success color, warning: warning color)))
+
+// direct .palette
+// @debug build($-basic, (basic: ('body.palette', 'other.palette'))); // (basic: ("body.palette": (body bg: body bg color, body font: body font color), "other.palette": (code: code color, highlight: highlight color)))
+// @debug build($-basic, (basic: [bg, 'gray'])); // (basic: ("gray": (gray xs: gray xs color, gray xs dark: gray xs color dark, gray xs light: gray xs color light)))
+
+// bracketed palette
+// @debug build($-basic, (basic: [primary xs,])); // ()
+// @debug build($-basic, (basic: [primary xs, secondary])); // (basic: ([secondary]: (secondary xs: secondary xs color, secondary xs dark: secondary xs color dark, secondary xs light: secondary xs color light)))
+
+// multiple
+// @debug build($-basic, (basic: ('*.palette', control big)));
+// @debug build($-basic, (basic: [primary xs, secondary]));
+// @debug build($-basic, (basic: [secondary, 'gray']), (basic: '*.palette'));

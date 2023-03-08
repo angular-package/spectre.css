@@ -1,0 +1,48 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Functions.
+@use '../../color/functions/color.name.function' as *;
+@use '../scheme.color-to-variant.function' as *;
+
+// Status: DONE
+// NOTE: consider adding bracketed adjust
+// The `create()` function.
+@function create($values...) {
+  $palette: ();
+  @each $value in $values {
+    @each $name, $variant in $value {
+      @each $-name in if(list.separator($name) == comma, $name, if(list.is-bracketed($name), [$name,], ($name,))) {
+        @if list.length($-name) > 1 and list.separator($-name) == space {
+          $-name: list.join((), $-name, $bracketed: false);
+        } @else if list.length($-name) == 1 {
+          $-name: list.nth($-name, 1);
+        }
+        @if list.is-bracketed($name) {
+          @each $variant in if(list.separator($variant) == comma, $variant, ($variant,)) {
+            $palette: map.deep-merge(
+              $palette,
+              ($-name: color-to-variant(list.join([$-name], $variant)))
+            );
+          }
+        } @else {
+          @if type-of($variant) == map {
+            @each $class, $color in $variant {
+              @if list.is-bracketed($class) {
+                @each $-class in if(list.separator($class) == comma, $class, [$class,]) {
+                  $palette: map.deep-merge($palette, ($-name: color-to-variant(list.join([$-class], $color))));
+                }
+              } @else {
+                $palette: map.deep-merge($palette, ($-name: ($class: name($color))));
+              }
+            }
+          } @else {
+            $palette: map.deep-merge($palette, ($-name: color-to-variant($variant...)));
+          }
+        }
+      }
+    }
+  }
+  @return $palette;
+}

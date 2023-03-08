@@ -1,0 +1,16 @@
+// Sass.
+@use 'sass:map';
+
+// Status: DONE
+// The `remove()` function.
+@function remove($palette, $name-color) {
+  $result: ();
+  @each $key, $value in $palette {
+    @each $name, $color in $name-color {
+      @if $name == $key {
+        $palette: map.set($palette, $key, map.remove($value, $color...));
+      }
+    }
+  }
+  @return $palette;
+}

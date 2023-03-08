@@ -1,0 +1,93 @@
+// Functions.
+@use 'palette.create.function' as *;
+
+// Palette
+// $palette: (
+//   palette 1: (
+//     class 1: color name dark,
+//     class 2: color name light,
+//   ),
+
+//   palette 2: (
+//     class 1: color dark,
+//     class 2: color light,
+//   ),
+
+//   palette 3: (
+//     class 1: color dark,
+//     class 2: color light,
+//   )
+// );
+
+// Examples.
+// not converted palette
+// @debug create((core: (primary: primary color, secondary: secondary color, accent: accent color))); // (core: (primary: primary color, secondary: secondary color, accent: accent color))
+
+// create core palette with primary color variant
+// @debug create((core: primary));
+
+// create core palette with disabled and error color variant
+// @debug create((core: (disabled, error,)));
+
+// create core palette
+// @debug create((core: ([primary small, secondary large]: [color, dark, light])));
+
+// create gray palette with gray colors
+// @debug create((['gray']: [xs [color, dark, light]]));
+
+// create core palette with gray colors
+// @debug create((core: (['gray']: [xs [color, dark, light]])));
+
+// (string: string)
+// @debug create((primary: primary)); // (primary: ("primary": primary color))
+// @debug create((primary: (primary: primary))); // (primary: ("primary": primary color))
+
+// (list: string)
+// @debug create((outline primary: primary)); // (outline primary: ("primary": primary color))
+// @debug create(((primary, secondary): primary)); // (primary: ("primary": primary color), secondary: ("primary": primary color))
+
+// (string: list)
+// @debug create((primary: primary dark)); // (primary: (primary dark: primary color dark))
+
+// (string: (string,))
+// @debug create((control: (disabled, error, info, success, warning))); // (control: ("disabled": disabled color, "error": error color, "info": info color, "success": success color, "warning": warning color))
+
+// (list: (string,))
+// @debug create((border outline: (disabled, error, info, success, warning))); // (border outline: ("disabled": disabled color, "error": error color, "info": info color, "success": success color, "warning": warning color))
+
+// ([string]: [string,])
+// @debug create(([primary]: [color,])); // (primary: (primary: primary color))
+
+// ([string, string]: [string, string])
+// @debug create(([primary, secondary]: [color, dark])); // (primary: (primary: primary color, primary dark: primary color dark), secondary: (secondary: secondary color, secondary dark: secondary color dark))
+
+// Bracketed
+// ([string]: [string, [string]])
+// @debug create((['gray']: [xs [color, dark, light]])); // ("gray": (gray xs: gray xs color, gray xs dark: gray xs color dark, gray xs light: gray xs color light))
+// @debug create((['gray']: [xs] [color, dark, light])); // ("gray": (gray xs: gray xs color, gray xs dark: gray xs color dark, gray xs light: gray xs color light))
+
+// ([string]: [string [string]])
+// @debug create((['gray']: [extra small [color, dark, light]])); // ("gray": (gray extra small: gray extra small color, gray extra small dark: gray extra small color dark, gray extra small light: gray extra small color light))
+// @debug create((['gray']: [extra small] [color, dark, light])); // ("gray": (gray extra small: gray extra small color, gray extra small dark: gray extra small color dark, gray extra small light: gray extra small color light))
+// @debug create((['gray']: [extra small [a color, b dark, light c]]));
+
+// ([list, string]: [string [string]])
+// @debug create(([primary extra, secondary]: [ultra small [color, dark, light]])); // (primary extra: (primary extra ultra small: primary extra ultra small color, primary extra ultra small dark: primary extra ultra small color dark, primary extra ultra small light: primary extra ultra small color light), secondary: (secondary ultra small: secondary ultra small color, secondary ultra small dark: secondary ultra small color dark, secondary ultra small light: secondary ultra small color light))
+// @debug create(([primary extra, secondary]: ([ultra small [color, dark, light]], [large [color, dark, light]]))); // (primary extra: (primary extra ultra small: primary extra ultra small color, primary extra ultra small dark: primary extra ultra small color dark, primary extra ultra small light: primary extra ultra small color light, primary extra large: primary extra large color, primary extra large dark: primary extra large color dark, primary extra large light: primary extra large color light), secondary: (secondary ultra small: secondary ultra small color, secondary ultra small dark: secondary ultra small color dark, secondary ultra small light: secondary ultra small color light, secondary large: secondary large color, secondary large dark: secondary large color dark, secondary large light: secondary large color light))
+// @debug create(([primary xs, border]: [color, dark, light])); // (primary xs: (primary xs: primary xs color, primary xs dark: primary xs color dark, primary xs light: primary xs color light), border: (border: border color, border dark: border color dark, border light: border color light))
+// @debug create(([primary large, secondary small]: [xs [color, dark, light]])); // (primary large: (primary large xs: primary large xs color, primary large xs dark: primary large xs color dark, primary large xs light: primary large xs color light), secondary small: (secondary small xs: secondary small xs color, secondary small xs dark: secondary small xs color dark, secondary small xs light: secondary small xs color light))
+// @debug create(([bg, border]: [[color, dark, light]])); // (bg: (bg: bg color, bg dark: bg color dark, bg light: bg color light), border: (border: border color, border dark: border color dark, border light: border color light))
+
+// multiple
+// @debug create((core: (dark, light, accent, [primary [color, dark, light]], [secondary [color, dark, light]]))); // (core: ("dark": dark color, "light": light color, "accent": accent color, primary: primary color, primary dark: primary color dark, primary light: primary color light, secondary: secondary color, secondary dark: secondary color dark, secondary light: secondary color light))
+// @debug create(
+//   // ((primary large, primary small): (secondary, highlight, 'yellow')),
+//   // ([primary large, primary small]: [color, dark, light]),
+//   // (control: (disabled, error, info, success, warning)),
+//   // ([link, 'gray']: [color, dark, light])
+//   // (['gray']: [color, dark, light])
+// );
+
+// lightness and alpha adjust
+// @debug create((control: ((disabled, 15%), (error, 15% 0.5), info, success, warning))); // (control: ("disabled": (disabled color, 15%), "error": (error color, 15% 0.5), "info": info color, "success": success color, "warning": warning color))
+// @debug create((footer large: outline (disabled, error, info, success, warning)));

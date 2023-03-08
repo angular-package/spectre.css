@@ -1,27 +1,27 @@
 // Sass.
+@use 'sass:list';
 @use 'sass:map';
 
+// Modules.
+@use 'palette';
+
 // Functions.
-@use 'scheme.convert-to-palette.function' as *;
 @use 'scheme.pick.function' as *;
 
 // Status: DONE
 // The `build()` function.
-@function build($scheme...) {
+@function build($scheme, $pick...) {
   $result: ();
-  @each $variant in $scheme {
-    @if type-of($variant) == list {
-      $-variant: ();
-      @each $variant, $pick in ($variant,) {
-        $-variant: map.deep-merge($-variant, pick($variant, $pick));
+  @if type-of($scheme) == map {
+    @if list.length($pick) > 0 {
+      @each $pick in $pick {
+        @each $name, $palette in pick($scheme, $pick) {
+          $result: map.deep-merge($result, ($name: palette.create($palette)));
+        }
       }
-
-      $variant: $-variant;
-    }
-
-    @if type-of($variant) == map {
-      @each $name, $palette in $variant {
-        $result: map.deep-merge($result, ($name: convert-to-palette($palette)));
+    } @else {
+      @each $name, $palette in $scheme {
+        $result: map.deep-merge($result, ($name: palette.create($palette)));
       }
     }
   }

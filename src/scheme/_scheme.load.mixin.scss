@@ -6,11 +6,11 @@
 
 // Status: REVIEW:
 // The `load()` mixin.
-@mixin load($variant...) {
-  @each $scheme, $palette in build($variant...) {
+@mixin load($scheme, $pick...) {
+  @each $scheme, $palette in build($scheme, $pick...) {
     @include media.color-scheme-content($scheme) {
       @each $palette, $variant in $palette {
-        @content(($palette, $variant)...);
+        @content(($scheme, $palette, $variant)...);
       }
     }
   }
