@@ -1,0 +1,72 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:meta';
+
+// Functions.
+@use '../../borders/functions/border.var.function' as *;
+@use '../functions/var.unit-var.function' as *;
+
+// Mixins.
+@use 'var.set.mixin' as *;
+
+// Examples.
+// name + value
+// @include set((blur: 0.05rem)); // --s-blur: 0.05rem;
+// @include set((border blur: 0.05rem)); // --s-border-blur: 0.05rem;
+// @include set(((border blur, button width): 0.05rem)); // --s-border-blur: 0.05rem;
+// --s-border-blur: 0.05rem;
+// --s-button-width: 0.05rem;
+
+// @include set(((border blur, button width): (low: 0.05rem, medium: 1rem, high: 2rem)));
+// --s-border-blur-low: 0.05rem;
+// --s-button-width-low: 0.05rem;
+// --s-border-blur-medium: 1rem;
+// --s-button-width-medium: 1rem;
+// --s-border-blur-high: 2rem;
+// --s-button-width-high: 2rem;
+
+// @include set((blur: (low: 0.05rem, medium: 0.075rem, high: 0.1rem)));
+// --s-blur-low: 0.05rem;
+// --s-blur-medium: 0.075rem;
+// --s-blur-high: 0.1rem;
+
+// @include set((window blur: (low: 0.05rem, medium: 0.075rem, high: 0.1rem)), $dictionary: (blur: b, window: w));
+// --s-w-b-low: 0.05rem;
+// --s-w-b-medium: 0.075rem;
+// --s-w-b-high: 0.1rem;
+
+// @include set((
+//   button: (
+//     height: (
+//       extra small: (button height medium (-15px,)),
+//       medium: (default height),
+//       extra large: (button height medium (115px,))
+//     )
+//   )
+// ));
+// :root, :host {
+//   --s-button-height-extra-small: calc(var(--s-button-height-medium) - 15px);
+//   --s-button-height-medium: var(--s-default-height);
+//   --s-button-height-extra-large: calc(var(--s-button-height-medium) + 115px);
+// }
+
+// @include set((
+//   border: (
+//     width: (
+//       xs: (width md ('-' 0.25rem)),
+//       sm: (width md ('-' 0.15rem)),
+//       md: unit-var(2),
+//       lg: (width md ('+' 0.25rem)),
+//       xl: (width md ('+' 0.5rem)),
+//       1x: 1em,
+//     )
+//   )
+// ), $function: meta.get-function('var'));
+// :root, :host {
+//   --s-border-width-xs: calc(var(--s-border-width-md) - 0.25rem);
+//   --s-border-width-sm: calc(var(--s-border-width-md) - 0.15rem);
+//   --s-border-width-md: var(--s-unit-2);
+//   --s-border-width-lg: calc(var(--s-border-width-md) + 0.25rem);
+//   --s-border-width-xl: calc(var(--s-border-width-md) + 0.5rem);
+//   --s-border-width-1x: 1em;
+// }

@@ -1,7 +1,6 @@
-@forward 'palette';
+@forward 'palette' as palette-*;
 @forward 'scheme.build.function';
 @forward 'scheme.color-to-variant.function';
-@forward 'scheme.convert-to-palette.function';
 @forward 'scheme.get.function';
 @forward 'scheme.is-dark.function';
 @forward 'scheme.is-light.function';

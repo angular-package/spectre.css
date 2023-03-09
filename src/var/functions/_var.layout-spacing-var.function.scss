@@ -16,7 +16,7 @@
     @warn 'Layout size #{$size} is not set. Try, #{$available-sizes}';
   }
   @return get(
-    layout spacing $size,
+    list.join(layout spacing, $size),
     $adjust,
     $unit,
     $backup,

@@ -1,30 +1,51 @@
 // Sass.
 @use 'sass:list';
+@use 'sass:meta';
 
 // Functions.
+@use '../../values/values.combine.function' as *;
+@use '../functions/var.get.function' as *;
 @use '../functions/var.name.function' as var;
 
+// Mixins.
+@use '../../selector/selector.content.mixin' as *;
+
 // Status: DONE
-// The `set()` mixin defines the CSS variable with a specified name, value, prefix, and optional suffix.
-@mixin set($name, $values, $dictionary: ()) {
-  @each $variant, $value in $values {
-    #{var.name(if($value, list.join($name, $variant), $name), $dictionary)}: #{if(not $value, $variant, $value)};
+// The `set()` mixin defines the CSS variables based on the given `$values`.
+@mixin set($values, $selector: ((':root', ':host'),), $dictionary: (), $function: meta.get-function('get')) {
+  @if type-of($values) == map {
+    @include content($selector) {
+      @each $name, $variant in $values {
+        @if type-of($variant) == map {
+          @each $variant-name, $value in $variant {
+            @each $name in if(list.separator($name) == comma, $name, ($name,)) {
+              @if type-of($value) == map {
+                @each $value-name, $value in $value {
+                  @if type-of($value) == list and $function {
+                    $value: #{meta.call($function, $value, $dictionary: $dictionary)};
+                  }
+
+                  #{var.name(combine($name, $variant-name, $value-name), $dictionary)}: #{$value};
+                }
+              } @else {
+                @if type-of($value) == list and $function {
+                  $value: #{meta.call($function, $value, $dictionary: $dictionary)};
+                }
+
+                #{var.name(combine($name, $variant-name), $dictionary)}: #{$value};
+              }
+            }
+          }
+        } @else {
+          $value: $variant;
+          @if type-of($value) == list and $function {
+            $value: #{meta.call($function, $value, $dictionary: $dictionary)};
+          }
+          @each $name in if(list.separator($name) == comma, $name, ($name,)) {
+            #{var.name($name, $dictionary)}: #{$value};
+          }
+        }
+      }
+    }
   }
 }
-
-// Examples.
-// div {
-//   @include set(blur, 0.05rem); // --s-blur: 0.05rem;
-//   @include set(border blur, 0.05rem); // --s-border-blur: 0.05rem;
-//   @include set(blur, (low: 0.05rem, medium: 0.075rem, high: 0.1rem));
-
-  // --s-blur-low: 0.05rem;
-  // --s-blur-medium: 0.075rem;
-  // --s-blur-high: 0.1rem;
-
-  // @include set(window blur, (low: 0.05rem, medium: 0.075rem, high: 0.1rem), (blur: b, window: w));
-
-  // --s-w-b-low: 0.05rem;
-  // --s-w-b-medium: 0.075rem;
-  // --s-w-b-high: 0.1rem;
-// }

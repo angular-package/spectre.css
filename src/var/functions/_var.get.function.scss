@@ -31,9 +31,8 @@
   @return negative(
     adjust(
       unit(
-        css($params, $backup, $dictionary),
+        css($params, $backup, map.get($modifiers, dictionary) or $dictionary),
         if($unit == true, 1rem, $unit),
-        $dictionary
       ),
       $adjust
     ),
@@ -48,8 +47,8 @@
 // adjust by parameter
 // @debug get(layout spacing, 1); // calc(var(--s-layout-spacing) + 1)
 // @debug get(layout spacing, -51); // calc(var(--s-layout-spacing) + -51)
-// @debug get(layout spacing, '-' 51); // calc(var(--s-layout-spacing) - 51)
 // @debug get(layout spacing, '+' 51); // calc(var(--s-layout-spacing) + 51)
+// @debug get(layout spacing, '-' 51); // calc(var(--s-layout-spacing) - 51)
 // @debug get(layout spacing, '*' 51); // calc(var(--s-layout-spacing) * 51)
 // @debug get(layout spacing, '/' 51); // calc(var(--s-layout-spacing) / 51)
 
@@ -61,12 +60,18 @@
 
 // modifier in te $params
 // adjust
+// @debug get(layout spacing (-51,)); // calc(var(--s-layout-spacing) - 51)
+// @debug get(layout spacing (51,)); // calc(var(--s-layout-spacing) + 51)
+// @debug get(layout spacing ('+' 51)); // calc(var(--s-layout-spacing) + 51)
 // @debug get(layout spacing ('-' 51)); // calc(var(--s-layout-spacing) - 51)
+// @debug get(layout spacing ('*' 51)); // calc(var(--s-layout-spacing) * 51)
+// @debug get(layout spacing ('/' 51)); // calc(var(--s-layout-spacing) / 51)
 // @debug get(layout spacing (adjust: '-' 51)); // calc(var(--s-layout-spacing) -51)
 
 // negative
 // @debug get('!' layout spacing); // calc(var(--s-layout-spacing) * -1)
 // @debug get(layout spacing (negative: true)); // calc(var(--s-layout-spacing) * -1)
+// @debug get(layout spacing ('*' -1)); // calc(var(--s-layout-spacing) * -1)
 
 // backup + dictionary
 // @debug get(layout spacing (backup: 15rem, dictionary: (layout: lay,))); // var(--s-lay-spacing, 15rem)

@@ -5,6 +5,9 @@
 // Modules.
 @use '../../math';
 
+// Functions.
+@use '../../list/nth/list.nth.function' as *;
+
 // Status: DONE
 // The function `adjust()` returns CSS calc function with the given `$value` adjusted.
 @function adjust($var, $adjust: null) {
@@ -12,9 +15,13 @@
     $calculate: true;
     $operator: '+';
     $value: $adjust;
-    @if list.length($adjust) > 1 {
-      $operator: list.nth($adjust, 1);
-      $value: list.nth($adjust, 2);
+    @if type-of($adjust) == list {
+      @if list.length($adjust) > 1 {
+        $operator: nth($adjust, 1);
+        $value: nth($adjust, 2);
+      } @else {
+        $value: nth($adjust, 1);
+      }
     }
     @if
     ($operator == '+' and math.strip-unit($value) == 0) or

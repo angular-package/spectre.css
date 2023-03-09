@@ -20,7 +20,7 @@
   @if not list.index($available-sizes, list.nth($size, 1)) {
     @warn 'Font size #{$size} is not set. Try: #{$available-sizes}';
   }
-  @return get(font size if($size == '', null, $size), $adjust, null, $backup, $dictionary);
+  @return get(list.join(font size, if($size == '', null, $size)), $adjust, null, $backup, $dictionary);
 }
 
 // Examples.
