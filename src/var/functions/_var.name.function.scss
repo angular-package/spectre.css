@@ -1,15 +1,11 @@
 // Functions.
-@use '../../dictionary';
-@use '../../list';
+@use '../../dictionary/dictionary.merge.function' as dictionary;
 @use '../../functions/name.function' as function;
 
 // Status: DONE
 // The `name()` function.
 @function name($name, $dictionary: ()) {
-  @return --#{function.name(
-      list.remove-string($name, '!'),
-      dictionary.merge(var, $dictionary or ())
-    )};
+  @return --#{function.name($name, dictionary.merge(var, $dictionary or ()))};
 }
 
 // Examples.

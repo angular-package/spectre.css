@@ -5,6 +5,7 @@
 @use '../../list';
 
 // Functions.
+@use '../../functions/important.function' as *;
 @use 'var.adjust.function' as *;
 @use 'var.css.function' as *;
 @use 'var.negative.function' as *;
@@ -19,15 +20,20 @@
   $backup: null,
   $dictionary: ()
 ) {
+  @if type-of($params) == list and list.length($params) == 0 {
+    @return (); // REVIEW: consider changing the solution
+  }
   @if $params == auto or type-of($params) == number {
     @return $params;
   }
 
   $modifiers: list.get-map($params);
+  $important: if(list.index($params, any, '==', '!important'), true, false);
   $adjust: list.get-list($params) or map.get($modifiers, adjust) or $adjust;
   $backup: map.get($modifiers, backup) or $backup;
   $negative: not (list.index($params, any, '==', '!') == null) or map.get($modifiers, negative);
   $unit: list.get-bool($params) or map.get($modifiers, unit) or $unit;
+  $params: list.remove-string($params, '!', '!important');
   @return negative(
     adjust(
       unit(
@@ -37,7 +43,7 @@
       $adjust
     ),
     $negative
-  );
+  ) + important($important);
 }
 
 // Examples.
