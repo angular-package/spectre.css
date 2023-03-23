@@ -1,0 +1,78 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+// Variables
+@use 'variables' as variables;
+
+// Functions.
+@use '../list/has/list.has-string.function' as *;
+@use '../list/remove/list.remove-string.function' as *;
+@use '../var/functions/var.get.function' as *;
+@use 'function';
+
+// Status: TODO: remove-string()
+// The `var()` mixin.
+@function var($values, $dictionary: (), $function: variables.$function) {
+  @if type-of($values) == list {
+    @if has-string($values, any, '~=', map.keys($function)...) {
+      @return meta.call(function.get($values, $function), remove-string($values, --color, --get), $dictionary: $dictionary);
+    }
+  }
+
+  $values: if(not (meta.type-of($values) == list), ($values,), $values);
+  @for $i from 1 through list.length($values) {
+    $value: list.nth($values, $i);
+    @if type-of($value) == map {
+      @each $function-name, $value in $value {
+        @each $name, $function in $function {
+          @if $name == $function-name or list.index($value, --#{$name}) or list.index($function-name, --#{$name}) {
+            $values: list.set-nth($values, $i, meta.call($function, $value, $dictionary: $dictionary));
+          }
+        }
+      }
+    } @else if type-of($value) == list {
+      @if has-string($value, any, '~=', map.keys($function)...) {
+        $values: list.set-nth($values, $i, meta.call(function.get($value, $function), remove-string($value, --color, --get), $dictionary: $dictionary));
+      } @else {
+        $values: list.set-nth($values, $i, meta.call(function.get($value, $function), $value, $dictionary: $dictionary));
+      }
+    }
+  }
+  @return $values;
+}
+
+// Possibilities.
+// 5px (unit 1) 10px (unit 2)
+// 5px (get: unit 1) 10px (get: unit 2)
+// 5px solid (color: primary dark)
+// (--get unit 2) 5px (--color primary dark)
+
+// Examples.
+// list
+// @debug var((primary dark) (gray light)); // var(--s-primary-dark) var(--s-gray-light)
+
+// list with --color or --get
+// @debug var(--get unit 2); // (var(--s-unit-2),)
+// @debug var(--color primary dark); // var(--s-primary-color-dark)
+// @debug var((--get unit 2) (--get unit 1)); // var(--s-unit-2) var(--s-unit-1)
+
+// map
+// @debug var((color: primary dark) (color: gray light)); // var(--s-primary-color-dark) var(--s-gray-color-light)
+// @debug var((get: unit 2) (get: unit 3) (get: unit 4)); // var(--s-unit-2) var(--s-unit-3) var(--s-unit-4)
+// @debug var((--get: unit 2) (--get: unit 3) (--get: unit 4)); // var(--s-unit-2) var(--s-unit-3) var(--s-unit-4)
+// @debug var(10px (get: unit 3) 5px (get: unit 2)); // 10px var(--s-unit-3) 5px var(--s-unit-2)
+// @debug var((--get: unit 2) (--color: primary dark)); // var(--s-unit-2) var(--s-primary-color-dark)
+// @debug var(1px (primary color dark) 10px (border width small)); // 1px var(--s-primary-color-dark) 10px var(--s-border-width-small)
+// @debug var((--get: unit 2)); // (var(--s-unit-2),)
+// @debug var(1px (--get: unit 2) 10px (--get: border width sm)); // 1px var(--s-unit-2) 10px var(--s-border-width-sm)
+
+// important
+// @debug var(1px !important); // 1px !important
+// @debug var((unit 2) (color: primary dark) !important); // var(--s-unit-2) "!important"
+
+// adjust
+// @debug var(1px (unit 2) 10px (border width sm ('*' 2))); // 1px var(--s-unit-2) 10px calc(var(--s-border-width-sm) * 2)
+// @debug var(1px (unit 2 ('+' 15)) 10px (border width sm)); // 1px calc(var(--s-unit-2) + 15) 10px var(--s-border-width-sm)
+// @debug var((unit 1 ('+' 15)) (unit 2)); // calc(var(--s-unit-1) + 15) var(--s-unit-2)

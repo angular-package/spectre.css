@@ -1,0 +1,32 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Variables
+@use '../variables' as variables;
+
+// Status: REVIEW:
+// The `get()` function.
+@function get($values, $name: null, $prefix: --, $function: variables.$function) {
+  @if type-of($values) == list {
+    @if $name {
+      @return if(list.index($values, $prefix + $name), map.get($function, $name), null);
+    } @else {
+      @each $name, $function in $function {
+        @if list.index($values, $prefix + $name) {
+          @return $function;
+        }
+      }
+    }
+  }
+  @return map.get($function, get);
+}
+
+// Examples.
+// @debug get(--get unit 2); // get-function("get")
+// @debug get(--color unit 1); // get-function("color")
+
+// @debug get(--get unit 2, get); // get-function("get")
+// @debug get(--color unit 2, color); // get-function("color")
+
+// @debug get(--color unit 2, get); // get-function("color")

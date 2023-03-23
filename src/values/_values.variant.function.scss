@@ -1,0 +1,39 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Functions.
+@use '../list/remove/list.remove-list.function' as *;
+@use '../list/remove/list.remove-string.function' as *;
+
+// Status: REVIEW:
+// The `variant()` function.
+@function variant($values...) {
+  $variant: ();
+  @for $i from 1 through list.length($values) {
+    $value: list.nth($values, $i);
+    $name: $value;
+    @if not (type-of($value) == map) {
+      @if type-of($value) == list {
+        $name: remove-string(remove-list($value), '!important', --color, --get);
+      }
+
+      $variant: map.merge($variant, ($name: $value));
+    }
+  }
+  @return $variant;
+}
+
+// Examples.
+// single
+// @debug variant(left);
+
+// multiple
+// @debug variant(right, left);
+// @debug variant(border xs, button large);
+
+// multiple + important
+// @debug variant(left !important, right);
+
+// multiple + adjust + important
+// @debug variant(left ('+' 15px) !important, right ('+' 10));

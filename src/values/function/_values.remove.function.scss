@@ -1,0 +1,30 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Variables.
+@use '../variables' as variables;
+
+// Functions.
+@use '../../list/remove/list.remove-string.function' as *;
+
+// Status: REVIEW:
+// The `remove()` mixin.
+@function remove($values, $name: null, $prefix: --, $function: variables.$function) {
+  @if $name {
+    $name: $prefix + $name;
+  } @else {
+    $name: map.keys($function);
+    @for $i from 1 through list.length($name) {
+      $name: list.set-nth($name, $i, $prefix + list.nth($name, $i));
+    }
+  }
+  @return remove-string($values, $name...);
+}
+
+// Examples.
+// @debug remove(--get unit 2); // unit 2
+// @debug remove(--color unit 2); // unit 2
+
+// @debug remove(--var unit 2); // --var unit 2
+// @debug remove(--var unit 2, var); // unit 2

@@ -1,0 +1,24 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Variables
+@use '../variables' as variables;
+
+// Status: DONE
+// The `is()` function.
+@function is($name, $prefix: --, $function: variables.$function) {
+  @each $function-name in map.keys($function) {
+    @if $prefix + $function-name == $name {
+      @return true;
+    }
+  }
+  @return false;
+}
+
+// Examples.
+// @debug is(--get); // true
+// @debug is(--color); // true
+
+// @debug is(--no-function); // false
+// @debug is(--any); // false

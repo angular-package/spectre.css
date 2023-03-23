@@ -1,0 +1,34 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Variables.
+@use '../variables' as variables;
+
+// Functions.
+@use '../../list/has/list.has-string.function' as *;
+@use '../../list/remove/list.remove-string.function' as *;
+@use '../../var/functions/var.get.function' as *;
+
+// Status: TODO: remove-string()
+// The `has()` mixin.
+@function has($values, $name: null, $prefix: --, $function: variables.$function) {
+  @if $name {
+    $name: $prefix + $name;
+  } @else {
+    $name: map.keys($function);
+    @for $i from 1 through list.length($name) {
+      $name: list.set-nth($name, $i, $prefix + list.nth($name, $i));
+    }
+  }
+  @return has-string($values, any, '~=', $name...);
+}
+
+// Examples.
+// @debug has(--get unit 2); // true
+// @debug has(--color unit 2); // true
+// @debug has(--var unit 2); // false
+
+// name
+// @debug has(--color unit 2, color); // true
+// @debug has(--get unit 2, color); // false
