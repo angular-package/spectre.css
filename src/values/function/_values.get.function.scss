@@ -5,21 +5,21 @@
 // Variables
 @use '../variables' as variables;
 
-// Status: REVIEW:
+// Status: REVIEW: Consider removing function name without prefix
 // The `get()` function.
-@function get($values, $name: null, $prefix: --, $function: variables.$function) {
-  @if type-of($values) == list {
+@function get($values, $name: null, $prefix: --, $default: get, $function: variables.$function) {
+  @if type-of($values) == list or type-of($values) == string {
     @if $name {
       @return if(list.index($values, $prefix + $name), map.get($function, $name), null);
     } @else {
       @each $name, $function in $function {
-        @if list.index($values, $prefix + $name) {
+        @if list.index($values, $name) or list.index($values, $prefix + $name) {
           @return $function;
         }
       }
     }
   }
-  @return map.get($function, get);
+  @return map.get($function, $default);
 }
 
 // Examples.
@@ -29,4 +29,4 @@
 // @debug get(--get unit 2, get); // get-function("get")
 // @debug get(--color unit 2, color); // get-function("color")
 
-// @debug get(--color unit 2, get); // get-function("color")
+// @debug get(--color unit 2, get); // null

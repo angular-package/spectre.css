@@ -5,4 +5,8 @@
 @use '../../color/functions/color.color.function' as *;
 @use '../../var/functions/var.get.function' as *;
 
-$function: (color: meta.get-function("color"), get: meta.get-function("get"));
+$function: (
+  default: meta.get-function("get"),
+  color: meta.get-function("color"),
+  get: meta.get-function("get")
+);

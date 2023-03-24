@@ -7,10 +7,8 @@
 
 // Functions.
 @use '../../list/has/list.has-string.function' as *;
-@use '../../list/remove/list.remove-string.function' as *;
-@use '../../var/functions/var.get.function' as *;
 
-// Status: TODO: remove-string()
+// Status:
 // The `has()` mixin.
 @function has($values, $name: null, $prefix: --, $function: variables.$function) {
   @if $name {

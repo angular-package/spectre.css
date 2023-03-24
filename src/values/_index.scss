@@ -5,5 +5,5 @@
 @forward 'values.variant.function';
 @forward 'values.var.function';
 
-@forward 'function';
+@forward 'function' as function-*;
 @forward 'variables';

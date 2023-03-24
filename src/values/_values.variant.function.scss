@@ -2,6 +2,9 @@
 @use 'sass:list';
 @use 'sass:map';
 
+// Modules.
+@use 'function';
+
 // Functions.
 @use '../list/remove/list.remove-list.function' as *;
 @use '../list/remove/list.remove-string.function' as *;
@@ -15,7 +18,7 @@
     $name: $value;
     @if not (type-of($value) == map) {
       @if type-of($value) == list {
-        $name: remove-string(remove-list($value), '!important', --color, --get);
+        $name: remove-string(function.remove(remove-list($value)), '!important');
       }
 
       $variant: map.merge($variant, ($name: $value));
@@ -26,14 +29,16 @@
 
 // Examples.
 // single
-// @debug variant(left);
+// @debug variant(left); // (left: left)
+// @debug variant(--get left); // (left: --get left)
+// @debug variant(--get text align); // (text align: --get text align)
 
 // multiple
-// @debug variant(right, left);
-// @debug variant(border xs, button large);
+// @debug variant(right, left); // (right: right, left: left)
+// @debug variant(border xs, button large); // (border xs: border xs, button large: button large)
 
 // multiple + important
-// @debug variant(left !important, right);
+// @debug variant(left !important, right); // (left: left !important, right: right)
 
 // multiple + adjust + important
-// @debug variant(left ('+' 15px) !important, right ('+' 10));
+// @debug variant(left ('+' 15px) !important, right ('+' 10)); // (left: left ("+" 15px) !important, right: right ("+" 10))

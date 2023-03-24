@@ -6,18 +6,15 @@
 // Variables
 @use 'variables' as variables;
 
-// Functions.
-@use '../list/has/list.has-string.function' as *;
-@use '../list/remove/list.remove-string.function' as *;
-@use '../var/functions/var.get.function' as *;
+// Modules.
 @use 'function';
 
-// Status: TODO: remove-string()
+// Status: REVIEW:
 // The `var()` mixin.
 @function var($values, $dictionary: (), $function: variables.$function) {
   @if type-of($values) == list {
-    @if has-string($values, any, '~=', map.keys($function)...) {
-      @return meta.call(function.get($values, $function), remove-string($values, --color, --get), $dictionary: $dictionary);
+    @if function.has($values, $function: $function) {
+      @return function.call($values, $dictionary, $function);
     }
   }
 
@@ -25,18 +22,12 @@
   @for $i from 1 through list.length($values) {
     $value: list.nth($values, $i);
     @if type-of($value) == map {
-      @each $function-name, $value in $value {
-        @each $name, $function in $function {
-          @if $name == $function-name or list.index($value, --#{$name}) or list.index($function-name, --#{$name}) {
-            $values: list.set-nth($values, $i, meta.call($function, $value, $dictionary: $dictionary));
-          }
-        }
-      }
+      $values: list.set-nth($values, $i, function.call($value, $dictionary, $function));
     } @else if type-of($value) == list {
-      @if has-string($value, any, '~=', map.keys($function)...) {
-        $values: list.set-nth($values, $i, meta.call(function.get($value, $function), remove-string($value, --color, --get), $dictionary: $dictionary));
+      @if function.has($values, $function: $function) {
+        $values: list.set-nth($values, $i, function.call($value, $dictionary, $function));
       } @else {
-        $values: list.set-nth($values, $i, meta.call(function.get($value, $function), $value, $dictionary: $dictionary));
+        $values: list.set-nth($values, $i, meta.call(function.get($value, $function: $function), function.remove($value, $function: $function), $dictionary: $dictionary));
       }
     }
   }
@@ -59,6 +50,11 @@
 // @debug var((--get unit 2) (--get unit 1)); // var(--s-unit-2) var(--s-unit-1)
 
 // map
+// @debug var((get: unit 5)); // (var(--s-unit-5),)
+// @debug var((--get: unit 5)); // (var(--s-unit-5),)
+// @debug var((color: primary dark)); // (var(--s-primary-color-dark),)
+// @debug var((--color: primary dark)); // (var(--s-primary-color-dark),)
+
 // @debug var((color: primary dark) (color: gray light)); // var(--s-primary-color-dark) var(--s-gray-color-light)
 // @debug var((get: unit 2) (get: unit 3) (get: unit 4)); // var(--s-unit-2) var(--s-unit-3) var(--s-unit-4)
 // @debug var((--get: unit 2) (--get: unit 3) (--get: unit 4)); // var(--s-unit-2) var(--s-unit-3) var(--s-unit-4)
@@ -70,7 +66,7 @@
 
 // important
 // @debug var(1px !important); // 1px !important
-// @debug var((unit 2) (color: primary dark) !important); // var(--s-unit-2) "!important"
+// @debug var((unit 2) (color: primary dark) !important); // var(--s-unit-2) var(--s-primary-color-dark) !important
 
 // adjust
 // @debug var(1px (unit 2) 10px (border width sm ('*' 2))); // 1px var(--s-unit-2) 10px calc(var(--s-border-width-sm) * 2)
