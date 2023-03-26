@@ -2,9 +2,7 @@
 @use '../variables/core' as *;
 
 // Mixins.
-@use '../mixins/set-var.mixin' as *;
+@use '../var';
 
 // Transition duration.
-:root, :host {
-  @include set-var('transition-duration', $transition-duration); // 0.2s
-}
+@include var.set((transition-duration: $transition-duration)); // 0.2s

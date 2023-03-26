@@ -3,35 +3,32 @@
 @use '../variables/colors/theme' as *;
 @use '../variables/core' as *;
 
-// Functions.
-@use '../functions/is-scheme-dark.function' as *;
-@use '../functions/is-scheme-light.function' as *;
-
-// Mixins.
-@use '../mixins/color/set-color.mixin' as *;
+// Modules.
+@use '../color';
+@use '../scheme';
 
 // Spectre.css theme colors.
-:root, :host {
-
+:root,
+:host {
   color-scheme: $color-scheme;
 
-  @if is-scheme-dark() == true {
+  @if scheme.is-dark() {
     @media (prefers-color-scheme: dark) {
       @each $name, $color in $theme-dark {
-        @include set-color($name, $color);
+        @include color.set(($name: hsla), $color);
       }
     }
   }
-  @if is-scheme-light() == true {
+  @if scheme.is-light() {
     @media (prefers-color-scheme: light) {
       @each $name, $color in $theme-light {
-        @include set-color($name, $color);
+        @include color.set(($name: hsla), $color);
       }
     }
   }
-  @if $color-scheme == normal {
+  @if scheme.is-normal() {
     @each $name, $color in $theme-normal {
-      @include set-color($name, $color);
+      @include color.set(($name: hsla), $color);
     }
   }
 }

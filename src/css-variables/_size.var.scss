@@ -1,0 +1,12 @@
+// Variables.
+@use '../variables/core' as *;
+@use '../variables/size.var' as *;
+
+// Mixins
+@use '../var';
+
+// Responsive breakpoints. Alphabetical order.
+@include var.set((
+  size: $size,
+  responsive breakpoint: $responsive-breakpoint
+));

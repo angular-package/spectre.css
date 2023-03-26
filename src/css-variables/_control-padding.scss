@@ -1,26 +1,14 @@
+// Sass.
+@use 'sass:map';
+
 // Variables.
-@use '../variables/control' as *;
+@use '../variables/control.var' as *;
 
-// Functions.
-@use '../functions/strip-unit.function' as *;
-@use '../functions/var/css-var.function' as *;
-
-// Mixins.
-@use '../mixins/set-var.mixin' as *;
+// Modules.
+@use '../var';
 
 // Control padding.
-:root, :host {
-  // padding-x
-  @include set-var('control-padding-x', $control-padding-x); // $unit-2
-  // padding-x-lg
-  @include set-var('control-padding-x', calc(css-var('control-padding-x') * 1.5), $suffix: 'lg'); // $unit-2 * 1.5
-  // padding-x-sm
-  @include set-var('control-padding-x', calc(css-var('control-padding-x') * 0.75), $suffix: 'sm'); // $unit-2 * 0.75
-
-  // padding-y
-  @include set-var('control-padding-y', calc((css-var('control-size') - css-var('line-height')) * 0.5 - css-var('border-width'))); // ($control-size - $line-height) * 0.5 - $border-width
-  // padding-y-lg
-  @include set-var('control-padding-y', calc((css-var('control-size', $suffix: 'lg') - css-var('line-height')) * 0.5 - css-var('border-width')), $suffix: 'lg'); // ($control-size-lg - $line-height) * 0.5 - $border-width
-  // padding-y-sm
-  @include set-var('control-padding-y', calc((css-var('control-size', $suffix: 'sm') - css-var('line-height')) * 0.5 - css-var('border-width')), $suffix: 'sm'); // ($control-size-sm - $line-height) * 0.5 - $border-width
-}
+@include var.set((
+  control padding x: map.get($control, padding, x),
+  control padding y: map.get($control, padding, y)
+));

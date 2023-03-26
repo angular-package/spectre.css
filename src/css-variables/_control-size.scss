@@ -1,13 +1,14 @@
-// Variables.
-@use '../variables/control' as *;
+// Sass.
+@use 'sass:map';
 
-// Mixins.
-@use '../mixins/set-var.mixin' as *;
+// Variables.
+@use '../variables/control.var' as *;
+
+// Modules.
+@use '../var';
 
 // Control size.
-:root, :host {
-  @include set-var('control-icon-size', $control-icon-size); // 0.8rem
-  @include set-var('control-size', $control-size); // $unit-9
-  @include set-var('control-size', $control-size-lg, $suffix: 'lg'); // $unit-10
-  @include set-var('control-size', $control-size-sm, $suffix: 'sm'); // $unit-7
-}
+@include var.set((
+  control icon size: map.get($control, icon, size), // 0.8rem
+  control size: map.get($control, size)
+));

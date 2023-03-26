@@ -1,14 +1,8 @@
 // Variables.
-@use '../variables/z-index' as *;
+@use '../variables/z-index.var' as *;
 
-// Mixins.
-@use '../mixins/set-var.mixin' as *;
+// Modules.
+@use '../var';
 
 // z-index.
-:root, :host {
-  @include set-var('z-index-0', $zindex-0); // 1
-  @include set-var('z-index-1', $zindex-1); // 100
-  @include set-var('z-index-2', $zindex-2); // 200
-  @include set-var('z-index-3', $zindex-3); // 300
-  @include set-var('z-index-4', $zindex-4); // 400
-}
+@include var.set((z index: $z-index));

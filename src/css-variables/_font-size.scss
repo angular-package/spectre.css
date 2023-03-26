@@ -1,19 +1,18 @@
+// Sass.
+@use 'sass:map';
+
 // Variables.
-@use '../variables/font-sizes' as *;
+@use '../variables/html.var' as *;
+@use '../variables/font-size.var' as *;
 @use '../variables/line-height' as *;
 
-// Mixins.
-@use '../mixins/set-var.mixin' as *;
+// Modules.
+@use '../var';
 
 // Font size and line height.
-:root, :host {
-  // Font sizes.
-  @include set-var('font-size', $font-size); // 0.8rem
-  @include set-var('font-size', $font-size-lg, $suffix: 'lg'); // 0.9rem
-  @include set-var('font-size', $font-size-sm, $suffix: 'sm'); // 0.7rem
-  @include set-var('html-font-size', $html-font-size); // 20px
-
-  // Line height.
-  @include set-var('html-line-height', $html-line-height); // 1.5
-  @include set-var('line-height', $line-height); // 1.2rem
-}
+@include var.set((
+  font size: $font-size,
+  html font size: map.get($html, font, size),
+  html line height: map.get($html, line, height),
+  line height: $line-height
+));

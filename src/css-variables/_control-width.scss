@@ -1,14 +1,11 @@
-// Variables.
-@use '../variables/control' as *;
+// Sass.
+@use 'sass:map';
 
-// Mixins.
-@use '../mixins/set-var.mixin' as *;
+// Variables.
+@use '../variables/control.var' as *;
+
+// Modules.
+@use '../var';
 
 // Control width.
-:root, :host {
-  @include set-var('control-width', $control-width-lg, $suffix: 'lg'); // 960px
-  @include set-var('control-width', $control-width-md, $suffix: 'md'); // 640px
-  @include set-var('control-width', $control-width-sm, $suffix: 'sm'); // 320px
-  @include set-var('control-width', $control-width-xl, $suffix: 'xl'); // 1280px
-  @include set-var('control-width', $control-width-xs, $suffix: 'xs'); // 180px
-}
+@include var.set((control width: map.get($control, width)));

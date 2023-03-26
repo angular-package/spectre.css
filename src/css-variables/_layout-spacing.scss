@@ -1,16 +1,11 @@
+// Sass.
+@use 'sass:map';
+
 // Variables.
-@use '../variables/layout-spacing' as *;
+@use '../variables/layout/layout-spacing.var' as *;
 
-// Functions.
-@use '../functions/strip-unit.function' as *;
-
-// Mixins.
-@use '../mixins/set-var.mixin' as *;
+// Modules.
+@use '../var';
 
 // Layout spacing.
-:root, :host {
-  @include set-var('layout-spacing', strip-unit($layout-spacing)); // $unit-2
-  @include set-var('layout-spacing', strip-unit($layout-spacing-lg), $suffix: 'lg'); // $unit-4
-  @include set-var('layout-spacing', strip-unit($layout-spacing-sm), $suffix: 'sm'); // $unit-1
-  @include set-var('layout-spacing', 1rem, $suffix: 'unit'); // rem
-}
+@include var.set((layout spacing: $layout-spacing));

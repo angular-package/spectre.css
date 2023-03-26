@@ -1,0 +1,7 @@
+// Variables.
+@use '../variables/blur.var' as *;
+
+// Modules.
+@use '../var';
+
+@include var.set(( blur: $blur ));

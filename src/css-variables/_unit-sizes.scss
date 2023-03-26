@@ -1,10 +1,8 @@
 // Variables.
-@use '../variables/unit-sizes' as *;
+@use '../variables/unit-size.var' as *;
 
-// Mixins.
-@use '../mixins/set-vars.mixin' as *;
+// Modules.
+@use '../var';
 
 // Unit sizes.
-:root, :host {
-  @include set-vars('unit', $unit-size);
-}
+@include var.set((unit: $unit-size));
