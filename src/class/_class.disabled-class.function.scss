@@ -7,10 +7,10 @@
 
 // Status: DONE
 // The `disabled-class` function defines disabled class name.
-@function disabled-class($class: (), $selector: (), $dictionary: ()) {
+@function disabled-class($class: (), $pseudo-class: (), $dictionary: ()) {
   @return selector.class(
-    list.join($class, 'disabled', list.separator($class)),
-    $selector,
+    list.join($class, disabled, list.separator($class)),
+    $pseudo-class,
     map.merge((prefix: null, suffix: null,), $dictionary)
   );
 }

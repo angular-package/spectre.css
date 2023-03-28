@@ -9,16 +9,16 @@
 
 // Status: DONE
 // The `classes()` function.
-@function classes($name, $variants: (), $selector: (), $dictionary: ()) {
+@function classes($name, $variants: (), $pseudo-class: (), $dictionary: ()) {
   @if list.length($variants) > 0 {
     $i: 1;
     @each $variant in $variants {
-      $variants: list.set-nth($variants, $i, selector.class(list.join($name, $variant), $selector, $dictionary));
+      $variants: list.set-nth($variants, $i, selector.class(list.join($name, $variant), $pseudo-class, $dictionary));
       $i: $i + 1;
     }
     @return $variants;
   }
-  @return selector.class($name, $dictionary, $selector);
+  @return selector.class($name, $dictionary, $pseudo-class);
 }
 
 // Examples.
@@ -31,9 +31,9 @@
 // @debug classes('&' border width, (xl, lg, md, sm, xs)); // (&.borderwidthxl,), (&.borderwidthlg,), (&.borderwidthmd,), (&.borderwidthsm,), (&.borderwidthxs,)
 // @debug classes('&border' width, (xl, lg, md, sm, xs)); // (&.border-width-xl,), (&.border-width-lg,), (&.border-width-md,), (&.border-width-sm,), (&.border-width-xs,)
 
-// variants + parent + selector
+// variants + parent + pseudo-class
 // @debug classes(border width, (xl, lg, md, sm, xs), '&:hover'); // (.border-width-xl:hover,), (.border-width-lg:hover,), (.border-width-md:hover,), (.border-width-sm:hover,), (.border-width-xs:hover,)
 
-// variants + parent + selector + dictionary
+// variants + parent + pseudo-class + dictionary
 // @debug classes(border width, (xl, lg, md, sm, xs), '&:hover', (border: b, width: w)); // (.b-w-xl:hover,), (.b-w-lg:hover,), (.b-w-md:hover,), (.b-w-sm:hover,), (.b-w-xs:hover,)
 // @debug classes(border width, (xl, lg, md, sm, xs), '&:hover', (border: b)); // (.b-width-xl:hover,), (.b-width-lg:hover,), (.b-width-md:hover,), (.b-width-sm:hover,), (.b-width-xs:hover,)

@@ -1,0 +1,52 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:meta';
+
+// Functions.
+@use '../../selector/selector.class.function' as *;
+@use '../../values/values.combine.function' as *;
+
+// Mixins.
+@use '../class.content.mixin' as class;
+
+// Status: REVIEW:
+// The `content()` mixin.
+@mixin variant($variant, $pseudo-class: (), $dictionary: (), $function: meta.get-function("class")) {
+  @each $class, $attribute-variant in $variant {
+    @if type-of($attribute-variant) == map {
+      @each $attribute, $variant in $attribute-variant {
+        @each $class in if(list.separator($class) == comma, $class, ($class,)) {
+          @if type-of($variant) == map {
+            @each $attribute in if(list.separator($attribute) == comma, $attribute, ($attribute,)) {
+              @each $value-class, $value in $variant {
+                @include class.content(combine(if(&, '&', ()), $class, $attribute, if(list.separator($value-class) == comma, ($value-class,), $value-class)), $pseudo-class, $dictionary) {
+                  @content($class, $attribute, $value-class, $value);
+                }
+              }
+            }
+          } @else {
+            // FEATURE: Works fine.
+            @each $variant in if(list.separator($variant) == comma, $variant, ($variant,)) {
+              @each $attribute in if(list.separator($attribute) == comma, $attribute, ($attribute,)) {
+                @include class.content(combine(if(&, '&', ()), $class, $attribute), $pseudo-class, $dictionary) {
+                  @content($class, $attribute, $variant);
+                }
+              }
+            }
+          }
+        }
+      }
+    } @else {
+      // FEATURE: Works fine.
+      @each $value in if(list.separator($attribute-variant) == comma, $attribute-variant, ($attribute-variant,)) {
+        @each $class in if(list.separator($class) == comma, $class, ($class,)) {
+          @each $value in if(list.separator($value) == comma, $value, ($value,)) {
+            @include class.content(combine(if(&, '&', ()), $class), $pseudo-class, $dictionary) {
+              @content($class, $value);
+            }
+          }
+        }
+      }
+    }
+  }
+}

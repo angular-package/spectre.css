@@ -1,0 +1,151 @@
+// Mixins.
+@use 'class.variant-combine.mixin' as *;
+
+// Examples.
+// @include variant-combine((padding: unit 1)) using($property, $value) {
+//   @debug $property; // padding
+//   @debug $value; // unit 1
+
+//   #{$property}: #{$value};
+// }
+// .padding {
+//   padding: unit 1;
+// }
+
+// @include variant-combine((padding: (unit 1 unit 2))) using($property, $value) {
+//   @debug $property; // padding
+//   @debug $value; // unit 1 unit 2
+
+//   padding: #{$value};
+// }
+// .padding {
+//   padding: unit 1 unit 2;
+// }
+
+// @include variant-combine((padding: (unit 1, unit 2))) using($property, $value) {
+//   @debug $property; // padding
+//   @debug $value; // unit 1, unit 2
+
+//   #{$property}: #{$value};
+// }
+// .padding {
+//   padding: unit 1, unit 2;
+// }
+
+// @include variant-combine((padding large: unit 1)) using($property, $value) {
+//   @debug $property; // padding large
+//   @debug $value; // unit 1
+
+//   padding: #{$value};
+// }
+// .padding-large {
+//   padding: unit 1;
+// }
+
+// @include variant-combine((padding (small, large): unit 1)) using($property, $value) {
+//   @debug $property; // padding (small, large)
+//   @debug $value; // unit 1
+
+//   padding: #{$value};
+// }
+// .padding-small, .padding-large {
+//   padding: unit 1;
+// }
+
+// @include variant-combine(((outline, inline) padding: unit 1)) using($property, $value) {
+//   @debug $property; // (outline, inline) padding
+//   @debug $value; // unit 1
+
+//   padding: #{$value};
+// }
+// .outline-padding, .inline-padding {
+//   padding: unit 1;
+// }
+
+// @include variant-combine((padding: (size one: unit 1))) using($property, $value-class, $value) {
+//   #{$property}: #{$value};
+// }
+// .padding-size-one {
+//   padding: unit 1;
+// }
+
+// @include variant-combine((border: ((top left, top right): unit 1))) using($property, $side, $value) {
+//   @debug $property; // padding
+//   @debug $side; // top left, top right
+//   @debug $value; // unit 1
+
+//   #{$property}: #{$value};
+// }
+// .border-top-left, .border-top-right {
+//   border: unit 1;
+// }
+
+// @include variant-combine((padding: ((top, bottom): unit 1))) using($property, $value-class, $value) {
+//   #{$property}: #{$value};
+// }
+// .padding-top, .padding-bottom {
+//   padding: unit 1;
+// }
+
+// @include variant-combine(((margin, padding): ((left, right): 0))) using($property, $side, $value) {
+//   @each $property in $property {
+//     #{$property}: #{$value};
+//   }
+// }
+// .margin-left, .margin-right, .padding-left, .padding-right {
+//   margin: 0;
+//   padding: 0;
+// }
+
+// @include variant-combine(((margin, padding): ((left): 0))) using($property, $side, $value) {
+//   @each $property in $property {
+//     #{$property}: #{$value};
+//   }
+// }
+// .margin-left, .padding-left {
+//   margin: 0;
+//   padding: 0;
+// }
+
+// @include variant-combine((margin: ((left, right): (0: 0)))) using($property, $side, $value-class, $value) {
+//   @debug $property; // margin
+//   @debug $side; // left, right
+//   @debug $value-class; // 0
+//   @debug $value; // 0
+
+//   cursor: grab;
+// }
+// .margin-left-0, .margin-right-0 {
+//   cursor: grab;
+// }
+
+// @include variant-combine(((margin, padding): ((left, right): ((xs, xl): 0)))) using($property, $side, $value-class, $value) {
+//   @debug $property; // margin, padding
+//   @debug $side; // left, right
+//   @debug $value-class; // xs, xl
+//   @debug $value; // 0
+
+//   margin: 0;
+// }
+// .margin-left-xs, .margin-left-xl, .margin-right-xs, .margin-right-xl, .padding-left-xs, .padding-left-xl, .padding-right-xs, .padding-right-xl {
+//   margin: 0;
+// }
+
+// @include variant-combine((padding: ((top, bottom): ((size one, size two): unit 1, size two: unit 2)))) using($property, $side, $value-class, $value) {
+//   font: 100;
+// }
+
+// @include variant-combine(((padding, margin): ((top, right, bottom, left): (size one: unit 1)))) using($property, $side, $value-class, $value) {
+//   padding: #{$value};
+// }
+
+// @include variant-combine(((padding, border): ((right bottom, left top, ): (2: unit 2, 3: unit 3)))) using($resolved...) {
+//   @debug $resolved;
+//   font-size: 1;
+// }
+// .padding-right-bottom-2, .padding-left-top-2, .border-right-bottom-2, .border-left-top-2 {
+//   font-size: 1;
+// }
+// .padding-right-bottom-3, .padding-left-top-3, .border-right-bottom-3, .border-left-top-3 {
+//   font-size: 1;
+// }
