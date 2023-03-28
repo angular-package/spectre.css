@@ -14,11 +14,11 @@
 
 // Status: DONE
 // The `class()` function.
-@function class($name, $selector: (), $dictionary: ()) {
+@function class($name, $pseudo-class: (), $dictionary: ()) {
   $i: 1;
   $dictionary: map.merge($dictionary, get-map($name));
   $-dictionary: map.merge($dictionary, (prefix: null, suffix: null));
-  $name: remove-list(parent-first(remove-map($name)), $bracketed: only);
+  $name: remove-list(remove-list(parent-first(remove-map($name)), $bracketed: only), 0);
   @each $value in $name {
     $name: if(meta.type-of($value) == number, list.set-nth($name, $i, #{$value}), $name);
     $resolved-dictionary: if(
@@ -42,7 +42,7 @@
 
     $i: $i + 1;
   }
-  @return nest(list.join($name, $selector, list.separator($name)));
+  @return nest(list.join($name, $pseudo-class, list.separator($name)));
 }
 
 // Examples.

@@ -7,9 +7,9 @@
 
 // Status: DONE
 // The `tag()` function.
-@function tag($tag, $class, $selector: (), $dictionary: ()) {
+@function tag($tag, $class, $pseudo-class: (), $dictionary: ()) {
   @return nest(
-    list.join(($tag, class($class, $dictionary: $dictionary)), $selector)
+    list.join(($tag, class($class, $dictionary: $dictionary)), $pseudo-class)
   );
 }
 

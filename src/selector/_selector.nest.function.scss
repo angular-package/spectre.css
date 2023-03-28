@@ -11,7 +11,7 @@
 // Status: DONE
 // The `nest()` function.
 @function nest($selector, $placeholder: __PARENT__) {
-  @if list.length($selector) > 0 {
+  @if list.length($selector) > 0 and $selector {
     $selector: list.replace-string(
       selector.nest(replace-parent($selector, $placeholder)...),
       '__CLASS__',

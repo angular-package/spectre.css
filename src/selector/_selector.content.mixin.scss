@@ -7,7 +7,7 @@
 // Status: DONE
 // The `content()` mixin.
 @mixin content($selector) {
-  @if list.length($selector) > 0 {
+  @if $selector and list.length($selector) > 0 {
     @at-root #{nest($selector)} {
       @content;
     }
