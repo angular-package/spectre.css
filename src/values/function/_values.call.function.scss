@@ -8,7 +8,7 @@
 @use 'values.get.function' as *;
 @use 'values.remove.function' as *;
 
-// Status: REVIEW:
+// Status: REVIEW: Try arbitrary parameter.
 // The `call()` mixin.
 @function call($value, $dictionary: (), $function: variables.$function) {
   @if type-of($value) == list {

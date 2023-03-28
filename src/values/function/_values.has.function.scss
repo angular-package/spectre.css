@@ -5,24 +5,24 @@
 // Variables.
 @use '../variables' as variables;
 
-// Functions.
-@use '../../list/has/list.has-string.function' as *;
-
-// Status:
+// Status: DONE
 // The `has()` mixin.
 @function has($values, $name: null, $prefix: --, $function: variables.$function) {
   @if $name {
-    $name: $prefix + $name;
+    @return list.index($values, $prefix + $name);
   } @else {
     $name: map.keys($function);
     @for $i from 1 through list.length($name) {
-      $name: list.set-nth($name, $i, $prefix + list.nth($name, $i));
+      @if list.index($values, $prefix + list.nth($name, $i)) {
+        @return true;
+      }
     }
   }
-  @return has-string($values, any, '~=', $name...);
+  @return false;
 }
 
 // Examples.
+// @debug has(--get); // true
 // @debug has(--get unit 2); // true
 // @debug has(--color unit 2); // true
 // @debug has(--var unit 2); // false

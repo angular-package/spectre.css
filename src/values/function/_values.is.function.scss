@@ -9,7 +9,7 @@
 // The `is()` function.
 @function is($name, $prefix: --, $function: variables.$function) {
   @each $function-name in map.keys($function) {
-    @if $prefix + $function-name == $name {
+    @if $prefix + $function-name == $name or $prefix + $function-name == $prefix + $name {
       @return true;
     }
   }
