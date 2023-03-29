@@ -1,12 +1,12 @@
 // Can be modified for badge only.
 $badge: (
-  'dictionary': (
-    'class': (
-      'badge': 'badge',
+  dictionary: (
+    class: (
+      badge: badge,
       // 'prefix': '',
       // 'suffix': '',
       // 'separator': '-'
     ),
-    'var': ()
+    var: ()
   )
 ) !default;

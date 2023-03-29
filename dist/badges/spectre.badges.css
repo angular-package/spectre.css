@@ -1,0 +1,44 @@
+/* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
+/* Spectre.css module: badges | components | color-scheme: dark | MIT License | github.com/angular-package/spectre.css */
+.badge {
+  position: relative;
+  white-space: nowrap;
+}
+.badge[data-badge]::after, .badge:not([data-badge])::after {
+  content: attr(data-badge);
+  display: inline-block;
+  border-radius: 0.5rem;
+  background: var(--s-primary-color);
+  background-clip: padding-box;
+  color: var(--s-light-color);
+  box-shadow: 0 0 0 0.1rem var(--s-bg-color-light);
+  transform: translate(-0.05rem, -0.5rem);
+}
+.badge[data-badge]::after {
+  min-width: 0.9rem;
+  height: 0.9rem;
+  padding: 0.1rem 0.2rem;
+  font-size: var(--s-font-size-sm);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+.badge:not([data-badge])::after, .badge[data-badge=""]::after {
+  width: 6px;
+  min-width: 6px;
+  height: 6px;
+  padding: 0;
+}
+.badge.btn::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+.badge.avatar::after {
+  position: absolute;
+  top: 14.64%;
+  right: 14.64%;
+  z-index: var(--s-z-index-1);
+  transform: translate(50%, -50%);
+}

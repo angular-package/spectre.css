@@ -3,23 +3,19 @@
 @use '../../variables/core' as *;
 
 // Functions.
-@use '../../avatars/functions/avatar-class.function' as *;
-@use '../../buttons/functions/button-class.function' as *;
-@use '../../functions/color/color.function' as *;
-@use '../functions/badge-class.function' as *;
+@use '../../module/module.class.function' as *;
+
+// Modules.
+@use '../../color';
 
 // Mixins.
-@use '../../mixins/color/background.mixin' as *;
-@use '../../mixins/color/color.mixin' as *;
 @use '../../mixins/font-size.mixin' as *;
 @use '../../mixins/z-index.mixin' as *;
 
+// Status: DONE
 // The `badge()` mixin.
-@mixin badge($class: '', $selector: (), $dictionary: ()) {
-  // Badges
-  // .#{$class-prefix}badge {
-  // #{class('badge')} {
-  #{badge-class($class, $selector, $dictionary)} {
+@mixin badge($class: (), $pseudo-class: (), $dictionary: ()) {
+  #{class(badge, $class, $pseudo-class, $dictionary)} {
     position: relative;
     white-space: nowrap;
 
@@ -29,12 +25,12 @@
         content: attr(data-badge);
         display: inline-block;
         border-radius: 0.5rem;
-        @include background('primary');
+        @include color.background(primary);
 
         background-clip: padding-box;
-        @include color('light');
+        @include color.color(light);
 
-        box-shadow: 0 0 0 0.1rem color('bg-light');
+        box-shadow: 0 0 0 0.1rem color.color(bg light);
         transform: translate(-0.05rem, -0.5rem);
       }
     }
@@ -44,10 +40,7 @@
         min-width: 0.9rem;
         height: 0.9rem;
         padding: 0.1rem 0.2rem;
-
-        // font-size: get-var('font-size', $suffix: 'sm');
-        // font-size: get-var(('font', 'size', 'sm'));
-        @include font-size('sm');
+        @include font-size(sm);
 
         line-height: 1;
         text-align: center;
@@ -66,27 +59,21 @@
     }
 
     // Badges for Buttons
-    #{button-class('&', '&::after', $dictionary)} {
-      // &.btn {
-      // &::after {
+    #{class(button, '&', '&::after', $dictionary)} {
       position: absolute;
       top: 0;
       right: 0;
       transform: translate(50%, -50%);
-      // }
     }
 
     // Badges for Avatars
-    #{avatar-class('&', '&::after', $dictionary)} {
-      // &.avatar {
-      // &::after {
+    #{class(avatar, '&', '&::after', $dictionary)} {
       position: absolute;
       top: 14.64%;
       right: 14.64%;
-      @include z-index('1');
+      @include z-index(1);
 
       transform: translate(50%, -50%);
-      // }
     }
   }
 }
