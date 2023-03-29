@@ -1,59 +1,59 @@
+// Sass.
+@use 'sass:meta';
+
 // Functions.
-@use '../../icons/functions/icon-class.function' as *;
-@use '../../menus/functions/menu-class.function' as *;
-@use '../functions' as accordion;
+@use '../../module/module.class.function' as *;
 
 // Modules.
 @use '../../mixins/margin';
+@use '../../mixins/padding';
 
 // Mixins.
-@use '../../mixins/padding/padding.mixins' as *;
 @use '../../mixins/transition.mixin' as *;
 
 // Status: DONE
 // The `accordion()` mixin.
-@mixin accordion($class: (), $selector: (), $dictionary: ()) {
-  #{accordion.class(($class, ), $selector, $dictionary)} {
+@mixin accordion($class: (), $pseudo-class: (), $dictionary: ()) {
+  #{class(accordion, $class, $pseudo-class, $dictionary)} {
     input:checked ~,
     &[open] {
-      & #{accordion.class($class header, (), $dictionary)} > {
+      & #{class(accordion, join($class, header), (), $dictionary)} > {
         svg,
-        // .icon:first-child {
-        #{icon-class((), '&:first-child', $dictionary)} {
+        #{class(icon, (), '&:first-child', $dictionary)} {
           transform: rotate(90deg);
         }
       }
 
-      & #{accordion.class($class body, (), $dictionary)} {
+      & #{class(accordion, join($class, body), (), $dictionary)} {
         overflow: visible;
         max-height: 60rem;
       }
     }
 
-    #{accordion.class($class header, (), $dictionary)} {
+    #{class(accordion, join($class, header), (), $dictionary)} {
       display: block;
-      @include padding(unit 1 unit 2);
+      @include padding.padding((unit 1) (unit 2));
 
       > svg,
-      > #{icon-class($dictionary: $dictionary)} {
+      > #{class(icon, $dictionary: $dictionary)} {
         @include transition(transform 0.05s);
-        @include margin.right(unit 2);
+        @include margin.right((unit 2) ());
       }
     }
 
-    #{accordion.class($class body, (), $dictionary)} {
+    #{class(accordion, join($class, body), (), $dictionary)} {
       overflow: hidden;
       max-height: 0;
-      @include margin.bottom(layout spacing true);
+      @include margin.bottom((layout spacing true) ());
       @include transition(max-height 0.05s);
-      #{menu-class(item)} > a {
+      #{class(menu, item)} > a {
         align-items: center;
       }
     }
   }
 
   // Remove default details marker in Webkit
-  summary#{accordion.class($class header, '&::-webkit-details-marker', $dictionary)} {
+  summary#{class(accordion, join($class, header), '&::-webkit-details-marker', $dictionary)} {
     display: none;
   }
 }
