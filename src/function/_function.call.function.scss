@@ -2,14 +2,14 @@
 @use 'sass:meta';
 
 // Variables
-@use '../variables' as variables;
+@use 'variables';
 
 // Functions.
-@use 'values.get.function' as *;
-@use 'values.remove.function' as *;
+@use 'function.get.function' as *;
+@use 'function.remove.function' as *;
 
-// Status: REVIEW: Try arbitrary parameter.
-// The `call()` mixin.
+// Status: TODO:
+// The `call()` function.
 @function call($value, $dictionary: (), $function: variables.$function) {
   @if type-of($value) == list {
     @if get($value, $default: null, $function: $function) {

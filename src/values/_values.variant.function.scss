@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 // Modules.
-@use 'function';
+@use '../function';
 
 // Functions.
 @use '../list/remove/list.remove-list.function' as *;

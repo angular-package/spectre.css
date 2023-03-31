@@ -1,0 +1,71 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+// Modules.
+@use '../function';
+
+// Status: REVIEW:
+// The `var()` mixin.
+@function call($values, $dictionary: (), $function: function.$function) {
+  @if type-of($values) == list {
+    @if function.has($values, $function: $function) {
+      @return function.call($values, $dictionary, $function);
+    }
+  }
+
+  $values: if(not (meta.type-of($values) == list), ($values,), $values);
+  @for $i from 1 through list.length($values) {
+    $value: list.nth($values, $i);
+    @if type-of($value) == map {
+      $values: list.set-nth($values, $i, function.call($value, $dictionary, $function));
+    } @else if type-of($value) == list {
+      @if function.has($values, $function: $function) {
+        $values: list.set-nth($values, $i, function.call($value, $dictionary, $function));
+      } @else {
+        $values: list.set-nth($values, $i, meta.call(function.get($value, $function: $function), function.remove($value, $function: $function), $dictionary: $dictionary));
+      }
+    }
+  }
+  @return $values;
+}
+
+// Possibilities.
+// 5px (unit 1) 10px (unit 2)
+// 5px (get: unit 1) 10px (get: unit 2)
+// 5px solid (color: primary dark)
+// (--get unit 2) 5px (--color primary dark)
+
+// Examples.
+// list
+// @debug call((primary dark) (gray light)); // var(--s-primary-dark) var(--s-gray-light)
+
+// list with --color or --get
+// @debug call(--get unit 2); // (var(--s-unit-2),)
+// @debug call(--color primary dark); // var(--s-primary-color-dark)
+// @debug call((--get unit 2) (--get unit 1)); // var(--s-unit-2) var(--s-unit-1)
+
+// map
+// @debug call((get: unit 5)); // (var(--s-unit-5),)
+// @debug call((--get: unit 5)); // (var(--s-unit-5),)
+// @debug call((color: primary dark)); // (var(--s-primary-color-dark),)
+// @debug call((--color: primary dark)); // (var(--s-primary-color-dark),)
+
+// @debug call((color: primary dark) (color: gray light)); // var(--s-primary-color-dark) var(--s-gray-color-light)
+// @debug call((get: unit 2) (get: unit 3) (get: unit 4)); // var(--s-unit-2) var(--s-unit-3) var(--s-unit-4)
+// @debug call((--get: unit 2) (--get: unit 3) (--get: unit 4)); // var(--s-unit-2) var(--s-unit-3) var(--s-unit-4)
+// @debug call(10px (get: unit 3) 5px (get: unit 2)); // 10px var(--s-unit-3) 5px var(--s-unit-2)
+// @debug call((--get: unit 2) (--color: primary dark)); // var(--s-unit-2) var(--s-primary-color-dark)
+// @debug call(1px (primary color dark) 10px (border width small)); // 1px var(--s-primary-color-dark) 10px var(--s-border-width-small)
+// @debug call((--get: unit 2)); // (var(--s-unit-2),)
+// @debug call(1px (--get: unit 2) 10px (--get: border width sm)); // 1px var(--s-unit-2) 10px var(--s-border-width-sm)
+
+// important
+// @debug call(1px !important); // 1px !important
+// @debug call((unit 2) (color: primary dark) !important); // var(--s-unit-2) var(--s-primary-color-dark) !important
+
+// adjust
+// @debug call(1px (unit 2) 10px (border width sm ('*' 2))); // 1px var(--s-unit-2) 10px calc(var(--s-border-width-sm) * 2)
+// @debug call(1px (unit 2 ('+' 15)) 10px (border width sm)); // 1px calc(var(--s-unit-2) + 15) 10px var(--s-border-width-sm)
+// @debug call((unit 1 ('+' 15)) (unit 2)); // calc(var(--s-unit-1) + 15) var(--s-unit-2)

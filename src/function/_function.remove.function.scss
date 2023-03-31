@@ -3,14 +3,14 @@
 @use 'sass:map';
 
 // Variables.
-@use '../variables' as variables;
+@use 'variables';
 
 // Functions.
-@use '../../list/remove/list.remove-string.function' as *;
+@use '../list/remove/list.remove-string.function' as *;
 
 // Status: REVIEW:
 // The `remove()` mixin.
-@function remove($values, $name: null, $prefix: --, $function: variables.$function) {
+@function remove($value, $name: null, $prefix: --, $function: variables.$function) {
   @if $name {
     $name: $prefix + $name;
   } @else {
@@ -19,7 +19,7 @@
       $name: list.set-nth($name, $i, $prefix + list.nth($name, $i));
     }
   }
-  @return remove-string($values, $name...);
+  @return remove-string($value, $name...);
 }
 
 // Examples.
