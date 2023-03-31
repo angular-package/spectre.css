@@ -26,7 +26,7 @@
       $alpha
     );
   }
-  @include var.set(name($name, alpha), $alpha, $dictionary);
+  @include var.set((name($name, alpha): $alpha), (), $dictionary);
 }
 
 // Examples.

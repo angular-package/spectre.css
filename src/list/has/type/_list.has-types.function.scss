@@ -27,9 +27,9 @@
 // Private `-list-has-types()` function.
 @function -list-has-types($list, $occurrence, $operator, $types...) {
   @if $occurrence == all {
-    @return list-has-all-types($list, $operator, $types...);
+    @return has-all-types($list, $operator, $types...);
   } @else if $occurrence == any {
-    @return list-has-any-types($list, $operator, $types...);
+    @return has-any-types($list, $operator, $types...);
   }
   @return if($occurrence == only, has-type($list, $occurrence, $operator, $types...), false);
 }

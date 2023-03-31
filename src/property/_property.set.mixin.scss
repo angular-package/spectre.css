@@ -1,0 +1,64 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:meta';
+
+// Variables.
+@use '../values/variables';
+
+// Modules.
+@use '../string';
+@use '../values';
+
+// Functions.
+@use '../functions/important.function' as *;
+@use '../list/remove/list.remove-string.function' as *;
+@use '../var/functions/var.get.function' as *;
+
+// Status: REVIEW: Check.
+// The `set()` mixin.
+@mixin set($property-value, $important: false, $dictionary: (), $function: variables.$function) {
+  @if type-of($property-value) == map {
+    @each $property, $value in $property-value {
+      $important: if($value and (list.index($value, '!important') or $important), true, false);
+
+      @each $property in if(list.separator($property) == comma, $property, ($property,)) {
+        @if type-of($value) == map {
+          #{string.join('-', $property...)}: values.var($value, $dictionary, $function) + important($important);
+        } @else {
+          @each $-value in if(list.separator($value) == comma, $value, ($value,)) {
+            #{string.join('-', $property...)}: values.var(remove-string($-value, '!important'), $dictionary, $function) + important($important);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Params
+// (property: value)
+
+// Examples.
+// div {
+  // @include set((padding: (5px 10px, 14px))); // padding: 5px 10px;
+  // @include set((padding: 5px '!important')); // padding: 5px !important;
+  // @include set(((padding, margin): 5px 10px)); // padding: 5px 10px;
+  // @include set(((padding, margin): (5px 10px, (unit 1) (unit 2)))); // padding: 5px 10px;
+  // @include set((padding: (unit 1 ('+' 15)) (unit 2))); //  padding: calc(var(--s-unit-1) + 15) var(--s-unit-2);
+
+  // @include set((background: (--color: primary dark) '!important')); // background: var(--s-primary-color-dark) !important;
+  // @include set((background: (--color: primary dark) (--color: primary dark) '!important')); // background: var(--s-primary-color-dark) var(--s-primary-color-dark);
+
+  // @include set((background: (--color: primary dark)), true); // background: var(--s-primary-color-dark) !important;
+
+  // @include set(((padding, margin): 5px 10px), true);
+  // padding: 5px 10px !important;
+  // margin: 5px 10px !important;
+
+  // @include set((padding: 5px 10px, margin: 10px), true);
+  // padding: 5px 10px !important;
+  // margin: 10px !important;
+
+  // @include set((border: 1px solid red, margin: 10px), true);
+  // border: 1px solid red !important;
+  // margin: 10px !important;
+// }

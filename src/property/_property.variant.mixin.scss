@@ -1,0 +1,435 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Variables.
+@use '../values/variables';
+
+// Functions.
+@use '../functions/important.function' as *;
+@use '../list/remove/list.remove-string.function' as *;
+@use '../var/functions/var.get.function' as *;
+@use 'property.set.mixin' as *;
+
+// Modules.
+@use '../class';
+@use '../string';
+@use '../values';
+
+// Status: REVIEW:
+// Property variant mixin.
+@mixin variant($variant: (), $important: null, $pseudo-class: (), $dictionary: (), $function: variables.$function) {
+  @if type-of($variant) == map {
+    @each $key, $value in $variant {
+      @if type-of($value) == list or type-of($value) == string {
+        $variant: map.set($variant, $key, values.variant(if(list.separator($value) == comma, $value, ($value,))...));
+      }
+    }
+    @include class.variant($variant, $pseudo-class, $dictionary) using($resolved...) {
+      $attribute: null;
+      $property: list.nth($resolved, 1);
+      $value-class: null;
+      $value: null;
+      @if list.length($resolved) == 2 {
+        $value: list.nth($resolved, 2);
+      }
+      @if list.length($resolved) == 3 {
+        $value: list.nth($resolved, 3);
+      }
+      @if list.length($resolved) == 4 {
+        $property: list.join($property, list.nth($resolved, 2));
+        $value-class: list.nth($resolved, 3);
+        $value: list.nth($resolved, 4);
+      }
+      @if type-of($value) == map {
+        @each $value-attribute, $value in $value {
+          @include set((list.join($property, $value-attribute): $value), $important, $dictionary, $function);
+        }
+      } @else {
+        @include set(($property: $value), $important, $dictionary, $function);
+      }
+    }
+  }
+}
+
+// Examples.
+// single variant
+// @include variant((float: right));
+// .float-right {
+//   float: right;
+// }
+
+// single variant + important
+// @include variant((float: right '!important'));
+
+// single variant + important + selector
+// @include variant((float: right), true, (('&:hover', '&:visited'),));
+// .float-right:hover, .float-right:visited {
+//   float: right !important;
+// }
+
+// single variant + important + selector + dictionary
+// @include variant((float: right), true, (('&:hover', '&:visited'),), (float: f, right: r));
+// .f-r:hover, .f-r:visited {
+//   float: right !important;
+// }
+
+// single variant + important + adjust
+// @include variant((float: --get right ('+' 15) '!important'));
+// .float-right {
+//   float: calc(var(--s-right) + 15) !important;
+// }
+
+// multiple variants
+// @include variant((float: (right, left)));
+// .float-right {
+//   float: right;
+// }
+// .float-left {
+//   float: left;
+// }
+
+// multiple variants + important
+// @include variant((float: (right, left !important)));
+// .float-right {
+//   float: right;
+// }
+// .float-left {
+//   float: left !important;
+// }
+
+// multiple variants + important + selector
+// @include variant(((float, text align): (right, left)), true, (('&:hover', '&:visited'),));
+// .float-right:hover, .float-right:visited {
+//   float: right !important;
+// }
+// .text-align-right:hover, .text-align-right:visited {
+//   text-align: right !important;
+// }
+// .float-left:hover, .float-left:visited {
+//   float: left !important;
+// }
+// .text-align-left:hover, .text-align-left:visited {
+//   text-align: left !important;
+// }
+
+// multiple variants + important + selector + dictionary
+// @include variant(((float, text align): (right, left)), true, '&:hover', (float: f));
+// .f-right:hover {
+//   float: right !important;
+// }
+// .text-align-right:hover {
+//   text-align: right !important;
+// }
+// .f-left:hover {
+//   float: left !important;
+// }
+// .text-align-left:hover {
+//   text-align: left !important;
+// }
+
+// @include variant(((position,): (absolute, fixed, relative '!important', sticky '!important')));
+// .position-absolute {
+//   position: absolute;
+// }
+// .position-fixed {
+//   position: fixed;
+// }
+// .position-relative {
+//   position: relative !important;
+// }
+// .position-sticky {
+//   position: sticky !important;
+// }
+
+// @include variant(((position,): (absolute '!important', fixed, relative, sticky)));
+// .position-absolute {
+//   position: absolute !important;
+// }
+// .position-fixed {
+//   position: fixed;
+// }
+// .position-relative {
+//   position: relative;
+// }
+// .position-sticky {
+//   position: sticky;
+// }
+
+// @include variant(( flex direction: ( column, row ) ));
+// .flex-direction-column {
+//   flex-direction: column;
+// }
+// .flex-direction-row {
+//   flex-direction: row;
+// }
+
+// @include variant((align items: (center: center, start: flex-start, end: flex-end)));
+// .align-items-center {
+//   align-items: center;
+// }
+// .align-items-start {
+//   align-items: flex-start;
+// }
+// .align-items-end {
+//   align-items: flex-end;
+// }
+
+// justify content
+// @include variant((
+//   justify content: (
+//     // .justify-content-center,
+//     center,
+
+//     // .justify-content-end,
+//     (end: flex-end),
+
+//     // .justify-content-space-around,
+//     space-around,
+
+//     // .justify-content-space-around,
+//     space-between,
+
+//     // .justify-content-space-evenly,
+//     space-evenly,
+
+//     // .justify-content-start,
+//     (start: flex-start)
+//   )
+// ));
+// .justify-content-center {
+//   justify-content: center;
+// }
+// .justify-content-space-around {
+//   justify-content: space-around;
+// }
+// .justify-content-space-between {
+//   justify-content: space-between;
+// }
+// .justify-content-space-evenly {
+//   justify-content: space-evenly;
+// }
+
+// @include variant((border: (2: unit 2)));
+// .border-2 {
+//   border: unit 2;
+// }
+
+// @include variant((border: (2: --get unit 2)));
+// .border-2 {
+//   border: var(--s-unit-2);
+// }
+
+// @include variant((border: (1: unit 1, 2: unit 2)));
+// .border-1 {
+//   border: unit 1;
+// }
+// .border-2 {
+//   border: unit 2;
+// }
+
+// @include variant((border: (1: (unit 1) (unit 2), 2: --get unit 2)));
+// .border-1 {
+//   border: var(--s-unit-1) var(--s-unit-2);
+// }
+// .border-2 {
+//   border: var(--s-unit-2);
+// }
+
+// @include variant((border: (unit 1: --get unit 1 '!important', unit 2: --get unit 2)));
+// .border {
+//   border: var(--s-unit-1) !important;
+// }
+// .border {
+//   border: var(--s-unit-2);
+// }
+
+// @include variant((border: (unit 1: --get unit 1)), true);
+// .border-unit-1 {
+//   border: var(--s-unit-1) !important;
+// }
+
+// @include variant((border: (one 1: --get unit 1, two 2: --get unit 2)));
+// .border-one-1 {
+//   border: var(--s-unit-1);
+// }
+// .border-two-2 {
+//   border: var(--s-unit-2);
+// }
+
+// @include variant(((border,): (radius: (1: --get unit 1, 2: --get unit 2 !important))));
+// .border-radius-1 {
+//   border: var(--s-unit-1);
+// }
+// .border-radius-2 {
+//   border: var(--s-unit-2) !important;
+// }
+
+// @include variant(((border,): ((radius, color): (1: unit 1, two: unit 2))));
+// .border-radius-1 {
+//   border: var(--s-unit-1);
+// }
+// .border-radius-two {
+//   border: var(--s-unit-2);
+// }
+// .border-color-1 {
+//   border: var(--s-unit-1);
+// }
+// .border-color-two {
+//   border: var(--s-unit-2);
+// }
+
+// @include variant(((font,): ((size,): ((xxs, xs, sm, md, lg, xl, xxl): --get unit 1, two: --get unit 2))));
+// .font-size-xxs, .font-size-xs, .font-size-sm, .font-size-md, .font-size-lg, .font-size-xl, .font-size-xxl {
+//   font: var(--s-unit-1);
+// }
+// .font-size-two {
+//   font: var(--s-unit-2);
+// }
+
+// @include variant((border: ((radius): (1: --get unit 1, two: --get unit 2))));
+// .border-1 {
+//   border: var(--s-unit-1);
+// }
+// .border-two {
+//   border: var(--s-unit-2);
+// }
+
+// @include variant((border: (top: (1: --get unit 1))));
+// .border-top-1 {
+//   border-top: var(--s-unit-1) !important;
+// }
+
+// @include variant((border: ((top left, right bottom): (1: --get unit 1))));
+// .border-top-left-1 {
+//   border-top-left: var(--s-unit-1) !important;
+// }
+// .border-right-bottom-1 {
+//   border-right-bottom: var(--s-unit-1) !important;
+// }
+
+// @include variant(((border, margin): ((top left, right bottom): (1: --get unit 1, two: --get unit 2))));
+// .border-top-left-1 {
+//   border-top-left: var(--s-unit-1);
+// }
+// .border-top-left-two {
+//   border-top-left: var(--s-unit-2);
+// }
+// .border-right-bottom-1 {
+//   border-right-bottom: var(--s-unit-1);
+// }
+// .border-right-bottom-two {
+//   border-right-bottom: var(--s-unit-2);
+// }
+// .margin-top-left-1 {
+//   margin-top-left: var(--s-unit-1);
+// }
+// .margin-top-left-two {
+//   margin-top-left: var(--s-unit-2);
+// }
+// .margin-right-bottom-1 {
+//   margin-right-bottom: var(--s-unit-1);
+// }
+// .margin-right-bottom-two {
+//   margin-right-bottom: var(--s-unit-2);
+// }
+
+// @include variant((padding: ((): ((xl, xs, sm): --get unit 1, 2: --get unit 2))));
+// .padding-xl, .padding-xs, .padding-sm {
+//   padding: var(--s-unit-1);
+// }
+// .padding-2 {
+//   padding: var(--s-unit-2);
+// }
+
+// multiple properties + single variant + single side
+// @include variant(((margin, padding): ((top): (1: --get unit 1))));
+// .margin-top-1 {
+//   margin-top: var(--s-unit-1);
+// }
+// .padding-top-1 {
+//   padding-top: var(--s-unit-1);
+// }
+
+// multiple properties + single variant + multiple sides
+// @include variant(((margin, padding): ((top, bottom): (1: --get unit 1))));
+// .margin-top-1 {
+//   margin-top: var(--s-unit-1);
+// }
+// .margin-bottom-1 {
+//   margin-bottom: var(--s-unit-1);
+// }
+// .padding-top-1 {
+//   padding-top: var(--s-unit-1);
+// }
+// .padding-bottom-1 {
+//   padding-bottom: var(--s-unit-1);
+// }
+
+// multiple properties + multiple variants + multiple sides
+// @include variant(((margin, padding): ((top, bottom): (1: --get unit 1, 3: --get unit 3))));
+// .margin-top-1 {
+//   margin-top: var(--s-unit-1);
+// }
+// .margin-top-3 {
+//   margin-top: var(--s-unit-3);
+// }
+// .margin-bottom-1 {
+//   margin-bottom: var(--s-unit-1);
+// }
+// .margin-bottom-3 {
+//   margin-bottom: var(--s-unit-3);
+// }
+// .padding-top-1 {
+//   padding-top: var(--s-unit-1);
+// }
+// .padding-top-3 {
+//   padding-top: var(--s-unit-3);
+// }
+// .padding-bottom-1 {
+//   padding-bottom: var(--s-unit-1);
+// }
+// .padding-bottom-3 {
+//   padding-bottom: var(--s-unit-3);
+// }
+
+
+// @include variant((
+//   (outline border): (
+//     (top-left, bottom-right): (
+//       (radius): 30px,
+//       color: primary color dark
+//     ),
+//     // secondary: (
+//     //   secondary: secondary color,
+//     //   secondary dark: secondary color dark
+//     // )
+//   )), $dictionary: (radius: r));
+
+
+// dictionary
+// @include variant(((margin, padding): ((top, bottom): (1: --get unit 1, 3: --get unit 3))), false, ('&:hover'), (margin: m, padding: p));
+// .m-top-1:hover {
+//   margin-top: var(--s-unit-1);
+// }
+// .m-top-3:hover {
+//   margin-top: var(--s-unit-3);
+// }
+// .m-bottom-1:hover {
+//   margin-bottom: var(--s-unit-1);
+// }
+// .m-bottom-3:hover {
+//   margin-bottom: var(--s-unit-3);
+// }
+// .p-top-1:hover {
+//   padding-top: var(--s-unit-1);
+// }
+// .p-top-3:hover {
+//   padding-top: var(--s-unit-3);
+// }
+// .p-bottom-1:hover {
+//   padding-bottom: var(--s-unit-1);
+// }
+// .p-bottom-3:hover {
+//   padding-bottom: var(--s-unit-3);
+// }

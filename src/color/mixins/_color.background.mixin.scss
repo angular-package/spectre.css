@@ -11,7 +11,7 @@
   $alpha: null,
   $backup: null,
   $important: false,
-  $selector: null,
+  $selector: (),
   $dictionary: (),
 ) {
   @include color(
@@ -23,11 +23,18 @@
     $backup,
     $important,
     $selector,
-    $dictionary
+    $dictionary,
   );
 }
 
 // Examples.
 // :host {
-//   @include background(primary dark);
+  // @include background(primary dark);
+
+  // @include background((
+  //   dark: (code, -42.5%),
+  //   light: (code, 42.5%),
+  //   normal: (code, 42.5%),
+  // ));
+
 // }

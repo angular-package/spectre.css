@@ -26,7 +26,7 @@
 // Examples.
 // @debug font-size-var(sm); // var(--s-font-size-sm)
 // @debug font-size-var(md); // var(--s-font-size-sm)
-// @debug font-size-var(''); // var(--s-font-size)
+// @debug font-size-var; // var(--s-font-size)
 // @debug font-size-var(lg); // var(--s-font-size-lg)
 // @debug font-size-var('xl'); // Font size xl is not set. Try: sm, md, , lg
 

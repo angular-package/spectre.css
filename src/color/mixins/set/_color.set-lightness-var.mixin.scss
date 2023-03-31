@@ -26,7 +26,7 @@
       $lightness
     );
   }
-  @include var.set(name($name, lightness), $lightness, $dictionary);
+  @include var.set((name($name, lightness): $lightness), (), $dictionary);
 }
 
 // Examples.

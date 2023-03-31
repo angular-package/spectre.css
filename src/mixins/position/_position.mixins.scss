@@ -1,37 +1,30 @@
-
-// Mixins.
-@use '../property';
+// Modules.
+@use '../../property';
 
 // The `top()` mixin.
-@mixin top($variant, $dictionary: ()) {
-  @include property.side-variant(if(&, '&top', top), $variant, '', $dictionary);
+@mixin top($variant, $important: false, $selector: (), $dictionary: ()) {
+  @include property.variant((top: $variant), $important, $selector, $dictionary);
 }
 
 // The `right()` mixin.
-@mixin right($variant, $dictionary: ()) {
-  @include property.side-variant(if(&, '&right', right), $variant, '', $dictionary);
+@mixin right($variant, $important: false, $selector: (), $dictionary: ()) {
+  @include property.variant((right: $variant), $important, $selector, $dictionary);
 }
 
 // The `bottom()` mixin.
-@mixin bottom($variant, $dictionary: ()) {
-  @include property.side-variant(if(&, '&bottom', bottom), $variant, '', $dictionary);
+@mixin bottom($variant, $important: false, $selector: (), $dictionary: ()) {
+  @include property.variant((bottom: $variant), $important, $selector, $dictionary);
 }
 
 // The `left()` mixin.
-@mixin left($variant, $dictionary: ()) {
-  @include property.side-variant(if(&, '&left', left), $variant, '', $dictionary);
+@mixin left($variant, $important: false, $selector: (), $dictionary: ()) {
+  @include property.variant((left: $variant), $important, $selector, $dictionary);
 }
 
 // Examples.
+// @include top((1: unit 1));
 // .top-1 {
-//   top: var(--s-unit-1) !important;
-// }
-
-// div * {
-  // @include top((1: unit 1));
-  // div *.top-1 {
-  //   top: var(--s-unit-1) !important;
-  // }
+//   top: var(--s-unit-1);
 // }
 
 // @include top((1: unit 1, 2: unit 2));

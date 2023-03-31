@@ -1,0 +1,183 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Modules.
+@use '../../class';
+@use '../../scheme';
+
+// Functions.
+@use 'color.color.mixin' as *;
+
+// Status: REVIEW:
+// The `variant()` mixin contains the `color` style of the given `$color` CSS variable name without the prefix.
+@mixin variant(
+  $variant,
+  $hue: null,
+  $saturation: null,
+  $lightness: null,
+  $alpha: null,
+  $important: false,
+  $pseudo-class: (),
+  $dictionary: (),
+  $property: color
+) {
+  @include class.variant($variant, $pseudo-class, $dictionary) using($resolved...) {
+    $color: null;
+    @if list.length($resolved) == 2 {
+      $color: list.nth($resolved, 2);
+    }
+    @if list.length($resolved) == 3 {
+      $property: list.nth($resolved, 1);
+      $color: list.nth($resolved, 3);
+    }
+    @if list.length($resolved) == 4 {
+      $property: list.nth($resolved, 1);
+      $color: list.nth($resolved, 4);
+    }
+    @include color(($property: $color), $hue, $saturation, $lightness, $alpha, null, $important, $property: $property);
+  }
+}
+
+// Examples.
+// default variant
+// @include variant(( color primary dark: primary dark, color secondary dark: secondary dark));
+// .color-primary-dark {
+//   color: var(--s-primary-color-dark);
+// }
+// .color-secondary-dark {
+//   color: var(--s-secondary-color-dark);
+// }
+
+// adjust
+// @include variant(( color primary dark: primary dark, color secondary dark: secondary dark), $hue: 15deg, $saturation: '/' 2, $lightness: '*' 5%, $alpha: 0.5);
+// .color-primary-dark {
+//   color: hsla(calc(var(--s-primary-color-dark-h) + 15deg), calc(var(--s-primary-color-dark-s) / 2), calc(var(--s-primary-color-dark-l) * 5%), calc(var(--s-primary-color-dark-a) + 0.5));
+// }
+// .color-secondary-dark {
+//   color: hsla(calc(var(--s-secondary-color-dark-h) + 15deg), calc(var(--s-secondary-color-dark-s) / 2), calc(var(--s-secondary-color-dark-l) * 5%), calc(var(--s-secondary-color-dark-a) + 0.5));
+// }
+
+// @include variant(( color primary dark: (primary dark) 15deg 5% 15% 0.5, color secondary dark: (secondary dark) 10% 0.9));
+// .color-primary-dark {
+//   color: hsla(calc(var(--s-primary-color-dark-h) + 15deg), calc(var(--s-primary-color-dark-s) + 5%), calc(var(--s-primary-color-dark-l) + 15%), calc(var(--s-primary-color-dark-a) + 0.5));
+// }
+// .color-secondary-dark {
+//   color: hsla(var(--s-secondary-color-dark-h), var(--s-secondary-color-dark-s), calc(var(--s-secondary-color-dark-l) + 10%), calc(var(--s-secondary-color-dark-a) + 0.9));
+// }
+
+// adjust + dictionary
+// @include variant(( color primary dark: primary dark, color secondary dark: secondary dark), 15deg, '/' 2, '*' 5%, 0.5, false, '&:hover', (primary: p));
+// .color-p-dark:hover {
+//   color: hsla(calc(var(--s-primary-color-dark-h) + 15deg), calc(var(--s-primary-color-dark-s) / 2), calc(var(--s-primary-color-dark-l) * 5%), calc(var(--s-primary-color-dark-a) + 0.5));
+// }
+// .color-secondary-dark:hover {
+//   color: hsla(calc(var(--s-secondary-color-dark-h) + 15deg), calc(var(--s-secondary-color-dark-s) / 2), calc(var(--s-secondary-color-dark-l) * 5%), calc(var(--s-secondary-color-dark-a) + 0.5));
+// }
+
+// important
+// @include variant(( color primary dark: primary dark, color secondary dark: secondary dark), $important: true);
+// .color-primary-dark {
+//   color: var(--s-primary-color-dark) !important;
+// }
+// .color-secondary-dark {
+//   color: var(--s-secondary-color-dark) !important;
+// }
+
+// different properties
+// @include variant(( bg primary dark: primary dark, bg secondary dark: secondary dark), $property: background);
+// .bg-primary-dark {
+//   background: var(--s-primary-color-dark);
+// }
+// .bg-secondary-dark {
+//   background: var(--s-secondary-color-dark);
+// }
+
+// @include variant(( bg primary dark: primary dark, bg secondary dark: secondary dark), $property: (background, color));
+// .bg-primary-dark {
+//   background: var(--s-primary-color-dark);
+//   color: var(--s-primary-color-dark);
+// }
+// .bg-secondary-dark {
+//   background: var(--s-secondary-color-dark);
+//   color: var(--s-secondary-color-dark);
+// }
+
+// @include variant((background: ( primary dark: primary dark, secondary dark: secondary dark)));
+// .background-primary-dark {
+//   background: var(--s-primary-color-dark);
+// }
+// .background-secondary-dark {
+//   background: var(--s-secondary-color-dark);
+// }
+
+// @include variant((background color: ( primary dark: primary dark, secondary dark: secondary dark)));
+// .background-color-primary-dark {
+//   background: var(--s-primary-color-dark);
+//   color: var(--s-primary-color-dark);
+// }
+// .background-color-secondary-dark {
+//   background: var(--s-secondary-color-dark);
+//   color: var(--s-secondary-color-dark);
+// }
+
+// @include variant(((background, color): ( primary dark: primary dark, secondary dark: secondary dark)));
+// .background-primary-dark {
+//   background: var(--s-primary-color-dark);
+// }
+// .color-primary-dark {
+//   color: var(--s-primary-color-dark);
+// }
+// .background-secondary-dark {
+//   background: var(--s-secondary-color-dark);
+// }
+// .color-secondary-dark {
+//   color: var(--s-secondary-color-dark);
+// }
+
+// @include variant(((background color): ((dark, light): ( primary dark: primary dark, secondary dark: secondary dark))), $pseudo-class: '&:hover');
+// .background-color-dark-primary-dark:hover {
+//   background: var(--s-primary-color-dark);
+//   color: var(--s-primary-color-dark);
+// }
+// .background-color-dark-secondary-dark:hover {
+//   background: var(--s-secondary-color-dark);
+//   color: var(--s-secondary-color-dark);
+// }
+// .background-color-light-primary-dark:hover {
+//   background: var(--s-primary-color-dark);
+//   color: var(--s-primary-color-dark);
+// }
+// .background-color-light-secondary-dark:hover {
+//   background: var(--s-secondary-color-dark);
+//   color: var(--s-secondary-color-dark);
+// }
+
+// @include variant(((background, color): ((dark, light): ( primary dark: primary dark, secondary dark: secondary dark))), $pseudo-class: '&:hover');
+// .background-dark-primary-dark:hover {
+//   background: var(--s-primary-color-dark);
+// }
+// .background-dark-secondary-dark:hover {
+//   background: var(--s-secondary-color-dark);
+// }
+// .background-light-primary-dark:hover {
+//   background: var(--s-primary-color-dark);
+// }
+// .background-light-secondary-dark:hover {
+//   background: var(--s-secondary-color-dark);
+// }
+// .color-dark-primary-dark:hover {
+//   color: var(--s-primary-color-dark);
+// }
+// .color-dark-secondary-dark:hover {
+//   color: var(--s-secondary-color-dark);
+// }
+// .color-light-primary-dark:hover {
+//   color: var(--s-primary-color-dark);
+// }
+// .color-light-secondary-dark:hover {
+//   color: var(--s-secondary-color-dark);
+// }
+
+// dictionary
+// @include variant(((background: ( primary dark: primary dark, secondary dark: secondary dark))), $dictionary: (background: bg));

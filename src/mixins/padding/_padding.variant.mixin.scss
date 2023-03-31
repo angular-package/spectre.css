@@ -1,38 +1,52 @@
-// Mixins.
-@use '../property';
+// Sass.
+@use 'sass:list';
+@use 'sass:meta';
+
+// Variables.
+@use '../../values/variables';
+
+// Modules.
+@use '../../property';
+
+// Functions.
+@use '../../var/functions/var.get.function' as *;
 
 // Padding utility mixin
-@mixin variant($variant, $sides: null, $dictionary: ()) {
-  @include property.side-variant(padding, $variant, $sides, $dictionary);
+@mixin variant($variant, $important: false, $pseudo-class: (), $dictionary: (), $function: variables.$function) {
+  @include property.variant((padding: $variant), $important,  $pseudo-class, $dictionary, $function);
 }
 
 // Examples.
-// @include variant((1: unit 1));
+// @include variant((1: --get unit 1));
+// .padding-1 {
+//   padding: var(--s-unit-1);
+// }
+
+// @include variant((1: unit 1, 2: unit 2));
+// .padding-1 {
+//   padding: var(--s-unit-1);
+// }
+
+// @include variant((1: unit 1 '!important'));
 // .padding-1 {
 //   padding: var(--s-unit-1) !important;
 // }
-// .padding-top-1 {
-//   padding-top: var(--s-unit-1) !important;
+
+// @include variant(((left, right): (1: unit 1, 2: unit 2)));
+// .padding-left-1 {
+//   padding-left: var(--s-unit-1);
+// }
+// .padding-left-2 {
+//   padding-left: var(--s-unit-2);
 // }
 // .padding-right-1 {
-//   padding-right: var(--s-unit-1) !important;
+//   padding-right: var(--s-unit-1);
 // }
-// .padding-bottom-1 {
-//   padding-bottom: var(--s-unit-1) !important;
-// }
-// .padding-left-1 {
-//   padding-left: var(--s-unit-1) !important;
-// }
-// .padding-x-1 {
-//   padding-right: var(--s-unit-1) !important;
-//   padding-left: var(--s-unit-1) !important;
-// }
-// .padding-y-1 {
-//   padding-top: var(--s-unit-1) !important;
-//   padding-bottom: var(--s-unit-1) !important;
+// .padding-right-2 {
+//   padding-right: var(--s-unit-2);
 // }
 
-// @include variant((1: unit 1, 2: unit 2), x y, (unit: u));
+// @include variant(((): (1: unit 1, 2: unit 2)), $dictionary: (unit: u));
 // .padding-x-1 {
 //   padding-right: var(--s-u-1) !important;
 //   padding-left: var(--s-u-1) !important;

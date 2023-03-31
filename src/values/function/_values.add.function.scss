@@ -1,0 +1,44 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Variables
+@use '../variables' as variables;
+
+// Functions.
+@use '../../list/has/type/list.has-types.function' as *;
+@use 'values.has.function' as *;
+@use 'values.is.function' as *;
+
+// Status: REVIEW:
+// The `add()` mixin.
+@function add($values, $name: null, $prefix: --, $function: variables.$function) {
+  @if has-types($values, any, '==', map, list) {
+    @for $i from 1 through list.length($values) {
+      $value: list.nth($values, $i);
+      @if type-of($value) == list {
+        @if is($name, $prefix, $function) and not has($value, $name, $prefix, $function) {
+          $values: list.set-nth($values, $i, list.join($prefix + $name, $value));
+        }
+      }
+    }
+  } @else {
+    @if is($name, $prefix, $function) and not has($values, $name, $prefix, $function) {
+      $values: list.join($prefix + $name, $values);
+    }
+  }
+  @return $values;
+}
+
+// Examples.
+// @debug add(unit 2, get); // --get unit 2
+// @debug add(unit 5, color); // --get unit 5
+// @debug add(primary dark, color); // --color primary dark
+// @debug add(1px solid (primary dark), color); // 1px solid (--color primary dark)
+
+// adjust
+// @debug add(z-index 0 ('+' 5), get); // --get z-index // TODO:
+
+// with function
+// @debug add(--get unit 2, get); // --get unit 2
+// @debug add(1px solid (--color primary dark), color); // 1px solid (--color primary dark)

@@ -26,7 +26,7 @@
       $hue
     );
   }
-  @include var.set(name($name, hue), $hue, $dictionary);
+  @include var.set((name($name, hue): $hue), (), $dictionary);
 }
 
 // Examples.

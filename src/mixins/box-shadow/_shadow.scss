@@ -1,0 +1,21 @@
+// Functions.
+@use '../../color/functions/color.color.function' as *;
+
+// Component focus shadow
+@mixin control-shadow($color: primary, $alpha: 0.2) {
+  box-shadow: 0 0 0 0.1rem color($color, $alpha: $alpha);
+}
+
+// Shadow mixin
+@mixin shadow-variant($offset, $color: dark, $alpha: 0.15) {
+  box-shadow: 0 $offset (($offset + 0.05rem) * 2) color($color, $alpha: $alpha);
+}
+
+// Examples.
+// div {
+  // @include control-shadow; // box-shadow: 0 0 0 0.1rem var(--s-primary-color);
+  // @include control-shadow(secondary dark); // box-shadow: 0 0 0 0.1rem var(--s-secondary-color-dark);
+
+  // @include shadow-variant(1); // box-shadow: 0 1 2.1rem var(--s-dark-color);
+  // @include shadow-variant(0.5); // box-shadow: 0 0.5 2.1rem var(--s-dark-color);
+// }

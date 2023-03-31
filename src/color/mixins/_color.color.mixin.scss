@@ -3,10 +3,10 @@
 @use 'sass:map';
 
 // Modules.
+@use '../../scheme';
 @use '../../selector';
 
 // Functions.
-@use '../../list/has/list.has-string.function' as *;
 @use 'color.property-color.mixin' as *;
 @use 'color.scheme-color.mixin' as *;
 
@@ -22,19 +22,20 @@
   $important: false,
   $selector: (),
   $dictionary: (),
+  $property: color
 ) {
   @include selector.content($selector) {
     @if type-of($color) == map {
-      @if has-string(map.keys($color), any, '==', dark, light, normal) {
-        @include scheme-color($color, $hue, $saturation, $lightness, $alpha, $backup, $important, $dictionary);
+      @if scheme.has($color) {
+        @include scheme-color($color, $hue, $saturation, $lightness, $alpha, $backup, $important, $dictionary, $property);
       } @else {
         @include property-color(
-          if(list.index(map.values($color), hsla), (color: $color), $color),
+          if(list.index(map.values($color), hsla), ($property: $color), $color),
           $hue, $saturation, $lightness, $alpha, $backup, $important, $dictionary
         );
       }
     } @else {
-      @include property-color((color: $color), $hue, $saturation, $lightness, $alpha, $backup, $important, $dictionary);
+      @include property-color(($property: $color), $hue, $saturation, $lightness, $alpha, $backup, $important, $dictionary);
     }
   }
 }
@@ -45,9 +46,18 @@
   // @include color(primary dark); // color: var(--s-primary-color-dark);
 
   // different property
-  // @include color((background-color: primary dark)); // background-color: var(--s-primary-color-dark);
+  // @include color((background-color: primary dark));
+  // :host {
+  //   background-color: var(--s-primary-color-dark);
+  // }
 
   // properties
+  // @include color(primary dark, $property: color background);
+  // :host {
+  //   color: var(--s-primary-color-dark);
+  //   background: var(--s-primary-color-dark);
+  // }
+
   // @include color((color background background-color: primary dark));
   // color: var(--s-primary-color-dark);
   // background: var(--s-primary-color-dark);
@@ -120,6 +130,39 @@
   // @media (prefers-color-scheme: light) {
   //   :host {
   //     background: hsla(calc(var(--s-orange-color-h) + 15deg), var(--s-orange-color-s), var(--s-orange-color-l), var(--s-orange-color-a));
+  //   }
+  // }
+
+  // @include color(( background: ( dark: (code, -42.5%), light: (code, 42.5%), normal: (code, 42.5%), )));
+  // :host {
+  //   background: hsla(var(--s-code-color-h), var(--s-code-color-s), calc(var(--s-code-color-l) + 42.5%), var(--s-code-color-a));
+  // }
+  // @media (prefers-color-scheme: dark) {
+  //   :host {
+  //     background: hsla(var(--s-code-color-h), var(--s-code-color-s), calc(var(--s-code-color-l) - 42.5%), var(--s-code-color-a));
+  //   }
+  // }
+  // @media (prefers-color-scheme: light) {
+  //   :host {
+  //     background: hsla(var(--s-code-color-h), var(--s-code-color-s), calc(var(--s-code-color-l) + 42.5%), var(--s-code-color-a));
+  //   }
+  // }
+
+  // @include color(( dark: (code, -42.5%), light: (code, 42.5%), normal: (code, 42.5%), ), $property: color background);
+  // :host {
+  //   color: hsla(var(--s-code-color-h), var(--s-code-color-s), calc(var(--s-code-color-l) + 42.5%), var(--s-code-color-a));
+  //   background: hsla(var(--s-code-color-h), var(--s-code-color-s), calc(var(--s-code-color-l) + 42.5%), var(--s-code-color-a));
+  // }
+  // @media (prefers-color-scheme: dark) {
+  //   :host {
+  //     color: hsla(var(--s-code-color-h), var(--s-code-color-s), calc(var(--s-code-color-l) - 42.5%), var(--s-code-color-a));
+  //     background: hsla(var(--s-code-color-h), var(--s-code-color-s), calc(var(--s-code-color-l) - 42.5%), var(--s-code-color-a));
+  //   }
+  // }
+  // @media (prefers-color-scheme: light) {
+  //   :host {
+  //     color: hsla(var(--s-code-color-h), var(--s-code-color-s), calc(var(--s-code-color-l) + 42.5%), var(--s-code-color-a));
+  //     background: hsla(var(--s-code-color-h), var(--s-code-color-s), calc(var(--s-code-color-l) + 42.5%), var(--s-code-color-a));
   //   }
   // }
 // }
