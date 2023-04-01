@@ -545,7 +545,7 @@ ol ol {
 }
 ul li,
 ol li {
-  margin-top: var(--s-unit-2);
+  margin-top: unit 2;
 }
 
 dl dt {
