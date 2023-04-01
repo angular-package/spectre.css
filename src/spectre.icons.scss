@@ -1,0 +1,8 @@
+// Variables and mixins
+// @forward 'mixins';
+// @forward 'variables';
+@use 'variables' as *;
+
+/*! Spectre.css Icons v#{$version} | MIT License | github.com/angular-package/spectre */
+// Icons
+@use 'icons';

@@ -1,0 +1,11 @@
+// Variables
+@use 'variables' as *;
+
+/*! Spectre.css core v#{$version} | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+// Reset and dependencies
+@use 'normalize';
+@use 'base';
+
+// Elements
+@use 'typography';
+@use 'asian';

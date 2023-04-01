@@ -1,8 +1,8 @@
 // Variables.
 @use 'variables/fonts' as *;
 
-// Functions.
-@use 'functions/var/get-var.function' as *;
+// Mixins.
+@use 'borders/mixins/border.mixins' as border;
 
 // Optimized for East Asian CJK
 html:lang(zh),
@@ -32,7 +32,9 @@ html:lang(ko),
 .lang-cjk {
   ins,
   u {
-    border-bottom: get-var('border-width') solid; // TODO: Use the border mixin
+    // border-bottom: get-var('border-width') solid; // TODO: Use the border mixin
+    @include border.border($side: bottom);
+
     text-decoration: none;
   }
 
