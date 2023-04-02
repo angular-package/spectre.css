@@ -2,18 +2,20 @@
 @use '../variables/core' as *;
 
 // Functions.
-@use '../selector/selector.class.function' as *;
+@use '../module/module.class.function' as *;
+
+// Modules.
+@use '../color';
 
 // Mixins.
-@use '../mixins/color/color.mixin' as *;
 @use '../mixins/margin';
 
 // Media
-$img-name: 'img' !default;
-$video-name: 'video' !default;
+$img-name: img !default;
+$video-name: video !default;
 
 // Image responsive
-#{class(($img-name, 'responsive'))} {
+#{class($img-name, responsive)} {
   display: block;
   max-width: 100%;
   height: auto;
@@ -21,16 +23,16 @@ $video-name: 'video' !default;
 
 // object-fit support is coming to Microsoft Edge
 // https://developer.microsoft.com/en-us/microsoft-edge/platform/status/objectfitandobjectposition/
-#{class(($img-name, 'fit', 'cover'))} {
+#{class($img-name, fit cover)} {
   object-fit: cover;
 }
 
-#{class(($img-name, 'fit', 'contain'))} {
+#{class($img-name, fit contain)} {
   object-fit: contain;
 }
 
 // Video responsive
-#{class(($video-name, 'responsive'))} {
+#{class($video-name, responsive)} {
   position: relative;
   display: block;
   overflow: hidden;
@@ -57,7 +59,7 @@ $video-name: 'video' !default;
   }
 }
 
-video#{class(($video-name, 'responsive'))} {
+video#{class($video-name, responsive)} {
   max-width: 100%;
   height: auto;
 
@@ -66,20 +68,19 @@ video#{class(($video-name, 'responsive'))} {
   }
 }
 
-#{class(($video-name, 'responsive', '4', '3'), ('&::before'))} {
+#{class($video-name, responsive 4 3, '&::before')} {
   padding-bottom: 75%; // Ratio 4:3
 }
 
-#{class(($video-name, 'responsive', '1', '1'), ('&::before'))} {
+#{class($video-name, responsive 1 1, '&::before')} {
   padding-bottom: 100%; // Ratio 1:1
 }
 
 // Figure
-#{class('figure')} {
-  @include margin(('unit', '0'), ('unit', '0'), ('layout', 'spacing', true), ('unit', '0'));
-
-  #{class(('figure', 'caption'))} {
-    @include margin-top(('layout', 'spacing', true));
-    @include color('gray-dark');
+#{class(figure)} {
+  @include margin.margin((unit 0) (unit 0) (layout spacing true) (unit 0));
+  #{class(figure caption)} {
+    @include margin.top(--get layout spacing true);
+    @include color.color(gray dark);
   }
 }

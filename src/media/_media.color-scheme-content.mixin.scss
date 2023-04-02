@@ -1,16 +1,24 @@
 // Sass.
 @use 'sass:list';
 
+// Modules.
+@use '../scheme/scheme.is.function' as *;
+
 // Status: DONE
-// The `content()` mixin.
-@mixin color-scheme-content($color-scheme) {
+// The `color-scheme-content()` mixin.
+// $relative: boolean if true then it's sensitive to the `$color-scheme` argument.
+@mixin color-scheme-content($color-scheme, $relative: false) {
   @if list.index(dark light normal, $color-scheme) {
-    @if list.index(dark light, $color-scheme) {
-      @media (prefers-color-scheme: $color-scheme) {
-        @content;
+    @if list.index(dark light, $color-scheme)  {
+      @if not $relative or ($relative and is($color-scheme)) {
+        @media (prefers-color-scheme: $color-scheme) {
+          @content;
+        }
       }
     } @else {
-      @content;
+      @if not $relative or ($relative and is($color-scheme)) {
+        @content;
+      }
     }
   } @else {
     @content;
@@ -19,7 +27,7 @@
 
 // Examples.
 // div {
-//   @include content(dark) {
-//     font-size: 1;
-//   }
+  // @include color-scheme-content(dark) { color: orange; }
+  // @include color-scheme-content(light) { color: red; }
+  // @include color-scheme-content(light, true) { color: red; }
 // }

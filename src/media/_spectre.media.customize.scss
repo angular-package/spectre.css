@@ -12,14 +12,14 @@
 // $color-scheme: dark light;
 
 // Update dictionary class.
-$media: map.merge(
-  $media,
-  list.append(
-    ('dictionary', 'class'),
-    (
-      // 'prefix': 'spectre',
-      // 'separator': '--',
-      // 'suffix': 'suffix',
-    )
-  )...
-);
+// $media: map.merge(
+//   $media,
+//   list.append(
+//     ('dictionary', 'class'),
+//     (
+//       // 'prefix': 'spectre',
+//       // 'separator': '--',
+//       // 'suffix': 'suffix',
+//     )
+//   )...
+// );
