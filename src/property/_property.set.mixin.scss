@@ -1,9 +1,8 @@
 // Sass.
 @use 'sass:list';
-@use 'sass:meta';
 
 // Variables.
-@use '../values/variables';
+@use '../function/variables';
 
 // Modules.
 @use '../string';
@@ -23,10 +22,10 @@
 
       @each $property in if(list.separator($property) == comma, $property, ($property,)) {
         @if type-of($value) == map {
-          #{string.join('-', $property...)}: values.var($value, $dictionary, $function) + important($important);
+          #{string.join('-', $property...)}: values.call($value, $dictionary, $function) + important($important);
         } @else {
           @each $-value in if(list.separator($value) == comma, $value, ($value,)) {
-            #{string.join('-', $property...)}: values.var(remove-string($-value, '!important'), $dictionary, $function) + important($important);
+            #{string.join('-', $property...)}: values.call(remove-string($-value, '!important'), $dictionary, $function) + important($important);
           }
         }
       }
