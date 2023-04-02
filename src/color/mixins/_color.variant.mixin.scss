@@ -28,8 +28,6 @@
   $property: color
 ) {
   @include class.variant($variant, $pseudo-class, $dictionary) using($resolved...) {
-    @debug $resolved;
-
     $color: null;
     @if list.length($resolved) == 2 {
       $color: nths($resolved, 2);
