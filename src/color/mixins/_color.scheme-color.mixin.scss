@@ -4,8 +4,7 @@
 @use 'sass:meta';
 
 // Modules.
-@use '../../media';
-@use '../../scheme';
+@use '../../media/media.color-scheme-content.mixin' as media;
 @use '../../selector';
 
 // Functions.
@@ -36,7 +35,7 @@
       }
     }
     @each $color-scheme, $property-color in $scheme-color {
-      @include media.color-scheme-content($color-scheme) {
+      @include media.color-scheme-content($color-scheme, true) {
         @if type-of($property-color) == map {
           @include property-color(
             if(list.index(map.values($property-color), hsla), ($property: $property-color), $property-color),

@@ -67,7 +67,7 @@
     $dictionary
   );
 
-  @include var.set(name($name), color(($name: hsla)), $dictionary)
+  @include var.set((name($name): color(($name: hsla))), $dictionary);
 }
 
 // Examples.

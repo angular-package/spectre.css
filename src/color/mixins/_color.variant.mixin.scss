@@ -1,12 +1,17 @@
 // Sass.
 @use 'sass:list';
 @use 'sass:map';
+@use 'sass:selector';
 
 // Modules.
 @use '../../class';
-@use '../../scheme';
+@use '../../string';
 
 // Functions.
+@use '../../list/list.nths.function' as *;
+@use '../../list/remove/list.remove-string.function' as *;
+
+// Mixins.
 @use 'color.color.mixin' as *;
 
 // Status: REVIEW:
@@ -23,25 +28,51 @@
   $property: color
 ) {
   @include class.variant($variant, $pseudo-class, $dictionary) using($resolved...) {
+    @debug $resolved;
+
     $color: null;
     @if list.length($resolved) == 2 {
-      $color: list.nth($resolved, 2);
+      $color: nths($resolved, 2);
     }
     @if list.length($resolved) == 3 {
-      $property: list.nth($resolved, 1);
-      $color: list.nth($resolved, 3);
+      $property: nths($resolved, 1);
+      $color: nths($resolved, 3);
     }
     @if list.length($resolved) == 4 {
-      $property: list.nth($resolved, 1);
-      $color: list.nth($resolved, 4);
+      $property: nths($resolved, 1);
+      $color: nths($resolved, 4);
+      @if list.length($property) > 1 and list.separator($property) == space {
+        $property: selector.nest(join((), $property, $separator: comma), list.nth($resolved, 2)...);
+        $i: 1;
+        @each $-property in $property {
+          $property: list.set-nth($property, $i, string.unquote(string.join('-', $-property...)));
+          $i: $i + 1;
+        }
+
+        $property: join((), $property, $separator: space);
+      } @else {
+        @if type-of(list.nth($resolved, 4)) == map {
+          @if list.nth($resolved, 4) {
+            @include color(list.nth($resolved, 4), $hue, $saturation, $lightness, $alpha, null, $important, $property: $property);
+
+            $color: null;
+          }
+        } @else {
+          $property: nths($resolved, 1, 2);
+          $property: string.join('-', $property...);
+        }
+      }
     }
-    @include color(($property: $color), $hue, $saturation, $lightness, $alpha, null, $important, $property: $property);
+    @if $color {
+      @include color(($property: $color), $hue, $saturation, $lightness, $alpha, null, $important, $property: $property);
+    }
   }
 }
 
 // Examples.
 // default variant
 // @include variant(( color primary dark: primary dark, color secondary dark: secondary dark));
+// @include variant(( color: (primary dark: primary dark, secondary dark: secondary dark)));
 // .color-primary-dark {
 //   color: var(--s-primary-color-dark);
 // }
@@ -85,6 +116,27 @@
 // }
 
 // different properties
+// @include variant(( color primary dark: primary dark, color secondary dark: secondary dark), $property: background background-color);
+// @include variant(( color: (primary dark: primary dark, secondary dark: secondary dark)), $property: background background-color); // Cannot be changed.
+// .color-primary-dark {
+//   background: var(--s-primary-color-dark);
+//   background-color: var(--s-primary-color-dark);
+// }
+// .color-secondary-dark {
+//   background: var(--s-secondary-color-dark);
+//   background-color: var(--s-secondary-color-dark);
+// }
+
+// @include variant(( background background-color: (primary dark: primary dark, secondary dark: secondary dark)));
+// .background-background-color-primary-dark {
+//   background: var(--s-primary-color-dark);
+//   background-color: var(--s-primary-color-dark);
+// }
+// .background-background-color-secondary-dark {
+//   background: var(--s-secondary-color-dark);
+//   background-color: var(--s-secondary-color-dark);
+// }
+
 // @include variant(( bg primary dark: primary dark, bg secondary dark: secondary dark), $property: background);
 // .bg-primary-dark {
 //   background: var(--s-primary-color-dark);
@@ -181,3 +233,113 @@
 
 // dictionary
 // @include variant(((background: ( primary dark: primary dark, secondary dark: secondary dark))), $dictionary: (background: bg));
+
+// @include variant((border: (
+//   (block start color, block end color): (
+//     primary: primary color,
+//     primary dark: primary color dark,
+//     primary light: primary color light,
+//   ),
+// )));
+// .border-block-start-color-primary {
+//   border-block-start-color: var(--s-primary-color);
+// }
+// .border-block-start-color-primary-dark {
+//   border-block-start-color: var(--s-primary-color-dark);
+// }
+// .border-block-start-color-primary-light {
+//   border-block-start-color: var(--s-primary-color-light);
+// }
+// .border-block-end-color-primary {
+//   border-block-end-color: var(--s-primary-color);
+// }
+// .border-block-end-color-primary-dark {
+//   border-block-end-color: var(--s-primary-color-dark);
+// }
+// .border-block-end-color-primary-light {
+//   border-block-end-color: var(--s-primary-color-light);
+// }
+
+// @include variant((border: (
+//   (block start end color): (
+//     primary: (
+//       (border-color, color): primary,
+//     ),
+//     primary dark: (
+//       (border-color, color): primary dark,
+//     ),
+//     primary light: (
+//       (border-color, color): primary light,
+//     ),
+//   ),
+// )));
+// .border-block-start-end-color-primary {
+//   border-color: var(--s-primary-color);
+//   color: var(--s-primary-color);
+// }
+// .border-block-start-end-color-primary-dark {
+//   border-color: var(--s-primary-color-dark);
+//   color: var(--s-primary-color-dark);
+// }
+// .border-block-start-end-color-primary-light {
+//   border-color: var(--s-primary-color-light);
+//   color: var(--s-primary-color-light);
+// }
+
+// @include variant((border: ((left-color, right-color): ( primary dark: primary dark, secondary dark: secondary dark))));
+// .border-left-color-primary-dark {
+//   border-left-color: var(--s-primary-color-dark);
+// }
+// .border-left-color-secondary-dark {
+//   border-left-color: var(--s-secondary-color-dark);
+// }
+// .border-right-color-primary-dark {
+//   border-right-color: var(--s-primary-color-dark);
+// }
+// .border-right-color-secondary-dark {
+//   border-right-color: var(--s-secondary-color-dark);
+// }
+
+// @include variant((( border background ): (( left-color, right-color ): ( primary dark: primary dark, secondary dark: secondary dark))));
+// .border-background-left-color-primary-dark {
+//   border-left-color: var(--s-primary-color-dark);
+//   background-left-color: var(--s-primary-color-dark);
+// }
+// .border-background-left-color-secondary-dark {
+//   border-left-color: var(--s-secondary-color-dark);
+//   background-left-color: var(--s-secondary-color-dark);
+// }
+// .border-background-right-color-primary-dark {
+//   border-right-color: var(--s-primary-color-dark);
+//   background-right-color: var(--s-primary-color-dark);
+// }
+// .border-background-right-color-secondary-dark {
+//   border-right-color: var(--s-secondary-color-dark);
+//   background-right-color: var(--s-secondary-color-dark);
+// }
+
+// @include variant(((border, background): ((left-color, right-color): ( primary dark: primary dark, secondary dark: secondary dark))));
+// .border-left-color-primary-dark {
+//   border-left-color: var(--s-primary-color-dark);
+// }
+// .border-left-color-secondary-dark {
+//   border-left-color: var(--s-secondary-color-dark);
+// }
+// .border-right-color-primary-dark {
+//   border-right-color: var(--s-primary-color-dark);
+// }
+// .border-right-color-secondary-dark {
+//   border-right-color: var(--s-secondary-color-dark);
+// }
+// .background-left-color-primary-dark {
+//   background-left-color: var(--s-primary-color-dark);
+// }
+// .background-left-color-secondary-dark {
+//   background-left-color: var(--s-secondary-color-dark);
+// }
+// .background-right-color-primary-dark {
+//   background-right-color: var(--s-primary-color-dark);
+// }
+// .background-right-color-secondary-dark {
+//   background-right-color: var(--s-secondary-color-dark);
+// }

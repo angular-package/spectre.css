@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 // Modules.
-@use '../../scheme';
+@use '../../scheme/scheme.has.function' as scheme;
 @use '../../selector';
 
 // Functions.
