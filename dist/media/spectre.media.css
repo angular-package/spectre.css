@@ -1,0 +1,63 @@
+/* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.img-fit-cover {
+  object-fit: cover;
+}
+
+.img-fit-contain {
+  object-fit: contain;
+}
+
+.video-responsive {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+}
+.video-responsive::before {
+  content: "";
+  display: block;
+  padding-bottom: 56.25%;
+}
+.video-responsive iframe,
+.video-responsive object,
+.video-responsive embed {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+video.video-responsive {
+  max-width: 100%;
+  height: auto;
+}
+video.video-responsive::before {
+  content: none;
+}
+
+.video-responsive-4-3::before {
+  padding-bottom: 75%;
+}
+
+.video-responsive-1-1::before {
+  padding-bottom: 100%;
+}
+
+.figure {
+  margin: var(--s-unit-0) var(--s-unit-0) calc(var(--s-layout-spacing) * 1rem) var(--s-unit-0);
+}
+.figure .figure-caption {
+  margin-top: calc(var(--s-layout-spacing) * 1rem);
+  color: var(--s-gray-color-dark);
+}

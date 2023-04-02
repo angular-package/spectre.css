@@ -1,0 +1,31 @@
+/* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
+/* Spectre.css module: chips | components | color-scheme: dark | MIT License | github.com/angular-package/spectre.css */
+.chip {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  overflow: hidden;
+  max-width: var(--s-control-width-sm);
+  height: var(--s-unit-6);
+  margin: var(--s-unit-h);
+  padding: var(--s-unit-1) var(--s-unit-2);
+  border-radius: 5rem;
+  background: var(--s-bg-color-dark);
+  font-size: 90%;
+  line-height: unit-var(4);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.chip.active {
+  background: var(--s-primary-color);
+  color: var(--s-light-color);
+}
+.chip .avatar {
+  margin-right: var(--s-unit-1);
+  margin-left: calc(var(--s-unit-2) * -1);
+}
+.chip .btn-clear {
+  border-radius: 50%;
+  transform: scale(0.75);
+}
