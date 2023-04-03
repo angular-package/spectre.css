@@ -8,7 +8,7 @@
 // Status: DONE
 // The `nths()` function.
 @function nths($list, $where...) {
-  $result: ();
+  $result: if(list.is-bracketed($list), [], ());
   @if list.index($where, '...') {
     @return nth-range($list, list.nth($where, 1), list.nth($where, 3));
   } @else {
@@ -27,10 +27,10 @@
         }
       } @else {
         $value: if(list.index(first start, $condition), 1, if(list.index(end last length, $condition), list.length($list), $condition));
-        $value: nth($list, $value);
+        $value: list.nth($list, $value);
       }
 
-      $result: list.join($result, $value);
+      $result: list.append($result, $value, $separator: list.separator($list));
     }
   }
   @return nth-first($result);

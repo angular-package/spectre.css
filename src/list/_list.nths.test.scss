@@ -6,12 +6,16 @@
 
 // Examples.
 $-list: ('a', 1, 'b', 2, 'c', 3, 'd', 4, 'e', 5, 'f', 6, 'g', 7, 'h');
+$-list-map: ((a: 1), b, (c: 2), 3, (d: 4));
+$-list-bracketed: list.join([], list.join($-list, $-list-map));
 
 // number
 @debug nths($-list, 2); // 1
 @debug nths($-list, -2); // 7
 @debug nths($-list, -6); // 5
 @debug nths($-list, 10); // 5
+@debug nths($-list-map, 5); // (d: 4)
+@debug nths($-list-bracketed, 16, 5); // [(a: 1), "c"]
 
 // string
 @debug nths($-list, first); // a
