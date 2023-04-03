@@ -15,13 +15,15 @@
   $variant: ();
   @for $i from 1 through list.length($values) {
     $value: list.nth($values, $i);
-    $name: $value;
     @if not (type-of($value) == map) {
+      $name: $value;
       @if type-of($value) == list {
         $name: remove-string(function.remove(remove-list($value)), '!important');
       }
 
       $variant: map.merge($variant, ($name: $value));
+    } @else {
+      $variant: map.merge($variant, $value);
     }
   }
   @return $variant;

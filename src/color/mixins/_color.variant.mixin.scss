@@ -9,13 +9,12 @@
 
 // Functions.
 @use '../../list/list.nths.function' as *;
-@use '../../list/remove/list.remove-string.function' as *;
 
 // Mixins.
 @use 'color.color.mixin' as *;
 
 // Status: REVIEW:
-// The `variant()` mixin contains the `color` style of the given `$color` CSS variable name without the prefix.
+// The `variant()` mixin.
 @mixin variant(
   $variant,
   $hue: null,
@@ -29,32 +28,41 @@
 ) {
   @include class.variant($variant, $pseudo-class, $dictionary) using($resolved...) {
     $color: null;
+
+    // FEATURE: (class: value) or (variant).
     @if list.length($resolved) == 2 {
       $color: nths($resolved, 2);
-    }
-    @if list.length($resolved) == 3 {
+
+    // FEATURE: (property: variant).
+    } @else if list.length($resolved) == 3 {
       $property: nths($resolved, 1);
       $color: nths($resolved, 3);
-    }
-    @if list.length($resolved) == 4 {
+
+    // FEATURE: (property: ((+property, +property): variant)).
+    } @else if list.length($resolved) == 4 {
       $property: nths($resolved, 1);
       $color: nths($resolved, 4);
+
+      // FEATURE: (property/class: ((+property/class, +property/class): variant))
       @if list.length($property) > 1 and list.separator($property) == space {
-        $property: selector.nest(join((), $property, $separator: comma), list.nth($resolved, 2)...);
+        $property: selector.nest(list.join((), $property, $separator: comma), list.nth($resolved, 2)...);
         $i: 1;
         @each $-property in $property {
           $property: list.set-nth($property, $i, string.unquote(string.join('-', $-property...)));
           $i: $i + 1;
         }
 
-        $property: join((), $property, $separator: space);
+        $property: list.join((), $property, $separator: space);
       } @else {
+        // FEATURE: ((class, class): ((+class, +class): (property: variant))).
         @if type-of(list.nth($resolved, 4)) == map {
           @if list.nth($resolved, 4) {
             @include color(list.nth($resolved, 4), $hue, $saturation, $lightness, $alpha, null, $important, $property: $property);
 
             $color: null;
           }
+
+        // FEATURE: (property/class: ((+property/class, +property/class): (class: value)))).
         } @else {
           $property: nths($resolved, 1, 2);
           $property: string.join('-', $property...);
@@ -68,7 +76,7 @@
 }
 
 // Examples.
-// default variant
+// FEATURE: (class: value) and (property: variant).
 // @include variant(( color primary dark: primary dark, color secondary dark: secondary dark));
 // @include variant(( color: (primary dark: primary dark, secondary dark: secondary dark)));
 // .color-primary-dark {
@@ -78,7 +86,7 @@
 //   color: var(--s-secondary-color-dark);
 // }
 
-// adjust
+// FEATURE: variant + adjust.
 // @include variant(( color primary dark: primary dark, color secondary dark: secondary dark), $hue: 15deg, $saturation: '/' 2, $lightness: '*' 5%, $alpha: 0.5);
 // .color-primary-dark {
 //   color: hsla(calc(var(--s-primary-color-dark-h) + 15deg), calc(var(--s-primary-color-dark-s) / 2), calc(var(--s-primary-color-dark-l) * 5%), calc(var(--s-primary-color-dark-a) + 0.5));
@@ -95,7 +103,7 @@
 //   color: hsla(var(--s-secondary-color-dark-h), var(--s-secondary-color-dark-s), calc(var(--s-secondary-color-dark-l) + 10%), calc(var(--s-secondary-color-dark-a) + 0.9));
 // }
 
-// adjust + dictionary
+// FEATURE: variant + adjust + dictionary.
 // @include variant(( color primary dark: primary dark, color secondary dark: secondary dark), 15deg, '/' 2, '*' 5%, 0.5, false, '&:hover', (primary: p));
 // .color-p-dark:hover {
 //   color: hsla(calc(var(--s-primary-color-dark-h) + 15deg), calc(var(--s-primary-color-dark-s) / 2), calc(var(--s-primary-color-dark-l) * 5%), calc(var(--s-primary-color-dark-a) + 0.5));
@@ -104,7 +112,7 @@
 //   color: hsla(calc(var(--s-secondary-color-dark-h) + 15deg), calc(var(--s-secondary-color-dark-s) / 2), calc(var(--s-secondary-color-dark-l) * 5%), calc(var(--s-secondary-color-dark-a) + 0.5));
 // }
 
-// important
+// FEATURE: variant + important.
 // @include variant(( color primary dark: primary dark, color secondary dark: secondary dark), $important: true);
 // .color-primary-dark {
 //   color: var(--s-primary-color-dark) !important;
@@ -113,7 +121,7 @@
 //   color: var(--s-secondary-color-dark) !important;
 // }
 
-// different properties
+// FEATURE: variant + properties and (property: variant).
 // @include variant(( color primary dark: primary dark, color secondary dark: secondary dark), $property: background background-color);
 // @include variant(( color: (primary dark: primary dark, secondary dark: secondary dark)), $property: background background-color); // Cannot be changed.
 // .color-primary-dark {
@@ -161,6 +169,7 @@
 //   background: var(--s-secondary-color-dark);
 // }
 
+// FEATURE: (property: variant)
 // @include variant((background color: ( primary dark: primary dark, secondary dark: secondary dark)));
 // .background-color-primary-dark {
 //   background: var(--s-primary-color-dark);
@@ -171,6 +180,7 @@
 //   color: var(--s-secondary-color-dark);
 // }
 
+// FEATURE: ((property, property): variant)
 // @include variant(((background, color): ( primary dark: primary dark, secondary dark: secondary dark)));
 // .background-primary-dark {
 //   background: var(--s-primary-color-dark);
@@ -185,24 +195,26 @@
 //   color: var(--s-secondary-color-dark);
 // }
 
+// FEATURE: (property/class: ((+property/class, +property/class): variant))
 // @include variant(((background color): ((dark, light): ( primary dark: primary dark, secondary dark: secondary dark))), $pseudo-class: '&:hover');
 // .background-color-dark-primary-dark:hover {
-//   background: var(--s-primary-color-dark);
-//   color: var(--s-primary-color-dark);
+//   background-dark: var(--s-primary-color-dark);
+//   color-dark: var(--s-primary-color-dark);
 // }
 // .background-color-dark-secondary-dark:hover {
-//   background: var(--s-secondary-color-dark);
-//   color: var(--s-secondary-color-dark);
+//   background-dark: var(--s-secondary-color-dark);
+//   color-dark: var(--s-secondary-color-dark);
 // }
 // .background-color-light-primary-dark:hover {
-//   background: var(--s-primary-color-dark);
-//   color: var(--s-primary-color-dark);
+//   background-light: var(--s-primary-color-dark);
+//   color-light: var(--s-primary-color-dark);
 // }
 // .background-color-light-secondary-dark:hover {
-//   background: var(--s-secondary-color-dark);
-//   color: var(--s-secondary-color-dark);
+//   background-light: var(--s-secondary-color-dark);
+//   color-light: var(--s-secondary-color-dark);
 // }
 
+// FEATURE: ((property/class, property/class): ((+property/class, +property/class): variant))).
 // @include variant(((background, color): ((dark, light): ( primary dark: primary dark, secondary dark: secondary dark))), $pseudo-class: '&:hover');
 // .background-dark-primary-dark:hover {
 //   background: var(--s-primary-color-dark);
@@ -232,6 +244,7 @@
 // dictionary
 // @include variant(((background: ( primary dark: primary dark, secondary dark: secondary dark))), $dictionary: (background: bg));
 
+// FEATURE: (property/class: ((+property/class, +property/class): variant))).
 // @include variant((border: (
 //   (block start color, block end color): (
 //     primary: primary color,
@@ -258,6 +271,7 @@
 //   border-block-end-color: var(--s-primary-color-light);
 // }
 
+// FEATURE: (class: (+class: (class: (property: value)))).
 // @include variant((border: (
 //   (block start end color): (
 //     primary: (
@@ -284,6 +298,34 @@
 //   color: var(--s-primary-color-light);
 // }
 
+// FEATURE: (class: ((+class, +class) +class: (class: (property: value)))).
+// @include variant((border: (
+//   (left, right) color: (
+//     primary: (
+//       (border-left-color, border-right-color): primary,
+//     ),
+//     primary dark: (
+//       (border-left-color, border-right-color): primary dark,
+//     ),
+//     primary light: (
+//       (border-left-color, border-right-color): primary light,
+//     ),
+//   ),
+// )));
+// .border-left-color-primary, .border-right-color-primary {
+//   border-left-color: var(--s-primary-color);
+//   border-right-color: var(--s-primary-color);
+// }
+// .border-left-color-primary-dark, .border-right-color-primary-dark {
+//   border-left-color: var(--s-primary-color-dark);
+//   border-right-color: var(--s-primary-color-dark);
+// }
+// .border-left-color-primary-light, .border-right-color-primary-light {
+//   border-left-color: var(--s-primary-color-light);
+//   border-right-color: var(--s-primary-color-light);
+// }
+
+// FEATURE: (property/class: ((+property/class, +property/class): (class: value)))).
 // @include variant((border: ((left-color, right-color): ( primary dark: primary dark, secondary dark: secondary dark))));
 // .border-left-color-primary-dark {
 //   border-left-color: var(--s-primary-color-dark);

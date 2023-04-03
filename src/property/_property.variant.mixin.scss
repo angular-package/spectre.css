@@ -7,6 +7,7 @@
 
 // Functions.
 @use '../functions/important.function' as *;
+@use '../list/list.nths.function' as *;
 @use '../list/remove/list.remove-string.function' as *;
 @use '../var/functions/var.get.function' as *;
 @use 'property.set.mixin' as *;
@@ -17,7 +18,7 @@
 @use '../values';
 
 // Status: REVIEW:
-// Property variant mixin.
+// Property `variant()` mixin.
 @mixin variant($variant: (), $important: null, $pseudo-class: (), $dictionary: (), $function: variables.$function) {
   @if type-of($variant) == map {
     @each $key, $value in $variant {
@@ -26,20 +27,17 @@
       }
     }
     @include class.variant($variant, $pseudo-class, $dictionary) using($resolved...) {
-      $attribute: null;
-      $property: list.nth($resolved, 1);
+      $property: nths($resolved, 1);
       $value-class: null;
       $value: null;
       @if list.length($resolved) == 2 {
-        $value: list.nth($resolved, 2);
-      }
-      @if list.length($resolved) == 3 {
-        $value: list.nth($resolved, 3);
-      }
-      @if list.length($resolved) == 4 {
-        $property: list.join($property, list.nth($resolved, 2));
-        $value-class: list.nth($resolved, 3);
-        $value: list.nth($resolved, 4);
+        $value: nths($resolved, 2);
+      } @else if list.length($resolved) == 3 {
+        $value: nths($resolved, 3);
+      } @else if list.length($resolved) == 4 {
+        $property: list.join($property, nths($resolved, 2));
+        $value-class: nths($resolved, 3);
+        $value: nths($resolved, 4);
       }
       @if type-of($value) == map {
         @each $value-attribute, $value in $value {
@@ -53,34 +51,46 @@
 }
 
 // Examples.
-// single variant
+// FEATURE: single variant: (property/class: class/value)
 // @include variant((float: right));
 // .float-right {
 //   float: right;
 // }
 
-// single variant + important
+// FEATURE: single variant: (property/class: class/value + important)
 // @include variant((float: right '!important'));
+// .float-right {
+//   float: right !important;
+// }
 
-// single variant + important + selector
+// FEATURE: single variant: (property/class: class/value, property/class: class/value) + important + pseudo-class
 // @include variant((float: right), true, (('&:hover', '&:visited'),));
 // .float-right:hover, .float-right:visited {
 //   float: right !important;
 // }
 
-// single variant + important + selector + dictionary
+// FEATURE: single variant: (property/class: class/value, property/class: class/value) + important + pseudo-class + dictionary
 // @include variant((float: right), true, (('&:hover', '&:visited'),), (float: f, right: r));
 // .f-r:hover, .f-r:visited {
 //   float: right !important;
 // }
 
-// single variant + important + adjust
+// FEATURE: single variant: (property/class: class/value + adjust + important, property/class: class/value)
 // @include variant((float: --get right ('+' 15) '!important'));
 // .float-right {
 //   float: calc(var(--s-right) + 15) !important;
 // }
 
-// multiple variants
+// FEATURE: multiple variants: (property/class: class/value + important, property/class: class/value)
+// @include variant((float: right '!important', text align: left));
+// .float-right {
+//   float: right !important;
+// }
+// .text-align-left {
+//   text-align: left;
+// }
+
+// FEATURE: multiple variants: (property/class: class/value, class/value)
 // @include variant((float: (right, left)));
 // .float-right {
 //   float: right;
@@ -89,7 +99,7 @@
 //   float: left;
 // }
 
-// multiple variants + important
+// FEATURE: multiple variants: (property/class: class/value, class/value + important)
 // @include variant((float: (right, left !important)));
 // .float-right {
 //   float: right;
@@ -98,7 +108,7 @@
 //   float: left !important;
 // }
 
-// multiple variants + important + selector
+// FEATURE: multiple variants: ((property/class, property/class): (class/value, class/value)) + important + pseudo-class
 // @include variant(((float, text align): (right, left)), true, (('&:hover', '&:visited'),));
 // .float-right:hover, .float-right:visited {
 //   float: right !important;
@@ -113,7 +123,7 @@
 //   text-align: left !important;
 // }
 
-// multiple variants + important + selector + dictionary
+// FEATURE: multiple variants: ((property/class, property/class): (class/value, class/value)) + important + pseudo-class + dictionary
 // @include variant(((float, text align): (right, left)), true, '&:hover', (float: f));
 // .f-right:hover {
 //   float: right !important;
@@ -128,6 +138,7 @@
 //   text-align: left !important;
 // }
 
+// FEATURE: multiple variants: ((property/class,): (class/value, class/value + important))
 // @include variant(((position,): (absolute, fixed, relative '!important', sticky '!important')));
 // .position-absolute {
 //   position: absolute;
@@ -164,6 +175,7 @@
 //   flex-direction: row;
 // }
 
+// FEATURE: multiple variants: (property/class: (class: value , class: value))
 // @include variant((align items: (center: center, start: flex-start, end: flex-end)));
 // .align-items-center {
 //   align-items: center;
@@ -175,6 +187,7 @@
 //   align-items: flex-end;
 // }
 
+// FEATURE: multiple variants: (class/value, (class: value), class/value)
 // justify content
 // @include variant((
 //   justify content: (
@@ -200,6 +213,9 @@
 // .justify-content-center {
 //   justify-content: center;
 // }
+// .justify-content-end {
+//   justify-content: flex-end;
+// }
 // .justify-content-space-around {
 //   justify-content: space-around;
 // }
@@ -209,7 +225,11 @@
 // .justify-content-space-evenly {
 //   justify-content: space-evenly;
 // }
+// .justify-content-start {
+//   justify-content: flex-start;
+// }
 
+// FEATURE: variant: (class/property, (class: value))
 // @include variant((border: (2: unit 2)));
 // .border-2 {
 //   border: unit 2;
@@ -220,6 +240,7 @@
 //   border: var(--s-unit-2);
 // }
 
+// FEATURE: variant: (class/property, (class: value, variant))
 // @include variant((border: (1: unit 1, 2: unit 2)));
 // .border-1 {
 //   border: unit 1;
@@ -257,42 +278,45 @@
 //   border: var(--s-unit-2);
 // }
 
+// FEATURE: (class/property: (property/class: (class: value, variant)))
 // @include variant(((border,): (radius: (1: --get unit 1, 2: --get unit 2 !important))));
 // .border-radius-1 {
-//   border: var(--s-unit-1);
+//   border-radius: var(--s-unit-1);
 // }
 // .border-radius-2 {
-//   border: var(--s-unit-2) !important;
+//   border-radius: var(--s-unit-2) !important;
 // }
 
+// FEATURE: (class/property: (property/class: (class: value, variant)))
 // @include variant(((border,): ((radius, color): (1: unit 1, two: unit 2))));
 // .border-radius-1 {
-//   border: var(--s-unit-1);
+//   border-radius: unit 1;
 // }
 // .border-radius-two {
-//   border: var(--s-unit-2);
+//   border-radius: unit 2;
 // }
 // .border-color-1 {
-//   border: var(--s-unit-1);
+//   border-color: unit 1;
 // }
 // .border-color-two {
-//   border: var(--s-unit-2);
+//   border-color: unit 2;
 // }
 
+// FEATURE: (class/property: ((property/class): ((class): value, variant)))
 // @include variant(((font,): ((size,): ((xxs, xs, sm, md, lg, xl, xxl): --get unit 1, two: --get unit 2))));
 // .font-size-xxs, .font-size-xs, .font-size-sm, .font-size-md, .font-size-lg, .font-size-xl, .font-size-xxl {
-//   font: var(--s-unit-1);
+//   font-size: var(--s-unit-1);
 // }
 // .font-size-two {
-//   font: var(--s-unit-2);
+//   font-size: var(--s-unit-2);
 // }
 
 // @include variant((border: ((radius): (1: --get unit 1, two: --get unit 2))));
-// .border-1 {
-//   border: var(--s-unit-1);
+// .border-radius-1 {
+//   border-radius: var(--s-unit-1);
 // }
-// .border-two {
-//   border: var(--s-unit-2);
+// .border-radius-two {
+//   border-radius: var(--s-unit-2);
 // }
 
 // @include variant((border: (top: (1: --get unit 1))));
@@ -393,19 +417,46 @@
 //   padding-bottom: var(--s-unit-3);
 // }
 
-
+// FEATURE: (class/property: ((class/property, class/property): (class/property: value, class/property: value)))
 // @include variant((
 //   (outline border): (
 //     (top-left, bottom-right): (
-//       (radius): 30px,
-//       color: primary color dark
+//       radius: 30px,
+//       color: --get primary color dark
 //     ),
-//     // secondary: (
-//     //   secondary: secondary color,
-//     //   secondary dark: secondary color dark
-//     // )
 //   )), $dictionary: (radius: r));
+// .outline-border-top-left-r {
+//   outline-border-top-left: 30px;
+// }
+// .outline-border-top-left-color {
+//   outline-border-top-left: var(--s-primary-color-dark);
+// }
+// .outline-border-bottom-right-r {
+//   outline-border-bottom-right: 30px;
+// }
+// .outline-border-bottom-right-color {
+//   outline-border-bottom-right: var(--s-primary-color-dark);
+// }
 
+// FEATURE: (class/property: ((class/property, class/property): (class: (property: value, property: value))))
+// @include variant((
+//   border: (
+//     (top left, bottom left): (
+//       1: (
+//         radius: 20px,
+//         color: red
+//       )
+//     )
+//   )
+// ));
+// .border-top-left-1 {
+//   border-top-left-radius: 20px;
+//   border-top-left-color: red;
+// }
+// .border-bottom-left-1 {
+//   border-bottom-left-radius: 20px;
+//   border-bottom-left-color: red;
+// }
 
 // dictionary
 // @include variant(((margin, padding): ((top, bottom): (1: --get unit 1, 3: --get unit 3))), false, ('&:hover'), (margin: m, padding: p));
