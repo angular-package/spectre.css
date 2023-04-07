@@ -6,19 +6,27 @@
 
 // Functions.
 @use 'function.get.function' as *;
+@use 'function.has.function' as *;
+@use 'function.pick.function' as *;
 @use 'function.remove.function' as *;
 
-// Status: TODO:
+// Status: TODO: add combine() function.
 // The `call()` function.
 @function call($value, $dictionary: (), $function: variables.$function) {
   @if type-of($value) == list {
-    @if get($value, $default: null, $function: $function) {
-      @return meta.call(get($value, $function: $function), remove($value, $function: $function), $dictionary: $dictionary);
+    @if has($value, $function: $function) {
+      @if type-of($dictionary) == map {
+        @return meta.call(pick($value, $function: $function), remove($value, $function: $function), $dictionary: $dictionary);
+      }
+      @return meta.call(pick($value, $function: $function), remove($value, $function: $function));
     }
   } @else if type-of($value) == map {
     @each $name, $value in $value {
-      @if get($name, $default: null, $function: $function) {
-        @return meta.call(get($name, $function: $function), remove($value, $function: $function), $dictionary: $dictionary);
+      @if has($name, $function: $function) {
+        @if type-of($dictionary) == map {
+          @return meta.call(pick($name, $function: $function), remove($value, $function: $function), $dictionary: $dictionary);
+        }
+        @return meta.call(pick($name, $function: $function), remove($value, $function: $function));
       }
     }
   }
@@ -29,6 +37,8 @@
 // @debug call(--get unit 2); // var(--s-unit-2)
 // @debug call(--get unit 5); // var(--s-unit-5)
 // @debug call(--color primary dark); // var(--s-primary-color-dark)
+// @debug call(--nest (padding, margin) (top, bottom)); // padding top, padding bottom, margin top, margin bottom
+// @debug call(--combine padding margin top bottom); // TODO: arbitrary parameter
 
 // map
 // @debug call((--get: unit 2)); // var(--s-unit-2)

@@ -1,0 +1,43 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Variables
+@use 'variables';
+
+// Functions.
+@use 'function.get.function' as *;
+
+// Status: DONE
+// The `pick()` function.
+@function pick($value, $name: null, $prefix: --, $default: get, $function: variables.$function) {
+  @if type-of($value) == list or type-of($value) == string {
+    @if $name {
+      @return if(list.index($value, $prefix + $name), get($name, $default), null);
+    } @else {
+      @each $name, $function in $function {
+        @if list.index($value, $prefix + $name) {
+          @return $function;
+        }
+      }
+    }
+  }
+  @return get($default);
+}
+
+// Examples.
+// @debug pick(--get unit 2); // get-function("get")
+// @debug pick(--color unit 1); // get-function("color")
+// @debug pick(--nest (padding, margin) top); // get-function("nest")
+
+// specific name
+// @debug pick(--get unit 2, get); // get-function("get")
+// @debug pick(--color unit 2, color); // get-function("color")
+// @debug pick(--nest (padding, margin) top); // get-function("nest")
+// @debug pick(--get unit 2, color); // null
+// @debug pick(--color unit 2, get); // null
+// @debug pick(--nest (padding, margin) top, color); // null
+
+// default
+// @debug pick(--wrong unit 2, wrong); // get-function("get")
+// @debug pick(--wrong unit 2, wrong, $default: color); // get-function("color")

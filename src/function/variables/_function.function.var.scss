@@ -3,10 +3,14 @@
 
 // Functions.
 @use '../../color/functions/color.color.function' as *;
+@use '../../selector/selector.nest.function' as *;
+@use '../../values/values.combine.function' as *;
 @use '../../var/functions/var.get.function' as *;
 
 $function: (
-  default: meta.get-function("get"),
   color: meta.get-function("color"),
-  get: meta.get-function("get")
-);
+  combine: meta.get-function("combine"),
+  default: meta.get-function("get"),
+  get: meta.get-function("get"),
+  nest: meta.get-function("nest"),
+) !default;
