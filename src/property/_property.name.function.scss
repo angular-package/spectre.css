@@ -1,0 +1,24 @@
+// Sass.
+@use 'sass:list';
+
+// Modules.
+@use '../selector/selector.nest.function' as *;
+@use '../string';
+
+// Status: DONE
+// The `name()` function.
+@function name($element) {
+  $property: nest($element);
+  $i: 1;
+  @each $-property in $property {
+    $property: list.set-nth($property, $i, string.unquote(string.join('-', $-property)));
+    $i: $i + 1;
+  }
+  @return $property;
+}
+
+// Examples.
+// @debug name(padding top); // (padding-top,)
+// @debug name((padding, margin) top); // padding-top, margin-top
+// @debug name(border block (start, end) color); // border-block-start-color, border-block-ends-color
+// @debug name((padding, margin) (top, bottom)); // padding-top, padding-bottom, margin-top, margin-bottom

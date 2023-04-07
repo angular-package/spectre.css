@@ -5,19 +5,29 @@
 // Status: DONE
 // The `combine()` function.
 @function combine($values...) {
-  $result: ();
-  $parameters: (list1: (), list2: (), separator: auto, bracketed: auto);
-  $-values: ();
+  $parameters: (list1: (), list2: (), separator: auto, bracketed: auto, join: true);
   @each $value in $values {
     @if type-of($value) == map and (list.index(map.keys($value), separator) or list.index(map.keys($value), bracketed)) {
       $parameters: map.merge($parameters, $value);
-    } @else {
-      $-values: list.append($-values, $value, list.separator($values));
     }
   }
-  @each $value in $-values {
-    $result: list.join(map.merge($parameters, (list1: $result, list2: $value))...);
+
+  $result: if(map.get($parameters, bracketed), [], ());
+  @each $value in $values {
+    @if not (type-of($value) == map) and not ($value == null) {
+      $result: list.append($result, $value, map.get($parameters, separator));
+    }
   }
+
+  @if map.get($parameters, join) {
+    $parameters: map.remove($parameters, join, null);
+    $values: $result;
+    $result: ();
+    @each $value in $values {
+      $result: list.join(map.merge($parameters, (list1: $result, list2: $value))...);
+    }
+  }
+
   @return $result;
 }
 

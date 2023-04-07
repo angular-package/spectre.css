@@ -1,13 +1,12 @@
 // Sass.
 @use 'sass:list';
-@use 'sass:map';
 @use 'sass:meta';
 
 // Modules.
 @use '../function';
 
-// Status: REVIEW:
-// The `var()` mixin.
+// Status: DONE
+// The `call()` mixin.
 @function call($values, $dictionary: (), $function: function.$function) {
   @if type-of($values) == list {
     @if function.has($values, $function: $function) {
@@ -40,6 +39,7 @@
 // Examples.
 // list
 // @debug call((primary dark) (gray light)); // var(--s-primary-dark) var(--s-gray-light)
+// @debug call(--nest (top, left) color); // top color, left color
 
 // list with --color or --get
 // @debug call(--get unit 2); // (var(--s-unit-2),)

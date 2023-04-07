@@ -10,9 +10,11 @@
       @if list.index(dark light normal, $key) {
         @return true;
       }
-      @each $key, $value in if(list.separator($value) == comma, $value, ($value,)) {
-        @if list.index(dark light normal, $key) {
-          @return true;
+      @if type-of($value) == map {
+        @each $key, $value in if(list.separator($value) == comma, $value, ($value,)) {
+          @if list.index(dark light normal, $key) {
+            @return true;
+          }
         }
       }
     }
