@@ -1,0 +1,88 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Functions.
+@use '../list/has/list.has.function' as *;
+
+// Status: REVIEW: Check.
+// The `has-keys()` function.
+@function has-keys($map, $where...) {
+  $result: ();
+  $has-occurrence: list.index(all any, list.nth($where, 1));
+  $occurrence: if($has-occurrence, list.nth($where, 1), all);
+  @for $index from if($has-occurrence, 2, 1) through list.length($where) {
+    $occurrence-keys: list.nth($where, $index);
+
+    // Map.
+    @if type-of($occurrence-keys) == map {
+      @each $occurrence, $keys in $occurrence-keys {
+        $key-exists: ();
+        @each $key in $keys {
+          @if type-of($key) == list {
+            $key-exists: list.append($key-exists, if(list.separator($key) == comma, map.has-key($map, $key...), map.has-key($map, $key)));
+          } @else {
+            $key-exists: list.append($key-exists, has(map.keys($map), $occurrence, '==', $key));
+          }
+        }
+
+        $result: list.append($result, has($key-exists, if($occurrence == all, only, any), '==', true));
+      }
+    } @else {
+      $-has-occurrence: list.index(all any, list.nth($occurrence-keys, 1));
+      $-occurrence: if($-has-occurrence, list.nth($occurrence-keys, 1), $occurrence);
+      $key-exists: ();
+      @for $i from if($-has-occurrence, 2, 1) through list.length($occurrence-keys) {
+        $key: list.nth($occurrence-keys, $i);
+        @if type-of($key) == list {
+          $key-exists: list.append($key-exists, if(list.separator($key) == comma, map.has-key($map, $key...), map.has-key($map, $key)));
+        } @else {
+          $key-exists: list.append($key-exists, has(map.keys($map), $-occurrence, '==', $key));
+        }
+      }
+
+      $result: list.append($result, has($key-exists, if($-occurrence == all, only, any), '==', true));
+    }
+  }
+  @return has($result, if($occurrence == all, only, any), '==', true);
+}
+
+// Parameter.
+// occurrence, (occurrence: keys), occurrence? keys
+
+// Examples.
+$-map: (list1: (), list2: (), a b c d e f: value, a: (b: (c: (d: e))), any: true, all: false, separator: auto, bracketed: false, method: join, null: false);
+
+// @debug has-keys($-map, list1 list2); // true
+// @debug has-keys($-map, list1 list2 wrong); // false
+// @debug has-keys($-map, any list1 list2 wrong); // true
+// @debug has-keys($-map, any (a b c d e f)); // true
+// @debug has-keys($-map, any (a b c d e)); // false
+// @debug has-keys($-map, all (a b c d e) bracketed); // false
+// @debug has-keys($-map, all (a b c d) bracketed); // true
+// @debug has-keys($-map, (a, b, c, d) (a b c d e f)); // true
+// @debug has-keys($-map, all (a, b, c, d) (a b c d e f)); // true
+// @debug has-keys($-map, all (a, b, c, d) (a b c d e f g)); // false
+
+// arbitrary
+// @debug has-keys($-map, list1, list2); // true
+// @debug has-keys($-map, any, list1, list3); // true
+// @debug has-keys($-map, all, (a b c d e f) any (a, b, c), bracketed); // true
+// @debug has-keys($-map, any (a b c d), bracketed); // true
+// @debug has-keys($-map, all, a b c d e, bracketed); // true
+// @debug has-keys($-map, all, (a b c d e), bracketed); // false
+
+// map occurrence: keys
+// @debug has-keys($-map, (all: (a b c d) bracketed)); // true
+// @debug has-keys($-map, (all: (a b c d) bla)); // false
+// @debug has-keys($-map, (any: (a b c d) bla)); // true
+
+// @debug has-keys($-map, (all: (a b c d) bracketed), (any: bracketed bla)); // true
+// @debug has-keys($-map, (all: (a b c d) bracketed), (all: any all)); // true
+
+// multiple
+// @debug has-keys($-map, any, all (a b c d) bracketed, all separator1 bracketed); // true
+// @debug has-keys($-map, all, all (a b c d) bracketed, all separator bracketed); // true
+
+// multiple map
+// @debug has-keys($-map, any, (all: (a b c d) bla), (all: bracketed1 bracketed)); // false
