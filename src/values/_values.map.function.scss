@@ -10,13 +10,25 @@
 // - string.
 @use '../string';
 
-// Status: REVIEW: Simplify.
+// Status: REVIEW: Check.
 // The `map()` function.
 @function map($values, $keys...) {
   $map: ();
   @if list.length($values) > 0 {
     $index: 1;
     @each $key in $keys {
+      // FEATURE: Key name relative on the $values length.
+      $length-key: null;
+      @if type-of($key) == map {
+        @each $length, $value in $key {
+          @if list.length($values) >= $length {
+            $length-key: $value;
+          }
+        }
+      }
+      @if $length-key {
+        $key: $length-key;
+      }
       @if list.length($values) >= $index {
         $value: list.nth($values, $index);
         @if type-of($key) == list {
@@ -114,3 +126,10 @@
 //   (operand: list),
 //   (limit: number list)
 // ); // (select: nth, from: (list: a b c d), where: (occurrence: any, operator: "=="), operand: 1 2 3, limit: 5)
+
+
+// (2: class value, 4: class property value-class value, 5: class property attribute value-class value)
+
+// depending on the list length
+// @debug map(one two three four, class, (2: value, 4: property), (4: value-class, 5: attribute), (4: value, 5: value-class), (5: value));
+// @debug map(one two three four five six, class, (2: value, 4: property), (4: value-class, 5: attribute), (4: value, 5: value-class), value, variant);

@@ -7,7 +7,7 @@
 
 // Status: DONE
 // The `call()` mixin.
-@function call($values, $dictionary: (), $function: function.$function) {
+@function call($values, $dictionary: (), $function: function.$function, $list: true) {
   @if type-of($values) == list {
     @if function.has($values, $function: $function) {
       @return function.call($values, $dictionary, $function);
@@ -23,7 +23,9 @@
       @if function.has($values, $function: $function) {
         $values: list.set-nth($values, $i, function.call($value, $dictionary, $function));
       } @else {
-        $values: list.set-nth($values, $i, meta.call(function.get($value, $function: $function), function.remove($value, $function: $function), $dictionary: $dictionary));
+        @if $list {
+          $values: list.set-nth($values, $i, meta.call(function.get($value, $function: $function), function.remove($value, $function: $function), $dictionary: $dictionary));
+        }
       }
     }
   }

@@ -1,38 +1,56 @@
 // Sass.
 @use 'sass:list';
-@use 'sass:map';
+@use 'sass:meta';
 
-// Status: DONE
+// Modules.
+@use '../map';
+
+// Status: TODO: null
 // The `combine()` function.
 @function combine($values...) {
-  $parameters: (list1: (), list2: (), separator: auto, bracketed: auto, join: true);
+  $parameters: (bracketed: false, method: append, null: false, separator: list.separator(list.nth($values, 1)));
+
   @each $value in $values {
-    @if type-of($value) == map and (list.index(map.keys($value), separator) or list.index(map.keys($value), bracketed)) {
+    @if type-of($value) == map and map.has-keys($value, any, separator, bracketed, method, null) {
       $parameters: map.merge($parameters, $value);
     }
   }
 
-  $result: if(map.get($parameters, bracketed), [], ());
+  $result: list.join((), (), map.get($parameters, separator), map.get($parameters, bracketed));
   @each $value in $values {
-    @if not (type-of($value) == map) and not ($value == null) {
-      $result: list.append($result, $value, map.get($parameters, separator));
+    $method: map.get($parameters, method);
+    @if type-of($value) == map and map.has-keys($value, any, append, join, method) {
+      @each $-method, $-value in $value {
+        $method: if($-method == method, $-value, $-method);
+        @if $-method == method {
+          $parameters: map.set($parameters, method, $method);
+        } @else {
+          $value: $-value;
+        }
+      }
+    }
+    @if not ($value == null) and not (type-of($value) == map and map.has-keys($value, any, bracketed, method, separator))  {
+      $result: meta.call(meta.get-function($method, $module: list), $result, $value, map.get($parameters, separator));
     }
   }
-
-  @if map.get($parameters, join) {
-    $parameters: map.remove($parameters, join, null);
-    $values: $result;
-    $result: ();
-    @each $value in $values {
-      $result: list.join(map.merge($parameters, (list1: $result, list2: $value))...);
-    }
-  }
-
   @return $result;
 }
 
 // Examples.
-// @debug combine('&', layout sidebar, primary dark, extra small); // "&" layout sidebar primary dark extra small
+// @debug combine('&', layout sidebar, primary dark, extra small); // "&" (layout sidebar) (primary dark) (extra small)
+
+// separator
 // @debug combine('&', layout sidebar, primary dark, extra small, (separator: comma)); // "&", layout, sidebar, primary, dark, extra, small
+
+// bracketed
 // @debug combine('&', layout sidebar, primary dark, extra small, (separator: comma, bracketed: true)); // ["&", layout, sidebar, primary, dark, extra, small]
-// @debug combine('&', layout sidebar, primary dark, extra small, (bracketed: true)); // ["&" layout sidebar primary dark extra small]
+// @debug combine('&', layout sidebar, primary dark, extra small, (bracketed: true)); // ["&" (layout sidebar) (primary dark) (extra small)]
+
+// method
+// @debug combine((one, two), three, (four, five), (six seven), primary dark, extra small); // (one, two), three, (four, five), six seven, primary dark, extra small
+// @debug combine((one, two), three, (method: join), (four, five), (six seven), primary dark, extra small); // one, two, three, four, five, six, seven, primary, dark, extra, small
+
+// method (join: value) (append: value)
+// @debug combine((join: (one, two)), (join: three), (four, five), (six seven), primary dark, extra small); // one, two, three, (four, five), six seven, primary dark, extra small
+// @debug combine((join: one two), three, (four, five), (six seven), (append: (primary dark extra small))); // one, two, three, (four, five), six seven, primary dark extra small
+
