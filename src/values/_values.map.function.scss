@@ -21,7 +21,7 @@
       $length-key: null;
       @if type-of($key) == map {
         @each $length, $value in $key {
-          @if list.length($values) >= $length {
+          @if type-of($length) == number and list.length($values) >= $length {
             $length-key: $value;
           }
         }
