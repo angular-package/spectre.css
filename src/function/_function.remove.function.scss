@@ -8,13 +8,18 @@
 // Functions.
 @use '../list/remove/list.remove-string.function' as *;
 
-// Status: REVIEW:
-// The `remove()` mixin.
-@function remove($value, $name: null, $prefix: --, $function: variables.$function) {
-  @if $name {
+// Status: DONE
+// The `function.remove()` mixin.
+@function remove($value, $name: null, $prefix: variables.$prefix, $function: variables.$function) {
+  @if type-of($value) == map {
+    @each $-name, $-value in $value {
+      $value: list.join($-name, $-value);
+    }
+  }
+  @if type-of($name) == string {
     $name: $prefix + $name;
   } @else {
-    $name: map.keys($function);
+    $name: $name or map.keys($function);
     @for $i from 1 through list.length($name) {
       $name: list.set-nth($name, $i, $prefix + list.nth($name, $i));
     }
@@ -23,8 +28,27 @@
 }
 
 // Examples.
+// from list
 // @debug remove(--get unit 2); // unit 2
 // @debug remove(--color unit 2); // unit 2
 
+// from map
+// @debug remove((--class: unit 2)); // unit 2
+// @debug remove((--color: unit 2)); // unit 2
+// @debug remove((--default: unit 2)); // unit 2
+// @debug remove((--get: unit 2)); // unit 2
+// @debug remove((--nest: unit 2)); // unit 2
+
+// not existing name
 // @debug remove(--var unit 2); // --var unit 2
+
+// single name
 // @debug remove(--var unit 2, var); // unit 2
+
+// multiple names
+// @debug remove(--var unit 2, get color); // --var unit 2
+// @debug remove(--var unit 2, var color); // unit 2
+
+// prefix
+// @debug remove(__var unit 2, $prefix: __); // --var unit 2
+// @debug remove(__var unit 2, var, __); // unit 2

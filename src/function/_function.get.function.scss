@@ -2,11 +2,11 @@
 @use 'sass:list';
 @use 'sass:map';
 
-// Variables
+// Variables.
 @use 'variables';
 
 // Status: DONE
-// The `get()` function.
+// The `function.get()` function.
 @function get($name, $default: get, $function: variables.$function) {
   @if type-of($name) == string {
     @return map.get($function, $name) or map.get($function, $default);

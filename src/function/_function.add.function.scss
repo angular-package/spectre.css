@@ -2,17 +2,17 @@
 @use 'sass:list';
 @use 'sass:map';
 
-// Variables
+// Variables.
 @use 'variables';
 
 // Functions.
-@use '../../list/has/type/list.has-types.function' as *;
+@use '../list/has/type/list.has-types.function' as *;
 @use 'function.has.function' as *;
 @use 'function.is.function' as *;
 
 // Status: REVIEW:
-// The `add()` mixin.
-@function add($values, $name: null, $prefix: --, $function: variables.$function) {
+// The `function.add()` mixin.
+@function add($values, $name: null, $prefix: variables.$prefix, $function: variables.$function) {
   @if has-types($values, any, '==', map, list) {
     @for $i from 1 through list.length($values) {
       $value: list.nth($values, $i);

@@ -2,18 +2,24 @@
 @use 'sass:list';
 @use 'sass:map';
 
-// Variables
+// Variables.
 @use 'variables';
 
 // Functions.
 @use 'function.get.function' as *;
 
 // Status: DONE
-// The `pick()` function.
-@function pick($value, $name: null, $prefix: --, $default: get, $function: variables.$function) {
-  @if type-of($value) == list or type-of($value) == string {
+// The `function.pick()` function.
+@function pick($value, $name: null, $prefix: variables.$prefix, $default: get, $function: variables.$function) {
+  @if type-of($value) == list or type-of($value) == string or type-of($value) == map {
+    @if type-of($value) == map { $value: map.keys($value); }
     @if $name {
-      @return if(list.index($value, $prefix + $name), get($name, $default), null);
+      @each $name in $name {
+        @if list.index($value, $prefix + $name) {
+          @return get($name, $default);
+        }
+      }
+      @return null;
     } @else {
       @each $name, $function in $function {
         @if list.index($value, $prefix + $name) {
@@ -29,12 +35,24 @@
 // @debug pick(--get unit 2); // get-function("get")
 // @debug pick(--color unit 1); // get-function("color")
 // @debug pick(--nest (padding, margin) top); // get-function("nest")
+// @debug pick(unit 2 --get red); // get-function("get")
+// @debug pick(primary (--get: dark) color); // get-function("get")
+
+// from map
+// @debug pick((--class: unit 2)); // get-function("class")
+// @debug pick((--get: unit 2)); // get-function("get")
+// @debug pick((--color: unit 2)); // get-function("color")
+// @debug pick((--wrong: unit 2)); // get-function("get")
 
 // specific name
 // @debug pick(--get unit 2, get); // get-function("get")
 // @debug pick(--color unit 2, color); // get-function("color")
 // @debug pick(--nest (padding, margin) top); // get-function("nest")
+// @debug pick(--color unit 2, get color); // get-function("color")
+// @debug pick(--nest (padding, margin) top, color nest); // get-function("nest")
+
 // @debug pick(--get unit 2, color); // null
+// @debug pick(--get unit 2, color combine); // null
 // @debug pick(--color unit 2, get); // null
 // @debug pick(--nest (padding, margin) top, color); // null
 

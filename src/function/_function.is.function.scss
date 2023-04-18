@@ -2,12 +2,12 @@
 @use 'sass:list';
 @use 'sass:map';
 
-// Variables
+// Variables.
 @use 'variables';
 
 // Status: DONE
-// The `is()` function.
-@function is($name, $prefix: --, $function: variables.$function) {
+// The `function.is()` function.
+@function is($name, $prefix: variables.$prefix, $function: variables.$function) {
   @each $function-name in map.keys($function) {
     @if $prefix + $function-name == $name or $prefix + $function-name == $prefix + $name {
       @return true;
