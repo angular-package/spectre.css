@@ -5,6 +5,7 @@
 @forward 'remove';
 
 // Functions.
+@forward 'list.append.function';
 @forward 'list.extract-map.function';
 @forward 'list.index-type.function';
 @forward 'list.index.function';
@@ -14,4 +15,4 @@
 @forward 'list.type-index.function';
 
 // Sass.
-@forward 'sass:list' hide index, nth;
+@forward 'sass:list' hide append, index, nth;

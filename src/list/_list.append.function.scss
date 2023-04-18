@@ -1,0 +1,27 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Status: DONE
+// The `list.append()` function.
+@function append($list, $value...) {
+  $separator: auto;
+  @each $value in $value {
+    @if type-of($value) == map and map.has-key($value, separator) {
+      $separator: map.get($value, separator);
+    }
+  }
+  @each $value in $value {
+    @if not (type-of($value) == map and map.has-key($value, separator)) {
+      $list: list.append($list, $value, $separator);
+    }
+  }
+  @return $list;
+}
+
+// Examples.
+// @debug append(10px 20px, 30px); // 10px 20px 30px
+// @debug append((blue, red), green, blue, red); // blue, red, green, blue, red
+// @debug append(10px 20px, 30px 40px, 1px, 15px); // 10px 20px (30px 40px) 1px 15px
+// @debug append(10px, 20px, 1em, 2rem, (separator: space)); // 10px 20px 1em 2rem
+// @debug append((red, green), blue, (separator: space)); // red green blue
