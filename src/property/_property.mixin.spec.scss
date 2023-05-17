@@ -2,7 +2,7 @@
 @use 'property.mixin' as *;
 
 // Examples.
-div {
+// div {
   // FEATURE: (property: value)
   // @include property((padding: 1px)); // padding: 1px;
   // @include property((padding-top: 1px)); // padding-top: 1px;
@@ -107,4 +107,4 @@ div {
 
   // @include property(((margin, padding): ((top: 1px), 2px, (left: 4px), unit 1)));
   // @include property(((border, margin): ((top, right): (unit 1, unit 2))));
-}
+// }

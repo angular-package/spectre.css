@@ -6,7 +6,7 @@
 @use '../function/variables';
 
 // Functions.
-@use 'property.set.mixin' as *;
+@use 'property.set.mixin' as property;
 
 // Modules.
 @use '../class';
@@ -24,10 +24,10 @@
     @include class.variant($variant, $pseudo-class, $dictionary, $function, map) using($resolved) {
       @if type-of(map.get($resolved, value)) == map {
         @each $attribute, $value in map.get($resolved, value) {
-          @include set((list.join(map.get($resolved, property), map.get($resolved, attribute) $attribute or ()): $value), $important, $dictionary, $function);
+          @include property.set((list.join(map.get($resolved, property), map.get($resolved, attribute) $attribute or ()): $value), $important, $dictionary, $function, true);
         }
       } @else {
-        @include set((list.join(map.get($resolved, property), map.get($resolved, attribute) or ()): map.get($resolved, value)), $important, $dictionary, $function);
+        @include property.set((list.join(map.get($resolved, property), map.get($resolved, attribute) or ()): map.get($resolved, value)), $important, $dictionary, $function, true);
       }
     }
   }

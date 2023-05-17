@@ -186,6 +186,7 @@
 //   border: unit 2;
 // }
 
+// @include variant((border: (2: (unit 2) ())));
 // @include variant((border: (2: --get unit 2)));
 // .border-2 {
 //   border: var(--s-unit-2);
@@ -209,6 +210,7 @@
 // }
 
 // @include variant((border: (unit 1: --get unit 1 '!important', unit 2: --get unit 2)));
+// @include variant((border: (unit 1: (unit 1) '!important', unit 2: --get unit 2)));
 // .border {
 //   border: var(--s-unit-1) !important;
 // }
@@ -249,7 +251,9 @@
 // .border-color-1 {
 //   border-color: unit 1;
 // }
-// .border-color-two {      @each $attribute, $value in $attribute-value {
+// .border-color-two {
+//   border-color: unit 2;
+// }
 
 // FEATURE: (class/property: ((property/class): ((class): value, variant)))
 // @include variant(((font,): ((size,): ((xxs, xs, sm, md, lg, xl, xxl): --get unit 1, two: --get unit 2))));

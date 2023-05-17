@@ -11,9 +11,9 @@
 // Functions.
 @use '../functions/important.function' as *;
 @use '../list/remove/list.remove-string.function' as *;
-@use 'property.name.function' as *;
+@use 'property.name.function' as property;
 
-// Status: REVIEW: Check.
+// Status: DONE
 // The `property.set()` mixin.
 @mixin set($property-value, $important: false, $dictionary: (), $function: variables.$function, $list: false) {
   @if type-of($property-value) == map {
@@ -22,7 +22,7 @@
       @if $important and type-of($value) == list {
         $value: remove-string($value, '!important');
       }
-      @each $name in name($property) {
+      @each $name in property.name($property) {
         #{$name}: values.call($value, $dictionary: $dictionary, $function: $function, $list: $list) + important($important);
       }
     }
@@ -58,7 +58,9 @@
   // background-color: var(--s-primary-color-dark);
 
   // functions + dictionary
-  // @include set(((padding, margin): unit 5), false, (unit: u));
+  // @include set(((padding, margin): (unit 5) ()), false, (unit: u), $list: true);
+  // padding: var(--s-u-5);
+  // margin: var(--s-u-5);
 
   // FEATURE: ((property, property): value, value)
   // @include set(((padding, margin): (5px 10px, (--get unit 1) (--get unit 2)))); // padding: 5px 10px, var(--s-unit-1) var(--s-unit-2);
