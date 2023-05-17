@@ -11,39 +11,39 @@
 
 // The `padding()` mixin.
 @mixin padding($padding, $important: false, $dictionary: (), $function: (get: meta.get-function("get"))) {
-  @include property.set((padding: list.append($padding, ())), $important, $dictionary, $function);
+  @include property.set((padding: list.append($padding, ())), $important, $dictionary, $function, true);
 }
 
 // The `top()` mixin.
 @mixin top($top, $important: false, $dictionary: (), $function: (get: meta.get-function("get"))) {
-  @include property.set((padding-top: $top), $important, $dictionary, $function);
+  @include property.set((padding-top: $top), $important, $dictionary, $function, true);
 }
 
 // The `right()` mixin.
 @mixin right($right, $important: false, $dictionary: (), $function: (get: meta.get-function("get"))) {
-  @include property.set((padding-right: $right), $important, $dictionary, $function);
+  @include property.set((padding-right: $right), $important, $dictionary, $function, true);
 }
 
 // The `bottom()` mixin.
 @mixin bottom($bottom, $important: false, $dictionary: (), $function: (get: meta.get-function("get"))) {
-  @include property.set((padding-bottom: $bottom), $important, $dictionary, $function);
+  @include property.set((padding-bottom: $bottom), $important, $dictionary, $function, true);
 }
 
 // The `left()` mixin.
 @mixin left($left, $important: false, $dictionary: (), $function: (get: meta.get-function("get"))) {
-  @include property.set((padding-left: $left), $important, $dictionary, $function);
+  @include property.set((padding-left: $left), $important, $dictionary, $function, true);
 }
 
 // The `x()` mixin.
 @mixin x($x, $important: false, $dictionary: (), $function: (get: meta.get-function("get"))) {
-  @include property.set((padding-left: nth($x, 1) ()), $important, $dictionary, $function);
-  @include property.set((padding-right: nth($x, 2) or nth($x, 1) ()), $important, $dictionary, $function);
+  @include property.set((padding-left: nth($x, 1) ()), $important, $dictionary, $function, true);
+  @include property.set((padding-right: nth($x, 2) or nth($x, 1) ()), $important, $dictionary, $function, true);
 }
 
 // The `y()` mixin.
 @mixin y($y, $important: false, $dictionary: (), $function: (get: meta.get-function("get"))) {
-  @include property.set((padding-top: nth($y, 1) ()), $important, $dictionary, $function);
-  @include property.set((padding-bottom: nth($y, 2) or nth($y, 1) ()), $important, $dictionary, $function);
+  @include property.set((padding-top: nth($y, 1) ()), $important, $dictionary, $function, true);
+  @include property.set((padding-bottom: nth($y, 2) or nth($y, 1) ()), $important, $dictionary, $function, true);
 }
 
 // Examples.

@@ -11,37 +11,37 @@
 
 // The `margin()` mixin.
 @mixin margin($margin, $important: false, $dictionary: (), $function: (get: meta.get-function("get"))) {
-  @include property.set((margin: list.append($margin, ())), $important, $dictionary, $function);
+  @include property.set((margin: list.append($margin, ())), $important, $dictionary, $function, true);
 }
 
 // The `top()` mixin.
 @mixin top($top, $important: false, $dictionary: (), $function: (get: meta.get-function("get"))) {
-  @include property.set((margin-top: $top), $important, $dictionary, $function);
+  @include property.set((margin-top: $top), $important, $dictionary, $function, true);
 }
 
 // The `right()` mixin.
 @mixin right($right, $important: false, $dictionary: (), $function: (get: meta.get-function("get"))) {
-  @include property.set((margin-right: $right), $important, $dictionary, $function);
+  @include property.set((margin-right: $right), $important, $dictionary, $function, true);
 }
 
 // The `bottom()` mixin.
 @mixin bottom($bottom, $important: false, $dictionary: (), $function: (get: meta.get-function("get"))) {
-  @include property.set((margin-bottom: $bottom), $important, $dictionary, $function);
+  @include property.set((margin-bottom: $bottom), $important, $dictionary, $function, true);
 }
 
 // The `left()` mixin.
 @mixin left($left, $important: false, $dictionary: (), $function: (get: meta.get-function("get"))) {
-  @include property.set((margin-left: $left), $important, $dictionary, $function);
+  @include property.set((margin-left: $left), $important, $dictionary, $function, true);
 }
 
 // The `x()` mixin.
 @mixin x($x, $important: false, $dictionary: (), $function: (get: meta.get-function("get"))) {
-  @include property.set((margin-left: nth($x, 1) (), margin-right: nth($x, 2) or nth($x, 1) ()), $important, $dictionary, $function);
+  @include property.set((margin-left: nth($x, 1) (), margin-right: nth($x, 2) or nth($x, 1) ()), $important, $dictionary, $function, true);
 }
 
 // The `y()` mixin.
 @mixin y($y, $important: false, $dictionary: (), $function: (get: meta.get-function("get"))) {
-  @include property.set(( margin-top: nth($y, 1) (), margin-bottom: nth($y, 2) or nth($y, 1) ()), $important, $dictionary, $function);
+  @include property.set(( margin-top: nth($y, 1) (), margin-bottom: nth($y, 2) or nth($y, 1) ()), $important, $dictionary, $function, true);
 }
 
 // Examples.

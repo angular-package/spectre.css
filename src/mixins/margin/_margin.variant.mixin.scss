@@ -8,105 +8,57 @@
 }
 
 // Examples.
-// @include variant((left: ( 1: unit 1)));
+// @include variant((left: (1: (unit 1) ())));
 // .margin-left-1 {
-//   margin-left: var(--s-unit-1) !important;
+//   margin-left: var(--s-unit-1);
 // }
 
-// parent selector as child
-// @include variant((1: unit 1), top);
-// div.margin-top-1 {
-//   margin-top: var(--s-unit-1) !important;
-// }
-
-// multiple variants
-// @include variant((top: (1: unit 1, 3: unit 3)));
-// .margin-left-1 {
-//   margin-left: var(--s-unit-1) !important;
-// }
-// .margin-left-3 {
-//   margin-left: var(--s-unit-3) !important;
-// }
-
-// multiple variants + sides
-// @include variant((1: unit 1, 3: unit 3), top bottom);
+// @include variant((top: (1: --get unit 1)));
 // .margin-top-1 {
-//   margin-top: var(--s-unit-1) !important;
+//   margin-top: var(--s-unit-1);
+// }
+
+// @include variant((top: (1: (unit 1) (), 3: (unit 3) ())));
+// .margin-top-1 {
+//   margin-top: var(--s-unit-1);
 // }
 // .margin-top-3 {
-//   margin-top: var(--s-unit-3) !important;
-// }
-// .margin-bottom-1 {
-//   margin-bottom: var(--s-unit-1) !important;
-// }
-// .margin-bottom-3 {
-//   margin-bottom: var(--s-unit-3) !important;
+//   margin-top: var(--s-unit-3);
 // }
 
-// empty side variant
-// @include variant((1: unit 1), '' top right bottom left x y);
-// .margin-1 {
-//   margin: var(--s-unit-1) !important;
-// }
+// @include variant(((top, bottom): (1: (unit 1) (), 3: (unit 3) ())));
 // .margin-top-1 {
-//   margin-top: var(--s-unit-1) !important;
+//   margin-top: var(--s-unit-1);
 // }
-// .margin-right-1 {
-//   margin-right: var(--s-unit-1) !important;
+// .margin-top-3 {
+//   margin-top: var(--s-unit-3);
 // }
 // .margin-bottom-1 {
-//   margin-bottom: var(--s-unit-1) !important;
+//   margin-bottom: var(--s-unit-1);
 // }
-// .margin-left-1 {
-//   margin-left: var(--s-unit-1) !important;
+// .margin-bottom-3 {
+//   margin-bottom: var(--s-unit-3);
 // }
-// .margin-x-1 {
-//   margin-right: var(--s-unit-1) !important;
-//   margin-left: var(--s-unit-1) !important;
-// }
-// .margin-y-1 {
-//   margin-top: var(--s-unit-1) !important;
-//   margin-bottom: var(--s-unit-1) !important;
-// }
-// .margin-1 {
-//   margin: var(--s-unit-1) !important;
-// }
+
+// @include variant(((top, right, bottom, left): (1: (unit 1) ())));
 // .margin-top-1 {
-//   margin-top: var(--s-unit-1) !important;
+//   margin-top: var(--s-unit-1);
 // }
 // .margin-right-1 {
-//   margin-right: var(--s-unit-1) !important;
+//   margin-right: var(--s-unit-1);
 // }
 // .margin-bottom-1 {
-//   margin-bottom: var(--s-unit-1) !important;
+//   margin-bottom: var(--s-unit-1);
 // }
 // .margin-left-1 {
-//   margin-left: var(--s-unit-1) !important;
-// }
-// .margin-x-1 {
-//   margin-right: var(--s-unit-1) !important;
-//   margin-left: var(--s-unit-1) !important;
-// }
-// .margin-y-1 {
-//   margin-top: var(--s-unit-1) !important;
-//   margin-bottom: var(--s-unit-1) !important;
+//   margin-left: var(--s-unit-1);
 // }
 
 // dictionary
-// @include variant((1: unit 1, 2: unit 2), x y, (unit: u));
-// .margin-x-1 {
-//   margin-right: var(--s-u-1) !important;
-//   margin-left: var(--s-u-1) !important;
+// @include variant((1: (unit 1) (), 2: (unit 2) ()), $dictionary: (unit: u));
+// .margin-1 {
+//   margin: var(--s-u-1);
 // }
-// .margin-x-2 {
-//   margin-right: var(--s-u-2) !important;
-//   margin-left: var(--s-u-2) !important;
-// }
-// .margin-y-1 {
-//   margin-top: var(--s-u-1) !important;
-//   margin-bottom: var(--s-u-1) !important;
-// }
-// .margin-y-2 {
-//   margin-top: var(--s-u-2) !important;
-//   margin-bottom: var(--s-u-2) !important;
+// .margin-2 {
+//   margin: var(--s-u-2);
 // }
