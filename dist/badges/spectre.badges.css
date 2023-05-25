@@ -1,5 +1,5 @@
 /* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
-/* Spectre.css module: badges | components | color-scheme: dark | MIT License | github.com/angular-package/spectre.css */
+/* Spectre.css module: badges | components | color-scheme: normal | MIT License | github.com/angular-package/spectre.css */
 .badge {
   position: relative;
   white-space: nowrap;

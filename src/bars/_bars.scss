@@ -2,7 +2,7 @@
 @use '../variables/core' as *;
 
 // Mixins.
-@use 'mixins/bar-slider.mixin' as *;
+@use 'mixins/bar.slider.mixin' as *;
 @use 'mixins/bar.mixin' as *;
 
 /* Spectre.css module: bars | components | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
@@ -11,4 +11,4 @@
 
 /* Spectre.css module: bars | slider | components | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
-@include bar-slider;
+@include slider;

@@ -1,5 +1,5 @@
 /* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
-/* Spectre.css module: accordions | components | color-scheme: dark | MIT License | github.com/angular-package/spectre.css */
+/* Spectre.css module: accordions | components | color-scheme: normal | MIT License | github.com/angular-package/spectre.css */
 .accordion input:checked ~ .accordion-header > svg,
 .accordion input:checked ~ .accordion-header > .icon:first-child, .accordion[open] .accordion-header > svg,
 .accordion[open] .accordion-header > .icon:first-child {
