@@ -1,0 +1,44 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Functions.
+@use '../dictionary.get.function' as *;
+@use 'translate.string.function' as *;
+@use 'translate.list.function' as *;
+
+// Status: DONE
+// The `translate.map()` function.
+@function map($map, $dictionary: ()) {
+  $dictionary: get(list.nth($dictionary, 2), list.nth($dictionary, 1)) or $dictionary;
+  @if type-of($map) == map {
+    @each $key, $value in $map {
+      @if type-of($value) == string {
+        @if string($value, $dictionary) {
+          $map: map.set($map, $key, string($value, $dictionary));
+        }
+      } @else if type-of($value) == list {
+        @if list($value, $dictionary) {
+          $map: map.set($map, $key, list($value, $dictionary));
+        }
+      }
+    }
+  }
+  @return $map;
+}
+
+// Examples.
+$-dictionary: (
+  general: (word: słowo, (wrapper, wrap): owijka, (technology, technologia): tech),
+  class: (calendars: (calendar: cal), labels: (label: lab))
+);
+
+// String.
+// @debug map((word: wrapper), $-dictionary general); // (word: owijka)
+// @debug map((limit: first), ((first, start): 1, (last, length, end): 50)); // (limit: 1)
+
+// List.
+// @debug map((word: (wrapper, wrap)), $-dictionary general); // (word: (owijka, owijka))
+
+// Different dictionary.
+// @debug map((calendar: calendar), ($-dictionary, (class, calendars))); // (calendar: cal)

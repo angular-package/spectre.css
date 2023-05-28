@@ -1,0 +1,54 @@
+// Sass.
+@use 'sass:map';
+
+// Modules.
+@use '../dictionary';
+
+
+$-dictionary: (
+  general: (word: słowo, (wrapper, wrap): owijka, (technology, technologia): tech, color: c),
+  class: (calendars: (calendar: cal), labels: (label: lab))
+);
+
+
+// --- List
+// @debug dictionary.translate-list((wrapper, technology), $-dictionary general); // owijka, tech
+// @debug dictionary.translate-list((wrapper, technology) color, $-dictionary general); // (owijka, tech) c
+// @debug dictionary.translate-list((wrapper,), $-dictionary general); // (owijka,)
+
+// Different dictionary.
+// @debug dictionary.translate-list((calendar, label), ($-dictionary, (class, calendars))); // cal, label
+
+
+// --- Map
+// String.
+// @debug dictionary.translate-map((word: wrapper), $-dictionary general); // (word: owijka)
+// @debug dictionary.translate-map((limit: first), ((first, start): 1, (last, length, end): 50)); // (limit: 1)
+
+// List.
+// @debug dictionary.translate-map((word: (wrapper, wrap)), $-dictionary general); // (word: (owijka, owijka))
+
+// Different dictionary.
+// @debug dictionary.translate-map((calendar: calendar), ($-dictionary, (class, calendars))); // (calendar: cal)
+
+
+// --- String
+// @debug dictionary.translate-string(word, map.get($-dictionary, general)); // słowo
+// @debug dictionary.translate-string(wrapper, map.get($-dictionary, general)); // owijka
+// @debug dictionary.translate-string(calendar, map.get($-dictionary, class, calendars)); // cal
+
+
+// --- Any
+// List.
+// @debug dictionary.translate((wrapper, technology), ($-dictionary, 'general')); // owijka, tech
+// @debug dictionary.translate((wrapper, technology) color, $-dictionary general); // (owijka, tech) c
+
+// Map.
+// @debug dictionary.translate((word: wrapper), $-dictionary general); // (word: owijka)
+// @debug dictionary.translate((limit: first), ((first, start): 1, (last, length, end): 50)); // (limit: 1)
+
+// String.
+// @debug dictionary.translate(wrapper, $-dictionary general); // owijka
+
+// Different dictionary.
+// @debug dictionary.translate(calendar, $-dictionary (class, calendars)); // cal

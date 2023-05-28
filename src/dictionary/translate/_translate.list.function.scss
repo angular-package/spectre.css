@@ -1,0 +1,50 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use '../dictionary.get.function' as *;
+@use 'translate.string.function' as *;
+
+// Status: DONE
+// The `translate.list()` function.
+@function list($list, $dictionary: ()) {
+  $dictionary: get(list.nth($dictionary, 2), list.nth($dictionary, 1)) or $dictionary;
+  @if type-of($list) == list {
+    $i: 1;
+    @each $element in $list {
+      @if type-of($element) == string {
+        @if string($element, $dictionary) {
+          $list: list.set-nth($list, $i, string($element, $dictionary));
+        }
+      } @else if type-of($element) == list {
+        $j: 1;
+        @each $value in $element {
+          @if string($value, $dictionary) {
+            $element: list.set-nth($element, $j, string($value, $dictionary));
+          }
+
+          $j: $j + 1;
+        }
+
+        $list: list.set-nth($list, $i, $element);
+      }
+
+      $i: $i + 1;
+    }
+  }
+  @return $list;
+}
+
+// Examples.
+$-dictionary: (
+  general: (word: słowo, (wrapper, wrap): owijka, (technology, technologia): tech, color: c),
+  class: (calendars: (calendar: cal), labels: (label: lab))
+);
+
+// List.
+// @debug list((wrapper, technology), $-dictionary general); // owijka, tech
+// @debug list((wrapper, technology) color, $-dictionary general); // (owijka, tech) c
+// @debug list((wrapper,), $-dictionary general); // (owijka,)
+
+// Different dictionary.
+// @debug list((calendar, label), ($-dictionary, (class, calendars))); // cal, label
