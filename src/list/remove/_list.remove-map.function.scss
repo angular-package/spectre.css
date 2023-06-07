@@ -1,16 +1,22 @@
 // Sass.
 @use 'sass:list';
 
+// Functions.
+@use '../has/type/list.has-type.function' as *;
+
 // Status: DONE
 // The `remove-map()` removes the map from the given `$list`.
 @function remove-map($list) {
-  $result: ();
-  @each $element in $list {
-    @if type-of($element) != map {
-      $result: list.append($result, $element, list.separator($list));
+  @if list.length($list) > 0 and has-type($list, any, '==', map) {
+    $result: ();
+    @each $element in $list {
+      @if type-of($element) != map {
+        $result: list.append($result, $element, list.separator($list));
+      }
     }
+    @return $result;
   }
-  @return $result;
+  @return $list;
 }
 
 // Examples.

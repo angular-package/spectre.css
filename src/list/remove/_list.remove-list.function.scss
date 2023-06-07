@@ -2,12 +2,15 @@
 @use 'sass:list';
 @use 'sass:meta';
 
+// Functions.
+@use '../has/type/list.has-type.function' as *;
+
 // Status: DONE.
 // The `remove-list()` function removes element of the list type from the given `$list`.
 // $bracketed: true (remove bracketed), false (do not remove bracketed), only (remove only bracketed)
 @function remove-list($list, $length: false, $bracketed: true) {
-  $result: ();
-  @if list.length($list) > 0 {
+  @if list.length($list) > 0 and has-type($list, any, '==', list) {
+    $result: ();
     @each $element in $list {
       $append: true;
       @if type-of($element) == list {
@@ -30,8 +33,9 @@
         $result: list.append($result, $element, list.separator($list));
       }
     }
+    @return $result;
   }
-  @return $result;
+  @return $list;
 }
 
 // Examples.

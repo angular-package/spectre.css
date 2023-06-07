@@ -1,19 +1,25 @@
 // Sass.
 @use 'sass:list';
 
+// Functions.
+@use '../has/type/list.has-type.function' as *;
+
 // Status: DONE
 // The `remove-number()` function.
 @function remove-number($list, $number...) {
-  $result: ();
-  @if list.length($list) > 0 {
-    @each $element in $list {
-      @if not (type-of($element) == number) or
-        (list.length($number) > 0 and type-of($element) == number and not list.index($number, $element)) {
-        $result: list.append($result, $element, list.separator($list));
+  @if list.length($list) > 0 and has-type($list, any, '==', number) {
+    $result: ();
+    @if list.length($list) > 0 {
+      @each $element in $list {
+        @if not (type-of($element) == number) or
+          (list.length($number) > 0 and type-of($element) == number and not list.index($number, $element)) {
+          $result: list.append($result, $element, list.separator($list));
+        }
       }
     }
+    @return $result;
   }
-  @return $result;
+  @return $list;
 }
 
 // Examples.
