@@ -1,5 +1,0 @@
-// Status: DONE
-// The `important()` function.
-@function important($important: false) {
-  @return if($important == true, #{' !important'}, #{''});
-}
