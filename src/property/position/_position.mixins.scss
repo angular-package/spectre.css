@@ -1,0 +1,181 @@
+// Sass.
+@use 'sass:map';
+@use 'sass:meta';
+
+// Modules.
+@use '@angular-package/sass/property';
+@use '@angular-package/sass/selector';
+@use '@angular-package/sass/var';
+
+// Status: DONE
+// The `position.top()` mixin.
+@mixin top(
+  $variant: (),
+  $important: null,
+  // class
+  $pseudo-class: (),
+  $dictionary: (),
+  $class-function: meta.get-function(class, false, selector),
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $functions:(var: (get: meta.get-function(get, false, var))),
+  $execute: true,
+) {
+  @each $key, $val in $variant {
+    $variant: map.set($variant, $key, $val ());
+  }
+  @include property.variant(
+    (top: $variant),
+    $important,
+    $pseudo-class,
+    $dictionary,
+    $class-function,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute
+  );
+}
+
+
+// Status: DONE
+// The `position.right()` mixin.
+@mixin right(
+  $variant: (),
+  $important: null,
+  // class
+  $pseudo-class: (),
+  $dictionary: (),
+  $class-function: meta.get-function(class, false, selector),
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $functions:(var: (get: meta.get-function(get, false, var))),
+  $execute: true,
+) {
+  @each $key, $val in $variant {
+    $variant: map.set($variant, $key, $val ());
+  }
+  @include property.variant(
+    (right: $variant),
+    $important,
+    $pseudo-class,
+    $dictionary,
+    $class-function,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute
+  );
+}
+
+// Status: DONE
+// The `position.bottom()` mixin.
+@mixin bottom(
+  $variant: (),
+  $important: null,
+  // class
+  $pseudo-class: (),
+  $dictionary: (),
+  $class-function: meta.get-function(class, false, selector),
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $functions:(var: (get: meta.get-function(get, false, var))),
+  $execute: true,
+) {
+  @each $key, $val in $variant {
+    $variant: map.set($variant, $key, $val ());
+  }
+  @include property.variant(
+    (bottom: $variant),
+    $important,
+    $pseudo-class,
+    $dictionary,
+    $class-function,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute
+  );
+}
+
+// Status: DONE
+// The `position.left()` mixin.
+@mixin left(
+  $variant: (),
+  $important: null,
+  // class
+  $pseudo-class: (),
+  $dictionary: (),
+  $class-function: meta.get-function(class, false, selector),
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $functions:(var: (get: meta.get-function(get, false, var))),
+  $execute: true,
+) {
+  @each $key, $val in $variant {
+    $variant: map.set($variant, $key, $val ());
+  }
+  @include property.variant(
+    (left: $variant),
+    $important,
+    $pseudo-class,
+    $dictionary,
+    $class-function,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute
+  );
+}
+
+// Examples.
+// number
+// @include top((1: 1px));
+// .top-1 {
+//   top: 1px;
+// }
+
+// @include top((20: 20px));
+// .top-20 {
+//   top: 20px;
+// }
+
+// @include top((1: (unit 1)));
+// .top-1 {
+//   top: var(--s-unit-1);
+// }
+
+// @include top((1: unit 1, 2: unit 2));
+// .top-1 {
+//   top: var(--s-unit-1) !important;
+// }
+// .top-2 {
+//   top: var(--s-unit-2) !important;
+// }
+
+// @include right((1: unit 1));
+// .right-1 {
+//   right: var(--s-unit-1) !important;
+// }
+
+// @include bottom((1: unit 1));
+// .bottom-1 {
+//   bottom: var(--s-unit-1) !important;
+// }
+
+// @include left((1: unit 1));
+// .left-1 {
+//   left: var(--s-unit-1) !important;
+// }
