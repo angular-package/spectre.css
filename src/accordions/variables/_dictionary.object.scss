@@ -1,0 +1,16 @@
+// Modules.
+@use '../../translator';
+
+// Dictionary.
+$debug: translator.dictionary-merge(accordion, (
+  class: (
+    // Customize the class name specific words.
+    // 'accordion': 'accordion-1',
+    // 'header': 'header-2',
+    // 'body': 'body-3',
+    // 'delimiter': '_'
+  ),
+
+  // Customize the var name specific words.
+  var: (),
+));

@@ -1,41 +1,23 @@
 /* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
 
-// Sass.
-@use 'sass:map';
-
 // Variables.
-@use '../variables/core' as *;
-@use 'variables' as *;
+@forward 'variables';
+
+// Modules.
+@use '../translator';
 
 // color-scheme
 // $color-scheme: dark light;
 
-// Global class dictionary.
-// $class: map.merge($class, (
-//   'prefix': 'spectre',
-//   'suffix': 'end'
-// ));
-
-// Global css var dictionary.
-// $var: map.merge($var, (
-//   'prefix': 'spectre',
-//   'suffix': 'end'
-// ));
-
-// Accordion settings.
-// $accordion: map.merge(
-//   $accordion,
-//   (
-//     'dictionary': (
-//       'class': (
-//         'accordion': 'accordion-basic',
-//         'header': 'header-basic',
-//         'body': 'body-basic',
-//       ),
-//       'var': (
-//         'prefix': 'spectre', // No CSS variables.
-//         'suffix': 'orchid'
-//       )
-//     )
-//   )
+// Dictionary.
+// $debug: translator.dictionary-merge(accordion, (
+//   class: (
+//     accordion: accordion-basic,
+//     header: header-basic,
+//     body: body-basic,
+//   ),
+//   var: (
+//     prefix: spectre, // No CSS variables.
+//     suffix: 'orchid'
+//   ))
 // );

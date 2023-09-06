@@ -1,59 +1,65 @@
 // Sass.
-@use 'sass:meta';
-
-// Functions.
-@use '../../module/module.class.function' as *;
+@use 'sass:map';
 
 // Modules.
-@use '../../mixins/margin';
-@use '../../mixins/padding';
-
-// Mixins.
-@use '../../mixins/transition.mixin' as *;
+@use '../../module';
+@use '../../property';
+@use '../../property/margin';
+@use '../../property/padding';
 
 // Status: DONE
-// The `accordion()` mixin.
-@mixin accordion($class: (), $pseudo-class: (), $dictionary: ()) {
-  #{class(accordion, $class, $pseudo-class, $dictionary)} {
+// The `accordion.accordion()` mixin.
+// @param `$class`
+// @param `$pseudo-class`
+// @param `$dictionary`
+@mixin accordion(
+  $class: (),
+  $pseudo-class: (),
+  $dictionary: module.dictionary(accordion, true, class, var),
+  // $delimiter: null,
+  // $prefix: null,
+  // $suffix: null
+) {
+  #{module.class(accordion, $class, $pseudo-class, $dictionary)} {
     input:checked ~,
     &[open] {
-      & #{class(accordion, join($class, header), (), $dictionary)} > {
+      & #{module.class(accordion, join($class, header), (), $dictionary)} > {
         svg,
-        #{class(icon, (), '&:first-child', $dictionary)} {
+        #{module.class(icon, (), ':first-child', $dictionary)} {
           transform: rotate(90deg);
         }
       }
 
-      & #{class(accordion, join($class, body), (), $dictionary)} {
+      & #{module.class(accordion, join($class, body), (), $dictionary)} {
         overflow: visible;
         max-height: 60rem;
       }
     }
 
-    #{class(accordion, join($class, header), (), $dictionary)} {
+    #{module.class(accordion, join($class, header), (), $dictionary)} {
       display: block;
-      @include padding.padding((unit 1) (unit 2));
+      @include padding.padding((unit 1) (unit 2), false, $dictionary);
 
       > svg,
-      > #{class(icon, $dictionary: $dictionary)} {
-        @include transition(transform 0.05s);
-        @include margin.right((unit 2) ());
+      > #{module.class(icon, (), (), $dictionary)} {
+        @include property.transition((transform: 0.05s), false, $dictionary);
+        @include margin.right((unit 2) (), false, $dictionary);
       }
     }
 
-    #{class(accordion, join($class, body), (), $dictionary)} {
+    #{module.class(accordion, join($class, body), (), $dictionary)} {
       overflow: hidden;
       max-height: 0;
-      @include margin.bottom((layout spacing true) ());
-      @include transition(max-height 0.05s);
-      #{class(menu, item)} > a {
+      @include margin.bottom((layout spacing true) (), false, $dictionary);
+      @include property.transition((max-height: 0.05s), false, $dictionary);
+      #{module.class(menu, item, (), $dictionary)} > a {
         align-items: center;
       }
     }
   }
 
   // Remove default details marker in Webkit
-  summary#{class(accordion, join($class, header), '&::-webkit-details-marker', $dictionary)} {
+  summary#{module.class(accordion, join($class, header), '::-webkit-details-marker', $dictionary)} {
     display: none;
   }
 }

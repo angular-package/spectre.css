@@ -1,0 +1,63 @@
+<!DOCTYPE html lang="en-US">
+<head>
+  <title>Spectre Accordions</title>
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="description" content="Spectre.css Accordions" />
+  <meta name="author" content="Yan Zhu &amp; @angular-package">
+  <meta name="theme-color" content="#5755D9">
+  <meta property="og:url" content="https://angular-package.github.io/spectre.css/">
+  <meta property="og:title" content="Spectre.css Accordions">
+  <meta property="og:description" content="Spectre.css Accordions">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@angularpackage">
+  <meta name="twitter:creator" content="@angularpackage">
+
+  <link rel="shortcut icon" href="../../../docs/img/favicons/favicon.ico">
+  <link rel="stylesheet" href="../../../dist/spectre.css.min.css">
+  <!-- <link rel="stylesheet" href="../../../dist/spectre.icons.min.css"> -->
+  <!-- <link rel="stylesheet" href="../../../dist/spectre.exp.min.css"> -->
+  <script src="https://kit.fontawesome.com/f067824cbf.js" crossorigin="anonymous"></script>
+  <style>
+    html, body {
+      /* min-height: 100vh; */
+      /* overflow: auto; */
+      height: 100vh;
+    }
+    .off-canvas {
+      height: 100vh;
+      overflow-y: hidden;
+    }
+  </style>
+</head>
+  <body style="padding: 2rem">
+    <h1>Accordions</h1>
+
+    <!-- standard Accordions example -->
+    <div class="accordion">
+      <input id="accordion-1" type="radio" name="accordion-radio" hidden="" checked="">
+      <label class="accordion-header c-hand" for="accordion-1"><i class="icon icon-arrow-right mr-1"></i>Elements</label>
+      <div class="accordion-body">
+        <ul class="menu menu-nav">
+          <li class="menu-item"><a href="#accordions">Element 1</a></li>
+          <li class="menu-item"><a href="#accordions">Element 2</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- mutually exclusive Accordions example (with same input names) -->
+    <div class="accordion">
+      <input id="accordion-4" type="checkbox" name="accordion-checkbox" hidden="" checked="">
+      <label class="accordion-header c-hand" for="accordion-4">Elements</label>
+      <div class="accordion-body">
+        <ul class="menu menu-nav">
+          <li class="menu-item"><a href="#accordions">Element 1</a></li>
+          <li class="menu-item"><a href="#accordions">Element 2</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </body>
+</html>
