@@ -1,10 +1,10 @@
 // Variables.
-@use '../variables/core' as *;
+@use '@angular-package/sass/color/scheme';
 
 // Mixins.
 @use 'mixins/breadcrumb.mixin' as *;
 
-/* Spectre.css module: breadcrumbs | components | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/* Spectre.css module: breadcrumbs | components | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 // Initialize mixin.
 @include breadcrumb;

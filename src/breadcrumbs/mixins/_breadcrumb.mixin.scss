@@ -1,50 +1,45 @@
-// Variables.
-@use '../../variables/core' as *;
+// Modules.
+@use '../../module';
+@use '../../property/margin';
+@use '../../property/padding';
+@use '@angular-package/sass/color';
 
-// Functions.
-@use '../functions/breadcrumb-class.function' as *;
-@use '../../functions/class/class.function' as *;
-@use '../../functions/selector-nest.function' as *;
-
-// Mixins.
-@use '../../mixins/color/color.mixin' as *;
-@use '../../mixins/margin.mixins' as *;
-@use '../../mixins/padding.mixins' as *;
-
-// The `breadcrumb()` mixin.
-@mixin breadcrumb($class: '', $selector: (), $dictionary: ()) {
-  // Breadcrumbs
-  // .#{$class-prefix}breadcrumb {
-  #{breadcrumb-class($class, $selector, $dictionary)} {
-    @include margin(('unit', '1'), ('unit', '0'));
-    @include padding(('unit', '1'), ('unit', '0'));
+// Status: DONE
+// The `breadcrumbs.breadcrumb()` mixin.
+// @param `$class`
+// @param `$pseudo-class`
+// @param `$dictionary`
+@mixin breadcrumb(
+  $class: (),
+  $pseudo-class: (),
+  $dictionary: module.dictionary(breadcrumb, true, class, var),
+) {
+  #{module.class(breadcrumb, $class, $pseudo-class, $dictionary)} {
+    @include margin.margin((unit 1) (unit 0), $dictionary: $dictionary);
+    @include padding.padding((unit 1) (unit 0), $dictionary: $dictionary);
 
     list-style: none;
 
     // .breadcrumb-item {
-    #{breadcrumb-class(($class, 'item'), (), $dictionary)} {
+    #{module.class(breadcrumb, join($class, item), (), $dictionary)} {
       display: inline-block;
       margin: 0;
-      @include padding(('unit', '1'), ('unit', '0'));
-      @include color('gray-dark');
+      @include padding.padding((unit 1) (unit 0), $dictionary: $dictionary);
+      @include color.color(gray dark, $dictionary: $dictionary);
 
       &:not(:last-child) {
-        @include margin-right(('unit', '1'));
+        @include margin.right((unit 1) (), $dictionary: $dictionary);
 
         a {
-          @include color('gray-dark');
+          @include color.color(gray dark, $dictionary: $dictionary);
         }
       }
 
-      // TODO: use selector-nest()
-      // #{selector-nest(('&', ':not(:first-child)', '&::before'))} {
-      //   font-size: 1;
-      // }
       &:not(:first-child) {
         &::before {
           content: '/';
-          @include padding-right(('unit', '2'));
-          @include color('gray-dark');
+          @include padding.right((unit 2) (), $dictionary: $dictionary);
+          @include color.color(gray dark, $dictionary: $dictionary);
         }
       }
     }
