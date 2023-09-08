@@ -1,13 +1,10 @@
 /* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
 
 // Variables.
-@forward 'variables';
+@use 'accordions.dictionary';
 
 // Modules.
 @use '../translator';
-
-// color-scheme
-// $color-scheme: dark light;
 
 // Dictionary.
 // $debug: translator.dictionary-merge(accordion, (

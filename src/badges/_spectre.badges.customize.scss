@@ -7,13 +7,13 @@
 @use '../translator';
 
 // Dictionary.
-$debug: translator.dictionary-merge(badge, (
-  class: (
-    // badge: badge-basic,
-    // header: header-basic,
-    // body: body,
-  ),
-  var: (
-    // prefix: spectre // No CSS variables.
-  )
-));
+// $debug: translator.dictionary-merge(badge, (
+//   class: (
+//     // badge: badge-basic,
+//     // header: header-basic,
+//     // body: body,
+//   ),
+//   var: (
+//     // prefix: spectre // No CSS variables.
+//   )
+// ));

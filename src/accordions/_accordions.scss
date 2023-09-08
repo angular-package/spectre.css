@@ -1,13 +1,13 @@
 // Variables.
-@use '../variables/core' as *;
+@use '@angular-package/sass/color/scheme';
 
 // Mixins.
-@use 'mixins/accordion.mixin' as *;
+@use 'mixins';
 
-/* Spectre.css module: accordions | components | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/* Spectre.css module: accordions | components | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 // Initialize mixin.
-@include accordion;
+@include mixins.accordion;
 
 // Examples.
 // @include accordion(primary variant);
