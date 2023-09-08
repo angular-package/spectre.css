@@ -1,21 +1,19 @@
-// Variables.
-@use '../../buttons/variables' as *;
-@use '../../variables/core' as *;
-
-// Functions.
-@use '../../module/module.class.function' as *;
-
 // Modules.
-@use '../../color';
-
-// Mixins.
-@use '../../mixins/font-size.mixin' as *;
-@use '../../mixins/z-index.mixin' as *;
+@use '../../module';
+@use '../../property';
+@use '@angular-package/sass/color';
 
 // Status: DONE
-// The `badge()` mixin.
-@mixin badge($class: (), $pseudo-class: (), $dictionary: ()) {
-  #{class(badge, $class, $pseudo-class, $dictionary)} {
+// The `badges.badge()` mixin.
+// @param `$class`
+// @param `$pseudo-class`
+// @param `$dictionary`
+@mixin badge(
+  $class: (),
+  $pseudo-class: (),
+  $dictionary: module.dictionary(badge, true, class, var),
+) {
+  #{module.class(badge, $class, $pseudo-class, $dictionary)} {
     position: relative;
     white-space: nowrap;
 
@@ -25,12 +23,12 @@
         content: attr(data-badge);
         display: inline-block;
         border-radius: 0.5rem;
-        @include color.background(primary);
+        @include color.background(primary, $dictionary: $dictionary);
 
         background-clip: padding-box;
-        @include color.color(light);
+        @include color.color(light, $dictionary: $dictionary);
+        @include property.box-shadow(0 0 0 0.1rem (bg light), $dictionary: $dictionary);
 
-        box-shadow: 0 0 0 0.1rem color.color(bg light);
         transform: translate(-0.05rem, -0.5rem);
       }
     }
@@ -40,7 +38,7 @@
         min-width: 0.9rem;
         height: 0.9rem;
         padding: 0.1rem 0.2rem;
-        @include font-size(sm);
+        @include property.font-size(sm, $dictionary: $dictionary);
 
         line-height: 1;
         text-align: center;
@@ -59,7 +57,7 @@
     }
 
     // Badges for Buttons
-    #{class(button, '&', '&::after', $dictionary)} {
+    #{module.class(button, '&', '::after', $dictionary)} {
       position: absolute;
       top: 0;
       right: 0;
@@ -67,11 +65,11 @@
     }
 
     // Badges for Avatars
-    #{class(avatar, '&', '&::after', $dictionary)} {
+    #{module.class(avatar, '&', '::after', $dictionary)} {
       position: absolute;
       top: 14.64%;
       right: 14.64%;
-      @include z-index(1);
+      @include property.z-index(1, $dictionary: $dictionary);
 
       transform: translate(50%, -50%);
     }
