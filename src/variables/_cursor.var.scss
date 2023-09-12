@@ -1,0 +1,9 @@
+$cursor: (
+  (hand, zoom) in: zoom-in,
+  auto: auto,
+  hand: pointer,
+  move: move,
+  'not' allowed: not-allowed,
+  zoom out: zoom-out,
+) !default;
+

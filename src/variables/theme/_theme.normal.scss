@@ -1,0 +1,113 @@
+@use '../colors';
+
+$normal: (
+  // Theme color.
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color
+  theme color: colors.$theme-color,
+
+  // Core colors.
+  dark color: colors.$dark-color,
+  light color: colors.$light-color,
+
+  // - Accent color.
+  accent color: colors.$accent-color,
+
+  // - Primary colors.
+  // primary color: colors.$primary-color,
+  // primary color dark: colors.$primary-color-dark,
+  // primary color light: colors.$primary-color-light,
+
+  primary: (
+    color: colors.$primary-color,
+    dark: colors.$primary-color-dark,
+    light: colors.$primary-color-light,
+  ),
+
+  // - Secondary colors.
+  // secondary color: colors.$secondary-color,
+  // secondary color dark: colors.$secondary-color-dark,
+  // secondary color light: colors.$secondary-color-light,
+
+  secondary: (
+    color: colors.$secondary-color,
+    dark: colors.$secondary-color-dark,
+    light: colors.$secondary-color-light,
+  ),
+
+  // Gray colors.
+  // gray color: colors.$gray-color,
+  // gray color dark: colors.$gray-color-dark,
+  // gray color light: colors.$gray-color-light,
+
+  gray: (
+    color: colors.$gray-color,
+    dark: colors.$gray-color-dark,
+    light: colors.$gray-color-light,
+  ),
+
+  // Bg colors.
+  // bg color: colors.$bg-color,
+  // bg color dark: colors.$bg-color-dark,
+  // bg color light: colors.$bg-color-light,
+
+  bg: (
+    color: colors.$bg-color,
+    dark: colors.$bg-color-dark,
+    light: colors.$bg-color-light,
+  ),
+
+  // Border colors.
+  // border color: colors.$border-color,
+  // border color dark: colors.$border-color-dark,
+  // border color light: colors.$border-color-light,
+
+  border: (
+    color: colors.$border-color,
+    dark: colors.$border-color-dark,
+    light: colors.$border-color-light,
+  ),
+
+  // Link colors.
+  // link color: colors.$link-color,
+  // link color dark: colors.$link-color-dark,
+  // link color light: colors.$link-color-light,
+
+  link: (
+    color: colors.$link-color,
+    dark: colors.$link-color-dark,
+    light: colors.$link-color-light,
+  ),
+
+  // Body colors.
+  body bg color: colors.$body-bg-color,
+  body font color: colors.$body-font-color,
+
+  // Control colors.
+  disabled color: colors.$disabled-color,
+  error color: colors.$error-color,
+  info color: colors.$info-color,
+  success color: colors.$success-color,
+  warning color: colors.$warning-color,
+
+  // Other colors.
+  code color: colors.$code-color,
+  highlight color: colors.$highlight-color,
+) !default;
+
+
+// $normal: (
+//   core: (dark, light, accent, [primary [color, dark, light]], [secondary [color, dark, light]]),
+//   ['gray']: [color, dark, light],
+//   [bg]: [color, dark, light],
+//   [border]: [color, dark, light],
+//   [link]: [color, dark, light],
+//   control: (disabled, error, info, success, warning),
+//   'body.palette': (
+//     body bg: body bg color,
+//     body font: body font color
+//   ),
+//   'other.palette': (
+//     code: code color,
+//     highlight: highlight color
+//   )
+// ) !default;

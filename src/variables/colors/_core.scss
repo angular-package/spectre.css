@@ -10,13 +10,13 @@ $accent-color: #9932CC !default; // --#{var-prefix}-accent-color.
 
 // - Primary.
 $primary-color: #5755d9 !default; // --#{$var-prefix}-primary-color.
-$primary-color-dark: ('primary-color', -3%) !default; // --#{$var-prefix}-primary-color-dark.
-$primary-color-light: ('primary-color', +3%) !default; // --#{$var-prefix}-primary-color-light.
+$primary-color-dark: (primary color, -3%) !default; // --#{$var-prefix}-primary-color-dark.
+$primary-color-light: (primary color, +3%) !default; // --#{$var-prefix}-primary-color-light.
 
 // Secondary.
-$secondary-color: ('primary-color', +37.5%) !default; // --#{$var-prefix}-secondary-color.
-$secondary-color-dark: ('secondary-color', -3%) !default; // --#{$var-prefix}-secondary-color-dark.
-$secondary-color-light: ('secondary-color', +3%) !default; // --#{$var-prefix}-secondary-color-light.
+$secondary-color: (primary color, +37.5%) !default; // --#{$var-prefix}-secondary-color.
+$secondary-color-dark: (secondary color, -3%) !default; // --#{$var-prefix}-secondary-color-dark.
+$secondary-color-light: (secondary color, +3%) !default; // --#{$var-prefix}-secondary-color-light.
 
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color
 $theme-color: #5755d9 !default;

@@ -5,6 +5,6 @@ $html-font-size: 20px !default; // --#{$var-prefix}-html-font-size. REVIEW: it's
 $font-size: (
   sm: 0.7rem,
   md: 0.8rem,
-  '': 0.8rem,
+  null: 0.8rem,
   lg: 0.9rem
 ) !default;

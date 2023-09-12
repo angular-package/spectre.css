@@ -2,5 +2,5 @@
 @use 'core' as *;
 
 // Body colors.
-$body-bg-color: 'bg-color-light' !default; // --#{$var-prefix}-body-bg-color.
-$body-font-color: ('dark-color', +5%) !default; // --#{$var-prefix}-body-font-color.
+$body-bg-color: bg color light !default; // --#{$var-prefix}-body-bg-color.
+$body-font-color: (dark color, +5%) !default; // --#{$var-prefix}-body-font-color.

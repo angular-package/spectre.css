@@ -1,0 +1,11 @@
+// Modules.
+@use '../var';
+
+// Size variant for the size mixins.
+$size-variant: (
+  xs: calc(var.var(control padding y sm) + var.unit-var(1)) calc(var.var(control padding x sm) + var.unit-var(1)),
+  sm: calc(var.var(control padding y sm) + var.unit-var(2)) calc(var.var(control padding x sm) + var.unit-var(2)),
+  md: calc(var.var(control padding y) + var.unit-var(2)) calc(var.var(control padding x) + var.unit-var(2)),
+  lg: calc(var.var(control padding y lg) + var.unit-var(2)) calc(var.var(control padding x lg) + var.unit-var(2)),
+  xl: calc(var.var(control padding y lg) + var.unit-var(4)) calc(var.var(control padding x lg) + var.unit-var(4)),
+) !default;

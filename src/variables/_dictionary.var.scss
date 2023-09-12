@@ -1,19 +1,24 @@
 // Dictionary map.
 $dictionary: (
   class: (
-    prefix: null,
-    separator: '-',
-    suffix: null
+    prefix: s,
+    delimiter: '-',
+    // suffix: null
   ),
   var: (
+    // name
     prefix: s,
+    // suffix: null,
+    delimiter: '-',
+
+    // color
     hue: h,
     saturation: s,
     lightness: l,
     alpha: a,
-    separator: '-',
+
+    // words
     size: size,
     // 'sm': 'small' // Can be changed to.
-    suffix: null,
   )
 ) !default;

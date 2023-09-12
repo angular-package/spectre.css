@@ -1,7 +1,7 @@
 // Modules.
 @use '../../var';
 
-$-grid-size: calc(var.get(layout spacing false) * var.css(html font size) * 2);
+$-grid-size: calc(var.var(layout spacing false) * var.css(html font size) * 2);
 $grid: (
   max-width: (
     // 'xl': calc(get-var(('layout', 'spacing', false)) * css-var(('html', 'font', 'size')) * 2 + size-var('xl')),

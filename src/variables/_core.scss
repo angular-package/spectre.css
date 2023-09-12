@@ -15,3 +15,11 @@ $columns-count: 4 !default;
 
 // Responsive breakpoint.
 $responsive-breakpoint: 480px !default;
+
+// Structure name configuration. prefix separator name separator suffix
+// $name-configuration: (
+//   delimiter: delimiter,
+//   prefix: prefix,
+//   separator: separator,
+//   suffix: suffix,
+// );

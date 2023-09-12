@@ -1,0 +1,35 @@
+
+// .float-right, .float-left,
+$float: ((float,): (right, left)) !default;
+
+// .position-absolute, .position-fixed, .position-relative, .position-sticky
+$position: ((position,): ('absolute !important', 'fixed !important', 'relative !important', 'sticky !important')) !default;
+
+// .flex-direction-column, .flex-direction-row
+$flex: ( flex direction: ( column, row ) ) !default;
+
+// .align-items-center, .align-items-end, .align-items-start
+$align: (align items: (center, (start: flex-start, end: flex-end))) !default;
+
+// justify content
+$justify: (
+  justify content: (
+    // .justify-content-center,
+    center,
+
+    // .justify-content-end,
+    (end: flex-end),
+
+    // .justify-content-space-around,
+    space-around,
+
+    // .justify-content-space-around,
+    space-between,
+
+    // .justify-content-space-evenly,
+    space-evenly,
+
+    // .justify-content-start,
+    (start: flex-start)
+  )
+) !default;

@@ -1,0 +1,59 @@
+@use '../colors';
+
+$light: (
+  // Theme color.
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color
+  theme color: colors.$theme-color,
+
+  // Core colors.
+  dark color: #303742,
+  light color: #020202,
+
+  // - Accent color.
+  accent color: colors.$accent-color,
+
+  // - Primary colors.
+  primary color: colors.$primary-color,
+  primary color dark: (primary color, -3%),
+  primary color light: (primary color, +3%),
+
+  // - Secondary colors.
+  secondary color: (primary color, +37.5%),
+  secondary color dark: (secondary color, -3%),
+  secondary color light: (secondary color, +3%),
+
+  // Gray colors.
+  gray color: (dark color, +55%),
+  gray color dark: (gray color, -30%),
+  gray color light: (gray color, +20%),
+
+  // Bg colors.
+  bg color: (dark color, +75%),
+  bg color dark: (bg color, -3%),
+  bg color light: light color,
+
+  // Border colors.
+  border color: (dark color, +65%),
+  border color dark: (border color, -10%),
+  border color light: (border color, +8%),
+
+  // Link colors.
+  link color: primary color,
+  link color dark: (link color, -10%),
+  link color light: (link color, +10%),
+
+  // Body colors.
+  body bg color: bg color light,
+  body font color: (dark color, +5%),
+
+  // Control colors.
+  disabled color: colors.$disabled-color,
+  error color: colors.$error-color,
+  info color: colors.$info-color,
+  success color: colors.$success-color,
+  warning color: colors.$warning-color,
+
+  // Other colors.
+  code color: colors.$code-color,
+  highlight color: colors.$highlight-color,
+) !default;

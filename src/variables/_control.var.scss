@@ -10,15 +10,15 @@ $control: (
   // Used in: button, form.
   padding: (
     x: (
-      sm: var.get(unit 2, ('*' 0.75)),
+      sm: var.var(unit 2, '*' 0.75),
       md: var.unit-var(2),
-      '': var.unit-var(2),
-      lg: var.get(unit 2, ('*' 1.5)),
+      null: var.unit-var(2),
+      lg: var.var(unit 2, '*' 1.5),
     ),
     y: (
       sm: calc((var.css(control size sm) - var.css(line height)) * 0.5 - var.css(border size md)),
       md: calc((var.css(control size) - var.css(line height)) * 0.5 - var.css(border size md)),
-      '': calc((var.css(control size) - var.css(line height)) * 0.5 - var.css(border size md)),
+      null: calc((var.css(control size) - var.css(line height)) * 0.5 - var.css(border size md)),
       lg: calc((var.css(control size lg) - var.css(line height)) * 0.5 - var.css(border size md)),
     )
   ),
@@ -27,7 +27,7 @@ $control: (
   size: (
     sm: var.unit-var(7),
     md: var.unit-var(9),
-    '': var.unit-var(9),
+    null: var.unit-var(9),
     lg: var.unit-var(10),
   ),
 

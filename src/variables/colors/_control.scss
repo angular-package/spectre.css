@@ -1,7 +1,7 @@
 @use 'bg' as *;
 
 // Control colors.
-$disabled-color: 'bg-color-dark' !default; // --#{$var-prefix}-disabled-color.
+$disabled-color: bg color dark !default; // --#{$var-prefix}-disabled-color.
 $error-color: #e85600 !default; // --#{$var-prefix}-error-color.
 $info-color: #d9edf7 !default; // --#{$var-prefix}-info-color.
 $success-color: #32b643 !default; // --#{$var-prefix}-success-color.
