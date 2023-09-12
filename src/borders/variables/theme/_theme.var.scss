@@ -1,0 +1,9 @@
+@use 'theme.dark.var' as *;
+@use 'theme.light.var' as *;
+@use 'theme.normal.var' as *;
+
+$theme: (
+  dark: $dark,
+  light: $light,
+  normal: $normal,
+) !default;

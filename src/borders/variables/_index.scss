@@ -1,3 +1,5 @@
-@forward 'border-colors.var';
-@forward 'border-sizes.var';
-@forward 'border.var';
+// Theme.
+@forward 'theme';
+
+// Borders.
+@forward 'borders.var';

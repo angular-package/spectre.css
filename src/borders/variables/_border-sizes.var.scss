@@ -1,8 +1,0 @@
-@use 'sass:list';
-@use 'border.var' as *;
-
-$border-sizes: ();
-
-@each $size, $width in $border-size {
-  $border-sizes: list.append($border-sizes, $size)
-}

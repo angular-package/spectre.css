@@ -1,0 +1,75 @@
+$normal: (
+
+  control color: (
+    disabled: disabled,
+    error: error,
+    info: info,
+    success: success,
+    warning: warning
+  )
+
+);
+
+$-normal: (
+  // Core colors.
+  color: (
+    dark: dark,
+    light: light,
+    accent: accent,
+    primary: primary,
+    primary dark: primary dark,
+    primary light: primary light,
+    secondary: secondary,
+    secondary dark: secondary dark,
+    secondary light: secondary light
+  ),
+
+  // Gray colors.
+  color 'gray': (
+    (): 'gray',
+    dark: 'gray' dark,
+    light: 'gray' light
+  ),
+
+  // Bg colors.
+  bg color: (
+    (): bg,
+    dark: bg dark,
+    light: bg light
+  ),
+
+  // Border colors.
+  // border: (
+  //   dark: border dark,
+  //   light: border light
+  // ),
+
+  // Link colors.
+  link: (
+    (): link,
+    dark: link dark,
+    light: link light
+  ),
+
+  // Control colors.
+  control: (disabled, error, info, success, warning),
+  // control: (
+  //   disabled: disabled,
+  //   error: error,
+  //   info: info,
+  //   success: success,
+  //   warning: warning
+  // ),
+
+  // Body colors.
+  body: (
+    body bg: body bg,
+    body font: body font
+  ),
+
+  // Other colors.
+  other: (
+    code: code,
+    highlight: highlight,
+  )
+) !default;
