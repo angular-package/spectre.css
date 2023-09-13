@@ -1,0 +1,30 @@
+// Modules.
+@use '../translator';
+@use '@angular-package/sass/color';
+
+// The `color.color()` function.
+@function color(
+  $name,
+  $hue: null,
+  $saturation: null,
+  $lightness: null,
+  $alpha: null,
+  $fallback: null,
+  $dictionary: null,
+  $delimiter: null,
+  $prefix: null,
+  $suffix: null,
+) {
+  @return color.color(
+    $name,
+    $hue,
+    $saturation,
+    $lightness,
+    $alpha,
+    $fallback,
+    if($dictionary, $dictionary, translator.dictionary(var)),
+    $delimiter,
+    $prefix,
+    $suffix,
+  );
+}

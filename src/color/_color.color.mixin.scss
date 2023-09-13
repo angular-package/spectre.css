@@ -1,0 +1,28 @@
+// Modules.
+@use '../translator';
+@use '@angular-package/sass/color';
+
+// The `color.color()` mixin.
+@mixin color(
+  $color,
+  $hue: null,
+  $saturation: null,
+  $lightness: null,
+  $alpha: null,
+  $fallback: null,
+  $important: false,
+  $dictionary: null,
+  $property: color
+) {
+  @include color.color(
+    $color,
+    $hue,
+    $saturation,
+    $lightness,
+    $alpha,
+    $fallback,
+    $important,
+    if($dictionary, $dictionary, translator.dictionary(var)),
+    $property: color
+  );
+}

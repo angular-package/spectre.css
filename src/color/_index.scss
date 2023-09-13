@@ -1,0 +1,4 @@
+@forward '@angular-package/sass/color' hide background, color;
+@forward 'color.background.mixin';
+@forward 'color.color.function';
+@forward 'color.color.mixin';
