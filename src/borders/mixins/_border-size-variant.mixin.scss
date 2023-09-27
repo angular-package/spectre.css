@@ -1,9 +1,0 @@
-@use '../variables/border.var' as *;
-
-@use '../../functions/var/css-var.function' as *;
-
-@mixin border-size-variant($size) {
-  &.#{$border-prefix}-#{$size} {
-    border-width: css-var('#{$border-prefix}-width', $suffix: $size);
-  }
-}

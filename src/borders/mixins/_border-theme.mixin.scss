@@ -1,7 +1,0 @@
-@use '../../variables' as *;
-
-@use 'border-color-variants.mixin' as *;
-
-@mixin border-theme($colors) {
-  @include border-color-variants($colors);
-}

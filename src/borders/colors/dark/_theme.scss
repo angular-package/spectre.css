@@ -1,0 +1,19 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../../spectre.borders.customize' as *;
+@use '../../../variables/core' as *;
+
+// Set the color scheme to dark.
+$color-scheme: dark;
+
+// Functions.
+// @use '../../functions/border-class.function' as *;
+
+// Mixins.
+// @use '../../mixins/color/border-theme-colors.mixin' as *;
+
+// #{border-class()} {
+//   @include border-theme-colors((#{$color-scheme}: ($colors, )));
+// }

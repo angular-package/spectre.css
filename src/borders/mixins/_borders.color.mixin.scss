@@ -1,0 +1,116 @@
+// Sass.
+@use 'sass:map';
+
+// Modules.
+@use '../../list';
+@use '../../color';
+@use '../../property';
+@use '@angular-package/sass/meta';
+
+// Status: DONE
+// The `borders.color()` mixin defines border color for all or given top, right, bottom, left side.
+// @param `$color`
+// @param `$hue`
+// @param `$saturation`
+// @param `$lightness`
+// @param `$alpha`
+// @param `$side`
+// @param `$important`
+// @param `$dictionary`
+// @param `$prefix`
+// @param `$separator`
+// @param `$type-function`
+// @param `$functions`
+// @param `$execute`
+@mixin color(
+  // color
+  $color,
+  $hue: null,
+  $saturation: null,
+  $lightness: null,
+  $alpha: null,
+  $side: null,
+  $important: false,
+  $dictionary: null,
+
+  // function to call
+  $prefix: null,
+  $separator: null,
+  $type-function: (list string: --color-color),
+  $functions: (color: (color: meta.get-function(color, false, color))),
+  $execute: true,
+) {
+  @if meta.of-type(map, $color) {
+    @each $key, $value in $color {
+      $color: map.set($color, $key, (color: ($value, $hue, $saturation, $lightness, $alpha) ()));
+    }
+  } @else if meta.of-type(list string, $color) {
+    $-color: ();
+    @each $side in $side {
+      $-color: map.deep-merge($-color, ($side: (color: ($color, $hue, $saturation, $lightness, $alpha) ())));
+    }
+
+    $color: $-color;
+  } @else {
+    $color: (color: ($color, $hue, $saturation, $lightness, $alpha) ());
+  }
+  @include property.property(
+    (border: $color),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    (dictionary: $dictionary),
+  );
+}
+
+// Examples.
+// div {
+  // @include color(primary); // border-color: var(--s-primary-color);
+  // @include color(primary dark); // border-color: var(--s-primary-color-dark);
+  // @include color(primary, $important: true); // border-color: var(--s-primary-color) !important;
+
+  // side by `$side` argument
+  // @include color(primary, $side: left); // border-left-color: var(--s-primary-color);
+  // @include color(primary, $side: (top, bottom)); // border-top-color: var(--s-primary-color); border-bottom-color: var(--s-primary-color);
+
+  // side by map
+  // @include color(((top, bottom): secondary));
+  // border-top-color: var(--s-primary-color);
+  // border-bottom-color: var(--s-primary-color);
+
+  // @include color(((top, right): secondary, (bottom, left): primary));
+  // border-top-color: var(--s-secondary-color);
+  // border-right-color: var(--s-secondary-color);
+  // border-bottom-color: var(--s-primary-color);
+  // border-left-color: var(--s-primary-color);
+
+  // @include color(((top, bottom): primary dark));
+  // border-top-color: var(--s-primary-color);
+  // border-bottom-color: var(--s-primary-color);
+
+  // hsla form
+  // @include color(primary ':hsla'); // border-color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a));
+  // @include color('primary:hsla'); // border-color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a));
+  // @include color(primary [hsla]); // border-color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a));
+
+  // adjust
+  // @include color(primary, $lightness: 15%); // border-color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), calc(var(--s-primary-color-l) + 15%), var(--s-primary-color-a));
+  // @include color((primary dark) 15%); // border-color: hsla(var(--s-primary-color-dark-h), var(--s-primary-color-dark-s), calc(var(--s-primary-color-dark-l) + 15%), var(--s-primary-color-dark-a));
+  // @include color((primary dark) 15% 0.1); // border-color: hsla(var(--s-primary-color-dark-h), var(--s-primary-color-dark-s), calc(var(--s-primary-color-dark-l) + 15%), calc(var(--s-primary-color-dark-a) + 0.1));
+  // @include color((primary dark) 5deg 3% 15% 0.1); // border-color: hsla(calc(var(--s-primary-color-dark-h) + 5deg), calc(var(--s-primary-color-dark-s) + 3%), calc(var(--s-primary-color-dark-l) + 15%), calc(var(--s-primary-color-dark-a) + 0.1));
+  // @include color((primary dark, 5deg, 3%, 15%, 0.1)); // border-color: hsla(calc(var(--s-primary-color-dark-h) + 5deg), calc(var(--s-primary-color-dark-s) + 3%), calc(var(--s-primary-color-dark-l) + 15%), calc(var(--s-primary-color-dark-a) + 0.1));
+
+  // selector // TODO: Remove?
+  // @include color(primary, $selector: (('&.active', '&.visited'),));
+  // div.active, div.visited {
+  //   border-color: var(--s-primary-color);
+  // }
+
+  // @include color(primary, $selector: ('&' ('.active', '.visited')));
+  // div .active, div .visited {
+  //   border-color: var(--s-primary-color);
+  // }
+// }

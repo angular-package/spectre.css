@@ -1,8 +1,0 @@
-@use '../variables/border.var' as *;
-@use '../../functions/color/color.function' as *;
-
-@mixin border-color-variant($name, $color) {
-  &.#{$border-prefix}-#{$name} {
-    border-color: color($color);
-  }
-}

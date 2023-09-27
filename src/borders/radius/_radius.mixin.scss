@@ -1,0 +1,112 @@
+// Sass.
+@use 'sass:map';
+@use 'sass:meta';
+
+// Functions.
+@use '../var/var.var.function' as -var;
+@use 'radius.side.mixins' as *;
+
+// Modules.
+@use '../../list';
+@use '../../var';
+
+// Status: DONE
+// The `borders.radius()` mixin.
+// @param `$width`
+// @param `$adjust`
+// @param `$fallback`
+// @param `$important`
+// @param `$prefix`
+// @param `$separator`
+// @param `$dictionary`
+// @param `$type-function`
+// @param `$functions`
+// @param `$execute`
+@mixin radius(
+  // radius
+  $side: (),
+  $width: medium,
+  $adjust: null,
+  $fallback: null,
+  $important: false,
+  $dictionary: null,
+  $prefix: null,
+  $separator: null,
+
+  // function
+  $type-function: (list: --var-var),
+  $functions: (var: (var: meta.get-function(var, false, var))),
+  $execute: true,
+) {
+  @if list.length($side) > 0 {
+    $side: if(list.separator($side) == comma, $side, ($side,));
+    @each $top-side in (top-right, top-left) {
+      @if list.index($side, $top-side) != null and list.index($side, top) == null {
+        border-#{$top-side}-radius: borders.var($width, $adjust, false, $fallback, $dictionary);
+      }
+    }
+    @each $bottom-side in (bottom-right, bottom-left) {
+      @if list.index($side, $bottom-side) != null and list.index($side, bottom) == null {
+        border-#{$bottom-side}-radius: borders.var($width, $adjust, false, $fallback, $dictionary);
+      }
+    }
+    @if list.index($side, top) {
+      @include top(
+        $width,
+        $adjust,
+        $fallback,
+        $important,
+        $dictionary,
+        $prefix,
+        $separator,
+        $type-function,
+        $functions,
+        $execute,
+      );
+    }
+    @if list.index($side, right) {
+      @include right(
+        $width,
+        $adjust,
+        $fallback,
+        $important,
+        $dictionary,
+        $prefix,
+        $separator,
+        $type-function,
+        $functions,
+        $execute,
+      );
+    }
+    @if list.index($side, bottom) {
+      @include bottom(
+        $width,
+        $adjust,
+        $fallback,
+        $important,
+        $dictionary,
+        $prefix,
+        $separator,
+        $type-function,
+        $functions,
+        $execute,
+      );
+    }
+    @if list.index($side, left) {
+      @include left(
+        $width,
+        $adjust,
+        $fallback,
+        $important,
+        $dictionary,
+        $prefix,
+        $separator,
+        $type-function,
+        $functions,
+        $execute,
+      );
+    }
+  } @else {
+    border-radius: -var.var(list.join(radius, $width), $adjust, false, $fallback, $dictionary);
+  }
+}

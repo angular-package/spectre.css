@@ -1,0 +1,230 @@
+// Mixins.
+@use 'borders.color-variant.mixin' as *;
+
+// Examples.
+// @include color-variant;
+
+// TODO:
+// @include color-variant(((right, left) color: ((): (primary: primary))));
+
+// (class: color)
+// @include color-variant(((): primary dark));
+// .border {
+//   border-color: var(--s-primary-color-dark);
+// }
+
+// @include color-variant((color: primary dark));
+// .border-color {
+//   border-color: var(--s-primary-color-dark);
+// }
+
+// @include color-variant(((md, sm) color: primary dark));
+
+
+// @include color-variant((basic: (((top, right): color): (primary: primary dark, secondary: secondary light))));
+// .border-basic-top-color-primary {
+//   border-top-color: var(--s-primary-color-dark);
+// }
+// .border-basic-top-color-secondary {
+//   border-top-color: var(--s-secondary-color-light);
+// }
+// .border-basic-right-color-primary {
+//   border-right-color: var(--s-primary-color-dark);
+// }
+// .border-basic-right-color-secondary {
+//   border-right-color: var(--s-secondary-color-light);
+// }
+
+// color variant (class: (class: color)) (class name: color name)
+// @include color-variant((color: (primary: primary)));
+// .border-color-primary {
+//   border-color: var(--s-primary-color);
+// }
+
+// property/side + color variant (property/side: (class: color))
+// @include color-variant(((): (left: (color primary: primary))));
+// .border-left-color-primary {
+//   border-left-color: var(--s-primary-color);
+// }
+
+// variant + color variant + side
+// @include color-variant(((): ((top, bottom): (secondary: secondary dark))));
+// .border-top-color-secondary {
+//   border-top-color: var(--s-secondary-color-dark);
+// }
+// .border-bottom-color-secondary {
+//   border-bottom-color: var(--s-secondary-color-dark);
+// }
+
+// border-inline-start-color
+// @include color-variant(((): (inline start: (color primary: primary))));
+// .border-inline-start-color-primary {
+//   border-inline-start-color: var(--s-primary-color);
+// }
+
+// variant + color variant + sides
+// @include color-variant(((): ((left, top) color: (color primary: primary))));
+// .border-left-color-primary {
+//   border-left-color: var(--s-primary-color);
+// }
+// .border-top-color-primary {
+//   border-top-color: var(--s-primary-color);
+// }
+
+// @include color-variant((inline: ((left, top): (color primary: primary))));
+// .border-inline-left-color-primary {
+//   border-left-color: var(--s-primary-color);
+// }
+// .border-inline-top-color-primary {
+//   border-top-color: var(--s-primary-color);
+// }
+
+// @include color-variant(((inline,): ((left, top): (color (primary, secondary): primary))));
+// .border-inline-left-color-primary, .border-inline-left-color-secondary {
+//   border-left-color: var(--s-primary-color);
+// }
+// .border-inline-top-color-primary, .border-inline-top-color-secondary {
+//   border-top-color: var(--s-primary-color);
+// }
+
+// @include color-variant(((inline, outline): ((left, top): (
+//   primary: primary,
+//   primary dark: primary dark,
+//   primary light: primary light
+// ))));
+
+// TODO:
+// @include color-variant(((inline, outline): (
+//   primary: ((left, top): primary),
+//   primary dark: ((left, top): primary dark),
+//   primary light: ((left, top): primary light)
+// )));
+// .border-inline-left-color-primary, .border-outline-left-color-primary {
+//   border-left-color: var(--s-primary-color);
+// }
+// .border-inline-top-color-primary, .border-outline-top-color-primary {
+//   border-top-color: var(--s-primary-color);
+// }
+// .border-inline-left-color-primary-dark, .border-outline-left-color-primary-dark {
+//   border-left-color: var(--s-primary-color-dark);
+// }
+// .border-inline-top-color-primary-dark, .border-outline-top-color-primary-dark {
+//   border-top-color: var(--s-primary-color-dark);
+// }
+// .border-inline-left-color-primary-light, .border-outline-left-color-primary-light {
+//   border-left-color: var(--s-primary-color-light);
+// }
+// .border-inline-top-color-primary-light, .border-outline-top-color-primary-light {
+//   border-top-color: var(--s-primary-color-light);
+// }
+
+// hsla form
+// @include color-variant(((): (color primary: 'primary:hsla')));
+// .border-color-primary {
+//   border-color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a));
+// }
+
+// @include color-variant(((): (color primary: primary ':hsla')));
+// .border-color-primary {
+//   border-color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a));
+// }
+
+// @include color-variant(((): (primary: primary [hsla])));
+// .border-color-primary {
+//   border-color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), var(--s-primary-color-l), var(--s-primary-color-a));
+// }
+
+// border basic variant
+// @include color-variant(((): (basic primary: primary dark)));
+// .border-color-basic-primary {
+//   border-color: var(--s-primary-color-dark);
+// }
+
+// adjust lightness
+// @include color-variant(((): (basic primary: (primary color) 15%)));
+// .border-color-basic-primary {
+//   border-color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), calc(var(--s-primary-color-l) + 15%), var(--s-primary-color-a));
+// }
+
+// adjust lightness + alpha
+// @include color-variant(((): (basic primary: (primary color) 15% 0.5)));
+// .border-color-basic-primary {
+//   border-color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), calc(var(--s-primary-color-l) + 15%), calc(var(--s-primary-color-a) + 0.5));
+// }
+
+// adjust hue + saturation + lightness + alpha
+// @include color-variant(((): (basic primary: (primary color) 10deg 3% 15% 0.5)));
+// .border-color-basic-primary {
+//   border-color: hsla(calc(var(--s-primary-color-h) + 10deg), calc(var(--s-primary-color-s) + 3%), calc(var(--s-primary-color-l) + 15%), calc(var(--s-primary-color-a) + 0.5));
+// }
+
+// @include color-variant(('primary.palette': (
+//   primary: (primary color) 15%,
+//   primary dark: primary dark,
+//   primary light: primary light
+// )));
+// .border-color-primary {
+//   border-color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), calc(var(--s-primary-color-l) + 15%), var(--s-primary-color-a));
+// }
+// .border-color-primary-dark {
+//   border-color: var(--s-primary-color-dark);
+// }
+// .border-color-primary-light {
+//   border-color: var(--s-primary-color-light);
+// }
+
+// variant adjust hsla color lightness
+// @include color-variant(((): (
+//   primary: (primary,) 15%,
+//   primary dark: (primary dark) -15%,
+//   primary light: (primary light) 15%
+// )));
+// .border-color-primary {
+//   border-color: hsla(var(--s-primary-color-h), var(--s-primary-color-s), calc(var(--s-primary-color-l) + 15%), var(--s-primary-color-a));
+// }
+// .border-color-primary-dark {
+//   border-color: hsla(var(--s-primary-color-dark-h), var(--s-primary-color-dark-s), calc(var(--s-primary-color-dark-l) - 15%), var(--s-primary-color-dark-a));
+// }
+// .border-color-primary-light {
+//   border-color: hsla(var(--s-primary-color-light-h), var(--s-primary-color-light-s), calc(var(--s-primary-color-light-l) + 15%), var(--s-primary-color-light-a));
+// }
+
+// @include color-variant(((): (
+//   primary: (left top: (primary dark) 15%),
+//   primary dark: (primary dark) -15%,
+//   primary light: (primary light) 15%
+// )));
+// .border-left-top-color-primary {
+//   border-left-color: hsla(var(--s-primary-color-dark-h), var(--s-primary-color-dark-s), calc(var(--s-primary-color-dark-l) + 15%), var(--s-primary-color-dark-a));
+//   border-top-color: hsla(var(--s-primary-color-dark-h), var(--s-primary-color-dark-s), calc(var(--s-primary-color-dark-l) + 15%), var(--s-primary-color-dark-a));
+// }
+// .border-color-primary-dark {
+//   border-color: hsla(var(--s-primary-color-dark-h), var(--s-primary-color-dark-s), calc(var(--s-primary-color-dark-l) - 15%), var(--s-primary-color-dark-a));
+// }
+// .border-color-primary-light {
+//   border-color: hsla(var(--s-primary-color-light-h), var(--s-primary-color-light-s), calc(var(--s-primary-color-light-l) + 15%), var(--s-primary-color-light-a));
+// }
+
+// @include color-variant(((): (
+//   primary: (left top: ((primary dark) 15%)),
+//   primary dark: (((primary dark) -15%)),
+//   primary light: ((primary light) 15%)
+// )));
+// .border-left-top-color-primary {
+//   border-left-color: hsla(var(--s-primary-color-dark-h), var(--s-primary-color-dark-s), calc(var(--s-primary-color-dark-l) + 15%), var(--s-primary-color-dark-a));
+//   border-top-color: hsla(var(--s-primary-color-dark-h), var(--s-primary-color-dark-s), calc(var(--s-primary-color-dark-l) + 15%), var(--s-primary-color-dark-a));
+// }
+// .border-color-primary-dark {
+//   border-color: hsla(var(--s-primary-color-dark-h), var(--s-primary-color-dark-s), calc(var(--s-primary-color-dark-l) - 15%), var(--s-primary-color-dark-a));
+// }
+// .border-color-primary-light {
+//   border-color: hsla(var(--s-primary-color-light-h), var(--s-primary-color-light-s), calc(var(--s-primary-color-light-l) + 15%), var(--s-primary-color-light-a));
+// }
+
+// @include color-variant((
+//   (large, small): (
+//     primary: (primary,) 15%,
+//     primary dark: (primary dark) -15%,
+//     primary light: (primary light) 15%
+//   ),
+// ));

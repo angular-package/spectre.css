@@ -1,12 +1,5 @@
-// Variables.
-@use '../../../variables/core' as *;
-@use '../../variables/border.var' as *;
+@use '../../spectre.borders.customize' as *;
 
-// Set the color scheme to light.
-$color-scheme: light;
+$colors: 'gray-colors';
 
-@use '../../mixins/border-theme-light.mixin' as *;
-
-.#{$class-prefix}#{$border-prefix} {
-  @include border-theme-light('gray-colors');
-}
+@use 'theme' as *;

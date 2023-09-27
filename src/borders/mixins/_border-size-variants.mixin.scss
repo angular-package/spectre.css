@@ -1,9 +1,0 @@
-@use 'border-size-variant.mixin' as *;
-
-@mixin border-size-variants($sizes...) {
-  @if $sizes {
-    @each $size in $sizes {
-      @include border-size-variant($size);
-    }
-  }
-}

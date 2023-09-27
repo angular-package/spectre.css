@@ -1,0 +1,34 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../variables/borders.theme-dark.var' as *;
+@use '../variables/borders.theme-light.var' as *;
+@use '../variables/borders.theme-normal.var' as *;
+
+// Dark theme: bg-colors.
+// $border-theme-dark: map.merge($border-theme-dark, (
+//   'bg-colors': (
+//     'bg-a': 'bg-color',
+//     'bg-a-dark': 'bg-color-dark',
+//     'bg-a-light': 'bg-color-light'
+//   ),
+// ));
+
+// // Light theme: bg-colors.
+// $border-theme-light: map.merge($border-theme-light, (
+//   'bg-colors': (
+//     'bg-b': 'bg-color',
+//     'bg-b-dark': 'bg-color-dark',
+//     'bg-b-light': 'bg-color-light'
+//   ),
+// ));
+
+// // Normal theme: bg-colors.
+// $border-theme-normal: map.merge($border-theme-normal, (
+//   'bg-colors': (
+//     'bg-c': 'bg-color',
+//     'bg-c-dark': 'bg-color-dark',
+//     'bg-c-light': 'bg-color-light'
+//   ),
+// ));
