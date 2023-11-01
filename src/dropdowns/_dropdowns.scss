@@ -1,9 +1,0 @@
-// Variables.
-@use '../variables/core' as *;
-
-// Mixins.
-@use 'mixins/dropdown.mixin' as *;
-
-/* Spectre.css module: dropdowns | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
-
-@include dropdown;

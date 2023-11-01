@@ -1,8 +1,10 @@
 // Variables.
+@use '../variables/core' as *;
 @use '../variables/z-index.var' as *;
 
 // Modules.
 @use '../var';
 
-// z-index.
+/*! Spectre.css v#{$version} | CSS variables | Z index | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
 @include var.set((z index: $z-index));

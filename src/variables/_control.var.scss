@@ -1,5 +1,7 @@
 // Modules.
-@use '../var';
+@use '../var/var.css.function' as *;
+@use '../var/var.var.function' as *;
+@use '../var/var.unit-var.function' as *;
 
 // Control.
 $control: (
@@ -10,25 +12,25 @@ $control: (
   // Used in: button, form.
   padding: (
     x: (
-      sm: var.var(unit 2, '*' 0.75),
-      md: var.unit-var(2),
-      null: var.unit-var(2),
-      lg: var.var(unit 2, '*' 1.5),
+      sm: var(unit 2, '*' 0.75),
+      md: unit-var(2),
+      null: unit-var(2),
+      lg: var(unit 2, '*' 1.5),
     ),
     y: (
-      sm: calc((var.css(control size sm) - var.css(line height)) * 0.5 - var.css(border size md)),
-      md: calc((var.css(control size) - var.css(line height)) * 0.5 - var.css(border size md)),
-      null: calc((var.css(control size) - var.css(line height)) * 0.5 - var.css(border size md)),
-      lg: calc((var.css(control size lg) - var.css(line height)) * 0.5 - var.css(border size md)),
+      sm: calc((css(control size sm) - css(line height)) * 0.5 - css(border size md)),
+      md: calc((css(control size) - css(line height)) * 0.5 - css(border size md)),
+      null: calc((css(control size) - css(line height)) * 0.5 - css(border size md)),
+      lg: calc((css(control size lg) - css(line height)) * 0.5 - css(border size md)),
     )
   ),
 
   // Used in: button, form.
   size: (
-    sm: var.unit-var(7),
-    md: var.unit-var(9),
-    null: var.unit-var(9),
-    lg: var.unit-var(10),
+    sm: unit-var(7),
+    md: unit-var(9),
+    null: unit-var(9),
+    lg: unit-var(10),
   ),
 
   // Used in: chip, menu, modal, popover, tooltip.

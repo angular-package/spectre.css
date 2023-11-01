@@ -1,0 +1,56 @@
+// Variables
+@use 'variables' as *;
+
+// Initialize CSS variables.
+@import '../dist/css-variables/all-css.min.css'; // REVIEW:
+
+/*! Spectre.css v#{$version} | CSS imports | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+// Reset and dependencies, and typography, asian.
+@import '../dist/spectre-core.min.css';
+
+// Elements.
+@import '../dist/buttons/spectre-buttons.min.css'; // DONE
+@import '../dist/codes/spectre-codes.min.css'; // DONE
+@import '../dist/forms/spectre-forms.min.css'; // DONE
+@import '../dist/labels/spectre-labels.min.css'; // DONE
+@import '../dist/media/spectre-media.min.css'; // DONE
+@import '../dist/tables/spectre-tables.min.css'; // DONE
+
+// Layout.
+@import '../dist/footer/spectre-footer.min.css'; // DONE
+@import '../dist/hero/spectre-hero.min.css'; // REVIEW: Check.
+@import '../dist/layout/spectre-layout.min.css'; // DONE
+@import '../dist/navbar/spectre-navbar.min.css'; // DONE
+@import '../dist/off-canvas/spectre-off-canvas.min.css'; // DONE
+@import '../dist/sidebars/spectre-sidebars.min.css'; // DONE
+
+// Components.
+@import '../dist/accordions/spectre-accordions.min.css'; // DONE
+@import '../dist/avatars/spectre-avatars.min.css'; // DONE
+@import '../dist/badges/spectre-badges.min.css'; // DONE
+@import '../dist/bars/spectre-bars.min.css'; // DONE
+@import '../dist/breadcrumbs/spectre-breadcrumbs.min.css'; // DONE
+@import '../dist/cards/spectre-cards.min.css'; // DONE
+@import '../dist/chips/spectre-chips.min.css'; // DONE
+@import '../dist/dots/spectre-dots.min.css'; // DONE
+@import '../dist/dropdowns/spectre-dropdowns.min.css'; // DONE
+@import '../dist/empty/spectre-empty.min.css'; // DONE
+@import '../dist/menus/spectre-menus.min.css'; // DONE
+@import '../dist/modals/spectre-modals.min.css'; // DONE
+@import '../dist/navs/spectre-navs.min.css'; // DONE
+@import '../dist/paginations/spectre-paginations.min.css'; // DONE
+@import '../dist/panels/spectre-panels.min.css'; // DONE
+@import '../dist/popovers/spectre-popovers.min.css'; // DONE
+@import '../dist/steps/spectre-steps.min.css'; // DONE
+@import '../dist/tabs/spectre-tabs.min.css'; // DONE
+@import '../dist/tiles/spectre-tiles.min.css'; // DONE
+@import '../dist/toasts/spectre-toasts.min.css'; // DONE REVIEW: Check.
+@import '../dist/tooltips/spectre-tooltips.min.css'; // DONE REVIEW: Check.
+
+// Utility classes.
+@import '../dist/animations/spectre-animations.min.css'; // DONE
+@import '../dist/utilities/spectre-utilities.min.css'; // DONE
+@import '../dist/bg/spectre-bg.min.css'; // DONE
+@import '../dist/borders/spectre-borders.min.css'; // TODO: and REVIEW:
+@import '../dist/overlays/spectre-overlays.min.css'; // DONE
+@import '../dist/text/spectre-text.min.css'; // REVIEW:

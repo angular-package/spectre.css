@@ -1,4 +1,7 @@
 /*
- * Public API Surface of spectre.css
+ * Public API Surface of spectre.dev
  */
-export const SPECTRE_CSS = true;
+
+export * from './lib/spectre.dev.service';
+export * from './lib/spectre.dev.component';
+export * from './lib/spectre.dev.module';

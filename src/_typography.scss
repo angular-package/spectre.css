@@ -1,13 +1,25 @@
 // Functions.
-@use 'functions/color/color.function' as *;
-@use 'functions/var/get-var.function' as *;
-@use 'functions/var/unit-var.function' as *;
+// @use 'var/functions/var.unit-var.function' as *;
+
+// @use 'functions/color/color.function' as *;
+// @use 'functions/var/get-var.function' as *;
+// @use 'functions/var/unit-var.function' as *;
 
 // Mixins.
-@use 'borders/mixins/border.mixin' as *;
-@use 'labels/mixins' as *;
-@use 'mixins/margin.mixins' as *;
-@use 'mixins/padding.mixins' as *;
+// @use 'borders/mixins/borders.mixins' as *;
+// @use 'borders/mixins/borders.radius.mixins' as *;
+// @use 'labels/mixins' as *; // TODO: labels
+
+// Modules.
+@use 'color';
+
+
+@use 'property';
+@use 'property/margin';
+@use 'property/padding';
+@use 'property/position';
+
+@use 'var';
 
 // Typography
 // Headings
@@ -19,10 +31,11 @@ h5,
 h6 {
   margin-top: 0;
   margin-bottom: 0.5em;
-  line-height: 1.2;
   color: inherit;
   font-weight: 500;
+  line-height: 1.2;
 }
+
 .h1,
 .h2,
 .h3,
@@ -31,26 +44,32 @@ h6 {
 .h6 {
   font-weight: 500;
 }
+
 h1,
 .h1 {
   font-size: 2rem;
 }
+
 h2,
 .h2 {
   font-size: 1.6rem;
 }
+
 h3,
 .h3 {
   font-size: 1.4rem;
 }
+
 h4,
 .h4 {
   font-size: 1.2rem;
 }
+
 h5,
 .h5 {
   font-size: 1rem;
 }
+
 h6,
 .h6 {
   font-size: 0.8rem;
@@ -58,7 +77,7 @@ h6,
 
 // Paragraphs
 p {
-  @include margin('unit-0', 'unit-0', 'line-height');
+  @include property.margin((unit 0) (unit 0) (line height));
 }
 
 // Semantic text elements
@@ -69,29 +88,42 @@ u {
 }
 
 abbr[title] {
-  cursor: help;
-  @include border($style: 'dotted', $side: 'bottom', $radius: 'border-radius');
+  // @include border(
+  //   $style: dotted,
+  //   $side: bottom,
+  //   $radius: border radius
+  // ); TODO: border
+
   text-decoration: none;
+  cursor: help;
 }
 
 kbd {
-  @include label-base();
-  @include label-color-variant('light', 'dark');
-  font-size: get-var('font-size', $suffix: 'sm');
+  // TODO: bring labels.
+  // @include label-base;
+  // @include label-color-variant('light', 'dark');
+
+  // font-size: get-var('font-size', $suffix: 'sm');
+  // font-size: get-var(('font-size', 'sm'));
+  @include property.font-size(sm);
 }
 
 mark {
-  @include label-color-variant('body-font', 'highlight');
-  border-bottom: unit-var('o') solid color('highlight', $lightness: -15%); // TODO: border unit-o
-  @include padding('unit-o', 'unit-h', 'unit-0');
-  border-radius: get-var('border-radius');
+  // TODO: bring labels.
+  // @include label-color-variant('body-font', 'highlight');
+
+  border-bottom: var.unit-var(o) solid color.color(highlight, $lightness: -15%); // TODO: border unit-o
+  @include property.padding((unit o) (unit h) (unit 0));
+
+  // border-radius: get-var('border-radius');
+  // @include radius; // TODO: border-radius
 }
 
 // Blockquote
 blockquote {
   margin-left: 0;
-  @include padding('unit-2', 'unit-4');
-  @include border('lg', $side: left, $radius: 'border-radius');
+  @include property.padding((unit 2) (unit 4));
+  // @include border(lg, $side: left, $radius: true); // TODO: border
 
   p:last-child {
     margin-bottom: 0;
@@ -99,21 +131,6 @@ blockquote {
 }
 
 // Lists
-ul,
-ol {
-  @include margin('unit-4', 'unit-0', 'unit-4', 'unit-4');
-  padding: 0;
-
-  ul,
-  ol {
-    @include margin('unit-4', 'unit-0', 'unit-4', 'unit-4');
-  }
-
-  li {
-    @include margin-top('unit-2');
-  }
-}
-
 ul {
   list-style: disc inside;
 
@@ -130,11 +147,28 @@ ol {
   }
 }
 
+ul,
+ol {
+  @include property.margin((unit 4) (unit 0) (unit 4) (unit 4));
+
+  padding: 0;
+
+  ul,
+  ol {
+    @include property.margin((unit 4) (unit 0) (unit 4) (unit 4));
+  }
+
+  li {
+    @include position.top((unit 2));
+  }
+}
+
 dl {
   dt {
     font-weight: bold;
   }
+
   dd {
-    @include margin('unit-2', 'unit-0', 'unit-4', 'unit-0');
+    @include property.margin((unit 2) (unit 0) (unit 4) (unit 0));
   }
 }

@@ -1,56 +1,59 @@
-// Variables
+// Variables.
 @use 'variables/core' as *;
 
 // Initialize CSS variables.
 @import 'css-variables/all.min.css'; // DONE
+// @import 'css-variables/dark.theme.min.css';
+// @import 'css-variables/light.theme.min.css';
+@import 'css-variables/normal.theme.min.css';
 
 /*! Spectre.css v#{$version} | CSS imports | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 // Reset and dependencies, and typography, asian.
 @import 'spectre.core.min.css';
 
 // Elements.
-@import 'buttons/spectre.buttons.min.css'; // TODO
+// @import 'buttons/spectre.buttons.min.css'; // TODO
 @import 'codes/spectre.codes.min.css'; // DONE
-@import 'forms/spectre.forms.min.css'; // TODO
-@import 'labels/spectre.labels.min.css'; // TODO
-@import 'media/spectre.media.min.css'; // TODO
-@import 'tables/spectre.tables.min.css'; // TODO
+// @import 'forms/spectre.forms.min.css'; // TODO
+// @import 'labels/spectre.labels.min.css'; // TODO
+// @import 'media/spectre.media.min.css'; // TODO
+// @import 'tables/spectre.tables.min.css'; // TODO
 
 // Layout.
-@import 'footer/spectre.footer.min.css'; // TODO
-@import 'hero/spectre.hero.min.css'; // TODO
-@import 'layout/spectre.layout.min.css'; // TODO
-@import 'navbar/spectre.navbar.min.css'; // TODO
-@import 'off-canvas/spectre.off-canvas.min.css'; // TODO
-@import 'sidebars/spectre.sidebars.min.css'; // TODO
+// @import 'footer/spectre.footer.min.css'; // TODO
+// @import 'hero/spectre.hero.min.css'; // TODO
+// @import 'layout/spectre.layout.min.css'; // TODO
+// @import 'navbar/spectre.navbar.min.css'; // TODO
+// @import 'off-canvas/spectre.off-canvas.min.css'; // TODO
+// @import 'sidebars/spectre.sidebars.min.css'; // TODO
 
 // Components.
-@import 'accordions/spectre.accordions.min.css'; // TODO
-@import 'avatars/spectre.avatars.min.css'; // TODO
-@import 'badges/spectre.badges.min.css'; // TODO
-@import 'bars/spectre.bars.min.css'; // TODO
-@import 'breadcrumbs/spectre.breadcrumbs.min.css'; // TODO
-@import 'cards/spectre.cards.min.css'; // TODO
-@import 'chips/spectre.chips.min.css'; // TODO
-@import 'dots/spectre.dots.min.css'; // TODO
-@import 'dropdowns/spectre.dropdowns.min.css'; // TODO
-@import 'empty/spectre.empty.min.css'; // TODO
-@import 'menus/spectre.menus.min.css'; // TODO
-@import 'modals/spectre.modals.min.css'; // TODO
-@import 'navs/spectre.navs.min.css'; // TODO
-@import 'paginations/spectre.paginations.min.css'; // TODO
-@import 'panels/spectre.panels.min.css'; // TODO
-@import 'popovers/spectre.popovers.min.css'; // TODO
-@import 'steps/spectre.steps.min.css'; // TODO
-@import 'tabs/spectre.tabs.min.css'; // TODO
-@import 'tiles/spectre.tiles.min.css'; // TODO
-@import 'toasts/spectre.toasts.min.css'; // TODO
-@import 'tooltips/spectre.tooltips.min.css'; // TODO
+// @import 'accordions/spectre.accordions.min.css'; // DONE
+// @import 'avatars/spectre.avatars.min.css'; // TODO
+// @import 'badges/spectre.badges.min.css'; // TODO
+// @import 'bars/spectre.bars.min.css'; // TODO
+// @import 'breadcrumbs/spectre.breadcrumbs.min.css'; // TODO
+// @import 'cards/spectre.cards.min.css'; // TODO
+// @import 'chips/spectre.chips.min.css'; // DONE
+// @import 'dots/spectre.dots.min.css'; // TODO
+// @import 'dropdowns/spectre.dropdowns.min.css'; // TODO
+// @import 'empty/spectre.empty.min.css'; // TODO
+// @import 'menus/spectre.menus.min.css'; // TODO
+// @import 'modals/spectre.modals.min.css'; // TODO
+// @import 'navs/spectre.navs.min.css'; // TODO
+// @import 'paginations/spectre.paginations.min.css'; // TODO
+// @import 'panels/spectre.panels.min.css'; // TODO
+// @import 'popovers/spectre.popovers.min.css'; // TODO
+// @import 'steps/spectre.steps.min.css'; // TODO
+// @import 'tabs/spectre.tabs.min.css'; // TODO
+// @import 'tiles/spectre.tiles.min.css'; // TODO
+// @import 'toasts/spectre.toasts.min.css'; // TODO
+// @import 'tooltips/spectre.tooltips.min.css'; // TODO
 
 // Utility classes.
-@import 'animations/spectre.animations.min.css'; // TODO
-@import 'utilities/spectre.utilities.min.css'; // TODO
-@import 'bg/spectre.bg.min.css'; // TODO
-@import 'borders/spectre.borders.min.css'; // TODO
-@import 'overlays/spectre.overlays.min.css'; // TODO
-@import 'text/spectre.text.min.css'; // TODO
+// @import 'animations/spectre.animations.min.css'; // TODO
+// @import 'utilities/spectre.utilities.min.css'; // TODO
+// @import 'bg/spectre.bg.min.css'; // TODO
+// @import 'borders/spectre.borders.min.css'; // TODO
+// @import 'overlays/spectre.overlays.min.css'; // TODO
+// @import 'text/spectre.text.min.css'; // TODO

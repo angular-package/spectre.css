@@ -2,12 +2,14 @@
 @use 'sass:map';
 
 // Variables.
+@use '../variables/core' as *;
 @use '../variables/control.var' as *;
 
 // Modules.
 @use '../var';
 
-// Control size.
+/*! Spectre.css v#{$version} | CSS variables | Control size | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
 @include var.set((
   control icon size: map.get($control, icon, size), // 0.8rem
   control size: map.get($control, size)

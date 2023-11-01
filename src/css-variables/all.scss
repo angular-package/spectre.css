@@ -1,0 +1,39 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../variables/core' as *;
+@use '../variables/blur.var' as *;
+@use '../variables/control.var' as *;
+@use '../variables/font-size.var' as *;
+@use '../variables/html.var' as *;
+@use '../variables/line-height' as *;
+@use '../variables/layout/layout-spacing.var' as *;
+@use '../variables/size.var' as *;
+@use '../variables/unit-size.var' as *;
+@use '../variables/z-index.var' as *;
+
+// Modules.
+@use '../var';
+
+// Initialize.
+:root, :host {
+  color-scheme: $color-scheme;
+  @include var.set((
+    blur: $blur,
+    control padding x: map.get($control, padding, x),
+    control padding y: map.get($control, padding, y),
+    control icon size: map.get($control, icon, size), // 0.8rem
+    control size: map.get($control, size),
+    control width: map.get($control, width),
+    font size: $font-size,
+    html font size: map.get($html, font, size),
+    html line height: map.get($html, line, height),
+    line height: $line-height,
+    layout spacing: $layout-spacing,
+    size: $size,
+    responsive breakpoint: $responsive-breakpoint,
+    transition-duration: $transition-duration,
+    unit: $unit-size
+  ), ());
+}

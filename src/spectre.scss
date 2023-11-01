@@ -1,115 +1,110 @@
-// Sass.
-@use 'sass:map';
-@use 'sass:list';
-
 // Variables
 @use 'variables' as *;
 
-// Labels themes.
-// - Get variables.
-// @use 'labels/variables' as *;
-
-// Update the `accent` color from the 'core-colors'.
-// $label-theme-normal: map.set($label-theme-normal, 'core-colors', 'accent', 'accent-color');
-
-// Set the `$label-theme` group of colors that you want to use from the specific color scheme.
-// $label-theme: (
-//   'dark': ('control-colors', 'core-colors'),
-//   'light': ('control-colors', 'core-colors'),
-//   'normal': ('control-colors', 'core-colors')
-// );
-
-// Update the core variables.
-// - Experimental variable to add prefix before the names of primary classes.
-// $class-prefix: '';
-
-// - Replaces the CSS variable name prefixes with `spectre`.
-// $var-prefix: 'spectre';
-// $var-hue: 'hue';
-// $var-saturation: 'saturation';
-// $var-lightness: 'lightness';
-// $var-alpha: 'alpha';
-
-@forward 'variables';
-@forward 'css-variables';
-
-// Mixins.
-@forward 'mixins';
-
 /*! Spectre.css v#{$version} | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
-// Reset and dependencies
-@forward 'normalize';
-@forward 'base';
+// Reset and dependencies, and typography, asian.
+@use 'spectre-core';
 
-// Elements
-@forward 'typography';
-@forward 'asian';
-@forward 'tables';
-@forward 'buttons';
-@forward 'forms';
-@forward 'labels';
-@forward 'codes';
-@forward 'media';
+// Elements.
+@use 'buttons';
+@use 'codes';
+@use 'forms';
+@use 'labels';
+@use 'media';
+@use 'tables';
 
-// Layout
-@forward 'columns-order';
-@forward 'footer'; // @new
-@forward 'hero'; // Updated.
-@forward 'layout';
-@forward 'navbar';
+// Layout.
+@use 'footer';
+@use 'hero';
+@use 'layout';
+@use 'navbar';
+@use 'off-canvas';
+@use 'sidebars';
 
-// Components
-@forward 'accordions';
-@forward 'avatars';
-@forward 'badges';
-@forward 'bars';
-@forward 'breadcrumbs';
-@forward 'cards';
-@forward 'chips';
-@forward 'dropdowns';
-@forward 'empty';
-@forward 'menus';
-@forward 'modals';
-@forward 'navs';
-@forward 'pagination';
-@forward 'panels';
-@forward 'popovers';
-@forward 'steps';
-@forward 'tabs';
-@forward 'tiles';
-@forward 'toasts';
-@forward 'tooltips';
+// Components.
+@use 'accordions';
+@use 'avatars';
+@use 'badges';
+@use 'bars';
+@use 'breadcrumbs';
+@use 'cards';
+@use 'chips';
+@use 'dropdowns';
+@use 'dots';
+@use 'empty';
+@use 'menus';
+@use 'modals';
+@use 'navs';
+@use 'paginations';
+@use 'panels';
+@use 'popovers';
+@use 'steps';
+@use 'tabs';
+@use 'tiles';
+@use 'toasts';
+@use 'tooltips';
 
-// Utility classes
-@forward 'animations';
-@forward 'utilities';
-@forward 'bg';
-@forward 'borders';
-@forward 'text';
+// Utility classes.
+@use 'animations';
+@use 'utilities';
+@use 'bg';
+@use 'borders';
+@use 'overlays';
+@use 'text';
 
-// Initialize mixins.
-// - Bg.
-@use 'bg' as *;
+// Initialize CSS variables.
+@use 'css-variables';
 
-// - Buttons.
-@use 'buttons' as *;
+// REVIEW: Check.
+// // Initialize mixins.
+// // - Accordions.
+// // @use 'accordions/accordions' as *;
 
-// - Footer.
-@use 'footer' as *;
+// // - Avatars.
+// // @use 'avatars/avatars' as *;
 
-// - Pagination.
-@use 'pagination' as *;
+// // - Badges.
+// // @use 'badges/badges' as *;
 
-// Include mixins.
-// - Bg.
-@include bg-theme();
+// // - Bars.
+// // @use 'bars/bars' as *;
 
-// - Buttons.
-@include button-action();
-@include button-clear();
+// // - Bg.
+// @use 'bg/bg-theme' as *;
 
-// - Footer.
-@include footer();
+// // - Borders.
+// @use 'borders/border-theme' as *; // Load border theme colors.
 
-// - Pagination.
-@include pagination();
+// // - Buttons.
+// @use 'buttons' as *;
+// @use 'buttons/btn-theme' as *; // Load button theme colors.
+
+// // - Footer.
+// @use 'footer' as *;
+
+// // - Hero.
+// @use 'hero' as *; // Load hero theme colors. ! do not load.
+
+// // - Labels.
+// @use 'labels/label-theme' as *;
+
+// // - Pagination.
+// @use 'pagination' as *;
+// @use 'pagination/pagination-theme' as *; // Load pagination theme colors.
+
+// // - Overlay.
+// @use 'overlay/overlay-theme' as *;
+
+// // - Text.
+// @use 'text/text-theme' as *; // Load text theme colors.
+
+// // - Toasts.
+// @use 'toasts/toast-theme' as *; // Load toast theme colors.
+
+// // Include mixins.
+// // - Buttons.
+// @include button-action;
+// @include button-clear;
+
+// // - Pagination.
+// @include pagination;

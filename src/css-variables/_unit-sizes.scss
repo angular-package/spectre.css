@@ -1,8 +1,0 @@
-// Variables.
-@use '../variables/unit-size.var' as *;
-
-// Modules.
-@use '../var';
-
-// Unit sizes.
-@include var.set((unit: $unit-size));

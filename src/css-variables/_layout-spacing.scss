@@ -2,10 +2,12 @@
 @use 'sass:map';
 
 // Variables.
+@use '../variables/core' as *;
 @use '../variables/layout/layout-spacing.var' as *;
 
 // Modules.
 @use '../var';
 
-// Layout spacing.
+/*! Spectre.css v#{$version} | CSS variables | Layout spacing | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
 @include var.set((layout spacing: $layout-spacing));

@@ -2,12 +2,14 @@
 @use 'sass:map';
 
 // Variables.
+@use '../variables/core' as *;
 @use '../variables/control.var' as *;
 
 // Modules.
 @use '../var';
 
-// Control padding.
+/*! Spectre.css v#{$version} | CSS variables | Control padding | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
 @include var.set((
   control padding x: map.get($control, padding, x),
   control padding y: map.get($control, padding, y)

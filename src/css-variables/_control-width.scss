@@ -2,10 +2,12 @@
 @use 'sass:map';
 
 // Variables.
+@use '../variables/core' as *;
 @use '../variables/control.var' as *;
 
 // Modules.
 @use '../var';
 
-// Control width.
+/*! Spectre.css v#{$version} | CSS variables | Control width | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
 @include var.set((control width: map.get($control, width)));

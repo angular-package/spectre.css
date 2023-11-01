@@ -2,10 +2,11 @@
 @use '../variables/core' as *;
 @use '../variables/size.var' as *;
 
-// Mixins
+// Modules.
 @use '../var';
 
-// Responsive breakpoints. Alphabetical order.
+/*! Spectre.css v#{$version} | CSS variables | Responsive breakpoints | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
 @include var.set((
   size: $size,
   responsive breakpoint: $responsive-breakpoint

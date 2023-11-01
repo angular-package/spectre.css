@@ -1,9 +1,0 @@
-@forward 'hero-theme-dark.var';
-@forward 'hero-theme-light.var';
-@forward 'hero-theme-normal.var';
-
-$hero-theme: (
-  'dark': ('control-colors', 'core-colors', 'gray-colors'),
-  'light': ('control-colors', 'core-colors', 'gray-colors'),
-  'normal': ('control-colors', 'core-colors', 'gray-colors')
-);

@@ -1,9 +1,0 @@
-// Variables.
-@use '../variables/core' as *;
-
-// Mixins.
-@use 'mixins/chip.mixin' as *;
-
-/* Spectre.css module: chips | components | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
-
-@include chip;

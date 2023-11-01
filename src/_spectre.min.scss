@@ -1,0 +1,84 @@
+// Variables
+@use 'variables' as *;
+@forward 'variables';
+
+// Mixins.
+@forward 'mixins';
+
+/*! Spectre.css v#{$version} | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+// Reset and dependencies
+@forward 'normalize';
+@forward 'base';
+
+// Elements
+@forward 'typography';
+@forward 'asian';
+@forward 'tables';
+@forward 'buttons';
+@forward 'forms';
+@forward 'labels';
+@forward 'codes';
+@forward 'media';
+
+// Layout
+@forward 'columns-order';
+@forward 'footer'; // @new
+@forward 'hero'; // Updated.
+@forward 'layout';
+@forward 'navbar';
+@forward 'off-canvas';
+
+// Components
+@forward 'accordions';
+@forward 'avatars';
+@forward 'badges';
+@forward 'bars';
+@forward 'breadcrumbs';
+@forward 'cards';
+@forward 'chips';
+@forward 'dropdowns';
+@forward 'dots';
+@forward 'empty';
+@forward 'menus';
+@forward 'modals';
+@forward 'navs';
+@forward 'overlay';
+@forward 'pagination';
+@forward 'panels';
+@forward 'popovers';
+@forward 'steps';
+@forward 'tabs';
+@forward 'tiles';
+@forward 'toasts';
+@forward 'tooltips';
+
+// Utility classes
+@forward 'animations';
+@forward 'utilities';
+@forward 'bg';
+@forward 'borders';
+@forward 'text';
+
+// Initialize CSS variables.
+@forward 'css-variables';
+
+// Initialize mixins.
+// - Buttons.
+@use 'buttons' as *;
+
+// - Footer.
+@use 'footer' as *;
+
+// - Pagination.
+@use 'pagination' as *;
+
+// Include mixins.
+// - Buttons.
+@include button-action;
+@include button-clear;
+
+// - Footer.
+@include footer;
+
+// - Pagination.
+@include pagination;

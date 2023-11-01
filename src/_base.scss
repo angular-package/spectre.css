@@ -1,14 +1,10 @@
 // Variables.
 @use 'variables/fonts' as *;
 
-// Functions.
-@use './var/functions/var.css.function' as var;
-
-// Mixins.
-@use 'color/mixins/color.background.mixin' as *;
-@use 'color/mixins/color.color.mixin' as *;
-@use 'mixins/box-shadow/shadow' as *;
-@use 'mixins/font-size.mixin' as *;
+// Modules.
+@use 'color';
+@use 'property';
+@use 'var';
 
 // Base
 *,
@@ -26,36 +22,36 @@ html {
 
 body {
   overflow-x: hidden;
-  @include background(body bg);
-  @include color(body font);
+  @include color.background(body bg);
+  @include color.color(body font);
 
   font-family: $body-font-family;
 
-  @include font-size;
+  @include property.font-size;
 
   text-rendering: optimizelegibility;
 }
 
 a {
   outline: none;
-  @include color(link);
+  @include color.color(link);
 
   text-decoration: none;
 
   &:focus {
-    @include control-shadow;
+    @include property.control-shadow;
   }
 
   &:focus,
   &:hover,
   &:active,
   &.active {
-    @include color(link dark);
+    @include color.color(link dark);
 
     text-decoration: underline;
   }
 
   &:visited {
-    @include color(link light);
+    @include color.color(link light);
   }
 }

@@ -1,5 +1,0 @@
-// Variables.
-@use '../variables';
-
-// Set variables.
-@include var.set((radius: variables.$radius));

@@ -1,0 +1,10 @@
+// Variables.
+@use '../variables/core' as *;
+@use '../variables/unit-size.var' as *;
+
+// Modules.
+@use '../var';
+
+/*! Spectre.css v#{$version} | CSS variables | Unit sizes | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+@include var.set((unit: $unit-size));

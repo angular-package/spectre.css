@@ -1,0 +1,16 @@
+// Variables.
+@use '../variables/colors/theme' as *;
+
+// Modules.
+@use '../color';
+@use '../scheme';
+
+// Spectre.css theme colors.
+:root,
+:host {
+  @if scheme.is-normal() {
+    @each $name, $color in $theme-normal {
+      @include color.set(($name: hsla), $color);
+    }
+  }
+}

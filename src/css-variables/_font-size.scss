@@ -2,14 +2,16 @@
 @use 'sass:map';
 
 // Variables.
-@use '../variables/html.var' as *;
+@use '../variables/core' as *;
 @use '../variables/font-size.var' as *;
+@use '../variables/html.var' as *;
 @use '../variables/line-height' as *;
 
 // Modules.
 @use '../var';
 
-// Font size and line height.
+/*! Spectre.css v#{$version} | CSS variables | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
 @include var.set((
   font size: $font-size,
   html font size: map.get($html, font, size),

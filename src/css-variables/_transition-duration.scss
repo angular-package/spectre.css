@@ -4,5 +4,6 @@
 // Mixins.
 @use '../var';
 
-// Transition duration.
+/*! Spectre.css v#{$version} | CSS variables | Transition duration | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
 @include var.set((transition-duration: $transition-duration)); // 0.2s

@@ -1,7 +1,10 @@
+// Color scheme.
+@use '@angular-package/sass/color/scheme';
+
 // Variables
 @use 'variables' as *;
 
-/*! Spectre.css core v#{$version} | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/*! Spectre.css core v#{$version} | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 // Reset and dependencies
 @use 'normalize';
 @use 'base';

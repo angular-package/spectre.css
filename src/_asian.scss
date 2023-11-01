@@ -2,7 +2,8 @@
 @use 'variables/fonts' as *;
 
 // Mixins.
-@use 'borders/mixins/border.mixins' as border;
+// @use 'borders/mixins/borders.mixins' as border; // TODO: Check.
+// @use 'borders/mixins/borders.mixins' as *; // TODO: Check
 
 // Optimized for East Asian CJK
 html:lang(zh),
@@ -33,7 +34,7 @@ html:lang(ko),
   ins,
   u {
     // border-bottom: get-var('border-width') solid; // TODO: Use the border mixin
-    @include border.border($side: bottom);
+    // @include border($side: bottom); // TODO: Check.
 
     text-decoration: none;
   }

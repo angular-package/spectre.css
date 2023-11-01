@@ -1,22 +1,24 @@
 // Modules.
-@use '../../var';
+@use '../../var/var.css.function' as *;
+@use '../../var/var.var.function' as *;
+@use '../../var/var.size-var.function' as *;
 
-$-grid-size: calc(var.var(layout spacing false) * var.css(html font size) * 2);
+$-grid-size: calc(var(layout spacing false) * css(html font size) * 2);
 $grid: (
   max-width: (
     // 'xl': calc(get-var(('layout', 'spacing', false)) * css-var(('html', 'font', 'size')) * 2 + size-var('xl')),
-    xl: calc($-grid-size + var.size-var(xl)),
+    xl: calc($-grid-size + size-var(xl)),
 
     // 'lg': calc(get-var(('layout', 'spacing', false)) * css-var(('html', 'font', 'size')) * 2 + size-var('lg')),
-    lg: calc($-grid-size + var.size-var(lg)),
+    lg: calc($-grid-size + size-var(lg)),
 
     // 'md': calc(get-var(('layout', 'spacing', false)) * css-var(('html', 'font', 'size')) * 2 + size-var('md')),
-    md: calc($-grid-size + var.size-var(md)),
+    md: calc($-grid-size + size-var(md)),
 
     // 'sm': calc(get-var(('layout', 'spacing', false)) * css-var(('html', 'font', 'size')) * 2 + size-var('sm')),
-    sm: calc($-grid-size + var.size-var(sm)),
+    sm: calc($-grid-size + size-var(sm)),
 
     // 'xs': calc(get-var(('layout', 'spacing', false)) * css-var(('html', 'font', 'size')) * 2 + size-var('xs')),
-    xs: calc($-grid-size + var.size-var(xs)),
+    xs: calc($-grid-size + size-var(xs)),
   )
 ) !default;
