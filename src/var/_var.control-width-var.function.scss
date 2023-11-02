@@ -1,0 +1,45 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Variables.
+@use '../variables/control.var' as *;
+
+// Modules.
+@use '../var/var.var.function';
+
+// Status: DONE
+// The `var.control-width-var()` function.
+// @param `$width`
+// @param `$adjust`
+// @param `$unit`
+// @param `$fallback`
+// @param `$dictionary`
+// @returns
+@function control-width-var(
+  $width: md,
+  $adjust: null,
+  $unit: false,
+  $fallback: null,
+  $dictionary: null
+) {
+  @if not map.has-key(map.get($control, width), $width) {
+    @warn 'Control width #{$size} is not set. Try: #{map.keys(map.get($control, width))}';
+  }
+  @return var.var(
+    list.join(control width, $width),
+    $adjust,
+    $unit,
+    $fallback,
+    $dictionary
+  );
+}
+
+// Examples.
+// @debug control-width-var(sm); // var(--s-control-width-sm)
+// @debug control-width-var(md); // var(--s-control-width-md)
+// @debug control-width-var(lg); // var(--s-control-width-lg)
+// @debug control-width-var(xl); // var(--s-control-width-xl)
+
+// Warning.
+// @debug control-width-var(sms); // Control width sms is not set. Try: xs, sm, md, lg, xl

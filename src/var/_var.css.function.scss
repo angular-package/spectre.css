@@ -1,0 +1,31 @@
+// Modules.
+@use '../translator';
+@use '@angular-package/sass/var';
+
+// Status: DONE
+// The `var.css()` function.
+// @param `$name`
+// @param `$fallback`
+// @param `$dictionary`
+// @returns The returned value is CSS variable of `$name`.
+@function css(
+  $name,
+  $fallback: null,
+  $dictionary: null,
+) {
+  @return var.css(
+    $name,
+    $fallback,
+    if($dictionary, $dictionary, translator.dictionary(var))
+  );
+}
+
+// Examples.
+// @debug css(sm); // var(--sm)
+// @debug css(md); // var(--md)
+
+// adjust
+// @debug css(sm, 1px); // var(--sm, 1px)
+
+// adjust + fallback + dictionary
+// @debug css(sm, 1px, (font: f, prefix: spectre)); // var(--spectresm, 1px)

@@ -1,0 +1,47 @@
+// Sass.
+@use 'sass:map';
+@use 'sass:list';
+
+// Variables.
+@use '../variables/layout/layout-spacing.var' as *;
+
+// Modules.
+@use '../var/var.var.function';
+
+// Status: DONE
+// The `var.layout-spacing-var()` function.
+// @param `$size`
+// @param `$adjust`
+// @param `$unit`
+// @param `$fallback`
+// @param `$dictionary`
+// @returns
+@function layout-spacing-var(
+  $size: '',
+  $adjust: null,
+  $unit: true,
+  $fallback: null,
+  $dictionary: null
+) {
+  @if not map.has-key($layout-spacing, $size) {
+    @warn 'Layout size #{$size} is not set. Try: #{map.keys($layout-spacing)}';
+  }
+  @return var.var(
+    list.join(layout spacing, $size),
+    $adjust,
+    $unit,
+    $fallback,
+    $dictionary
+  );
+}
+
+// Examples.
+// @debug layout-spacing-var(); // calc(var(--s-layout-spacing-) * var(--s-unit-rem))
+// @debug layout-spacing-var(md); // calc(var(--s-layout-spacing-md) * var(--s-unit-rem))
+// @debug layout-spacing-var(lg); // calc(var(--s-layout-spacing-lg) * var(--s-unit-rem))
+
+// without rem
+// @debug layout-spacing-var(lg, $unit: false); // var(--s-layout-spacing-lg)
+
+// does not have size
+// @debug layout-spacing-var(xss); // Warning

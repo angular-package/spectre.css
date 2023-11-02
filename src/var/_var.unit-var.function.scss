@@ -1,0 +1,39 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Variables.
+@use '../variables/unit-size.var' as *;
+
+// Modules.
+@use '../var/var.var.function';
+
+// Status: DONE
+// The `var.unit-var()` function.
+// @param `$size`
+// @param `$adjust`
+// @param `$fallback`
+// @param `$dictionary`
+// @returns
+@function unit-var(
+  $size,
+  $adjust: null,
+  $unit: false,
+  $fallback: null,
+  $dictionary: null
+) {
+  @if not map.has-key($unit-size, $size) {
+    @warn 'Unit size #{$size} is not set. Try: #{map.keys($unit-size)}';
+  }
+  @return var.var(
+    list.join(unit, $size, list.separator($size)),
+    $adjust,
+    $unit,
+    $fallback,
+    $dictionary
+  );
+}
+
+// Examples.
+// @debug unit-var(1); // var(--s-unit-1)
+// @debug unit-var(5 ('+' 1)); // calc(var(--s-unit-5) + 1)

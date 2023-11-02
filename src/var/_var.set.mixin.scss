@@ -1,0 +1,13 @@
+// Modules.
+@use '../translator';
+@use '@angular-package/sass/var';
+
+// Status: DONE
+@mixin set($property, $selector: (), $function: null, $dictionary: null) {
+  @include var.set(
+    $property,
+    $selector,
+    $function,
+    if($dictionary, $dictionary, translator.dictionary(var)),
+  );
+}

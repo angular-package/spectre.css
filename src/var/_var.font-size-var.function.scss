@@ -1,0 +1,50 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Variables.
+@use '../variables/font-size.var' as *;
+
+// Modules.
+@use '../var/var.var.function';
+
+// Status: DONE
+// The `var.font-size-var()` function.
+// @param `$size`
+// @param `$adjust`
+// @param `$fallback`
+// @param `$dictionary`
+// @returns
+@function font-size-var(
+  $size: null,
+  $adjust: null,
+  $fallback: null,
+  $dictionary: null
+) {
+  @if not map.has-key($font-size, $size) {
+    @warn 'Font size #{$size} is not set. Try: #{map.keys($font-size)}';
+  }
+  @return var.var(
+    list.join(font size, if($size == '', null, $size)),
+    $adjust,
+    null,
+    $fallback,
+    $dictionary
+  );
+}
+
+// Examples.
+// @debug font-size-var(sm); // var(--s-font-size-sm)
+// @debug font-size-var(md); // var(--s-font-size-sm)
+// @debug font-size-var; // var(--s-font-size)
+// @debug font-size-var(lg); // var(--s-font-size-lg)
+// @debug font-size-var('xl'); // Font size xl is not set. Try: sm, md, , lg
+
+// adjust
+// @debug font-size-var(sm, 1px); // calc(var(--s-font-size-sm) + 1px)
+
+// adjust + backup
+// @debug font-size-var(sm, 1px, 10px); // calc(var(--s-font-size-sm, 10px) + 1px)
+
+// adjust + backup + dictionary
+// @debug font-size-var(sm, 1px, 10px, (font: f, prefix: spectre)); // calc(var(--spectre-f-size-sm, 10px) + 1px)
