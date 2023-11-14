@@ -1,0 +1,30 @@
+// Modules.
+@use '../translator';
+@use '@angular-package/sass/color';
+
+// Status: DONE
+@mixin set-var(
+  $name,
+  $color: null,
+  $hue: null,
+  $saturation: null,
+  $lightness: null,
+  $red: null,
+  $green: null,
+  $blue: null,
+  $alpha: null,
+  $dictionary: null
+) {
+  @include color.set(
+    $name,
+    $color,
+    $hue,
+    $saturation,
+    $lightness,
+    $red,
+    $green,
+    $blue,
+    $alpha,
+    if($dictionary, $dictionary, translator.dictionary(var)),
+  );
+}

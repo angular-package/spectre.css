@@ -1,0 +1,20 @@
+// Modules.
+@use '@angular-package/sass/media';
+
+// Mixins.
+@use 'color.set-var.mixin';
+
+// Spectre.css theme colors.
+@mixin set-theme-var($theme, $color-scheme: normal, $detect: false) {
+  @include media.color-scheme-content($color-scheme, $detect) {
+    @each $name, $color in $theme {
+      @if type-of($color) == map {
+        @each $name, $color in $color {
+          @include color.set-var(($name: hsla), $color);
+        }
+      } @else {
+        @include color.set-var(($name: hsla), $color);
+      }
+    }
+  }
+}
