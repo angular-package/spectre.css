@@ -1,18 +1,10 @@
 // Variables.
-@use '../variables/colors/theme' as *;
+@use '../variables/theme';
 
 // Modules.
 @use '../color';
-@use '../scheme';
 
 // Spectre.css theme colors.
-:root,
-:host {
-  @if scheme.is-light() {
-    @media (prefers-color-scheme: light) {
-      @each $name, $color in $theme-light {
-        @include color.set(($name: hsla), $color);
-      }
-    }
-  }
+:root, :host {
+  @include color.set-theme-var(theme.$light, light);
 }
