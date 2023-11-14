@@ -1,0 +1,26 @@
+// Functions.
+@use '@angular-package/sass/functions' as flag;
+
+// Modules.
+@use '../translator';
+@use '../var';
+
+// Status: DONE
+// The `property.font-size()` mixin.
+// @param `$size`
+// @param `$important`
+// @param `$dictionary`
+@mixin font-size($size: null, $important: false, $dictionary: null) {
+  font-size: var.font-size-var(
+      $size,
+      $dictionary: if($dictionary, $dictionary, translator.dictionary(var))
+    ) + flag.important($important);
+}
+
+// Examples.
+// div {
+//   @include font-size; // font-size: var(--s-font-size);
+//   @include font-size(sm); // font-size: var(--s-font-size-sm);
+//   @include font-size(sm, true); // font-size: var(--s-font-size-sm) !important;
+//   @include font-size(sm (backup: var(--s-font-size)), true); // font-size: var(--s-font-size-sm, var(--s-font-size)) !important;
+// }

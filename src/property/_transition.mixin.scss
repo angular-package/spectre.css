@@ -1,0 +1,58 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:meta';
+
+// Modules.
+@use '../translator';
+@use '../var';
+@use '@angular-package/sass/property';
+
+// Status: REVIEW: Check.
+// The `property.transition()` mixin.
+// @param `$properties`
+// @param `$important`
+// @param `$dictionary`
+// @param `$default`
+// @param `$prefix`
+// @param `$separator`
+// @param `$type-function`
+// @param `$functions`
+// @param `$execute`
+@mixin transition(
+  // property
+  $properties,
+  $important: false,
+  $dictionary: null,
+  $default: (unit 5),
+
+  // function
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $functions: (var: (get: meta.get-function(get, false, var))),
+  $execute: true
+) {
+  $dictionary: if($dictionary, $dictionary, translator.dictionary(var));
+  @include property.set(
+    (transition: $properties),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    (dictionary: $dictionary)
+  );
+}
+
+// Examples.
+// div {
+  //
+  // @include transition((transform 0.05s, border, margin));
+
+  // execute
+  // @include transition((width (unit 5), border 1s, height (unit 3)), $execute: false);
+
+  // dictionary
+  // @include transition((width (unit 5), border 1s, height (unit 3)), $dictionary: (unit: u));
+// }

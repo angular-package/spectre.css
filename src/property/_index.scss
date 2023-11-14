@@ -1,0 +1,16 @@
+@forward '@angular-package/sass/property';
+
+@forward 'box-shadow';
+
+@forward 'margin' as margin-*;
+@forward 'margin/margin.mixin';
+
+@forward 'padding' as padding-*;
+@forward 'padding/padding.mixin';
+
+@forward 'position' as position-*;
+
+// Files.
+@forward 'font-size.mixin';
+@forward 'transition.mixin';
+@forward 'z-index.mixin';

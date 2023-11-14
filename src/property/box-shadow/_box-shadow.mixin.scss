@@ -1,0 +1,88 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+// Variables.
+@use '../../variables/box-shadow.var' as *;
+
+// Modules.
+@use '@angular-package/sass/color';
+@use '@angular-package/sass/property';
+
+// $color: map.get($box-shadow, color),
+// $alpha: map.get($box-shadow, alpha),
+
+// Status: DONE
+// The `box-shadow()` mixin.
+// @param `$value`
+// @param `$important`
+// @param `$dictionary`
+// @param `$prefix`
+// @param `$separator`
+// @param `$type-function`
+// @param `$functions`
+// @param `$execute`
+@mixin box-shadow(
+  // property
+  $value,
+  $important: false,
+  $dictionary: (),
+
+  // function to call
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --color-color),
+  $functions: (color: (color: meta.get-function(color, false, color))),
+  $execute: true,
+) {
+  @include property.set(
+    // property
+    (box-shadow: $value),
+    $important,
+    // function to call
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    (dictionary: $dictionary)
+  );
+}
+
+// Examples.
+// div {
+  // single shadow with the default color
+  // @include box-shadow(12px -4px 8px); // box-shadow: 12px -4px 8px var(--s-gray-color);
+
+  // multiple shadows
+  // @include box-shadow((12px -4px 8px, 4px 10px 10px 5px)); // box-shadow: 12px -4px 8px var(--s-gray-color), 4px 10px 10px 5px var(--s-gray-color);
+
+  // default color for all shadows
+  // @include box-shadow(12px -4px 8px, orange dark); // box-shadow: 12px -4px 8px var(--s-orange-color-dark);
+
+  // default color + alpha for all shadows
+  // @include box-shadow(12px -4px 8px, orange dark, 0.5); // box-shadow: 12px -4px 8px hsla(var(--s-orange-color-dark-h), var(--s-orange-color-dark-s), var(--s-orange-color-dark-l), calc(var(--s-orange-color-dark-a) + 0.5));
+
+  // @include box-shadow(12px -4px 8px (orange dark)); // box-shadow: 12px -4px 8px var(--s-orange-color-dark);
+  // @include box-shadow((12px -4px 8px (orange dark), 12px -4px -8px (gray light))); // box-shadow: 12px -4px 8px var(--s-orange-color-dark), 12px -4px -8px var(--s-gray-color-light);
+
+  // @include box-shadow((12px -4px 8px (orange dark), 0 3px 10px 0 (primary dark))); // box-shadow: 12px -4px 8px var(--s-orange-color-dark), 0 3px 10px 0 var(--s-primary-color-dark);
+  // @include box-shadow((0 4px 8px (dark 0.2 ':hsla'), 0 3px 10px 0 (primary dark))); // box-shadow: 0 4px 8px hsla(var(--s-dark-color-h), var(--s-dark-color-s), calc(var(--s-dark-color-l) + 0.2), var(--s-dark-color-a)), 0 3px 10px 0 var(--s-primary-color-dark);
+// }
+
+// @include box-shadow(((0 4px 8px ('dark' 0.2)), (0 3px 10px 0 ('dark' 0.19))));
+// @if type-of($values) == list {
+//   $has-color: false;
+//   @each $value in $values {
+//     @if type-of($value) == color or type-of($value) == string or type-of($value) == list or type-of($value) == map {
+//       $has-color: true;
+//     }
+//   }
+//   @if $has-color == false {
+//     $values: list.append($values, if($alpha, list.join(($color,), (alpha: $alpha) ':hsla', space), $color), space);
+//   }
+
+//   $values: values.color($values, $alpha);
+// }
+// @return $values;

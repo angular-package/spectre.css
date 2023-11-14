@@ -1,0 +1,18 @@
+// Modules.
+@use '../size';
+
+// Status: PROGRESS
+// The `size-variant()` mixin.
+// @mixin size-variant($class: ()) {
+//   @include size.variants(
+//     padding,
+//     $class,
+//     $sizes: $size-variant,
+//     $dictionary: ()
+//   );
+// }
+
+// Examples.
+// div {
+//   @include size-variant(margin);
+// }

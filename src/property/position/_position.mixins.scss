@@ -1,0 +1,265 @@
+// Sass.
+@use 'sass:map';
+@use 'sass:meta';
+
+// Modules.
+@use '../../translator';
+@use '../../var';
+@use '@angular-package/sass/property';
+@use '@angular-package/sass/selector';
+
+// Status:
+// The `position()` mixin.
+@mixin position(
+  $value: (),
+  $important: null,
+
+  // class
+  $pseudo-class: (),
+  $dictionary: null,
+  $class-function: meta.get-function(class, false, selector),
+
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $functions:(var: (get: meta.get-function(get, false, var))),
+  $execute: true,
+  $position: null
+) {
+  @if type-of($value) == map {
+    @each $key, $val in $value {
+      $value: map.set($value, $key, $val ());
+    }
+    @include property.variant(
+      ($position: $value),
+      $important,
+      $pseudo-class,
+      if($dictionary, $dictionary, translator.dictionary(var)),
+      $class-function,
+      $prefix,
+      $separator,
+      $type-function,
+      $functions,
+      $execute
+    );
+  } @else {
+    @include property.set(
+      // property
+      ($position: $value ()),
+      $important,
+
+      // function to call
+      $prefix,
+      $separator,
+      $type-function,
+      $functions,
+      $execute,
+      (dictionary: if($dictionary, $dictionary, translator.dictionary(var)))
+    );
+  }
+}
+
+// Status: DONE
+// The `position.top()` mixin.
+// @param `$value`
+// @param `$important`
+// @param `$pseudo-class`
+// @param `$dictionary`
+// @param `$class-function`
+// @param `$prefix`
+// @param `$separator`
+// @param `$type-function`
+// @param `$functions`
+// @param `$execute`
+@mixin top(
+  $value: (),
+  $important: null,
+  // class
+  $pseudo-class: (),
+  $dictionary: null,
+  $class-function: meta.get-function(class, false, selector),
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $functions:(var: (get: meta.get-function(get, false, var))),
+  $execute: true,
+) {
+  @include position(
+    $value,
+    $important,
+
+    // class
+    $pseudo-class,
+    if($dictionary, $dictionary, translator.dictionary(var)),
+    $class-function,
+
+    // function to call args
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    top
+  );
+}
+
+// Status: DONE
+// The `position.right()` mixin.
+// @param `$value`
+// @param `$important`
+// @param `$pseudo-class`
+// @param `$dictionary`
+// @param `$class-function`
+// @param `$prefix`
+// @param `$separator`
+// @param `$type-function`
+// @param `$functions`
+// @param `$execute`
+@mixin right(
+  $value: (),
+  $important: null,
+  // class
+  $pseudo-class: (),
+  $dictionary: null,
+  $class-function: meta.get-function(class, false, selector),
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $functions:(var: (get: meta.get-function(get, false, var))),
+  $execute: true,
+) {
+  @include position(
+    $value,
+    $important,
+
+    // class
+    $pseudo-class,
+    if($dictionary, $dictionary, translator.dictionary(var)),
+    $class-function,
+
+    // function to call args
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    right
+  );
+}
+
+// Status: DONE
+// The `position.bottom()` mixin.
+@mixin bottom(
+  $value: (),
+  $important: null,
+  // class
+  $pseudo-class: (),
+  $dictionary: null,
+  $class-function: meta.get-function(class, false, selector),
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $functions:(var: (get: meta.get-function(get, false, var))),
+  $execute: true,
+) {
+  @include position(
+    $value,
+    $important,
+
+    // class
+    $pseudo-class,
+    if($dictionary, $dictionary, translator.dictionary(var)),
+    $class-function,
+
+    // function to call args
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    bottom
+  );
+}
+
+// Status: DONE
+// The `position.left()` mixin.
+@mixin left(
+  $value: (),
+  $important: null,
+  // class
+  $pseudo-class: (),
+  $dictionary: null,
+  $class-function: meta.get-function(class, false, selector),
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $functions:(var: (get: meta.get-function(get, false, var))),
+  $execute: true,
+) {
+  @include position(
+    $value,
+    $important,
+
+    // class
+    $pseudo-class,
+    if($dictionary, $dictionary, translator.dictionary(var)),
+    $class-function,
+
+    // function to call args
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    left
+  );
+}
+
+// Examples.
+// div {
+  // @include top(1px);
+// }
+
+// number
+// @include top((1: 1px));
+// .top-1 {
+//   top: 1px;
+// }
+
+// @include top((20: 20px));
+// .top-20 {
+//   top: 20px;
+// }
+
+// @include top((1: (unit 1)));
+// .top-1 {
+//   top: var(--s-unit-1);
+// }
+
+// @include top((1: unit 1, 2: unit 2));
+// .top-1 {
+//   top: var(--s-unit-1) !important;
+// }
+// .top-2 {
+//   top: var(--s-unit-2) !important;
+// }
+
+// @include right((1: unit 1));
+// .right-1 {
+//   right: var(--s-unit-1) !important;
+// }
+
+// @include bottom((1: unit 1));
+// .bottom-1 {
+//   bottom: var(--s-unit-1) !important;
+// }
+
+// @include left((1: unit 1));
+// .left-1 {
+//   left: var(--s-unit-1) !important;
+// }

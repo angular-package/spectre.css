@@ -1,0 +1,80 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:meta';
+
+// Variables.
+// @use '../../function/variables';
+
+// Modules.
+@use '../../translator';
+@use '../../var';
+@use '@angular-package/sass/property';
+@use '@angular-package/sass/selector';
+
+// Status: DONE
+// Padding utility mixin
+@mixin variant(
+  $variant: (),
+  $important: null,
+  // class
+  $pseudo-class: (),
+  $dictionary: null,
+  $class-function: meta.get-function(class, false, selector),
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $functions:(var: (get: meta.get-function(get, false, var))),
+  $execute: true,
+) {
+  @include property.variant(
+    (padding: $variant),
+    $important,
+    $pseudo-class,
+    if($dictionary, $dictionary, translator.dictionary(var)),
+    $class-function,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute
+  );
+}
+
+// Examples.
+// @include variant((1: --var-get (unit 1)));
+// .padding-1 {
+//   padding: var(--s-unit-1);
+// }
+
+// @include variant((1: (unit 1) (), 2: (unit 2) ()));
+// .padding-1 {
+//   padding: var(--s-unit-1);
+// }
+
+// @include variant((1: (unit 1) '!important'));
+// .padding-1 {
+//   padding: var(--s-unit-1) !important;
+// }
+
+// @include variant(((left, right): (1: (unit 1) (), 2: (unit 2) ())));
+// .padding-left-1 {
+//   padding-left: var(--s-unit-1);
+// }
+// .padding-left-2 {
+//   padding-left: var(--s-unit-2);
+// }
+// .padding-right-1 {
+//   padding-right: var(--s-unit-1);
+// }
+// .padding-right-2 {
+//   padding-right: var(--s-unit-2);
+// }
+
+// @include variant(((): (1: (unit 1) (), 2: (unit 2) ())), $dictionary: (unit: u));
+// .padding-1 {
+//   padding: var(--s-u-1);
+// }
+// .padding-2 {
+//   padding: var(--s-u-2);
+// }

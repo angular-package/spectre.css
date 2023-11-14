@@ -1,0 +1,18 @@
+// Modules.
+@use '../property';
+@use 'position';
+
+// Examples.
+// @include position.top((1: (unit 1)));
+// .top-1 {
+//   top: var(--s-unit-1);
+// }
+
+// @include position.top((1: unit 1, 2: unit 2));
+// .top-1 {
+//   top: var(--s-unit-1) !important;
+// }
+// .top-2 {
+//   top: var(--s-unit-2) !important;
+// }
+

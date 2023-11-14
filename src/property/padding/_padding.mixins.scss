@@ -1,0 +1,222 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:meta';
+
+// Modules.
+@use '../../translator';
+@use '../../var';
+@use '@angular-package/sass/property';
+
+// Status: DONE
+// The `padding.top()` mixin.
+// @param `$top`
+// @param `$important`
+// @param `$prefix`
+// @param `$separator`
+// @param `$type-function`
+// @param `$functions`
+// @param `$execute`
+@mixin top(
+  $padding,
+  $important: false,
+  $dictionary: null,
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-var),
+  $functions: (var: (var: meta.get-function(var, false, var))),
+  $execute: true,
+) {
+  @include property.set(
+    (padding-top: $top),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    (dictionary: if($dictionary, $dictionary, translator.dictionary(var)))
+  );
+}
+
+// Status: DONE
+// The `padding.right()` mixin.
+@mixin right(
+  $right,
+  $important: false,
+  $dictionary: null,
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-var),
+  $functions: (var: (var: meta.get-function(var, false, var))),
+  $execute: true
+) {
+  @include property.set(
+    (padding-right: $right),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    (dictionary: if($dictionary, $dictionary, translator.dictionary(var)))
+  );
+}
+
+// Status: DONE
+// The `padding.bottom()` mixin.
+@mixin bottom(
+  $bottom,
+  $important: false,
+  $dictionary: null,
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-var),
+  $functions: (var: (var: meta.get-function(var, false, var))),
+  $execute: true
+) {
+  @include property.set(
+    (padding-bottom: $bottom),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    (dictionary: if($dictionary, $dictionary, translator.dictionary(var)))
+  );
+}
+
+// Status: DONE
+// The `padding.left()` mixin.
+@mixin left(
+  $left,
+  $important: false,
+  $dictionary: null,
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-var),
+  $functions: (var: (var: meta.get-function(var, false, var))),
+  $execute: true
+) {
+  @include property.set(
+    (padding-left: $left),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    (dictionary: if($dictionary, $dictionary, translator.dictionary(var)))
+  );
+}
+
+// Status: DONE
+// The `padding.x()` mixin.
+@mixin x(
+  $x,
+  $important: false,
+  $dictionary: null,
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-var),
+  $functions: (var: (var: meta.get-function(var, false, var))),
+  $execute: true
+) {
+  @if list.length($x) == 1 {
+    $x: list.append($x, $x);
+  } @else if list.length($x) == 2 {
+    @if list.length(nth($x, 2)) == 0 {
+      $x: list.set-nth($x, 2, nth($x, 1));
+    }
+  }
+  @include property.property(
+    (padding: (left: nth($x, 1) (), right: nth($x, 2) ())),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    (dictionary: if($dictionary, $dictionary, translator.dictionary(var)))
+  );
+}
+
+// Status: DONE
+// The `padding.y()` mixin.
+@mixin y(
+  $y,
+  $important: false,
+  $dictionary: null,
+  // function to call args
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-var),
+  $functions: (var: (var: meta.get-function(var, false, var))),
+  $execute: true
+) {
+  @if list.length($y) == 1 {
+    $y: list.append($y, $y);
+  } @else if list.length($y) == 2 {
+    @if list.length(nth($y, 2)) == 0 {
+      $y: list.set-nth($y, 2, nth($y, 1));
+    }
+  }
+  @include property.property(
+    (padding: (top: nth($y, 1) (), bottom: nth($y, 2) ())),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    (dictionary: if($dictionary, $dictionary, translator.dictionary(var)))
+  );
+}
+
+// Examples.
+// div {
+  // any
+  // @include padding(1px); // padding: 1px
+  // @include padding(1px 2px); // padding: 1px 2px;
+  // @include padding((layout spacing true) (unit 2)); // padding: calc(var(--s-layout-spacing) * 1rem) var(--s-unit-2);
+
+  // @include padding((unit 1) ()); // padding: var(--s-unit-1);
+  // @include padding((unit 1) (unit 2)); // padding: var(--s-unit-1) var(--s-unit-2);
+  // @include padding((unit 1) (unit 2) (unit 5)); // padding: var(--s-unit-1) var(--s-unit-2) var(--s-unit-5);
+
+  // top
+  // @include top(--var-get (unit 10)); // padding-top: var(--s-unit-10);
+  // @include top((unit 10) ()); // padding-top: var(--s-unit-10);
+
+  // right
+  // @include right(--get unit 5); // padding-right: var(--s-unit-5);
+  // @include right((unit 5) ()); // padding-right: var(--s-unit-5);
+
+  // bottom
+  // @include bottom(--get unit 3); // padding-bottom: var(--s-unit-3);
+  // @include bottom((unit 3) ()); // padding-bottom: var(--s-unit-3);
+
+  // left
+  // @include left(--get unit 4); // padding-left: var(--s-unit-4);
+  // @include left((unit 4) ()); // padding-left: var(--s-unit-4);
+
+  // x
+  // @include x(2px);
+  // @include x(2px 4px);
+  // @include x((unit 7) ()); // padding-left: var(--s-unit-7); padding-right: var(--s-unit-7);
+  // @include x((unit 7) (unit 10)); // padding-left: var(--s-unit-7); padding-right: var(--s-unit-10);
+
+  // y
+  // @include y(2px);
+  // @include y(2px 4px);
+  // @include y((unit 9) ()); // padding-top: var(--s-unit-9); padding-bottom: var(--s-unit-9);
+  // @include y((unit 9) (unit 5)); // padding-bottom: var(--s-unit-5); padding-top: var(--s-unit-9);
+
+  // dictionary
+  // @include padding((unit 1) (unit 2), $dictionary: (prefix: spectre, suffix: basic, unit: u)); // padding: var(--spectre-u-1-basic) var(--spectre-u-2-basic);
+// }

@@ -1,0 +1,182 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+// Functions.
+@use '@angular-package/sass/list/list.nth.function' as *;
+
+// Modules.
+@use '../../translator';
+@use '../../var';
+@use '@angular-package/sass/function';
+@use '@angular-package/sass/property';
+
+// Set var functions.
+function.$functions: map.deep-merge(function.$functions, (var: meta.module-functions(var)));
+
+// Status: DONE
+// The `margin.top()` mixin.
+// @param `$top`
+// @param `$important`
+// @param `$dictionary`
+// @param `$prefix`
+// @param `$separator`
+// @param `$type-function`
+// @param `$dictionary`
+// @returns `$execute`
+@mixin top(
+  $top,
+  $important: false,
+  $dictionary: null,
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $execute: true
+) {
+  @include property.set(
+    (margin-top: $top),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $execute: $execute,
+    $arguments: (dictionary: if($dictionary, $dictionary, translator.dictionary(var)))
+  );
+}
+
+// Status: DONE
+// The `margin.right()` mixin.
+// @param `$right`
+// @param `$important`
+// @param `$dictionary`
+// @param `$prefix`
+// @param `$separator`
+// @param `$type-function`
+// @param `$dictionary`
+// @param `$execute`
+@mixin right(
+  $right,
+  $important: false,
+  $dictionary: null,
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $execute: true
+) {
+  @include property.set(
+    (margin-right: $right),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $execute: $execute,
+    $arguments: (dictionary: if($dictionary, $dictionary, translator.dictionary(var)))
+  );
+}
+
+// Status: DONE
+// The `margin.bottom()` mixin.
+// @param `$bottom`
+// @param `$important`
+// @param `$dictionary`
+// @param `$prefix`
+// @param `$separator`
+// @param `$type-function`
+// @param `$dictionary`
+// @param `$execute`
+@mixin bottom(
+  $bottom,
+  $important: false,
+  $dictionary: null,
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $execute: true
+) {
+  @include property.set(
+    (margin-bottom: $bottom),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $execute: $execute,
+    $arguments: (dictionary: if($dictionary, $dictionary, translator.dictionary(var)))
+  );
+}
+
+// Status: DONE
+// The `margin.left()` mixin.
+// @param `$left`
+// @param `$important`
+// @param `$dictionary`
+// @param `$prefix`
+// @param `$separator`
+// @param `$type-function`
+// @param `$dictionary`
+// @param `$execute`
+@mixin left(
+  $left,
+  $important: false,
+  $dictionary: null,
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $execute: true
+) {
+  @include property.set(
+    (margin-left: $left),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $execute: $execute,
+    $arguments: (dictionary: if($dictionary, $dictionary, translator.dictionary(var)))
+  );
+}
+
+// Status: DONE
+// The `margin.x()` mixin.
+@mixin x($x, $important: false, $dictionary: null, $function: (get: meta.get-function(get))) {
+  // if($dictionary, $dictionary, translator.dictionary(var))
+  // @include property.set((margin-left: nth($x, 1) (), margin-right: nth($x, 2) or nth($x, 1) ()), $important, $dictionary, $function, true);
+}
+
+// Status: DONE
+// The `margin.y()` mixin.
+@mixin y($y, $important: false, $dictionary: null, $function: (get: meta.get-function(get))) {
+  // if($dictionary, $dictionary, translator.dictionary(var))
+  // @include property.set(( margin-top: nth($y, 1) (), margin-bottom: nth($y, 2) or nth($y, 1) ()), $important, $dictionary, $function, true);
+}
+
+// Examples.
+// div {
+  // @include margin(1px); // margin: 1px
+  // @include margin(1px 2px); // margin: 1px 2px;
+  // @include margin((layout spacing true) (unit 2)); // margin: 1px
+
+  // @include margin((unit 1) ()); // margin: var(--s-unit-1);
+  // @include margin((unit 1) (unit 2)); // margin: var(--s-unit-1) var(--s-unit-2);
+  // @include margin((unit 1) (unit 2) (unit 5)); // margin: var(--s-unit-1) var(--s-unit-2) var(--s-unit-5);
+
+  // @include top(--var-get (unit 10)); // margin-top: var(--s-unit-10);
+  // @include top((unit 10) ()); // margin-top: var(--s-unit-10);
+
+  // @include right(--get unit 5); // margin-right: var(--s-unit-5);
+  // @include right((unit 5) ()); // margin-right: var(--s-unit-5);
+
+  // @include bottom(--get unit 3); // margin-bottom: var(--s-unit-3);
+  // @include bottom((unit 3) ()); // margin-bottom: var(--s-unit-3);
+
+  // @include left(--get unit 4); // margin-left: var(--s-unit-4);
+  // @include left((unit 4) ()); // margin-left: var(--s-unit-4);
+
+  // @include x((unit 7) (unit 10)); // margin-left: var(--s-unit-7); margin-right: var(--s-unit-10);
+  // @include y((unit 9) (unit 5)); // margin-bottom: var(--s-unit-5); margin-top: var(--s-unit-9);
+
+  // @include x(2px);
+  // @include y(2px);
+
+  // dictionary
+  // @include margin((unit 1) (unit 2), $dictionary: (prefix: spectre, suffix: basic, unit: u)); // margin: var(--spectre-u-1-basic) var(--spectre-u-2-basic);
+// }

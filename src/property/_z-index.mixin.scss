@@ -1,0 +1,136 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Modules.
+@use '../var';
+@use '../translator';
+@use '@angular-package/sass/meta';
+@use '@angular-package/sass/property';
+
+// Status: REVIEW: Check dictionary.
+// The `property.z-index()` mixin.
+@mixin z-index(
+  // property
+  $value,
+  $adjust: null,
+  $important: false,
+  $pseudo-class: (),
+  $dictionary: null,
+
+  // function
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-get),
+  $functions: (var: (get: meta.get-function(get, false, var))),
+  $execute: true
+) {
+  $dictionary: if($dictionary, $dictionary, translator.dictionary(var));
+  @if meta.of-type(list map, $value) {
+    $variant: ();
+    @if type-of($value) == list {
+      @each $val in $value {
+        $variant: map.set($variant, $val, list.append(z-index, $val) ());
+      }
+    } @else if type-of($value) == map {
+      @each $key, $val in $value {
+        $val: if(
+          list.separator($val) == comma,
+          list.set-nth($val, 1, list.join(z-index, $val, space)),
+          list.join(z-index, $val)
+        );
+        $variant: map.set($variant, $key, $val ());
+      }
+    }
+    @include property.variant(
+      (z-index: $variant),
+      $important,
+      $pseudo-class,
+      $dictionary,
+      $prefix: $prefix,
+      $separator: $separator,
+      $type-function: $type-function,
+      $functions: $functions,
+      $execute: $execute,
+    );
+  } @else if type-of($value) == number {
+    @include property.set(
+      (z-index: list.append(z-index, $value) ()),
+      $important,
+      $prefix,
+      $separator,
+      $type-function,
+      $functions,
+      $execute,
+      (dictionary: $dictionary)
+    );
+  }
+}
+
+// Examples.
+// single
+// div {
+//   @include z-index(0); // z-index: var(--s-z-index-0);
+// }
+
+// Variant
+// @include z-index((0,));
+// .z-index-0 {
+//   z-index: var(--s-z-index-0);
+// }
+
+// multiple
+// @include z-index((0, 1, 2));
+// .z-index-0 {
+//   z-index: var(--s-z-index-0);
+// }
+// .z-index-1 {
+//   z-index: var(--s-z-index-1);
+// }
+// .z-index-2 {
+//   z-index: var(--s-z-index-2);
+// }
+
+// TODO:
+// multiple + adjust
+// @include z-index((0, 1, 2), 5);
+
+// variant + adjust
+// @include z-index((0: (0, ('+' 5))));
+// .z-index-0 {
+//   z-index: calc(var(--s-z-index-0) + 5);
+// }
+
+// multiple variants + adjust
+// @include z-index((0: 0, 100: (1, ('+' 5)), 200: 2));
+// .z-index-0 {
+//   z-index: var(--s-z-index-0);
+// }
+// .z-index-100 {
+//   z-index: calc(var(--s-z-index-1) + 5);
+// }
+// .z-index-200 {
+//   z-index: var(--s-z-index-2);
+// }
+
+// important
+// @include z-index((1: 1 !important));
+// .z-index-1 {
+//   z-index: var(--s-z-index-1) !important;
+// }
+
+// @include z-index((0, 1, 100), $important: true);
+// .z-index-0 {
+//   z-index: var(--s-z-index-0) !important;
+// }
+// .z-index-1 {
+//   z-index: var(--s-z-index-1) !important;
+// }
+// .z-index-100 {
+//   z-index: var(--s-z-index-100) !important;
+// }
+
+// @include z-index((0, 1, 2), $dictionary: (class: (z-index: p, index: i), var: (z-index: i)));
+
+// pseudo-class
+// @include z-index((0, 1, 2), 5, false, ':visited');
