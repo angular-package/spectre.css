@@ -1,0 +1,48 @@
+// Modules.
+@use '../../module';
+
+// Status: DONE
+// The `borders.var()` function.
+// @param `$name`
+// @param `$adjust`
+// @param `$unit`
+// @param `$fallback`
+// @param `$dictionary`
+// @returns
+@function var(
+  $name,
+  $adjust: null,
+  $unit: false,
+  $fallback: null,
+  $dictionary: null,
+) {
+  @return module.var(
+    border,
+    $name,
+    $adjust,
+    $unit,
+    $fallback,
+    $dictionary
+  );
+}
+
+// Examples.
+// @debug var(); // var(--s-border)
+
+// adjust
+// @debug var(null, 15); // var(--s-border)
+// @debug var(width (-15px,)); // calc(var(--s-border-width) - 15px)
+// @debug var(width 1x (adjust: -15px)); // calc(var(--s-border-width-1x) - 15px)
+// @debug var(width ('*' 15px)); // calc(var(--s-border-width) * 15px)
+// @debug var(width ('/' 15px)); // calc(var(--s-border-width) / 15px)
+
+// adjust + backup
+// @debug var(null, 15, 10); // calc(var(--s-border, 10) + 15)
+// @debug var(width 1x (adjust: -15px, backup: 30px)); // calc(var(--s-border-width-1x, 30px) - 15px)
+
+// dictionary
+// @debug var(width large, $dictionary: (border: b2)); // var(--s-b2-width-lg)
+
+// adjust + backup + dictionary
+// @debug var(null, 15, 10, (prefix: spectre, suffix: large, border: b)); // calc(var(--spectre-b-large, 10) + 15)
+// @debug var(width 1x (adjust: -15px, backup: 30px, dictionary: (prefix: spectre, suffix: basic, border: b))); // calc(var(--spectre-b-width-1x-basic, 30px) - 15px)
