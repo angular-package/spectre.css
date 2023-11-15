@@ -1,0 +1,15 @@
+// Modules.
+@use '../module';
+
+// Status: DONE
+// The `borders.class()` function.
+// @param `$class`
+// @param `$pseudo-class`
+// @param `$dictionary`
+// @returns
+@function class($class, $pseudo-class: (), $dictionary: null) {
+  @return module.class(border, $class, $pseudo-class, $dictionary);
+}
+
+// Examples.
+// @debug class(width);
