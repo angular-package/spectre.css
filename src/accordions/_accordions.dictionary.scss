@@ -16,4 +16,6 @@ $dictionary: (
 );
 
 // Merge.
-$debug: translator.dictionary-merge(accordion, $dictionary);
+@if not translator.dictionary-get(accordion) {
+  $debug: translator.dictionary-merge(accordion, $dictionary);
+}
