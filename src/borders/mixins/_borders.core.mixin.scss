@@ -1,0 +1,52 @@
+// Mixins.
+@use 'borders.mixins' as borders;
+
+// Modules.
+@use '../../module';
+@use '../radius';
+@use '../var';
+
+// Status: DONE
+// The `borders.core()` mixin.
+// @param `$class`
+// @param `$width`
+// @param `$style`
+// @param `$color`
+// @param `$dictionary`
+@mixin core(
+  $class: (),
+  $width: medium,
+  $style: null,
+  $color: null,
+  $dictionary: null
+) {
+  @include borders.border($width, $style, $color, null, null, $dictionary);
+
+  // Radius.
+  #{module.class(border, append(join('&', $class), radius), $dictionary: $dictionary)} {
+    // Add the CSS variable to set custom border radius in the style='--s-border-radius: '
+    @include var.set((radius custom: var.var(radius $width)));
+    @include radius.radius($width: custom);
+  }
+}
+
+// Examples.
+// div {
+  // @include core;
+  // div {
+  //   border: var(--s-border-width-md) solid var(--s-border-color);
+  // }
+  // div.border-radius {
+  //   --s-border-radius-custom: var(--s-border-radius-md);
+  //   border-radius: var(--s-border-radius-custom);
+  // }
+
+  // @include core(basic);
+  // div {
+  //   border: var(--s-border-width-md) solid var(--s-border-color);
+  // }
+  // div.border-basic-radius {
+  //   --s-border-radius-custom: var(--s-border-radius-md);
+  //   border-radius: var(--s-border-radius-custom);
+  // }
+// }
