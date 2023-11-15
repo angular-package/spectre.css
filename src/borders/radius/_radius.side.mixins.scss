@@ -1,0 +1,188 @@
+// Sass.
+@use 'sass:meta';
+
+// Modules.
+@use '../../list';
+@use '../../property';
+@use '../../var';
+
+// Status: DONE
+// The `borders.radius-top()` mixin.
+// @param `$size`
+// @param `$adjust`
+// @param `$fallback`
+// @param `$important`
+// @param `$dictionary`
+// @param `$prefix`
+// @param `$separator`
+// @param `$type-function`
+// @param `$functions`
+// @param `$execute`
+@mixin top(
+  $size: medium,
+  $adjust: null,
+  $fallback: null,
+  $important: false,
+  $dictionary: null,
+  $prefix: null,
+  $separator: null,
+
+  // function
+  $type-function: (list: --var-var),
+  $functions: (var: (var: meta.get-function(var, false, var))),
+  $execute: true,
+) {
+  @include property.property(
+    (border: (
+      top-left: (radius: (list.join(radius, $size), $adjust, $fallback) ()),
+      top-right: (radius: (list.join(radius, $size), $adjust, $fallback) ()),
+    )),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    (dictionary: $dictionary),
+  );
+}
+
+// Status: DONE
+// The `borders.radius-right()` mixin.
+// @param `$size`
+// @param `$adjust`
+// @param `$fallback`
+// @param `$important`
+// @param `$dictionary`
+// @param `$prefix`
+// @param `$separator`
+// @param `$type-function`
+// @param `$functions`
+// @param `$execute`
+@mixin right(
+  $size: medium,
+  $adjust: null,
+  $fallback: null,
+  $important: false,
+  $dictionary: null,
+  $prefix: null,
+  $separator: null,
+  $type-function: (list: --var-var),
+  $functions: (var: (var: meta.get-function(var, false, var))),
+  $execute: true,
+) {
+  @include property.property(
+    (border: (
+      top-right: (radius: (list.join(radius, $size), $adjust, $fallback) ()),
+      bottom-right: (radius: (list.join(radius, $size), $adjust, $fallback) ()),
+    )),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    (dictionary: $dictionary),
+  );
+}
+
+// Status: DONE
+// The `borders.radius-bottom()` mixin.
+// @param `$size`
+// @param `$adjust`
+// @param `$fallback`
+// @param `$important`
+// @param `$dictionary`
+// @param `$prefix`
+// @param `$separator`
+// @param `$type-function`
+// @param `$functions`
+// @param `$execute`
+@mixin bottom(
+  $size: medium,
+  $adjust: null,
+  $fallback: null,
+  $important: false,
+  $prefix: null,
+  $separator: null,
+  $dictionary: null,
+  $type-function: (list: --var-var),
+  $functions: (var: (var: meta.get-function(var, false, var))),
+  $execute: true,
+) {
+  @include property.property(
+    (border: (
+      bottom-right: (radius: (list.join(radius, $size), $adjust, $fallback) ()),
+      bottom-left: (radius: (list.join(radius, $size), $adjust, $fallback) ()),
+    )),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    (dictionary: $dictionary),
+  );
+}
+
+// Status: DONE
+// The `borders.radius-left()` mixin.
+// @param `$size`
+// @param `$adjust`
+// @param `$fallback`
+// @param `$important`
+// @param `$dictionary`
+// @param `$prefix`
+// @param `$separator`
+// @param `$type-function`
+// @param `$functions`
+// @param `$execute`
+@mixin left(
+  $size: medium,
+  $adjust: null,
+  $fallback: null,
+  $important: false,
+  $prefix: null,
+  $separator: null,
+  $dictionary: null,
+  $type-function: (list: --var-var),
+  $functions: (var: (var: meta.get-function(var, false, var))),
+  $execute: true,
+) {
+  @include property.property(
+    (border: (
+      top-left: (radius: (list.join(radius, $size), $adjust, $fallback) ()),
+      bottom-left: (radius: (list.join(radius, $size), $adjust, $fallback) ()),
+    )),
+    $important,
+    $prefix,
+    $separator,
+    $type-function,
+    $functions,
+    $execute,
+    (dictionary: $dictionary),
+  );
+}
+
+// Examples.
+// div {
+  // @include radius; // border-radius: var(--s-border-radius-md);
+  // @include radius($size: lg); // border-radius: var(--s-border-radius-lg);
+
+  // @include top(md);
+  // @include top(small medium);
+  // @include top(sm, 15, 15px);
+  // @include top(md md);
+  // @include top((medium sm) (small sm));
+
+  // border-top-left-radius: var(--s-border-radius-sm);
+  // border-top-right-radius: var(--s-border-radius-sm);
+
+  // @include right(sm);
+  // border-top-right-radius: var(--s-border-radius-sm);
+  // border-bottom-right-radius: var(--s-border-radius-sm);
+
+  // @include bottom(lg, 15, 100, (border: b));
+  // border-bottom-right-radius: calc(var(--s-b-radius-lg, 100) + 15);
+  // border-bottom-left-radius: calc(var(--s-b-radius-lg, 100) + 15);
+// }
