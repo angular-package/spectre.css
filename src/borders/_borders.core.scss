@@ -1,0 +1,15 @@
+// Modules.
+@use '@angular-package/sass/color/scheme';
+@use 'variant';
+@use 'variables';
+
+/* Spectre.css module: border | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+@include variant.variant(
+  $class: variables.$variant-class,
+  $side: variables.$variant-side,
+  $width: variables.$variant-width,
+  $style: variables.$variant-style,
+  $color: variables.$variant-color,
+  $radius: variables.$variant-radius,
+);
