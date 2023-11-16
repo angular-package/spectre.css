@@ -1,0 +1,33 @@
+// Modules.
+@use '../translator';
+@use '@angular-package/sass/color';
+@use '@angular-package/sass/meta';
+@use '@angular-package/sass/selector';
+
+@mixin variant-create(
+  $variant,
+  $combine: false,
+  $hue: null,
+  $saturation: null,
+  $lightness: null,
+  $alpha: null,
+  $important: false,
+  $pseudo-class: (),
+  $dictionary: (),
+  $function: meta.get-function(class, false, selector),
+  $modifier: null,
+) {
+  @include color.variant-create(
+    $variant,
+    $combine,
+    $hue,
+    $saturation,
+    $lightness,
+    $alpha,
+    $important,
+    $pseudo-class,
+    if($dictionary, $dictionary, translator.dictionary(var)),
+    $function,
+    $modifier,
+  );
+}

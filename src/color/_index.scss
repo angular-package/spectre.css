@@ -1,6 +1,7 @@
-@forward '@angular-package/sass/color' hide background, color;
+@forward '@angular-package/sass/color' hide background, color, variant-create;
 @forward 'color.background.mixin';
 @forward 'color.color.function';
 @forward 'color.color.mixin';
 @forward 'color.set-theme-var.mixin';
 @forward 'color.set-var.mixin';
+@forward 'color.variant-create.mixin';
