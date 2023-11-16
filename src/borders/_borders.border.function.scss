@@ -15,13 +15,13 @@
 // @param `$dictionary`
 // @returns
 @function border(
-  $width: md,
+  $width: null,
   $adjust: null,
   $style: null,
   $color: null,
   $dictionary: null
 ) {
-  @return #{var.var(join(width, $width), $adjust, false, null, $dictionary)}
+  @return #{var.var(join(width, if($width, $width, variables.$width)), $adjust, false, null, $dictionary)}
     #{if($style, $style, variables.$style)}
     #{color.color(if($color, $color, variables.$color), $dictionary: if($dictionary, $dictionary, module.dictionary(border, true, var)))};
 }
