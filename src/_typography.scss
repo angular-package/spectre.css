@@ -1,24 +1,12 @@
-// Functions.
-// @use 'var/functions/var.unit-var.function' as *;
-
-// @use 'functions/color/color.function' as *;
-// @use 'functions/var/get-var.function' as *;
-// @use 'functions/var/unit-var.function' as *;
-
-// Mixins.
-// @use 'borders/mixins/borders.mixins' as *;
-// @use 'borders/mixins/borders.radius.mixins' as *;
+// Modules.
 // @use 'labels/mixins' as *; // TODO: labels
 
-// Modules.
+@use 'borders';
 @use 'color';
-
-
 @use 'property';
 @use 'property/margin';
 @use 'property/padding';
 @use 'property/position';
-
 @use 'var';
 
 // Typography
@@ -88,11 +76,11 @@ u {
 }
 
 abbr[title] {
-  // @include border(
-  //   $style: dotted,
-  //   $side: bottom,
-  //   $radius: border radius
-  // ); TODO: border
+  @include borders.border(
+    $style: dotted,
+    $side: bottom,
+    $radius: border radius
+  );
 
   text-decoration: none;
   cursor: help;
@@ -103,9 +91,7 @@ kbd {
   // @include label-base;
   // @include label-color-variant('light', 'dark');
 
-  // font-size: get-var('font-size', $suffix: 'sm');
-  // font-size: get-var(('font-size', 'sm'));
-  @include property.font-size(sm);
+  @include property.font-size(small);
 }
 
 mark {
@@ -114,16 +100,14 @@ mark {
 
   border-bottom: var.unit-var(o) solid color.color(highlight, $lightness: -15%); // TODO: border unit-o
   @include property.padding((unit o) (unit h) (unit 0));
-
-  // border-radius: get-var('border-radius');
-  // @include radius; // TODO: border-radius
+  @include borders.radius;
 }
 
 // Blockquote
 blockquote {
   margin-left: 0;
   @include property.padding((unit 2) (unit 4));
-  // @include border(lg, $side: left, $radius: true); // TODO: border
+  @include borders.border(large, $side: left, $radius: true);
 
   p:last-child {
     margin-bottom: 0;

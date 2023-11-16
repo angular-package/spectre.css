@@ -1,31 +1,32 @@
+/*! Spectre.css fonts | MIT License | github.com/angular-package/spectre.css */
+
 // Variables.
-@use 'variables/fonts' as *;
+@use 'variables/fonts';
 
 // Mixins.
-// @use 'borders/mixins/borders.mixins' as border; // TODO: Check.
-// @use 'borders/mixins/borders.mixins' as *; // TODO: Check
+@use './borders/mixins';
 
 // Optimized for East Asian CJK
 html:lang(zh),
 html:lang(zh-Hans),
 .lang-zh,
 .lang-zh-hans {
-  font-family: $cjk-zh-hans-font-family;
+  font-family: fonts.$cjk-zh-hans-font-family;
 }
 
 html:lang(zh-Hant),
 .lang-zh-hant {
-  font-family: $cjk-zh-hant-font-family;
+  font-family: fonts.$cjk-zh-hant-font-family;
 }
 
 html:lang(ja),
 .lang-ja {
-  font-family: $cjk-jp-font-family;
+  font-family: fonts.$cjk-jp-font-family;
 }
 
 html:lang(ko),
 .lang-ko {
-  font-family: $cjk-ko-font-family;
+  font-family: fonts.$cjk-ko-font-family;
 }
 
 :lang(zh),
@@ -33,8 +34,7 @@ html:lang(ko),
 .lang-cjk {
   ins,
   u {
-    // border-bottom: get-var('border-width') solid; // TODO: Use the border mixin
-    // @include border($side: bottom); // TODO: Check.
+    @include mixins.border($side: bottom);
 
     text-decoration: none;
   }

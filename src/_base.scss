@@ -1,5 +1,7 @@
+/*! Spectre.css base | MIT License | github.com/angular-package/spectre.css */
+
 // Variables.
-@use 'variables/fonts' as *;
+@use 'variables/fonts';
 
 // Modules.
 @use 'color';
@@ -25,7 +27,7 @@ body {
   @include color.background(body bg);
   @include color.color(body font);
 
-  font-family: $body-font-family;
+  font-family: fonts.$body-font-family;
 
   @include property.font-size;
 
