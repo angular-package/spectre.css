@@ -1,8 +1,6 @@
 // Sass.
 @use 'sass:list';
-
-// Variables.
-// @use '../variables/borders.var' as *;
+@use 'sass:map';
 
 // Functions.
 @use '../borders.class.function' as *;
@@ -13,21 +11,6 @@
 @use 'variant.radius.mixin' as *;
 @use 'variant.side.mixin' as *;
 @use 'variant.width.mixin' as *;
-
-// @use 'borders.color-variant.mixin' as *;
-// @use 'borders.core.mixin' as *;
-// @use 'borders.radius-variant.mixin' as *;
-// @use 'borders.side-variant.mixin' as *;
-// @use 'borders.width-variant.mixin' as *;
-
-// $class: map.get($border, class),
-// $side: null, // REVIEW: ?
-// $width: map.get($border, variant, width),
-// $style: map.get($border, variant, style),
-// $color: map.get($border, theme) map.get($border, variant, color),
-// $radius: map.get($border, variant, radius),
-// $selector: (),
-// $dictionary: (),
 
 // Status:
 // The `variant.variant()` mixin.
@@ -42,9 +25,9 @@
   $dictionary: null
 ) {
   #{class($class, $pseudo-class, $dictionary)} {
-    @include mixins.core($width, null, $style, null, $dictionary);
+    @include mixins.core((), $width, $style, null, $dictionary);
     @if $side {
-      @include side($side, $pseudo-class, $dictionary);
+      @include side(((): $side), $pseudo-class, $dictionary);
     }
     @if $width {
       @include width(((): ($side: $width)), null, false, null, (), $dictionary);
@@ -53,52 +36,44 @@
       @include radius($radius, null, false, null, (), $dictionary);
     }
     @if $color {
-      @include color(
-        ((): $color),
-        // $hue,
-        // $saturation,
-        // $lightness,
-        // $alpha,
-        // $important,
-        // $pseudo-class,
-        $dictionary: $dictionary,
-        // $property,
-        // $function,
-      );
+      @if type-of($color) == map and list.index(map.keys($color), variant) {
+        @include color(map.deep-merge($color, (dictionary: $dictionary))...);
+      } @else {
+        @include color(((): $color), $dictionary: $dictionary);
+      }
     }
 
     // Styles.
-    // @if $style {
-    //   @each $style in $style {
-    //     #{class(append(join('&', $class), $style), $dictionary: $dictionary)} {
-    //       border-style: $style;
-    //     }
-    //   }
-    // }
-
+    @if $style {
+      @each $style in $style {
+        #{class(join('&', $style), $dictionary: $dictionary)} {
+          border-style: $style;
+        }
+      }
+    }
   }
 }
 
 // Examples.
-@include variant(
-  basic,
+// @include variant(
+//   basic,
 
-  // side
-  // $side: (top, right),
+//   // side
+//   $side: (top, right),
 
-  // width
-  // $width: (medium: medium),
+//   // width
+//   $width: (medium: medium),
 
-  // style
-  // $style: dotted,
+//   // style
+//   $style: dotted,
 
-  // color
-  $color: ((top, bottom): (primary: primary dark)),
+//   // color
+//   // $color: (variant: ((top, bottom): (primary: primary dark)), combine: false, hue: 15deg),
+//   $color: ((top, bottom): (primary: primary dark)),
 
-  // radius
-  // $radius: (start start: (high: high)),
-);
-
+//   // radius
+//   $radius: (start start: (high: high)),
+// );
 
 // @include variant(
 //   basic primary, top, small,
