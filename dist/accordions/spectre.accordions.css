@@ -1,0 +1,33 @@
+/* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
+/* Spectre.css module: accordions | components | color-scheme: normal | MIT License | github.com/angular-package/spectre.css */
+.s-accordion input:checked ~ .s-accordion-header > svg,
+.s-accordion input:checked ~ .s-accordion-header > .s-icon:first-child, .s-accordion[open] .s-accordion-header > svg,
+.s-accordion[open] .s-accordion-header > .s-icon:first-child {
+  transform: rotate(90deg);
+}
+.s-accordion input:checked ~ .s-accordion-body, .s-accordion[open] .s-accordion-body {
+  overflow: visible;
+  max-height: 60rem;
+}
+.s-accordion .s-accordion-header {
+  display: block;
+  padding: var(--s-unit-1) var(--s-unit-2);
+}
+.s-accordion .s-accordion-header > svg,
+.s-accordion .s-accordion-header > .s-icon {
+  transition: transform 0.05s;
+  margin-right: var(--s-unit-2);
+}
+.s-accordion .s-accordion-body {
+  overflow: hidden;
+  max-height: 0;
+  margin-bottom: calc(var(--s-layout-spacing) * 1rem);
+  transition: max-height 0.05s;
+}
+.s-accordion .s-accordion-body .s-menu-item > a {
+  align-items: center;
+}
+
+summary.s-accordion-header::-webkit-details-marker {
+  display: none;
+}
