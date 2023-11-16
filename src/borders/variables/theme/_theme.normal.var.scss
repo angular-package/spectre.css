@@ -1,0 +1,28 @@
+$normal: (
+  // Core colors.
+  core: (dark, light, accent, (primary (color, dark, light)), (secondary (color, dark, light))),
+
+  // Gray colors.
+  +gray: (color, dark, light),
+
+  // Bg colors.
+  +bg: (color, dark, light),
+
+  // Border colors.
+  +border: (color, dark, light),
+
+  // Link colors.
+  +link: (color, dark, light),
+
+  // Control colors.
+  control: (disabled, error, info, success, warning),
+
+  // Body colors.
+  +body: (bg, font),
+
+  // Other colors.
+  other: (
+    code: code,
+    highlight: highlight,
+  )
+);

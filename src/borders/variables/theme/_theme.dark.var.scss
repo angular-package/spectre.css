@@ -1,0 +1,34 @@
+$dark: (
+  // Core colors variant.
+  core: (dark, light, accent, (primary (color, dark, light)), (secondary (color, dark, light))),
+
+  // Gray colors.
+  +gray: (color, dark, light),
+
+  // Bg colors.
+  +bg: ((bg color, 15%), dark, light),
+
+  // Border colors.
+  +border: (dark, light),
+
+  // Link colors.
+  +link: (color, dark, light),
+
+  // Control colors.
+  control: (
+    disabled: disabled,
+    error: error,
+    info: info,
+    success: success,
+    warning: warning
+  ),
+
+  // Body colors.
+  +body: (bg, font),
+
+  // Other colors.
+  other: (
+    code: code,
+    highlight: highlight
+  )
+) !default;
