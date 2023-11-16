@@ -5,6 +5,7 @@
   "author": "@angular-package <contact@angular-package.dev>",
   "description": "Modified Spectre.css - a lightweight, responsive, and modern CSS framework originally designed by Yan Zhu",
   "main": "dist/spectre.min.scss",
+  "funding": "https://github.com/sponsors/angular-package",
   "scripts": {
     "build": "npm run sass:prod & npm run sass:dev & ng build spectre.css & npm run build:docs",
     "build:dev:sass": "sass --no-source-map --style=expanded src:dist && exit",
@@ -20,7 +21,8 @@
     "remove:docs": "npm run remove:docs:dist & npm run remove:docs:html && exit",
     "remove:docs:dist": "rm -rf -d docs/dist && exit",
     "remove:docs:html": "rm -rf -d docs/**/*.html & rm -rf -d docs/*.html && exit",
-    "remove:prod:dist": "rm -f dist/*.* && exit"
+    "remove:prod:dist": "rm -f dist/*.* && exit",
+    "sass": "sass --load-path=node_modules"
   },
   "repository": {
     "type": "git",
@@ -70,7 +72,7 @@
     "tslint": "^6.1.3"
   },
   "peerDependencies": {
-    "@angular-package/sass": "^0.13.0-beta",
+    "@angular-package/sass": "^0.14.0-beta",
     "sass": "^1.66.1"
   }
 }
