@@ -1,6 +1,9 @@
 // Sass.
 @use 'sass:map';
 
+// Variables.
+@use '../variables';
+
 // Modules.
 @use '../../color';
 @use '../../list';
@@ -29,8 +32,8 @@
   $saturation: null,
   $lightness: null,
   $alpha: null,
-  $side: null,
-  $important: false,
+  $side: variables.$side,
+  $important: variables.$important,
   $dictionary: null,
 
   // function to call

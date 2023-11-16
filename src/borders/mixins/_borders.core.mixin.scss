@@ -1,3 +1,6 @@
+// Variables.
+@use '../variables';
+
 // Mixins.
 @use 'borders.mixins' as borders;
 
@@ -14,18 +17,18 @@
 // @param `$color`
 // @param `$dictionary`
 @mixin core(
-  $class: (),
-  $width: medium,
-  $style: null,
-  $color: null,
+  $class: variables.$class,
+  $width: variables.$width,
+  $style: variables.$style,
+  $color: variables.$color,
   $dictionary: null
 ) {
   @include borders.border($width, $style, $color, null, null, $dictionary);
 
   // Radius.
-  #{module.class(border, append(join('&', $class), radius), $dictionary: $dictionary)} {
+  #{module.class(border, join(if(&, '&' radius, radius), $class), $dictionary: $dictionary)} {
     // Add the CSS variable to set custom border radius in the style='--s-border-radius: '
-    @include var.set((radius custom: var.var(radius $width)));
+    @include var.set((radius custom: var.var(join(radius, $width))));
     @include radius.radius($width: custom);
   }
 }

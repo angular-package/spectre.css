@@ -3,28 +3,32 @@
 @use 'sass:map';
 @use 'sass:meta';
 
+// Variables.
+@use '../variables';
+
 // Functions.
 @use '../borders.border.function';
 
 // Modules.
 @use '../../property';
-@use '../radius';
+@use '../radius/radius.mixin' as *;
+@use '../var';
 
 // Status: DONE
 // The `borders.border()` mixin.
-// @param `$size`
+// @param `$width`
 // @param `$style`
 // @param `$color`
 // @param `$radius`
 // @param `$side`
 // @param `$dictionary`
 @mixin border(
-  $size: medium,
-  $style: null,
-  $color: null,
-  $radius: null,
-  $side: null,
-  $important: null,
+  $width: variables.$width,
+  $style: variables.$style,
+  $color: variables.$color,
+  $radius: variables.$radius,
+  $side: variables.$side,
+  $important: variables.$important,
   $dictionary: null,
 
   // function
@@ -36,7 +40,7 @@
     @if list.length($side) > 0 {
       $-side: ();
       @each $value in $side {
-        $-side: map.deep-merge($-side, ($value: ($size, null, $style, $color) ()));
+        $-side: map.deep-merge($-side, ($value: ($width, null, $style, $color) ()));
       }
 
       $side: $-side;
@@ -45,29 +49,29 @@
         $important,
         null,
         null,
+        $dictionary,
         $type-function,
         $functions,
         $execute,
-        (dictionary: $dictionary)
       );
     }
   } @else {
-    border: borders.border($size, null, $style, $color, $dictionary);
+    border: borders.border($width, null, $style, $color, $dictionary);
   }
 
   // Radius.
   @if $radius {
     @if $radius == true {
-      border-radius: borders.var(radius);
+      border-radius: var.var(radius);
     } @else {
-      @include radius.radius($radius...);
+      @include radius($radius...);
     }
   }
 }
 
 // Status: DONE
 // The `borders.border-top()` mixin.
-// @param `$size`
+// @param `$width`
 // @param `$style`
 // @param `$color`
 // @param `$radius`
@@ -77,18 +81,18 @@
 // @param `$functions`
 // @param `$execute`
 @mixin top(
-  $size: medium,
-  $style: null,
-  $color: null,
-  $radius: null,
-  $important: null,
+  $width: variables.$width,
+  $style: variables.$style,
+  $color: variables.$color,
+  $radius: variables.$radius,
+  $important: variables.$important,
   $dictionary: null,
   $type-function: (list string: --borders-border),
   $functions: (borders: (border: meta.get-function(border, false, borders))),
   $execute: true,
 ) {
   @include border(
-    $size,
+    $width,
     $style,
     $color,
     $radius,
@@ -103,7 +107,7 @@
 
 // Status: DONE
 // The `borders.border-right()` mixin.
-// @param `$size`
+// @param `$width`
 // @param `$style`
 // @param `$color`
 // @param `$radius`
@@ -113,18 +117,18 @@
 // @param `$functions`
 // @param `$execute`
 @mixin right(
-  $size: medium,
-  $style: null,
-  $color: null,
-  $radius: null,
-  $important: null,
+  $width: variables.$width,
+  $style: variables.$style,
+  $color: variables.$color,
+  $radius: variables.$radius,
+  $important: variables.$important,
   $dictionary: null,
   $type-function: (list string: --borders-border),
   $functions: (borders: (border: meta.get-function(border, false, borders))),
   $execute: true,
 ) {
   @include border(
-    $size,
+    $width,
     $style,
     $color,
     $radius,
@@ -139,7 +143,7 @@
 
 // Status: DONE
 // The `borders.border-bottom()` mixin.
-// @param `$size`
+// @param `$width`
 // @param `$style`
 // @param `$color`
 // @param `$radius`
@@ -149,11 +153,11 @@
 // @param `$functions`
 // @param `$execute`
 @mixin bottom(
-  $size: medium,
-  $style: null,
-  $color: null,
-  $radius: null,
-  $important: null,
+  $width: variables.$width,
+  $style: variables.$style,
+  $color: variables.$color,
+  $radius: variables.$radius,
+  $important: variables.$important,
   $dictionary: null,
   $type-function: (list string: --borders-border),
   $functions: (borders: (border: meta.get-function(border, false, borders))),
@@ -161,7 +165,7 @@
 
 ) {
   @include border(
-    $size,
+    $width,
     $style,
     $color,
     $radius,
@@ -176,7 +180,7 @@
 
 // Status: DONE
 // The `borders.border-left()` mixin.
-// @param `$size`
+// @param `$width`
 // @param `$style`
 // @param `$color`
 // @param `$radius`
@@ -186,18 +190,18 @@
 // @param `$functions`
 // @param `$execute`
 @mixin left(
-  $size: medium,
-  $style: null,
-  $color: null,
-  $radius: null,
-  $important: null,
+  $width: variables.$width,
+  $style: variables.$style,
+  $color: variables.$color,
+  $radius: variables.$radius,
+  $important: variables.$important,
   $dictionary: null,
   $type-function: (list string: --borders-border),
   $functions: (borders: (border: meta.get-function(border, false, borders))),
   $execute: true,
 ) {
   @include border(
-    $size,
+    $width,
     $style,
     $color,
     $radius,
@@ -212,13 +216,13 @@
 
 // Examples.
 // div {
-  // @include border; // border: var(--s-border-size-md) solid var(--s-border-color);
+  // @include border; // border: var(--s-border-width-md) solid var(--s-border-color);
   // @include border($side: top right);
 
-  // small size
+  // small width
   // @include border(small, $side: right bottom);
 
-  // small size + adjust
+  // small width + adjust
   // @include border(sm ('+' 15%), $side: bottom left);
 
   // hsla color
@@ -227,20 +231,20 @@
   // $selector
   // @include border($selector: (('&:hover', '.active'),));
   // div:hover, .active {
-  //   border: var(--s-border-size-md) solid var(--s-border-color);
+  //   border: var(--s-border-width-md) solid var(--s-border-color);
   // }
 
   // $radius
-  // @include border($radius: (side: left, size: sm, adjust: -15px, backup: 30px, dictionary: (border: b)));
+  // @include border($radius: (side: left, width: sm, adjust: -15px, backup: 30px, dictionary: (border: b)));
   // div {
-  //   border: var(--s-border-size-md) solid var(--s-border-color);
+  //   border: var(--s-border-width-md) solid var(--s-border-color);
   //   border-top-left-radius: calc(var(--s-b-radius-sm, 30px) - 15px);
   //   border-bottom-left-radius: calc(var(--s-b-radius-sm, 30px) - 15px);
   // }
 
   // sides
-  // @include top; // border-top: var(--s-border-size-md) solid var(--s-border-color);
-  // @include right; // border-right: var(--s-border-size-md) solid var(--s-border-color);
-  // @include bottom; // border-bottom: var(--s-border-size-md) solid var(--s-border-color);
-  // @include left; // border-left: var(--s-border-size-md) solid var(--s-border-color);
+  // @include top; // border-top: var(--s-border-width-md) solid var(--s-border-color);
+  // @include right; // border-right: var(--s-border-width-md) solid var(--s-border-color);
+  // @include bottom; // border-bottom: var(--s-border-width-md) solid var(--s-border-color);
+  // @include left; // border-left: var(--s-border-width-md) solid var(--s-border-color);
 // }
