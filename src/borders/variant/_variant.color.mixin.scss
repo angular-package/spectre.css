@@ -1,0 +1,74 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:meta';
+@use 'sass:selector';
+
+// Functions.
+@use '../borders.class.function' as *;
+
+// Modules.
+@use '../../color';
+
+// Status: REVIEW:.
+// The `variant.color()` mixin.
+// @param `$variant`
+// @param `$hue`
+// @param `$saturation`
+// @param `$lightness`
+// @param `$alpha`
+// @param `$important`
+// @param `$pseudo-class`
+// @param `$dictionary`
+// @param `$property`
+// @param `$function`
+@mixin color(
+  $variant,
+  $combine: false,
+  $hue: null,
+  $saturation: null,
+  $lightness: null,
+  $alpha: null,
+  $important: false,
+  $pseudo-class: (),
+  $dictionary: (),
+  $property: null,
+  $function: meta.get-function(class),
+  $modifier: null
+) {
+  @include color.variant-create(
+    $variant,
+    $combine,
+    $hue,
+    $saturation,
+    $lightness,
+    $alpha,
+    $important,
+    $pseudo-class,
+    $dictionary,
+    $modifier: (class: (prefix: border), property: (base: border)),
+  );
+}
+
+// Examples.
+// @include color((primary: primary dark), $dictionary: (delimiter: '-'));
+// @include color(((top, right): primary dark), $dictionary: (delimiter: '-'));
+// @include color(((): ((top, right): (primary: primary dark))), $dictionary: (delimiter: '-'));
+// @include color((basic: ((top, right): (primary: primary dark, secondary: secondary light))), $dictionary: (delimiter: '-'));
+
+// @include color((
+//   basic: (
+//     (top, right): (
+//       primary: primary dark,
+//       secondary: secondary light
+//     )
+//   )
+// ), $dictionary: (delimiter: '-'));
+
+// @include color((
+//   (): (
+//     (top right, right): (
+//       primary: primary dark,
+//       secondary: secondary light
+//     )
+//   )
+// ), $dictionary: (delimiter: '-'));

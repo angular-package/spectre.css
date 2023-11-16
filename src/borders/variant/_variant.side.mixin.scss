@@ -1,0 +1,66 @@
+// Modules.
+@use '@angular-package/sass/values';
+
+// Functions.
+@use '../borders.class.function';
+
+// Status: DONE
+// The `variant.side()` mixin.
+// @param `$variant`
+// @param `$pseudo-class`
+// @param `$dictionary`
+@mixin side($variant, $pseudo-class: (), $dictionary: null) {
+  @if type-of($variant) == map {
+    @each $class, $side in $variant {
+      @each $side in $side {
+        #{borders.class(values.join(if(&, '&', ()), $class, $side), $pseudo-class, $dictionary)} {
+          @if $side == top {
+            @each $remove in (right, bottom, left) {
+              &:not(#{borders.class($remove, (), $dictionary)}) {
+                border-#{$remove}-width: 0;
+              }
+            }
+          } @else if $side == right {
+            @each $remove in (bottom, left, top) {
+              &:not(#{borders.class(($remove), (), $dictionary)}) {
+                border-#{$remove}-width: 0;
+              }
+            }
+          } @else if $side == bottom {
+            @each $remove in (left, top, right) {
+              &:not(#{borders.class(($remove), (), $dictionary)}) {
+                border-#{$remove}-width: 0;
+              }
+            }
+          }
+          @if $side == left {
+            @each $remove in (top, right, bottom) {
+              &:not(#{borders.class(($remove), (), $dictionary)}) {
+                border-#{$remove}-width: 0;
+              }
+            }
+          } @else if $side == 'x' {
+            @each $remove in (top, bottom) {
+              &:not(#{borders.class(($remove), (), $dictionary)}) {
+                border-#{$remove}-width: 0;
+              }
+            }
+          } @else if $side == 'y' {
+            @each $remove in (right, left) {
+              &:not(#{borders.class(($remove), (), $dictionary)}) {
+                border-#{$remove}-width: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Examples.
+// div {
+//   @include side(((): left top));
+//   @include side((basic: left top));
+//   @include side((primary basic: (left, top)));
+// }

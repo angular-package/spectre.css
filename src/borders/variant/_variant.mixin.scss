@@ -1,0 +1,110 @@
+// Sass.
+@use 'sass:list';
+
+// Variables.
+// @use '../variables/borders.var' as *;
+
+// Functions.
+@use '../borders.class.function' as *;
+
+// Mixins.
+@use '../mixins';
+@use 'variant.color.mixin' as *;
+@use 'variant.radius.mixin' as *;
+@use 'variant.side.mixin' as *;
+@use 'variant.width.mixin' as *;
+
+// @use 'borders.color-variant.mixin' as *;
+// @use 'borders.core.mixin' as *;
+// @use 'borders.radius-variant.mixin' as *;
+// @use 'borders.side-variant.mixin' as *;
+// @use 'borders.width-variant.mixin' as *;
+
+// $class: map.get($border, class),
+// $side: null, // REVIEW: ?
+// $width: map.get($border, variant, width),
+// $style: map.get($border, variant, style),
+// $color: map.get($border, theme) map.get($border, variant, color),
+// $radius: map.get($border, variant, radius),
+// $selector: (),
+// $dictionary: (),
+
+// Status:
+// The `variant.variant()` mixin.
+@mixin variant(
+  $class: null,
+  $side: null,
+  $width: null,
+  $style: null,
+  $color: null,
+  $radius: null,
+  $pseudo-class: (),
+  $dictionary: null
+) {
+  #{class($class, $pseudo-class, $dictionary)} {
+    @include mixins.core($width, null, $style, null, $dictionary);
+    @if $side {
+      @include side($side, $pseudo-class, $dictionary);
+    }
+    @if $width {
+      @include width(((): ($side: $width)), null, false, null, (), $dictionary);
+    }
+    @if $radius {
+      @include radius($radius, null, false, null, (), $dictionary);
+    }
+    @if $color {
+      @include color(
+        ((): $color),
+        // $hue,
+        // $saturation,
+        // $lightness,
+        // $alpha,
+        // $important,
+        // $pseudo-class,
+        $dictionary: $dictionary,
+        // $property,
+        // $function,
+      );
+    }
+
+    // Styles.
+    // @if $style {
+    //   @each $style in $style {
+    //     #{class(append(join('&', $class), $style), $dictionary: $dictionary)} {
+    //       border-style: $style;
+    //     }
+    //   }
+    // }
+
+  }
+}
+
+// Examples.
+@include variant(
+  basic,
+
+  // side
+  // $side: (top, right),
+
+  // width
+  // $width: (medium: medium),
+
+  // style
+  // $style: dotted,
+
+  // color
+  $color: ((top, bottom): (primary: primary dark)),
+
+  // radius
+  // $radius: (start start: (high: high)),
+);
+
+
+// @include variant(
+//   basic primary, top, small,
+//   (
+//     left top primary: (left top: (primary dark) 15%),
+//     primary dark: (primary dark) -15%,
+//     primary light: (primary light) 15%
+//   ),
+// );
