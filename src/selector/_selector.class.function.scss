@@ -1,0 +1,28 @@
+// Sass.
+@use 'sass:map';
+
+// Modules.
+@use '../translator';
+@use '@angular-package/sass/selector';
+
+// Status: DONE
+@function class(
+  $name,
+  $pseudo-class: (),
+  $dictionary: null,
+  $delimiter: map.get(selector.$selector, delimiter),
+  $prefix: map.get(selector.$selector, prefix),
+  $suffix: map.get(selector.$selector, suffix),
+) {
+  @return selector.class(
+    $name,
+    $pseudo-class,
+    if($dictionary, $dictionary, translator.dictionary(class)),
+    $delimiter,
+    $prefix,
+    $suffix,
+  );
+}
+
+// Examples.
+// @debug class(test);
