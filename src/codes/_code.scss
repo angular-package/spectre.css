@@ -1,0 +1,14 @@
+// Variables.
+@use '../variables/core' as *;
+@use 'code.dictionary';
+
+// Modules.
+@use '../color';
+
+// Mixins.
+@use 'mixins';
+
+/*! Spectre.css v#{$version} | codes | color-scheme: #{color.$scheme-color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+@include mixins.base;
+@include mixins.code;

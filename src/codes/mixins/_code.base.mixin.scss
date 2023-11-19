@@ -1,0 +1,26 @@
+// Variables.
+@use '../variables';
+
+// Modules.
+@use '../../color';
+
+// Mixins.
+// @use '../../labels/mixins/label-base.mixin' as *;
+// @use 'code.mixin' as *;
+
+// Status: DONE
+// The `codes.base()` mixin.
+// @param `$color`
+// @param `$background`
+@mixin base(
+  $color: variables.$color,
+  $background: variables.$background
+) {
+  code {
+    // @include label-base; // TODO:
+    @include color.background($background);
+    @include color.color($color);
+
+    font-size: 85%;
+  }
+}

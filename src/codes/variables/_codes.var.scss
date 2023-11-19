@@ -1,0 +1,22 @@
+// Dictionary.
+$dictionary: (
+  class: (
+    // Customize the code name specific words.
+    // 'code': 'code-1',
+    // 'header': 'header-2',
+    // 'body': 'body-3',
+    // 'delimiter': '_'
+  ),
+
+  // Customize the var name specific words.
+  var: (),
+) !default;
+
+// Color.
+$background: (
+  dark: (code, -42.5%),
+  light: (code, 42.5%),
+  normal: (code, 42.5%),
+) !default;
+$class: () !default;
+$color: code !default;

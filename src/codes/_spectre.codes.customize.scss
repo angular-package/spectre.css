@@ -1,0 +1,43 @@
+/* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
+
+// Variables.
+@forward 'variables';
+@use '../variables/core' as *;
+
+// Modules.
+@use '../color/scheme';
+@use '../translator';
+
+// color-scheme
+// $color-scheme: dark light;
+
+$colors: '' !default;
+
+@if $colors != '' {
+  /* Spectre.css module: codes | colors: #{$colors} | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+} @else {
+  /* Spectre.css module: codes | elements | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+}
+
+
+// Dictionary.
+$debug: translator.dictionary-merge(codes, (
+  class: (
+    // 'code': 'code--', // code + modifier --
+    // prefix: spectre,
+    // suffix: '',
+    // separator: '' // Remove separator class name to use BEM naming.
+  )
+));
+
+
+// $code: map.deep-merge($code, (
+//   dictionary: (
+//     class: (
+//       // 'code': 'code--', // code + modifier --
+//       // prefix: spectre,
+//       // suffix: '',
+//       // separator: '' // Remove separator class name to use BEM naming.
+//     )
+//   )
+// ));

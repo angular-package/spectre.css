@@ -1,0 +1,51 @@
+// Variables.
+@use '../variables';
+
+// Modules.
+@use '../../borders';
+@use '../../color';
+@use '../../module';
+@use '../../property';
+@use '../../property/position';
+@use '../../var';
+
+// Mixins.
+// @use '../../borders/mixins/borders.radius.mixins' as border;
+
+// Status: DONE
+// The `codes.code()` mixin.
+// @param `$class`
+// @param `$pseudo-class`
+// @param `$dictionary`
+@mixin code(
+  $class: variables.$class,
+  $pseudo-class: (),
+  $dictionary: module.dictionary(code, true, class, var)
+) {
+  #{module.class(code, $class, $pseudo-class, $dictionary)} {
+    position: relative;
+
+    @include borders.radius;
+    @include color.color(body font);
+
+    &::before {
+      content: attr(data-lang);
+      position: absolute;
+      @include position.top((unit h), $dictionary: $dictionary);
+      @include color.color(gray);
+      @include property.font-size(sm);
+    }
+
+    code {
+      display: block;
+      overflow-x: auto;
+      width: 100%;
+      padding: 1rem;
+
+      @include color.background(bg);
+
+      color: inherit;
+      line-height: 1.5;
+    }
+  }
+}
