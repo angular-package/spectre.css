@@ -1,0 +1,12 @@
+$name: layout !default;
+$dictionary: (
+  class: (
+    layout: $name,
+    container: container,
+    // 'prefix': '',
+    // 'suffix': '',
+    // 'separator': '',
+  ),
+  'var': (),
+) !default;
+$layout: (dictionary: $dictionary) !default;

@@ -1,0 +1,11 @@
+// Variables.
+@use 'variables';
+
+// Modules.
+@forward '../translator';
+@use '../translator';
+
+// Dictionary.
+@if not translator.dictionary-get(layout) {
+  $debug: translator.dictionary-merge(layout, variables.$dictionary);
+}

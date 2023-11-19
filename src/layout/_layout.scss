@@ -1,0 +1,705 @@
+// Sass.
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:string';
+
+// Variables.
+// @use '../variables/core' as *;
+@use '../variables/size.var' as *;
+@use '../variables/layout/column.var' as *;
+@use '../variables/layout/grid.var' as *;
+
+// Functions.
+// column-class // TODO: Use.
+// columns-class // TODO: Use.
+// container-class // TODO: Use.
+
+// Modules.
+@use '../borders';
+@use '../color';
+@use '../selector';
+@use '../property/padding';
+@use '../property/margin';
+
+// Layout
+// .#{$class-prefix}container {
+// #{class('container')} {
+#{selector.class(container)} {
+  width: 100%;
+  @include padding.left((layout spacing true) ());
+  @include padding.right((layout spacing true) ());
+
+  // &.grid-xl {
+  //   max-width: calc(get-var((layout, spacing, false)) * css-var('html-font-size') * 2 + size-var(xl));
+  // }
+
+  // &.grid-lg {
+  //   max-width: calc(get-var((layout, spacing, false)) * css-var('html-font-size') * 2 + size-var(lg));
+  // }
+
+  // &.grid-md {
+  //   max-width: calc(get-var((layout, spacing, false)) * css-var('html-font-size') * 2 + size-var(md));
+  // }
+
+  // &.grid-sm {
+  //   max-width: calc(get-var((layout, spacing, false)) * css-var('html-font-size') * 2 + size-var(sm));
+  // }
+
+  // &.grid-xs {
+  //   max-width: calc(get-var((layout, spacing, false)) * css-var('html-font-size') * 2 + size-var(xs));
+  // }
+
+  @each $variant, $value in map.get($grid, max-width) {
+    #{selector.class(('&' grid $variant))} {
+      max-width: $value;
+    }
+  }
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// // Responsive breakpoint system
+// // .show-xs,
+// // .show-sm,
+// // .show-md,
+// // .show-lg,
+// // .show-xl {
+#{selector.class(show (xs, sm, md, lg, xl))} {
+  display: none !important;
+}
+
+// // Responsive grid system
+// // .cols,
+// // #{class(('cols'))},
+// // .columns {
+// // #{class('columns')} {
+#{selector.class(columns)} { // #{class((('columns',)))} {
+  display: flex;
+  flex-wrap: wrap;
+
+  // @include margin-right(('layout-spacing', true, 0, true)); // unit, adjust, negative
+  @include margin.right(('!' layout spacing true) ());
+
+  // @include margin-left(('layout-spacing', true, 0, true)); // unit, adjust, negative
+  @include margin.left(('!' layout spacing true) ());
+
+  // Column gapless all sides.
+  // &.col-gapless {
+  #{selector.class(('&' column gapless))} {
+    @include margin.margin((unit 0) ());
+
+    & > #{selector.class(column)} {
+      @include padding.padding((unit 0) ());
+    }
+  }
+
+  // Column left and right gapless.
+  #{selector.class(('&' column gapless x))} {
+    @include margin.right((unit 0) ());
+    @include margin.left((unit 0) ());
+
+    // margin-right: 0;
+    // margin-left: 0;
+
+    // & > .column {
+    // & > #{col-class()},
+    & > #{selector.class(column)} {
+      @include padding.right((unit 0) ());
+      @include padding.left((unit 0) ());
+    }
+  }
+
+  // Column top bottom gapless.
+  #{selector.class(('&' column gapless y))} {
+    @include margin.top((unit 0) ());
+    @include margin.bottom((unit 0) ());
+
+    & > #{selector.class(column)} {
+      @include padding.top((unit 0) ());
+      @include padding.bottom((unit 0) ());
+    }
+  }
+
+  // &.col-oneline {
+  #{selector.class(('&' column oneline))} {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+}
+
+// Columns.
+#{selector.class(columns striped)} {
+  > #{selector.class(columns, $pseudo-class: ':not(:nth-of-type(odd))')} {
+    > #{selector.class(column)} {
+      @include color.background(body bg);
+    }
+  }
+  > #{selector.class(columns, $pseudo-class: ':nth-of-type(odd)')} {
+    > #{selector.class(column)} {
+      @include color.background(bg);
+    }
+  }
+}
+
+//
+#{selector.class(columns)} {
+  @include borders.radius;
+
+  // Each column of columns has bottom border.
+  #{selector.class(('&' column border))} {
+    #{selector.class(column)} {
+      @include borders.border($side: bottom);
+    }
+  }
+
+  // Each column of columns is flex.
+  #{selector.class(('&' column flex))} {
+    #{selector.class(column)} {
+      display: flex;
+    }
+  }
+
+  // Each column of columns is grid.
+  #{selector.class(('&' column grid))} {
+    #{selector.class(column)} {
+      &:not(#{selector.class(column hidden)}) {
+        display: grid;
+      }
+    }
+  }
+
+  // Column hidden.
+  > #{selector.class(column hidden)} {
+    display: none;
+  }
+
+  #{selector.class(('&' column hidden))} {
+    > #{selector.class(column)} {
+      display: hidden;
+    }
+  }
+
+  &:hover {
+    > #{selector.class(column hidden)} {
+      display: inherit;
+    }
+  }
+
+  // Columns hover.
+  #{selector.class(('&' columns hover), ':hover')} {
+    cursor: pointer;
+
+    #{selector.class(column)} {
+      @include color.background(bg dark);
+    }
+
+    // #{class(column)} {
+      // @include background(('secondary', ('alpha': 0.9)));
+    // }
+  }
+
+  // Columns active.
+  #{selector.class(('&' column active))} {
+    > #{selector.class(column)} {
+      @include color.background(bg dark, $important: true);
+    }
+  }
+
+  // Align items center.
+  #{selector.class('&' column align items center)} {
+    #{selector.class(column)} {
+      align-items: center;
+    }
+  }
+
+  #{selector.class(('&' column align items start))} {
+    #{selector.class(column)} {
+      align-items: flex-start;
+    }
+  }
+
+  #{selector.class(('&' column align items end))} {
+    #{selector.class(column)} {
+      align-items: flex-end;
+    }
+  }
+
+  #{selector.class(('&' justify content center))} {
+    #{selector.class(column)} {
+      justify-content: flex;
+    }
+  }
+
+  #{selector.class(('&' justify content start))} {
+    #{selector.class(column)} {
+      justify-content: flex-start;
+    }
+  }
+
+  #{selector.class(('&' justify content end))} {
+    #{selector.class(column)} {
+      justify-content: flex-end;
+    }
+  }
+}
+
+// [class*="col-"],
+// #{col-class()},
+// .column {
+#{selector.class(column)} {
+  flex: 1;
+  max-width: 100%;
+
+  // @include padding-right((layout, spacing, true));
+  // @include padding-left((layout, spacing, true));
+  @include padding.padding((layout spacing true) ()); // Column gap, use col-gapless to remove.
+
+  // &.col-12,
+  // &.col-11,
+  // &.col-10,
+  // &.col-9,
+  // &.col-8,
+  // &.col-7,
+  // &.col-6,
+  // &.col-5,
+  // &.col-4,
+  // &.col-3,
+  // &.col-2,
+  // &.col-1,
+  // &.col-auto {
+  #{selector.class('&' column map.keys(map.get($column, width, '')))} {
+    flex: none;
+  }
+}
+
+// .col-12 {
+//   width: 100%;
+// }
+// .col-11 {
+//   width: 91.66666667%;
+// }
+// .col-10 {
+//   width: 83.33333333%;
+// }
+// .col-9 {
+//   width: 75%;
+// }
+// .col-8 {
+//   width: 66.66666667%;
+// }
+// .col-7 {
+//   width: 58.33333333%;
+// }
+// .col-6 {
+//   width: 50%;
+// }
+// .col-5 {
+//   width: 41.66666667%;
+// }
+// .col-4 {
+//   width: 33.33333333%;
+// }
+// .col-3 {
+//   width: 25%;
+// }
+// .col-2 {
+//   width: 16.66666667%;
+// }
+// .col-1 {
+//   width: 8.33333333%;
+// }
+@each $variant, $value in map.get($column, width, '') {
+  #{selector.class(column $variant)} {
+    width: $value;
+  }
+}
+
+// .col-auto {
+// #{class(('col', auto))} {
+#{selector.class(column auto)} {
+  flex: 0 0 auto;
+
+  // width: auto;
+  max-width: none;
+}
+
+// .col-mx-auto {
+// #{class(('col', mx, auto))} {
+#{selector.class(column mx auto)} {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// .col-ml-auto {
+// #{class(('col', 'ml', auto))} {
+#{selector.class(column ml auto)} {
+  margin-left: auto;
+}
+
+// .col-mr-auto {
+// #{class(('col', 'mr', auto))} {
+#{selector.class(column mr auto)} {
+  margin-right: auto;
+}
+
+@media (max-width: map.get($size, xl)) {
+  // .col-xl-12,
+  // .col-xl-11,
+  // .col-xl-10,
+  // .col-xl-9,
+  // .col-xl-8,
+  // .col-xl-7,
+  // .col-xl-6,
+  // .col-xl-5,
+  // .col-xl-4,
+  // .col-xl-3,
+  // .col-xl-2,
+  // .col-xl-1,
+  // .col-xl-auto {
+  #{selector.class(column xl map.keys(map.get($column, width, xl)))} {
+    flex: none;
+  }
+
+  // .col-xl-12 {
+  //   width: 100%;
+  // }
+  // .col-xl-11 {
+  //   width: 91.66666667%;
+  // }
+  // .col-xl-10 {
+  //   width: 83.33333333%;
+  // }
+  // .col-xl-9 {
+  //   width: 75%;
+  // }
+  // .col-xl-8 {
+  //   width: 66.66666667%;
+  // }
+  // .col-xl-7 {
+  //   width: 58.33333333%;
+  // }
+  // .col-xl-6 {
+  //   width: 50%;
+  // }
+  // .col-xl-5 {
+  //   width: 41.66666667%;
+  // }
+  // .col-xl-4 {
+  //   width: 33.33333333%;
+  // }
+  // .col-xl-3 {
+  //   width: 25%;
+  // }
+  // .col-xl-2 {
+  //   width: 16.66666667%;
+  // }
+  // .col-xl-1 {
+  //   width: 8.33333333%;
+  // }
+  // .col-xl-auto {
+  //   width: auto;
+  // }
+  @each $variant, $value in map.get($column, width, xl) {
+    // #{class(('col', xl, $variant))} {
+    #{selector.class(column xl $variant)} {
+      width: $value;
+    }
+  }
+
+  .hide-xl {
+    display: none !important;
+  }
+
+  .show-xl {
+    display: block !important;
+  }
+}
+@media (max-width: map.get($size, lg)) {
+  // .col-lg-12,
+  // .col-lg-11,
+  // .col-lg-10,
+  // .col-lg-9,
+  // .col-lg-8,
+  // .col-lg-7,
+  // .col-lg-6,
+  // .col-lg-5,
+  // .col-lg-4,
+  // .col-lg-3,
+  // .col-lg-2,
+  // .col-lg-1,
+  // .col-lg-auto {
+  #{selector.class(column lg map.keys(map.get($column, width, lg)))} {
+    flex: none;
+  }
+
+  // .col-lg-12 {
+  //   width: 100%;
+  // }
+  // .col-lg-11 {
+  //   width: 91.66666667%;
+  // }
+  // .col-lg-10 {
+  //   width: 83.33333333%;
+  // }
+  // .col-lg-9 {
+  //   width: 75%;
+  // }
+  // .col-lg-8 {
+  //   width: 66.66666667%;
+  // }
+  // .col-lg-7 {
+  //   width: 58.33333333%;
+  // }
+  // .col-lg-6 {
+  //   width: 50%;
+  // }
+  // .col-lg-5 {
+  //   width: 41.66666667%;
+  // }
+  // .col-lg-4 {
+  //   width: 33.33333333%;
+  // }
+  // .col-lg-3 {
+  //   width: 25%;
+  // }
+  // .col-lg-2 {
+  //   width: 16.66666667%;
+  // }
+  // .col-lg-1 {
+  //   width: 8.33333333%;
+  // }
+  // .col-lg-auto {
+  //   width: auto;
+  // }
+  @each $variant, $value in map.get($column, width, lg) {
+    // #{class(('col', lg, $variant))} {
+    #{selector.class(column lg $variant)} {
+      width: $value;
+    }
+  }
+
+  .hide-lg {
+    display: none !important;
+  }
+
+  .show-lg {
+    display: block !important;
+  }
+}
+@media (max-width: map.get($size, md)) {
+  // .col-md-12,
+  // .col-md-11,
+  // .col-md-10,
+  // .col-md-9,
+  // .col-md-8,
+  // .col-md-7,
+  // .col-md-6,
+  // .col-md-5,
+  // .col-md-4,
+  // .col-md-3,
+  // .col-md-2,
+  // .col-md-1,
+  // .col-md-auto {
+  #{selector.class(column md map.keys(map.get($column, width, md)))} {
+    flex: none;
+  }
+
+  // .col-md-12 {
+  //   width: 100%;
+  // }
+  // .col-md-11 {
+  //   width: 91.66666667%;
+  // }
+  // .col-md-10 {
+  //   width: 83.33333333%;
+  // }
+  // .col-md-9 {
+  //   width: 75%;
+  // }
+  // .col-md-8 {
+  //   width: 66.66666667%;
+  // }
+  // .col-md-7 {
+  //   width: 58.33333333%;
+  // }
+  // .col-md-6 {
+  //   width: 50%;
+  // }
+  // .col-md-5 {
+  //   width: 41.66666667%;
+  // }
+  // .col-md-4 {
+  //   width: 33.33333333%;
+  // }
+  // .col-md-3 {
+  //   width: 25%;
+  // }
+  // .col-md-2 {
+  //   width: 16.66666667%;
+  // }
+  // .col-md-1 {
+  //   width: 8.33333333%;
+  // }
+  // .col-md-auto {
+  //   width: auto;
+  // }
+  @each $variant, $value in map.get($column, width, md) {
+    // #{class(('col', md, $variant))} {
+    #{selector.class(column md $variant)} {
+      width: $value;
+    }
+  }
+
+  .hide-md {
+    display: none !important;
+  }
+
+  .show-md {
+    display: block !important;
+  }
+}
+@media (max-width: map.get($size, sm)) {
+  // .col-sm-12,
+  // .col-sm-11,
+  // .col-sm-10,
+  // .col-sm-9,
+  // .col-sm-8,
+  // .col-sm-7,
+  // .col-sm-6,
+  // .col-sm-5,
+  // .col-sm-4,
+  // .col-sm-3,
+  // .col-sm-2,
+  // .col-sm-1,
+  // .col-sm-auto {
+  #{selector.class(column sm map.keys(map.get($column, width, sm)))} {
+    flex: none;
+  }
+
+  // .col-sm-12 {
+  //   width: 100%;
+  // }
+  // .col-sm-11 {
+  //   width: 91.66666667%;
+  // }
+  // .col-sm-10 {
+  //   width: 83.33333333%;
+  // }
+  // .col-sm-9 {
+  //   width: 75%;
+  // }
+  // .col-sm-8 {
+  //   width: 66.66666667%;
+  // }
+  // .col-sm-7 {
+  //   width: 58.33333333%;
+  // }
+  // .col-sm-6 {
+  //   width: 50%;
+  // }
+  // .col-sm-5 {
+  //   width: 41.66666667%;
+  // }
+  // .col-sm-4 {
+  //   width: 33.33333333%;
+  // }
+  // .col-sm-3 {
+  //   width: 25%;
+  // }
+  // .col-sm-2 {
+  //   width: 16.66666667%;
+  // }
+  // .col-sm-1 {
+  //   width: 8.33333333%;
+  // }
+  // .col-sm-auto {
+  //   width: auto;
+  // }
+  @each $variant, $value in map.get($column, width, sm) {
+    // #{class(('col', sm, $variant))} {
+    #{selector.class(column sm $variant)} {
+      width: $value;
+    }
+  }
+
+  .hide-sm {
+    display: none !important;
+  }
+
+  .show-sm {
+    display: block !important;
+  }
+}
+@media (max-width: map.get($size, xs)) {
+  // .col-xs-12,
+  // .col-xs-11,
+  // .col-xs-10,
+  // .col-xs-9,
+  // .col-xs-8,
+  // .col-xs-7,
+  // .col-xs-6,
+  // .col-xs-5,
+  // .col-xs-4,
+  // .col-xs-3,
+  // .col-xs-2,
+  // .col-xs-1,
+  // .col-xs-auto {
+  #{selector.class(column xs map.keys(map.get($column, width, xs)))} {
+    flex: none;
+  }
+
+  // .col-xs-12 {
+  //   width: 100%;
+  // }
+  // .col-xs-11 {
+  //   width: 91.66666667%;
+  // }
+  // .col-xs-10 {
+  //   width: 83.33333333%;
+  // }
+  // .col-xs-9 {
+  //   width: 75%;
+  // }
+  // .col-xs-8 {
+  //   width: 66.66666667%;
+  // }
+  // .col-xs-7 {
+  //   width: 58.33333333%;
+  // }
+  // .col-xs-6 {
+  //   width: 50%;
+  // }
+  // .col-xs-5 {
+  //   width: 41.66666667%;
+  // }
+  // .col-xs-4 {
+  //   width: 33.33333333%;
+  // }
+  // .col-xs-3 {
+  //   width: 25%;
+  // }
+  // .col-xs-2 {
+  //   width: 16.66666667%;
+  // }
+  // .col-xs-1 {
+  //   width: 8.33333333%;
+  // }
+  // .col-xs-auto {
+  //   width: auto;
+  // }
+  @each $variant, $value in map.get($column, width, xs) {
+    // #{class(('col', xs, $variant))} {
+    #{selector.class(column xs $variant)} {
+      width: $value;
+    }
+  }
+
+  .hide-xs {
+    display: none !important;
+  }
+
+  .show-xs {
+    display: block !important;
+  }
+}

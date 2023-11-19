@@ -1,0 +1,121 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../variables' as *;
+
+// Modules.
+@use '../selector';
+
+// Columns order
+$order-name: order !default;
+
+@for $i from 1 through $columns-count {
+  // .order-#{$i} { -ms-flex-order: $i; order: $i; }
+  #{selector.class(($order-name, #{$i}))} {
+    order: $i;
+    -ms-flex-order: $i;
+  }
+}
+
+// @media (max-width:($size-xs)) {
+@media (max-width:(map.get($size, 'xs'))) {
+  @for $i from 1 through $columns-count {
+    // .order-#{$i} { -ms-flex-order: $i; order: $i; }
+    #{selector.class(($order-name, #{$i}))} {
+      order: $i;
+      -ms-flex-order: $i;
+    }
+
+    // .order-xs-#{$i} {
+    #{selector.class(($order-name, 'xs', #{$i}))} {
+      order: #{$i};
+      -ms-flex-order: #{$i};
+    }
+  }
+}
+
+// @media (max-width:($size-sm)) {
+@media (max-width:(map.get($size, 'sm'))) {
+  @for $i from 1 through $columns-count {
+    // .order-#{$i} { -ms-flex-order: $i; order: $i; }
+    #{selector.class(($order-name, #{$i}))} {
+      order: $i;
+      -ms-flex-order: $i;
+    }
+
+    // .order-sm-#{$i} {
+    #{selector.class(($order-name, 'sm', #{$i}))} {
+      order: #{$i};
+      -ms-flex-order: #{$i};
+    }
+  }
+}
+
+// @media (max-width:($size-md)) {
+@media (max-width:(map.get($size, 'md'))) {
+  @for $i from 1 through $columns-count {
+    // .order-#{$i} { -ms-flex-order: $i; order: $i; }
+    #{selector.class(($order-name, #{$i}))} {
+      order: $i;
+      -ms-flex-order: $i;
+    }
+
+    // .order-md-#{$i} {
+    #{selector.class(($order-name, 'md', #{$i}))} {
+      order: #{$i};
+      -ms-flex-order: #{$i};
+    }
+  }
+}
+
+// @media (max-width:($size-lg)) {
+@media (max-width:(map.get($size, 'lg'))) {
+  @for $i from 1 through $columns-count {
+    // .order-#{$i} { -ms-flex-order: $i; order: $i; }
+    #{selector.class(($order-name, #{$i}))} {
+      order: $i;
+      -ms-flex-order: $i;
+    }
+
+    // .order-lg-#{$i} {
+    #{selector.class(($order-name, 'lg', #{$i}))} {
+      order: #{$i};
+      -ms-flex-order: #{$i};
+    }
+  }
+}
+
+// @media (max-width:($size-xl)) {
+@media (max-width:(map.get($size, 'xl'))) {
+  @for $i from 1 through $columns-count {
+    // .order-#{$i} { -ms-flex-order: $i; order: $i; }
+    #{selector.class(($order-name, #{$i}))} {
+      order: $i;
+      -ms-flex-order: $i;
+    }
+
+    // .order-xl-#{$i} {
+    #{selector.class(($order-name, 'xl', #{$i}))} {
+      order: #{$i};
+      -ms-flex-order: #{$i};
+    }
+  }
+}
+
+// @media (max-width:($size-2x)) {
+@media (max-width:(map.get($size, '2x'))) {
+  @for $i from 1 through $columns-count {
+    // .order-#{$i} { -ms-flex-order: $i; order: $i; }
+    #{selector.class(($order-name, #{$i}))} {
+      order: $i;
+      -ms-flex-order: $i;
+    }
+
+    // .order-2x-#{$i} {
+    #{selector.class(($order-name, '2x', #{$i}))} {
+      order: #{$i};
+      -ms-flex-order: #{$i};
+    }
+  }
+}
