@@ -2,3 +2,6 @@
 @import 'css-variables/normal.theme.min.css';
 /*! Spectre.css v1 0-beta | CSS imports | color-scheme: normal | MIT License | github.com/angular-package/spectre.css */
 @import 'spectre.core.min.css';
+@import 'codes/spectre.codes.min.css';
+@import 'layout/spectre.layout.min.css';
+@import 'borders/spectre.borders.min.css';

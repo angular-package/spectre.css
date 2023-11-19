@@ -1,0 +1,36 @@
+/* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
+/* Spectre.css module: codes | elements | color-scheme: normal | MIT License | github.com/angular-package/spectre.css */
+:root {
+  --s-border-radius-md: var(--s-unit-h);
+  --s-border-width-md: var(--s-unit-o);
+  --s-border-width-lg: var(--s-unit-h);
+}
+
+/*! Spectre.css v0 0.1-alpha | codes | color-scheme: normal | MIT License | github.com/angular-package/spectre.css */
+code {
+  background: hsla(var(--s-code-color-h), var(--s-code-color-s), calc(var(--s-code-color-l) + 42.5%), var(--s-code-color-a));
+  color: var(--s-code-color);
+  font-size: 85%;
+}
+
+.s-code {
+  position: relative;
+  border-radius: var(--s-border-radius-md);
+  color: var(--s-body-font-color);
+}
+.s-code::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: var(--s-unit-h);
+  color: var(--s-gray-color);
+  font-size: var(--s-font-size-sm);
+}
+.s-code code {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+  padding: 1rem;
+  background: var(--s-bg-color);
+  color: inherit;
+  line-height: 1.5;
+}
