@@ -1,0 +1,14 @@
+// Modules.
+@use '../color/scheme';
+@use '../property';
+
+/*! Spectre.css: overflow | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+@include property.class-variant((
+  overflow: (
+    (x, y): (
+      auto: auto,
+      hidden: hidden
+    ),
+  )
+));

@@ -1,0 +1,80 @@
+// Variables.
+@use '../variables/core' as *;
+@use '../variables/display' as *;
+
+// Mixins.
+@use '../mixins/hide-scrollbar.mixin' as *;
+
+// Modules.
+@use '../color/scheme';
+@use '../selector';
+
+// @use '../text/functions/text-class.function' as *;
+
+/*! Spectre.css: display | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+@if type-of($display) == map {
+  @each $class, $value in $display {
+    #{selector.class(join(display $value))} {
+      display: #{$value};
+    }
+  }
+}
+
+@if type-of($visibility) == map {
+  @each $class, $value in $visibility {
+    #{selector.class(join(visibility $value))} {
+      visibility: #{$value};
+    }
+  }
+}
+
+// Width.
+#{selector.class(width 100 vw)} {
+  width: 100vw;
+}
+#{selector.class(width fit content)} {
+  width: fit-content;
+}
+#{selector.class(width 100)} {
+  width: 100%;
+}
+
+// Height.
+#{selector.class(height 100 vh)} {
+  height: 100vh;
+}
+#{selector.class(height fit content)} {
+  height: fit-content;
+}
+#{selector.class(height 100)} {
+  height: 100%;
+}
+
+// TODO
+// // .text-hide {
+// #{text-class('hide')} {
+//   border: 0;
+//   background: transparent;
+//   color: transparent;
+//   font-size: 0;
+//   line-height: 0;
+//   text-shadow: none;
+// }
+
+// // .text-assistive {
+// #{text-class('assistive')} {
+//   position: absolute;
+//   overflow: hidden;
+//   clip: rect(0, 0, 0, 0);
+//   width: 1px;
+//   height: 1px;
+//   margin: -1px;
+//   padding: 0;
+//   border: 0;
+// }
+
+// .hide-scrollbar {
+#{selector.class(hide scrollbar)} {
+  // @include hide-scrollbar; // TODO
+}

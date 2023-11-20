@@ -1,0 +1,17 @@
+// Variables.
+@use '../variables/core' as *;
+@use '../variables/cursor.var' as *;
+
+// Modules.
+@use '../color/scheme';
+@use '../selector';
+
+/*! Spectre.css: cursor | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+@if type-of($cursor) {
+  @each $class, $cursor in $cursor{
+    #{selector.class(join(cursor, $class))} {
+      cursor: #{$cursor};
+    }
+  }
+}

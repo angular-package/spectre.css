@@ -1,0 +1,21 @@
+// Variables.
+@use '../variables/blur.var' as *;
+
+// Modules.
+@use '../color/scheme';
+@use '../mixins';
+@use '../selector';
+
+/*! Spectre.css: blur | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+@if type-of($blur) == map {
+  #{selector.class(blur)} {
+    &[class*="#{selector.class(blur)}-"] {
+      @each $level, $value in $blur {
+        &[class*=#{$level}] {
+          @include mixins.blur($level);
+        }
+      }
+    }
+  }
+}

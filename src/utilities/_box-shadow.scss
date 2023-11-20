@@ -1,0 +1,20 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../variables/box-shadow.var' as *;
+
+// Modules.
+@use '../color/scheme';
+@use '../property/box-shadow';
+@use '../selector';
+
+/*! Spectre.css: box-shadow | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+@if type-of($box-shadow) == map {
+  @each $class, $side in map.get($box-shadow, side) {
+    #{selector.class(join(box shadow, $class))} {
+      @include box-shadow.side($side);
+    }
+  }
+}

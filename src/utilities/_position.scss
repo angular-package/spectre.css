@@ -1,0 +1,112 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../variables/unit-size.var' as *;
+@use '../variables/position' as *;
+
+// Mixins.
+@use '../mixins/clearfix.mixin' as *;
+
+// Modules.
+@use '../class';
+@use '../color/scheme';
+@use '../property';
+@use '../selector';
+@use '../variant';
+@use '../var';
+
+$float: ('flex': 'flex') !default;
+
+// : ('position': 'p') !default;
+
+ // TODO: Add to docs.
+
+/*! Spectre.css: position | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+// .clearfix {
+#{selector.class(clearfix)} {
+  @include clearfix;
+}
+
+/*! Spectre.css: position | float | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+@include property.class-variant((float: variant.create($float)));
+
+/*! Spectre.css: position | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+@include property.class-variant((position: variant.create($position)));
+
+// .p-centered {
+// #{class(position centered)} {
+//   display: block;
+//   float: none;
+//   margin-right: auto;
+//   margin-left: auto;
+// }
+
+/*! Spectre.css: position | flex | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+// .flex-centered {
+// #{class(flex centered)} {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// Flex direction.
+@include property.class-variant((flex-direction: variant.create(map.get($flex, flex-direction))));
+
+/*! Spectre.css: position | align-items | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+// Align items.
+@include property.class-variant($align, $modifier: (property: (middle: ())));
+
+/*! Spectre.css: position | justify-content | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+// Justify content.
+@include property.class-variant($justify, $modifier: (property: (middle: ())));
+
+
+// Remove from the unit size.
+$-unit-size: map.remove($unit-size, rem);
+
+// Sides top, right, bottom, left.
+@if type-of($-unit-size) == map {
+  /*! Spectre.css: horizontal-offset | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+  @each $key, $value in $-unit-size {
+    @include property.position-right(($key: unit #{$key}));
+    @include property.position-left(($key: unit #{$key}));
+  }
+
+  /*! Spectre.css: vertical-offset | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+  @each $key, $value in $-unit-size {
+    @include property.position-top(($key: unit #{$key}));
+    @include property.position-bottom(($key: unit #{$key}));
+  }
+}
+
+// Spacing. // REVIEW: Add to docs.
+@if type-of($-unit-size) == map {
+  /*! Spectre.css: margin | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+  @each $key, $value in $-unit-size {
+    @include property.margin-variant(($key: (unit #{$key}) ()));
+  }
+
+  /*! Spectre.css: padding | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+  @each $key, $value in $-unit-size {
+    @include property.padding-variant(($key: (unit #{$key}) ()));
+  }
+}
+
+// Gap. // TODO: Add to docs.
+@if type-of($-unit-size) == map {
+  /*! Spectre.css: position | gap | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+  @each $key, $value in $-unit-size {
+    #{selector.class(gap #{$key})} {
+      gap: var.unit-var(#{$key});
+    }
+  }
+}

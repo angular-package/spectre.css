@@ -1,0 +1,12 @@
+// Variables.
+@use '../variables/z-index.var' as *;
+
+// Modules.
+@use '../color/scheme';
+@use '../property';
+
+/*! Spectre.css: z-index | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+@if type-of($z-index) == map {
+  @include property.z-index($z-index);
+}

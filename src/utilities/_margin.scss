@@ -1,0 +1,60 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../variables/core' as *;
+
+@use '../variables/unit-size.var' as *;
+@use '../variables/position' as *;
+
+// Functions.
+@use '../class/class.content.mixin' as *;
+@use '../selector/selector.class.function' as *;
+@use '../var/functions/var.unit-var.function' as *;
+
+// Mixins.
+@use '../mixins/margin';
+@use '../mixins/padding';
+
+// Remove from the unit size.
+$-unit-size: map.remove($unit-size, rem);
+
+// Sides top, right, bottom, left.
+@if type-of($-unit-size) == map {
+  /*! Spectre.css: horizontal-offset | utility | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+  @each $key, $value in $-unit-size {
+    @include position.right(($key: unit #{$key}));
+    @include position.left(($key: unit #{$key}));
+  }
+
+  /*! Spectre.css: vertical-offset | utility | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+  @each $key, $value in $-unit-size {
+    @include position.top(($key: unit #{$key}));
+    @include position.bottom(($key: unit #{$key}));
+  }
+}
+
+// Spacing. // REVIEW: Add to docs.
+@if type-of($-unit-size) == map {
+  /*! Spectre.css: margin | utility | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+  @each $key, $value in $-unit-size {
+    @include margin-variant($key, ('unit', #{$key}));
+  }
+
+  /*! Spectre.css: padding | utility | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+  @each $key, $value in $-unit-size {
+    @include padding-variant($key, ('unit', #{$key}));
+  }
+}
+
+// Gap. // TODO: Add to docs.
+// @if type-of($-unit-size) == map {
+//   /*! Spectre.css: position | gap | utility | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+//   @each $key, $value in $-unit-size {
+//     #{class(('gap', '#{$key}'))} {
+//       gap: unit-var('#{$key}');
+//     }
+//   }
+// }
