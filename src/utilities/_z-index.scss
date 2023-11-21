@@ -5,7 +5,7 @@
 @use '../color/scheme';
 @use '../property';
 
-/*! Spectre.css: z-index | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/*! Spectre.css: z-index | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 @if type-of($z-index) == map {
   @include property.z-index($z-index);

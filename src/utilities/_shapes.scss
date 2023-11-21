@@ -6,7 +6,7 @@
 @use '../color/scheme';
 @use '../selector';
 
-/*! Spectre.css: shapes | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/*! Spectre.css: shapes | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 #{selector.class(shape rounded)} {
   @include borders.radius;

@@ -22,18 +22,18 @@ $float: ('flex': 'flex') !default;
 
  // TODO: Add to docs.
 
-/*! Spectre.css: position | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/*! Spectre.css: position | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 // .clearfix {
 #{selector.class(clearfix)} {
   @include clearfix;
 }
 
-/*! Spectre.css: position | float | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/*! Spectre.css: position | float | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 @include property.class-variant((float: variant.create($float)));
 
-/*! Spectre.css: position | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/*! Spectre.css: position | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 @include property.class-variant((position: variant.create($position)));
 
@@ -45,7 +45,7 @@ $float: ('flex': 'flex') !default;
 //   margin-left: auto;
 // }
 
-/*! Spectre.css: position | flex | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/*! Spectre.css: position | flex | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 // .flex-centered {
 // #{class(flex centered)} {
@@ -57,12 +57,12 @@ $float: ('flex': 'flex') !default;
 // Flex direction.
 @include property.class-variant((flex-direction: variant.create(map.get($flex, flex-direction))));
 
-/*! Spectre.css: position | align-items | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/*! Spectre.css: position | align-items | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 // Align items.
 @include property.class-variant($align, $modifier: (property: (middle: ())));
 
-/*! Spectre.css: position | justify-content | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/*! Spectre.css: position | justify-content | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 // Justify content.
 @include property.class-variant($justify, $modifier: (property: (middle: ())));
@@ -73,14 +73,14 @@ $-unit-size: map.remove($unit-size, rem);
 
 // Sides top, right, bottom, left.
 @if type-of($-unit-size) == map {
-  /*! Spectre.css: horizontal-offset | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+  /*! Spectre.css: horizontal-offset | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
   @each $key, $value in $-unit-size {
     @include property.position-right(($key: unit #{$key}));
     @include property.position-left(($key: unit #{$key}));
   }
 
-  /*! Spectre.css: vertical-offset | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+  /*! Spectre.css: vertical-offset | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
   @each $key, $value in $-unit-size {
     @include property.position-top(($key: unit #{$key}));
@@ -90,12 +90,12 @@ $-unit-size: map.remove($unit-size, rem);
 
 // Spacing. // REVIEW: Add to docs.
 @if type-of($-unit-size) == map {
-  /*! Spectre.css: margin | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+  /*! Spectre.css: margin | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
   @each $key, $value in $-unit-size {
     @include property.margin-variant(($key: (unit #{$key}) ()));
   }
 
-  /*! Spectre.css: padding | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+  /*! Spectre.css: padding | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
   @each $key, $value in $-unit-size {
     @include property.padding-variant(($key: (unit #{$key}) ()));
   }
@@ -103,7 +103,7 @@ $-unit-size: map.remove($unit-size, rem);
 
 // Gap. // TODO: Add to docs.
 @if type-of($-unit-size) == map {
-  /*! Spectre.css: position | gap | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+  /*! Spectre.css: position | gap | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
   @each $key, $value in $-unit-size {
     #{selector.class(gap #{$key})} {
       gap: var.unit-var(#{$key});

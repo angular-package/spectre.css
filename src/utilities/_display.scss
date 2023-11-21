@@ -11,7 +11,7 @@
 
 // @use '../text/functions/text-class.function' as *;
 
-/*! Spectre.css: display | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/*! Spectre.css: display | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 @if type-of($display) == map {
   @each $class, $value in $display {

@@ -9,7 +9,7 @@
 @use '../property/box-shadow';
 @use '../selector';
 
-/*! Spectre.css: box-shadow | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/*! Spectre.css: box-shadow | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 @if type-of($box-shadow) == map {
   @each $class, $side in map.get($box-shadow, side) {

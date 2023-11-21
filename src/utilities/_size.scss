@@ -1,0 +1,53 @@
+// Variables.
+@use '../variables/size' as *;
+
+// Modules.
+@use '../color/scheme';
+@use '../selector';
+
+/*! Spectre.css: size | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+// Width.
+@if type-of($width) == map {
+  @each $class, $value in $width {
+    #{selector.class(join(width, $class))} {
+      width: #{$value};
+    }
+  }
+}
+
+// Height.
+@if type-of($height) == map {
+  @each $class, $value in $height {
+    #{selector.class(join(height, $class))} {
+      height: #{$value};
+    }
+  }
+}
+
+// // .text-hide {
+// #{text-class(hide)} {
+//   border: 0;
+//   background: transparent;
+//   color: transparent;
+//   font-size: 0;
+//   line-height: 0;
+//   text-shadow: none;
+// }
+
+// // .text-assistive {
+// #{text-class(assistive)} {
+//   position: absolute;
+//   overflow: hidden;
+//   clip: rect(0, 0, 0, 0);
+//   width: 1px;
+//   height: 1px;
+//   margin: -1px;
+//   padding: 0;
+//   border: 0;
+// }
+
+// .hide-scrollbar {
+#{selector.class(hide scrollbar)} {
+  // @include hide-scrollbar; // TODO
+}

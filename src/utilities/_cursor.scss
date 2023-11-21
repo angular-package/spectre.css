@@ -6,7 +6,7 @@
 @use '../color/scheme';
 @use '../selector';
 
-/*! Spectre.css: cursor | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/*! Spectre.css: cursor | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 @if type-of($cursor) {
   @each $class, $cursor in $cursor{

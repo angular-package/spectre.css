@@ -6,7 +6,7 @@
 @use '../mixins';
 @use '../selector';
 
-/*! Spectre.css: blur | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/*! Spectre.css: blur | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 @if type-of($blur) == map {
   #{selector.class(blur)} {

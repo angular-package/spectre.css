@@ -21,14 +21,14 @@ $-unit-size: map.remove($unit-size, rem);
 
 // Sides top, right, bottom, left.
 @if type-of($-unit-size) == map {
-  /*! Spectre.css: horizontal-offset | utility | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+  /*! Spectre.css: horizontal-offset | utilities | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
   @each $key, $value in $-unit-size {
     @include position.right(($key: unit #{$key}));
     @include position.left(($key: unit #{$key}));
   }
 
-  /*! Spectre.css: vertical-offset | utility | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+  /*! Spectre.css: vertical-offset | utilities | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
   @each $key, $value in $-unit-size {
     @include position.top(($key: unit #{$key}));
@@ -38,12 +38,12 @@ $-unit-size: map.remove($unit-size, rem);
 
 // Spacing. // REVIEW: Add to docs.
 @if type-of($-unit-size) == map {
-  /*! Spectre.css: margin | utility | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+  /*! Spectre.css: margin | utilities | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
   @each $key, $value in $-unit-size {
     @include margin-variant($key, ('unit', #{$key}));
   }
 
-  /*! Spectre.css: padding | utility | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+  /*! Spectre.css: padding | utilities | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
   @each $key, $value in $-unit-size {
     @include padding-variant($key, ('unit', #{$key}));
   }
@@ -51,7 +51,7 @@ $-unit-size: map.remove($unit-size, rem);
 
 // Gap. // TODO: Add to docs.
 // @if type-of($-unit-size) == map {
-//   /*! Spectre.css: position | gap | utility | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+//   /*! Spectre.css: position | gap | utilities | color-scheme: #{$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 //   @each $key, $value in $-unit-size {
 //     #{class(('gap', '#{$key}'))} {
 //       gap: unit-var('#{$key}');

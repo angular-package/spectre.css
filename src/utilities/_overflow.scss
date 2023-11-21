@@ -2,7 +2,7 @@
 @use '../color/scheme';
 @use '../property';
 
-/*! Spectre.css: overflow | utility | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+/*! Spectre.css: overflow | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 @include property.class-variant((
   overflow: (
