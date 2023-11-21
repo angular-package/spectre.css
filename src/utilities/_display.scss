@@ -1,5 +1,4 @@
 // Variables.
-@use '../variables/core' as *;
 @use '../variables/display' as *;
 
 // Mixins.
@@ -7,6 +6,7 @@
 
 // Modules.
 @use '../color/scheme';
+@use '../property';
 @use '../selector';
 
 // @use '../text/functions/text-class.function' as *;
@@ -14,19 +14,11 @@
 /*! Spectre.css: display | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
 
 @if type-of($display) == map {
-  @each $class, $value in $display {
-    #{selector.class(join(display $value))} {
-      display: #{$value};
-    }
-  }
+  @include property.class-variant((display: $display));
 }
 
 @if type-of($visibility) == map {
-  @each $class, $value in $visibility {
-    #{selector.class(join(visibility $value))} {
-      visibility: #{$value};
-    }
-  }
+  @include property.class-variant((visibility: $visibility));
 }
 
 // Width.
@@ -76,5 +68,5 @@
 
 // .hide-scrollbar {
 #{selector.class(hide scrollbar)} {
-  // @include hide-scrollbar; // TODO
+  @include hide-scrollbar;
 }
