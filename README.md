@@ -16,7 +16,7 @@ The angular-package supports the development process of [angular](https://angula
 
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 
-Modified Spectre.css - a lightweight, responsive, and modern CSS framework originally designed by [Yan Zhu](https://twitter.com/picturepan2).
+Developer version - Modified Spectre.css - a lightweight, responsive, and modern CSS framework originally designed by [Yan Zhu](https://twitter.com/picturepan2).
 
 [![Gitter][gitter-badge]][gitter-chat]
 [![Discord][discord-badge]][discord-channel]
@@ -30,13 +30,13 @@ Modified Spectre.css - a lightweight, responsive, and modern CSS framework origi
 [![GitHub stars][spectre.css-badge-stars]][spectre.css-stars]
 [![GitHub license][spectre.css-badge-license]][spectre.css-license]
 
-* Lightweight (~**30kB** core+min+zipped) starting point for your projects
+* Lightweight
 * Flexbox-based, responsive and mobile-friendly layout
 * Elegantly designed and developed elements and components
 
 Spectre is a side project based on years of CSS development work on a large web service project. Spectre only includes modern base styles, responsive layout system, CSS components and utilities, and it can be modified for your project with Sass/Scss compiler.  
 
-Spectre.css is completely free to use. If you enjoy it, please consider [donating via Paypal](https://www.paypal.me/picturepan2) or [via Patreon](https://www.patreon.com/spectrecss) for the [Yan Zhu](https://twitter.com/picturepan2),
+Spectre.dev is completely free to use. If you enjoy it, please consider [donating via Paypal](https://www.paypal.me/picturepan2) or [via Patreon](https://www.patreon.com/spectrecss) for the [Yan Zhu](https://twitter.com/picturepan2),
 and consider donating via [`fiat`](https://spectrecss.angular-package.dev/donate/usd-fiat) or [`cryptocurrency`](https://spectrecss.angular-package.dev/donate/thb-cryptocurrency) the [`@angular-package`](https://github.com/sponsors/angular-package) for further development. ♥  
 
 > Feel free to submit a pull request. Help is always appreciated.
@@ -47,10 +47,6 @@ and consider donating via [`fiat`](https://spectrecss.angular-package.dev/donate
 
 * [Skeleton](#skeleton)
 * [Code scaffolding](#code-scaffolding)
-* [Getting started](#getting-started)
-* [Demonstration](#demonstration)
-* [Documentation and examples](#documentation-and-examples)
-* [Browser support](#browser-support)
 * [Changelog](#changelog)
 * [Git](#git)
   * [Commit](#commit)
@@ -83,93 +79,6 @@ After building your library with `ng build spectre.css`, go to the dist folder `
 ### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-<br>
-
-## Documentation and examples
-
-### Elements
-
-* [Buttons](https://angular-package.github.io/spectre.css/elements/buttons.html)
-* [Code](https://angular-package.github.io/spectre.css/elements/code.html)
-* [Forms](https://angular-package.github.io/spectre.css/elements/forms.html)
-* [Icons](https://picturepan2.github.io/icons.css) - CSS ONLY
-* [Labels](https://angular-package.github.io/spectre.css/elements/labels.html)
-* [Media](https://angular-package.github.io/spectre.css/elements/media.html)
-* [Tables](https://angular-package.github.io/spectre.css/elements/tables.html)
-* [Typography](https://angular-package.github.io/spectre.css/elements/typography.html)
-
-### Layout
-
-* [Flexbox grid](https://angular-package.github.io/spectre.css/layout/grid.html)
-* [Footer](https://angular-package.github.io/spectre.css/layout/footer.html)
-* [Hero](https://angular-package.github.io/spectre.css/layout/hero.html)
-* [Navbar](https://angular-package.github.io/spectre.css/layout/navbar.html)
-* [Responsive](https://angular-package.github.io/spectre.css/layout/responsive.html)
-
-### Components
-
-* [Accordions](https://angular-package.github.io/spectre.css/components/accordions.html)
-* [Avatars](https://angular-package.github.io/spectre.css/components/avatars.html)
-* [Badges](https://angular-package.github.io/spectre.css/components/badges.html)
-* [Bars](https://angular-package.github.io/spectre.css/components/bars.html)
-* [Breadcrumbs](https://angular-package.github.io/spectre.css/components/breadcrumbs.html)
-* [Cards](https://angular-package.github.io/spectre.css/components/cards.html)
-* [Chips](https://angular-package.github.io/spectre.css/components/chips.html)
-* [Empty states](https://angular-package.github.io/spectre.css/components/empty.html)
-* [Menu](https://angular-package.github.io/spectre.css/components/menu.html)
-* [Modals](https://angular-package.github.io/spectre.css/components/modals.html)
-* [Nav](https://angular-package.github.io/spectre.css/components/nav.html)
-* [Pagination](https://angular-package.github.io/spectre.css/components/pagination.html)
-* [Panels](https://angular-package.github.io/spectre.css/components/panels.html)
-* [Popovers](https://angular-package.github.io/spectre.css/components/popovers.html)
-* [Steps](https://angular-package.github.io/spectre.css/components/steps.html)
-* [Tabs](https://angular-package.github.io/spectre.css/components/tabs.html)
-* [Tiles](https://angular-package.github.io/spectre.css/components/tiles.html)
-* [Toasts](https://angular-package.github.io/spectre.css/components/toasts.html)
-* [Tooltips](https://angular-package.github.io/spectre.css/components/tooltips.html)
-
-### Utilities
-
-<!-- * [Utilities](https://angular-package.github.io/spectre.css/utilities.html) - colors, display, divider, loading, position, shapes and text utilities -->
-* [Colors](https://angular-package.github.io/spectre.css/utilities/colors.html)
-* [Cursors](https://angular-package.github.io/spectre.css/utilities/cursors.html)
-* [Display](https://angular-package.github.io/spectre.css/utilities/display.html)
-* [Divider](https://angular-package.github.io/spectre.css/utilities/divider.html)
-* [Loading](https://angular-package.github.io/spectre.css/utilities/loading.html)
-* [Position](https://angular-package.github.io/spectre.css/utilities/position.html)
-* [Shapes](https://angular-package.github.io/spectre.css/utilities/shapes.html)
-* [Text](https://angular-package.github.io/spectre.css/utilities/text.html)
-
-### Experimentals
-
-* [360-Degree Viewer](https://angular-package.github.io/spectre.css/experimentals/viewer-360.html) - CSS ONLY
-* [Autocomplete](https://angular-package.github.io/spectre.css/experimentals/autocomplete.html)
-* [Calendars](https://angular-package.github.io/spectre.css/experimentals/calendars.html)
-* [Carousels](https://angular-package.github.io/spectre.css/experimentals/carousels.html) - CSS ONLY
-* [Comparison Sliders](https://angular-package.github.io/spectre.css/experimentals/comparison.html) - CSS ONLY
-* [Filters](https://angular-package.github.io/spectre.css/experimentals/filters.html) - CSS ONLY
-* [Meters](https://angular-package.github.io/spectre.css/experimentals/meters.html)
-* [Off-canvas](https://angular-package.github.io/spectre.css/experimentals/off-canvas.html) - CSS ONLY
-* [Parallax](https://angular-package.github.io/spectre.css/experimentals/parallax.html) - CSS ONLY
-* [Progress](https://angular-package.github.io/spectre.css/experimentals/progress.html)
-* [Sliders](https://angular-package.github.io/spectre.css/experimentals/sliders.html)
-* [Timelines](https://angular-package.github.io/spectre.css/experimentals/timelines.html)
-
-## Browser support
-
-Spectre uses [Autoprefixer](https://github.com/postcss/autoprefixer) to make most styles compatible with earlier browsers and [Normalize.css](https://necolas.github.io/normalize.css/) for CSS resets. Spectre is designed for modern browsers. For best compatibility, these browsers are recommended:
-
-* Chrome (LAST 4)
-* Microsoft Edge (LAST 4)
-* Firefox (EXTENDED SUPPORT RELEASE)
-* Safari (LAST 4)
-* Opera (LAST 4)
-* Internet Explorer 10+
-
-Spectre supports Internet Explorer 10+, but some HTML5 and CSS3 features are not perfectly supported by Internet Explorer.
-
-Designed and built with ♥ by [Yan Zhu](https://twitter.com/picturepan2). Feel free to submit a pull request. Help is always appreciated.
 
 <br>
 
@@ -212,7 +121,7 @@ How do I know when to release 1.0.0?
 
 MIT © angular-package ([license][spectre.css-license])
 <br>
-MIT © Spectre.css ([license](https://github.com/picturepan2/spectre/blob/master/LICENSE))
+MIT © Spectre.dev ([license](https://github.com/angular-package/spectre.css/blob/developer/LICENSE))
 <br>
 MIT © Yan Zhu ([license](https://github.com/picturepan2/spectre/blob/master/LICENSE))
 
