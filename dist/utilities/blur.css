@@ -1,0 +1,13 @@
+/*! Spectre.css: blur | utilities | color-scheme: normal | MIT License | github.com/angular-package/spectre.css */
+.s-blur[class*=".s-blur-"][class*=low] {
+  -webkit-backdrop-filter: blur(var(--s-blur-low));
+          backdrop-filter: blur(var(--s-blur-low));
+}
+.s-blur[class*=".s-blur-"][class*=medium] {
+  -webkit-backdrop-filter: blur(var(--s-blur-md));
+          backdrop-filter: blur(var(--s-blur-md));
+}
+.s-blur[class*=".s-blur-"][class*=high] {
+  -webkit-backdrop-filter: blur(var(--s-blur-high));
+          backdrop-filter: blur(var(--s-blur-high));
+}

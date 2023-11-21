@@ -1,0 +1,8 @@
+/*! Spectre.css: shapes | utilities | color-scheme: normal | MIT License | github.com/angular-package/spectre.css */
+.s-shape-rounded {
+  border-radius: var(--s-border-radius-md);
+}
+
+.s-shape-circle {
+  border-radius: 50%;
+}

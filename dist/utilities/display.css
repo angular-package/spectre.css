@@ -1,0 +1,101 @@
+/*! Spectre.css: display | utilities | color-scheme: normal | MIT License | github.com/angular-package/spectre.css */
+.s-display-block {
+  display: block;
+}
+
+.s-display-flex {
+  display: flex;
+}
+
+.s-display-grid {
+  display: grid;
+}
+
+.s-display-inline-block {
+  display-inline: block;
+}
+
+.s-display-inline-flex {
+  display-inline: flex;
+}
+
+.s-display-inline-grid {
+  display-inline: grid;
+}
+
+.s-display-inline-inline {
+  display-inline: inline;
+}
+
+.s-display-none {
+  display: none;
+}
+
+.s-display-hide {
+  display: none;
+}
+
+.s-visibility-visible {
+  visibility: visible;
+}
+
+.s-visibility-hidden {
+  visibility: hidden;
+}
+
+.s-visibility-invisible {
+  visibility: hidden;
+}
+
+.s-width-100-vw {
+  width: 100vw;
+}
+
+.s-width-fit-content {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.s-width-100 {
+  width: 100%;
+}
+
+.s-height-100-vh {
+  height: 100vh;
+}
+
+.s-height-fit-content {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.s-height-100 {
+  height: 100%;
+}
+
+.s-hide-scrollbar {
+  /* hide scrollbar but allow scrolling */
+  overflow-y: auto;
+  overflow-y: overlay;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: thin; /* for Firefox */
+  scrollbar-color: var(--s-gray-color);
+}
+.s-hide-scrollbar::-webkit-scrollbar {
+  width: 0rem;
+}
+.s-hide-scrollbar:hover::-webkit-scrollbar {
+  width: 0.1rem;
+}
+.s-hide-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.s-hide-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--s-gray-color);
+  border: transparent;
+  border-radius: 20px;
+  background-clip: border-box;
+}
+.s-hide-scrollbar::-webkit-scrollbar-thumb:active {
+  background: var(--s-primary-color);
+}

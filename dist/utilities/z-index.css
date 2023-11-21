@@ -1,0 +1,20 @@
+/*! Spectre.css: z-index | utilities | color-scheme: normal | MIT License | github.com/angular-package/spectre.css */
+.s-z-index-0 {
+  z-index: var(--s-z-index-0);
+}
+
+.s-z-index-1 {
+  z-index: var(--s-z-index-100);
+}
+
+.s-z-index-2 {
+  z-index: var(--s-z-index-200);
+}
+
+.s-z-index-3 {
+  z-index: var(--s-z-index-300);
+}
+
+.s-z-index-4 {
+  z-index: var(--s-z-index-400);
+}

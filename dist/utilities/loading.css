@@ -1,0 +1,43 @@
+/*! Spectre.css: loading | utilities | color-scheme: normal | MIT License | github.com/angular-package/spectre.css */
+.s-loading {
+  position: relative;
+  min-height: var(--s-unit-4);
+  pointer-events: none;
+}
+.s-loading.s-button {
+  color: transparent !important;
+}
+.s-loading:not(.s-button) {
+  color: var(--s-primary-color);
+}
+.s-loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: var(--s-z-index-0);
+  display: block;
+  width: var(--s-unit-4);
+  height: var(--s-unit-4);
+  margin-top: calc(var(--s-unit-2) * -1);
+  margin-left: calc(var(--s-unit-2) * -1);
+  padding: 0;
+  border-width: var(--s-border-width-lg);
+  border-style: solid;
+  border-color: currentcolor;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-radius: 50%;
+  background: transparent;
+  opacity: 1;
+  animation: loading 500ms infinite linear;
+}
+.s-loading.s-loading-lg {
+  min-height: var(--s-unit-10);
+}
+.s-loading.s-loading-lg::after {
+  width: var(--s-unit-8);
+  height: var(--s-unit-8);
+  margin-top: calc(var(--s-unit-4) * -1);
+  margin-left: calc(var(--s-unit-4) * -1);
+}
