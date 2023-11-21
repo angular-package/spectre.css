@@ -1,4 +1,12 @@
+// Sass.
+@use 'sass:list';
+
+// Variables.
+@use '../variables';
+
 // Modules.
+@use '../variant';
+@use '@angular-package/sass/map';
 @use '@angular-package/sass/media';
 
 // Mixins.
@@ -8,13 +16,23 @@
 @mixin set-theme-var($theme, $color-scheme: normal, $detect: false) {
   @include media.color-scheme-content($color-scheme, $detect) {
     @each $name, $color in $theme {
-      @if type-of($color) == map {
-        @each $name, $color in $color {
+      @each $name in if(list.separator($name) == comma, $name, ($name,)) {
+        @if type-of($color) == map {
+          @if variant.indicator-index($name, '+') {
+            $color: map.get(variant.nest(($name: $color)), variant.indicator-remove($name, '+'));
+          }
+          @each $color-name, $color in $color {
+            @include color.set-var(($color-name: hsla), $color);
+          }
+        } @else {
           @include color.set-var(($name: hsla), $color);
         }
-      } @else {
-        @include color.set-var(($name: hsla), $color);
       }
     }
   }
 }
+
+// Examples.
+// div {
+//   @include set-theme-var(variables.$theme-normal);
+// }

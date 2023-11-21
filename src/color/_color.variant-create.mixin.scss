@@ -13,7 +13,7 @@
   $alpha: null,
   $important: false,
   $pseudo-class: (),
-  $dictionary: (),
+  $dictionary: null,
   $function: meta.get-function(class, false, selector),
   $modifier: null,
 ) {
