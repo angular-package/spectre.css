@@ -1,0 +1,72 @@
+// Modules.
+@use '../borders';
+@use '../color';
+@use '../color/scheme';
+@use '../property';
+@use '../property/margin';
+@use '../property/padding';
+@use '../selector';
+@use '../var';
+
+/*! Spectre.css: loading | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+#{selector.class(loading)} {
+  position: relative;
+  min-height: var.unit-var(4);
+  pointer-events: none;
+
+  // Buttons.
+  // &.#{$button} { // TODO: button()
+  #{selector.class('&' button)} {
+    color: transparent !important;
+  }
+
+  // Not buttons.
+  // &:not(.#{$button}) { // TODO: button()
+  &:not(#{selector.class(button)}) {
+    color: color.color(primary);
+  }
+
+  &::after {
+    content: '';
+
+    // Position.
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include property.z-index(0);
+
+    display: block;
+    width: var.unit-var(4);
+    height: var.unit-var(4);
+
+    @include margin.top(('!' unit 2) ());
+    @include margin.left(('!' unit 2) ());
+
+    padding: 0;
+
+    // Border.
+    border-width: borders.var(width large);
+    border-style: solid;
+    border-color: currentcolor;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-radius: 50%;
+    background: transparent;
+    opacity: 1;
+    animation: loading 500ms infinite linear;
+  }
+
+  // &.loading-lg {
+  #{selector.class('&' loading large)} {
+    min-height: var.unit-var(10);
+
+    &::after {
+      width: var.unit-var(8);
+      height: var.unit-var(8);
+
+      @include margin.top(('!' unit 4) ());
+      @include margin.left(('!' unit 4) ());
+    }
+  }
+}

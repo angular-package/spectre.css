@@ -1,0 +1,82 @@
+// Modules.
+@use '../borders';
+@use '../color';
+@use '../color/scheme';
+@use '../property';
+@use '../property/margin';
+@use '../property/padding';
+@use '../selector';
+@use '../var';
+
+/*! Spectre.css: divider | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+// .#{$class-prefix}divider,
+#{selector.class(divider)},
+// .#{$class-prefix}divider-vert {
+#{selector.class(divider vert)} {
+  position: relative;
+  display: block;
+
+  &[data-content]::after {
+    content: attr(data-content);
+    display: inline-block;
+    @include padding.padding((unit 0) (unit 2));
+
+    // transform: translateY(calc(var-negative(get-var('font-size', $suffix: 'sm')) + get-var('border-width')));
+    transform: translateY(calc(var.negative(var.font-size-var(small)) + borders.var(width))); // REVIEW: Do check.
+    @include color.background(background light);
+    @include color.color(gray);
+    @include property.font-size(small);
+  }
+
+  // &.divider-no-border {
+  #{selector.class(('&' divider no border))} {
+    border-color: transparent;
+
+    &::before {
+      border-color: transparent;
+    }
+  }
+
+  // @include padding-size-variants(divider); // TODO
+}
+
+// .#{$class-prefix}divider {
+#{selector.class(divider)} {
+  @include margin.margin((unit 2) (unit 0));
+
+  height: borders.var(width);
+  @include borders.border($side: top, $color: border light);
+
+  &[data-content] {
+    @include margin.margin((unit 4) (unit 0));
+  }
+}
+
+// .#{$class-prefix}divider-vert {
+#{selector.class(divider vert)} {
+  display: block;
+
+  @include padding.padding((unit 4) ());
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: var.unit-var(2);
+    bottom: var.unit-var(2);
+    left: 50%;
+    display: block;
+    @include borders.border($side: left);
+
+    transform: translateX(-50%);
+  }
+
+  &[data-content]::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    @include padding.padding((unit 1) (unit 0));
+
+    transform: translate(-50%, -50%);
+  }
+}

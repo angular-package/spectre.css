@@ -1,0 +1,52 @@
+// Sass.
+@use 'sass:map';
+
+// Modules.
+@use '../borders';
+@use '../color/scheme';
+@use '../property';
+@use '../selector';
+@use '../var';
+
+// Brand variable.
+$brand: (
+  dictionary: (
+    'class': (
+      'brand': 'brand'
+    ),
+    'var': ()
+  )
+) !default;
+
+/*! Spectre.css: brand | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+#{selector.class(brand, $dictionary: map.get($brand, dictionary))} {
+  #{selector.class(brand logo, $dictionary: map.get($brand, dictionary))} {
+    display: inline-flex;
+    align-items: center;
+    width: auto;
+    height: var.css((unit 10) ());
+    padding: var.css((unit 1) ());
+
+    @include borders.radius;
+    @include property.font-size(small);
+
+    text-decoration: none;
+  }
+
+  img {
+    display: inline-block;
+    width: 1.6rem;
+    height: auto;
+  }
+
+  h2 {
+    display: inline-block;
+    margin-right: 0.3rem;
+    margin-bottom: 0;
+    margin-left: 0.5rem;
+    font-weight: 700;
+    font-size: .8rem;
+    line-height: 1.5rem;
+  }
+}
