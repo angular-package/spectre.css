@@ -11,10 +11,14 @@
 @use '@angular-package/sass/property';
 @use '@angular-package/sass/selector';
 
+// Mixins.
+@use '../property.class-variant.mixin' as *;
+
 // Status: DONE
 // Padding utility mixin
 @mixin variant(
   $variant: (),
+  $combine: false false false false,
   $important: null,
   // class
   $pseudo-class: (),
@@ -27,8 +31,9 @@
   $functions:(var: (get: meta.get-function(get, false, var))),
   $execute: true,
 ) {
-  @include property.variant(
+  @include class-variant(
     (padding: $variant),
+    $combine,
     $important,
     $pseudo-class,
     if($dictionary, $dictionary, translator.dictionary(var)),

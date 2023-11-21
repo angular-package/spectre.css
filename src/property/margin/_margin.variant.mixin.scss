@@ -3,11 +3,13 @@
 @use 'sass:meta';
 
 // Modules.
+@use '../../selector';
+@use '../../translator';
 @use '../../var';
 @use '@angular-package/sass/function';
 
 // Mixins.
-@use '@angular-package/sass/property/property.variant.mixin';
+@use '../property.class-variant.mixin' as *;
 
 // Set var functions.
 function.$functions: map.deep-merge(function.$functions, (var: meta.module-functions(var)));
@@ -15,19 +17,23 @@ function.$functions: map.deep-merge(function.$functions, (var: meta.module-funct
 // Status: REVIEW: parameter order
 // Margin utility mixin
 @mixin variant(
-  $variant,
-  $important: false,
+  $variant: (),
+  $combine: false false false false,
+  $important: null,
+  // class
   $pseudo-class: (),
   $dictionary: null,
+  $class-function: meta.get-function(class, false, selector),
+  // function to call args
   $prefix: null,
   $separator: null,
-  $type-function: null,
-  $functions: null,
-  $execute: true
+  $type-function: (list: --var-get),
+  $functions:(var: (get: meta.get-function(get, false, var))),
+  $execute: true,
 ) {
-  // @debug (var: (get: meta.get-function(get, false, var)));
-  @include property.variant(
+  @include class-variant(
     (margin: $variant),
+    $combine,
     $important,
     $pseudo-class,
     if($dictionary, $dictionary, translator.dictionary(var)),
