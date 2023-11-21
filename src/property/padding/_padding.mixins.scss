@@ -17,7 +17,7 @@
 // @param `$functions`
 // @param `$execute`
 @mixin top(
-  $padding,
+  $top,
   $important: false,
   $dictionary: null,
   // function to call args
