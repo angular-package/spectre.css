@@ -1,0 +1,59 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:meta';
+
+// Modules.
+@use '../translator';
+@use '@angular-package/sass/map';
+
+// Variables.
+@use 'module.dictionary.var';
+
+// Status: DONE
+// The `module.dictionary()` function gets module dictionary of specified `$name`, optionally `$key` e.g. `class`.
+// @param `$name` Module name.
+// @param `$separate` A `bool` value indicates to separate keys in returned map.
+// @param `$keys...` Dictionary key to retrieve sub dictionary.
+// @returns The returned value is dictionary of `map` type.
+@function dictionary($name, $separate: false, $keys...) {
+  @if $separate {
+    $result: ();
+    @each $key in $keys {
+      $result: map.set($result, $key, translator.dictionary($key, list.join(($name,), $key)...));
+    }
+    @return $result;
+  }
+
+  @if $keys {
+    $-keys: ();
+    @each $key in $keys {
+      $-keys: list.append($-keys, $key, comma);
+      $-keys: list.append($-keys, list.join(($name,), $key), comma);
+    }
+
+    $keys: $-keys;
+  }
+  @return translator.dictionary($keys...);
+}
+
+// Examples.
+// Get accordion module dictionary with a global dictionary.
+// @debug dictionary(accordion); //
+// @debug dictionary(border); //
+// @debug dictionary(dot); //
+// @debug dictionary(label); //
+
+// Gets the module dictionary of the specified key with a global dictionary.
+// @debug dictionary(accordion, false, class); //
+// @debug dictionary(dot, false, class); //
+// @debug dictionary(dot, false, var); //
+// @debug dictionary(label, false, class); //
+
+// Gets the dot module dictionary of the specified deep-key with a global dictionary.
+// @debug dictionary(dot, false, (class, separator)); //
+// @debug dictionary(dot, false, medium); //
+
+// Gets the dot module dictionary without global dictionary.
+// @debug dictionary(dot, false, class); //
+// @debug dictionary(dot, false, null); //
+// @debug dictionary(dot, false, medium); //

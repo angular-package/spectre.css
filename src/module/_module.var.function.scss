@@ -1,0 +1,49 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use 'module.dictionary.function';
+
+// Modules.
+@use '@angular-package/sass/var';
+
+// Status: DONE
+// The `module.var()` function.
+// @param `$module`
+// @param `$name`
+// @param `$adjust`
+// @param `$fallback`
+// @param `$dictionary`
+// @param `$delimiter`
+// @param `$prefix`
+// @param `$suffix`
+@function var(
+  $module,
+  $name,
+  $adjust: null,
+  $unit: false,
+  $fallback: null,
+  $dictionary: null,
+  $delimiter: null,
+  $prefix: null,
+  $suffix: null
+) {
+  @return var.get(
+    list.join($module, $name),
+    $adjust,
+    $unit,
+    $fallback,
+    if($dictionary, $dictionary, module.dictionary($module, true, var)),
+    $delimiter,
+    $prefix,
+    $suffix,
+  );
+}
+
+// Examples.
+// @debug var(border, width medium);
+// @debug var(border, size, 1px, true);
+// @debug var(dot, size, 1px, true); // calc(var(--dot) * 1rem + 1px)
+// @debug var(dot, size, 1px, false, 100px); // calc(var(--dot, 100px) + 1px)
+// @debug var(accordion, size, 1px, false, 2px, (prefix: spectre, delimiter: '-')); // calc(var(--spectre-accordion-size, 2px) + 1px)
+// @debug var(label, size, null, false, null, (prefix: spectre, suffix: end, delimiter: '-')); // var(--spectre-label-size-end)

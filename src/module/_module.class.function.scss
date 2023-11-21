@@ -1,0 +1,84 @@
+// Sass.
+@use 'sass:list';
+
+// Modules.
+@use '@angular-package/sass/selector';
+
+// Functions.
+@use 'module.dictionary.function';
+
+// Status: TODO: detect module name in the $name
+// The `module.class()` function defines  class names.
+// @param `$name` Module name.
+// $param `$class` Class name.
+// $param `$pseudo-class` Pseudo-class to the `$class`.
+// @param `$dictionary` Dictionary.
+// @param `$delimiter` Delimiter between words in `$name` and `$class`.
+// @param `$prefix` Prefix for class.
+// @param `$suffix` Suffix for class.
+// @returns The returned value is a class or classes built from `$name` and `$class`.
+@function class(
+  $name,
+  $class: (),
+  $pseudo-class: (),
+  $dictionary: null,
+  $delimiter: null,
+  $prefix: null,
+  $suffix: null
+) {
+  @return selector.class(
+    list.join($name, $class, list.separator($class)),
+    $pseudo-class,
+    if($dictionary, $dictionary, module.dictionary($name, false, class)),
+    $delimiter,
+    $prefix,
+    $suffix
+  );
+}
+
+// Examples.
+// button module
+// @debug class(accordion); // (.accordion,)
+// @debug class(button); // (.btn,)
+// @debug class(dot); // (.dot,)
+
+// button module + class
+// @debug class(accordion, primary); // (.accordion-primary,)
+// @debug class(button, dark xs); // (.btn-dark-xs,)
+
+// parent selector
+// @debug class('&' button, dark xs); // (&.button-dark-xs,)
+// @debug class(accordion, '&' primary); // (&.accordion-primary,)
+// @debug class(button, '&' 'dark' xs); // (&.btn-dark-xs,)
+
+// button module + pseudo-class
+// @debug class(accordion, primary, ':hover'); // (.accordion-primary:hover,)
+// @debug class(button, '&' dark xs, ':hover'); // (&.btn-dark-xs:hover,)
+
+// button module + parent selector + dictionary
+// @debug class(button, '&' dark xs, $dictionary: (dark: light)); // (&.btn-light-xs,)
+
+// Multiple class prefixed with header
+// @debug class(card, ((header, body, footer),)); // .card-header, .card-body, .card-footer
+// @debug class(card, '&' (header, body, footer)); // &.card-header, &.card-body, &.card-footer
+
+// Multiple class prefixed with header and suffixed by xs
+// @debug class(card, ((header, body, footer), xs)); // .card-header-xs, .card-body-xs, .card-footer-xs
+
+// $class: ((primary variant), (secondary variant),);
+// @debug class(accordion, $class header basic); // (.accordion-primary-variant-header,)
+// @debug class(accordion, ((primary dark, primary light),)); // .accordion-primary-dark, .accordion-primary-light
+
+// $class: primary variant;
+// $class: ((primary variant, secondary variant),);
+// @debug class(accordion, join($class, header));
+
+// multiple
+// @debug class(accordion, '&' (primary, secondary)); // &.accordion-primary, &.accordion-secondary
+// @debug class(accordion, ((header (header body)),)); // (.accordion-header .accordion-header-body,)
+// @debug class(accordion, ((header, body),)); // .accordion-header, .accordion-body
+
+// $dictionary: (prefix: spectre)
+// @debug class(dot, '&', $dictionary: (class: (prefix: spectre)));
+// @debug class(button, '&', '::after', $dictionary: (class: (prefix: spectre)));
+// @debug class(button, '&', '::after');
