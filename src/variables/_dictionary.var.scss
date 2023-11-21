@@ -1,8 +1,17 @@
 // Dictionary map.
 $dictionary: (
+  // Color.
+  background: bg,
+
+  // Size.
+  small: sm,
+  medium: md,
+  large: lg,
+
   class: (
     prefix: s, // TODO: Remove.
     delimiter: '-',
+
     // suffix: null
   ),
   var: (

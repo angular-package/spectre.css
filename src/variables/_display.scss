@@ -1,15 +1,18 @@
 $display: (
-  block,
-  flex,
-  grid,
+  block: block,
+  flex: flex,
+  grid: grid,
   inline: (
-    block,
-    flex,
-    grid,
-    inline,
+    block: block,
+    flex: flex,
+    grid: grid,
+    inline: inline,
   ),
-  ((none, hide): none) // important
+  (none, hide): none
 ) !default;
 
 // Visibility.
-$visibility: (visible, ((hidden, invisible): hidden)) !default;
+$visibility: (
+  visible: visible,
+  (hidden, invisible): hidden
+) !default;

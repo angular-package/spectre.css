@@ -1,11 +1,11 @@
 // Core variables
-$version: 1.0.0-beta;
+$version: 0.0.1-alpha;
 
 // Core features
 $rtl: false !default;
 
 // color-scheme - https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
-$color-scheme: normal !default; // TODO: change color-scheme
+// $color-scheme: normal !default; // TODO: change color-scheme
 
 // Transition duration.
 $transition-duration: 0.2s !default; // --#{$var-prefix}-transition-duration.

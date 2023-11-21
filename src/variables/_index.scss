@@ -1,6 +1,7 @@
 // Folder.
 @forward 'colors';
 @forward 'layout';
+@forward 'theme' as theme-*;
 
 // Files.
 @forward 'blur.var';

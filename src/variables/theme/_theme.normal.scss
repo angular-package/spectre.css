@@ -17,7 +17,7 @@ $normal: (
   // primary color dark: colors.$primary-color-dark,
   // primary color light: colors.$primary-color-light,
 
-  primary: (
+  +primary: (
     color: colors.$primary-color,
     dark: colors.$primary-color-dark,
     light: colors.$primary-color-light,
@@ -28,7 +28,7 @@ $normal: (
   // secondary color dark: colors.$secondary-color-dark,
   // secondary color light: colors.$secondary-color-light,
 
-  secondary: (
+  +secondary: (
     color: colors.$secondary-color,
     dark: colors.$secondary-color-dark,
     light: colors.$secondary-color-light,
@@ -39,7 +39,7 @@ $normal: (
   // gray color dark: colors.$gray-color-dark,
   // gray color light: colors.$gray-color-light,
 
-  gray: (
+  +gray: (
     color: colors.$gray-color,
     dark: colors.$gray-color-dark,
     light: colors.$gray-color-light,
@@ -50,7 +50,7 @@ $normal: (
   // bg color dark: colors.$bg-color-dark,
   // bg color light: colors.$bg-color-light,
 
-  bg: (
+  +bg: (
     color: colors.$bg-color,
     dark: colors.$bg-color-dark,
     light: colors.$bg-color-light,
@@ -61,7 +61,7 @@ $normal: (
   // border color dark: colors.$border-color-dark,
   // border color light: colors.$border-color-light,
 
-  border: (
+  +border: (
     color: colors.$border-color,
     dark: colors.$border-color-dark,
     light: colors.$border-color-light,
@@ -72,7 +72,7 @@ $normal: (
   // link color dark: colors.$link-color-dark,
   // link color light: colors.$link-color-light,
 
-  link: (
+  +link: (
     color: colors.$link-color,
     dark: colors.$link-color-dark,
     light: colors.$link-color-light,
