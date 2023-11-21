@@ -1,7 +1,7 @@
 :root, :host {
   color-scheme: normal;
   --s-blur-low: 0.05rem;
-  --s-blur-medium: 0.075rem;
+  --s-blur-md: 0.075rem;
   --s-blur-high: 0.1rem;
   --s-control-padding-x-sm: calc(var(--s-unit-2) * 0.75);
   --s-control-padding-x-md: var(--s-unit-2);

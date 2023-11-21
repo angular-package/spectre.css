@@ -1,4 +1,4 @@
-/*! Spectre.css core v1 0-beta | color-scheme: normal | MIT License | github.com/angular-package/spectre.css */
+/*! Spectre.css core v0 0.1-alpha | color-scheme: normal | MIT License | github.com/angular-package/spectre.css */
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -349,12 +349,6 @@ a:visited {
   color: var(--s-link-color-light);
 }
 
-:root {
-  --s-border-radius-md: var(--s-unit-h);
-  --s-border-width-md: var(--s-unit-o);
-  --s-border-width-lg: var(--s-unit-h);
-}
-
 /*! Spectre.css base | MIT License | github.com/angular-package/spectre.css */
 /*! Spectre.css base | MIT License | github.com/angular-package/spectre.css */
 /*! Spectre.css base | MIT License | github.com/angular-package/spectre.css */
@@ -423,13 +417,13 @@ u {
 }
 
 abbr[title] {
-  border-bottom: var(--s-border-width-medium) dotted var(--s-border-color);
+  border-bottom: var(--s-border-width-md) dotted var(--s-border-color);
   text-decoration: none;
   cursor: help;
 }
 
 kbd {
-  font-size: var(--s-font-size-small);
+  font-size: var(--s-font-size-sm);
 }
 
 mark {
@@ -441,7 +435,7 @@ mark {
 blockquote {
   margin-left: 0;
   padding: var(--s-unit-2) var(--s-unit-4);
-  border-left: var(--s-border-width-large) solid var(--s-border-color);
+  border-left: var(--s-border-width-lg) solid var(--s-border-color);
   border-radius: var(--s-border-radius);
 }
 blockquote p:last-child {
@@ -514,7 +508,7 @@ html:lang(ko),
 :lang(ja) u,
 .lang-cjk ins,
 .lang-cjk u {
-  border-bottom: var(--s-border-width-medium) solid var(--s-border-color);
+  border-bottom: var(--s-border-width-md) solid var(--s-border-color);
   text-decoration: none;
 }
 :lang(zh) del + del,
