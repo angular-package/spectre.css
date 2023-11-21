@@ -1,0 +1,21 @@
+// Sass.
+@use 'sass:list';
+
+// Modules.
+@use '../translator';
+@use '../var';
+
+// Status: DONE
+// The `blur()` mixin.
+@mixin blur($level: low, $dictionary: null) {
+  backdrop-filter: blur(
+    var.get(list.join(blur, $level, space),
+    $dictionary: if($dictionary, $dictionary, translator.dictionary(var)),
+  ));
+}
+
+// Examples.
+// div {
+//   @include blur; // backdrop-filter: blur(var(--s-blur-low));
+//   @include blur(high, (prefix: spectre)); // backdrop-filter: blur(var(--spectre-blur-high));
+// }

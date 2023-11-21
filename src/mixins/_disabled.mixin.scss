@@ -1,0 +1,54 @@
+// Sass.
+@use 'sass:list';
+
+// Modules.
+@use '../class';
+@use '../color';
+@use '../selector';
+@use '../translator';
+
+// Status:
+// The `disabled()` mixin extends the given element with the disabled attribute, pseudo selector, class, and class with the prefix given name.
+@mixin disabled($class: disabled, $pseudo-class: (), $opacity: 0.5, $background: null, $dictionary: null) {
+  @include class.content($class, $pseudo-class, if($dictionary, $dictionary, translator.dictionary(var))) {
+    opacity: $opacity;
+    cursor: not-allowed;
+    pointer-events: none;
+    @if $background {
+      @include color.background-color($background);
+    }
+  }
+}
+
+// Examples.
+// div { @include disabled(if(&, '&' disabled, disabled)); }
+
+// div {
+//   opacity: 0.5;
+//   cursor: not-allowed;
+//   pointer-events: none;
+// }
+
+// @include disabled(disabled);
+// .disabled {
+//   opacity: 0.5;
+//   cursor: not-allowed;
+//   pointer-events: none;
+// }
+
+// @include disabled(disabled, ':hover');
+// .disabled, .disabled {
+//   opacity: 0.5;
+//   cursor: not-allowed;
+//   pointer-events: none;
+// }
+
+// @include disabled((('.disabled', '.pagination-disabled'),), $background: primary dark);
+// .disabled, .pagination-disabled {
+//   opacity: 0.5;
+//   cursor: not-allowed;
+//   pointer-events: none;
+//   background-color: var(--s-primary-color-dark);
+// }
+
+// @include disabled((('.disabled', '.disabled'),), ':hover');
