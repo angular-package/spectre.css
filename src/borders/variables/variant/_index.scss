@@ -3,13 +3,13 @@
 
 // Variants.
 $class: () !default;
-$color: normal !default;
-$radius: ((top, right, bottom, left, top-right, bottom-left, top-left, bottom-right): medium) !default;
+$color: border !default;
+$radius: (
+  (top-right, bottom-left, top-left, bottom-right): (medium: (border radius medium) ())
+) !default;
 $side: sides.$sides !default;
 $style: (dashed, dotted) !default;
 $width: (
-  small: small,
-  // medium: (top bottom: (medium (adjust: 10px))), // TODO
-  medium: medium,
-  large: large
+  medium: (border width medium) (),
+  large: (border width large) (),
 ) !default;
