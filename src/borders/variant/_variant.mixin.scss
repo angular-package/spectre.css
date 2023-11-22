@@ -1,5 +1,4 @@
 // Sass.
-@use 'sass:list';
 @use 'sass:map';
 
 // Functions.
@@ -11,6 +10,9 @@
 @use 'variant.radius.mixin' as *;
 @use 'variant.side.mixin' as *;
 @use 'variant.width.mixin' as *;
+
+// Modules.
+@use '../../list';
 
 // Status:
 // The `variant.variant()` mixin.
@@ -25,15 +27,20 @@
   $dictionary: null
 ) {
   #{class($class, $pseudo-class, $dictionary)} {
-    @include mixins.core((), $width, $style, null, $dictionary);
+    @include mixins.core($dictionary: $dictionary);
     @if $side {
       @include side(((): $side), $pseudo-class, $dictionary);
     }
     @if $width {
-      @include width(((): ($side: $width)), null, false, null, (), $dictionary);
+      @if $side {
+        $width: ((): map.deep-merge($width, (list.remove-value($side, x, y): $width)));
+      } @else {
+        $width: ((): $width);
+      }
+      @include width($width, null, false, null, (), $dictionary);
     }
     @if $radius {
-      @include radius($radius, null, false, null, (), $dictionary);
+      @include radius(((): $radius), null, false, null, (), $dictionary);
     }
     @if $color {
       @if type-of($color) == map and list.index(map.keys($color), variant) {
