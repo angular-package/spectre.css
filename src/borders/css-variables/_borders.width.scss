@@ -1,8 +1,0 @@
-// Variables.
-@use '../variables/var';
-
-// Modules.
-@use '../var';
-
-// Set variables.
-@include var.set((width: variables.$width));

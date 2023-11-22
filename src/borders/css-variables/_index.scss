@@ -1,2 +1,11 @@
-@use 'borders.radius';
-@use 'borders.width';
+// Variables.
+@use '../variables/var' as variables;
+
+// Modules.
+@use '../var';
+
+// Set variables.
+@include var.set((
+  radius: variables.$radius,
+  width: variables.$width,
+), ':root');
