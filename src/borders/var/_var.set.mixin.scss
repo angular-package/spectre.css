@@ -1,15 +1,18 @@
+// Sass.
+@use 'sass:meta';
+
 // Modules.
 @use '../../var';
 @use '../borders.dictionary' as translator;
 
 // Status: DONE
 // The `var.set()` mixin sets the CSS variables of the given values.
-// @param `$values`
-// @param `$dictionary`
-@mixin set($values, $dictionary: null) {
+@mixin set($values, $selector: (), $function: meta.get-function(var, false, var), $dictionary: null) {
   @include var.set(
     (border: $values),
-    $dictionary: if($dictionary, $dictionary, translator.dictionary(var))
+    $selector,
+    $function,
+    if($dictionary, $dictionary, translator.dictionary(var))
   );
 }
 
