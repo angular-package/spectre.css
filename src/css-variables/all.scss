@@ -14,11 +14,12 @@
 @use '../variables/z-index.var' as *;
 
 // Modules.
+@use '../color/scheme';
 @use '../var';
 
 // Initialize.
 :root, :host {
-  color-scheme: $color-scheme;
+  color-scheme: scheme.$color-scheme;
   @include var.set((
     blur: $blur,
     control padding x: map.get($control, padding, x),
