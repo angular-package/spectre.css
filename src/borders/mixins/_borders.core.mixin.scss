@@ -6,7 +6,7 @@
 
 // Modules.
 @use '../../module';
-@use '../radius';
+@use '../radius/radius.mixin';
 @use '../var';
 
 // Status: DONE
@@ -28,7 +28,7 @@
   // Radius.
   #{module.class(border, join(if(&, '&' radius, radius), $class), $dictionary: $dictionary)} {
     // Add the CSS variable to set custom border radius in the style='--s-border-radius: '
-    @include var.set((radius custom: var.var(join(radius, $width))));
+    @include var.set((radius custom: join(border radius, $width)));
     @include radius.radius($width: custom);
   }
 }
