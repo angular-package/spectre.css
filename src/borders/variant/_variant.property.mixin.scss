@@ -41,7 +41,7 @@
     // $separator,
     $type-function: (list: --var-var),
     $functions: (var: (var: meta.get-function(var, false, var))),
-    $modifier: (class: (attribute: $property), property: (base: border, middle: $property))
+    $modifier: (class: (attribute: $property), property: (base: border, attribute: $property))
   );
 }
 
