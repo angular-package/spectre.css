@@ -222,12 +222,6 @@
     -ms-flex-order: 4;
   }
 }
-:root {
-  --s-border-radius-md: var(--s-unit-h);
-  --s-border-width-md: var(--s-unit-o);
-  --s-border-width-lg: var(--s-unit-h);
-}
-
 .s-container {
   width: 100%;
   padding-left: calc(var(--s-layout-spacing) * 1rem);
@@ -299,7 +293,7 @@
   border-radius: var(--s-border-radius-md);
 }
 .s-columns.s-column-border .s-column {
-  border-bottom: var(--s-border-width-medium) solid var(--s-border-color);
+  border-bottom: var(--s-border-width-md) solid var(--s-border-color);
 }
 .s-columns.s-column-flex .s-column {
   display: flex;
