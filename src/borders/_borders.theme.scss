@@ -1,0 +1,11 @@
+// Variables.
+@use 'variables/theme';
+
+// Modules.
+@use '../color';
+@use 'variant';
+
+// Initialize.
+@include color.theme-load((normal: theme.$normal)) using($color-scheme, $palette-name, $variant) {
+  @include variant.color(((): $variant));
+}
