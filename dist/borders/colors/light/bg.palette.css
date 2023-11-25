@@ -1,0 +1,12 @@
+/* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
+@media (prefers-color-scheme: light) {
+  .s-border-color-bg {
+    border-color: var(--s-bg-color);
+  }
+  .s-border-color-bg-dark {
+    border-color: var(--s-bg-color-dark);
+  }
+  .s-border-color-bg-light {
+    border-color: var(--s-bg-color-light);
+  }
+}

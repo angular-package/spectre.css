@@ -1,0 +1,12 @@
+/* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
+.s-border-color-border {
+  border-color: var(--s-border-color);
+}
+
+.s-border-color-border-dark {
+  border-color: var(--s-border-color-dark);
+}
+
+.s-border-color-border-light {
+  border-color: var(--s-border-color-light);
+}
