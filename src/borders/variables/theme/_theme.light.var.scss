@@ -5,11 +5,8 @@ $light: (
   +border: (color, dark, light),
   +link: (color, dark, light),
   control: (disabled, error, info, success, warning),
-  'body.palette': (
-    body bg: body bg color,
-    body font: body font color
-  ),
-  'other.palette': (
+  +body: (bg, font),
+  other: (
     code: code color,
     highlight: highlight color
   )
