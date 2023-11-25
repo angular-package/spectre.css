@@ -1,0 +1,11 @@
+/* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
+
+// Variables.
+@use 'borders.dictionary' as translator;
+@use 'variables';
+
+$dictionary: null !default;
+
+@if $dictionary {
+  $debug: translator.dictionary-merge(border, $dictionary);
+}
