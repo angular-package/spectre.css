@@ -1,0 +1,42 @@
+// Functions.
+@use '../borders';
+
+// Examples.
+// `border()`
+// @debug borders.border(); // var(--s-border-width-md) solid var(--s-border-color)
+// @debug borders.border(large); // var(--s-border-width-lg) solid var(--s-border-color)
+// @debug borders.border(md, 15px, dotted, primary dark); // calc(var(--s-border-width-md) + 15px) dotted var(--s-primary-color-dark)
+
+// `var()`
+// @debug borders.var(radius); // var(--s-border-radius)
+// @debug borders.var(width); // var(--s-border-width)
+// @debug borders.var(width large); // var(--s-border-width-lg)
+
+// `var-set()`
+// :host {
+//   @include borders.var-set((width large: (unit h)));
+//   @include borders.var-set((width: (large: (unit h), small: (unit o))));
+// }
+
+
+// div {
+  // top
+  // @include borders.radius(top);
+  // @include borders.radius-top(medium);
+
+  // right
+  // @include borders.radius(right);
+  // @include borders.radius-right(medium);
+
+  // bottom
+  // @include borders.radius(bottom);
+  // @include borders.radius-bottom(medium);
+
+  // left
+  // @include borders.radius(left);
+  // @include borders.radius-left(medium);
+
+
+  // @include borders.radius(top-right);
+  // @include borders.radius(top-left);
+// }
