@@ -1,0 +1,2 @@
+@use '../../spectre.borders.customize' as *;
+@use '../theme' with($theme: light, $palette: +gray);
