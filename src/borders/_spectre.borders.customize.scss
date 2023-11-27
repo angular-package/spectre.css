@@ -4,8 +4,4 @@
 @use 'borders.dictionary' as translator;
 @use 'variables';
 
-$dictionary: null !default;
-
-@if $dictionary {
-  $debug: translator.dictionary-merge(border, $dictionary);
-}
+// $debug: translator.dictionary-merge(border, variables.$dictionary);
