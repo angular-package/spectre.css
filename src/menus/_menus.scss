@@ -1,0 +1,13 @@
+// Dictionary.
+@use 'menus.dictionary';
+
+// Modules.
+@use '../color/scheme';
+
+// Mixins.
+@use 'mixins';
+
+/* Spectre.css module: menus | components | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+// Initialize.
+@include mixins.menu;

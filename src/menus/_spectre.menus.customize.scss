@@ -1,0 +1,7 @@
+/* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
+
+// Variables.
+@use 'menus.dictionary' as translator;
+@use 'variables';
+
+// $debug: translator.dictionary-merge(menu, variables.$dictionary);

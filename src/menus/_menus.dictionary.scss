@@ -1,0 +1,10 @@
+// Variables.
+@use 'variables';
+
+// Modules.
+@use '../translator';
+
+// Merge.
+@if not translator.dictionary-get(menu) {
+  $debug: translator.dictionary-merge(menu, variables.$dictionary);
+}

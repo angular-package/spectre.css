@@ -1,0 +1,13 @@
+// Dictionary.
+$dictionary: (
+  class: (
+    // 'menu': '',
+    // 'prefix': '',
+    // 'suffix': '',
+    // 'separator': ''
+  ),
+  var: ()
+) !default;
+
+// Menus.
+$menu: (dictionary: $dictionary) !default;

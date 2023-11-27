@@ -1,0 +1,139 @@
+// Mixins.
+@use '../../mixins';
+
+// Modules.
+@use '../../borders';
+@use '../../color';
+@use '../../module';
+@use '../../property';
+@use '../../property/box-shadow';
+@use '../../property/margin';
+@use '../../property/padding';
+@use '../../selector';
+@use '../../var';
+
+// The `menu()` mixin.
+@mixin menu($class: (), $pseudo-class: (), $dictionary: module.dictionary(menu, true, class, var)) {
+  #{module.class(menu, $class, $pseudo-class, $dictionary)} {
+    @include property.z-index(3);
+
+    min-width: var.control-width-var(xs);
+    @include margin.margin((unit 0) ());
+
+    list-style: none;
+
+    @include padding.padding((unit 2) ());
+
+    // Border.
+    @include borders.radius;
+    @include color.background(body bg);
+    @include box-shadow.shadow-variant(0.05rem);
+
+    // Transform.
+    transform: translateY(var.layout-spacing-var(small));
+
+    // Menu nav.
+    // &.menu-nav {
+    // #{class(('&', $menu-name, 'nav'))} {
+    #{module.class(menu, join('&' $class, nav), (), $dictionary)} {
+      @include padding.right((unit h) ());
+      @include padding.left((unit 0) ());
+
+      background: transparent;
+      box-shadow: none;
+
+      // .menu-item {
+      // #{class(($menu-name, 'item'))} {
+      #{module.class(menu, join($class, item), (), $dictionary)} {
+        @include margin.right((unit h) ());
+        @include margin.left((unit h) ());
+        @include padding.right((unit 0) ());
+        @include padding.left((unit 0) ());
+
+        // font-size: .7rem; // REVIEW: Find another place.
+
+        > a {
+          display: flex;
+          @include margin.margin((unit 0) ());
+          @include padding.left((unit 2) ());
+
+          > svg {
+            @include margin.right((unit 2) ());
+          }
+        }
+      }
+    }
+
+    // .menu-item {
+    // #{class(($menu-name, 'item'))} {
+    #{module.class(menu, join($class, item), (), $dictionary)} {
+      position: relative;
+
+      @include margin.top((unit 0) ());
+      @include padding.padding((unit 0) (unit 2));
+
+      // Text.
+      text-decoration: none;
+
+      @include mixins.disabled(disabled);
+
+      & > a {
+        display: block;
+
+        @include margin.margin((unit 0) ('!' unit 2));
+        @include padding.padding((unit 1) (unit 2));
+        @include borders.radius;
+        @include color.color(gray dark);
+
+        text-decoration: none;
+
+        // Color schemes.
+        &:active,
+        // &.active,
+        #{selector.class(active '&')},
+        &:focus,
+        &:hover {
+          @include color.background((dark: secondary light, light: secondary, normal: secondary));
+          @include color.color((dark: body font, light: primary, normal: primary));
+        }
+
+        // Transition.
+        @include property.transition((background (unit 5), color (unit 5), box-shadow (unit 5)));
+      }
+
+      // .form-checkbox,
+      // .form-radio,
+      // .form-switch {
+      #{module.class(form ((checkbox, ), (radio, ), (switch, )))} {
+        @include margin.margin((unit h) (unit 0));
+      }
+
+      // & + .menu-item {
+      // & + #{class(($menu-name, 'item'))} {
+      & + #{module.class(menu, join($class, item), (), $dictionary)} {
+        @include margin.top((unit 1) ());
+      }
+    }
+
+    // .menu-badge {
+    // #{class(($menu-name, 'badge'))} {
+    #{module.class(menu, join($class, badge), (), $dictionary)} {
+      // Position.
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      // Display.
+      display: flex;
+      align-items: center;
+
+      // Size.
+      height: 100%;
+
+      // .label {
+      #{module.class(label)} { // TODO: label
+        @include margin.right((unit 2) ());
+      }
+    }
+  }
+}
