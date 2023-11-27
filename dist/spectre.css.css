@@ -4,5 +4,7 @@
 @import 'spectre.core.min.css';
 @import 'codes/spectre.codes.min.css';
 @import 'layout/spectre.layout.min.css';
+@import 'accordions/spectre.accordions.min.css';
 @import 'borders/spectre.borders.min.css';
+@import 'menus/spectre.menus.min.css';
 @import 'utilities/spectre.utilities.min.css';
