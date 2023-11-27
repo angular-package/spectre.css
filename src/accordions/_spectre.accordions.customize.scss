@@ -1,20 +1,7 @@
 /* Customize CSS variable names and class names. Naming convention https://getbem.com/naming/ */
 
 // Variables.
-@use 'accordions.dictionary';
+@use 'accordions.dictionary' as translator;
+@use 'variables';
 
-// Modules.
-@use '../translator';
-
-// Dictionary.
-// $debug: translator.dictionary-merge(accordion, (
-//   class: (
-//     accordion: accordion-basic,
-//     header: header-basic,
-//     body: body-basic,
-//   ),
-//   var: (
-//     prefix: spectre, // No CSS variables.
-//     suffix: 'orchid'
-//   ))
-// );
+// $debug: translator.dictionary-merge(accordion, variables.$dictionary);
