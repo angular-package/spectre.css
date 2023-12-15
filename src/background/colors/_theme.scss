@@ -1,0 +1,18 @@
+// Variables.
+@use '../spectre.background.customize' as *;
+
+// Modules.
+@use '../../color';
+@use '../variables/theme/theme.var' as theme;
+@use '@angular-package/sass/map';
+
+// Set the color scheme to normal.
+$color-scheme: normal !default;
+$debug: color.scheme-set($color-scheme);
+$theme: normal !default;
+$palette: null !default;
+
+// Initialize.
+@include color.theme-load(theme.$theme, false, ($theme, $palette)) using($color-scheme, $palette-name, $variant) {
+  // @include variant.color(((): $variant));
+}

@@ -1,0 +1,15 @@
+// Variables.
+@use 'variables/theme';
+
+// Modules.
+@use '../color';
+
+// Initialize.
+@include color.theme-load((normal: theme.$normal)) using($color-scheme, $palette-name, $variant) {
+
+  @debug $color-scheme;
+  @debug $palette-name;
+  @debug $variant;
+
+  @include color.variant-create((background: $variant));
+}

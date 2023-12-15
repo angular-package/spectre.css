@@ -1,0 +1,34 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+// @use '../variables/bg-theme-dark.var' as *;
+// @use '../variables/bg-theme-light.var' as *;
+// @use '../variables/bg-theme-normal.var' as *;
+
+// Dark theme: bg-colors.
+// $bg-theme-dark: map.merge($bg-theme-dark, (
+//   'bg-colors': (
+//     'bg-a': ('bg-color', 'body-font'),
+//     'bg-a-dark': ('bg-color-dark', 'body-font'),
+//     'bg-a-light': ('bg-color-light', 'body-font')
+//   ),
+// ));
+
+// Light theme: bg-colors.
+// $bg-theme-light: map.merge($bg-theme-light, (
+//   'bg-colors': (
+//     'bg-b': ('bg-color', 'body-font'),
+//     'bg-b-dark': ('bg-color-dark', 'body-font'),
+//     'bg-b-light': ('bg-color-light', 'body-font')
+//   ),
+// ));
+
+// Normal theme: bg-colors.
+// $bg-theme-normal: map.merge($bg-theme-normal, (
+//   'bg-colors': (
+//     'bg-c': ('bg-color', 'body-font'),
+//     'bg-c-dark': ('bg-color-dark', 'body-font'),
+//     'bg-c-light': ('bg-color-light', 'body-font')
+//   ),
+// ));

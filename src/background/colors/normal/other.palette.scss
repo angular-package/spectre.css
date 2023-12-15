@@ -1,0 +1,2 @@
+@use '../../spectre.background.customize' as *;
+@use '../theme' with($palette: other);

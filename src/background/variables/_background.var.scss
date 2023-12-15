@@ -1,0 +1,62 @@
+// Variables.
+@use 'bg.theme.var' as *;
+
+$name: 'bg' !default;
+
+// Bg variable.
+$bg: (
+  colors: (
+    // 'dark': (
+    //   'bg-colors',
+    //   'body-colors',
+    //   'border-colors',
+    //   'control-colors',
+    //   'core-colors',
+    //   'gray-colors',
+    //   'link-colors',
+    //   'other-colors'
+    // ),
+    // 'light': (
+    //   'bg-colors',
+    //   'body-colors',
+    //   'border-colors',
+    //   'control-colors',
+    //   'core-colors',
+    //   'gray-colors',
+    //   'link-colors',
+    //   'other-colors'
+    // ),
+    // 'normal': (
+    //   'bg-colors',
+    //   'body-colors',
+    //   'border-colors',
+    //   'control-colors',
+    //   'core-colors',
+    //   'gray-colors',
+    //   'link-colors',
+    //   'other-colors'
+    // ),
+    default: ( // TODO: Use the `true` value.
+      'bg-colors',
+      'body-colors',
+      'border-colors',
+      'control-colors',
+      'core-colors',
+      'gray-colors',
+      'link-colors',
+      'other-colors'
+    )
+  ),
+  dictionary: (
+    class: (
+      background: $name,
+      // 'prefix': '',
+      // 'suffix': '',
+      // 'separator': '',,
+    ),
+    var: (),
+  ),
+  theme: (
+    colors: $theme
+  )
+) !default;

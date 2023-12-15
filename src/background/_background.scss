@@ -1,0 +1,14 @@
+// Sass.
+@use 'sass:map';
+
+// Variables.
+@use '../variables/core' as *;
+@use 'variables/bg.var' as *;
+
+// Modules.
+@use '../color/scheme';
+
+/* Spectre.css module: background | utilities | color-scheme: #{scheme.$color-scheme} | MIT License | github.com/angular-package/spectre.css */
+
+// Initialize.
+// @include bg-theme-colors(map.get($bg, 'colors'));

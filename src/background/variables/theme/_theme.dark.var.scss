@@ -1,0 +1,79 @@
+$dark: (
+  // - Core colors.
+  core: (dark, light, accent, +primary (color, dark, light), +secondary (color, dark, light)),
+  // core: (
+  //   // - Shades.
+  //   dark: (dark, light),
+  //   light: (light, dark),
+
+  //   // - Accent
+  //   accent: (accent, light),
+
+  //   // - Primary.
+  //   primary: (primary, light),
+  //   primary dark: (primary dark, ('primary-color-dark', 40%)),
+  //   primary light: (primary light, ('primary-color-light', 40%)),
+
+  //   secondary: ('secondary-color', ('secondary-color', -40%)),
+  //   secondary dark: ('secondary-color-dark', ('secondary-color-dark', -40%)),
+  //   secondary light: ('secondary-color-light', ('secondary-color-light', -40%)),
+
+  //   theme: (theme, (theme, 50%))
+  // ),
+
+  // Gray colors.
+  +gray: (gray, dark, light),
+  // gray: (
+  //   gray: (gray, (gray, 20%)),
+  //   gray dark: (gray dark, gray light),
+  //   gray light: (gray light, gray dark)
+  // ),
+
+  // Bg colors.
+  +background: (background, dark, light),
+  // background: (
+  //   background: (background, body font),
+  //   background dark: (background dark, body font),
+  //   background light: (background light, body font)
+  // ),
+
+  // Border colors.
+  +border: (border, dark, light),
+  // border: (
+  //   border: (border, (border, -40%)),
+  //   border dark: (border dark, (border dark, 40%)),
+  //   border light: (border light, (border light, -40%))
+  // ),
+
+  // Link colors.
+  +link: (link, dark, light),
+  // link: (
+  //   link: (link, (link, 40%)),
+  //   link dark: (link dark, (link dark, 60%)),
+  //   link light: (link light, (link light, 30%))
+  // ),
+
+  // Control colors.
+  control: (disabled, error, info, success),
+  // control: (
+  //   disabled: (disabled, (disabled, -10%)),
+  //   error: (error, light),
+  //   info: (info, (info, -50%)),
+  //   success: (success, light),
+  //   warning: (warning, light)
+  // ),
+
+  // Body colors.
+  +body: (bg, font),
+  // body: (
+  //   body bg: (body bg, body font),
+  //   body font: (body font, body bg)
+  // ),
+
+  // Other colors.
+  other: (code, highlight),
+  // other: (
+  //   code: (code, (code, 50%)),
+  //   highlight: (highlight, (highlight, -50%))
+  // )
+) !default;
